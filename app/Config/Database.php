@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'u834391968_mdjyxyfqxv',
-        'password' => '>KNuVOn?9Dz',
-        'database' => 'u834391968_shopifypartial',
+        'username' => 'partial_payx',
+        'password' => 'pay!@#rest',
+        'database' => 'payxnowrestondelivery_app',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
