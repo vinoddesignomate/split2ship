@@ -1,0 +1,455 @@
+stdClass Object
+(
+    [id] => 5233111957732
+    [admin_graphql_api_id] => gid://shopify/Order/5233111957732
+    [app_id] => 27799388161
+    [browser_ip] => 103.80.119.106
+    [buyer_accepts_marketing] => 
+    [cancel_reason] => 
+    [cancelled_at] => 
+    [cart_token] => 
+    [checkout_id] => 33651313377508
+    [checkout_token] => 179c5f3618af29b8f638708be3bd66ca
+    [client_details] => stdClass Object
+        (
+            [accept_language] => en
+            [browser_height] => 
+            [browser_ip] => 103.80.119.106
+            [browser_width] => 
+            [session_hash] => 
+            [user_agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+        )
+
+    [closed_at] => 
+    [confirmed] => 1
+    [contact_email] => vinod@designomate.com
+    [created_at] => 2023-05-11T23:40:22+05:30
+    [currency] => USD
+    [current_subtotal_price] => 20.00
+    [current_subtotal_price_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [current_total_discounts] => 0.00
+    [current_total_discounts_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [current_total_duties_set] => 
+    [current_total_price] => 20.00
+    [current_total_price_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [current_total_tax] => 0.00
+    [current_total_tax_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [customer_locale] => en
+    [device_id] => 
+    [discount_codes] => Array
+        (
+        )
+
+    [email] => vinod@designomate.com
+    [estimated_taxes] => 
+    [financial_status] => pending
+    [fulfillment_status] => 
+    [gateway] => Cash on Delivery (COD)
+    [landing_site] => /
+    [landing_site_ref] => 
+    [location_id] => 70494552292
+    [merchant_of_record_app_id] => 
+    [name] => #1044
+    [note] => 
+    [note_attributes] => Array
+        (
+        )
+
+    [number] => 44
+    [order_number] => 1044
+    [order_status_url] => https://cgcolorstheme.myshopify.com/65701871844/orders/d914b6c8200b31a4126b0f512a6651bd/authenticate?key=cc349f077c79eaacfea00b5e12d1b27c
+    [original_total_duties_set] => 
+    [payment_gateway_names] => Array
+        (
+            [0] => Cash on Delivery (COD)
+        )
+
+    [phone] => 
+    [presentment_currency] => USD
+    [processed_at] => 2023-05-11T23:40:21+05:30
+    [processing_method] => manual
+    [reference] => 625e53245ffd9f0e5f0239be39d07b59
+    [referring_site] => 
+    [source_identifier] => 625e53245ffd9f0e5f0239be39d07b59
+    [source_name] => 27799388161
+    [source_url] => 
+    [subtotal_price] => 20.00
+    [subtotal_price_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [tags] => partial
+    [tax_lines] => Array
+        (
+        )
+
+    [taxes_included] => 
+    [test] => 
+    [token] => d914b6c8200b31a4126b0f512a6651bd
+    [total_discounts] => 0.00
+    [total_discounts_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [total_line_items_price] => 20.00
+    [total_line_items_price_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [total_outstanding] => 20.00
+    [total_price] => 20.00
+    [total_price_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 20.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [total_shipping_price_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [total_tax] => 0.00
+    [total_tax_set] => stdClass Object
+        (
+            [shop_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+            [presentment_money] => stdClass Object
+                (
+                    [amount] => 0.00
+                    [currency_code] => USD
+                )
+
+        )
+
+    [total_tip_received] => 0.00
+    [total_weight] => 0
+    [updated_at] => 2023-05-11T23:40:23+05:30
+    [user_id] => 86559326436
+    [billing_address] => stdClass Object
+        (
+            [first_name] => vinod
+            [address1] => sco59
+            [phone] => 098653 26598
+            [city] => kurkshetra
+            [zip] => 132157
+            [province] => Haryana
+            [country] => India
+            [last_name] => kumar
+            [address2] => 
+            [company] => 
+            [latitude] => 29.8385942
+            [longitude] => 76.8028933
+            [name] => vinod kumar
+            [country_code] => IN
+            [province_code] => HR
+        )
+
+    [customer] => stdClass Object
+        (
+            [id] => 6453791457508
+            [email] => vinod@designomate.com
+            [accepts_marketing] => 
+            [created_at] => 2022-11-11T23:48:39+05:30
+            [updated_at] => 2023-05-11T23:57:37+05:30
+            [first_name] => vinod
+            [last_name] => kumar
+            [state] => disabled
+            [note] => 
+            [verified_email] => 1
+            [multipass_identifier] => 
+            [tax_exempt] => 
+            [phone] => +918757574577
+            [email_marketing_consent] => stdClass Object
+                (
+                    [state] => not_subscribed
+                    [opt_in_level] => single_opt_in
+                    [consent_updated_at] => 
+                )
+
+            [sms_marketing_consent] => stdClass Object
+                (
+                    [state] => not_subscribed
+                    [opt_in_level] => single_opt_in
+                    [consent_updated_at] => 
+                    [consent_collected_from] => SHOPIFY
+                )
+
+            [tags] => 
+            [currency] => USD
+            [accepts_marketing_updated_at] => 2022-11-11T23:48:40+05:30
+            [marketing_opt_in_level] => 
+            [tax_exemptions] => Array
+                (
+                )
+
+            [admin_graphql_api_id] => gid://shopify/Customer/6453791457508
+            [default_address] => stdClass Object
+                (
+                    [id] => 8204394463460
+                    [customer_id] => 6453791457508
+                    [first_name] => vinod
+                    [last_name] => kumar
+                    [company] => 
+                    [address1] => sco59
+                    [address2] => 
+                    [city] => kurkshetra
+                    [province] => Haryana
+                    [country] => India
+                    [zip] => 132157
+                    [phone] => 098653 26598
+                    [name] => vinod kumar
+                    [province_code] => HR
+                    [country_code] => IN
+                    [country_name] => India
+                    [default] => 1
+                )
+
+        )
+
+    [discount_applications] => Array
+        (
+        )
+
+    [fulfillments] => Array
+        (
+        )
+
+    [line_items] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [id] => 13096756871396
+                    [admin_graphql_api_id] => gid://shopify/LineItem/13096756871396
+                    [fulfillable_quantity] => 1
+                    [fulfillment_service] => manual
+                    [fulfillment_status] => 
+                    [gift_card] => 
+                    [grams] => 0
+                    [name] => new partcheck 2
+                    [price] => 20.00
+                    [price_set] => stdClass Object
+                        (
+                            [shop_money] => stdClass Object
+                                (
+                                    [amount] => 20.00
+                                    [currency_code] => USD
+                                )
+
+                            [presentment_money] => stdClass Object
+                                (
+                                    [amount] => 20.00
+                                    [currency_code] => USD
+                                )
+
+                        )
+
+                    [product_exists] => 
+                    [product_id] => 
+                    [properties] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [name] => Note
+                                    [value] => Initial Partial Payment
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [name] => variant_code
+                                    [value] => 43720031830244
+                                )
+
+                            [2] => stdClass Object
+                                (
+                                    [name] => partial_pay
+                                    [value] => 20
+                                )
+
+                            [3] => stdClass Object
+                                (
+                                    [name] => remaining_amount
+                                    [value] => 180
+                                )
+
+                            [4] => stdClass Object
+                                (
+                                    [name] => psku
+                                    [value] => DFTGYHHGG
+                                )
+
+                        )
+
+                    [quantity] => 1
+                    [requires_shipping] => 
+                    [sku] => 
+                    [taxable] => 1
+                    [title] => new partcheck 2
+                    [total_discount] => 0.00
+                    [total_discount_set] => stdClass Object
+                        (
+                            [shop_money] => stdClass Object
+                                (
+                                    [amount] => 0.00
+                                    [currency_code] => USD
+                                )
+
+                            [presentment_money] => stdClass Object
+                                (
+                                    [amount] => 0.00
+                                    [currency_code] => USD
+                                )
+
+                        )
+
+                    [variant_id] => 
+                    [variant_inventory_management] => 
+                    [variant_title] => 
+                    [vendor] => 
+                    [tax_lines] => Array
+                        (
+                        )
+
+                    [duties] => Array
+                        (
+                        )
+
+                    [discount_allocations] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [payment_terms] => 
+    [refunds] => Array
+        (
+        )
+
+    [shipping_lines] => Array
+        (
+        )
+
+)

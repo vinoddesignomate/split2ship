@@ -1,0 +1,1218 @@
+ERROR - 2023-05-05 06:32:14 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:32:14 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:33:17 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:33:17 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:35:21 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:35:21 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:37:25 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:37:25 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:42:29 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:42:29 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:45:03 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:45:03 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:46:07 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:46:07 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:48:11 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:48:11 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:50:14 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:50:14 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:50:36 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:50:36 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:51:39 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:51:39 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:53:43 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:53:43 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:55:18 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:55:18 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 06:55:47 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 06:55:47 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:00:50 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:00:50 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:04:33 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:04:33 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:17:21 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:17:21 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:22:54 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:22:54 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:34:37 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:34:37 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:47:26 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:47:26 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 07:52:58 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 07:52:58 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:34:41 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:34:41 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:44:45 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:44:45 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:45:49 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:45:49 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:47:29 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:47:29 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:47:52 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:47:52 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:49:56 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:49:56 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:50:01 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:50:01 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:51:05 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:51:05 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:53:02 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:53:02 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:53:08 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:53:08 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:55:00 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:55:00 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 08:55:12 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 08:55:12 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 09:00:15 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 09:00:15 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 09:17:04 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 09:17:04 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 09:22:19 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 09:22:19 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 09:47:08 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 09:47:08 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 09:52:22 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 09:52:22 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 10:34:45 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 10:34:45 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 10:47:12 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 10:47:12 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 10:47:33 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 10:47:33 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 10:52:26 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 10:52:26 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 10:53:06 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 10:53:06 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 12:47:16 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 12:47:16 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 12:52:30 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 12:52:30 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 14:34:49 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 14:34:49 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 14:47:37 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 14:47:37 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 14:53:10 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 14:53:10 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 16:47:20 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 16:47:20 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 16:52:35 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 16:52:35 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 18:34:54 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 18:34:54 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 18:47:42 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 18:47:42 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 18:53:13 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 18:53:13 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 20:47:23 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 20:47:23 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 20:52:39 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 20:52:39 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 22:34:58 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 22:34:58 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 22:47:46 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 22:47:46 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-05-05 22:53:17 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(268): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-05-05 22:53:17 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

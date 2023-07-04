@@ -1,0 +1,161 @@
+CRITICAL - 2023-06-06 09:57:15 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 09:58:17 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:00:19 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:02:20 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:07:22 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:20:23 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:21:25 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:23:27 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:25:28 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:29:24 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:30:30 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:36:20 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:37:22 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:39:24 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:41:26 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:46:28 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 10:52:31 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 11:01:29 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppwhookController.php(37): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 11:02:28 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppwhookController.php(37): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 11:02:30 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppwhookController.php(37): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 11:03:30 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppwhookController.php(37): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 11:19:09 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppwhookController.php(37): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-06 11:20:11 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppwhookController.php(37): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

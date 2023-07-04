@@ -1,0 +1,119 @@
+CRITICAL - 2023-05-15 07:45:52 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 194 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(194): App\Models\UserModel->get_products_orders('cgcolorstheme.myshopify.com')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 07:46:56 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 194 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(194): App\Models\UserModel->get_products_orders('cgcolorstheme.myshopify.com')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 07:49:00 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 194 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(194): App\Models\UserModel->get_products_orders('cgcolorstheme.myshopify.com')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 07:51:05 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 194 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(194): App\Models\UserModel->get_products_orders('cgcolorstheme.myshopify.com')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 07:56:09 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 194 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 221.
+ 1 APPPATH/Controllers/AppwhookController.php(194): App\Models\UserModel->get_products_orders('cgcolorstheme.myshopify.com')
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:33:09 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 211.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:34:13 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 211.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:36:18 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 211.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:38:22 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 211.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:40:18 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 211.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:41:23 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 211.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:50:06 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 212.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:51:11 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 212.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:53:15 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 214.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 12:55:19 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 214.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 13:00:24 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 214.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 13:01:34 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 215.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 13:02:39 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 215.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-15 13:04:42 --> Cannot use object of type stdClass as array
+in APPPATH/Controllers/AppwhookController.php on line 215.
+ 1 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 2 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 3 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

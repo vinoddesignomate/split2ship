@@ -1,0 +1,329 @@
+ERROR - 2023-04-20 08:19:30 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 08:19:30 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 08:20:34 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 08:20:34 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 08:22:38 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 08:22:38 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 08:24:42 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 08:24:42 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 08:29:46 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 08:29:46 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 08:51:50 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 08:51:50 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 09:21:53 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 09:21:53 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 10:21:57 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 10:21:57 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-04-20 12:22:01 --> mysqli_sql_exception: Column 'shop_url' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `sh...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sh...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sh...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sh...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(266): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(131): App\Models\UserModel->track_shiprocket_api_token(Array)
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php(43): App\Controllers\AppwhookController->update_token(NULL)
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-04-20 12:22:01 --> Too few arguments to function App\Models\UserModel::get_products_orders(), 1 passed in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/AppwhookController.php on line 47 and exactly 3 expected
+in APPPATH/Models/UserModel.php on line 219.
+ 1 APPPATH/Controllers/AppwhookController.php(47): App\Models\UserModel->get_products_orders(null)
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppwhookController->auto_ordersync()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppwhookController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:14:30 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:15:32 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:17:34 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:19:35 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:21:29 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:22:31 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:24:32 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:24:37 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:26:34 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:31:35 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:46:39 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 13:55:01 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 14:16:41 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 14:25:03 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 15:16:42 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 15:25:04 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 17:16:44 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 17:25:06 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 21:16:46 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-20 21:25:07 --> Call to undefined method App\Models\UserModel::get_webhook_id
+in SYSTEMPATH/Model.php on line 774.
+ 1 APPPATH/Controllers/AppUninstallController.php(29): CodeIgniter\Model->__call('get_webhook_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\AppUninstallController->uninstall_app()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AppUninstallController))
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

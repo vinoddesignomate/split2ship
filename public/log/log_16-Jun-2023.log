@@ -1,0 +1,35 @@
+Array
+(
+    [cash_pickups_count] => 0
+    [package_count] => 1
+    [upload_wbn] => UPL71788585399568685
+    [replacement_count] => 0
+    [rmk] => An internal Error has occurred, Please get in touch with client.support@delhivery.com
+    [pickups_count] => 0
+    [packages] => Array
+        (
+            [0] => Array
+                (
+                    [status] => Fail
+                    [client] => 5fab8e-DESIGNOMATE-do
+                    [sort_code] => KAR/JAY
+                    [remarks] => Array
+                        (
+                            [0] => Crashing while saving package due to exception 'Prepaid client manifest charge API failed due to insufficient balance'. Package might have been partially saved.
+                        )
+
+                    [waybill] => 
+                    [cod_amount] => 0
+                    [payment] => Pre-paid
+                    [serviceable] => 1
+                    [refnum] => 1043
+                )
+
+        )
+
+    [cash_pickups] => 0
+    [cod_count] => 0
+    [success] => 
+    [prepaid_count] => 0
+    [cod_amount] => 0
+)

@@ -1,0 +1,182 @@
+ERROR - 2023-06-21 00:03:46 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:07:06 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:07:50 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:08:21 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:10:17 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:10:43 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:10:43 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:12:21 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:13:10 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:14:58 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:14:58 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 00:20:45 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(199): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(872): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 08:52:46 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(200): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(888): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-06-21 08:53:36 --> mysqli_sql_exception: Column 'email' cannot be null in /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `or...', 0)
+#1 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Models/UserModel.php(200): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/app/Controllers/Home.php(888): App\Models\UserModel->track_orders(Array, 'partialtestapp....')
+#6 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/u834391968/domains/cgcolors.co/public_html/shopifypartialapp/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}

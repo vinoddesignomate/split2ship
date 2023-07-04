@@ -1,0 +1,490 @@
+ERROR - 2023-02-14 05:10:58 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 05:39:19 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 11 in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(233): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(824): App\Models\UserModel->get_products_orders()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(766): App\Controllers\Home->order_sync_pickrr()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->shiprocket_config()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-02-14 05:39:19 --> Call to a member function getResult() on bool
+in APPPATH/Models/UserModel.php on line 236.
+ 1 APPPATH/Controllers/Home.php(824): App\Models\UserModel->get_products_orders()
+ 2 APPPATH/Controllers/Home.php(766): App\Controllers\Home->order_sync_pickrr()
+ 3 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->shiprocket_config()
+ 4 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-14 07:43:45 --> Invalid argument supplied for foreach()
+in APPPATH/Controllers/Home.php on line 432.
+ 1 APPPATH/Controllers/Home.php(432): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-02-14 07:45:16 --> Invalid argument supplied for foreach()
+in APPPATH/Controllers/Home.php on line 432.
+ 1 APPPATH/Controllers/Home.php(432): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+ 3 SYSTEMPATH/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-02-14 07:46:03 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 07:46:04 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:12:19 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:15:46 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:26:03 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:28:17 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:30:30 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:34:09 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:35:26 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:36:19 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:37:07 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:37:58 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:38:43 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:39:18 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:39:47 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:41:12 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 08:41:47 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 09:00:32 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 09:01:52 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 09:06:48 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:09:12 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:09:41 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:09:58 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:11:14 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:12:56 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:14:26 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:15:21 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:16:38 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:17:52 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:19:07 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:21:48 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:28:31 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:29:20 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-02-14 12:31:42 --> mysqli_sql_exception: Column 'email' cannot be null in /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/MySQLi/Connection.php(292): mysqli->query()
+#1 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query()
+#4 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Models/UserModel.php(170): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/app/Controllers/Home.php(461): App\Models\UserModel->track_orders()
+#6 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(927): App\Controllers\Home->show_all_orders()
+#7 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#8 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/system/CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/877186.cloudwaysapps.com/yvuxeuwabq/public_html/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
