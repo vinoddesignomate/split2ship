@@ -26,7 +26,7 @@ class App extends BaseConfig
      */
     //public $baseURL = 'http://localhost:8080/';
     //public $baseURL = 'https://cgcolors.co/payxnowandrestondelivery/public/';
-    public $baseURL = 'https://cgcolors.co/payxnowandrestondelivery/';
+    public $baseURL = 'https://app.payxnowandrestondelivery.com/split2ship/';
 
     /**
      * --------------------------------------------------------------------------
