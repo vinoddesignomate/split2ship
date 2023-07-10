@@ -12,7 +12,7 @@ $store_name = $shop_name[0];
 ?>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-        <h5> <a href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list">Back</a></h5>
+        <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list">Back</a></h5>
 
     </div>
 </div>

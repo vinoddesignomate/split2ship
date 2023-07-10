@@ -16,7 +16,7 @@ class Auth extends BaseController
 		$shop = $_GET['shop'];
 		//$scopes = 'read_products,write_products';
 
-		$scopes = 'read_products,write_products,read_orders,write_orders,write_order_edits,read_draft_orders,write_draft_orders,read_customers,write_customers';
+		$scopes = 'read_products,write_products,read_orders,read_all_orders,write_orders,write_order_edits,read_draft_orders,write_draft_orders,read_customers,write_customers';
 		$redirect_uri = $_NGROK_URL . '/token';
 		$nonce = bin2hex(random_bytes(12));
 		//$access_mode = 'per-user';
@@ -68,7 +68,7 @@ class Auth extends BaseController
 			$response = json_decode($response, true);
 
 
-
+			// echo"<pre>"; print_r($response); echo"</pre>"; die();
 			$countrows = $userModel->checktokens($parameters['shop']);
 			if ($countrows < 1) {
 				$curdate = date('Y-m-d');
@@ -86,6 +86,7 @@ class Auth extends BaseController
 					"account_owner" => $response['associated_user']['account_owner'],
 					"auth_code" => $parameters['code'],
 					"created" => $curdate,
+					"store_status" => 1
 				));
 
 
@@ -99,6 +100,7 @@ class Auth extends BaseController
 					"expires_in" => $response['expires_in'],
 					"auth_code" => $parameters['code'],
 					"associated_user_scope" => $response['associated_user_scope'],
+					"store_status" => 1
 				));
 			}
 

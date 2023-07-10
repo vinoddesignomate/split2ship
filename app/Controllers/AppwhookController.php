@@ -33,25 +33,21 @@ class AppwhookController extends BaseController
         }*/
 
         $shop_header = $_GET['cleanshop'];
+        //$userModel->update_shops_status($shop_header);
 
-        //    $get_webhook_details =  $this->user_model->get_webhook_id($shop_header);
-        //     if (!empty($get_webhook_details)) {
-        //         $webid = $get_webhook_details[0]->webhook_id;
-        // $insertara = array(
-        //     "reposne" => json_encode($_SERVER),
-        //     "date_time" => date('Y-m-d H:i:s')
-        // );
-        // $userModel->insert_logs($insertara);
-        //$get_details =  $this->user_model->get_tokens($shop_header);
-        //$this->user_model->delete_webhooks($webid);
-        //  $this->user_model->update_shops_status($shop_header);
-        // $insert_logs = array(
-        //     "shop_url"=>$shop_header,
-        //     "shop_status"=>"Uninstalled",
-        //     "movements"=>date('Y-m-d H:i:s'),
-        // );
-        // $this->user_model->update_install_uninstall_logs($insert_logs);
-        // }
+        $get_webhook_details =   $userModel->get_webhook_id($shop_header);
+        if (!empty($get_webhook_details)) {
+            $webid = $get_webhook_details[0]->webhook_id;
+            // $insertara = array(
+            //     "reposne" => json_encode($_SERVER),
+            //     "date_time" => date('Y-m-d H:i:s')
+            // );
+            // $userModel->insert_logs($insertara);
+            $get_details =   $userModel->get_tokens($shop_header);
+            $userModel->delete_webhooks($webid);
+            $userModel->update_shops_status($shop_header);
+            
+        }
 
         $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
         $userModel->check_test_response($resposne_array);
@@ -183,7 +179,7 @@ class AppwhookController extends BaseController
                     "order_ccy" => $jsndata->currency,
                     "order_date" => $jsndata->created_at,
                     "order_price" => $jsndata->current_subtotal_price,
-                    "email" => $jsndata->contact_email,
+                    "email" => $this->common->payxnow_encodedata($jsndata->contact_email),
                     "total_price" => $jsndata->current_subtotal_price + $remaing_proice,
                     "pending_amount" => $remaing_proice,
                     "shop_url" => $_GET['whshp'],
@@ -201,13 +197,13 @@ class AppwhookController extends BaseController
                     }
 
 
-                    $orders_data['shipping_address'] = $jsndata->shipping_address->address1;
-                    $orders_data['city'] = (isset($jsndata->shipping_address->city) ? $jsndata->shipping_address->city : '');
-                    $orders_data['state'] = (isset($jsndata->shipping_address->province) ? $jsndata->shipping_address->province : '');
+                    $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->shipping_address->address1);
+                    $orders_data['city'] = (isset($jsndata->shipping_address->city) ? $this->common->payxnow_encodedata($jsndata->shipping_address->city) : '');
+                    $orders_data['state'] = (isset($jsndata->shipping_address->province) ? $this->common->payxnow_encodedata($jsndata->shipping_address->province) : '');
                     $orders_data['zip'] = (isset($jsndata->shipping_address->zip) ? $jsndata->shipping_address->zip : '');
-                    $orders_data['phone'] = $store_phnum;
-                    $orders_data['f_name'] = (isset($jsndata->shipping_address->first_name) ? $jsndata->shipping_address->first_name : '');
-                    $orders_data['l_name'] = (isset($jsndata->shipping_address->last_name) ? $jsndata->shipping_address->last_name : '');
+                    $orders_data['phone'] = $this->common->payxnow_encodedata($store_phnum);
+                    $orders_data['f_name'] = (isset($jsndata->shipping_address->first_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->first_name) : '');
+                    $orders_data['l_name'] = (isset($jsndata->shipping_address->last_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->last_name) : '');
                     //$orders_data['email'] = (isset($jsndata->shipping_address['email']) ? $jsndata->shipping_address['email'] :'' );
                     $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $jsndata->shipping_address->country : '');
                 } else  if (isset($jsndata->billing_address)) {
@@ -221,15 +217,15 @@ class AppwhookController extends BaseController
                         $store_phnum2 = "";
                     }
 
-                    $orders_data['shipping_address'] = $jsndata->billing_address->address1;
-                    $orders_data['city'] = (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : '');
-                    $orders_data['state'] = (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : '');
+                    $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->billing_address->address1);
+                    $orders_data['city'] = (isset($jsndata->billing_address->city) ? $this->common->payxnow_encodedata($jsndata->billing_address->city) : '');
+                    $orders_data['state'] = (isset($jsndata->billing_address->province) ? $this->common->payxnow_encodedata($jsndata->billing_address->province) : '');
                     $orders_data['zip'] = (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '');
-                    $orders_data['phone'] = $store_phnum2;
-                    $orders_data['f_name'] = (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : '');
-                    $orders_data['l_name'] = (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : '');
+                    $orders_data['phone'] = $this->common->payxnow_encodedata($store_phnum2);
+                    $orders_data['f_name'] = (isset($jsndata->billing_address->first_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->first_name) : '');
+                    $orders_data['l_name'] = (isset($jsndata->billing_address->last_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->last_name) : '');
                     //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                    $orders_data['country'] = (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : '');
+                    $orders_data['country'] = (isset($jsndata->billing_address->country) ? $this->common->payxnow_encodedata($jsndata->billing_address->countr) : '');
                 }
                 /// echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
 
@@ -763,7 +759,7 @@ class AppwhookController extends BaseController
 
         $get_orders_details = $this->user_model->get_order_detail($paid_orders_content->id);
 
-        
+
         // $log_filename = "log";
         // // $log_msg = $resp;
         // if (!file_exists($log_filename)) {
@@ -772,7 +768,7 @@ class AppwhookController extends BaseController
         // }
         // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
         // file_put_contents($log_file_data, print_r($_GET, true));
-        
+
         if (!empty($get_orders_details)) {
             $update_orders = array(
                 "order_id" => $paid_orders_content->id,
@@ -784,7 +780,7 @@ class AppwhookController extends BaseController
             $this->user_model->update_order_details($update_orders); //update orders with status paid
             $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shpname']);
 
-            
+
 
             if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
                 $create_custom = array();
@@ -1124,7 +1120,7 @@ class AppwhookController extends BaseController
 
                 //$this->order_sync_delhivery($shiprocket_info);
             }
-            $resposne_array = array("name" => "invoice email paid=" . $_GET['shpname'].$paid_order_webhook_content);
+            $resposne_array = array("name" => "invoice email paid=" . $_GET['shpname'] . $paid_order_webhook_content);
             $this->user_model->check_test_response($resposne_array);
         }
         echo "200 ok";

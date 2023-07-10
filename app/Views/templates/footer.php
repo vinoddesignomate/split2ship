@@ -33,93 +33,93 @@ $fstore_name = $shop_name[0];
 
     }
     if (ship_provder == 'ship_roc') {
-            $("#ship_roc").show();            
-            $("#delhivery").hide();
-            $("#pickr").hide();
-            $("#ship_email").prop('required',true);
-            $("#ship_pwd").prop('required',true);
-            $("#ship_chnl_id").prop('required',true);
-            $("#ship_token").prop('required',false);
-            $("#ship_from").prop('required',false);
-            $("#ship_token_delh").prop('required',false);
-            $("#pick_up_location").prop('required',false);
-            $("#pickrr_company").prop('required',false);
-            $("#pickrr_phone").prop('required',false);
-            $("#pickrr_pincode").prop('required',false);
-        } else if (ship_provder == 'delhivery') {
-            $("#ship_roc").hide();
-            $("#delhivery").show();
-            $("#pickr").hide();
-            $("#ship_email").prop('required',false);
-            $("#ship_pwd").prop('required',false);
-            $("#ship_chnl_id").prop('required',false);
-            $("#ship_token").prop('required',false);
-            $("#ship_from").prop('required',false);
-            $("#ship_token_delh").prop('required',true);
-            $("#pick_up_location").prop('required',true);
-            $("#pickrr_company").prop('required',false);
-            $("#pickrr_phone").prop('required',false);
-            $("#pickrr_pincode").prop('required',false);
-        } else if (ship_provder == 'pickr') {
-            $("#ship_roc").hide();
-            $("#delhivery").hide();
-            $("#pickr").show();
-            $("#ship_email").prop('required',false);
-            $("#ship_pwd").prop('required',false);
-            $("#ship_chnl_id").prop('required',false);
-            $("#ship_token_delh").prop('required',false);
-            $("#ship_token").prop('required',true);
-            $("#ship_from").prop('required',true);
-            $("#pick_up_location").prop('required',false);
-            $("#pickrr_company").prop('required',true);
-            $("#pickrr_phone").prop('required',true);
-            $("#pickrr_pincode").prop('required',true);
-        }
+        $("#ship_roc").show();
+        $("#delhivery").hide();
+        $("#pickr").hide();
+        $("#ship_email").prop('required', true);
+        $("#ship_pwd").prop('required', true);
+        $("#ship_chnl_id").prop('required', true);
+        $("#ship_token").prop('required', false);
+        $("#ship_from").prop('required', false);
+        $("#ship_token_delh").prop('required', false);
+        $("#pick_up_location").prop('required', false);
+        $("#pickrr_company").prop('required', false);
+        $("#pickrr_phone").prop('required', false);
+        $("#pickrr_pincode").prop('required', false);
+    } else if (ship_provder == 'delhivery') {
+        $("#ship_roc").hide();
+        $("#delhivery").show();
+        $("#pickr").hide();
+        $("#ship_email").prop('required', false);
+        $("#ship_pwd").prop('required', false);
+        $("#ship_chnl_id").prop('required', false);
+        $("#ship_token").prop('required', false);
+        $("#ship_from").prop('required', false);
+        $("#ship_token_delh").prop('required', true);
+        $("#pick_up_location").prop('required', true);
+        $("#pickrr_company").prop('required', false);
+        $("#pickrr_phone").prop('required', false);
+        $("#pickrr_pincode").prop('required', false);
+    } else if (ship_provder == 'pickr') {
+        $("#ship_roc").hide();
+        $("#delhivery").hide();
+        $("#pickr").show();
+        $("#ship_email").prop('required', false);
+        $("#ship_pwd").prop('required', false);
+        $("#ship_chnl_id").prop('required', false);
+        $("#ship_token_delh").prop('required', false);
+        $("#ship_token").prop('required', true);
+        $("#ship_from").prop('required', true);
+        $("#pick_up_location").prop('required', false);
+        $("#pickrr_company").prop('required', true);
+        $("#pickrr_phone").prop('required', true);
+        $("#pickrr_pincode").prop('required', true);
+    }
 
     $('#delivery_partner').on('change', function(e) {
         var delivery_partner = $("#delivery_partner").val();
         if (delivery_partner == 'ship_roc') {
-            $("#ship_roc").show();            
+            $("#ship_roc").show();
             $("#delhivery").hide();
             $("#pickr").hide();
-            $("#ship_email").prop('required',true);
-            $("#ship_pwd").prop('required',true);
-            $("#ship_chnl_id").prop('required',true);
-            $("#ship_token").prop('required',false);
-            $("#ship_from").prop('required',false);
-            $("#ship_token_delh").prop('required',false);
-            $("#pick_up_location").prop('required',false);
-            $("#pickrr_company").prop('required',false);
-            $("#pickrr_phone").prop('required',false);
-            $("#pickrr_pincode").prop('required',false);
+            $("#ship_email").prop('required', true);
+            $("#ship_pwd").prop('required', true);
+            $("#ship_chnl_id").prop('required', true);
+            $("#ship_token").prop('required', false);
+            $("#ship_from").prop('required', false);
+            $("#ship_token_delh").prop('required', false);
+            $("#pick_up_location").prop('required', false);
+            $("#pickrr_company").prop('required', false);
+            $("#pickrr_phone").prop('required', false);
+            $("#pickrr_pincode").prop('required', false);
         } else if (delivery_partner == 'delhivery') {
             $("#ship_roc").hide();
             $("#delhivery").show();
             $("#pickr").hide();
-            $("#ship_email").prop('required',false);
-            $("#ship_pwd").prop('required',false);
-            $("#ship_chnl_id").prop('required',false);
-            $("#ship_token").prop('required',false);
-            $("#ship_from").prop('required',false);
-            $("#ship_token_delh").prop('required',true);
-            $("#pick_up_location").prop('required',true);
-            $("#pickrr_company").prop('required',false);
-            $("#pickrr_phone").prop('required',false);
-            $("#pickrr_pincode").prop('required',false);
+            $("#ship_email").prop('required', false);
+            $("#ship_pwd").prop('required', false);
+            $("#ship_chnl_id").prop('required', false);
+            $("#ship_token").prop('required', false);
+            $("#ship_from").prop('required', false);
+            $("#ship_token_delh").prop('required', true);
+            $("#pick_up_location").prop('required', true);
+            $("#pickrr_company").prop('required', false);
+            $("#pickrr_phone").prop('required', false);
+            $("#pickrr_pincode").prop('required', false);
         } else if (delivery_partner == 'pickr') {
             $("#ship_roc").hide();
             $("#delhivery").hide();
             $("#pickr").show();
-            $("#ship_email").prop('required',false);
-            $("#ship_pwd").prop('required',false);
-            $("#ship_chnl_id").prop('required',false);
-            $("#ship_token_delh").prop('required',false);
-            $("#ship_token").prop('required',true);
-            $("#ship_from").prop('required',true);
-            $("#pick_up_location").prop('required',false);
-            $("#pickrr_company").prop('required',true);
-            $("#pickrr_phone").prop('required',true);
-            $("#pickrr_pincode").prop('required',true);
+            $("#ship_email").prop('required', false);
+            $("#ship_pwd").prop('required', false);
+            $("#ship_chnl_id").prop('required', false);
+            $("#ship_token_delh").prop('required', false);
+            $("#ship_token").prop('required', true);
+            $("#ship_from").prop('required', true);
+            $("#pick_up_location").prop('required', false);
+            $("#pickrr_company").prop('required', true);
+            $("#pickrr_phone").prop('required', true);
+            $("#pickrr_pincode").prop('required', true);
         }
         if (delivery_partner != "") {
             var shopname = '<?php echo esc($_GET['shop']); ?>';
@@ -173,12 +173,16 @@ $fstore_name = $shop_name[0];
     });
 
 
-    $('.pag_btn').on('click', function(e) {
+    $('.payxnowandrestondelivery-pag_btn').on('click', function(e) {
+        $('.payxnowandrestondelivery-pag_btn').removeClass('active');
         var data_info = $(this).attr('data-info');
         var data_rel = $(this).attr('data-rel');
         var data_store = $(this).attr('data-store');
         var vendor_name = $("#vendor_name").val();
         var sel_val = $("#get_coll").val();
+        if (data_info != "") {
+            $('[data-rel=' + data_rel + ']').addClass('active');
+        } 
 
 
 
@@ -226,13 +230,13 @@ $fstore_name = $shop_name[0];
     $('.payxnowandrestondelivery-subbtn').on('click', function(e) {
         // alert('ddd');
         const trvd = new Date();
-         let track_req_time = trvd.getTime();
+        let track_req_time = trvd.getTime();
         var this_id_frm = $(this).attr('subid');
         var formdata = $("#sub_form_data_" + this_id_frm).serialize();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         $.ajax({
             type: "POST",
-            url: "track_partial_percentage?rqtme="+track_req_time,
+            url: "track_partial_percentage?rqtme=" + track_req_time,
             data: 'shop=' + shopname + '&update_per=true&' + formdata,
             success: function(response) {
                 $("#show_per_" + this_id_frm).show();
@@ -268,6 +272,17 @@ $fstore_name = $shop_name[0];
 
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+
+    //call ajax for track user log into database
+
+    var shopname = '<?php echo esc($_GET['shop']); ?>';
+    $.ajax({
+        type: "GET",
+        url: "track_userinf",
+        data: 'shop=' + shopname,
+        success: function(response) {}
+
     });
 </script>
 

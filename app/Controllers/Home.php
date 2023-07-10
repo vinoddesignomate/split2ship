@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-
+use App\Libraries\Common; // Import library
 class Home extends BaseController
 {
     protected $shope_name;
@@ -61,16 +61,8 @@ class Home extends BaseController
     public function index()
     {
         $data = array();
-        // $this->session->set('page', 'welcome');
-        // $fieldata = file_get_contents('orderdsata2.json');
-        // $jsdecoee =  json_decode($fieldata);
-        // echo "orderdsata2<pre>";
-        // print_r($jsdecoee);
-        // echo "</pre>";
-        // die();
-      
-        // $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shop']);
-        // print_r($shiprocket_info); 
+        $myCommon = new Common();
+        $data['myCommon'] = $myCommon;
 
         if (isset($_GET['shop'])) {
             $countrows = $this->user_model->checktokens($_GET['shop']);
@@ -93,63 +85,13 @@ class Home extends BaseController
                 exit();
             } else {
 
-                // $params = array(
-                //     'auth_token' => '88596e7da4cb8da8fe5ad2ac6ff3acee854253',
-                //     'item_name' => 'product one, product2, product 3',
-                //     'from_name' => 'Bruce Wayne',
-                //     'from_phone_number' => '9996242898',
-                //     'from_address' => 'Basement, 1007 Mountain Drive',
-                //     'from_pincode' => '110022',
-                //     'to_name' => 'Vinod Kumar',
-                //     'to_phone_number' => '7738828473',
-                //     'to_pincode' => '201302',
-                //     'to_address' => 'A - 130 , 91 SPRINGBOARD , SECTOR 63 , NOIDA , Gautam Buddha Nagar , Uttar Pradesh',
-                //     'quantity' => 1,
-                //     'invoice_value' => 400,
-                //     'cod_amount' => 500,
-                //     'client_order_id' => 'WAYNE007',
-                //     'item_breadth' => 1,
-                //     'item_length' => 1,
-                //     'item_height' => 1,
-                //     'item_weight' => 0.5,
-                //     'item_tax_percentage' => 0,
-                //     'is_reverse' => False
-                // );
-
-                // try {
-                //     $json_params = json_encode($params);
-                //     $url = 'https://www.pickrr.com/api/place-order/';
-                //     //open connection
-                //     $ch = curl_init();
-                //     //set the url, number of POST vars, POST data
-                //     curl_setopt($ch, CURLOPT_URL, $url);
-                //     curl_setopt($ch, CURLOPT_POSTFIELDS, $json_params);
-                //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-                //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                //     //execute post
-                //     $result = curl_exec($ch);
-                //     $result = json_decode($result, true);
-
-                //     //close connection
-                //     curl_close($ch);
-                //     if (gettype($result) != "array")
-                //         throw new \Exception(print_r($result, true) . "Problem in connecting with Pickrr");
-                //     if ($result['err'] != "")
-                //         throw new \Exception($result['err']);
-                //     echo"<pre>"; print_r($result); echo"</pre>";
-                //     //$result['tracking_id'];
-                // } catch (\Exception $e) {
-                //     echo $e;
-                // }
-
-
-
-
 
 
                 /*   $register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $register_webhookset = json_decode($register_webhook['body'], true);
                 echo"<pre>"; print_r($register_webhookset); echo"</pre>"; */
+
+
 
 
                 if ($this->request->getPost('assign_save')) {
@@ -329,7 +271,7 @@ class Home extends BaseController
 
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
 
-                $all_orders = $this->common->rest_api('/admin/api/2023-01/orders.json?status=any&order=updated_at asc', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                $all_orders = $this->common->rest_api('/admin/api/2023-01/orders.json?status=any&order=updated_at%20asc', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 if (!empty($all_orders)) {
                     //echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
                     $get_all_oders = json_decode($all_orders['body'], true);
@@ -353,20 +295,20 @@ class Home extends BaseController
                                 "order_ccy" => $value['currency'],
                                 "order_date" => $value['created_at'],
                                 "order_price" => $value['current_subtotal_price'],
-                                "email" => $value['contact_email'],
+                                "email" => $this->common->payxnow_encodedata($value['contact_email']),
                                 "total_price" => $value['total_price'],
                                 "shop_url" => $_GET['shop']
                             );
                             if (isset($value['shipping_address'])) {
-                                $orders_data['shipping_address'] = $value['shipping_address']['address1'];
-                                $orders_data['city'] = (isset($value['shipping_address']['city']) ? $value['shipping_address']['city'] : '');
-                                $orders_data['state'] = (isset($value['shipping_address']['province']) ? $value['shipping_address']['province'] : '');
-                                $orders_data['zip'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
-                                $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $value['shipping_address']['phone'] : '');
-                                $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $value['shipping_address']['first_name'] : '');
-                                $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $value['shipping_address']['last_name'] : '');
+                                $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
+                                $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
+                                $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
+                                $orders_data['zip'] = (isset($value['shipping_address']['zip']) ? $this->common->payxnow_encodedata($value['shipping_address']['zip']) : '');
+                                $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
+                                $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['first_name']) : '');
+                                $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
                                 //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                                $orders_data['country'] = (isset($value['shipping_address']['country']) ? $value['shipping_address']['country'] : '');
+                                $orders_data['country'] = (isset($value['shipping_address']['country']) ? $this->common->payxnow_encodedata($value['shipping_address']['country']) : '');
                             }
                             // echo"<pre>"; print_r($orders_data); echo"</pre>";
 
@@ -825,6 +767,8 @@ class Home extends BaseController
     {
         $this->check_subscribe();
         $data = array();
+        $myCommon = new Common();
+        $data['myCommon'] = $myCommon;
         $get_details = $this->user_model->get_tokens($_GET['shop']);
         // $this->user_model->testinsert();
         //$get_data = $this->user_model->get_order_detail('5413624381738');
@@ -897,33 +841,33 @@ class Home extends BaseController
                         "order_ccy" => $value['currency'],
                         "order_date" => $value['created_at'],
                         "order_price" => $value['current_subtotal_price'],
-                        "email" => $value['contact_email'],
+                        "email" => $this->common->payxnow_encodedata($value['contact_email']),
                         "total_price" => $value['total_price'],
                         "pending_amount" => $pendingamnt,
                         "shop_url" => $_GET['shop'],
                         "fullfilment_status" => $fullmenststs
                     );
                     if (isset($value['shipping_address'])) {
-                        $orders_data['shipping_address'] = $value['shipping_address']['address1'];
-                        $orders_data['city'] = (isset($value['shipping_address']['city']) ? $value['shipping_address']['city'] : '');
-                        $orders_data['state'] = (isset($value['shipping_address']['province']) ? $value['shipping_address']['province'] : '');
+                        $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
+                        $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
+                        $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
                         $orders_data['zip'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
-                        $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $value['shipping_address']['phone'] : '');
-                        $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $value['shipping_address']['first_name'] : '');
-                        $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $value['shipping_address']['last_name'] : '');
+                        $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
+                        $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['first_name']) : '');
+                        $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
                         //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                        $orders_data['country'] = (isset($value['shipping_address']['country']) ? $value['shipping_address']['country'] : '');
+                        $orders_data['country'] = (isset($value['shipping_address']['country']) ? $this->common->payxnow_encodedata($value['shipping_address']['country']) : '');
                     } else  if (isset($value['billing_address'])) {
 
-                        $orders_data['shipping_address'] = $value['billing_address']['address1'];
-                        $orders_data['city'] = (isset($value['billing_address']['city']) ? $value['billing_address']['city'] : '');
-                        $orders_data['state'] = (isset($value['billing_address']['province']) ? $value['billing_address']['province'] : '');
+                        $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['billing_address']['address1']);
+                        $orders_data['city'] = (isset($value['billing_address']['city']) ? $this->common->payxnow_encodedata($value['billing_address']['city']) : '');
+                        $orders_data['state'] = (isset($value['billing_address']['province']) ? $this->common->payxnow_encodedata($value['billing_address']['province']) : '');
                         $orders_data['zip'] = (isset($value['billing_address']['zip']) ? $value['billing_address']['zip'] : '');
-                        $orders_data['phone'] = (isset($value['billing_address']['phone']) ? $value['billing_address']['phone'] : '');
-                        $orders_data['f_name'] = (isset($value['billing_address']['first_name']) ? $value['billing_address']['first_name'] : '');
-                        $orders_data['l_name'] = (isset($value['billing_address']['last_name']) ? $value['billing_address']['last_name'] : '');
+                        $orders_data['phone'] = (isset($value['billing_address']['phone']) ? $this->common->payxnow_encodedata($value['billing_address']['phone']) : '');
+                        $orders_data['f_name'] = (isset($value['billing_address']['first_name']) ? $this->common->payxnow_encodedata($value['billing_address']['first_name']) : '');
+                        $orders_data['l_name'] = (isset($value['billing_address']['last_name']) ? $this->common->payxnow_encodedata($value['billing_address']['last_name']) : '');
                         //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                        $orders_data['country'] = (isset($value['billing_address']['country']) ? $value['billing_address']['country'] : '');
+                        $orders_data['country'] = (isset($value['billing_address']['country']) ? $this->common->payxnow_encodedata($value['billing_address']['country']) : '');
                     }
                     //echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
 
@@ -1026,7 +970,7 @@ class Home extends BaseController
                 if ($set_orders[0]['phone'] == "") {
                     $phnum = "9865986598";
                 } else {
-                    $phnum = str_replace(" ", "", $set_orders[0]['phone']);
+                    $phnum = str_replace(" ", "", $this->common->payxnow_decodedata($set_orders[0]['phone']));
                     $phnum = str_replace("(", "", $phnum);
                     $phnum = str_replace(")", "", $phnum);
                     $phnum = str_replace("-", "", $phnum);
@@ -1054,14 +998,14 @@ class Home extends BaseController
                     "order_date" => $set_orders[0]['order_date'],
                     "channel_id" => $shiprocket_info[0]->channel_id,
                     "comment" => $shipping_pay_method,
-                    "billing_customer_name" => $set_orders[0]['cust_fname'],
-                    "billing_last_name" => $set_orders[0]['cust_lname'],
-                    "billing_address" => $set_orders[0]['shipping_address'],
-                    "billing_city" => $set_orders[0]['shipping_city'],
+                    "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
+                    "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
+                    "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
+                    "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
                     "billing_pincode" => $set_orders[0]['zip'],
-                    "billing_state" => $set_orders[0]['state'],
-                    "billing_country" => $set_orders[0]['country'],
-                    "billing_email" => $set_orders[0]['email'],
+                    "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
+                    "billing_country" => $this->common->payxnow_decodedata($set_orders[0]['country']),
+                    "billing_email" => $this->common->payxnow_decodedata($set_orders[0]['email']),
                     "billing_phone" => $phnum,
                     "shipping_is_billing" => true,
                     "payment_method" => $shipping_pay_method,
@@ -1091,7 +1035,7 @@ class Home extends BaseController
                 // echo "create_custom<pre>";
                 // print_r($create_custom);
                 // echo "</pre>";
-                //die();
+                // die(); 
                 //echo json_encode($create_custom);
                 //echo "store_token=".$store_token;
 
@@ -1185,10 +1129,12 @@ class Home extends BaseController
                 $order_name = implode(",", $create_custom);
                 $order_name_count = count($create_customqty);
             }
+
             if ($set_orders[0]['phone'] == "") {
                 $phnum = "9865986598";
             } else {
-                $phnum = str_replace(" ", "", $set_orders[0]['phone']);
+                $fetch_phone = $this->common->payxnow_decodedata($set_orders[0]['phone']);
+                $phnum = str_replace(" ", "", $fetch_phone);
                 $phnum = str_replace("(", "", $phnum);
                 $phnum = str_replace(")", "", $phnum);
                 $phnum = str_replace("-", "", $phnum);
@@ -1219,12 +1165,12 @@ class Home extends BaseController
                 'from_phone_number' => $shiprocket_info[0]->pickrr_from_phone,
                 'from_address' => $shiprocket_info[0]->shipping_address,
                 'from_pincode' => $shiprocket_info[0]->pickrr_pincode,
-                'to_name' =>  $set_orders[0]['cust_fname'] . ' ' . $set_orders[0]['cust_lname'],
+                'to_name' =>  $this->common->payxnow_decodedata($set_orders[0]['cust_fname']) . ' ' . $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
                 'to_phone_number' => $phnum,
                 //'to_phone_number' => '9996242898',
                 'to_pincode' => $set_orders[0]['zip'],
                 //'to_pincode' => '132157',
-                'to_address' => $set_orders[0]['shipping_address'],
+                'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
                 'quantity' => $order_name_count,
                 'invoice_value' => $shipping_pay_amount,
                 'cod_amount' => $shipping_pay_amount1,
@@ -1235,7 +1181,7 @@ class Home extends BaseController
                 'item_weight' => 0.5,
                 'is_reverse' => false
             );
-            // print_r($post_params);
+
             try {
                 $json_params = json_encode($post_params);
                 $url = 'https://www.pickrr.com/api/place-order/';
@@ -1342,7 +1288,7 @@ class Home extends BaseController
             if ($set_orders[0]['phone'] == "") {
                 $phnum = "9865986598";
             } else {
-                $phnum = str_replace(" ", "", $set_orders[0]['phone']);
+                $phnum = str_replace(" ", "", $this->common->payxnow_decodedata($set_orders[0]['phone']));
                 $phnum = str_replace("(", "", $phnum);
                 $phnum = str_replace(")", "", $phnum);
                 $phnum = str_replace("-", "", $phnum);
@@ -1351,14 +1297,14 @@ class Home extends BaseController
             $postdata = 'format=json&data={
                 "shipments": [
                     {
-                        "add": "' . $set_orders[0]['shipping_address'] . '",
+                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . '",
                         "address_type": "home",
                         "phone": "' . $phnum . '",
                         "payment_mode": "' . $shipping_pay_method . '",
-                        "name": "' . $set_orders[0]['cust_fname'] . ' ' . $set_orders[0]['cust_lname'] . '",
+                        "name": "' . $this->common->payxnow_decodedata($set_orders[0]['cust_fname']) . ' ' . $this->common->payxnow_decodedata($set_orders[0]['cust_lname']) . '",
                         "pin": "' . $set_orders[0]['zip'] . '",
                         "order": "' . $set_orders[0]['order_number'] . '",
-                        "country": "' . $set_orders[0]['country'] . '",
+                        "country": "' . $this->common->payxnow_decodedata($set_orders[0]['country']) . '",
                         "cod_amount": ' . $shipping_pay_amount . ',
                         "waybill": "",
                         "shipping_mode": "Surface"
@@ -1368,7 +1314,8 @@ class Home extends BaseController
                     "name": "' . $shiprocket_info[0]->pickup_location . '"
                 }
             }';
-            // echo $postdata;
+            //  echo $postdata;
+            //  die();
             try {
 
                 $get_result = $this->common->create_custom_order_delhivery($postdata,  $shiprocket_info[0]->shp_token);
@@ -1563,6 +1510,7 @@ class Home extends BaseController
     public function app_configuration()
     {
         $data = array();
+        //echo phpinfo();
         echo view('templates/header');
         echo view('app_configuration', $data);
         echo view('templates/footer');
@@ -1668,6 +1616,29 @@ class Home extends BaseController
                 "shipping_address" => $return_data[0]->shipping_address
             );
             echo json_encode($return_array);
+        }
+    }
+    public function track_userinfo()
+    {
+        if ($this->request->getGet('shop')) {
+            $get_details = $this->user_model->get_tokens($this->request->getGet('shop'));
+            if ($get_details->email == "") {
+                $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                $register_shop_info = json_decode($shop_info['body'], true);
+
+                $this->user_model->update_data($get_details->shop_url, array(
+					"first_name" => $register_shop_info['shop']['shop_owner'],
+					"email" => $register_shop_info['shop']['email'],
+				));
+            }
+            $visitr_ipaddreess =  $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'];
+            $track_user_log = array(
+                "name" =>$get_details->first_name,
+                "email" =>$get_details->email,
+                "shop_url" => $get_details->shop_url,
+                "ipaddress" => $visitr_ipaddreess,
+            );
+            $this->user_model->track_user_log($track_user_log);
         }
     }
 }

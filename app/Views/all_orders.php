@@ -115,7 +115,7 @@
                                      <!-- <td class="flex-row"><input type="checkbox"></td> -->
                                      <td><?php echo esc($get_all_products->order_id); ?></td>
                                      <td><?php echo esc($get_all_products->order_date); ?></td>
-                                     <td><?php echo esc($get_all_products->f_name . ' ' . $get_all_products->l_name); ?></td>
+                                     <td><?php echo esc($myCommon->payxnow_decodedata($get_all_products->f_name) . ' ' . $myCommon->payxnow_decodedata($get_all_products->l_name)); ?></td>
                                      <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->pending_amount . ' ' . $get_all_products->order_ccy); ?></span></td>
                                      <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->total_price . ' ' . $get_all_products->order_ccy); ?></span></td>
                                      <!--<td><span class="payxnowandrestondelivery-status-text">Completed</span><label class="switch">
@@ -196,7 +196,7 @@
                  data: 'shop=<?php echo esc($_GET['shop']); ?>&ordpage=' + ordpage + '&orderlimit=' + orderlimit + '&timstm=' + timstm,
                  success: function(response) {
                      $("#syncstartt").html('Order Synchronization Done');
-                     location.reload();
+                     //location.reload();
                      // $("#syncstartt").html(response);
                  }
              });

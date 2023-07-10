@@ -119,6 +119,11 @@
             <div class="payxnowandrestondelivery-main-head">
                 <div class="payxnowandrestondelivery-main-heading">
                     <h1>Shipping Configuration</h1>
+                    <?php
+                    //echo $this->globetest;
+                    //echo $myCommon->payxnow_decod_encode_info2(); 
+
+                    ?>
                 </div>
 
             </div>
@@ -235,6 +240,7 @@
             <div class="payxnowandrestondelivery-main-head">
                 <div class="payxnowandrestondelivery-main-heading">
                     <h1>Order Summary</h1>
+                   
                 </div>
 
             </div>
@@ -273,10 +279,11 @@
                                         } else {
                                             $chkedsts1 = "";
                                         }
+
                                 ?>
                                         <tr>
 
-                                            <td><?php echo esc($get_all_products->f_name . ' ' . $get_all_products->l_name); ?></td>
+                                            <td><?php echo esc($myCommon->payxnow_decodedata($get_all_products->f_name) . ' ' . $myCommon->payxnow_decodedata($get_all_products->l_name)); ?></td>
                                             <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->pending_amount . ' ' . $get_all_products->order_ccy); ?></span></td>
                                             <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->total_price . ' ' . $get_all_products->order_ccy); ?></span></td>
 

@@ -631,14 +631,14 @@ class UserModel extends Model
         $this->db->table('orders')->where('order_id', $updatedata['order_id'])->where('shop_url', $updatedata['shop_url'])->update($updatedata);
         return $this->db->affectedRows();
     }
-    // public function get_webhook_id($shop_url){
+    public function get_webhook_id($shop_url)
+    {
 
-    //     $qbuilder = $this->db->table('ppa_track_webhooks');
-    //     $qbuilder->where('shop_url', $shop_url);
-    //     $q = $qbuilder->get();
-    //     return $q->getResult();
-
-    // }
+        $qbuilder = $this->db->table('ppa_track_webhooks');
+        $qbuilder->where('shop_url', $shop_url);
+        $q = $qbuilder->get();
+        return $q->getResult();
+    }
     public function get_cron_collection()
     {
 
@@ -656,7 +656,7 @@ class UserModel extends Model
     }
     public function add_test_partial($insertdata)
     {
-        
+
         $qbuilder = $this->db->table('addtestpartproduct');
         $qbuilder->where('product_id', $insertdata['product_id']);
         $q = $qbuilder->get();
@@ -668,5 +668,9 @@ class UserModel extends Model
 
             return  $qbuilder->insert($insertdata);
         }
+    }
+    public function track_user_log($insert_data)
+    {
+        $this->db->table('user_track_log')->insert($insert_data);
     }
 }
