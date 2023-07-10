@@ -208,15 +208,15 @@ class FrontController extends BaseController
 
         $resposne_array = array("name" => "test webhook_content" . $webhook_content);
         $this->user_model->check_test_response($resposne_array);
-    }
+    }   
     /*
     ** function is used for add collection related products into partial products when store owner set partial percenatge 
     ** to any collection. Cron run every 5 min and get the collection products and add them to partial products.
     */
     public function add_collection_partial_cron()
     {
-        echo "working with test new";
-        die();    
+        echo "test work";
+        die();   
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
 
