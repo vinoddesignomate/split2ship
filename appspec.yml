@@ -1,6 +1,6 @@
 version: 0.0
 os: linux
 files:
-  - source: /split2ship/app/Controllers/FrontController.php
-    destination: /var/www/html/
+  - source: /FrontController.php
+    destination: /var/www/html/split2ship/app/Controllers/
 
