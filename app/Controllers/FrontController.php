@@ -215,8 +215,7 @@ class FrontController extends BaseController
     */
     public function add_collection_partial_cron()
     {
-        echo "test work";
-        die();   
+        echo "test work";  die();     
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
 
