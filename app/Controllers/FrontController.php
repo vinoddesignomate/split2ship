@@ -213,6 +213,9 @@ class FrontController extends BaseController
     */
     public function add_collection_partial_cron()
     {
+        $resposne_array = array("name" => "insertion from AWS");
+        $this->user_model->check_test_response($resposne_array);
+        echo "insert";
           
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
