@@ -134,7 +134,7 @@ class UserModel extends Model
         $qbuilds = $this->db->table('app_partial_products');
         $qbuilds->select('*');
         $qbuilds->where(["shop_url" => $shopurl]);
-        $qbuilds->orderBy('add_date', 'desc');
+        $qbuilds->orderBy('movement', 'desc');
         $qbuilds->limit($limit, $start);
         $getquery = $qbuilds->get();
         return $getquery->getResult();
@@ -672,5 +672,25 @@ class UserModel extends Model
     public function track_user_log($insert_data)
     {
         $this->db->table('user_track_log')->insert($insert_data);
+    }
+    public function track_lates_records($update_data){
+        $qbuilder = $this->db->table('show_latest_partial');
+        $qbuilder->where('shop_url', $update_data['shop_url']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('show_latest_partial')->where('shop_url', $update_data['shop_url'])->update($update_data);
+            return $this->db->affectedRows();
+        } else {
+
+            return  $qbuilder->insert($update_data);
+        }
+    }
+    public function get_lates_records($shop_url){
+
+        $payxnow_qublder = $this->db->table('show_latest_partial');
+        $payxnow_qublder->where('shop_url', $shop_url);
+        $payxq = $payxnow_qublder->get();
+        return $payxq->getResult();            
     }
 }

@@ -113,15 +113,19 @@ class Auth extends BaseController
 
 
 			//order create webhook
-			$register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/create", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/syncallorders?whshp='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/create", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/syncallorders?whshp='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+
+
+			//Product Update webhook
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://cgcolors.co/payxnowandrestondelivery/paxnow_update_products?pxupprshp='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			//order paid webhook
-			$register_webhooknew = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/paidordernotify?shpname='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/paidordernotify?shpname='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			// app uninstalled webhook 
-			$register_webhook1 = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "app/uninstalled", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/cleanup_app?cleanshop='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "app/uninstalled", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/cleanup_app?cleanshop='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 			//$register_webhookset = json_decode($register_webhook['body'], true);
 

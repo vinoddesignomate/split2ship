@@ -15,6 +15,12 @@
                             <?php } ?>
 
                         </select>
+                        <div class="search-wrapper">
+                            <form class="custom-search" action="" method="post">
+                                <input type="text" placeholder="Search.." name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
+                                <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
                         <!--<div style="margin-top: 11px;width: 67%;">
                             <form method="post" action="">
                                 <input type="text" name="search_string">
@@ -107,6 +113,13 @@
                         }
                     }
                     ?>
+                    <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
+                        
+                        <?php if ($checkcol == 'yes') { ?>
+                            <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Partial payment setup</button>
+                            <!-- <a href="#" class="button">+ &nbsp; Partial payment setup</a> -->
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>

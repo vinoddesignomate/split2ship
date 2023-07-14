@@ -153,10 +153,10 @@ $fstore_name = $shop_name[0];
         var sel_val = $("#get_coll").val();
         // var v_name = $("#vendor_name option:selected").text();
         if (sel_val == '') {
-            top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list';
+            top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list';
         } else {
 
-            top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list?collectionparms=' + sel_val;
+            top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list?collectionparms=' + sel_val;
         }
 
     });
@@ -225,6 +225,54 @@ $fstore_name = $shop_name[0];
 
 
 
+    });
+
+    $('.payxnowandrestondelivery-pag_btn_home').on('click', function(e) {
+        $('.payxnowandrestondelivery-pag_btn_home').removeClass('active');
+        var data_info = $(this).attr('data-info');
+        var data_rel = $(this).attr('data-rel');
+        var data_store = $(this).attr('data-store');
+        var vendor_name = $("#vendor_name").val();
+        var sel_val = $("#get_coll").val();
+        if (data_info != "") {
+            $('[data-rel=' + data_rel + ']').addClass('active');
+        } 
+        if (data_info != '') {
+
+            $.ajax({
+                type: "GET",
+                url: "home-product-pagination",
+                data: {
+                    page_info: data_info,
+                    rel: data_rel,
+                    shop: data_store,
+                    url: data_store,
+                    coll_id: sel_val,
+                    vend_id: vendor_name
+
+                },
+
+                dataType: "json",
+
+                success: function(response) {
+                    if (response['prev'] != '') {
+                        $('button[data-rel="previous"]').attr('data-info', response['prev']);
+                    } else {
+                        $('button[data-rel="previous"]').attr('data-info', "");
+                    }
+                    if (response['next'] != '') {
+                        $('button[data-rel="next"]').attr('data-info', response['next']);
+                    } else {
+                        $('button[data-rel="next"]').attr('data-info', "");
+                    }
+                    if (response['html'] != '') {
+                        $('#product-list').html(response['html']);
+                    }
+                }
+
+            });
+
+        }
     });
 
     $('.payxnowandrestondelivery-subbtn').on('click', function(e) {

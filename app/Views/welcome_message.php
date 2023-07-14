@@ -37,7 +37,7 @@
                             <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2>Product name</h2>
                                 <?php if ($checkcol == 'yes') { ?>
-                                    <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Partial payment setup</button>
+                                    <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
                                 <?php } ?>
                             </div>
                             <?php if ($checkcol == 'yes') { ?>
@@ -91,9 +91,9 @@
 
                                         <div class="payxnowandrestondelivery-listButtonNext">
 
-                                            <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
+                                            <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn_home" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
 
-                                            <button type="button" class="payxnowandrestondelivery-pag_btn" data-info="<?php echo esc($page_info); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
+                                            <button type="button" class="payxnowandrestondelivery-pag_btn_home" data-info="<?php echo esc($page_info); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
 
                                         </div>
 
@@ -102,7 +102,12 @@
                                 }
                             }
                             ?>
-
+                            <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
+                                <!-- <h2>Product name</h2> -->
+                                <?php if ($checkcol == 'yes') { ?>
+                                    <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -240,7 +245,7 @@
             <div class="payxnowandrestondelivery-main-head">
                 <div class="payxnowandrestondelivery-main-heading">
                     <h1>Order Summary</h1>
-                   
+
                 </div>
 
             </div>

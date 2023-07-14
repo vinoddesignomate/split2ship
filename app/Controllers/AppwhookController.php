@@ -46,7 +46,6 @@ class AppwhookController extends BaseController
             $get_details =   $userModel->get_tokens($shop_header);
             $userModel->delete_webhooks($webid);
             $userModel->update_shops_status($shop_header);
-            
         }
 
         $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
@@ -1126,44 +1125,48 @@ class AppwhookController extends BaseController
         echo "200 ok";
         exit();
     }
+    public function update_productswebhk()
+    {
 
-    // public function updateordernotify(){
+        $update_product_content = NULL;
 
-    //     $update_order_webhook_content = NULL;
+        // Get webhook content from the POST
+        $webhookpd = fopen('php://input', 'rb');
+        while (!feof($webhookpd)) {
+            $update_product_content .= fread($webhookpd, 4096);
+        }
 
-    //     // Get webhook content from the POST
-    //     $webhookpdudt = fopen('php://input', 'rb');
-    //     while (!feof($webhookpdudt)) {
-    //         $update_order_webhook_content .= fread($webhookpdudt, 4096);
-    //     }
+        fclose($webhookpd);
 
-    //     fclose($webhookpdudt);
+        $get_productsup = json_decode($update_product_content);
+        $product_array = array(
+            "product_id" => $get_productsup->id,
+            "product_title" => $get_productsup->title,
+            "shop_url" => $_GET['pxupprshp']
+        );
+        $this->user_model->add_partial_products($product_array);
 
+        foreach ($get_productsup->variants as $produc_varaien) {
+            $product_array = array(
+                "product_id" => $get_productsup->id,
+                "varient_id" => $produc_varaien->id,
+                "title" => $produc_varaien->title,
+                "price" => $produc_varaien->price,
+                "shop_url" => $_GET['pxupprshp']
+            );
+            $this->user_model->add_partial_products_varient($product_array);
+        }
+        // $updateprorespo = array("name" => "update products for shop=" . $_GET['pxupprshp'] . json_encode($get_productsup->variants));
+        // $this->user_model->check_test_response($updateprorespo);
 
-    //     $resposne_array = array("name" => "updated orders" . $_GET['updated_whshp'].$update_order_webhook_content);
-    //     $this->user_model->check_test_response($resposne_array);
-    //     echo "200 ok";
-    //     exit();
-    // } 
+        // $log_filename = "log";
+        // // $log_msg = $resp;
+        // if (!file_exists($log_filename)) {
 
-
-    // public function orderedt(){
-
-    //     $update_order_webhook_content = NULL;
-
-    //     // Get webhook content from the POST
-    //     $ordeidt = fopen('php://input', 'rb');
-    //     while (!feof($ordeidt)) {
-    //         $update_order_webhook_content .= fread($ordeidt, 4096);
-    //     }
-
-    //     fclose($ordeidt);
-
-
-    //     $resposne_array = array("name" => "edit orders" . $_GET['edt_whshp'].$update_order_webhook_content);
-    //     $this->user_model->check_test_response($resposne_array);
-    //     echo "200 ok";
-    //     exit();
-    // }
+        //     mkdir($log_filename, 0777, true);
+        // }
+        // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+        // file_put_contents($log_file_data, print_r($get_productsup, true));
+    }
 }
 echo "200 ok";

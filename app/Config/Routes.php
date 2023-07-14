@@ -43,8 +43,10 @@ $routes->get('/token', 'Auth::token');
 //admin app routes
 $routes->match(['get', 'post'],'/', 'Home::index');
 $routes->match(['get', 'post'],'/product-pagination', 'Home::product_pagination');
+$routes->match(['get', 'post'],'/home-product-pagination', 'Home::product_pagination2');
 $routes->match(['get', 'post'],'/products-list', 'Home::assign_products_partial');
 $routes->match(['get', 'post'],'/partial-products-list', 'Home::show_partial_products');
+$routes->match(['get', 'post'],'/partial-latest-products-list', 'Home::show_latest_partial_products');
 $routes->match(['get', 'post'],'/show-orders', 'Home::show_all_orders');
 $routes->match(['get', 'post'],'/products-remove', 'Home::product_remove');
 $routes->match(['get', 'post'],'/track_partial_percentage', 'Home::track_partial_percentage');
@@ -52,6 +54,7 @@ $routes->match(['get', 'post'],'/collection_track_partial_percentage', 'Home::co
 $routes->match(['get', 'post'],'/shiprocket-config', 'Home::shiprocket_config');
 $routes->match(['get', 'post'],'/app-configuration', 'Home::app_configuration');
 $routes->match(['get', 'post'],'/get_shipping_partners', 'Home::get_shipping_partners');
+$routes->match(['get', 'post'],'/track_userinf', 'Home::track_userinfo');
 
 
 
@@ -69,6 +72,7 @@ $routes->match(['get', 'post'],'/frontend-getdata', 'FrontController::test_proxy
 //webhook urls
 $routes->match(['get', 'post'],'/order-sync', 'Home::order_sync');
 $routes->match(['get', 'post'],'/order-sync-pickrr', 'Home::order_sync_pickrr');
+$routes->match(['get', 'post'],'/paxnow_update_products', 'AppwhookController::update_productswebhk');
 $routes->match(['get', 'post'],'/cleanup_app', 'AppwhookController::uninstall_app');
 $routes->match(['get', 'post'],'/syncallorders', 'AppwhookController::auto_ordersync');
 $routes->match(['get', 'post'],'/paidordernotify', 'AppwhookController::paidordernotify');

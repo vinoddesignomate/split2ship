@@ -87,52 +87,63 @@ class Home extends BaseController
 
 
 
-                /*   $register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                $register_webhookset = json_decode($register_webhook['body'], true);
-                echo"<pre>"; print_r($register_webhookset); echo"</pre>"; */
+                //    $register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                // $register_webhookset = json_decode($register_webhook['body'], true);
+                // echo"<pre>"; print_r($register_webhookset); echo"</pre>"; 
 
 
-
+                $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');
                     // die();
                     if (!empty($this->request->getPost('assign_pro'))) {
-                        foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
+                        $total_synproduct = count($this->request->getPost('assign_pro'));
+                        if ($get_updated_plan[0]->updated_products_partial > $total_synproduct) {
+                            foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
 
-                            //  echo "product_id" . $product_id;
+                                //  echo "product_id" . $product_id;
 
 
 
-                            $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                            $product_details = json_decode($get_single_pro['body'], true);
-                            // echo "<pre>"; print_r($product_details['product']['variants']); echo"</pre>";
+                                $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                                $product_details = json_decode($get_single_pro['body'], true);
+                                // echo "<pre>"; print_r($product_details['product']['variants']); echo"</pre>";
 
-                            $product_array = array(
-                                "product_id" => $product_id,
-                                "product_title" => $product_details['product']['title'],
-                                "shop_url" => $_GET['shop'],
-                                "partial_percentage" => 10,
-                                "add_date" => date('Y-m-d')
-                            );
-                            $this->user_model->add_partial_products($product_array);
-
-                            foreach ($product_details['product']['variants'] as $produc_varaien) {
                                 $product_array = array(
-                                    "product_id" => $produc_varaien['product_id'],
-                                    "varient_id" => $produc_varaien['id'],
-                                    "title" => $produc_varaien['title'],
-                                    "price" => $produc_varaien['price'],
+                                    "product_id" => $product_id,
+                                    "product_title" => $product_details['product']['title'],
+                                    "shop_url" => $_GET['shop'],
                                     "partial_percentage" => 10,
-                                    "shop_url" => $_GET['shop']
+                                    "add_date" => date('Y-m-d')
                                 );
-                                $this->user_model->add_partial_products_varient($product_array);
+                                $this->user_model->add_partial_products($product_array);
+
+                                foreach ($product_details['product']['variants'] as $produc_varaien) {
+                                    $product_array = array(
+                                        "product_id" => $produc_varaien['product_id'],
+                                        "varient_id" => $produc_varaien['id'],
+                                        "title" => $produc_varaien['title'],
+                                        "price" => $produc_varaien['price'],
+                                        "partial_percentage" => 10,
+                                        "shop_url" => $_GET['shop']
+                                    );
+                                    $this->user_model->add_partial_products_varient($product_array);
+                                }
                             }
+                            $update_latest = array(
+                                "latest_count" => $total_synproduct,
+                                "shop_url" => $_GET['shop']
+                            );
+                            $this->user_model->track_lates_records($update_latest);
+                            $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
+                        } else {
+                            echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery?collectionparms=" . $this->request->getPost('collectionparms') . "'</script>";
                         }
                     }
                     //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
-                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list'</script>";
+                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-latest-products-list'</script>";
                     // exit();
                 }
 
@@ -387,23 +398,21 @@ class Home extends BaseController
 
         $plan_details = $this->user_model->get_store_plan($_GET['shop']);
         if (empty($plan_details)) {
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/price-plan'</script>";
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
             die();
         } else {
             if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/price-plan'</script>";
+                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
                 die();
             } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/price-plan'</script>";
+                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
                 die();
             }
         }
     }
     public function assign_products_partial()
     {
-        // echo "working function";
-        //die();
-        //echo "sessionval".$this->session->set('page');
+
         $this->check_subscribe();
         $data = array();
         $get_details = $this->user_model->get_tokens($_GET['shop']);
@@ -412,7 +421,8 @@ class Home extends BaseController
         // $getvarrec = json_decode($getvareint_id['body'], true);
 
         // echo "getvarrec<pre>"; print_r($getvarrec); echo"</pre>";
-
+        // print_r($this->request->getPost());
+        $data['searctxt'] = "";
         if ($this->request->getPost('assign_save')) {
             // print_r($this->request->getPost());
             // echo view('templates/footer');
@@ -427,8 +437,6 @@ class Home extends BaseController
 
                         //  echo "product_id" . $product_id;
                         $get_stored_percentage = $this->user_model->get_collection_percentage($_GET['shop']);
-
-
                         $collid = $_GET['collectionparms'];
                         if (isset($get_stored_percentage[$collid])) {
                             $col_pergs = $get_stored_percentage[$collid]['percentage'];
@@ -463,13 +471,19 @@ class Home extends BaseController
                             $this->user_model->add_partial_products_varient($product_array);
                         }
                     }
+                    $update_latest = array(
+                        "latest_count" => $total_synproduct,
+                        "shop_url" => $_GET['shop']
+                    );
+                    $this->user_model->track_lates_records($update_latest);
+
                     $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
-                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list'</script>";
+                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-latest-products-list'</script>";
                 } else {
-                    echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
+                    echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
                 }
             } else {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
+                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
             }
             //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
 
@@ -521,32 +535,80 @@ class Home extends BaseController
             $data['checkcol'] = 'yes';
             // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], 'vendor' => $_GET['vendorname'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
 
-            $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
+            // /"title"=>"Divya Is The Super Women",
 
-            $product_list = json_decode($products['body'], true);
+            // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
+
+            if ($this->request->getPost('search_text')) {
+                // print_r($this->request->getPost());
+                $params_array = array(
+                    "collection_id" => $_GET['collectionparms'],
+                    "limit" => 10,
+                    "search_parms" => $this->request->getPost('search_text')
+                );
+                $data['searctxt'] = $this->request->getPost('search_text');
+                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+            } else {
+                $params_array = array(
+                    "collection_id" => $_GET['collectionparms'],
+                    "limit" => 10,
+                    //"search_parms" => "Super Women"
+                );
+                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+            }
+
+            //$product_list = json_decode($products['body'], true);
+            if (isset($grapql_products_list_prodct['data']['collection'])) {
+                $product_list = $grapql_products_list_prodct['data']['collection']['products'];
+            } else {
+                $product_list = $grapql_products_list_prodct['data']['products'];
+            }
         } else {
             $product_list = array();
             $data['checkcol'] = 'no';
         }
 
+
+
         // echo "<pre>";
-        // print_r($product_list);
+        // print_r($grapql_products_list_prodct);
         // echo "</pre>";
+
+        // foreach ($product_list as $edge) {
+        //     //foreach ($edge as $key => $value) {
+        //     foreach ($edge as $key => $value) {
+        //         //foreach ($node['node'] as $value) {
+        //         echo "<pre>";
+        //         print_r($value['node']);               
+        //         echo "</pre>";
+        //         echo $node['node']['id'];
+        //         //}
+        //     }
+        //     // }
+        // }
+        // die();
         $data['get_part_list'] = $this->user_model->get_partial_productget($_GET['shop']);
 
-        // echo "<pre>"; print_r($data['get_part_list']); echo "</pre>";
+
 
         $data['products'] = $product_list;
         $data['get_store_collections'] = $get_store_collections;
+        // if (!empty($product_list)) {
+        //     $headers = $products['headers'];
+        //     if (isset($headers['link'])) {
+        //         $nextPageURL = $this->common->str_btwn($headers['link'], '<', '>');
+        //         $nextPageURLparam = parse_url($nextPageURL);
+        //         parse_str($nextPageURLparam['query'], $value);
+        //         $data['page_info'] = $value['page_info'];
+        //     }
+        //     $data['headers_list'] = $headers;
+        // }
         if (!empty($product_list)) {
-            $headers = $products['headers'];
-            if (isset($headers['link'])) {
-                $nextPageURL = $this->common->str_btwn($headers['link'], '<', '>');
-                $nextPageURLparam = parse_url($nextPageURL);
-                parse_str($nextPageURLparam['query'], $value);
-                $data['page_info'] = $value['page_info'];
+            if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage'] == 1) {
+                $data['pagenewxt'] = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['endCursor'];
             }
-            $data['headers_list'] = $headers;
         }
         $data['chart_details'] = array();
         if (isset($_GET['vid'])) {
@@ -562,6 +624,133 @@ class Home extends BaseController
     {
 
 
+        $this->check_subscribe();
+        $get_details = $this->user_model->get_tokens($_GET['url']);
+        $get_part_list = $this->user_model->get_partial_productget($_GET['shop']);
+
+        $shop_url = $_GET['url'];
+        $rel = $_GET['rel'];
+        $page_info = $_GET['page_info'];
+        //get products 
+        $page_array = array(
+            'limit' => 10,
+            'page_info' => $page_info,
+            'rel' => $rel
+        );
+        if ($rel == "next") {
+            $params_array = array(
+                "collection_id" => $_GET['coll_id'],
+                "limit" => 10,
+                "nextpage_getpage" => $page_info
+            );
+            $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+            $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+        } else if ($rel == "previous") {
+            $params_array = array(
+                "collection_id" => $_GET['coll_id'],
+                "limit" => 10,
+                "prev_getpage" => $page_info,
+            );
+            $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+            $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+        }
+        // echo "<pre>";
+        // print_r($grapql_products_list_prodct);
+        // echo "<pre>";
+        // die();
+        // $products = $this->common->rest_api('/admin/api/2022-04/products.json', $page_array, 'GET', $get_details->access_token, $shop_url);
+        $product_list = $grapql_products_list_prodct['data']['collection']['products'];
+        // echo "<pre>";
+        // print_r($product_list);
+        // echo "<pre>";
+        // $headers = $products['headers'];
+        // $link_array = array();
+        // if (strpos($headers['link'], ',')  !== false) {
+        //     $link_array = explode(',', $headers['link']);
+        // } else {
+        //     $link = $headers['link'];
+        // }
+
+        //Create variables for the new page infos
+
+        $prev_link = '';
+        $next_link = '';
+        //Check if the $link_array variable's size is more than one
+
+        // if (sizeof($link_array) > 1) {
+        //     $prev_link = $link_array[0];
+        //     $prev_link = $this->common->str_btwn($prev_link, '<', '>');
+        //     $param = parse_url($prev_link);
+        //     parse_str($param['query'], $prev_link);
+        //     $prev_link = $prev_link['page_info'];
+        //     $next_link = $link_array[1];
+        //     $next_link = $this->common->str_btwn($next_link, '<', '>');
+        //     $param = parse_url($next_link);
+        //     parse_str($param['query'], $next_link);
+        //     $next_link = $next_link['page_info'];
+        // } else {
+        //     $rel = explode(";", $headers['link']);
+        //     $rel = $this->common->str_btwn($rel[1], '"', '"');
+        //     if ($rel == "previous") {
+        //         $prev_link = $link;
+        //         $prev_link = $this->common->str_btwn($prev_link, '<', '>');
+        //         $param = parse_url($prev_link);
+        //         parse_str($param['query'], $prev_link);
+        //         $prev_link = $prev_link['page_info'];
+        //         $next_link = "";
+        //     } else {
+        //         $next_link = $link;
+        //         $next_link = $this->common->str_btwn($next_link, '<', '>');
+        //         $param = parse_url($next_link);
+        //         parse_str($param['query'], $next_link);
+        //         $next_link = $next_link['page_info'];
+        //         $prev_link = "";
+        //     }
+        // }
+        $html = '';
+        // $products = json_decode($products['data'], true);
+        foreach ($product_list as $edge) {
+            //foreach ($product as $key => $value) {
+            // if (!in_array($value['id'], $get_part_list)) {
+            foreach ($edge as $value) {
+                if (isset($value['node'])) {
+                    $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
+                    if (!in_array($prodctid, $get_part_list)) {
+                        $partiall_added = "Not Added";
+                        $partiall_added2 = "not_added";
+                        $cls = "text-red";
+                    } else {
+                        $partiall_added = "Added";
+                        $partiall_added2 = "added";
+                        $cls = "text-green";
+                    }
+
+                    // $image = count($value['images']) > 0 ? $value['images'][0]['src'] : "";
+
+                    $html .= '<tr>';
+                    $html .= '<td><input class="chkSelect" dattatrr="' . esc($partiall_added2) . '" type="checkbox" name="assign_pro[]" value="' . esc($prodctid) . '"></td>';
+                    $html .= '<td>' . $prodctid . '</td>';
+                    $html .= '<td>' . $value['node']['title'] . '</td>';
+                    $html .= '<td class="' . $cls . '">' . $partiall_added . '</td>';
+                }
+            }
+            // }
+            //}
+        }
+        if (!empty($product_list)) {
+            if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage'] == 1) {
+                $next_link = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['endCursor'];
+            }
+
+            if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasPreviousPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasPreviousPage'] == 1) {
+                $prev_link = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['startCursor'];
+            }
+        }
+        echo json_encode(array('prev' => $prev_link, 'next' => $next_link, 'html' => $html));
+        //echo json_encode(array('prev' => $page_info, 'next' => $page_info, 'html' => $html));
+    }
+    public function product_pagination2()
+    {
         $this->check_subscribe();
         $get_details = $this->user_model->get_tokens($_GET['url']);
         $get_part_list = $this->user_model->get_partial_productget($_GET['shop']);
@@ -631,11 +820,11 @@ class Home extends BaseController
                 if (!in_array($value['id'], $get_part_list)) {
                     $partiall_added = "Not Added";
                     $partiall_added2 = "not_added";
-                    $cls = "text-red";
+                    $cls = "payxnowandrestondelivery-text-red";
                 } else {
                     $partiall_added = "Added";
                     $partiall_added2 = "added";
-                    $cls = "text-green";
+                    $cls = "payxnowandrestondelivery-text-green";
                 }
 
                 // $image = count($value['images']) > 0 ? $value['images'][0]['src'] : "";
@@ -649,6 +838,32 @@ class Home extends BaseController
             //}
         }
         echo json_encode(array('prev' => $prev_link, 'next' => $next_link, 'html' => $html));
+    }
+    public function show_latest_partial_products()
+    {
+        $this->check_subscribe();
+        $data = array();
+
+        $get_datalates = $this->user_model->get_lates_records($_GET['shop']);
+
+        $limit = $get_datalates[0]->latest_count;
+        $initial_page = ($data['part_page'] - 1) * $limit;
+        $data['start_from'] = ($data['part_page'] - 1) * $limit + 1;
+        $get_totals = $this->user_model->get_partial_product_list($_GET['shop']);
+        $get_totals_num = count($get_totals);
+        $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
+        // $total_pages = ceil ($get_totals / $limit);  
+        //echo "total_pages".$data['total_pages'];
+        $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], 0, $limit);
+
+        // echo "<pre>";
+        // print_r($get_datalates);
+        // echo "</pre>";
+
+
+        echo view('templates/header');
+        echo view('partial_lates_products_list', $data);
+        echo view('templates/footer');
     }
     public function show_partial_products()
     {
@@ -1368,7 +1583,7 @@ class Home extends BaseController
         if (isset($_GET['id']) && $_GET['id'] != "") {
             $this->user_model->update_plan_products_remove_part($_GET['shop']);
             $this->user_model->remove_partial_product($_GET['id'], $_GET['shop']);
-            echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list'</script>";
+            echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-products-list'</script>";
         }
     }
     public function price_plan_page()
@@ -1408,7 +1623,7 @@ class Home extends BaseController
                 $stype = "";
             }
 
-            $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
+            $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
 
 
             //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
@@ -1501,7 +1716,7 @@ class Home extends BaseController
             echo view('templates/apbrdgnew');
         } else {
             $this->user_model->update_plan_after_payment($update_data);
-            echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/price-plan'</script>";
+            echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
             echo view('templates/apbrdgnew');
         }
     }
@@ -1627,14 +1842,14 @@ class Home extends BaseController
                 $register_shop_info = json_decode($shop_info['body'], true);
 
                 $this->user_model->update_data($get_details->shop_url, array(
-					"first_name" => $register_shop_info['shop']['shop_owner'],
-					"email" => $register_shop_info['shop']['email'],
-				));
+                    "first_name" => $register_shop_info['shop']['shop_owner'],
+                    "email" => $register_shop_info['shop']['email'],
+                ));
             }
             $visitr_ipaddreess =  $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'];
             $track_user_log = array(
-                "name" =>$get_details->first_name,
-                "email" =>$get_details->email,
+                "name" => $get_details->first_name,
+                "email" => $get_details->email,
                 "shop_url" => $get_details->shop_url,
                 "ipaddress" => $visitr_ipaddreess,
             );
