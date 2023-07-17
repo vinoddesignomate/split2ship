@@ -10,55 +10,64 @@ $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
 
 ?>
-<div class="payxnowandrestondelivery-container">
-    <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-        <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list">Back</a></h5>
+<form method="POST" onsubmit="return remove_prodct()" id="removform">
+    <div class="payxnowandrestondelivery-container">
+        <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
+            <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list">Back</a></h5>
 
+        </div>
     </div>
-</div>
-<div class="payxnowandrestondelivery-container">
-    <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-        <div class="payxnowandrestondelivery-inner-wrapper">
-            <div class="payxnowandrestondelivery-main-data-col">
-                <?php if (!empty($get_list)) { ?>
-                    <div class="payxnowandrestondelivery-table-outer-wrapper">
-                        <table>
-                            <tr>
-                                <th>Sr. No</th>
-                                <th>Product Name</th>
-                                <th>Partial Percentage</th>
-                                <th>Action</th>
-                            </tr>
+    <div class="payxnowandrestondelivery-container">
+        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+            <div class="payxnowandrestondelivery-inner-wrapper">
+                <div class="payxnowandrestondelivery-main-data-col">
+                    <div class="payxnowandrestondelivery-head-wrapper">
+                        <!-- <h2>Product name</h2> -->
 
-                            <?php
-                            $shop_name = explode(".", $_GET['shop']);
-                            $fstore_name2 = $shop_name[0];
-                            // if (!empty($get_list)) {
-                            $sr = $start_from;
-                            $stsrt = 0;
-                            // $start_from = ($page-1) * $num_rec_per_page+1; 
-                            foreach ($get_list as $list_product) {
+                        <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">Remove partial payment</button>
 
-                            ?>
+                    </div>
+                    <?php if (!empty($get_list)) { ?>
+                        <div class="payxnowandrestondelivery-table-outer-wrapper">
+                            <table>
                                 <tr>
-                                    <td> <?php echo esc($sr + $stsrt); ?></td>
-                                    <td> <?php echo esc($list_product->product_title); ?></td>
-                                    <td>
-                                        <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
-                                            <span id="show_per_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_percentage; ?></span>
-                                            <span style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
-                                                <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>">
-                                                <input type="hidden" name="proid" value="<?php echo esc($list_product->product_id); ?>">
-                                                <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
-                                                <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel">
-                                                <input type="button" class="payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
-                                            </span>
-                                        </form>
-                                    </td>
-                                    <td class="payxnowandrestondelivery-double-col">
-                                        <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/payxnowandrestondelivery/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a onclick="abc2(event);" href="https://admin.shopify.com/store/<?php echo esc($fstore_name2); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-remove?id=<?php echo esc($list_product->product_id); ?>"><img src="/payxnowandrestondelivery/public/images/delete-icon.svg" alt="delete-icon"></a></span>
-                                    </td>
-                                    <!-- <td>
+                                    <th class="payxnowandrestondelivery-flex-row"><input id="payxnowandrestondelivery_partial_all" class="payxnowandrestondelivery-checkAll" type="checkbox">&nbsp; All</th>
+                                    <th>Sr. No</th>
+                                    <th>Product Name</th>
+                                    <th>Partial Percentage</th>
+                                    <th>Action</th>
+                                </tr>
+
+                                <?php
+                                $shop_name = explode(".", $_GET['shop']);
+                                $fstore_name2 = $shop_name[0];
+                                // if (!empty($get_list)) {
+                                $sr = $start_from;
+                                $stsrt = 0;
+                                // $start_from = ($page-1) * $num_rec_per_page+1; 
+                                foreach ($get_list as $list_product) {
+
+                                ?>
+                                    <tr>
+                                        <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" name="assign_remove_pro[]" value="<?php echo esc($list_product->product_id); ?>"></td>
+                                        <td> <?php echo esc($sr + $stsrt); ?></td>
+                                        <td> <?php echo esc($list_product->product_title); ?></td>
+                                        <td>
+                                            <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
+                                                <span id="show_per_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_percentage; ?></span>
+                                                <span style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
+                                                    <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>">
+                                                    <input type="hidden" name="proid" value="<?php echo esc($list_product->product_id); ?>">
+                                                    <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
+                                                    <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel">
+                                                    <input type="button" class="payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
+                                                </span>
+                                            </form>
+                                        </td>
+                                        <td class="payxnowandrestondelivery-double-col">
+                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/payxnowandrestondelivery/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a onclick="abc2(event);" href="https://admin.shopify.com/store/<?php echo esc($fstore_name2); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-remove?id=<?php echo esc($list_product->product_id); ?>"><img src="/payxnowandrestondelivery/public/images/delete-icon.svg" alt="delete-icon"></a></span>
+                                        </td>
+                                        <!-- <td>
                                 <div class="payxnowandrestondelivery-table-inner-wrapper">
                                     <div>
                                         <span class="payxnowandrestondelivery-status-text">Completed</span>
@@ -75,37 +84,37 @@ $store_name = $shop_name[0];
                                     </div>
                                 </div>
                             </td> -->
-                                </tr>
-                            <?php
-                                $sr++;
-                            } ?>
-                        </table>
+                                    </tr>
+                                <?php
+                                    $sr++;
+                                } ?>
+                            </table>
 
-                    </div>
-                    <?php
-                    $shop_name = explode(".", $_GET['shop']);
-                    $store_namep = $shop_name[0];
-                    if ($total_pages > 1) {
-                        echo "<ul class='payxnowandrestondelivery-pagination'>";
-                        if ($part_page > 1) {
-                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
+                        </div>
+                        <?php
+                        $shop_name = explode(".", $_GET['shop']);
+                        $store_namep = $shop_name[0];
+                        if ($total_pages > 1) {
+                            echo "<ul class='payxnowandrestondelivery-pagination'>";
+                            if ($part_page > 1) {
+                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
+                            }
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
+                            };
+                            if ($total_pages > $part_page) {
+                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . ($part_page + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
+                            }
+                            echo "</ul>";
                         }
-                        for ($i = 1; $i <= $total_pages; $i++) {
-                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
-                        };
-                        if ($total_pages > $part_page) {
-                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . ($part_page + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
-                        }
-                        echo "</ul>";
-                    }
-                    ?>
-                <?php } ?>
+                        ?>
+                    <?php } ?>
 
 
+                </div>
             </div>
         </div>
-    </div>
-    <!-- <div class="main-area no-sidebar single-page">
+        <!-- <div class="main-area no-sidebar single-page">
         <div class="inner-wrapper">
             <div class="main-data-col">
                 <div class="table-heading">
@@ -166,7 +175,8 @@ $store_name = $shop_name[0];
             </div>
         </div>
     </div>-->
-</div>
+    </div>
+</form>
 </div>
 
 
@@ -221,10 +231,10 @@ $store_name = $shop_name[0];
             var shopname = '<?php echo esc($_GET['shop']); ?>';
             $.ajax({
                 type: "POST",
-                url: "collection_track_partial_percentage?vart="+req_time,
+                url: "collection_track_partial_percentage?vart=" + req_time,
                 data: 'shop=' + shopname + '&update_per=true&' + formdata,
                 success: function(response) {
-                   window.location.reload();
+                    window.location.reload();
                     // $("#show_per_" + this_id_frm).show();
                     // $("#show_per_" + this_id_frm).html(response);
                     // $("#show_per_text_" + this_id_frm).hide();
@@ -234,5 +244,43 @@ $store_name = $shop_name[0];
             return false;
         });
 
+        //$(".checkAll").click(function() {
+        $("body").on("click", "#payxnowandrestondelivery_partial_all", function() {
+            //alert("hello");
+
+            if ($(this).prop("checked")) {
+                $(".payxnowandrestondelivery-chkSelect").prop("checked", true);
+            } else {
+                $(".payxnowandrestondelivery-chkSelect").prop("checked", false);
+            }
+
+
+        });
+
     });
+
+    function remove_prodct() {
+
+        var form_data = new FormData(document.querySelector("form"));
+        if (!form_data.has("assign_remove_pro[]")) {
+            alert('Please select any products');
+            return false;
+        } else {
+            return confirm('Do you really want to remove selected product(s)?');
+            //return true;
+        }
+
+
+        // if ($(".payxnowandrestondelivery-chkSelect").prop("checked")) {
+        //     var gettxt = confirm('Do you really want to remove selected product(s)?');
+        //     if (gettxt) {
+        //         $("#removform").submit();
+        //     } else {
+
+        //     }
+        // } else {
+        //     alert('Please select any products');
+        //     // return false;
+        // }
+    }
 </script>

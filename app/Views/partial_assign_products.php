@@ -6,7 +6,7 @@
                 <div class="payxnowandrestondelivery-side-bar-col">
                     <h2>Pick Collection</h2>
                     <div class="payxnowandrestondelivery-custom-select">
-                        <select style="display:block;" required id="get_coll" name="get_coll">
+                        <select style="display:block;" class="colidchk" required id="get_coll" name="get_coll">
                             <option value="0">Select Collection...</option>
                             <?php foreach ($get_store_collections as $get_collections) { ?>
 
@@ -17,7 +17,7 @@
                         </select>
                         <div class="search-wrapper">
                             <form class="custom-search" action="" method="post">
-                                <input type="text" placeholder="Search.." name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
+                                <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
                                 <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
                             </form>
                         </div>

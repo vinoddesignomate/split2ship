@@ -21,8 +21,8 @@
                     <div class="payxnowandrestondelivery-inner-wrapper">
                         <div class="payxnowandrestondelivery-side-bar-col">
                             <h2>Pick Collection</h2>
-                            <div class="payxnowandrestondelivery-custom-select">
-                                <select style="display:block;" required id="get_coll_home" name="get_coll">
+                            <div class="payxnowandrestondelivery-custom-select mobile-center">
+                                <select style="display:block;" class="colidchk" required id="get_coll_home" name="get_coll">
                                     <option value="0">Select Collection...</option>
                                     <?php foreach ($get_store_collections as $get_collections) { ?>
 
@@ -31,6 +31,12 @@
                                     <?php } ?>
 
                                 </select>
+                                <div class="search-wrapper">
+                                    <form class="custom-search" action="" method="post">
+                                        <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
+                                        <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="payxnowandrestondelivery-main-data-col">
@@ -53,25 +59,28 @@
                                             <?php
 
                                             if (!empty($products)) {
-                                                foreach ($products as $product) {
-                                                    foreach ($product as $key => $value) {
-                                                        if (!in_array($value['id'], $get_part_list)) {
-                                                            $partiall_added = "Not Added";
-                                                            $cls = "payxnowandrestondelivery-text-red";
-                                                        } else {
-                                                            $partiall_added = "Added";
-                                                            $cls = "payxnowandrestondelivery-text-green";
-                                                        }
+                                                foreach ($products as $edge) {
+                                                    foreach ($edge as $value) {
+                                                        if (isset($value['node'])) {
+                                                            $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
+                                                            if (!in_array($prodctid, $get_part_list)) {
+                                                                $partiall_added = "Not Added";
+                                                                $cls = "payxnowandrestondelivery-text-red";
+                                                            } else {
+                                                                $partiall_added = "Added";
+                                                                $cls = "payxnowandrestondelivery-text-green";
+                                                            }
                                             ?>
-                                                        <tr>
-                                                            <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" type="checkbox" name="assign_pro[]" value="<?php echo esc($value['id']); ?>"></td>
-                                                            <td> <?php echo esc($value['id']); ?></td>
-                                                            <td> <?php echo esc($value['title']); ?></td>
-                                                            <td class="<?php echo $cls; ?>"><?php echo esc($partiall_added); ?></td>
+                                                            <tr>
+                                                                <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" type="checkbox" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
+                                                                <td> <?php echo esc($prodctid); ?></td>
+                                                                <td> <?php echo esc($value['node']['title']); ?></td>
+                                                                <td class="<?php echo $cls; ?>"><?php echo esc($partiall_added); ?></td>
 
-                                                        </tr>
+                                                            </tr>
                                             <?php
 
+                                                        }
                                                     }
                                                 }
                                             }
@@ -86,14 +95,15 @@
 
                                 if (!empty($products)) {
 
-                                    if (isset($page_info)) {
+                                    //if (isset($page_info)) {
+                                    if (isset($pagenewxt)) {
                                 ?>
 
                                         <div class="payxnowandrestondelivery-listButtonNext">
 
-                                            <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn_home" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
+                                            <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
 
-                                            <button type="button" class="payxnowandrestondelivery-pag_btn_home" data-info="<?php echo esc($page_info); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
+                                            <button type="button" class="payxnowandrestondelivery-pag_btn" data-info="<?php echo esc($pagenewxt); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
 
                                         </div>
 
@@ -147,7 +157,7 @@
                             <?php
                             //echo"<pre>"; print_r($shiprocket_info); echo"</pre>";
                             ?>
-                            <div class="payxnowandrestondelivery-custom-select">
+                            <div class="payxnowandrestondelivery-custom-select mobile-center">
                                 <select style="display:block;" required id="delivery_partner" name="delivery_partner">
                                     <option value="">Select Shipping Method...</option>
                                     <option <?php if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') { ?> selected <?php } ?> value="ship_roc">Shiprocket</option>
