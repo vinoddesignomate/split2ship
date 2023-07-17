@@ -6,7 +6,7 @@ use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Session\Handlers\FileHandler;
 
 class App extends BaseConfig
-{
+{  
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
