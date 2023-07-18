@@ -370,9 +370,14 @@ class Home extends BaseController
                             $reaminming_price = array();
                             foreach ($value['line_items'] as $products) {
                                 if ($products['sku'] == "") {
+                                    if (isset($products['properties'][3]['value'])) {
+                                        $reaminming_price[] = $products['properties'][3]['value'];
+                                        $prodycprice =  $products['properties'][3]['value'];
+                                    } else {
+                                        // $reaminming_price[] = $products['properties'][3]['value'];
+                                        $prodycprice = 0;
+                                    }
 
-                                    $reaminming_price[] = $products['properties'][3]['value'];
-                                    $prodycprice =  $products['properties'][3]['value'];
                                     if (isset($products['properties'][4]['value'])) {
                                         $prosku = $products['properties'][4]['value'];
                                     } else {
@@ -675,7 +680,7 @@ class Home extends BaseController
             $page_number = $_GET['part_page'];
         }
 
-        
+
         if (!empty($this->request->getPost('assign_remove_pro'))) {
             foreach ($this->request->getPost('assign_remove_pro') as $prokey => $product_id) {
                 $this->user_model->update_plan_products_remove_part($_GET['shop']);
@@ -1014,8 +1019,6 @@ class Home extends BaseController
         $get_datalates = $this->user_model->get_lates_records($_GET['shop']);
 
         $limit = $get_datalates[0]->latest_count;
-        $initial_page = ($data['part_page'] - 1) * $limit;
-        $data['start_from'] = ($data['part_page'] - 1) * $limit + 1;
         $get_totals = $this->user_model->get_partial_product_list($_GET['shop']);
         $get_totals_num = count($get_totals);
         $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
