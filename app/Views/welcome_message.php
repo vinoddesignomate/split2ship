@@ -313,7 +313,7 @@
                         $store_namep = $shop_name[0];
                         ?>
                         <div class="payxnowandrestondelivery-btn-col">
-                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_namep) ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/show-orders" class="payxnowandrestondelivery-button">View More</a>
+                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_namep) ?>/apps/pay-x-now-rest-on-delivery/show-orders" class="payxnowandrestondelivery-button">View More</a>
                         </div>
                     </div>
                 </div>
@@ -374,7 +374,7 @@
                             <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
                                 <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                             <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
+                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -407,7 +407,7 @@
                                 <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
 
                             <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
+                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
                             <?php } ?>
 
                         </div>
@@ -440,7 +440,7 @@
                             <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
                                 <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                             <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
+                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -472,7 +472,7 @@
                             <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
                                 <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                             <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/subscribe-app?plan=ultimate" class="payxnowandrestondelivery-button">Buy</a>
+                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=ultimate" class="payxnowandrestondelivery-button">Buy</a>
                             <?php } ?>
                         </div>
                     </div>
