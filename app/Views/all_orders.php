@@ -6,7 +6,7 @@
  <div class="payxnowandrestondelivery-container">
 
      <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-         <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
+         <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_namep); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
      </div>
 
 
