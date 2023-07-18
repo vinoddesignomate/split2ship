@@ -99,6 +99,11 @@ class Auth extends BaseController
 				}else {
 					$response['expires_in']="";
 				}
+				if(isset($response['associated_user_scope'])){
+					$response['associated_user_scope'] = $response['associated_user_scope'];
+				}else {
+					$response['associated_user_scope']="";
+				}
 				$userId = $userModel->update_data($parameters['shop'], array(
 					"access_token" => $response['access_token'],
 					"scope" => $response['scope'],
