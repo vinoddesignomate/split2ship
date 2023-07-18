@@ -50,7 +50,7 @@
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-header-wrapper">
                 <div class="payxnowandrestondelivery-logo-col">
-                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/"><img src="/payxnowandrestondelivery/public/images/site-logo.svg" alt="site-logo"></a>
+                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/"><img src="/public/images/site-logo.svg" alt="site-logo"></a>
                 </div>
                 <nav class="payxnowandrestondelivery-header-nav-links">
                     <ul>
