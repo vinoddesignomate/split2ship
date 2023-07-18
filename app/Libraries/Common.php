@@ -16,6 +16,10 @@ class Common
 
         //$this->CI->load->model('common_model');
     }
+    public function testcheck()
+    {
+        echo "calling";
+    }
 
     public function rest_api($api_endpoint, $query = array(), $method = 'GET', $access_token, $shop_url)
     {
@@ -72,10 +76,94 @@ class Common
             return array("headers" => $headers, "body" => $response[1]);
         }
     }
+    public function getproductsgrapqlapi($params_array,$shop_url, $acctoken)
+    {
+
+        //this commenting code for if we use to filter with colletion id
+        //collection(id: "gid://shopify/Collection/443446100266") {
+        //}
+        $newpageing="";
+        $search_query="";
+        if(isset($params_array['nextpage_getpage'])){
+            $newpageing = 'first: '.$params_array['limit'].',after:"'.$params_array['nextpage_getpage'].'"';
+            $startCursor = "startCursor";
+            $endCursor = "endCursor";
+        }else if(isset($params_array['prev_getpage'])){
+            $newpageing = 'last: '.$params_array['limit'].',before:"'.$params_array['prev_getpage'].'"';
+            $startCursor = "startCursor";
+            $endCursor = "endCursor";
+        }else{
+            $newpageing = 'first: '.$params_array['limit'].'';
+            $startCursor = "";
+            $endCursor = "endCursor";
+        }
+        if(isset($params_array['search_parms'])){
+            $search_query = ',query:"title:'.$params_array['search_parms'].'"';
+            $get_products_query = array("query" => '{
+                products('.$newpageing.''.$search_query.') {
+                      edges {
+                        node {
+                          id
+                          title
+                          description
+                          variants(first: 5) {
+                            edges {
+                              node {
+                                id
+                                title
+                                price
+                              }
+                            }
+                          }
+                        }
+                      }
+                      pageInfo {
+                        hasNextPage
+                        hasPreviousPage
+                        '.$startCursor.'
+                        '.$endCursor.'
+                      }
+                    }
+                  }');
+        }else{
+            $get_products_query = array("query" => '{
+                collection(id: "gid://shopify/Collection/'.$params_array['collection_id'].'") {
+                products('.$newpageing.''.$search_query.') {
+                      edges {
+                        node {
+                          id
+                          title
+                          description
+                          variants(first: 5) {
+                            edges {
+                              node {
+                                id
+                                title
+                                price
+                              }
+                            }
+                          }
+                        }
+                      }
+                      pageInfo {
+                        hasNextPage
+                        hasPreviousPage
+                        '.$startCursor.'
+                        '.$endCursor.'
+                      }
+                    }
+                  }
+                }');
+        }
+        
+        //print_r($get_products_query);
+        return $this->graphql_api($get_products_query, $shop_url, $acctoken);
+        
+    }
     public function graphql_api($query = array(), $shop_url, $acc_token)
     {
 
-        $url = 'https://' . $shop_url . '/admin/api/2022-04/graphql.json';
+        $url = 'https://' . $shop_url . '/admin/api/2023-01/graphql.json';
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, true);
@@ -295,5 +383,26 @@ class Common
 
             return $response;
         }
+    }
+
+    public function payxnow_encodedata($userdata)
+    {
+
+        $plaintext = $userdata;
+        $encryptionKey = "cd983a8540173d68292f21ab4de644bec471dba50bef7435b8de175044a7c6ab";
+        $ivSize = openssl_cipher_iv_length('AES-256-CBC');
+        $iv = openssl_random_pseudo_bytes($ivSize);
+        $ciphertext = openssl_encrypt($plaintext, 'AES-256-CBC', $encryptionKey, 0, $iv);
+        return $encryptedData = base64_encode($iv . $ciphertext);
+    }
+    public function payxnow_decodedata($userdata)
+    {
+        //echo $userdata;
+        $encryptionKey = "cd983a8540173d68292f21ab4de644bec471dba50bef7435b8de175044a7c6ab";
+        $decodedData = base64_decode($userdata);
+        $ivSize = openssl_cipher_iv_length('AES-256-CBC');
+        $iv = substr($decodedData, 0, $ivSize);
+        $ciphertext = substr($decodedData, $ivSize);
+        return $decryptedData = openssl_decrypt($ciphertext, 'AES-256-CBC', $encryptionKey, 0, $iv);
     }
 }
