@@ -323,7 +323,7 @@ class Home extends BaseController
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
 
                 $all_orders = $this->common->rest_api('/admin/api/2023-01/orders.json?status=any&order=updated_at%20asc', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                
+
                 if (!empty($all_orders)) {
                     //echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
                     $get_all_oders = json_decode($all_orders['body'], true);
@@ -333,7 +333,7 @@ class Home extends BaseController
                     $api_orders_data = array();
                     $orders_products_data = array();
                     $api_orders_products_data = array();
-                    echo"aaa<pre>"; print_r($get_all_oders); echo"</pre>";
+                    //echo"aaa<pre>"; print_r($get_all_oders); echo"</pre>";
                     foreach ($get_all_oders as $order) {
                         foreach ($order as $key => $value) {
                             if ($value['tags'] == 'partial') {
@@ -361,7 +361,7 @@ class Home extends BaseController
                                 $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
                                 //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
                                 $orders_data['country'] = (isset($value['shipping_address']['country']) ? $this->common->payxnow_encodedata($value['shipping_address']['country']) : '');
-                            }else  if (isset($value['billing_address'])) {
+                            } else  if (isset($value['billing_address'])) {
 
                                 $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['billing_address']['address1']);
                                 $orders_data['city'] = (isset($value['billing_address']['city']) ? $this->common->payxnow_encodedata($value['billing_address']['city']) : '');
@@ -381,37 +381,33 @@ class Home extends BaseController
                             // if ($incid == 1) {
                             $reaminming_price = array();
                             foreach ($value['line_items'] as $products) {
-                                if ($products['sku'] == "") {
-                                    if (isset($products['properties'][3]['value'])) {
+                                if ($products['name'] != "partial Pending Payment") {
+                                    if ($products['sku'] == "") {
                                         $reaminming_price[] = $products['properties'][3]['value'];
                                         $prodycprice =  $products['properties'][3]['value'];
+                                        if (isset($products['properties'][4]['value'])) {
+                                            $prosku = $products['properties'][4]['value'];
+                                        } else {
+                                            $prosku = 'PRTTESTSKY';
+                                        }
                                     } else {
-                                        // $reaminming_price[] = $products['properties'][3]['value'];
-                                        $prodycprice = 0;
+                                        $prosku = $products['sku'];
+                                        $prodycprice =  0;
                                     }
-
-                                    if (isset($products['properties'][4]['value'])) {
-                                        $prosku = $products['properties'][4]['value'];
-                                    } else {
-                                        $prosku = 'PRTTESTSKY';
-                                    }
-                                } else {
-                                    $prosku = $products['sku'];
-                                    $prodycprice =  0;
+                                    $orders_products_data = array(
+                                        "order_id" => $value['id'],
+                                        "product_id" => $products['id'],
+                                        "product_name" => $products['name'],
+                                        "product_price" => $prodycprice,
+                                        "product_qty" => $products['quantity'],
+                                        "product_sku" => $prosku,
+                                        "shop_url" => $_GET['shop']
+                                    );
+                                    // echo "<pre>";
+                                    // print_r($orders_products_data);
+                                    // echo "</pre>";
+                                    $this->user_model->track_orders_products($orders_products_data);
                                 }
-                                $orders_products_data = array(
-                                    "order_id" => $value['id'],
-                                    "product_id" => $products['id'],
-                                    "product_name" => $products['name'],
-                                    "product_price" => $prodycprice,
-                                    "product_qty" => $products['quantity'],
-                                    "product_sku" => $prosku,
-                                    "shop_url" => $_GET['shop']
-                                );
-                                // echo "<pre>";
-                                // print_r($orders_products_data);
-                                // echo "</pre>";
-                                $this->user_model->track_orders_products($orders_products_data);
                             }
 
                             //}
