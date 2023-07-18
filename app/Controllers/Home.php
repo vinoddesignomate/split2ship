@@ -1142,7 +1142,7 @@ class Home extends BaseController
                     //         $pendingamnt = 0;
                     //     }
                     // }
-
+                    echo "<pre>"; print_r($value); echo"</pre>";
                     if ($value['financial_status'] == "paid") {
 
                         $orders_sts = $value['financial_status'];
@@ -1154,7 +1154,7 @@ class Home extends BaseController
                             if (isset($pendingamntnnn[1])) {
                                 $pendingamnt = $pendingamntnnn[1];
                             } else {
-                                $pendingamnt = $pendingamntnnn[1];
+                                $pendingamnt = 0;
                             }
                         } else {
                             $orders_sts = "cod";
