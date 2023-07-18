@@ -89,7 +89,7 @@ class Auth extends BaseController
 					"store_status" => 1
 				));
 
-
+    
 
 
 				//install js lib file
