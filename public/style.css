@@ -194,6 +194,7 @@
   .payxnowandrestondelivery-text-violet{color: var(--text_violet);}
   .payxnowandrestondelivery-font-bold{font-weight: 700;}
   .payxnowandrestondelivery-text-orange{color:#F05523;}
+  .payxnowandrestondelivery-justify-end{justify-content: end;}
   /* typography */
   h2{font-size: 20px;line-height: 120%;font-weight: 600;color: var(--heading_color);text-transform: capitalize;margin: 0px 0px 10px;}
   h3{font-size: 22px;}
@@ -211,6 +212,7 @@
   input.payxnowandrestondelivery-cancel_btn{border-radius:3px;background-color:#3b3b3b;color:#fff;cursor: pointer;font-size: 14px;font-family: 'Roboto', sans-serif;font-weight: 600;max-width: 77px;}
   input.payxnowandrestondelivery-subbtn,.payxnowandrestondelivery-subbtn_coll{border-radius: 3px;background-color: #4A4DE6;color: #fff;cursor: pointer;font-size: 14px;font-family: 'Roboto', sans-serif;font-weight: 600;max-width: 77px;}
   .payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper.payxnowandrestondelivery-justify-end {justify-content: end;}
+  button#remove_load_page i {padding-right: 7px;}
   /************buttons ends************/
   /*  Pagination */
   ul.payxnowandrestondelivery-pagination{display:flex;align-items:center;justify-content:center;margin-top:40px}
