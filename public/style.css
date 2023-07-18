@@ -227,7 +227,7 @@
     border-color: var(--btn_bg);}
 
 
-    ul.payxnowandrestondelivery-pagination .payxnowandrestondelivery-button{font-weight:400;font-size:14px;border:1px solid #f2f6ff;border-radius:4px;background-color:#fff;padding:12px 24px;margin: 0px 12px;color: #333333;}
+    ul.payxnowandrestondelivery-pagination .payxnowandrestondelivery-button{font-weight:400;font-size:14px;border:1px solid #f2f6ff;border-radius:4px;background-color:#fff;padding:12px 24px;margin: 0px 12px;color: #A8A8B0;}
     ul.payxnowandrestondelivery-pagination .payxnowandrestondelivery-button:hover{background: var(--btn_bg);color:#fff;
         border-color: var(--btn_bg);}
         ul.payxnowandrestondelivery-pagination a{color:#3b3b3b;font-size:12px}
