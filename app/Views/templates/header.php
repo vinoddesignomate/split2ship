@@ -9,7 +9,7 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/style.css">
-   
+
 
     <script src="https://unpkg.com/@shopify/app-bridge@3"></script>
     <!-- <script src="https://unpkg.com/@shopify/app-bridge@3"></script> -->
@@ -25,26 +25,31 @@
             forceRedirect: false
         };
         const app = createApp(config);
-       // const redirect = Redirect.create(app);
+        // const redirect = Redirect.create(app);
         // console.log('hostname');
         // console.log(config.host);
     </script>
 </head>
 <?php
 
-    $link = $_SERVER['PHP_SELF'];
+$link = $_SERVER['PHP_SELF'];
 
-    $link_array = explode('/', $link);
+$link_array = explode('/', $link);
 
-    $page_name = end($link_array);
-   
+$page_name = end($link_array);
 
-    $shop_name = explode(".", $_GET['shop']);
-    $store_name = $shop_name[0];
 
-    ?>
-<body  class="<?php echo $page_name;?> ">
-    
+$shop_name = explode(".", $_GET['shop']);
+$store_name = $shop_name[0];
+if ($page_name == "index.php") {
+    $clsname = "payxhomecls";
+} else {
+    $clsname = $page_name;
+}
+?>
+
+<body class="<?php echo $page_name; ?> ">
+
     <!-- Header section -->
     <header>
         <div class="payxnowandrestondelivery-container">
@@ -55,15 +60,15 @@
                 <nav class="payxnowandrestondelivery-header-nav-links">
                     <ul>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
-Products</a></li>
+                                Products</a></li>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'partial-products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">
-Partial Products List</a></li>
+                                Partial Products List</a></li>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'show-orders') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/show-orders"><img src="/public/images/orders.svg" class="payxnowandrestondelivery-hide-hover" alt="orders-icon"><img src="/public/images/order-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="orders-icon">
-Orders</a></li>
+                                Orders</a></li>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'price-plan') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan"><img src="/public/images/pricing.svg" class="payxnowandrestondelivery-hide-hover" alt="pricing-icon"><img src="/public/images/pricing-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="pricing-icon">
-Pricing</a></li>
+                                Pricing</a></li>
                         <!-- <li><a onclick='abc(event);' class="<?php echo ($page_name == 'shiprocket-config') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/shopifypartialapp/public/index.php/shiprocket-config">Shiprocket Config</a></li> -->
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-configuration') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration"><img src="/public/images/configuration.svg" alt="configuration-icon" class= "payxnowandrestondelivery-hide-hover"><img src="/public/images/configuration-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="configuration-icon">Configuration</a></li>
+                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-configuration') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration"><img src="/public/images/configuration.svg" alt="configuration-icon" class="payxnowandrestondelivery-hide-hover"><img src="/public/images/configuration-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="configuration-icon">Configuration</a></li>
                     </ul>
                 </nav>
                 <a href="javascript:void(0);" class="payxnowandrestondelivery-icon" onclick="myFunction()">
