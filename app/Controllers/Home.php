@@ -67,8 +67,8 @@ class Home extends BaseController
         if (isset($_GET['shop'])) {
             $countrows = $this->user_model->checktokens($_GET['shop']);
             if ($countrows < 1) {
-                echo "<script>top.window.location='https://cgcolors.co/payxnowandrestondelivery/public/install?shop=" . $_GET['shop'] . "'</script>";
-                //return redirect()->to('https://cgcolors.co/payxnowandrestondelivery/public/install?shop=' . $_GET['shop']);
+                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                //return redirect()->to('https://app.payxnowandrestondelivery.com/public/install?shop=' . $_GET['shop']);
             }
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
@@ -78,8 +78,8 @@ class Home extends BaseController
             $response = json_decode($products['body'], true);
             if (array_key_exists('errors', $response)) {
                 //echo esc("sorry but  i think there is an error. error is" . $response['errors']);
-                echo "<script>top.window.location='https://cgcolors.co/payxnowandrestondelivery/public/install?shop=" . $_GET['shop'] . "'</script>";
-                //return redirect()->to('https://cgcolors.co/payxnowandrestondelivery/public/install?shop=' . $_GET['shop']);
+                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                //return redirect()->to('https://app.payxnowandrestondelivery.com/public/install?shop=' . $_GET['shop']);
 
                 // header("Location: install.php?shop=" . $_GET['shop']);
                 exit();
@@ -148,7 +148,7 @@ class Home extends BaseController
                 }
 
 
-                // $register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/edited", "address" => 'https://cgcolors.co/payxnowandrestondelivery/public/index.php/orderedt?='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
+                // $register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/edited", "address" => 'https://app.payxnowandrestondelivery.com/public/index.php/orderedt?='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
 
                 //get store collections
                 $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);

@@ -34,7 +34,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'partial_payx',
-        'password' => 'pay!@#rest',
+        'password' => 'i!>ygUhS<5M*rest',
         'database' => 'payxnowrestondelivery_app',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
