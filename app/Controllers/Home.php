@@ -1151,7 +1151,11 @@ class Home extends BaseController
                         if ($value['tags'] != '') {
                             $orders_sts = 'pending';
                             $pendingamntnnn = explode("_", $value['tags']);
-                            $pendingamnt = $pendingamntnnn[1];
+                            if (isset($pendingamntnnn[1])) {
+                                $pendingamnt = $pendingamntnnn[1];
+                            } else {
+                                $pendingamnt = $pendingamntnnn[1];
+                            }
                         } else {
                             $orders_sts = "cod";
                             $pendingamnt = $value['total_price'];
@@ -1210,9 +1214,13 @@ class Home extends BaseController
                     foreach ($value['line_items'] as $products) {
                         if ($products['name'] != "partial Pending Payment") {
                             if ($products['sku'] == "") {
-
-                                $reaminming_price[] = $products['properties'][3]['value'];
-                                $prodycprice =  $products['properties'][3]['value'];
+                                if (isset($products['properties'][3]['value'])) {
+                                    $reaminming_price[] = $products['properties'][3]['value'];
+                                    $prodycprice =  $products['properties'][3]['value'];
+                                } else {
+                                    $reaminming_price[] = 0;
+                                    $prodycprice = 0;
+                                }
                                 if (isset($products['properties'][4]['value'])) {
                                     $prosku = $products['properties'][4]['value'];
                                 } else {
