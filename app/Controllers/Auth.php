@@ -94,6 +94,11 @@ class Auth extends BaseController
 
 				//install js lib file
 			} else {
+				if(isset($response['expires_in'])){
+					$response['expires_in'] = $response['expires_in'];
+				}else {
+					$response['expires_in']="";
+				}
 				$userId = $userModel->update_data($parameters['shop'], array(
 					"access_token" => $response['access_token'],
 					"scope" => $response['scope'],
