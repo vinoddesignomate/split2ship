@@ -12,7 +12,7 @@ $store_name = $shop_name[0];
 ?>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-        <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list">Back</a></h5>
+        <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Back</a></h5>
 
     </div>
 </div>
@@ -34,7 +34,7 @@ $store_name = $shop_name[0];
                             $shop_name = explode(".", $_GET['shop']);
                             $fstore_name2 = $shop_name[0];
                             // if (!empty($get_list)) {
-                            $sr = $start_from;
+                           // $sr = $start_from;
                             $stsrt = 1;
                             // $start_from = ($page-1) * $num_rec_per_page+1; 
                             foreach ($get_list as $list_product) {
