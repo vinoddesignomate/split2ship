@@ -323,6 +323,7 @@ class Home extends BaseController
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
 
                 $all_orders = $this->common->rest_api('/admin/api/2023-01/orders.json?status=any&order=updated_at%20asc', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                echo"aaa<pre>"; print_r($all_orders); echo"</pre>";
                 if (!empty($all_orders)) {
                     //echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
                     $get_all_oders = json_decode($all_orders['body'], true);
