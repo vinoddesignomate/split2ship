@@ -48,7 +48,7 @@ if ($page_name == "index.php") {
 }
 ?>
 
-<body class="<?php echo $page_name; ?> ">
+<body class="<?php echo $clsname; ?> ">
 
     <!-- Header section -->
     <header>
