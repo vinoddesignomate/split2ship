@@ -180,6 +180,7 @@ $fstore_name = $shop_name[0];
         var data_store = $(this).attr('data-store');
         var vendor_name = $("#vendor_name").val();
         var sel_val = $(".colidchk").val();
+        var srchtctval = $(".srchtctval").val();
         if (data_info != "") {
             $('[data-rel=' + data_rel + ']').addClass('active');
         } 
@@ -197,7 +198,8 @@ $fstore_name = $shop_name[0];
                     shop: data_store,
                     url: data_store,
                     coll_id: sel_val,
-                    vend_id: vendor_name
+                    vend_id: vendor_name,
+                    search_text: srchtctval
 
                 },
 
