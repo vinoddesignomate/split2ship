@@ -382,10 +382,16 @@ class Home extends BaseController
                             $reaminming_price = array();
                             foreach ($value['line_items'] as $products) {
                                 if ($products['name'] != "partial Pending Payment") {
-                                    echo"products<pre>"; print_r($products); echo"</pre>";
+                                    //echo"products<pre>"; print_r($products); echo"</pre>";
                                     if ($products['sku'] == "") {
-                                        $reaminming_price[] = $products['properties'][3]['value'];
-                                        $prodycprice =  $products['properties'][3]['value'];
+                                        if (isset($products['properties'][3]['value'])) {
+                                            $reaminming_price[] = $products['properties'][3]['value'];
+                                            $prodycprice =  $products['properties'][3]['value'];
+                                        } else {
+                                            $reaminming_price[] = 0;
+                                            $prodycprice =  0;
+                                        }
+
                                         if (isset($products['properties'][4]['value'])) {
                                             $prosku = $products['properties'][4]['value'];
                                         } else {
