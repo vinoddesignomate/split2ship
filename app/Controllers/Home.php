@@ -1732,7 +1732,7 @@ class Home extends BaseController
             // die();
             $plane_name = $_GET['plan'];
             $plane_price = $this->plane_details[$_GET['plan']]['price'];
-            $plane_scane_count = $this->plane_details[$_GET['plan']]['scan_count'];
+            //$plane_scane_count = $this->plane_details[$_GET['plan']]['scan_count'];
 
             $plane_start_date = date('Y-m-d');
             $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$_GET['plan']]['validity'] . ' days'));
