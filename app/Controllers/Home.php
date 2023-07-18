@@ -143,7 +143,7 @@ class Home extends BaseController
                         }
                     }
                     //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
-                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-latest-products-list'</script>";
+                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-latest-products-list'</script>";
                     // exit();
                 }
 
@@ -438,14 +438,14 @@ class Home extends BaseController
 
         $plan_details = $this->user_model->get_store_plan($_GET['shop']);
         if (empty($plan_details)) {
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
             die();
         } else {
             if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
+                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
                 die();
             } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
+                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
                 die();
             }
         }
@@ -518,12 +518,12 @@ class Home extends BaseController
                     $this->user_model->track_lates_records($update_latest);
 
                     $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
-                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-latest-products-list'</script>";
+                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-latest-products-list'</script>";
                 } else {
-                    echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
+                    echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
                 }
             } else {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
+                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
             }
             //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
 
@@ -680,7 +680,7 @@ class Home extends BaseController
             foreach ($this->request->getPost('assign_remove_pro') as $prokey => $product_id) {
                 $this->user_model->update_plan_products_remove_part($_GET['shop']);
                 $this->user_model->remove_partial_product($product_id, $_GET['shop']);
-                echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-products-list'</script>";
+                echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-products-list'</script>";
             }
         }
 
@@ -1681,7 +1681,7 @@ class Home extends BaseController
         if (isset($_GET['id']) && $_GET['id'] != "") {
             $this->user_model->update_plan_products_remove_part($_GET['shop']);
             $this->user_model->remove_partial_product($_GET['id'], $_GET['shop']);
-            echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/partial-products-list'</script>";
+            echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-products-list'</script>";
         }
     }
     public function price_plan_page()
@@ -1721,7 +1721,7 @@ class Home extends BaseController
                 $stype = "";
             }
 
-            $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
+            $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
 
 
             //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
@@ -1814,7 +1814,7 @@ class Home extends BaseController
             echo view('templates/apbrdgnew');
         } else {
             $this->user_model->update_plan_after_payment($update_data);
-            echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/price-plan'</script>";
+            echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
             echo view('templates/apbrdgnew');
         }
     }

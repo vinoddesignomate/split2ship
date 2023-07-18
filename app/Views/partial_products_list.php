@@ -13,7 +13,7 @@ $store_name = $shop_name[0];
 <form method="POST" onsubmit="return remove_prodct()" id="removform">
     <div class="payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-            <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/products-list">Back</a></h5>
+            <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Back</a></h5>
 
         </div>
     </div>
@@ -65,7 +65,7 @@ $store_name = $shop_name[0];
                                             </form>
                                         </td>
                                         <td class="payxnowandrestondelivery-double-col">
-                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/payxnowandrestondelivery/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a onclick="abc2(event);" href="https://admin.shopify.com/store/<?php echo esc($fstore_name2); ?>/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/products-remove?id=<?php echo esc($list_product->product_id); ?>"><img src="/payxnowandrestondelivery/public/images/delete-icon.svg" alt="delete-icon"></a></span>
+                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a onclick="abc2(event);" href="https://admin.shopify.com/store/<?php echo esc($fstore_name2); ?>/apps/pay-x-now-rest-on-delivery/products-remove?id=<?php echo esc($list_product->product_id); ?>"><img src="/public/images/delete-icon.svg" alt="delete-icon"></a></span>
                                         </td>
                                         <!-- <td>
                                 <div class="payxnowandrestondelivery-table-inner-wrapper">
@@ -97,7 +97,7 @@ $store_name = $shop_name[0];
                         if ($total_pages > 1) {
                             echo "<ul class='payxnowandrestondelivery-pagination'>";
                             if ($part_page > 1) {
-                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
+                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
                             }
                             for ($i = 1; $i <= $total_pages; $i++) {
                                 echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/payxnowandrestondelivery/public/index.php/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
