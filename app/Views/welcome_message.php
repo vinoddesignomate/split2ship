@@ -277,7 +277,7 @@
                                 </tr>
 
                                 <?php
-
+                                /*
                                 if (!empty($order_list)) {
                                     foreach ($order_list as $get_all_products) {
 
@@ -305,7 +305,7 @@
                                         </tr>
 
                                 <?php }
-                                } ?>
+                                }*/ ?>
                             </table>
                         </div>
                         <?php
