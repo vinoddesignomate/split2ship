@@ -19,8 +19,8 @@ class Auth extends BaseController
 		$scopes = 'read_products,write_products,read_orders,read_all_orders,write_orders,write_order_edits,read_draft_orders,write_draft_orders,read_customers,write_customers';
 		$redirect_uri = $_NGROK_URL . '/token';
 		$nonce = bin2hex(random_bytes(12));
-		//$access_mode = 'per-user';
-		$access_mode = 'offline';
+		$access_mode = 'per-user';
+		//$access_mode = 'offline';
 
 		$oauth_url = 'https://' . $shop . '/admin/oauth/authorize?client_id=' . $_API_KEY . '&scope=' . $scopes . '&redirect_uri=' . urlencode($redirect_uri) . '&state=' . $nonce . '&grant_options[]=' . $access_mode;
 
