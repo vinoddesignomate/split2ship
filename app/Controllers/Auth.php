@@ -69,6 +69,18 @@ class Auth extends BaseController
 
 
 			// echo"<pre>"; print_r($response); echo"</pre>"; die();
+
+			if(isset($response['expires_in'])){
+				$response['expires_in'] = $response['expires_in'];
+			}else {
+				$response['expires_in']="";
+			}
+			if(isset($response['scope'])){
+				$response['scope'] = $response['scope'];
+			}else {
+				$response['scope']="";
+			}
+
 			$countrows = $userModel->checktokens($parameters['shop']);
 			if ($countrows < 1) {
 				$curdate = date('Y-m-d');
@@ -76,15 +88,15 @@ class Auth extends BaseController
 					"shop_url" => $parameters['shop'],
 					"access_token" => $response['access_token'],
 					"scope" => $response['scope'],
-					"expires_in" => $response['expires_in'],
-					"associated_user_scope" => $response['associated_user_scope'],
-					"associated_user_id" => $response['associated_user']['id'],
-					"first_name" => $response['associated_user']['first_name'],
-					"last_name" => $response['associated_user']['last_name'],
-					"email" => $response['associated_user']['email'],
-					"locale" => $response['associated_user']['locale'],
-					"account_owner" => $response['associated_user']['account_owner'],
-					"auth_code" => $parameters['code'],
+					//"expires_in" => $response['expires_in'],
+					//"associated_user_scope" => $response['associated_user_scope'],
+					//"associated_user_id" => $response['associated_user']['id'],
+					//"first_name" => $response['associated_user']['first_name'],
+					//"last_name" => $response['associated_user']['last_name'],
+					//"email" => $response['associated_user']['email'],
+					//"locale" => $response['associated_user']['locale'],
+					//"account_owner" => $response['associated_user']['account_owner'],
+					//"auth_code" => $parameters['code'],
 					"created" => $curdate,
 					"store_status" => 1
 				));
