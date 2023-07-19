@@ -139,7 +139,7 @@ class Home extends BaseController
                             $this->user_model->track_lates_records($update_latest);
                             $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
                         } else {
-                            echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery?collectionparms=" . $this->request->getPost('collectionparms') . "'</script>";
+                            echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
                         }
                     }
                     //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
