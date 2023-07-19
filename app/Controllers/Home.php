@@ -1772,6 +1772,7 @@ class Home extends BaseController
             // echo "Redirecting to payment page.Please wait";
             $this->user_model->track_store_subscribe($trackarray);
            // echo $return_url_res;
+           $data = array();
            $data['pricurl'] = $return_url_res;
            // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
          
