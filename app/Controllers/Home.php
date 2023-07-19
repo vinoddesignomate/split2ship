@@ -72,7 +72,23 @@ class Home extends BaseController
                 $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 echo view('templates/apbrdgnew', $data);
             }
-            echo "this main page3";
+
+            $get_details = $this->user_model->get_tokens($_GET['shop']);
+            $products =  $products = $this->common->rest_api('/admin/api/2021-01/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+
+            $response = json_decode($products['body'], true);
+            if (array_key_exists('errors', $response)) {
+                echo esc("sorry but  i think there is an error. error is" . $response['errors']);
+                // echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                echo view('templates/apbrdgnew', $data);
+
+                exit();
+            } else {
+                echo "this main page4";
+            }
+            echo "this main page5";
         }
     }
 
