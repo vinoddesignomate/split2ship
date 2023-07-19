@@ -63,21 +63,24 @@ class Home extends BaseController
         $data = array();
         $myCommon = new Common();
         $data['myCommon'] = $myCommon;
-        $countrows = $this->user_model->checktokens($_GET['shop']);
-        if ($countrows < 1) {
-            //echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-            echo "count daatched";
-            
-            $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
-            echo view('templates/apbrdgnew', $data);
+        if (isset($_GET['shop'])) {
+            $countrows = $this->user_model->checktokens($_GET['shop']);
+            if ($countrows < 1) {
+                //echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                echo "count daatched";
+
+                $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                echo view('templates/apbrdgnew', $data);
+            }
+            echo "this main page3";
         }
-        echo "this main page2";
     }
 
     public function index()
     {
 
-        echo "welcome page is available"; die();
+        echo "welcome page is available";
+        die();
         $data = array();
         $myCommon = new Common();
         $data['myCommon'] = $myCommon;
@@ -87,7 +90,7 @@ class Home extends BaseController
             if ($countrows < 1) {
                 //echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
                 echo "count daatched";
-                
+
                 $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 echo view('templates/apbrdgnew', $data);
             }
@@ -99,10 +102,10 @@ class Home extends BaseController
             $response = json_decode($products['body'], true);
             if (array_key_exists('errors', $response)) {
                 echo esc("sorry but  i think there is an error. error is" . $response['errors']);
-               // echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-               $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                // echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 echo view('templates/apbrdgnew', $data);
-               
+
                 exit();
             } else {
 
@@ -571,7 +574,7 @@ class Home extends BaseController
 
                     // $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
                     // echo view('templates/apbrdgnew', $data);
-                    
+
                 }
             } else {
                 echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
