@@ -169,6 +169,7 @@ class Auth extends BaseController
 
 			$get_register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $response['access_token'], $_GET['shop']);
 			$get_register_webhookset = json_decode($get_register_webhook['body'], true);
+			print_r($get_register_webhookset);
 			$track_webhook = array(
 				"shop_url" => $_GET['shop'],
 				"webhook_id" => $get_register_webhookset['webhooks'][0]['id'],
