@@ -60,6 +60,8 @@ class Home extends BaseController
 
     public function index()
     {
+
+        echo "welcome page is available"; die();
         $data = array();
         $myCommon = new Common();
         $data['myCommon'] = $myCommon;
