@@ -68,7 +68,7 @@ class Auth extends BaseController
 			$response = json_decode($response, true);
 
 
-			echo"<pre>"; print_r($response); echo"</pre>"; 
+			//echo"<pre>"; print_r($response); echo"</pre>"; 
 			//die();
 
 			if(isset($response['expires_in'])){
