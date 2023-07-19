@@ -37,7 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 //Auth routes
-$routes->get('/install', 'Auth::index');
+$routes->get('/install', 'Auth::install_func');
 $routes->get('/token', 'Auth::token');
 
 //admin app routes

@@ -8,7 +8,7 @@ class Auth extends BaseController
 {
 
 
-	public function index()
+	public function install_func()
 	{
 		//$_API_KEY = '3bd84db3e14a8028efd6afb20789f1a9';
 		$_API_KEY = 'a47ead69b3d83a8042703f093f3cadb2';
@@ -68,7 +68,8 @@ class Auth extends BaseController
 			$response = json_decode($response, true);
 
 
-			//echo"<pre>"; print_r($response); echo"</pre>"; die();
+			echo"<pre>"; print_r($response); echo"</pre>"; 
+			die();
 
 			if(isset($response['expires_in'])){
 				$response['expires_in'] = $response['expires_in'];
