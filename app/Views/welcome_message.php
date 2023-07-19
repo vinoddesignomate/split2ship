@@ -21,7 +21,7 @@
                     <div class="payxnowandrestondelivery-inner-wrapper">
                         <div class="payxnowandrestondelivery-side-bar-col">
                             <h2>Pick Collection</h2>
-                            <div class="payxnowandrestondelivery-custom-select mobile-center">
+                            <!--<div class="payxnowandrestondelivery-custom-select mobile-center">
                                 <select style="display:block;" class="colidchk" required id="get_coll_home" name="get_coll">
                                     <option value="0">Select Collection...</option>
                                     <?php foreach ($get_store_collections as $get_collections) { ?>
@@ -38,8 +38,8 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="payxnowandrestondelivery-main-data-col">
+                        </div>-->
+                        <!--<div class="payxnowandrestondelivery-main-data-col">
                             <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2>Product name</h2>
                                 <?php if ($checkcol == 'yes') { ?>
@@ -113,12 +113,12 @@
                             }
                             ?>
                             <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
-                                <!-- <h2>Product name</h2> -->
+                                
                                 <?php if ($checkcol == 'yes') { ?>
                                     <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
                                 <?php } ?>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </form>
             </div>

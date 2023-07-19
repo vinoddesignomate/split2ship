@@ -151,6 +151,7 @@ class Home extends BaseController
                 // $register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/edited", "address" => 'https://app.payxnowandrestondelivery.com/public/index.php/orderedt?='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
 
                 //get store collections
+                /*
                 $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $collections = json_decode($collections['body'], true);
                 $coll_array = array();
@@ -255,7 +256,7 @@ class Home extends BaseController
                             $data['pagenewxt'] = $grapql_products_list_prodct['data']['products']['pageInfo']['endCursor'];
                         }
                     }
-                }
+                }*/
 
 
                 //shipping method config section
