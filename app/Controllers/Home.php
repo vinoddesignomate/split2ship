@@ -77,9 +77,10 @@ class Home extends BaseController
             $products =  $products = $this->common->rest_api('/admin/api/2022-10/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
 
-            $response = json_decode($products['body'], true);
-            if (array_key_exists('errors', $response)) {
-               // echo esc("sorry but  i think there is an error. error is" . $response['errors']);
+            $response_home = json_decode($products['body'], true);
+            echo"<pre>"; print_r($response_home); echo "</pre>";
+            if (array_key_exists('errors', $response_home)) {
+               // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
                 echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/index.php/install?shop=" . $_GET['shop'] . "'</script>";
                 // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
