@@ -19,6 +19,12 @@ if(isset($pricurl)){
         forceRedirect: true
     };
     const app = createApp(config);
-    const redirect = Redirect.create(app);
-    redirect.dispatch(Redirect.Action.REMOTE, redircur);
+    if(redircur !=""){
+        const redirect = Redirect.create(app);
+        redirect.dispatch(Redirect.Action.REMOTE, redircur);
+        console.log('in if');
+    }else{
+        console.log('in else');  
+    }
+   
 </script>
