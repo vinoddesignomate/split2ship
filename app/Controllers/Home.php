@@ -58,7 +58,7 @@ class Home extends BaseController
     //     return view('welcome_message');
     // }
 
-    public function mainpage()
+    public function index()
     {
         $data = array();
         $myCommon = new Common();
