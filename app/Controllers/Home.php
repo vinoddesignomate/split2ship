@@ -1772,7 +1772,7 @@ class Home extends BaseController
             // echo "Redirecting to payment page.Please wait";
             $this->user_model->track_store_subscribe($trackarray);
             echo $return_url_res;
-            echo "<script>top.window.location='" . $return_url_res . "'</script>";
+            echo "<script>top.window.location.href='" . $return_url_res . "'</script>";
             echo view('templates/apbrdgnew');
         } else {
             $plane_name = 'basic';
