@@ -177,6 +177,8 @@ class Auth extends BaseController
 					"plan_price" => 0,
 					"sync_orders_count" => 20,
 					"updated_sync_orders_count" => 20,
+					"total_products_partial" => 200,
+					"updated_products_partial" => 200,
 					"plan_status" => 'active',
 					"activate_date" => date('Y-m-d'),
 					"plan_validity" => $plane_start_endate
