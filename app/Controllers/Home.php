@@ -61,7 +61,7 @@ class Home extends BaseController
     public function index()
     {
 
-        echo "welcome page is available"; die();
+       // echo "welcome page is available"; die();
         $data = array();
         $myCommon = new Common();
         $data['myCommon'] = $myCommon;
@@ -69,8 +69,11 @@ class Home extends BaseController
         if (isset($_GET['shop'])) {
             $countrows = $this->user_model->checktokens($_GET['shop']);
             if ($countrows < 1) {
-                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                //return redirect()->to('https://app.payxnowandrestondelivery.com/public/install?shop=' . $_GET['shop']);
+                //echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                echo "count daatched";
+                
+                $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                echo view('templates/apbrdgnew', $data);
             }
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
@@ -79,11 +82,11 @@ class Home extends BaseController
 
             $response = json_decode($products['body'], true);
             if (array_key_exists('errors', $response)) {
-                //echo esc("sorry but  i think there is an error. error is" . $response['errors']);
-                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                //return redirect()->to('https://app.payxnowandrestondelivery.com/public/install?shop=' . $_GET['shop']);
-
-                // header("Location: install.php?shop=" . $_GET['shop']);
+                echo esc("sorry but  i think there is an error. error is" . $response['errors']);
+               // echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+               $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                echo view('templates/apbrdgnew', $data);
+               
                 exit();
             } else {
 
