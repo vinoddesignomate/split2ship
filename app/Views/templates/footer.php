@@ -16,6 +16,16 @@ $fstore_name = $shop_name[0];
 <script src="/shopifypartialapp/public/custom.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+    function myFunction() {
+
+        $(".payxnowandrestondelivery-header-nav-links").toggleClass("payxnowandrestondelivery-show");
+        $(this).toggleClass("payxnowandrestondelivery-animated");
+
+        // $(".payxnowandrestondelivery-header-nav-links").toggle();
+        // return false;
+
+    }
+
     function abc(event) {
         event.preventDefault();
         var href = event.currentTarget.getAttribute('href')
@@ -183,7 +193,7 @@ $fstore_name = $shop_name[0];
         var srchtctval = $(".srchtctval").val();
         if (data_info != "") {
             $('[data-rel=' + data_rel + ']').addClass('active');
-        } 
+        }
 
 
 
@@ -238,7 +248,7 @@ $fstore_name = $shop_name[0];
         var sel_val = $("#get_coll").val();
         if (data_info != "") {
             $('[data-rel=' + data_rel + ']').addClass('active');
-        } 
+        }
         if (data_info != '') {
 
             $.ajax({
