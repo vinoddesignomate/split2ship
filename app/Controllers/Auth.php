@@ -81,6 +81,12 @@ class Auth extends BaseController
 				$response['scope']="";
 			}
 
+			if(isset($response['access_token'])){
+				$response['access_token'] = $response['access_token'];
+			}else {
+				$response['access_token']="";
+			}
+
 			$countrows = $userModel->checktokens($parameters['shop']);
 			if ($countrows < 1) {
 				$curdate = date('Y-m-d');

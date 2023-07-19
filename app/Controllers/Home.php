@@ -79,7 +79,7 @@ class Home extends BaseController
 
             $response = json_decode($products['body'], true);
             if (array_key_exists('errors', $response)) {
-                echo esc("sorry but  i think there is an error. error is" . $response['errors']);
+               // echo esc("sorry but  i think there is an error. error is" . $response['errors']);
                 echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
                 // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
