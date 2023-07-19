@@ -231,8 +231,67 @@ class Home extends BaseController
                         }
                     }
                 }
+                //shipping method config section
+
+                if ($this->request->getPost('ship_method')) {
+                    if ($this->request->getPost('ship_method')) {
+                        if ($this->request->getPost('delivery_partner') == 'ship_roc') {
+
+                            $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($_POST['ship_email']) . '&password=' . trim($_POST['ship_pwd']) . '', '', 'POST', '');
+                            $new_res = json_decode($get_response);
+
+                            if (isset($new_res->message)) {
+                                if (isset($new_res->errors)) {
+                                    echo json_encode($new_res->errors);
+                                } else {
+                                    echo $new_res->message;
+                                }
+
+                                // echo view('templates/apbrdgnew');
+                            } else {
+                                // echo "else";
+                                $update_price = array(
+                                    "email" => $this->request->getPost('ship_email'),
+                                    "password" => $this->request->getPost('ship_pwd'),
+                                    "channel_id" => $this->request->getPost('ship_chnl_id'),
+                                    "created" => date('Y-m-d'),
+                                    "shop_url" => $_REQUEST['shop'],
+                                    "shiping_partner_type" => $this->request->getPost('delivery_partner'),
+                                    "enable_shipping_type" => $this->request->getPost('delivery_partner'),
+
+                                );
+                                //print_r($update_price);
+                                $this->user_model->shiprocket_config_db($update_price);
+                                echo "Information successfully saved";
+                                // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/shiprocket-config'</script>";
+                            }
+                        } else {
+                            $update_price = array(
+                                "token" => $this->request->getPost('ship_email'),
+                                "shipping_address" => $this->request->getPost('shipping_address'),
+                                "created" => date('Y-m-d'),
+                                "shop_url" => $_REQUEST['shop'],
+                                "shiping_partner_type" => $this->request->getPost('delivery_partner'),
+                                "enable_shipping_type" => $this->request->getPost('delivery_partner'),
+
+                            );
+                            //print_r($update_price);
+                            $this->user_model->shiprocket_config_db($update_price);
+                            echo "Information successfully saved";
+                        }
+
+                        echo view('templates/apbrdgnew');
+                    }
+                }
                 echo "this main page6";
-                $data['ship_provider'] = "";
+                $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
+
+                //order list info section
+                if (!empty($data['shiprocket_info'])) {
+                    $data['ship_provider'] = $data['shiprocket_info'][0]->shiping_partner_type;
+                } else {
+                    $data['ship_provider'] = "";
+                }
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 echo view('templates/header');
                 echo view('welcome_message', $data);
