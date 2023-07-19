@@ -1032,23 +1032,28 @@ class Home extends BaseController
         $data = array();
 
         $get_datalates = $this->user_model->get_lates_records($_GET['shop']);
+        if (!empty($get_datalates)) {
+            $limit = $get_datalates[0]->latest_count;
+            $get_totals = $this->user_model->get_partial_product_list($_GET['shop']);
+            $get_totals_num = count($get_totals);
+            $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
+            // $total_pages = ceil ($get_totals / $limit);  
+            //echo "total_pages".$data['total_pages'];
+            $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], 0, $limit);
 
-        $limit = $get_datalates[0]->latest_count;
-        $get_totals = $this->user_model->get_partial_product_list($_GET['shop']);
-        $get_totals_num = count($get_totals);
-        $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
-        // $total_pages = ceil ($get_totals / $limit);  
-        //echo "total_pages".$data['total_pages'];
-        $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], 0, $limit);
-
-        // echo "<pre>";
-        // print_r($get_datalates);
-        // echo "</pre>";
+            // echo "<pre>";
+            // print_r($get_datalates);
+            // echo "</pre>";
 
 
-        echo view('templates/header');
-        echo view('partial_lates_products_list', $data);
-        echo view('templates/footer');
+            echo view('templates/header');
+            echo view('partial_lates_products_list', $data);
+            echo view('templates/footer');
+        } else {
+            $data = array();
+            $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/products-list";
+            echo view('templates/apbrdgnew', $data);
+        }
     }
 
     public function track_partial_percentage()
@@ -1142,7 +1147,7 @@ class Home extends BaseController
                     //         $pendingamnt = 0;
                     //     }
                     // }
-                   // echo "<pre>"; print_r($value); echo"</pre>";
+                    // echo "<pre>"; print_r($value); echo"</pre>";
                     if ($value['financial_status'] == "paid") {
 
                         $orders_sts = $value['financial_status'];
@@ -1771,13 +1776,13 @@ class Home extends BaseController
             );
             // echo "Redirecting to payment page.Please wait";
             $this->user_model->track_store_subscribe($trackarray);
-           // echo $return_url_res;
-           $data = array();
-           $data['pricurl'] = $return_url_res;
-           // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
-         
-           // echo "<script>alert('redirecting please wait..');top.window.location='" . $return_url_res . "'</script>";
-            echo view('templates/apbrdgnew',$data);
+            // echo $return_url_res;
+            $data = array();
+            $data['pricurl'] = $return_url_res;
+            // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
+
+            // echo "<script>alert('redirecting please wait..');top.window.location='" . $return_url_res . "'</script>";
+            echo view('templates/apbrdgnew', $data);
             exit;
         } else {
             $plane_name = 'basic';
