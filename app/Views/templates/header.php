@@ -41,7 +41,7 @@ $page_name = end($link_array);
 
 $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
-if ($page_name == "index.php") {
+if ($page_name == "index.php" || $page_name =="mainpage") {
     $clsname = "payxhomecls";
 } else {
     $clsname = $page_name;
