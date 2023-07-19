@@ -188,7 +188,11 @@ class Auth extends BaseController
 			}
 
 
-			echo "<script>top.window.location='https://admin.shopify.com/store/" . $auth_store_name . "/apps/pay-x-now-rest-on-delivery'</script>";
+			//echo "<script>top.window.location='https://admin.shopify.com/store/" . $auth_store_name . "/apps/pay-x-now-rest-on-delivery'</script>";
+			$data = array();
+			$data['pricurl'] = "https://admin.shopify.com/store/" . $auth_store_name . "/apps/pay-x-now-rest-on-delivery";
+            echo view('templates/apbrdgnew', $data);
+
 		} else {
 			echo "it is not comming from shopify";
 		}
