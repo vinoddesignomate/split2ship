@@ -283,7 +283,7 @@ class Home extends BaseController
                         echo view('templates/apbrdgnew');
                     }
                 }
-                echo "this main page6";
+                //echo "this main page6";
                 $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
 
                 //order list info section
@@ -412,7 +412,7 @@ class Home extends BaseController
                 echo view('welcome_message', $data);
                 echo view('templates/footer');
             }
-            echo "this main page7";
+            //echo "this main page7";
         }
     }
 
