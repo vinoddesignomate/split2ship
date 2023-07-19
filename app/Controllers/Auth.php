@@ -69,7 +69,7 @@ class Auth extends BaseController
 
 
 			echo"<pre>"; print_r($response); echo"</pre>"; 
-			die();
+			//die();
 
 			if(isset($response['expires_in'])){
 				$response['expires_in'] = $response['expires_in'];
