@@ -66,11 +66,11 @@ class Home extends BaseController
         if (isset($_GET['shop'])) {
             $countrows = $this->user_model->checktokens($_GET['shop']);
             if ($countrows < 1) {
-                //echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
                 echo "count daatched";
 
-                $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
-                echo view('templates/apbrdgnew', $data);
+                // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                // echo view('templates/apbrdgnew', $data);
             }
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
@@ -80,9 +80,9 @@ class Home extends BaseController
             $response = json_decode($products['body'], true);
             if (array_key_exists('errors', $response)) {
                 echo esc("sorry but  i think there is an error. error is" . $response['errors']);
-                // echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
-                echo view('templates/apbrdgnew', $data);
+                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                // echo view('templates/apbrdgnew', $data);
 
                 exit();
             } else {
