@@ -1773,6 +1773,7 @@ class Home extends BaseController
             $this->user_model->track_store_subscribe($trackarray);
            // echo $return_url_res;
             echo "<script>alert('redirecting please wait..');top.window.location='" . $return_url_res . "'</script>";
+            exit();
             //echo view('templates/apbrdgnew');
         } else {
             $plane_name = 'basic';
