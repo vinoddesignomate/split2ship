@@ -87,6 +87,10 @@ class Home extends BaseController
                 exit();
             } else {
                 echo "this main page4";
+                $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
+                echo view('templates/header');
+                echo view('welcome_message', $data);
+                echo view('templates/footer');
             }
             echo "this main page5";
         }
