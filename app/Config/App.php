@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://app.payxnowandrestondelivery.com/';
+    public $baseURL = 'https://app.payxnowandrestondelivery.com/public/';
 
     /**
      * --------------------------------------------------------------------------

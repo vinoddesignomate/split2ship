@@ -74,7 +74,7 @@ class Home extends BaseController
             }
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
-            $products =  $products = $this->common->rest_api('/admin/api/2021-01/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+            $products =  $products = $this->common->rest_api('/admin/api/2022-10/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
 
             $response = json_decode($products['body'], true);
@@ -84,7 +84,7 @@ class Home extends BaseController
                 // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
 
-                exit();
+               // exit();
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
                 if ($this->request->getPost('assign_save')) {
