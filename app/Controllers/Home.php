@@ -1799,8 +1799,10 @@ class Home extends BaseController
 
             );
             $this->user_model->track_store_subscribe($trackarray);
-            echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
-            echo view('templates/apbrdgnew');
+            $data = array();
+            $data['pricurl'] = $return_url_res;
+           // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
+            echo view('templates/apbrdgnew',$data);
         }
     }
 
