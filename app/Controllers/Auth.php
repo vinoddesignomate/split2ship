@@ -86,6 +86,11 @@ class Auth extends BaseController
 			}else {
 				$response['access_token']="";
 			}
+			if(isset($response['scope'])){
+				$response['scope'] = $response['scope'];
+			}else {
+				$response['scope']="";
+			}
 
 			$countrows = $userModel->checktokens($parameters['shop']);
 			if ($countrows < 1) {
