@@ -455,18 +455,23 @@ class Home extends BaseController
     {
 
         //$this->get_scan_count(); //call scan count api and update particular store
-
+        $data = array();
         $plan_details = $this->user_model->get_store_plan($_GET['shop']);
         if (empty($plan_details)) {
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
-            die();
+            //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+
+
+            $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+            echo view('templates/apbrdgnew', $data);
+
+            //die();
         } else {
             if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
-                die();
+                $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+                echo view('templates/apbrdgnew', $data);
             } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
-                echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
-                die();
+                $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+                echo view('templates/apbrdgnew', $data);
             }
         }
     }
