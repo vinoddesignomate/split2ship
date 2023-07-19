@@ -42,6 +42,7 @@ $routes->get('/token', 'Auth::token');
 
 //admin app routes
 $routes->match(['get', 'post'],'/', 'Home::index');
+$routes->match(['get', 'post'],'/mainpage', 'Home::mainpage');
 $routes->match(['get', 'post'],'/product-pagination', 'Home::product_pagination');
 $routes->match(['get', 'post'],'/home-product-pagination', 'Home::product_pagination2');
 $routes->match(['get', 'post'],'/products-list', 'Home::assign_products_partial');

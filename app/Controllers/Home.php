@@ -58,6 +58,10 @@ class Home extends BaseController
     //     return view('welcome_message');
     // }
 
+    public function mainpage()
+    {
+        echo "this main page";
+    }
     public function index()
     {
 
