@@ -167,9 +167,9 @@
                                 </select>
                             </div>
                             <div class="payxnowandrestondelivery-flex-row payxnowandrestondelivery-image-row">
-                                <div><img src="/public/images/delhivery-img.svg" alt="delhivery-icon"></div>
-                                <div><img src="/public/images/pickrr.svg" alt="pickrr-icon"></div>
-                                <div><img src="/public/images/shiprocket.svg" alt="shiprocket-icon"></div>
+                                <div><img src="/public/images/delhivery-img.webp" alt="delhivery-icon"></div>
+                                <div><img src="/public/images/pickrr.webp" alt="pickrr-icon"></div>
+                                <div><img src="/public/images/shiprocket.webp" alt="shiprocket-icon"></div>
                             </div>
                         </div>
                         <div class="payxnowandrestondelivery-main-data-col">
