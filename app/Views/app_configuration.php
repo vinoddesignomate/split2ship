@@ -113,34 +113,34 @@ $store_name = $shop_name[0];
 
                 <h5><b class="text-orange">Step 1:</b> Login to your Shopify store and go to your theme under online .</h5>
 
-                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.jpg" /></div>
+                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp" /></div>
         </div>
         <div class=" payxnowandrestondelivery-main-area ">
                 <h5><b class="text-orange">Step 2:</b> click on “Customize” the theme.</h5>
 
-                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config2.jpg" /></div>
+                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config2.webp" /></div>
         </div>
         <div class=" payxnowandrestondelivery-main-area ">
                 <h5><b class="text-orange">Step 3:</b> Select default product under product drop down.</h5>
 
-                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config3.jpg" /></div>
+                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config3.webp" /></div>
         </div>
         <div class="payxnowandrestondelivery-main-area-row">
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 4:</b> click on “App embeds” in left sidebar. Activate App like this</h5>
 
-                        <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/app-embed.png?var=1" /></div>
+                        <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/app-embed.webp?var=1" /></div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Add section where you want to show partial and full pay.</h5>
 
-                        <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/step-5.png?var=2" /></div>
+                        <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/step-5.webp?var=2" /></div>
                 </div>
         </div>
         <div class=" payxnowandrestondelivery-main-area ">
                 <h5><b class="text-orange">Step 6:</b> App section will show like this.</h5>
 
-                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config6.jpg?var=3" /></div>
+                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config6.webp?var=3" /></div>
         </div>
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
