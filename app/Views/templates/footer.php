@@ -299,7 +299,7 @@ $fstore_name = $shop_name[0];
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
-            data: 'shop=' + shopname + '&update_per=true&change_partial='+partial_percentage+'&update_id='+this_id_frm+'&' + formdata,
+            data: 'shop=' + shopname + '&update_per=true&change_partial='+partial_percentage+'&update_id='+this_id_frm,
             success: function(response) {
                 $("#show_per_" + this_id_frm).show();
                 $("#show_per_" + this_id_frm).html(response);
