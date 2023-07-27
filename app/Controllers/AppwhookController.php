@@ -48,6 +48,18 @@ class AppwhookController extends BaseController
             $userModel->update_shops_status($shop_header);
         }
 
+        $trackarray = array(
+            "shop_url" => $shop_header,
+            "charged_id" => '',
+            "sync_orders_count" => 0,
+            "updated_sync_orders_count" => 0,
+            "total_products_partial" => 0,
+            "updated_products_partial" => 0,
+            "plan_status" => 'deactivate',
+            "plan_validity" =>  date('Y-m-d', strtotime('-1 day'))
+
+        );
+        $userModel->deactivate_price_plane($trackarray);
         $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
         $userModel->check_test_response($resposne_array);
         echo "200 ok";

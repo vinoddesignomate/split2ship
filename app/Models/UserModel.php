@@ -693,4 +693,11 @@ class UserModel extends Model
         $payxq = $payxnow_qublder->get();
         return $payxq->getResult();            
     }
+    public function deactivate_price_plane($insert_data)
+    {
+
+        $this->db->table('ppa_subscribe_store')->where('shop_url', $insert_data['shop_url'])->update($insert_data);
+        return $this->db->affectedRows();
+        
+    }
 }
