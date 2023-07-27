@@ -287,6 +287,29 @@ $fstore_name = $shop_name[0];
         }
     });
 
+    $('.partial_update_price').on('click', function(e) {
+        // alert('ddd');
+        const trvd = new Date();
+        let track_req_time = trvd.getTime();
+        var this_id_frm = $(this).attr('subid');
+        var partial_percentage = $("#partial_textinput_" + this_id_frm).val();
+        var update_id = $("#partial_textinput_" + this_id_frm).val();
+        var shopname = '<?php echo esc($_GET['shop']); ?>';
+        console.log(formdata);
+        $.ajax({
+            type: "POST",
+            url: "track_partial_percentage?rqtme=" + track_req_time,
+            data: 'shop=' + shopname + '&update_per=true&change_partial='+partial_percentage+'&update_id='+this_id_frm+'&' + formdata,
+            success: function(response) {
+                $("#show_per_" + this_id_frm).show();
+                $("#show_per_" + this_id_frm).html(response);
+                $("#show_per_text_" + this_id_frm).hide();
+            }
+
+        });
+        return false;
+    });
+
     $('.payxnowandrestondelivery-subbtn').on('click', function(e) {
         // alert('ddd');
         const trvd = new Date();
@@ -294,6 +317,7 @@ $fstore_name = $shop_name[0];
         var this_id_frm = $(this).attr('subid');
         var formdata = $("#sub_form_data_" + this_id_frm).serialize();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
+        console.log(formdata);
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
