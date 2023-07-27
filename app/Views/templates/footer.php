@@ -295,7 +295,7 @@ $fstore_name = $shop_name[0];
         var partial_percentage = $("#partial_textinput_" + this_id_frm).val();
         var update_id = $("#partial_textinput_" + this_id_frm).val();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
-        console.log(formdata);
+        
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
@@ -317,7 +317,7 @@ $fstore_name = $shop_name[0];
         var this_id_frm = $(this).attr('subid');
         var formdata = $("#sub_form_data_" + this_id_frm).serialize();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
-        console.log(formdata);
+  
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
