@@ -1765,7 +1765,7 @@ class Home extends BaseController
                 //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
 
                 $get_reposne = json_decode($get_subscribe['body'], true);
-                echo"<pre>"; print_r($get_reposne); echo "</pre>";
+                //echo"<pre>"; print_r($get_reposne); echo "</pre>";
                 // echo view('templates/apbrdgnew');
                 // die();
                 $plane_charged_id = $get_reposne['recurring_application_charge']['id'];
@@ -1784,13 +1784,10 @@ class Home extends BaseController
                 // echo "Redirecting to payment page.Please wait";
                 $this->user_model->track_store_subscribe($trackarray);
                 // echo $return_url_res;
-                //$data = array();
-                ///$data['pricurl'] = $return_url_res;
-                // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
-
-                // echo "<script>alert('redirecting please wait..');top.window.location='" . $return_url_res . "'</script>";
-                //echo view('templates/apbrdgnew', $data);
-                //exit;
+                $data = array();
+                $data['pricurl'] = $return_url_res;
+                echo view('templates/apbrdgnew', $data);
+                exit;
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
@@ -1858,14 +1855,14 @@ class Home extends BaseController
             "updated_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
             "plan_validity" => $plane_start_endate
         );
-        echo"<pre>"; print_r($update_data); echo "</pre>";
+        //echo"<pre>"; print_r($update_data); echo "</pre>";
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $this->user_model->track_store_subscribe($update_data);
-            //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery'</script>";
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery'</script>";
             echo view('templates/apbrdgnew');
         } else {
             $this->user_model->update_plan_after_payment($update_data);
-           // echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+           echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
             echo view('templates/apbrdgnew');
         }
     }
