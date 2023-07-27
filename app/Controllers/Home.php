@@ -78,14 +78,14 @@ class Home extends BaseController
 
 
             $response_home = json_decode($products['body'], true);
-           // echo"<pre>"; print_r($response_home); echo "</pre>"; die();
+            // echo"<pre>"; print_r($response_home); echo "</pre>"; die();
             if (array_key_exists('errors', $response_home)) {
-               // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
+                // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
                 echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
                 // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
 
-               // exit();
+                // exit();
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
                 if ($this->request->getPost('assign_save')) {
@@ -220,7 +220,7 @@ class Home extends BaseController
 
                 $data['products'] = $product_list;
                 $data['get_store_collections'] = $get_store_collections;
-               
+
                 if (!empty($product_list)) {
                     if (isset($grapql_products_list_prodct['data']['collection'])) {
                         if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage'] == 1) {
@@ -284,7 +284,7 @@ class Home extends BaseController
                         echo view('templates/apbrdgnew');
                     }
                 }
-               // echo "this main page9";
+                // echo "this main page9";
                 $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
 
                 //order list info section
@@ -413,7 +413,7 @@ class Home extends BaseController
                 echo view('welcome_message', $data);
                 echo view('templates/footer');
             }
-           // echo "this main page8";
+            // echo "this main page8";
         }
     }
 
@@ -1727,39 +1727,73 @@ class Home extends BaseController
                 $freetrial = 0;
                 $stype = "";
             }
+            try {
+                if (!empty($plan_details)) {
+                    if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->plan_validity > date('Y-m-d')) {
+                        $oldprice = $plan_details[0]->plan_price;
+                        $newprice = $this->plane_details[$_GET['plan']]['price'];
+                        $currentdate = date('Y-m-d');
+                        // $earlier = new DateTime($currentdate);
+                        // $later = new DateTime($plan_details[0]->plan_validity);
+                        // echo "abs_diff=".$abs_diff = $later->diff($earlier)->format("%a");
+                        $diff = strtotime($plan_details[0]->plan_validity) - strtotime($currentdate);
+                        $getretunvalue = abs(round($diff / 86400));
+                        if ($getretunvalue < 30) {
+                            if ($newprice > $oldprice) {   //upgrade the plan
+                                $finalprice = $oldprice + ($newprice - $oldprice) * ($getretunvalue / 30);
+                                $finalprice = round($finalprice);
+                            } else { //downgrade the plan
+                                $finalprice = ($oldprice - $newprice) * ($getretunvalue / 30);
+                                $finalprice = round($finalprice);
+                            }
+                        } else {
+                            $finalprice = $plane_price;
+                        }
+                    } else {
+                        if ($plan_details[0]->plan_validity == null) {
+                            $freetrial = 7;
+                            $stype = "&typu=f";
+                        }
+                        $finalprice = $plane_price;
+                    }
+                } else {
+                    $finalprice = $plane_price;
+                }
+                $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $finalprice, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
 
-            $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
 
+                //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
 
-            //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
+                $get_reposne = json_decode($get_subscribe['body'], true);
+                // print_r($get_reposne);
+                // echo view('templates/apbrdgnew');
+                // die();
+                $plane_charged_id = $get_reposne['recurring_application_charge']['id'];
+                $plan_status = $get_reposne['recurring_application_charge']['status'];
+                $return_url_res = $get_reposne['recurring_application_charge']['confirmation_url'];
+                $trackarray = array(
+                    "shop_url" => $_GET['shop'],
+                    "charged_id" => $plane_charged_id,
+                    //"plan_name" => $plane_name,
+                    // "plan_price" => $plane_price,
+                    // "scan_count" => $plane_scane_count,
+                    // "updated_scan_count" => $plane_scane_count,
+                    //"plan_status" => $plan_status
 
-            $get_reposne = json_decode($get_subscribe['body'], true);
-            // print_r($get_reposne);
-            // echo view('templates/apbrdgnew');
-            // die();
-            $plane_charged_id = $get_reposne['recurring_application_charge']['id'];
-            $plan_status = $get_reposne['recurring_application_charge']['status'];
-            $return_url_res = $get_reposne['recurring_application_charge']['confirmation_url'];
-            $trackarray = array(
-                "shop_url" => $_GET['shop'],
-                "charged_id" => $plane_charged_id,
-                //"plan_name" => $plane_name,
-                // "plan_price" => $plane_price,
-                // "scan_count" => $plane_scane_count,
-                // "updated_scan_count" => $plane_scane_count,
-                //"plan_status" => $plan_status
+                );
+                // echo "Redirecting to payment page.Please wait";
+                $this->user_model->track_store_subscribe($trackarray);
+                // echo $return_url_res;
+                $data = array();
+                $data['pricurl'] = $return_url_res;
+                // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
 
-            );
-            // echo "Redirecting to payment page.Please wait";
-            $this->user_model->track_store_subscribe($trackarray);
-            // echo $return_url_res;
-            $data = array();
-            $data['pricurl'] = $return_url_res;
-            // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
-
-            // echo "<script>alert('redirecting please wait..');top.window.location='" . $return_url_res . "'</script>";
-            echo view('templates/apbrdgnew', $data);
-            exit;
+                // echo "<script>alert('redirecting please wait..');top.window.location='" . $return_url_res . "'</script>";
+                echo view('templates/apbrdgnew', $data);
+                exit;
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
         } else {
             $plane_name = 'basic';
             $plane_price = 0;
@@ -1784,8 +1818,11 @@ class Home extends BaseController
 
             );
             $this->user_model->track_store_subscribe($trackarray);
-            echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
+           // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
+           $data = array();
+           $data['pricurl'] = $return_url_res;          
             echo view('templates/apbrdgnew');
+            exit();
         }
     }
 
