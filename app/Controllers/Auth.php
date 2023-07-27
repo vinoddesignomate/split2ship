@@ -179,9 +179,9 @@ class Auth extends BaseController
 			);
 
 			$userModel->insert_webhooks($track_webhook);
-			$plan_details = $userModel->get_store_plan($_GET['shop']);
-			echo"<pre>"; print_r($plan_details); echo"</pre>";
-			die();
+			$plan_details = $userModel->get_store_plane($_GET['shop']);
+			// echo"<pre>"; print_r($plan_details); echo"</pre>";
+			// die();
 			if (empty($plan_details)){
 				$plane_start_date = date('Y-m-d');
 				$plane_start_endate = date('Y-m-d', strtotime('+30 days'));
