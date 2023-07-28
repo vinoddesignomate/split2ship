@@ -700,4 +700,11 @@ class UserModel extends Model
         return $this->db->affectedRows();
         
     }
+    public function get_charge_id($shop_url){
+
+        $payxnow_qublder = $this->db->table('ppa_subscribe_store');
+        $payxnow_qublder->where('shop_url', $shop_url);
+        $payxq = $payxnow_qublder->get();
+        return $payxq->getResult();            
+    }
 }

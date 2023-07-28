@@ -88,6 +88,8 @@ class Home extends BaseController
                 // exit();
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
+                $get_charge_id = $this->user_model->get_charge_id($_GET['shop']);
+                echo"<pre>"; print_r($get_charge_id); echo "</pre>"; die();
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');
