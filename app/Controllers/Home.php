@@ -1502,7 +1502,7 @@ class Home extends BaseController
                 'item_weight' => 0.5,
                 'is_reverse' => false
             );
-
+            print_r($post_params);
             try {
                 $json_params = json_encode($post_params);
                 $url = 'https://www.pickrr.com/api/place-order/';
