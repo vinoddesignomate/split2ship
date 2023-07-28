@@ -88,27 +88,7 @@ class Home extends BaseController
                 // exit();
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
-                $get_charge_id = $this->user_model->get_charge_id($_GET['shop']);
-                echo "<pre>";
-                print_r($get_charge_id);
-                echo "</pre>";
                
-                if (isset($get_charge_id[0]->charged_id) && $get_charge_id[0]->charged_id != "") {
-                    $cancel_charge_id = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges/' . $get_charge_id[0]->charged_id . '.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
-
-                    $cancel_charge_id_res = json_decode($cancel_charge_id['body'], true);
-
-                    echo "cancel_charge_id<pre>";
-                    print_r($cancel_charge_id);
-                    echo "</pre>";
-
-                    echo "sdfref<pre>";
-                    print_r($cancel_charge_id_res);
-                    echo "</pre>";
-
-                }
-
-                die('here');
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');

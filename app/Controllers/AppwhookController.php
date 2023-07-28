@@ -50,7 +50,12 @@ class AppwhookController extends BaseController
 
      
 
-      
+        $get_charge_id = $this->user_model->get_charge_id($_GET['shop']);
+        //cancel charge when uninstalled app     
+        if (isset($get_charge_id[0]->charged_id) && $get_charge_id[0]->charged_id != "") {
+            $cancel_charge_id = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $get_charge_id[0]->charged_id . '.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+            $cancel_charge_id_res = json_decode($cancel_charge_id['body'], true);
+        }
 
         $trackarray = array(
             "shop_url" => $shop_header,
