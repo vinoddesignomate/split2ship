@@ -1635,12 +1635,12 @@ class Home extends BaseController
                     "name": "' . $shiprocket_info[0]->pickup_location . '"
                 }
             }';
-            //  echo $postdata;
+            echo $postdata;
             //  die();
             try {
 
                 $get_result = $this->common->create_custom_order_delhivery($postdata,  $shiprocket_info[0]->shp_token);
-                //print_r($get_result);
+                print_r($get_result);
                 if (isset($get_result['success']) && ($get_result['success'] == true || $get_result['success'] == 'true')) {
                     // throw new \Exception(print_r($result, true) . "Problem in connecting with Pickrr");
                     // throw new \Exception($result['err']);
