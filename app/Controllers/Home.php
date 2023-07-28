@@ -1265,6 +1265,7 @@ class Home extends BaseController
         $initpage = $_REQUEST['ordpage'] - 1;
 
         if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
+            echo"in shiprocket";
             $get_resulsts = $this->user_model->get_token($_GET['shop']);
             // print_r($get_resulsts);
             if (empty($get_resulsts)) {
@@ -1413,9 +1414,10 @@ class Home extends BaseController
             }
             return json_encode($return_array);
         } else  if (isset($shiprocket_info[0]->enable_shipping_type) && trim($shiprocket_info[0]->enable_shipping_type) == 'pickr') {
+            echo"in pickr";
             $this->order_sync_pickrr($shiprocket_info);
         } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'delhivery') {
-            //echo "delhoivery";
+            echo "delhoivery";
             $this->order_sync_delhivery($shiprocket_info);
         }
     }
