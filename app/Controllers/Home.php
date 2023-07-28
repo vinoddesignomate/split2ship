@@ -89,7 +89,22 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
                 $get_charge_id = $this->user_model->get_charge_id($_GET['shop']);
-                echo"<pre>"; print_r($get_charge_id); echo "</pre>"; die();
+                echo "<pre>";
+                print_r($get_charge_id);
+                echo "</pre>";
+               
+                if (isset($get_charge_id[0]->charged_id) && $get_charge_id[0]->charged_id != "") {
+                    $cancel_charge_id = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges/' . $get_charge_id[0]->charged_id . '.json', array(), 'POST', $get_details->access_token, $_GET['shop']);
+
+                    $cancel_charge_id_res = json_decode($cancel_charge_id['body'], true);
+
+                    echo "<pre>";
+                    print_r($cancel_charge_id_res);
+                    echo "</pre>";
+
+                }
+
+                die();
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');
@@ -1817,9 +1832,9 @@ class Home extends BaseController
 
             );
             $this->user_model->track_store_subscribe($trackarray);
-           // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
-           $data = array();
-           $data['pricurl'] = $return_url_res;          
+            // echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
+            $data = array();
+            $data['pricurl'] = $return_url_res;
             echo view('templates/apbrdgnew');
             exit();
         }
@@ -1864,7 +1879,7 @@ class Home extends BaseController
             echo view('templates/apbrdgnew');
         } else {
             $this->user_model->update_plan_after_payment($update_data);
-           echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+            echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
             echo view('templates/apbrdgnew');
         }
     }

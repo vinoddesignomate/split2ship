@@ -48,6 +48,10 @@ class AppwhookController extends BaseController
             $userModel->update_shops_status($shop_header);
         }
 
+     
+
+      
+
         $trackarray = array(
             "shop_url" => $shop_header,
             "charged_id" => '',
