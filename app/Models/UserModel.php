@@ -449,7 +449,7 @@ class UserModel extends Model
         //                 LIMIT " . $start . ", " . $limit . "";  
 
 
-        $getproducts = "SELECT orders.*,orders_products.product_id,
+       echo $getproducts = "SELECT orders.*,orders_products.product_id,
                         orders_products.product_name,orders_products.product_price,
                         orders_products.product_qty,orders_products.product_sku,orders.shipping_address AS shipadr
                         FROM orders
