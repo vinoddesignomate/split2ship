@@ -60,7 +60,6 @@ class AppwhookController extends BaseController
 
         $trackarray = array(
             "shop_url" => $shop_header,
-            "charged_id" => '',
             "sync_orders_count" => 0,
             "updated_sync_orders_count" => 0,
             "total_products_partial" => 0,
