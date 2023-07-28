@@ -98,13 +98,13 @@ class Home extends BaseController
 
                     $cancel_charge_id_res = json_decode($cancel_charge_id['body'], true);
 
-                    echo "<pre>";
+                    echo "sdfref<pre>";
                     print_r($cancel_charge_id_res);
                     echo "</pre>";
 
                 }
 
-                die();
+                die('here');
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');
