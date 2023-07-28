@@ -88,7 +88,7 @@ class Home extends BaseController
                 // exit();
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
-               
+
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');
@@ -1261,11 +1261,11 @@ class Home extends BaseController
         $this->check_subscribe();
         //$this->order_sync_delhivery();
         $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shop']);
-        print_r($shiprocket_info);
+        // print_r($shiprocket_info);
         $initpage = $_REQUEST['ordpage'] - 1;
 
         if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
-            echo"in shiprocket";
+            // echo "in shiprocket";
             $get_resulsts = $this->user_model->get_token($_GET['shop']);
             // print_r($get_resulsts);
             if (empty($get_resulsts)) {
@@ -1283,141 +1283,145 @@ class Home extends BaseController
             // echo "change<pre>";
             // print_r($get_all_ordersnew);
             // echo "</pre>";
-            foreach ($get_all_ordersnew as $set_orders) {
+            if (!empty($get_all_ordersnew)) {
+                foreach ($get_all_ordersnew as $set_orders) {
 
 
 
-                //    if ($set_orders[0]['shipping_address'] != "" && $set_orders[0]['shipping_city'] != "" && $set_orders[0]['state'] != "" && $set_orders[0]['zip'] != "" && $set_orders[0]['country'] != "") {
+                    //    if ($set_orders[0]['shipping_address'] != "" && $set_orders[0]['shipping_city'] != "" && $set_orders[0]['state'] != "" && $set_orders[0]['zip'] != "" && $set_orders[0]['country'] != "") {
 
-                if ($set_orders[0]['phone'] == "") {
-                    $phnum = "9865986598";
-                } else {
-                    $phnum = str_replace(" ", "", $this->common->payxnow_decodedata($set_orders[0]['phone']));
-                    $phnum = str_replace("(", "", $phnum);
-                    $phnum = str_replace(")", "", $phnum);
-                    $phnum = str_replace("-", "", $phnum);
-                }
-                if ($set_orders[0]['cust_fname'] == "") {
-                    $username = $set_orders[0]['cust_lname'];
-                }
-                if ($set_orders[0]['cust_lname'] == "") {
-                    $username = $set_orders[0]['cust_fname'];
-                }
-
-                if ($set_orders[0]['order_status'] == 'paid') {
-                    $shipping_pay_method = "Prepaid";
-                    $shipping_pay_amount = $set_orders[0]['total_price'];
-                } else  if ($set_orders[0]['order_status'] == 'cod') {
-                    $shipping_pay_method = "COD";
-                    $shipping_pay_amount = $set_orders[0]['total_price'];
-                } else {
-                    $shipping_pay_method = "Partial";
-                    $shipping_pay_amount = $set_orders[0]['order_price'];
-                }
-                $create_custom = array(
-                    "order_id" => $set_orders[0]['order_number'],
-                    //"order_id" => "1025",
-                    "order_date" => $set_orders[0]['order_date'],
-                    "channel_id" => $shiprocket_info[0]->channel_id,
-                    "comment" => $shipping_pay_method,
-                    "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
-                    "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
-                    "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
-                    "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
-                    "billing_pincode" => $set_orders[0]['zip'],
-                    "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
-                    "billing_country" => $this->common->payxnow_decodedata($set_orders[0]['country']),
-                    "billing_email" => $this->common->payxnow_decodedata($set_orders[0]['email']),
-                    "billing_phone" => $phnum,
-                    "shipping_is_billing" => true,
-                    "payment_method" => $shipping_pay_method,
-                    "sub_total" => $shipping_pay_amount,
-                    "length" => 1,
-                    "breadth" => 1,
-                    "height" => 1,
-                    "weight" => 1,
-                );
-
-
-                foreach ($set_orders['items'] as $products) {
-                    if ($products['name'] != 'partial Pending Payment') {
-                        $create_custom['order_items'][] = array(
-                            "name" => $products['name'],
-                            "sku" => $products['sku'],
-                            "units" => $products['qty'],
-                            "selling_price" => $products['price'],
-                        );
-                    }
-                }
-                // echo "set_orders<pre>";
-                // print_r($set_orders);
-                // echo "</pre>";
-
-
-                // echo "create_custom<pre>";
-                // print_r($create_custom);
-                // echo "</pre>";
-                // die(); 
-                //echo json_encode($create_custom);
-                //echo "store_token=".$store_token;
-
-                $get_result = $this->common->create_custom_order($create_custom, $store_token);
-                $decoded_res = json_decode($get_result);
-
-
-                // echo "<pre>";
-                // print_r($set_orders);
-                // echo "</pre>";
-
-                echo "decoded_res<pre>";
-                print_r($decoded_res);
-                echo "</pre>";
-
-                if (isset($decoded_res->message) && $decoded_res->message != "") {
-                    // echo $set_orders[0]['order_id'];
-                    // //echo "error";
-                    // echo $decoded_res->errors;
-                    if (isset($decoded_res->errors)) {
-                        $senderror = $decoded_res->errors;
-                        $return_array['error'][] = array("error" => $senderror);
-                        $shperr =  serialize($decoded_res->errors);
+                    if ($set_orders[0]['phone'] == "") {
+                        $phnum = "9865986598";
                     } else {
-                        $shperr =  $decoded_res->message;
-                        $return_array['error'][] = array("error" => $shperr);
+                        $phnum = str_replace(" ", "", $this->common->payxnow_decodedata($set_orders[0]['phone']));
+                        $phnum = str_replace("(", "", $phnum);
+                        $phnum = str_replace(")", "", $phnum);
+                        $phnum = str_replace("-", "", $phnum);
+                    }
+                    if ($set_orders[0]['cust_fname'] == "") {
+                        $username = $set_orders[0]['cust_lname'];
+                    }
+                    if ($set_orders[0]['cust_lname'] == "") {
+                        $username = $set_orders[0]['cust_fname'];
                     }
 
-                    //$getaeeros = json_encode($decoded_res->errors);
-                    // if (isset($decoded_res->errors->billing_phone[0])) {
-                    // $shperr =  $decoded_res->errors->billing_phone[0];
+                    if ($set_orders[0]['order_status'] == 'paid') {
+                        $shipping_pay_method = "Prepaid";
+                        $shipping_pay_amount = $set_orders[0]['total_price'];
+                    } else  if ($set_orders[0]['order_status'] == 'cod') {
+                        $shipping_pay_method = "COD";
+                        $shipping_pay_amount = $set_orders[0]['total_price'];
+                    } else {
+                        $shipping_pay_method = "Partial";
+                        $shipping_pay_amount = $set_orders[0]['order_price'];
+                    }
+                    $create_custom = array(
+                        "order_id" => $set_orders[0]['order_number'],
+                        //"order_id" => "1025",
+                        "order_date" => $set_orders[0]['order_date'],
+                        "channel_id" => $shiprocket_info[0]->channel_id,
+                        "comment" => $shipping_pay_method,
+                        "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
+                        "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
+                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
+                        "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
+                        "billing_pincode" => $set_orders[0]['zip'],
+                        "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
+                        "billing_country" => $this->common->payxnow_decodedata($set_orders[0]['country']),
+                        "billing_email" => $this->common->payxnow_decodedata($set_orders[0]['email']),
+                        "billing_phone" => $phnum,
+                        "shipping_is_billing" => true,
+                        "payment_method" => $shipping_pay_method,
+                        "sub_total" => $shipping_pay_amount,
+                        "length" => 1,
+                        "breadth" => 1,
+                        "height" => 1,
+                        "weight" => 1,
+                    );
 
-                    //} else {
-                    // $shperr = "";
+
+                    foreach ($set_orders['items'] as $products) {
+                        if ($products['name'] != 'partial Pending Payment') {
+                            $create_custom['order_items'][] = array(
+                                "name" => $products['name'],
+                                "sku" => $products['sku'],
+                                "units" => $products['qty'],
+                                "selling_price" => $products['price'],
+                            );
+                        }
+                    }
+                    // echo "set_orders<pre>";
+                    // print_r($set_orders);
+                    // echo "</pre>";
+
+
+                    // echo "create_custom<pre>";
+                    // print_r($create_custom);
+                    // echo "</pre>";
+                    // die(); 
+                    //echo json_encode($create_custom);
+                    //echo "store_token=".$store_token;
+
+                    $get_result = $this->common->create_custom_order($create_custom, $store_token);
+                    $decoded_res = json_decode($get_result);
+
+
+                    // echo "<pre>";
+                    // print_r($set_orders);
+                    // echo "</pre>";
+
+                    echo "decoded_res<pre>";
+                    print_r($decoded_res);
+                    echo "</pre>";
+
+                    if (isset($decoded_res->message) && $decoded_res->message != "") {
+                        // echo $set_orders[0]['order_id'];
+                        // //echo "error";
+                        // echo $decoded_res->errors;
+                        if (isset($decoded_res->errors)) {
+                            $senderror = $decoded_res->errors;
+                            $return_array['error'][] = array("error" => $senderror);
+                            $shperr =  serialize($decoded_res->errors);
+                        } else {
+                            $shperr =  $decoded_res->message;
+                            $return_array['error'][] = array("error" => $shperr);
+                        }
+
+                        //$getaeeros = json_encode($decoded_res->errors);
+                        // if (isset($decoded_res->errors->billing_phone[0])) {
+                        // $shperr =  $decoded_res->errors->billing_phone[0];
+
+                        //} else {
+                        // $shperr = "";
+                        // }
+                        //echo $shperr;
+                        $this->user_model->update_shiprocket_err($set_orders[0]['order_id'], $_GET['shop'], $shperr);
+                    } else {
+                        $syncorderscount[] = $set_orders[0]['order_id'];
+                        $this->user_model->track_sync_order($set_orders[0]['order_id'], $_GET['shop']);
+                        $return_array['success'][] = array("success" => "order sync successfully for order " . $set_orders[0]['order_id']);
+                    }
+
+                    // } else {
+                    //     echo "no-data";
                     // }
-                    //echo $shperr;
-                    $this->user_model->update_shiprocket_err($set_orders[0]['order_id'], $_GET['shop'], $shperr);
-                } else {
-                    $syncorderscount[] = $set_orders[0]['order_id'];
-                    $this->user_model->track_sync_order($set_orders[0]['order_id'], $_GET['shop']);
-                    $return_array['success'][] = array("success" => "order sync successfully for order " . $set_orders[0]['order_id']);
                 }
-
-                // } else {
-                //     echo "no-data";
-                // }
-            }
-            // echo "<pre>";
-            // print_r($syncorderscount);
-            // echo "</pre>";
-            if (!empty($syncorderscount)) {
-                echo count($syncorderscount);
-                $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+                // echo "<pre>";
+                // print_r($syncorderscount);
+                // echo "</pre>";
+                if (!empty($syncorderscount)) {
+                    echo count($syncorderscount);
+                    $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+                }
+            } else {
+                $return_array['error'] = 'Order not found';
             }
             return json_encode($return_array);
         } else  if (isset($shiprocket_info[0]->enable_shipping_type) && trim($shiprocket_info[0]->enable_shipping_type) == 'pickr') {
-            echo"in pickr";
+            //echo "in pickr";
             $this->order_sync_pickrr($shiprocket_info);
         } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'delhivery') {
-            echo "delhoivery";
+            //echo "delhoivery";
             $this->order_sync_delhivery($shiprocket_info);
         }
     }
@@ -1426,125 +1430,129 @@ class Home extends BaseController
 
         $get_resulsts = $this->user_model->get_token($_REQUEST['shop']);
         $initpage = $_REQUEST['ordpage'] - 1;
-        $get_all_orderspickrr = $this->user_model->get_products_orders_pickrr($_REQUEST['shop'],$initpage, $_REQUEST['orderlimit']);
+        $get_all_orderspickrr = $this->user_model->get_products_orders_pickrr($_REQUEST['shop'], $initpage, $_REQUEST['orderlimit']);
 
         $new_return_array = array();
         $syncorderscount = array();
 
         //print_r($get_all_orderspickrr); 
-        foreach ($get_all_orderspickrr as $set_orders) {
+        if (!empty($get_all_orderspickrr)) {
+            foreach ($get_all_orderspickrr as $set_orders) {
 
-            $create_custom = array();
-            $create_customqty = array();
-            $item_listarr = array();
-            foreach ($set_orders['items'] as $products) {
-                $create_custom[] = $products['name'];
-                $create_customqty[] = $products['qty'];
-                $item_listarr[] = array(
-                    "price" => $products['price'],
-                    "item_name" => $products['name'],
-                    "quantity" => $products['qty'],
-                    "sku" => $products['sku'],
-                );
-            }
-
-            if (!empty($create_custom)) {
-                $order_name = implode(",", $create_custom);
-                $order_name_count = count($create_customqty);
-            }
-
-            if ($set_orders[0]['phone'] == "") {
-                $phnum = "9865986598";
-            } else {
-                $fetch_phone = $this->common->payxnow_decodedata($set_orders[0]['phone']);
-                $phnum = str_replace(" ", "", $fetch_phone);
-                $phnum = str_replace("(", "", $phnum);
-                $phnum = str_replace(")", "", $phnum);
-                $phnum = str_replace("-", "", $phnum);
-            }
-            // print_r($item_listarr);
-            // echo "jsondata".json_encode($item_listarr);
-            if ($set_orders[0]['order_status'] == 'paid') {
-                $shipping_pay_method = "Prepaid";
-                $shipping_pay_amount = $set_orders[0]['total_price'];
-                $shipping_pay_amount1 = 0;
-            } else  if ($set_orders[0]['order_status'] == 'cod') {
-                $shipping_pay_method = "COD";
-                $shipping_pay_amount = $set_orders[0]['total_price'];
-                $shipping_pay_amount1 = $set_orders[0]['total_price'];
-            } else {
-                $shipping_pay_method = "Partial";
-                $shipping_pay_amount = $set_orders[0]['order_price'];
-                $shipping_pay_amount1 = $set_orders[0]['order_price'];
-            }
-
-
-
-            $post_params = array(
-                'auth_token' => $shiprocket_info[0]->shp_token,
-                'item_name' => $order_name,
-                'item_list' => json_encode($item_listarr),
-                'from_name' => $shiprocket_info[0]->pickrr_company,
-                'from_phone_number' => $shiprocket_info[0]->pickrr_from_phone,
-                'from_address' => $shiprocket_info[0]->shipping_address,
-                'from_pincode' => $shiprocket_info[0]->pickrr_pincode,
-                'to_name' =>  $this->common->payxnow_decodedata($set_orders[0]['cust_fname']) . ' ' . $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
-                'to_phone_number' => $phnum,
-                //'to_phone_number' => '9996242898',
-                'to_pincode' => $set_orders[0]['zip'],
-                //'to_pincode' => '132157',
-                'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
-                'quantity' => $order_name_count,
-                'invoice_value' => $shipping_pay_amount,
-                'cod_amount' => $shipping_pay_amount1,
-                'client_order_id' => $set_orders[0]['order_number'],
-                'item_breadth' => 1,
-                'item_length' => 1,
-                'item_height' => 1,
-                'item_weight' => 0.5,
-                'is_reverse' => false
-            );
-            print_r($post_params);
-            try {
-                $json_params = json_encode($post_params);
-                $url = 'https://www.pickrr.com/api/place-order/';
-                //open connection
-                $ch = curl_init();
-                //set the url, number of POST vars, POST data
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $json_params);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                //execute post
-                $result = curl_exec($ch);
-                $result = json_decode($result, true);
-
-                //close connection
-                // print_r($set_orders);
-                print_r($result);
-
-                curl_close($ch);
-
-                if (isset($result['err'])) {
-                    // echo "i if";
-                    // echo $set_orders[0]['order_id'];
-                    $new_return_array[$set_orders[0]['order_id']][] = $result['err'];
-
-                    $this->user_model->update_pickr_err($set_orders[0]['order_id'], $_GET['shop'], substr($result['err'], 0, 48) . ' missing');
-                } else {
-                    //    echo "else";
-                    //    echo $set_orders[0]['order_id'];
-                    $syncorderscount[] = $set_orders[0]['order_id'];
-                    $this->user_model->update_pickrr_order($set_orders[0]['order_id'], $_GET['shop']);
-                    $new_return_array[$set_orders[0]['order_id']][] = 'Sync Done';
+                $create_custom = array();
+                $create_customqty = array();
+                $item_listarr = array();
+                foreach ($set_orders['items'] as $products) {
+                    $create_custom[] = $products['name'];
+                    $create_customqty[] = $products['qty'];
+                    $item_listarr[] = array(
+                        "price" => $products['price'],
+                        "item_name" => $products['name'],
+                        "quantity" => $products['qty'],
+                        "sku" => $products['sku'],
+                    );
                 }
-            } catch (\Exception $e) {
-                $new_return_array[] = $e;
+
+                if (!empty($create_custom)) {
+                    $order_name = implode(",", $create_custom);
+                    $order_name_count = count($create_customqty);
+                }
+
+                if ($set_orders[0]['phone'] == "") {
+                    $phnum = "9865986598";
+                } else {
+                    $fetch_phone = $this->common->payxnow_decodedata($set_orders[0]['phone']);
+                    $phnum = str_replace(" ", "", $fetch_phone);
+                    $phnum = str_replace("(", "", $phnum);
+                    $phnum = str_replace(")", "", $phnum);
+                    $phnum = str_replace("-", "", $phnum);
+                }
+                // print_r($item_listarr);
+                // echo "jsondata".json_encode($item_listarr);
+                if ($set_orders[0]['order_status'] == 'paid') {
+                    $shipping_pay_method = "Prepaid";
+                    $shipping_pay_amount = $set_orders[0]['total_price'];
+                    $shipping_pay_amount1 = 0;
+                } else  if ($set_orders[0]['order_status'] == 'cod') {
+                    $shipping_pay_method = "COD";
+                    $shipping_pay_amount = $set_orders[0]['total_price'];
+                    $shipping_pay_amount1 = $set_orders[0]['total_price'];
+                } else {
+                    $shipping_pay_method = "Partial";
+                    $shipping_pay_amount = $set_orders[0]['order_price'];
+                    $shipping_pay_amount1 = $set_orders[0]['order_price'];
+                }
+
+
+
+                $post_params = array(
+                    'auth_token' => $shiprocket_info[0]->shp_token,
+                    'item_name' => $order_name,
+                    'item_list' => json_encode($item_listarr),
+                    'from_name' => $shiprocket_info[0]->pickrr_company,
+                    'from_phone_number' => $shiprocket_info[0]->pickrr_from_phone,
+                    'from_address' => $shiprocket_info[0]->shipping_address,
+                    'from_pincode' => $shiprocket_info[0]->pickrr_pincode,
+                    'to_name' =>  $this->common->payxnow_decodedata($set_orders[0]['cust_fname']) . ' ' . $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
+                    'to_phone_number' => $phnum,
+                    //'to_phone_number' => '9996242898',
+                    'to_pincode' => $set_orders[0]['zip'],
+                    //'to_pincode' => '132157',
+                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
+                    'quantity' => $order_name_count,
+                    'invoice_value' => $shipping_pay_amount,
+                    'cod_amount' => $shipping_pay_amount1,
+                    'client_order_id' => $set_orders[0]['order_number'],
+                    'item_breadth' => 1,
+                    'item_length' => 1,
+                    'item_height' => 1,
+                    'item_weight' => 0.5,
+                    'is_reverse' => false
+                );
+                //print_r($post_params);
+                try {
+                    $json_params = json_encode($post_params);
+                    $url = 'https://www.pickrr.com/api/place-order/';
+                    //open connection
+                    $ch = curl_init();
+                    //set the url, number of POST vars, POST data
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_params);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    //execute post
+                    $result = curl_exec($ch);
+                    $result = json_decode($result, true);
+
+                    //close connection
+                    // print_r($set_orders);
+                    //print_r($result);
+
+                    curl_close($ch);
+
+                    if (isset($result['err'])) {
+                        // echo "i if";
+                        // echo $set_orders[0]['order_id'];
+                        $new_return_array[$set_orders[0]['order_id']][] = $result['err'];
+
+                        $this->user_model->update_pickr_err($set_orders[0]['order_id'], $_GET['shop'], substr($result['err'], 0, 48) . ' missing');
+                    } else {
+                        //    echo "else";
+                        //    echo $set_orders[0]['order_id'];
+                        $syncorderscount[] = $set_orders[0]['order_id'];
+                        $this->user_model->update_pickrr_order($set_orders[0]['order_id'], $_GET['shop']);
+                        $new_return_array[$set_orders[0]['order_id']][] = 'Sync Done';
+                    }
+                } catch (\Exception $e) {
+                    $new_return_array[] = $e;
+                }
             }
-        }
-        if (!empty($syncorderscount)) {
-            echo count($syncorderscount);
-            $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+            if (!empty($syncorderscount)) {
+                echo count($syncorderscount);
+                $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+            }
+        } else {
+            $new_return_array['error'] = 'Order not found';
         }
         // print_r($new_return_array);
         return json_encode($new_return_array);
@@ -1559,65 +1567,66 @@ class Home extends BaseController
 
         $return_array = array();
         $syncorderscount = array();
-        foreach ($get_all_ordersdelhivery as $set_orders) {
+        if (!empty($get_all_ordersdelhivery)) {
+            foreach ($get_all_ordersdelhivery as $set_orders) {
 
-            $create_custom = array();
-            foreach ($set_orders['items'] as $products) {
-                $create_custom[] = $products['name'];
-            }
+                $create_custom = array();
+                foreach ($set_orders['items'] as $products) {
+                    $create_custom[] = $products['name'];
+                }
 
-            if (!empty($create_custom)) {
-                $order_name = implode(",", $create_custom);
-                $order_name_count = count($create_custom);
-            }
+                if (!empty($create_custom)) {
+                    $order_name = implode(",", $create_custom);
+                    $order_name_count = count($create_custom);
+                }
 
-            // $post_params = array(
-            //     'auth_token' => '88596e7da4cb8da8fe5ad2ac6ff3acee854253',
-            //     'item_name' => $order_name,
-            //     'from_name' => 'Designomate',
-            //     'from_phone_number' => '9996242898',
-            //     'from_address' => 'A - 130 , 91 SPRINGBOARD , SECTOR 63 , NOIDA , Gautam Buddha Nagar , Uttar Pradesh',
-            //     'from_pincode' => '201302',
-            //     'to_name' =>  $set_orders[0]['cust_fname'] . ' ' . $set_orders[0]['cust_lname'],
-            //     'to_phone_number' => $set_orders[0]['phone'],
-            //     //'to_phone_number' => '9996242898',
-            //     'to_pincode' => $set_orders[0]['zip'],
-            //     //'to_pincode' => '132157',
-            //     'to_address' => $set_orders[0]['shipping_address'],
-            //     'quantity' => $order_name_count,
-            //     'invoice_value' => $set_orders[0]['order_price'],
-            //     'cod_amount' => $set_orders[0]['order_price'],
-            //     'client_order_id' => $set_orders[0]['order_id'],
-            //     'item_breadth' => 1,
-            //     'item_length' => 1,
-            //     'item_height' => 1,
-            //     'item_weight' => 0.5,
-            //     'is_reverse' => false
-            // );
+                // $post_params = array(
+                //     'auth_token' => '88596e7da4cb8da8fe5ad2ac6ff3acee854253',
+                //     'item_name' => $order_name,
+                //     'from_name' => 'Designomate',
+                //     'from_phone_number' => '9996242898',
+                //     'from_address' => 'A - 130 , 91 SPRINGBOARD , SECTOR 63 , NOIDA , Gautam Buddha Nagar , Uttar Pradesh',
+                //     'from_pincode' => '201302',
+                //     'to_name' =>  $set_orders[0]['cust_fname'] . ' ' . $set_orders[0]['cust_lname'],
+                //     'to_phone_number' => $set_orders[0]['phone'],
+                //     //'to_phone_number' => '9996242898',
+                //     'to_pincode' => $set_orders[0]['zip'],
+                //     //'to_pincode' => '132157',
+                //     'to_address' => $set_orders[0]['shipping_address'],
+                //     'quantity' => $order_name_count,
+                //     'invoice_value' => $set_orders[0]['order_price'],
+                //     'cod_amount' => $set_orders[0]['order_price'],
+                //     'client_order_id' => $set_orders[0]['order_id'],
+                //     'item_breadth' => 1,
+                //     'item_length' => 1,
+                //     'item_height' => 1,
+                //     'item_weight' => 0.5,
+                //     'is_reverse' => false
+                // );
 
-            if ($set_orders[0]['order_status'] == 'paid') {
-                $shipping_pay_method = "Prepaid";
-                $shipping_pay_amount = $set_orders[0]['total_price'];
-            } else  if ($set_orders[0]['order_status'] == 'cod') {
-                $shipping_pay_method = "Postpaid";
-                $shipping_pay_amount = $set_orders[0]['total_price'];
-            } else {
-                $shipping_pay_method = "Postpaid";
-                $shipping_pay_amount = $set_orders[0]['order_price'];
-            }
+                if ($set_orders[0]['order_status'] == 'paid') {
+                    $shipping_pay_method = "Prepaid";
+                    $shipping_pay_amount = $set_orders[0]['total_price'];
+                } else  if ($set_orders[0]['order_status'] == 'cod') {
+                    $shipping_pay_method = "Postpaid";
+                    $shipping_pay_amount = $set_orders[0]['total_price'];
+                } else {
+                    $shipping_pay_method = "Postpaid";
+                    $shipping_pay_amount = $set_orders[0]['order_price'];
+                }
 
 
 
-            if ($set_orders[0]['phone'] == "") {
-                $phnum = "9865986598";
-            } else {
-                $phnum = str_replace(" ", "", $this->common->payxnow_decodedata($set_orders[0]['phone']));
-                $phnum = str_replace("(", "", $phnum);
-                $phnum = str_replace(")", "", $phnum);
-                $phnum = str_replace("-", "", $phnum);
-            }
+                if ($set_orders[0]['phone'] == "") {
+                    $phnum = "9865986598";
+                } else {
+                    $phnum = str_replace(" ", "", $this->common->payxnow_decodedata($set_orders[0]['phone']));
+                    $phnum = str_replace("(", "", $phnum);
+                    $phnum = str_replace(")", "", $phnum);
+                    $phnum = str_replace("-", "", $phnum);
+                }
 
-            $postdata = 'format=json&data={
+                $postdata = 'format=json&data={
                 "shipments": [
                     {
                         "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . '",
@@ -1637,34 +1646,37 @@ class Home extends BaseController
                     "name": "' . $shiprocket_info[0]->pickup_location . '"
                 }
             }';
-           // echo $postdata;
-            //  die();
-            try {
+                // echo $postdata;
+                //  die();
+                try {
 
-                $get_result = $this->common->create_custom_order_delhivery($postdata,  $shiprocket_info[0]->shp_token);
-               // print_r($get_result);
-                if (isset($get_result['success']) && ($get_result['success'] == true || $get_result['success'] == 'true')) {
-                    // throw new \Exception(print_r($result, true) . "Problem in connecting with Pickrr");
-                    // throw new \Exception($result['err']);
-                    $syncorderscount[] = $set_orders[0]['order_id'];
-                    $this->user_model->update_delhivery_order($set_orders[0]['order_id'], $_GET['shop']);
-                    $return_array[$set_orders[0]['order_id']][] = 'Sync Done';
-                } else {
-                    if (!empty($get_result['packages'][0]['remarks'][0])) {
-                        $return_array[$set_orders[0]['order_id']][] = $get_result['packages'][0]['remarks'][0];
-                        $this->user_model->update_delhivery_err($set_orders[0]['order_id'], $_GET['shop'], str_replace("'", "", $get_result['packages'][0]['remarks'][0]));
+                    $get_result = $this->common->create_custom_order_delhivery($postdata,  $shiprocket_info[0]->shp_token);
+                    // print_r($get_result);
+                    if (isset($get_result['success']) && ($get_result['success'] == true || $get_result['success'] == 'true')) {
+                        // throw new \Exception(print_r($result, true) . "Problem in connecting with Pickrr");
+                        // throw new \Exception($result['err']);
+                        $syncorderscount[] = $set_orders[0]['order_id'];
+                        $this->user_model->update_delhivery_order($set_orders[0]['order_id'], $_GET['shop']);
+                        $return_array[$set_orders[0]['order_id']][] = 'Sync Done';
                     } else {
-                        $return_array[$set_orders[0]['order_id']][] = $get_result['detail'];
-                        $this->user_model->update_delhivery_err($set_orders[0]['order_id'], $_GET['shop'], $get_result['detail']);
+                        if (!empty($get_result['packages'][0]['remarks'][0])) {
+                            $return_array[$set_orders[0]['order_id']][] = $get_result['packages'][0]['remarks'][0];
+                            $this->user_model->update_delhivery_err($set_orders[0]['order_id'], $_GET['shop'], str_replace("'", "", $get_result['packages'][0]['remarks'][0]));
+                        } else {
+                            $return_array[$set_orders[0]['order_id']][] = $get_result['detail'];
+                            $this->user_model->update_delhivery_err($set_orders[0]['order_id'], $_GET['shop'], $get_result['detail']);
+                        }
                     }
+                } catch (\Exception $e) {
+                    $return_array[] = $e;
                 }
-            } catch (\Exception $e) {
-                $return_array[] = $e;
             }
-        }
-        if (!empty($syncorderscount)) {
-            echo count($syncorderscount);
-            $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+            if (!empty($syncorderscount)) {
+                echo count($syncorderscount);
+                $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+            }
+        } else {
+            $return_array['error'] = 'Order not found';
         }
         return json_encode($return_array);
     }
