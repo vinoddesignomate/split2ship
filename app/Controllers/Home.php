@@ -1519,7 +1519,7 @@ class Home extends BaseController
 
                 //close connection
                 // print_r($set_orders);
-                // print_r($result);
+                print_r($result);
 
                 curl_close($ch);
 
