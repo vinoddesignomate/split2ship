@@ -1412,7 +1412,7 @@ class Home extends BaseController
                 $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
             }
             return json_encode($return_array);
-        } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'pickr') {
+        } else  if (isset($shiprocket_info[0]->enable_shipping_type) && trim($shiprocket_info[0]->enable_shipping_type) == 'pickr') {
             $this->order_sync_pickrr($shiprocket_info);
         } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'delhivery') {
             //echo "delhoivery";
