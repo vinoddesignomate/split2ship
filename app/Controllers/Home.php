@@ -1261,7 +1261,7 @@ class Home extends BaseController
         $this->check_subscribe();
         //$this->order_sync_delhivery();
         $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shop']);
-        //print_r($shiprocket_info);
+        print_r($shiprocket_info);
         $initpage = $_REQUEST['ordpage'] - 1;
 
         if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
