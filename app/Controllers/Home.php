@@ -1424,14 +1424,14 @@ class Home extends BaseController
     function order_sync_pickrr($shiprocket_info)
     {
 
-        $get_resulsts = $this->user_model->get_token($_GET['shop']);
+        $get_resulsts = $this->user_model->get_token($_REQUEST['shop']);
         $initpage = $_REQUEST['ordpage'] - 1;
         $get_all_orderspickrr = $this->user_model->get_products_orders_pickrr($initpage, $_REQUEST['ordpage'], $_REQUEST['orderlimit']);
 
         $new_return_array = array();
         $syncorderscount = array();
 
-        //print_r($get_all_orderspickrr); 
+        print_r($get_all_orderspickrr); 
         foreach ($get_all_orderspickrr as $set_orders) {
 
             $create_custom = array();
