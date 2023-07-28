@@ -94,7 +94,7 @@ class Home extends BaseController
                 echo "</pre>";
                
                 if (isset($get_charge_id[0]->charged_id) && $get_charge_id[0]->charged_id != "") {
-                    $cancel_charge_id = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges/' . $get_charge_id[0]->charged_id . '.json', array(), 'POST', $get_details->access_token, $_GET['shop']);
+                    $cancel_charge_id = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges/' . $get_charge_id[0]->charged_id . '.json', array(), 'DEL', $get_details->access_token, $_GET['shop']);
 
                     $cancel_charge_id_res = json_decode($cancel_charge_id['body'], true);
 
