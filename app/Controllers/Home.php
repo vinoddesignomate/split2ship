@@ -1280,9 +1280,9 @@ class Home extends BaseController
             $syncorderscount = array();
 
             $return_array = array();
-            // echo "change<pre>";
-            // print_r($get_all_ordersnew);
-            // echo "</pre>";
+            echo "change<pre>";
+            print_r($get_all_ordersnew);
+            echo "</pre>";
             if (!empty($get_all_ordersnew)) {
                 foreach ($get_all_ordersnew as $set_orders) {
 
