@@ -1261,7 +1261,7 @@ class Home extends BaseController
         $this->check_subscribe();
         //$this->order_sync_delhivery();
         $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shop']);
-        print_r($shiprocket_info);
+       // print_r($shiprocket_info);
         $initpage = $_REQUEST['ordpage'] - 1;
 
         if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
@@ -1280,9 +1280,9 @@ class Home extends BaseController
             $syncorderscount = array();
 
             $return_array = array();
-            echo "change<pre>";
-            print_r($get_all_ordersnew);
-            echo "</pre>";
+            // echo "change<pre>";
+            // print_r($get_all_ordersnew);
+            // echo "</pre>";
             if (!empty($get_all_ordersnew)) {
                 foreach ($get_all_ordersnew as $set_orders) {
 
@@ -1360,7 +1360,7 @@ class Home extends BaseController
                     // echo "</pre>";
                     // die(); 
                     //echo json_encode($create_custom);
-                    echo "store_token=".$store_token;
+                   // echo "store_token=".$store_token;
 
                     $get_result = $this->common->create_custom_order($create_custom, $store_token);
                     $decoded_res = json_decode($get_result);
@@ -1370,9 +1370,9 @@ class Home extends BaseController
                     // print_r($set_orders);
                     // echo "</pre>";
 
-                    echo "decoded_res<pre>";
-                    print_r($decoded_res);
-                    echo "</pre>";
+                    // echo "decoded_res<pre>";
+                    // print_r($decoded_res);
+                    // echo "</pre>";
 
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];
