@@ -1360,7 +1360,7 @@ class Home extends BaseController
                     // echo "</pre>";
                     // die(); 
                     //echo json_encode($create_custom);
-                    //echo "store_token=".$store_token;
+                    echo "store_token=".$store_token;
 
                     $get_result = $this->common->create_custom_order($create_custom, $store_token);
                     $decoded_res = json_decode($get_result);
