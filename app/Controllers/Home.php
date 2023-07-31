@@ -1359,7 +1359,7 @@ class Home extends BaseController
                     // print_r($create_custom);
                     // echo "</pre>";
                     // die(); 
-                    //echo json_encode($create_custom);
+                    echo json_encode($create_custom);
                    // echo "store_token=".$store_token;
 
                     $get_result = $this->common->create_custom_order($create_custom, $store_token);
@@ -1370,9 +1370,9 @@ class Home extends BaseController
                     // print_r($set_orders);
                     // echo "</pre>";
 
-                    // echo "decoded_res<pre>";
-                    // print_r($decoded_res);
-                    // echo "</pre>";
+                    echo "decoded_res<pre>";
+                    print_r($decoded_res);
+                    echo "</pre>";
 
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];
