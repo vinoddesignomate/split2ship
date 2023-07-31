@@ -1511,7 +1511,7 @@ class Home extends BaseController
                 );
                 //print_r($post_params);
                 try {
-                    $json_params = json_encode($post_params);
+                    $json_params = json_encode($post_params); 
                     $url = 'https://www.pickrr.com/api/place-order/';
                     //open connection
                     $ch = curl_init();
