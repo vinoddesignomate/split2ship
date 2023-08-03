@@ -292,7 +292,7 @@ class Common
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode($post_data),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaXYyLnNoaXByb2NrZXQuaW4vdjEvZXh0ZXJuYWwvYXV0aC9sb2dpbiIsImlhdCI6MTY5MTA4NTUxNCwiZXhwIjoxNjkxOTQ5NTE0LCJuYmYiOjE2OTEwODU1MTQsImp0aSI6IktDSHFJNkpsS3IwbmVnR1oiLCJzdWIiOjM3OTc2NTksInBydiI6IjA1YmI2NjBmNjdjYWM3NDVmN2IzZGExZWVmMTk3MTk1YTIxMWU2ZDkifQ.9xjllaPmHalzCT3DpFUSvoAtalPe7Bgmu_cX0DbIkOM',
+                'Authorization: Bearer ' . $store_token,
                 'Content-Type: application/json'
             ),
         ));
@@ -432,7 +432,7 @@ class Common
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email=saurabh@designomate.com&password=Demo@123',
+            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email=dharmendra@designomate.com&password=Test123',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
