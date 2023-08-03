@@ -1687,6 +1687,7 @@ class Home extends BaseController
         $ship_password = $shiprocket_info[0]->password;
         $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
         $new_res = json_decode($get_response);
+        print_r($new_res);
 
         $insert_array = array(
             "token" => $new_res->token,
