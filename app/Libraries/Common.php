@@ -427,12 +427,12 @@ class Common
         $ciphertext = substr($decodedData, $ivSize);
         return $decryptedData = openssl_decrypt($ciphertext, 'AES-256-CBC', $encryptionKey, 0, $iv);
     }
-    public function get_shiprocket_token()
+    public function get_shiprocket_token($email, $password)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email=dharmendra@designomate.com&password=Test123',
+            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email='.trim($email).'&password='.trim($password),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
