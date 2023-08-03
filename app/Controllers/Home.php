@@ -1684,6 +1684,7 @@ class Home extends BaseController
     {
         echo $_REQUEST['shop'];
         $shiprocket_info = $this->user_model->get_shiprocket_config($_REQUEST['shop']);
+        print_r($shiprocket_info);
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
         $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
