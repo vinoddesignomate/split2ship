@@ -1682,15 +1682,15 @@ class Home extends BaseController
     }
     public function update_token($shop_url)
     {
-        echo $_REQUEST['shop'];
+        //echo $_REQUEST['shop'];
         $shiprocket_info = $this->user_model->get_shiprocket_config_home($_REQUEST['shop']);
         print_r($shiprocket_info);
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
         $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
         $new_res = json_decode($get_response);
-        print_r($new_res);
-        die();
+        // print_r($new_res);
+        // die();
         $insert_array = array(
             "token" => $new_res->token,
             "token_generate_date" => date('Y-m-d'),
