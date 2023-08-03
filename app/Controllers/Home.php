@@ -1260,21 +1260,21 @@ class Home extends BaseController
 
         $this->check_subscribe();
         //$this->order_sync_delhivery();
-        $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shop']);
+        $shiprocket_info = $this->user_model->get_shiprocket_config_home($_REQUEST['shop']);
         // print_r($shiprocket_info);
         $initpage = $_REQUEST['ordpage'] - 1;
 
         if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
             // echo "in shiprocket";
-            $get_resulsts = $this->user_model->get_token($_GET['shop']);
+            $get_resulsts = $this->user_model->get_token($_REQUEST['shop']);
             // print_r($get_resulsts);
-            if (empty($get_resulsts)) {
-                $store_token = $this->update_token($_GET['shop']);
-            } else {
-                $store_token = $get_resulsts[0]->token;
-            }
+           // if (empty($get_resulsts)) {
+                $store_token = $this->update_token($_REQUEST['shop']);
+           // } else {
+               // $store_token = $get_resulsts[0]->token;
+            //}
 
-            $get_all_ordersnew = $this->user_model->get_products_orders($_GET['shop'], $initpage, $_REQUEST['orderlimit']);
+            $get_all_ordersnew = $this->user_model->get_products_orders($_REQUEST['shop'], $initpage, $_REQUEST['orderlimit']);
 
             $create_custom = array();
             $syncorderscount = array();
@@ -1398,10 +1398,10 @@ class Home extends BaseController
                         // $shperr = "";
                         // }
                         //echo $shperr;
-                        $this->user_model->update_shiprocket_err($set_orders[0]['order_id'], $_GET['shop'], $shperr);
+                        $this->user_model->update_shiprocket_err($set_orders[0]['order_id'], $_REQUEST['shop'], $shperr);
                     } else {
                         $syncorderscount[] = $set_orders[0]['order_id'];
-                        $this->user_model->track_sync_order($set_orders[0]['order_id'], $_GET['shop']);
+                        $this->user_model->track_sync_order($set_orders[0]['order_id'], $_REQUEST['shop']);
                         $return_array['success'][] = array("success" => "order sync successfully for order " . $set_orders[0]['order_id']);
                     }
 
@@ -1414,7 +1414,7 @@ class Home extends BaseController
                 // echo "</pre>";
                 if (!empty($syncorderscount)) {
                     echo count($syncorderscount);
-                    $this->user_model->update_plan_orders(count($syncorderscount), $_GET['shop']);
+                    $this->user_model->update_plan_orders(count($syncorderscount), $_REQUEST['shop']);
                 }
             } else {
                 $return_array['error'] = 'Order not found';
@@ -1686,18 +1686,21 @@ class Home extends BaseController
     public function update_token($shop_url)
     {
         //echo $_REQUEST['shop'];
-        $shiprocket_info = $this->user_model->get_shiprocket_config_home($_REQUEST['shop']);
+        $shiprocket_info = $this->user_model->get_shiprocket_config_home($shop_url);
         print_r($shiprocket_info);
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
-        $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
+
+       // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
+        $get_response = $this->common->get_shiprocket_token();
+
         $new_res = json_decode($get_response);
         // print_r($new_res);
         // die();
         $insert_array = array(
             "token" => $new_res->token,
             "token_generate_date" => date('Y-m-d'),
-            "token_expiray_date" => date('Y-m-d', strtotime('+10 day')),
+            "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
             "shop_url" => $shop_url,
         );
         $this->user_model->track_shiprocket_api_token($insert_array);

@@ -427,4 +427,24 @@ class Common
         $ciphertext = substr($decodedData, $ivSize);
         return $decryptedData = openssl_decrypt($ciphertext, 'AES-256-CBC', $encryptionKey, 0, $iv);
     }
+    public function get_shiprocket_token()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email=saurabh@designomate.com&password=Demo@123',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
+    }
 }
