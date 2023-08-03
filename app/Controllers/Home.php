@@ -1688,7 +1688,7 @@ class Home extends BaseController
         $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
         $new_res = json_decode($get_response);
         print_r($new_res);
-
+        die();
         $insert_array = array(
             "token" => $new_res->token,
             "token_generate_date" => date('Y-m-d'),
