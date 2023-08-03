@@ -1774,7 +1774,7 @@ class Home extends BaseController
                 } else {
                     $finalprice = $plane_price;
                 }
-                $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $finalprice, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => true, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
+                $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $finalprice, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => null, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
 
 
                 //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
