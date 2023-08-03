@@ -1268,11 +1268,11 @@ class Home extends BaseController
             // echo "in shiprocket";
             $get_resulsts = $this->user_model->get_token($_REQUEST['shop']);
             // print_r($get_resulsts);
-           // if (empty($get_resulsts)) {
+           if (empty($get_resulsts)) {
                 $store_token = $this->update_token($_REQUEST['shop']);
-           // } else {
-               // $store_token = $get_resulsts[0]->token;
-            //}
+           } else {
+                $store_token = $get_resulsts[0]->token;
+            }
 
             $get_all_ordersnew = $this->user_model->get_products_orders($_REQUEST['shop'], $initpage, $_REQUEST['orderlimit']);
 
@@ -1362,8 +1362,8 @@ class Home extends BaseController
                     // print_r($create_custom);
                     // echo "</pre>";
                     // die(); 
-                    echo json_encode($create_custom);
-                    echo "store_token=".$store_token;
+                    // echo json_encode($create_custom);
+                    // echo "store_token=".$store_token;
 
                     $get_result = $this->common->create_custom_order($create_custom, $store_token);
                     $decoded_res = json_decode($get_result);
@@ -1373,9 +1373,9 @@ class Home extends BaseController
                     // print_r($set_orders);
                     // echo "</pre>";
 
-                    echo "*******decoded_res<pre>";
-                    print_r($decoded_res);
-                    echo "</pre>";
+                    // echo "*******decoded_res<pre>";
+                    // print_r($decoded_res);
+                    // echo "</pre>";
 
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];

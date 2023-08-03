@@ -196,7 +196,7 @@
                  data: 'shop=<?php echo esc($_GET['shop']); ?>&ordpage=' + ordpage + '&orderlimit=' + orderlimit + '&timstm=' + timstm,
                  success: function(response) {
                      $("#syncstartt").html('Order Synchronization Done');
-                     //location.reload();
+                     location.reload();
                      // $("#syncstartt").html(response);
                  }
              });
