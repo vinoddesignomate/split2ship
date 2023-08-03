@@ -292,7 +292,7 @@ class Common
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode($post_data),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer ' . $store_token,
+                'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaXYyLnNoaXByb2NrZXQuaW4vdjEvZXh0ZXJuYWwvYXV0aC9sb2dpbiIsImlhdCI6MTY5MTA4NTUxNCwiZXhwIjoxNjkxOTQ5NTE0LCJuYmYiOjE2OTEwODU1MTQsImp0aSI6IktDSHFJNkpsS3IwbmVnR1oiLCJzdWIiOjM3OTc2NTksInBydiI6IjA1YmI2NjBmNjdjYWM3NDVmN2IzZGExZWVmMTk3MTk1YTIxMWU2ZDkifQ.9xjllaPmHalzCT3DpFUSvoAtalPe7Bgmu_cX0DbIkOM',
                 'Content-Type: application/json'
             ),
         ));
