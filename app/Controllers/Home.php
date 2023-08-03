@@ -1683,7 +1683,7 @@ class Home extends BaseController
     public function update_token($shop_url)
     {
         echo $_REQUEST['shop'];
-        $shiprocket_info = $this->user_model->get_shiprocket_config($_REQUEST['shop']);
+        $shiprocket_info = $this->user_model->get_shiprocket_config_home($_REQUEST['shop']);
         print_r($shiprocket_info);
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
