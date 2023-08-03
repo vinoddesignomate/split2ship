@@ -1319,7 +1319,7 @@ class Home extends BaseController
                         "order_id" => $set_orders[0]['order_number'],
                         //"order_id" => "1025",
                         "order_date" => $set_orders[0]['order_date'],
-                        "channel_id" => $shiprocket_info[0]->channel_id,
+                       // "channel_id" => $shiprocket_info[0]->channel_id,
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
                         "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
@@ -1355,9 +1355,9 @@ class Home extends BaseController
                     // echo "</pre>";
 
 
-                    // echo "create_custom<pre>";
-                    // print_r($create_custom);
-                    // echo "</pre>";
+                    echo "create_custom<pre>";
+                    print_r($create_custom);
+                    echo "</pre>";
                     // die(); 
                     //echo json_encode($create_custom);
                     //echo "store_token=".$store_token;
