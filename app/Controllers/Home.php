@@ -1342,6 +1342,9 @@ class Home extends BaseController
 
                     foreach ($set_orders['items'] as $products) {
                         if ($products['name'] != 'partial Pending Payment') {
+                            if($products['sku'] == ""){
+                                $products['sku'] = "PART".time();
+                            }
                             $create_custom['order_items'][] = array(
                                 "name" => $products['name'],
                                 "sku" => $products['sku'],
@@ -1370,9 +1373,9 @@ class Home extends BaseController
                     // print_r($set_orders);
                     // echo "</pre>";
 
-                    // echo "decoded_res<pre>";
-                    // print_r($decoded_res);
-                    // echo "</pre>";
+                    echo "decoded_res<pre>";
+                    print_r($decoded_res);
+                    echo "</pre>";
 
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];

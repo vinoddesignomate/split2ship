@@ -76,31 +76,31 @@ class Common
             return array("headers" => $headers, "body" => $response[1]);
         }
     }
-    public function getproductsgrapqlapi($params_array,$shop_url, $acctoken)
+    public function getproductsgrapqlapi($params_array, $shop_url, $acctoken)
     {
 
         //this commenting code for if we use to filter with colletion id
         //collection(id: "gid://shopify/Collection/443446100266") {
         //}
-        $newpageing="";
-        $search_query="";
-        if(isset($params_array['nextpage_getpage'])){
-            $newpageing = 'first: '.$params_array['limit'].',after:"'.$params_array['nextpage_getpage'].'"';
+        $newpageing = "";
+        $search_query = "";
+        if (isset($params_array['nextpage_getpage'])) {
+            $newpageing = 'first: ' . $params_array['limit'] . ',after:"' . $params_array['nextpage_getpage'] . '"';
             $startCursor = "startCursor";
             $endCursor = "endCursor";
-        }else if(isset($params_array['prev_getpage'])){
-            $newpageing = 'last: '.$params_array['limit'].',before:"'.$params_array['prev_getpage'].'"';
+        } else if (isset($params_array['prev_getpage'])) {
+            $newpageing = 'last: ' . $params_array['limit'] . ',before:"' . $params_array['prev_getpage'] . '"';
             $startCursor = "startCursor";
             $endCursor = "endCursor";
-        }else{
-            $newpageing = 'first: '.$params_array['limit'].'';
+        } else {
+            $newpageing = 'first: ' . $params_array['limit'] . '';
             $startCursor = "";
             $endCursor = "endCursor";
         }
-        if(isset($params_array['search_parms'])){
-            $search_query = ',query:"title:'.$params_array['search_parms'].'"';
+        if (isset($params_array['search_parms'])) {
+            $search_query = ',query:"title:' . $params_array['search_parms'] . '"';
             $get_products_query = array("query" => '{
-                products('.$newpageing.''.$search_query.') {
+                products(' . $newpageing . '' . $search_query . ') {
                       edges {
                         node {
                           id
@@ -120,15 +120,15 @@ class Common
                       pageInfo {
                         hasNextPage
                         hasPreviousPage
-                        '.$startCursor.'
-                        '.$endCursor.'
+                        ' . $startCursor . '
+                        ' . $endCursor . '
                       }
                     }
                   }');
-        }else{
+        } else {
             $get_products_query = array("query" => '{
-                collection(id: "gid://shopify/Collection/'.$params_array['collection_id'].'") {
-                products('.$newpageing.''.$search_query.') {
+                collection(id: "gid://shopify/Collection/' . $params_array['collection_id'] . '") {
+                products(' . $newpageing . '' . $search_query . ') {
                       edges {
                         node {
                           id
@@ -148,17 +148,16 @@ class Common
                       pageInfo {
                         hasNextPage
                         hasPreviousPage
-                        '.$startCursor.'
-                        '.$endCursor.'
+                        ' . $startCursor . '
+                        ' . $endCursor . '
                       }
                     }
                   }
                 }');
         }
-        
+
         //print_r($get_products_query);
         return $this->graphql_api($get_products_query, $shop_url, $acctoken);
-        
     }
     public function graphql_api($query = array(), $shop_url, $acc_token)
     {
@@ -257,6 +256,29 @@ class Common
     {
 
 
+        // $curl = curl_init();
+
+        // curl_setopt_array($curl, array(
+        //     CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/orders/create/adhoc',
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_ENCODING => '',
+        //     CURLOPT_MAXREDIRS => 10,
+        //     CURLOPT_TIMEOUT => 0,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => 'POST',
+        //     CURLOPT_POSTFIELDS => json_encode($post_data),
+        //     CURLOPT_HTTPHEADER => array(
+        //         'Authorization: Bearer ' . $store_token,
+        //         'Content-Type: application/json'
+        //     ),
+        // ));
+
+        // $response = curl_exec($curl);
+
+        // curl_close($curl);
+        // return $response;
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -278,7 +300,7 @@ class Common
         $response = curl_exec($curl);
 
         curl_close($curl);
-        return $response;
+        return  $response;
     }
 
     function create_custom_order_delhivery($post_data, $store_token)
