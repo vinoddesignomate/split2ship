@@ -1040,16 +1040,18 @@ class Home extends BaseController
         if ($this->request->getPost('update_per')) {
             // print_r($this->request->getPost());
             // die();
-            $update_price = array(
-                "partial_percentage" => $this->request->getPost('change_partial'),
-                "id" => $this->request->getPost('update_id'),
-                "shop_url" => $_REQUEST['shop']
+            if ($this->request->getPost('change_partial') != "") {
+                $update_price = array(
+                    "partial_percentage" => $this->request->getPost('change_partial'),
+                    "id" => $this->request->getPost('update_id'),
+                    "shop_url" => $_REQUEST['shop']
 
-            );
-            $this->user_model->update_partial_percentage($update_price, $this->request->getPost('proid'));
-            echo $this->request->getPost('change_partial');
-            // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
-            //echo view('templates/apbrdgnew');
+                );
+                $this->user_model->update_partial_percentage($update_price, $this->request->getPost('proid'));
+                echo $this->request->getPost('change_partial');
+                // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
+                //echo view('templates/apbrdgnew');
+            }
         }
         // echo view('templates/apbrdgnew');
     }
@@ -1268,9 +1270,9 @@ class Home extends BaseController
             // echo "in shiprocket";
             $get_resulsts = $this->user_model->get_token($_REQUEST['shop']);
             // print_r($get_resulsts);
-           if (empty($get_resulsts)) {
+            if (empty($get_resulsts)) {
                 $store_token = $this->update_token($_REQUEST['shop']);
-           } else {
+            } else {
                 $store_token = $get_resulsts[0]->token;
             }
 
@@ -1319,7 +1321,7 @@ class Home extends BaseController
                         "order_id" => $set_orders[0]['order_number'],
                         //"order_id" => "1025",
                         "order_date" => $set_orders[0]['order_date'],
-                       // "channel_id" => $shiprocket_info[0]->channel_id,
+                        // "channel_id" => $shiprocket_info[0]->channel_id,
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
                         "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
@@ -1342,8 +1344,8 @@ class Home extends BaseController
 
                     foreach ($set_orders['items'] as $products) {
                         if ($products['name'] != 'partial Pending Payment') {
-                            if($products['sku'] == ""){
-                                $products['sku'] = "PART".time();
+                            if ($products['sku'] == "") {
+                                $products['sku'] = "PART" . time();
                             }
                             $create_custom['order_items'][] = array(
                                 "name" => $products['name'],
@@ -1691,8 +1693,8 @@ class Home extends BaseController
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
 
-       // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
-        $get_response = $this->common->get_shiprocket_token($ship_email,$ship_password);
+        // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
+        $get_response = $this->common->get_shiprocket_token($ship_email, $ship_password);
 
         $new_res = json_decode($get_response);
         // print_r($new_res);
