@@ -66,7 +66,7 @@ class FrontController extends BaseController
                 "varient_id" => $this->request->getPost('vid')
             );
             $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
-            print_r($get_resulrs);
+           // print_r($get_resulrs);
             // echo "done";
             if (!empty($get_resulrs)) {
                 $return_array = array(
