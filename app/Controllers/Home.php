@@ -1041,6 +1041,7 @@ class Home extends BaseController
             // print_r($this->request->getPost());
             // die();
             if ($this->request->getPost('change_partial') != "") {
+                echo "if";
                 $update_price = array(
                     "partial_percentage" => $this->request->getPost('change_partial'),
                     "id" => $this->request->getPost('update_id'),
@@ -1051,6 +1052,9 @@ class Home extends BaseController
                 echo $this->request->getPost('change_partial');
                 // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
                 //echo view('templates/apbrdgnew');
+            }
+            else{
+                echo "else";
             }
         }
         // echo view('templates/apbrdgnew');
