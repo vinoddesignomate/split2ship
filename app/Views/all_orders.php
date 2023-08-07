@@ -19,7 +19,7 @@
          <div class="payxnowandrestondelivery-inner-wrapper">
              <div class="payxnowandrestondelivery-main-data-col">
                  <div class="payxnowandrestondelivery-table-heading">
-                     <h2>Product name</h2>
+                     <h2>Product name Test</h2>
 
                      <?php
                         if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
