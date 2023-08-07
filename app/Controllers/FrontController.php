@@ -101,7 +101,7 @@ class FrontController extends BaseController
         $remaining_price = 0;
         foreach ($cartarray as $item_cart) {
 
-            if ($item_cart['paytype'] == 'Partial Pay') {
+            if ($item_cart['paytype'] == 'Available') {
 
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
