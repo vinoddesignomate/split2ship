@@ -310,7 +310,7 @@ $fstore_name = $shop_name[0];
         return false;
     });
 
-    $('.payxnowandrestondelivery-subbtn').on('click', function(e) {
+    $('.partial_update_price_lates').on('click', function(e) {
         // alert('ddd');
         const trvd = new Date();
         let track_req_time = trvd.getTime();
