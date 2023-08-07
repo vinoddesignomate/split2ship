@@ -63,7 +63,7 @@ $store_name = $shop_name[0];
                                                     <input type="hidden" name="proid" value="<?php echo esc($list_product->product_id); ?>">
                                                     <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
                                                     <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel">
-                                                    <input type="button" class="partial_update_price" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
+                                                    <input type="button" class="partial_update_price payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
                                                 </span>
                                             </form>
                                         </td>
