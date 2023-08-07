@@ -1041,7 +1041,7 @@ class Home extends BaseController
             // print_r($this->request->getPost());
             // die();
             if ($this->request->getPost('change_partial') != "") {
-                echo "if";
+                //echo "if";
                 $update_price = array(
                     "partial_percentage" => $this->request->getPost('change_partial'),
                     "id" => $this->request->getPost('update_id'),
@@ -1054,7 +1054,7 @@ class Home extends BaseController
                 //echo view('templates/apbrdgnew');
             }
             else{
-                echo "else";
+               // echo "else";
             }
         }
         // echo view('templates/apbrdgnew');
