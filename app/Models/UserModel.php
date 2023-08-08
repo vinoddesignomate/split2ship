@@ -707,4 +707,19 @@ class UserModel extends Model
         $payxq = $payxnow_qublder->get();
         return $payxq->getResult();            
     }
+    public function track_checkout_button_color($product_array)
+    {
+        $qbuilder = $this->db->table('cg_dynamic_css');
+       // $qbuilder->where('shop_url', $product_array['shop_url']);
+        //$qbuilder->where('product_id', $product_array['product_id']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('cg_dynamic_css')->where('shop_url', $product_array['shop_url'])->update($product_array);
+            return $this->db->affectedRows();
+        } else {
+
+            return  $qbuilder->insert($product_array);
+        }
+    }
 }

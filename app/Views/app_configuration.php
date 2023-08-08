@@ -109,6 +109,22 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
+        <form method="post">
+                <table>
+                        <tr>
+                                <td>Partial payment checkout button color</td>
+                                <td><input type="text" name="partbtn_color" id=""></td>
+                        </tr>
+                        <tr>
+                                <td>Full payment checkout button color</td>
+                                <td><input type="text" name="fullbtn_color" id=""></td>
+                        </tr>
+                        <tr>
+                                
+                                <td><button type="submit" name="track_color" value="submit">Submit</button></td>
+                        </tr>
+                </table>
+        </form>
         <div class=" payxnowandrestondelivery-main-area ">
 
                 <h5><b class="text-orange">Step 1:</b> Login to your Shopify store and go to your theme under online .</h5>
