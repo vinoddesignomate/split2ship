@@ -412,7 +412,8 @@ tr:hover {background-color: rgba(56, 85, 179, 0.04);}
 
 .edit-form-wrapper {
     max-width: 500px;
-   width:100%;
+    width:100%;
+    margin-top: 25px;
     border: 1px solid #E6E7E9;
     padding: 27px 24px 34px;
     border-radius: 3px;
