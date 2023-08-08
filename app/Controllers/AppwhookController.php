@@ -256,7 +256,7 @@ class AppwhookController extends BaseController
 
                 $reaminming_price = array();
                 foreach ($jsndata->line_items as $products) {
-                    if ($products->name != "partial Pending Payment") {
+                    if ($products->name != "Partial Pending Payment") {
                         if ($products->sku == "") {
 
                             $reaminming_price[] = $products->properties[3]->value;
@@ -310,7 +310,7 @@ class AppwhookController extends BaseController
 
                     //add custom item into orders
                     $order_edit_add_custom = 'mutation {
-                orderEditAddCustomItem(id: "' . $calculate_order_id . '", price: {amount: ' . $remaing_proice . ', currencyCode: ' . $jsndata->currency . '}, quantity: 1, title: "partial Pending Payment") {
+                orderEditAddCustomItem(id: "' . $calculate_order_id . '", price: {amount: ' . $remaing_proice . ', currencyCode: ' . $jsndata->currency . '}, quantity: 1, title: "Partial Pending Payment") {
                   calculatedLineItem {
                     id
                   }
@@ -437,7 +437,7 @@ class AppwhookController extends BaseController
                     );
 
                     foreach ($jsndata->line_items as $productsitm) {
-                        if ($productsitm->name != 'partial Pending Payment') {
+                        if ($productsitm->name != 'Partial Pending Payment') {
                             if ($productsitm->sku == "") {
                                 $getsku = "PARTSKU";
                             } else {
@@ -522,7 +522,7 @@ class AppwhookController extends BaseController
                     $create_customqty = array();
                     $item_listarr = array();
                     foreach ($jsndata->line_items as $products) {
-                        if ($products->name != 'partial Pending Payment') {
+                        if ($products->name != 'Partial Pending Payment') {
                             $create_custom[] = $products->name;
                             $create_customqty[] = $products->qty;
                             $item_listarr[] = array(
@@ -857,7 +857,7 @@ class AppwhookController extends BaseController
                 // );
 
                 // foreach ($jsndata->line_items as $productsitm) {
-                //     if ($productsitm->name != 'partial Pending Payment') {
+                //     if ($productsitm->name != 'Partial Pending Payment') {
                 //         if ($productsitm->sku == "") {
                 //             $getsku = "PARTSKU";
                 //         } else {
@@ -977,7 +977,7 @@ class AppwhookController extends BaseController
                 // $create_customqty = array();
                 // $item_listarr = array();
                 // foreach ($paid_orders_content->line_items as $products) {
-                //     if ($products->name != 'partial Pending Payment') {
+                //     if ($products->name != 'Partial Pending Payment') {
                 //         $create_custom[] = $products->name;
                 //         $create_customqty[] = $products->qty;
                 //         $item_listarr[] = array(

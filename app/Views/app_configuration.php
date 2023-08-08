@@ -145,7 +145,7 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 7:</b> For change into Order confirmation email add below code in email template above order summary.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<p>Product price has been split into 2 parts thus price has changed in the order email. Actual Product Price = Product price + partial pending payment - product name</p>{% endif %}</textarea>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<p>Product price has been split into 2 parts thus price has changed in the order email. Actual Product Price = Product price + Partial pending payment - product name</p>{% endif %}</textarea>
                         </div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
@@ -156,7 +156,7 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5> <b class="text-orange">Step 9: </b>add below code in confirmation email at the end of template.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}Actual Product Price = Product price + partial pending payment - product name{% endif %}</textarea></div>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}Actual Product Price = Product price + Partial pending payment - product name{% endif %}</textarea></div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 10:</b> add below code in refund email template above order summary.</h5>

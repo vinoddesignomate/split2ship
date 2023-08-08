@@ -353,7 +353,7 @@ class Home extends BaseController
                             // if ($incid == 1) {
                             $reaminming_price = array();
                             foreach ($value['line_items'] as $products) {
-                                if ($products['name'] != "partial Pending Payment") {
+                                if ($products['name'] != "Partial Pending Payment") {
                                     //echo"products<pre>"; print_r($products); echo"</pre>";
                                     if ($products['sku'] == "") {
                                         if (isset($products['properties'][3]['value'])) {
@@ -1200,7 +1200,7 @@ class Home extends BaseController
                     // if ($incid == 1) {
                     $reaminming_price = array();
                     foreach ($value['line_items'] as $products) {
-                        if ($products['name'] != "partial Pending Payment") {
+                        if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
                                 if (isset($products['properties'][3]['value'])) {
                                     $reaminming_price[] = $products['properties'][3]['value'];
@@ -1347,7 +1347,7 @@ class Home extends BaseController
 
 
                     foreach ($set_orders['items'] as $products) {
-                        if ($products['name'] != 'partial Pending Payment') {
+                        if ($products['name'] != 'Partial Pending Payment') {
                             if ($products['sku'] == "") {
                                 $products['sku'] = "PART" . time();
                             }
