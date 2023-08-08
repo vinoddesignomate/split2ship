@@ -392,12 +392,8 @@ class FrontController extends BaseController
     ** get dynamnic checkout button color from database
     */
     public function getfront_color_code(){
-        $body_data = file_get_contents('php://input');
-        
-        $body_data_decode = json_decode($body_data, TRUE);    
-
-        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
-        $shopname = str_replace("http://", "", $shopname); 
+        $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
+        $shopname = str_replace("http://", "", $shopname);
 
         $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
       
