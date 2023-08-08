@@ -110,6 +110,9 @@ $store_name = $shop_name[0];
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                <div class="payxnowandrestondelivery-head-wrapper">
+                        <h2 class="payxnowandrestondelivery-mobile-center">Delivery partner name</h2>
+                </div>
                 <div class="edit-form-wrapper">
                         <form method="post">
                                 <?php
