@@ -110,6 +110,9 @@ $store_name = $shop_name[0];
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
         <form method="post">
+                <?php
+                echo"<pre>"; print_r($gtbtncolor); echo"</pre>";
+                ?>
                 <table>
                         <tr>
                                 <td>Partial payment checkout button color</td>

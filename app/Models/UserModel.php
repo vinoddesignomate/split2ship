@@ -710,7 +710,7 @@ class UserModel extends Model
     public function track_checkout_button_color($product_array)
     {
         $qbuilder = $this->db->table('cg_dynamic_css');
-       // $qbuilder->where('shop_url', $product_array['shop_url']);
+         $qbuilder->where('shop_url', $product_array['shop_url']);
         //$qbuilder->where('product_id', $product_array['product_id']);
         $q = $qbuilder->get();
         $qbuilder->countAllResults();
@@ -721,5 +721,12 @@ class UserModel extends Model
 
             return  $qbuilder->insert($product_array);
         }
+    }
+    public function get_checkout_button_color($shoup_url)
+    {
+        $qbuilder = $this->db->table('cg_dynamic_css');
+        $qbuilder->where('shop_url', $shoup_url);
+        $get_colorbtn = $qbuilder->get();
+        return $get_colorbtn->getResult();
     }
 }
