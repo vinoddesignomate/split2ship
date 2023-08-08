@@ -111,7 +111,7 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
-                        <h2 class="payxnowandrestondelivery-mobile-center">Delivery partner name</h2>
+                        <h2 class="">Delivery partner name</h2>
                 </div>
                 <div class="edit-form-wrapper">
                         <form method="post">
