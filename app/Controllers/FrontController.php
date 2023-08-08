@@ -409,7 +409,7 @@ class FrontController extends BaseController
                 );
                 return json_encode($return_array);
             }else{
-                $return_array = array();
+                return "no_color";
             }
     }
 }
