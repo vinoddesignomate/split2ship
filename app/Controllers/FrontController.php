@@ -396,11 +396,12 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
 
         $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+        print_r($gtbtncolor);
       
             if (!empty($gtbtncolor)) {
                 $return_array = array(
                     "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color: '',
-                    "full_part_btn_color" => isset($gtbtncolor[0]->full_part_btn_color) ? $gtbtncolor[0]->full_part_btn_color: ''
+                    "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color: ''
                     
                 );
                 return json_encode($return_array);
