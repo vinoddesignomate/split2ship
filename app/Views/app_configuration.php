@@ -116,11 +116,11 @@ $store_name = $shop_name[0];
                         ?>
                         <div class="flex-row">
                                 <label for="">Partial payment checkout button color :</label>
-                                <<input type="text" name="partbtn_color" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : ''); ?>">
+                                <input type="text" name="partbtn_color" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
                         </div>
                         <div class="flex-row">
                                 <label for="">Full Payment Checkout Button Color :</label>
-                                <input type="text" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : ''); ?>">
+                                <input type="text" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
                         </div>
                         <div class="btn-row">
                                 <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
