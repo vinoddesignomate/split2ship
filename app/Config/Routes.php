@@ -69,6 +69,7 @@ $routes->match(['get', 'post'],'/frontend-handler', 'FrontController::get_produc
 $routes->match(['get', 'post'],'/frontend-temp-ord', 'FrontController::create_draft_order');
 $routes->match(['get', 'post'],'/edit-order-graphl', 'FrontController::edit_order_partial');
 $routes->match(['get', 'post'],'/frontend-getdata', 'FrontController::test_proxychk');
+$routes->match(['get', 'post'],'/frontend-handler-dynamic-color', 'FrontController::getfront_color_code');
 
 //webhook urls
 $routes->match(['get', 'post'],'/order-sync', 'Home::order_sync');

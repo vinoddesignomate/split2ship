@@ -388,4 +388,28 @@ class FrontController extends BaseController
             echo "not found";
         }
     }
+    /*
+    ** get dynamnic checkout button color from database
+    */
+    public function getfront_color_code(){
+        $body_data = file_get_contents('php://input');
+        
+        $body_data_decode = json_decode($body_data, TRUE);    
+
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname); 
+
+        $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+      
+            if (!empty($gtbtncolor)) {
+                $return_array = array(
+                    "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color: '',
+                    "full_part_btn_color" => isset($gtbtncolor[0]->full_part_btn_color) ? $gtbtncolor[0]->full_part_btn_color: ''
+                    
+                );
+                return json_encode($return_array);
+            }else{
+                $return_array = array();
+            }
+    }
 }
