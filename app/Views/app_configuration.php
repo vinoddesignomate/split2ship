@@ -140,7 +140,7 @@ $store_name = $shop_name[0];
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp" /></div>
         </div>
         <div class=" payxnowandrestondelivery-main-area ">
-                <h5><b class="text-orange">Step 2:</b> click on “Customize” the theme.</h5>
+                <h5><b class="text-orange">Step 2:</b> Click on “Customize” the theme.</h5>
 
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config2.webp" /></div>
         </div>
@@ -151,7 +151,7 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-main-area-row">
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 4:</b> click on “App embeds” in left sidebar. Activate App like this</h5>
+                        <h5><b class="text-orange">Step 4:</b> Click on “App embeds” in left sidebar. Activate App like this</h5>
 
                         <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/app-embed.webp?var=1" /></div>
                 </div>
@@ -168,7 +168,7 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 7:</b> For change into Order confirmation email add below code in email template above order summary.</h5>
+                        <h5><b class="text-orange">Step 7:</b> Edit Order confirmation email template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<p>Product price has been split into 2 parts thus price has changed in the order email. Actual Product Price = Product price + Partial pending payment - product name</p>{% endif %}</textarea>
                         </div>
                 </div>
