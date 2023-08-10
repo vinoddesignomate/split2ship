@@ -10,7 +10,7 @@
                     <p class="payxnowandrestondelivery-alert">Since you have split2ship app installed, we recommend not to enable COD app</p>
                 </div>
 
-            </div>
+            </div>   
         </div>
 
         <!-- main-head -->
