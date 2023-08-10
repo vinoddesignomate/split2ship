@@ -193,7 +193,7 @@ $store_name = $shop_name[0];
                                         <label for="">Full payment color code :</label>
                                         <input type="text" data-jscolor="{}" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
                                 </div>
-                                <div class="flex-row">
+                                <div class="flex-row"> 
                                         <label for="">Checkout button text color code :</label>
                                         <input type="text" data-jscolor="{}" name="chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : 'ffffff'); ?>">
                                 </div>
