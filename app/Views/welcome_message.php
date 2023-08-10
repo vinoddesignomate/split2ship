@@ -7,7 +7,7 @@
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="payxnowandrestondelivery-main-heading">
-                    <p>For using this App, please disable Cash on Delivery Payment option on checkout page</p>
+                    <p class="payxnowandrestondelivery-alert">For using this app, please disable Cash on Delivery Payment option on checkout page</p>
                 </div>
 
             </div>
