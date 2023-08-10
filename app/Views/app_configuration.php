@@ -105,11 +105,12 @@ $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
 
 ?>
+<script src="/public/jscolor.js"></script>
 <div class="payxnowandrestondelivery-whiteAreaDiv payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
-       
+
         <div class=" payxnowandrestondelivery-main-area ">
 
                 <h5><b class="text-orange">Step 1:</b> Login to your Shopify store and go to your theme under online .</h5>
@@ -156,11 +157,11 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5> <b class="text-orange">Step 9: </b>Edit Order confirmation email template -  After the closing of this tag &lt;p class="disclaimer__subtext"&gt;.</h5>
+                        <h5> <b class="text-orange">Step 9: </b>Edit Order confirmation email template - After the closing of this tag &lt;p class="disclaimer__subtext"&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}Actual Product Price = Product price + Partial pending payment - product name{% endif %}</textarea></div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 10:</b> Edit Order refund template -  Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
+                        <h5><b class="text-orange">Step 10:</b> Edit Order refund template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<span>If you had placed a partially paid order then only paid amount will be refunded</span>{% endif %}</textarea>
                         </div>
                 </div>
@@ -175,7 +176,7 @@ $store_name = $shop_name[0];
                         </div>
                 </div>
         </div>
-		 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                         <h2 class="">Checkout button colors</h2>
                 </div>
@@ -186,11 +187,15 @@ $store_name = $shop_name[0];
                                 ?>
                                 <div class="flex-row">
                                         <label for="">Partial payment color code :</label>
-                                        <input type="text" name="partbtn_color" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
+                                        <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
                                 </div>
                                 <div class="flex-row">
                                         <label for="">Full payment color code :</label>
                                         <input type="text" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
+                                </div>
+                                <div class="flex-row">
+                                        <label for="">Checkout button text color code :</label>
+                                        <input type="text" name="chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : 'ffffff'); ?>">
                                 </div>
                                 <div class="btn-row">
                                         <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>

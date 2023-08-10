@@ -1906,6 +1906,7 @@ class Home extends BaseController
             $track_color_array = array(
                 "partial_btn_color" => $this->request->getPost('partbtn_color'),
                 "full_btn_color" => $this->request->getPost('fullbtn_color'),
+                "chk_btn_color" => $this->request->getPost('chk_btn_color'),
                 "shop_url" => $_GET['shop']
             );
             $this->user_model->track_checkout_button_color($track_color_array);
