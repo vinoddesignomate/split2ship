@@ -7,7 +7,7 @@
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading">
-                    <p class="payxnowandrestondelivery-alert">For using this app, please disable Cash on Delivery Payment option on checkout page</p>
+                    <p class="payxnowandrestondelivery-alert">Since you have split2ship app installed, we recommend not to enable COD app</p>
                 </div>
 
             </div>
