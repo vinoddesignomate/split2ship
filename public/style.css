@@ -421,10 +421,23 @@ tr:hover {background-color: rgba(56, 85, 179, 0.04);}
 .edit-form-wrapper .flex-row {
     margin-bottom: 20px;
 }
+
+
 p.payxnowandrestondelivery-alert {
     text-transform: none;
     font-size: 15px;
+    color: #10277C;
 }
+.alert-wrapper {
+    width: 100%;
+    text-align: left;
+    background-color: #10277c42;
+    padding: 2px 25px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid #10277C;
+}
+
   /*************Responsive***********/
   @media only screen and (max-width: 1232px){
     header .payxnowandrestondelivery-header-nav-links ul{background-color: #10277c;}
