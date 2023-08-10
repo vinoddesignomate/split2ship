@@ -401,7 +401,9 @@ class FrontController extends BaseController
             if (!empty($gtbtncolor)) {
                 $return_array = array(
                     "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color: '',
-                    "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color: ''
+                    "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color: '',
+                    "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color: '',
+                    "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color: ''
                     
                 );
                 return json_encode($return_array);
