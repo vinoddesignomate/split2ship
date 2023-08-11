@@ -295,7 +295,7 @@ class AppwhookController extends BaseController
                 $resposne_array = array("name" => "subtotal_update" . json_encode($subtotal_update));
                 $this->user_model->check_test_response($resposne_array);
 
-                if ($part_type == 'partial') {
+                if (isset($part_type) && $part_type == 'partial') {
                     $order_edit_begain = 'mutation {
                 orderEditBegin(id: "gid://shopify/Order/' . $jsndata->id . '") {
                 calculatedOrder {
@@ -750,7 +750,8 @@ class AppwhookController extends BaseController
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
 
-        $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
+       // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
+       $get_response = $this->common->get_shiprocket_token($ship_email, $ship_password);
         $new_res = json_decode($get_response);
 
         $insert_array = array(
