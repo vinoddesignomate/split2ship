@@ -73,6 +73,8 @@ class FrontController extends BaseController
                     "full_price" => $get_resulrs[0]->price,
                     "pro_pack" => $get_resulrs[0]->partial_percentage,
                     "partial_price" => ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price,
+                    "cart_form_class" => 'shopify-product-form',
+                    "cart_button_id" => 'product-add-to-cart',
                 );
                 return json_encode($return_array);
             } else {
