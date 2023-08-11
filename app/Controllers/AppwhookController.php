@@ -746,7 +746,7 @@ class AppwhookController extends BaseController
     public function update_token($shop_url)
     {
 
-        $shiprocket_info = $this->user_model->get_shiprocket_config($shop_url);
+        $shiprocket_info = $this->user_model->get_shiprocket_config_home($shop_url);
         $ship_email = $shiprocket_info[0]->email;
         $ship_password = $shiprocket_info[0]->password;
 
