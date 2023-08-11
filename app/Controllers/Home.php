@@ -1908,6 +1908,9 @@ class Home extends BaseController
                 "full_btn_color" => $this->request->getPost('fullbtn_color'),
                 "chk_btn_color" => $this->request->getPost('chk_btn_color'),
                 "full_chk_btn_color" => $this->request->getPost('full_chk_btn_color'),
+                "cart_form_class" => $this->request->getPost('cart_form_class'),
+                "addcartbtn_cg" => $this->request->getPost('addcartbtn_cg'),
+                "cg_chkout_btn_class" => $this->request->getPost('cg_chkout_btn_class'),
                 "shop_url" => $_GET['shop']
             );
             $this->user_model->track_checkout_button_color($track_color_array);

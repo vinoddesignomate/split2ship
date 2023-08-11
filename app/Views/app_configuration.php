@@ -182,12 +182,12 @@ $store_name = $shop_name[0];
                 </div>
                 <div class="edit-form-wrapper">
                         <form method="post">
-                                
+
                                 <div class="flex-row">
                                         <label for="">Partial payment color code :</label>
                                         <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
                                 </div>
-                                <div class="flex-row"> 
+                                <div class="flex-row">
                                         <label for="">Partial payment button text color code :</label>
                                         <input type="text" data-jscolor="{}" name="chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : 'ffffff'); ?>">
                                 </div>
@@ -195,11 +195,25 @@ $store_name = $shop_name[0];
                                         <label for="">Full payment color code :</label>
                                         <input type="text" data-jscolor="{}" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
                                 </div>
-                                <div class="flex-row"> 
+                                <div class="flex-row">
                                         <label for="">Full payment button text color code :</label>
                                         <input type="text" data-jscolor="{}" name="full_chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : 'ffffff'); ?>">
                                 </div>
-                                
+
+                                <div class="flex-row">
+                                        <label for="">Cart page form css class name</label>
+                                        <input type="text" name="cart_form_class" value="<?php echo (isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : ''); ?>">
+                                </div>
+                                <div class="flex-row">
+                                        <label for="">Add to cart button css ID tag</label>
+                                        <input type="text" name="addcartbtn_cg" value="<?php echo (isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : ''); ?>">
+                                </div>
+
+                                <div class="flex-row">
+                                        <label for="">Checkout button css class name </label>
+                                        <input type="text" name="cg_chkout_btn_class" value="<?php echo (isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : ''); ?>">
+                                </div>
+
                                 <div class="btn-row">
                                         <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                 </div>

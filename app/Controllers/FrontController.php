@@ -66,6 +66,7 @@ class FrontController extends BaseController
                 "varient_id" => $this->request->getPost('vid')
             );
             $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
+            $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
            // print_r($get_resulrs);
             // echo "done";
             if (!empty($get_resulrs)) {
@@ -73,8 +74,9 @@ class FrontController extends BaseController
                     "full_price" => $get_resulrs[0]->price,
                     "pro_pack" => $get_resulrs[0]->partial_percentage,
                     "partial_price" => ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price,
-                    "cart_form_class" => 'shopify-product-form',
-                    "cart_button_id" => 'product-add-to-cart',
+                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class: 'shopify-product-form',
+                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg: 'product-add-to-cart',
+                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class: 'product-add-to-cart',
                 );
                 return json_encode($return_array);
             } else {
