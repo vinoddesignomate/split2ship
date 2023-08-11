@@ -138,14 +138,14 @@ class AppwhookController extends BaseController
         $get_resulsts = $this->user_model->get_tokens($_GET['whshp']);
 
 
-        // $log_filename = "log";
-        // // $log_msg = $resp;
-        // if (!file_exists($log_filename)) {
+        $log_filename = "log";
+        // $log_msg = $resp;
+        if (!file_exists($log_filename)) {
 
-        //     mkdir($log_filename, 0777, true);
-        // }
-        // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
-        // file_put_contents($log_file_data, print_r($jsndata, true));
+            mkdir($log_filename, 0777, true);
+        }
+        $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+        file_put_contents($log_file_data, print_r($jsndata, true));
 
         $resposne_array = array("name" => "orderdata" . $webhook_content);
         $this->user_model->check_test_response($resposne_array);
