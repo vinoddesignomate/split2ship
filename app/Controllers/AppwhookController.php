@@ -767,17 +767,13 @@ class AppwhookController extends BaseController
     {
 
         $paid_order_webhook_content = NULL;
-
         // Get webhook content from the POST
         $webhookpd = fopen('php://input', 'rb');
         while (!feof($webhookpd)) {
             $paid_order_webhook_content .= fread($webhookpd, 4096);
         }
-
         fclose($webhookpd);
-
         $paid_orders_content = json_decode($paid_order_webhook_content);
-
         $get_orders_details = $this->user_model->get_order_detail($paid_orders_content->id);
 
 
@@ -799,23 +795,23 @@ class AppwhookController extends BaseController
                 "pending_amount" => 0
             );
             $this->user_model->update_order_details($update_orders); //update orders with status paid
-            $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shpname']);
+           // $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['shpname']);
 
 
 
-            if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
-                $create_custom = array();
-                $return_array = array();
+           // if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
+                // $create_custom = array();
+                // $return_array = array();
 
 
-                if ($paid_orders_content->billing_address->phone == "") {
-                    $phnum = "9865986598";
-                } else {
-                    $phnum = str_replace(" ", "", $paid_orders_content->billing_address->phone);
-                    $phnum = str_replace("(", "", $phnum);
-                    $phnum = str_replace(")", "", $phnum);
-                    $phnum = str_replace("-", "", $phnum);
-                }
+                // if ($paid_orders_content->billing_address->phone == "") {
+                //     $phnum = "9865986598";
+                // } else {
+                //     $phnum = str_replace(" ", "", $paid_orders_content->billing_address->phone);
+                //     $phnum = str_replace("(", "", $phnum);
+                //     $phnum = str_replace(")", "", $phnum);
+                //     $phnum = str_replace("-", "", $phnum);
+                // }
 
                 // if ($order_pay_sts == 'partial') {
                 //     $shipping_pay_method = "Partial";
@@ -932,7 +928,7 @@ class AppwhookController extends BaseController
                 // }
                 // $resposne_array = array("name" => "return_array=" . json_encode($return_array));
                 // $this->user_model->check_test_response($resposne_array);
-            } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'pickr') {
+            //} else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'pickr') {
                 // $log_filename = "log";
                 // // $log_msg = $resp;
                 // if (!file_exists($log_filename)) {
@@ -1076,7 +1072,7 @@ class AppwhookController extends BaseController
 
                 //     $return_array[$paid_orders_content->id][] = 'Sync Done';
                 // }
-            } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'delhivery') {
+           // } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'delhivery') {
                 //echo "delhoivery";
 
                 // if ($order_pay_sts == 'partial') {
@@ -1140,9 +1136,9 @@ class AppwhookController extends BaseController
                 // $this->user_model->check_test_response($resposne_array);
 
                 //$this->order_sync_delhivery($shiprocket_info);
-            }
-            $resposne_array = array("name" => "invoice email paid=" . $_GET['shpname'] . $paid_order_webhook_content);
-            $this->user_model->check_test_response($resposne_array);
+           // }
+            // $resposne_array = array("name" => "invoice email paid=" . $_GET['shpname'] . $paid_order_webhook_content);
+            // $this->user_model->check_test_response($resposne_array);
         }
         echo "200 ok";
         exit();
