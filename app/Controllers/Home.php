@@ -1846,10 +1846,10 @@ class Home extends BaseController
             );
             $this->user_model->track_store_subscribe($trackarray);
             echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
-            // $data = array();
-            // $data['pricurl'] = $return_url_res;
-            // echo view('templates/apbrdgnew');
-            exit();
+            $data = array();
+            $data['pricurl'] = $return_url_res;
+            echo view('templates/apbrdgnew');
+            //exit();
         }
     }
 

@@ -55,33 +55,36 @@ class FrontController extends BaseController
 
         // $testrrffresponse = json_decode($new_response, true);
         // print_r($testrrffresponse);
-
-        if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
-            return 'not_found';
-        } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
-            return 'not_found';
-        } else {
-            $condtion_array = array(
-                "product_id" => $this->request->getPost('pid'),
-                "varient_id" => $this->request->getPost('vid')
-            );
-            $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
-            $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-           // print_r($get_resulrs);
-            // echo "done";
-            if (!empty($get_resulrs)) {
-                $return_array = array(
-                    "full_price" => $get_resulrs[0]->price,
-                    "pro_pack" => $get_resulrs[0]->partial_percentage,
-                    "partial_price" => ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price,
-                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class: 'shopify-product-form',
-                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg: 'product-add-to-cart',
-                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class: 'btn-checkout',
-                );
-                return json_encode($return_array);
-            } else {
+        if (!empty($plan_details)) {
+            if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
                 return 'not_found';
+            } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
+                return 'not_found';
+            } else {
+                $condtion_array = array(
+                    "product_id" => $this->request->getPost('pid'),
+                    "varient_id" => $this->request->getPost('vid')
+                );
+                $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
+                $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+                // print_r($get_resulrs);
+                // echo "done";
+                if (!empty($get_resulrs)) {
+                    $return_array = array(
+                        "full_price" => $get_resulrs[0]->price,
+                        "pro_pack" => $get_resulrs[0]->partial_percentage,
+                        "partial_price" => ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price,
+                        "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                        "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                        "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                    );
+                    return json_encode($return_array);
+                } else {
+                    return 'not_found';
+                }
             }
+        } else {
+            return 'not_found';
         }
     }
     public function create_draft_order()
@@ -197,7 +200,7 @@ class FrontController extends BaseController
 
     public function order_create_cehck()
     {
-        
+
         $webhook_content = NULL;
         $webhook = fopen('php://input', 'rb');
         while (!feof($webhook)) {
@@ -210,7 +213,7 @@ class FrontController extends BaseController
 
         $resposne_array = array("name" => "test webhook_content" . $webhook_content);
         $this->user_model->check_test_response($resposne_array);
-    }   
+    }
     /*
     ** function is used for add collection related products into partial products when store owner set partial percenatge 
     ** to any collection. Cron run every 5 min and get the collection products and add them to partial products.
@@ -220,7 +223,7 @@ class FrontController extends BaseController
         // $resposne_array = array("name" => "insertion from AWS");
         // $this->user_model->check_test_response($resposne_array);
         // echo "insert";       
-          
+
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
 
@@ -271,7 +274,7 @@ class FrontController extends BaseController
                                     $this->user_model->add_partial_products_varient($product_array);
                                 }
 
-                               
+
                                 $this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
                             }
                         }
@@ -293,7 +296,6 @@ class FrontController extends BaseController
                         );
                         $this->user_model->update_cron_products($payxnowrest_collect_update);
                     }
-
                 } else if ($get_lates_colection->cron_page_num > 1) {
                     // block for get products paginated
                     $page_array = array(
@@ -311,7 +313,7 @@ class FrontController extends BaseController
                     if (!empty($product_list)) {
                         foreach ($product_list as $product) {
                             foreach ($product as $key => $value) {
-                                
+
                                 $payxnowrest_product_add = array(
                                     "product_id" => $value['id'],
                                     "product_title" => $value['title'],
@@ -375,7 +377,6 @@ class FrontController extends BaseController
                             "collection_id" => $get_lates_colection->collection_id,
                         );
                         $this->user_model->update_cron_products($payxnowrest_collect_update);
-
                     }
                 }
             } else {
@@ -395,27 +396,28 @@ class FrontController extends BaseController
     /*
     ** get dynamnic checkout button color from database
     */
-    public function getfront_color_code(){
+    public function getfront_color_code()
+    {
         $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
 
         $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
         //print_r($gtbtncolor);
-      
-            if (!empty($gtbtncolor)) {
-                $return_array = array(
-                    "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color: '',
-                    "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color: '',
-                    "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color: '',
-                    "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color: '',
-                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class: 'shopify-product-form',
-                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg: 'product-add-to-cart',
-                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class: 'btn-checkout',
-                    
-                );
-                return json_encode($return_array);
-            }else{
-                return "no_color";
-            }
+
+        if (!empty($gtbtncolor)) {
+            $return_array = array(
+                "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '',
+                "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '',
+                "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : '',
+                "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : '',
+                "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+
+            );
+            return json_encode($return_array);
+        } else {
+            return "no_color";
+        }
     }
 }
