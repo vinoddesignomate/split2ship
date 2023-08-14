@@ -201,7 +201,7 @@ $store_name = $shop_name[0];
                                 </div>
 
                                 <div class="flex-row">
-                                        <label for="">Cart page form css class name</label>
+                                        <label for="">Product page form css class name</label>
                                         <input type="text" name="cart_form_class" value="<?php echo (isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : ''); ?>">
                                 </div>
                                 <div class="flex-row">
