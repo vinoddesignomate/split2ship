@@ -213,6 +213,10 @@ $store_name = $shop_name[0];
                                         <label for="">Checkout button css class name </label>
                                         <input type="text" name="cg_chkout_btn_class" value="<?php echo (isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : ''); ?>">
                                 </div>
+                                <div class="flex-row">
+                                        <label for="">Cart remove class </label>
+                                        <input type="text" name="cg_cart_remove_class" value="<?php echo (isset($gtbtncolor[0]->cg_cart_remove_class) ? $gtbtncolor[0]->cg_cart_remove_class : ''); ?>">
+                                </div>
 
                                 <div class="btn-row">
                                         <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
