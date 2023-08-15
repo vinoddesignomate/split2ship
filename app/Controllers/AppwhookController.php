@@ -1162,7 +1162,7 @@ class AppwhookController extends BaseController
             "product_title" => $get_productsup->title,
             "shop_url" => $_GET['pxupprshp']
         );
-        $this->user_model->add_partial_products($product_array);
+        $this->user_model->add_partial_products($product_array);  
 
         foreach ($get_productsup->variants as $produc_varaien) {
             $product_array = array(
