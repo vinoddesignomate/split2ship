@@ -9,7 +9,6 @@
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading">
                     <p class="payxnowandrestondelivery-alert">There is some maintenance going on, so if you're facing any issues please contact us</p>
                 </div>
-
             </div>   
         </div> 
         
