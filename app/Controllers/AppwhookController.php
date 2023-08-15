@@ -1154,7 +1154,7 @@ class AppwhookController extends BaseController
             $update_product_content .= fread($webhookpd, 4096);
         }
 
-        fclose($webhookpd);
+        fclose($webhookpd);   
 
         $get_productsup = json_decode($update_product_content);
         $product_array = array(
