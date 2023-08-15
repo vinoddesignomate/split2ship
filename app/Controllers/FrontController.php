@@ -67,8 +67,7 @@ class FrontController extends BaseController
                 );
                 $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
                 $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-                // print_r($get_resulrs);
-                // echo "done";
+               
                 if (!empty($get_resulrs)) {
                     $return_array = array(
                         "full_price" => $get_resulrs[0]->price,
