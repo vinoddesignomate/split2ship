@@ -7,7 +7,7 @@
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading" style="border: 1px solid #de350a;">
-                    <p class="payxnowandrestondelivery-alert" style="color: #de350a;">There is  some maintenance going on, so if you're facing any issues please contact us</p>
+                    <p class="payxnowandrestondelivery-alert" style="color: #de350a;">There is   some maintenance going on, so if you're facing any issues please contact us</p>
                 </div>    
             </div>   
         </div> 
