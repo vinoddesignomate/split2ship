@@ -10,7 +10,7 @@
                     <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">There is some maintenance going on, so if you're facing any issues please contact us</p>
                 </div>    
             </div>   
-        </div> 
+        </div>    
         
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
