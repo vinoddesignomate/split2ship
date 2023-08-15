@@ -1899,7 +1899,7 @@ class Home extends BaseController
 
 
     public function app_configuration()
-    {
+    {   
         $data = array();
         //echo phpinfo();
         if ($this->request->getPost('track_color')) {
