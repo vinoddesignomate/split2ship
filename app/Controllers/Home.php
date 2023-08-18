@@ -580,7 +580,7 @@ class Home extends BaseController
                 // print_r($this->request->getPost());
                 $params_array = array(
                     "collection_id" => $_GET['collectionparms'],
-                    "limit" => 50,
+                    "limit" => 10,
                     "search_parms" => $this->request->getPost('search_text')
                 );
                 $data['searctxt'] = $this->request->getPost('search_text');
@@ -589,7 +589,7 @@ class Home extends BaseController
             } else {
                 $params_array = array(
                     "collection_id" => $_GET['collectionparms'],
-                    "limit" => 50,
+                    "limit" => 10,
                     //"search_parms" => "Super Women"
                 );
                 $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
@@ -755,7 +755,7 @@ class Home extends BaseController
         $page_info = $_GET['page_info'];
         //get products 
         $page_array = array(
-            'limit' => 50,
+            'limit' => 10,
             'page_info' => $page_info,
             'rel' => $rel
         );
@@ -765,7 +765,7 @@ class Home extends BaseController
             if ($this->request->getPost('search_text')) {
                 $params_array = array(
                     "collection_id" => $_GET['coll_id'],
-                    "limit" => 50,
+                    "limit" => 10,
                     "nextpage_getpage" => $page_info,
                     "search_parms" => $this->request->getPost('search_text')
                 );
@@ -774,7 +774,7 @@ class Home extends BaseController
             } else {
                 $params_array = array(
                     "collection_id" => $_GET['coll_id'],
-                    "limit" => 50,
+                    "limit" => 10,
                     "nextpage_getpage" => $page_info
                 );
                 $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
@@ -784,7 +784,7 @@ class Home extends BaseController
             if ($this->request->getPost('search_text')) {
                 $params_array = array(
                     "collection_id" => $_GET['coll_id'],
-                    "limit" => 50,
+                    "limit" => 10,
                     "prev_getpage" => $page_info,
                     "search_parms" => $this->request->getPost('search_text')
                 );
@@ -794,7 +794,7 @@ class Home extends BaseController
 
                 $params_array = array(
                     "collection_id" => $_GET['coll_id'],
-                    "limit" => 50,
+                    "limit" => 10,
                     "prev_getpage" => $page_info,
                 );
                 $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
