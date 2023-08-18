@@ -871,11 +871,11 @@ class Home extends BaseController
                     if (!in_array($prodctid, $get_part_list)) {
                         $partiall_added = "Not Added";
                         $partiall_added2 = "not_added";
-                        $cls = "text-red";
+                        $cls = "payxnowandrestondelivery-text-red";
                     } else {
                         $partiall_added = "Added";
                         $partiall_added2 = "added";
-                        $cls = "text-green";
+                        $cls = "payxnowandrestondelivery-text-green";
                     }
 
                     // $image = count($value['images']) > 0 ? $value['images'][0]['src'] : "";
@@ -884,7 +884,7 @@ class Home extends BaseController
                     $html .= '<td><input class="chkSelect" dattatrr="' . esc($partiall_added2) . '" type="checkbox" name="assign_pro[]" value="' . esc($prodctid) . '"></td>';
                     $html .= '<td>' . $prodctid . '</td>';
                     $html .= '<td>' . $value['node']['title'] . '</td>';
-                    $html .= '<td class="' . $cls . '">' . $partiall_added . '</td>';
+                    $html .= '<td class="' . $cls . '"><span>' . $partiall_added . '</span></td>';
                 }
             }
             // }
