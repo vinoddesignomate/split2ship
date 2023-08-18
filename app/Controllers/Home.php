@@ -465,7 +465,7 @@ class Home extends BaseController
             //    echo count($this->request->getPost('assign_pro')); die();
             if (!empty($this->request->getPost('assign_pro'))) {
                 $total_synproduct = count($this->request->getPost('assign_pro'));
-                if ($get_updated_plan[0]->updated_products_partial > $total_synproduct) {
+                if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
                     foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
 
                         //  echo "product_id" . $product_id;
