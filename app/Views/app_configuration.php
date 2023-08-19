@@ -131,7 +131,8 @@ $store_name = $shop_name[0];
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 4:</b> Click on “App embeds” in left sidebar. Activate App like this</h5>
 
-                        <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/app-embed.webp?var=1" /></div>
+                        <div class="payxnowandrestondelivery-imgIns">
+                                <img  style="width: 58%;" src="/public/images/instruct/app-embed.webp?var=1" /></div>
                 </div>
                 <!-- <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Add section where you want to show partial and full pay.</h5>
