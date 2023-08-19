@@ -133,40 +133,40 @@ $store_name = $shop_name[0];
 
                         <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/app-embed.webp?var=1" /></div>
                 </div>
-                <div class=" payxnowandrestondelivery-main-area ">
+                <!-- <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Add section where you want to show partial and full pay.</h5>
 
                         <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/step-5.webp?var=2" /></div>
-                </div>
+                </div> -->
         </div>
-        <div class=" payxnowandrestondelivery-main-area ">
+        <!-- <div class=" payxnowandrestondelivery-main-area ">
                 <h5><b class="text-orange">Step 6:</b> App section will show like this.</h5>
 
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config6.webp?var=3" /></div>
-        </div>
+        </div> -->
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 7:</b> Edit Order confirmation email template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
+                        <h5><b class="text-orange">Step 5:</b> Edit Order confirmation email template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<p>Product price has been split into 2 parts thus price has changed in the order email. Actual Product Price = Product price + Partial pending payment - product name</p>{% endif %}</textarea>
                         </div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 8:</b> Edit Order confirmation email template - Add below code after this code {{ line_title }}.</h5>
+                        <h5><b class="text-orange">Step 6:</b> Edit Order confirmation email template - Add below code after this code {{ line_title }}.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if line.properties.Note == 'Initial Partial Payment'%}<span>Partial Amount={{line.properties.partial_pay}}</span><br/><span>Pending Amount={{line.properties.remaining_amount}}</span><br/>{% endif %}</textarea></div>
                 </div>
         </div>
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5> <b class="text-orange">Step 9: </b>Edit Order confirmation email template - After the closing of this tag &lt;p class="disclaimer__subtext"&gt;.</h5>
+                        <h5> <b class="text-orange">Step 7: </b>Edit Order confirmation email template - After the closing of this tag &lt;p class="disclaimer__subtext"&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}Actual Product Price = Product price + Partial pending payment - product name{% endif %}</textarea></div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 10:</b> Edit Order refund template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
+                        <h5><b class="text-orange">Step 8:</b> Edit Order refund template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<span>If you had placed a partially paid order then only paid amount will be refunded</span>{% endif %}</textarea>
                         </div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 11:</b>Edit Order invoice template - Add below code in Invoice email.</h5>
+                        <h5><b class="text-orange">Step 9:</b>Edit Order invoice template - Add below code in Invoice email.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;"> {% if order.tags != blank %}{% else %}
                <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span> {% endif %}</textarea>
                         </div>
@@ -200,7 +200,7 @@ $store_name = $shop_name[0];
                                         <input type="text" data-jscolor="{}" name="full_chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : 'ffffff'); ?>">
                                 </div>
 
-                                <div class="flex-row">
+                                <!--<div class="flex-row">
                                         <label for="">Product page form css class name</label>
                                         <input type="text" name="cart_form_class" value="<?php echo (isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : ''); ?>">
                                 </div>
@@ -216,7 +216,7 @@ $store_name = $shop_name[0];
                                 <div class="flex-row">
                                         <label for="">Cart remove class </label>
                                         <input type="text" name="cg_cart_remove_class" value="<?php echo (isset($gtbtncolor[0]->cg_cart_remove_class) ? $gtbtncolor[0]->cg_cart_remove_class : ''); ?>">
-                                </div>
+                                </div>-->
 
                                 <div class="btn-row">
                                         <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
