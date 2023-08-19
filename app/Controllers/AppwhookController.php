@@ -444,13 +444,13 @@ class AppwhookController extends BaseController
                                 $getsku = $productsitm->sku;
                             }
                             $priceamnt = 0;
-                            if (isset($productsitm->properties) && $productsitm->properties[3]->name == 'remaining_amount') {
+                            if (isset($productsitm->properties) && isset($productsitm->properties[3]) && $productsitm->properties[3]->name == 'remaining_amount') {
                                 $priceamnt = $productsitm->properties[3]->value;
                             } else {
                                 $priceamnt = $productsitm->price;
                             }
                             $skuval = $productsitm->sku;
-                            if (isset($productsitm->properties) && $productsitm->properties[4]->name == 'psku') {
+                            if (isset($productsitm->properties) && isset($productsitm->properties[4]) && $productsitm->properties[4]->name == 'psku') {
                                 $skuval = $productsitm->properties[4]->value;
                             }
                             // }else {
