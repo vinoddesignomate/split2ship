@@ -160,6 +160,7 @@ class AppwhookController extends BaseController
         if (isset($_GET['whshp']) && $_GET['whshp'] != "") {
 
             // if ($jsndata->tags != "") {
+             $remaing_proice = 0;
             $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
             if (empty($get_orders_details)) {
                 if ($jsndata->tags != '') {
@@ -191,6 +192,11 @@ class AppwhookController extends BaseController
                 } else {
                     $fullmenststs = "fulfilled";
                 }
+                if($jsndata->contact_email == null){
+                    $uemailset = "";
+                }else{
+                    $uemailset = $this->common->payxnow_encodedata($jsndata->contact_email);
+                }
 
                 $orders_data = array(
                     "order_id" => $jsndata->id,
@@ -199,7 +205,7 @@ class AppwhookController extends BaseController
                     "order_ccy" => $jsndata->currency,
                     "order_date" => $jsndata->created_at,
                     "order_price" => $jsndata->current_subtotal_price,
-                    "email" => $this->common->payxnow_encodedata($jsndata->contact_email),
+                    "email" => $uemailset,
                     "total_price" => $jsndata->current_subtotal_price + $remaing_proice,
                     "pending_amount" => $remaing_proice,
                     "shop_url" => $_GET['whshp'],
