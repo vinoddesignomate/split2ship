@@ -197,7 +197,8 @@ class AppwhookController extends BaseController
                 } else {
                     $uemailset = $this->common->payxnow_encodedata($jsndata->contact_email);
                 }
-
+                $order_price = floatval($jsndata->current_subtotal_price);
+                $remaining_price = floatval($remaing_proice);
                 $orders_data = array(
                     "order_id" => $jsndata->id,
                     "order_number" => $jsndata->order_number,
@@ -206,7 +207,7 @@ class AppwhookController extends BaseController
                     "order_date" => $jsndata->created_at,
                     "order_price" => $jsndata->current_subtotal_price,
                     "email" => $uemailset,
-                    "total_price" => $jsndata->current_subtotal_price + $remaing_proice,
+                    "total_price" => $order_price + $remaining_price,
                     "pending_amount" => $remaing_proice,
                     "shop_url" => $_GET['whshp'],
                     "fullfilment_status" => $fullmenststs
