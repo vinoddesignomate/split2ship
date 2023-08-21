@@ -98,8 +98,11 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $cartarray = $body_data_decode['cart_item'];
-        // echo"<pre>"; print_r($cartarray); echo "</pre>";
-        //  die();
+        if($shopname == 'desinomatetest.myshopify.com'){
+            echo"<pre>"; print_r($cartarray); echo "</pre>";
+            die();
+        }
+        
 
         $get_details = $this->user_model->get_tokens($shopname);
         $line_item_arra = array();
@@ -125,6 +128,11 @@ class FrontController extends BaseController
                     )
                 );
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
+                foreach($item_cart['cg_variant_options'] as $split_varient_options){
+                    if($split_varient_options['name'] !="Title"){
+
+                    }
+                }
 
                 // $line_item_arra[] = array(
                 //     "title" => $item_cart->title . "partiap_pending",
