@@ -1168,25 +1168,39 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_productsup = json_decode($update_product_content);
-        $product_array = array(
+
+        $array_get_perc = array(
             "product_id" => $get_productsup->id,
-            "product_title" => $get_productsup->title,
             "shop_url" => $_GET['pxupprshp']
         );
-        $this->user_model->add_partial_products($product_array);
+        $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
+        // echo "<pre>";
+        // print_r($get_partpecentage);
+        // echo "</pre>";
 
-        foreach ($get_productsup->variants as $produc_varaien) {
+        if (!empty($get_partpecentage)) {
             $product_array = array(
                 "product_id" => $get_productsup->id,
-                "varient_id" => $produc_varaien->id,
-                "title" => $produc_varaien->title,
-                "price" => $produc_varaien->price,
-                "shop_url" => $_GET['pxupprshp']
+                "product_title" => $get_productsup->title,
+                "shop_url" => $_GET['pxupprshp'],
+                "partial_percentage" => $get_partpecentage[0]->partial_percentage
             );
-            $this->user_model->add_partial_products_varient($product_array);
+            $this->user_model->add_partial_products($product_array);
+
+            foreach ($get_productsup->variants as $produc_varaien) {
+                $product_array = array(
+                    "product_id" => $get_productsup->id,
+                    "varient_id" => $produc_varaien->id,
+                    "title" => $produc_varaien->title,
+                    "price" => $produc_varaien->price,
+                    "shop_url" => $_GET['pxupprshp'],
+                    "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                );
+                $this->user_model->add_partial_products_varient($product_array);
+            }
+            $updateprorespo = array("name" => "update products for shop=" . $update_product_content);
+            $this->user_model->check_test_response($updateprorespo);
         }
-        $updateprorespo = array("name" => "update products for shop=" . $update_product_content);
-        $this->user_model->check_test_response($updateprorespo);
 
         // $log_filename = "log";
         // // $log_msg = $resp;

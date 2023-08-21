@@ -86,13 +86,7 @@ class Home extends BaseController
                 // echo view('templates/apbrdgnew', $data);
 
                 // exit();
-            } else {
-                $array_get_perc = array(
-                    "product_id" => '808484683806456',
-                    "shop_url" => $_GET['shop']
-                );
-                $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
-                echo"<pre>"; print_r($get_partpecentage); echo"</pre>";
+            } else {                
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
                 if ($this->request->getPost('assign_save')) {
