@@ -117,7 +117,7 @@ class FrontController extends BaseController
 
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
-                $line_item_arra[] = array(
+                $line_item  = array(
                     "title" => $item_cart['title'],
                     "price" => $final_price,
                     "quantity" => $item_cart['qty'],
@@ -150,7 +150,7 @@ class FrontController extends BaseController
                 //     )
                 // );
             } else {
-                $line_item_arra[] = array(
+                $line_item = array(
                     "variant_id" => $item_cart['id'],
                     "quantity" => $item_cart['qty'],
                     "properties" => array(
@@ -161,6 +161,7 @@ class FrontController extends BaseController
                 );
             }
             $illp = $illp+1;
+            $line_item_arra[] = $line_item;
         }
         //echo $chekpartial;
         //    print_r($line_item_arra);
