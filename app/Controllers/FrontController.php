@@ -110,36 +110,55 @@ class FrontController extends BaseController
         $line_item_arra = array();
         $chekpartial = 0;
         $remaining_price = 0;
-        $illp=0;
+        $illp = 0;
         foreach ($cartarray as $item_cart) {
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
 
-                $chekpartial = 1;
-                $final_price = $item_cart['price'] / $item_cart['qty'];
-                $line_item_arra[] = array(
-                    "title" => $item_cart['title'],
-                    "price" => $final_price,
-                    "quantity" => $item_cart['qty'],
-                    "requires_shipping" => true,
-                    "properties" => array(
-                        array("name" => "Note", "value" => "Initial Partial Payment"),
-                        array("name" => "variant_code", "value" => $item_cart['id']),
-                        array("name" => "partial_pay", "value" => $item_cart['price']),
-                        array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                        array("name" => "psku", "value" => $item_cart['psku'])
-                    )
-                );
-                $remaining_price = $remaining_price + $item_cart['rem_p'];
                 if ($shopname == 'desinomatetest.myshopify.com') {
                     foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
                         if ($split_varient_options['name'] != "Title") {
-                            $line_item_arra[$illp]['properties'][] = array(
+                            $prodarray = array(
                                 array("name" => $split_varient_options['name'], "value" => $split_varient_options['value'])
                             );
                         }
                     }
                 }
+
+                $chekpartial = 1;
+                $final_price = $item_cart['price'] / $item_cart['qty'];
+                if ($shopname == 'desinomatetest.myshopify.com') {
+                    $line_item_arra[] = array(
+                        "title" => $item_cart['title'],
+                        "price" => $final_price,
+                        "quantity" => $item_cart['qty'],
+                        "requires_shipping" => true,
+                        "properties" => array(
+                            array("name" => "Note", "value" => "Initial Partial Payment"),
+                            array("name" => "variant_code", "value" => $item_cart['id']),
+                            array("name" => "partial_pay", "value" => $item_cart['price']),
+                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                            array("name" => "psku", "value" => $item_cart['psku']),
+                            $prodarray
+                        )
+                    );
+                } else {
+                    $line_item_arra[] = array(
+                        "title" => $item_cart['title'],
+                        "price" => $final_price,
+                        "quantity" => $item_cart['qty'],
+                        "requires_shipping" => true,
+                        "properties" => array(
+                            array("name" => "Note", "value" => "Initial Partial Payment"),
+                            array("name" => "variant_code", "value" => $item_cart['id']),
+                            array("name" => "partial_pay", "value" => $item_cart['price']),
+                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                            array("name" => "psku", "value" => $item_cart['psku'])
+                        )
+                    );
+                }
+                $remaining_price = $remaining_price + $item_cart['rem_p'];
+
 
                 // $line_item_arra[] = array(
                 //     "title" => $item_cart->title . "partiap_pending",
@@ -160,7 +179,7 @@ class FrontController extends BaseController
                     "requires_shipping" => true
                 );
             }
-            $illp = $illp+1;
+            $illp = $illp + 1;
         }
         //echo $chekpartial;
         //    print_r($line_item_arra);
