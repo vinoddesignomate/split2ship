@@ -132,17 +132,8 @@ class FrontController extends BaseController
                 );
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
 
-                if ($shopname == 'desinomatetest.myshopify.com') {
-                    foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
-                        if ($split_varient_options['name'] != "Title") {
-                            $line_item['properties'][] = array(
-                                "name" => $split_varient_options['name'],
-                                "value" => $split_varient_options['value']
-                            );
-                        }
-                    }
-                }
-                
+               
+
                 // if ($shopname == 'desinomatetest.myshopify.com') {
                 //     foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
                 //         if ($split_varient_options['name'] != "Title") {
@@ -171,6 +162,16 @@ class FrontController extends BaseController
                     ),
                     "requires_shipping" => true
                 );
+            }
+            if ($shopname == 'desinomatetest.myshopify.com') {
+                foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                    if ($split_varient_options['name'] != "Title") {
+                        $line_item['properties'][] = array(
+                            "name" => $split_varient_options['name'],
+                            "value" => $split_varient_options['value']
+                        );
+                    }
+                }
             }
             $illp = $illp+1;
             $line_item_arra[] = $line_item;
