@@ -91,7 +91,7 @@ class Home extends BaseController
                     "product_id" => '8084846838064',
                     "shop_url" => $_GET['shop']
                 );
-                $get_partpecentage = $this->user_model->add_partial_products($array_get_perc);
+                $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
                 echo"<pre>"; print_r($get_partpecentage); echo"</pre>";
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
