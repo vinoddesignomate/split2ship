@@ -88,7 +88,7 @@ class Home extends BaseController
                 // exit();
             } else {
                 $array_get_perc = array(
-                    "product_id" => '8084846838064',
+                    "product_id" => '808484683806456',
                     "shop_url" => $_GET['shop']
                 );
                 $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
