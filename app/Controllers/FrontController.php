@@ -134,7 +134,7 @@ class FrontController extends BaseController
                 if ($shopname == 'desinomatetest.myshopify.com') {
                     foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
                         if ($split_varient_options['name'] != "Title") {
-                            $line_item_arra[$illp]['properties'] = array(
+                            $line_item_arra[$illp]['properties'][] = array(
                                 array("name" => $split_varient_options['name'], "value" => $split_varient_options['value'])
                             );
                         }
