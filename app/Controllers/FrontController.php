@@ -98,14 +98,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $cartarray = $body_data_decode['cart_item'];
-        // if ($shopname == 'desinomatetest.myshopify.com') {
-        //     echo "<pre>";
-        //     print_r($cartarray);
-        //     echo "</pre>";
-        //     die();
-        // }
-
-
+        
         $get_details = $this->user_model->get_tokens($shopname);
         $line_item_arra = array();
         $chekpartial = 0;
@@ -132,26 +125,6 @@ class FrontController extends BaseController
                 );
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
 
-               
-
-                // if ($shopname == 'desinomatetest.myshopify.com') {
-                //     foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
-                //         if ($split_varient_options['name'] != "Title") {
-                //             $line_item_arra[$illp]['properties'][] = array(
-                //                 array("name" => $split_varient_options['name'], "value" => $split_varient_options['value'])
-                //             );
-                //         }
-                //     }
-                // }
-
-                // $line_item_arra[] = array(
-                //     "title" => $item_cart->title . "partiap_pending",
-                //     "price" => str_replace("-", "", $item_cart->rem_p),
-                //     "quantity" => $item_cart->qty,
-                //     "properties" => array(
-                //         array("name" => "Note", "value" => "Pending Partial Payment")
-                //     )
-                // );
             } else {
                 $line_item = array(
                     "variant_id" => $item_cart['id'],
@@ -179,12 +152,12 @@ class FrontController extends BaseController
         //echo $chekpartial;
         //    print_r($line_item_arra);
 
-        if ($shopname == 'desinomatetest.myshopify.com') {
-            echo "line_item_arra<pre>";
-            print_r($line_item_arra);
-            echo "</pre>";
-            die();
-        }
+        // if ($shopname == 'desinomatetest.myshopify.com') {
+        //     echo "line_item_arra<pre>";
+        //     print_r($line_item_arra);
+        //     echo "</pre>";
+        //     die();
+        // }
         $final_total_price_rem = str_replace("-", "", $remaining_price);
         $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
         return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
