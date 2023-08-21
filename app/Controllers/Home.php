@@ -87,6 +87,12 @@ class Home extends BaseController
 
                 // exit();
             } else {
+                $array_get_perc = array(
+                    "product_id" => '8084846838064',
+                    "shop_url" => $_GET['shop']
+                );
+                $get_partpecentage = $this->user_model->add_partial_products($array_get_perc);
+                echo"<pre>"; print_r($get_partpecentage); echo"</pre>";
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
                 if ($this->request->getPost('assign_save')) {
@@ -95,12 +101,17 @@ class Home extends BaseController
                     // die();
                     if (!empty($this->request->getPost('assign_pro'))) {
                         $total_synproduct = count($this->request->getPost('assign_pro'));
-                        if ($get_updated_plan[0]->updated_products_partial > $total_synproduct) {
+                        if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
                             foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
 
                                 //  echo "product_id" . $product_id;
 
-
+                                $collid = $_GET['collectionparms'];
+                                if (isset($get_stored_percentage[$collid])) {
+                                    $col_pergs = $get_stored_percentage[$collid]['percentage'];
+                                } else {
+                                    $col_pergs = 10;
+                                }
 
                                 $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                                 $product_details = json_decode($get_single_pro['body'], true);
@@ -110,7 +121,7 @@ class Home extends BaseController
                                     "product_id" => $product_id,
                                     "product_title" => $product_details['product']['title'],
                                     "shop_url" => $_GET['shop'],
-                                    "partial_percentage" => 10,
+                                    "partial_percentage" => $col_pergs,
                                     "add_date" => date('Y-m-d')
                                 );
                                 $this->user_model->add_partial_products($product_array);
@@ -121,7 +132,7 @@ class Home extends BaseController
                                         "varient_id" => $produc_varaien['id'],
                                         "title" => $produc_varaien['title'],
                                         "price" => $produc_varaien['price'],
-                                        "partial_percentage" => 10,
+                                        "partial_percentage" => $col_pergs,
                                         "shop_url" => $_GET['shop']
                                     );
                                     $this->user_model->add_partial_products_varient($product_array);

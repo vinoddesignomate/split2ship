@@ -729,4 +729,12 @@ class UserModel extends Model
         $get_colorbtn = $qbuilder->get();
         return $get_colorbtn->getResult();
     }
+    public function get_partial_percentage($product_array)
+    {
+        $qbuilder = $this->db->table('app_partial_products');
+        $qbuilder->where('shop_url', $product_array['shop_url']);
+        $qbuilder->where('product_id', $product_array['product_id']);
+        $cg_split2shipq = $qbuilder->get();        
+        return $cg_split2shipq->getResult();
+    }
 }
