@@ -110,6 +110,7 @@ class FrontController extends BaseController
         $line_item_arra = array();
         $chekpartial = 0;
         $remaining_price = 0;
+        $illp=0;
         foreach ($cartarray as $item_cart) {
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
@@ -133,7 +134,7 @@ class FrontController extends BaseController
                 if ($shopname == 'desinomatetest.myshopify.com') {
                     foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
                         if ($split_varient_options['name'] != "Title") {
-                            $line_item_arra[]['properties'] = array(
+                            $line_item_arra[$illp]['properties'] = array(
                                 array("name" => $split_varient_options['name'], "value" => $split_varient_options['value'])
                             );
                         }
@@ -159,6 +160,7 @@ class FrontController extends BaseController
                     "requires_shipping" => true
                 );
             }
+            $illp = $illp+1;
         }
         //echo $chekpartial;
         //    print_r($line_item_arra);
