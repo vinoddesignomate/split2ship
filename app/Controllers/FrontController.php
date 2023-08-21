@@ -98,12 +98,12 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $cartarray = $body_data_decode['cart_item'];
-        
+
         $get_details = $this->user_model->get_tokens($shopname);
         $line_item_arra = array();
         $chekpartial = 0;
         $remaining_price = 0;
-        $illp=0;
+        $illp = 0;
         foreach ($cartarray as $item_cart) {
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
@@ -124,7 +124,6 @@ class FrontController extends BaseController
                     )
                 );
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
-
             } else {
                 $line_item = array(
                     "variant_id" => $item_cart['id'],
@@ -136,17 +135,18 @@ class FrontController extends BaseController
                     "requires_shipping" => true
                 );
             }
-            if ($shopname == 'desinomatetest.myshopify.com') {
-                foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
-                    if ($split_varient_options['name'] != "Title") {
-                        $line_item['properties'][] = array(
-                            "name" => $split_varient_options['name'],
-                            "value" => $split_varient_options['value']
-                        );
-                    }
+
+            //code for add variants name & value to order
+            foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                if ($split_varient_options['name'] != "Title") {
+                    $line_item['properties'][] = array(
+                        "name" => $split_varient_options['name'],
+                        "value" => $split_varient_options['value']
+                    );
                 }
             }
-            $illp = $illp+1;
+
+            $illp = $illp + 1;
             $line_item_arra[] = $line_item;
         }
         //echo $chekpartial;
