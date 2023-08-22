@@ -357,7 +357,17 @@ $fstore_name = $shop_name[0];
     });
 
     $("#checkAll").click(function() {
-        $('input:checkbox').not(this).prop('checked', this.checked);
+
+        if ($(this).prop("checked")) {
+                // let ddtatrr = $(this).attr('dattatrr');
+                // console.log(ddtatrr);
+                //$(".chkSelect").prop("checked", true);
+                $("[dattatrr=not_added]").prop("checked", true);
+            } else {
+                $(".payxnowandrestondelivery-chkSelect").prop("checked", false);
+            }
+
+        //$('input:checkbox').not(this).prop('checked', this.checked);
     });
 
     //call ajax for track user log into database

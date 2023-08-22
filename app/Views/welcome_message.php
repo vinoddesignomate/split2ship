@@ -83,14 +83,16 @@
                                                             $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
                                                             if (!in_array($prodctid, $get_part_list)) {
                                                                 $partiall_added = "Not Added";
+                                                                $partiall_added2 = "not_added";
                                                                 $cls = "payxnowandrestondelivery-text-red";
                                                             } else {
                                                                 $partiall_added = "Added";
+                                                                $partiall_added2 = "added";
                                                                 $cls = "payxnowandrestondelivery-text-green";
                                                             }
                                             ?>
                                                             <tr>
-                                                                <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" type="checkbox" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
+                                                                <td><input class="payxnowandrestondelivery-chkSelect" dattatrr="<?php echo esc($partiall_added2); ?>" type="checkbox" type="checkbox" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
                                                                 <td> <?php echo esc($prodctid); ?></td>
                                                                 <td> <?php echo esc($value['node']['title']); ?></td>
                                                                 <td class="<?php echo $cls; ?>"><?php echo esc($partiall_added); ?></td>
