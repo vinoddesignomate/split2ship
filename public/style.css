@@ -437,7 +437,14 @@ p.payxnowandrestondelivery-alert {
     border-radius: 5px;
     border: 1px solid #10277C;
 }
-
+.edit-col_class{
+    border :1px solid #999;
+    background-color: #fff;
+}
+.colbttrack{
+    background: #4A4DE6;
+    color: #fff;
+}
   /*************Responsive***********/
   @media only screen and (max-width: 1232px){
     header .payxnowandrestondelivery-header-nav-links ul{background-color: #10277c;}

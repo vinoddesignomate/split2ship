@@ -164,10 +164,10 @@ $store_name = $shop_name[0];
                                     <td>
                                         <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
                                             <span>
-                                                <input type="text" style="width: 32% !important;" class="edit-col" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
+                                                <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
                                                 <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
 
-                                                <input type="button" style="width: 32% !important;" class="subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
+                                                <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
                                             </span>
                                         </form>
                                     </td>
