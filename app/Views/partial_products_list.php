@@ -119,6 +119,9 @@ $store_name = $shop_name[0];
                 </div>
             </div>
         </div>
+        <?php 
+        //echo "shopname=".$shopname;
+        if($shopname == 'desinomatetest.myshopify.com') { ?>
          <div class="main-area no-sidebar single-page">
         <div class="inner-wrapper">
             <div class="main-data-col">
@@ -180,7 +183,7 @@ $store_name = $shop_name[0];
             </div>
         </div>
     </div>
-    
+    <?php } ?>
     </div>
 </form>
 </div>
