@@ -736,7 +736,7 @@ class Home extends BaseController
 
         $data['get_store_collections'] = $this->user_model->get_collections($_GET['shop']);
         $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
-
+        $data['shopname'] = $_GET['shop'];
         // echo "<pre>";
         // print_r($data['get_stored_percentage']);
         // echo "</pre>";

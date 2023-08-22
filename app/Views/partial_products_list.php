@@ -119,7 +119,9 @@ $store_name = $shop_name[0];
                 </div>
             </div>
         </div>
-        <?php if($_GET['shop'] == 'desinomatetest.myshopify.com	') { ?>
+        <?php 
+        echo "shopname=".$shopname;
+        if($shopname == 'desinomatetest.myshopify.com	') { ?>
          <div class="main-area no-sidebar single-page">
         <div class="inner-wrapper">
             <div class="main-data-col">
