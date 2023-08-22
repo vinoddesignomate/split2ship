@@ -50,7 +50,7 @@ $store_name = $shop_name[0];
 
                             ?>
                                 <tr>
-                                    <!-- <td> <?php echo esc($sr + $stsrt); ?></td> -->
+                                  
                                     <td> <?php echo esc($stsrt); ?></td>
                                     <td> <?php echo esc($list_collections->collections_name); ?></td>
                                     <td>
