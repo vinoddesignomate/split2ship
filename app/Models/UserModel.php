@@ -166,17 +166,17 @@ class UserModel extends Model
 
 
         //update partial percentage of products when add partial percentage their collections
-        $update_query1 = "UPDATE ppp_products_varient 
-        SET partial_percentage='" . $update_data['partial_percentage'] . "'
-        WHERE shop_url=?
-        AND collection_id=?";
-        $this->db->query($update_query1, array($update_data['shop_url'], $update_data['collection_id']));
+        // $update_query1 = "UPDATE ppp_products_varient 
+        // SET partial_percentage='" . $update_data['partial_percentage'] . "'
+        // WHERE shop_url=?
+        // AND collection_id=?";
+        // $this->db->query($update_query1, array($update_data['shop_url'], $update_data['collection_id']));
 
-        $update_query2 = "UPDATE app_partial_products 
-        SET partial_percentage='" . $update_data['partial_percentage'] . "'
-        WHERE shop_url=?
-        AND collection_id=?";
-        $this->db->query($update_query2, array($update_data['shop_url'], $update_data['collection_id']));
+        // $update_query2 = "UPDATE app_partial_products 
+        // SET partial_percentage='" . $update_data['partial_percentage'] . "'
+        // WHERE shop_url=?
+        // AND collection_id=?";
+        // $this->db->query($update_query2, array($update_data['shop_url'], $update_data['collection_id']));
     }
     public function track_orders($data_array, $shopurl)
     {
