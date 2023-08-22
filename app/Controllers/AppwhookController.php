@@ -1198,8 +1198,8 @@ class AppwhookController extends BaseController
                 );
                 $this->user_model->add_partial_products_varient($product_array);
             }
-            $updateprorespo = array("name" => "update products for shop=" . $update_product_content);
-            $this->user_model->check_test_response($updateprorespo);
+            // $updateprorespo = array("name" => "update products for shop=" . $update_product_content);
+            // $this->user_model->check_test_response($updateprorespo);
         }
 
         // $log_filename = "log";
