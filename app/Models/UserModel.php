@@ -150,7 +150,7 @@ class UserModel extends Model
     }
     public function update_collection_partial_percentage($update_data, $proid)
     {
-        $this->db->table('collections_percentage')->where('shop_url', $update_data['shop_url'])->where('id', $update_data['id'])->update($update_data);
+        $this->db->table('collections_percentage')->where('shop_url', $update_data['shop_url'])->where('collection_id', $update_data['collection_id'])->update($update_data);
 
         $qbuilder_insert = $this->db->table('collections_percentage');
         $qbuilder_insert->where('shop_url', $update_data['shop_url']);
