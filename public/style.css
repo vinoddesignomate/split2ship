@@ -445,6 +445,12 @@ p.payxnowandrestondelivery-alert {
     background: #4A4DE6;
     color: #fff;
 }
+.cg_cpliteship_disabled-link {
+    pointer-events: none; /* Prevents the link from being clickable */
+    color: gray; /* Change the text color to indicate it's disabled */
+    text-decoration: none; /* Remove underlines or other decorations */
+    cursor: not-allowed; /* Show a "not-allowed" cursor to indicate it's disabled */
+  }
   /*************Responsive***********/
   @media only screen and (max-width: 1232px){
     header .payxnowandrestondelivery-header-nav-links ul{background-color: #10277c;}
