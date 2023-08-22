@@ -1077,6 +1077,7 @@ class Home extends BaseController
                 "collection_id" => $this->request->getPost('colltion_change_partial_id'),
                 "shop_url" => $_REQUEST['shop'],
                 "movements" => date('Y-m-d'),
+                "cron_run" => 0,
 
             );
             $this->user_model->update_collection_partial_percentage($update_price, $this->request->getPost('proid'));
