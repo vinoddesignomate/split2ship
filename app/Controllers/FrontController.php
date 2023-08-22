@@ -115,6 +115,7 @@ class FrontController extends BaseController
                     "price" => $final_price,
                     "quantity" => $item_cart['qty'],
                     "requires_shipping" => true,
+                    "gift_card" => true,
                     "properties" => array(
                         array("name" => "Note", "value" => "Initial Partial Payment"),
                         array("name" => "variant_code", "value" => $item_cart['id']),
@@ -128,6 +129,7 @@ class FrontController extends BaseController
                 $line_item = array(
                     "variant_id" => $item_cart['id'],
                     "quantity" => $item_cart['qty'],
+                    "gift_card" => true,
                     "properties" => array(
                         array("name" => "Note", "value" => "Full Payment"),
                         array("name" => "full_pay", "value" => $item_cart['price'])
