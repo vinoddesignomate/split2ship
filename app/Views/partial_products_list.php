@@ -126,7 +126,8 @@ $store_name = $shop_name[0];
         <div class="inner-wrapper">
             <div class="main-data-col">
                 <div class="table-heading">
-                    <h2>Collection Partial Percentage</h2>
+                    <h2>Set partial percentage by collections</h2>
+                    <span>Add all products into partial products list by collections</span>
                 </div>
 
                 <?php if (!empty($get_store_collections)) { ?>
