@@ -737,4 +737,19 @@ class UserModel extends Model
         $cg_split2shipq = $qbuilder->get();        
         return $cg_split2shipq->getResult();
     }
+    public function add_partial_products_collections($product_array)
+    {
+        $qbuilder = $this->db->table('app_partial_products');
+        $qbuilder->where('shop_url', $product_array['shop_url']);
+        $qbuilder->where('product_id', $product_array['product_id']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('app_partial_products')->where('shop_url', $product_array['shop_url'])->where('product_id', $product_array['product_id'])->update($product_array);
+            return $this->db->affectedRows();
+        } else {
+            $this->update_plan_products(1, $product_array['shop_url']);
+            return  $qbuilder->insert($product_array);
+        }
+    }
 }

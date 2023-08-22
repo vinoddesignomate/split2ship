@@ -239,7 +239,7 @@ class FrontController extends BaseController
         if (!empty($get_lates_colection)) { //check data empty or not  
 
             $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
-            if ($get_updated_plan[0]->updated_products_partial >= 0) {
+            if ($get_updated_plan[0]->updated_products_partial > 0) {
                 $cron_limit_set = 50;
                 $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
                 //below block for get products first time from page 1
@@ -271,7 +271,7 @@ class FrontController extends BaseController
                                     "add_date" => date('Y-m-d'),
                                     "collection_id" => $get_lates_colection->collection_id
                                 );
-                                $this->user_model->add_partial_products($payxnowrest_product_add);
+                                $this->user_model->add_partial_products_collections($payxnowrest_product_add);
                                 foreach ($value['variants'] as $produc_varaien) {
                                     $product_array = array(
                                         "product_id" => $produc_varaien['product_id'],
@@ -286,7 +286,7 @@ class FrontController extends BaseController
                                 }
 
 
-                                $this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
+                                //$this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
                             }
                         }
                     }
@@ -333,7 +333,7 @@ class FrontController extends BaseController
                                     "add_date" => date('Y-m-d'),
                                     "collection_id" => $get_lates_colection->collection_id
                                 );
-                                $this->user_model->add_partial_products($payxnowrest_product_add);
+                                $this->user_model->add_partial_products_collections($payxnowrest_product_add);
                                 foreach ($value['variants'] as $produc_varaien) {
                                     $product_array = array(
                                         "product_id" => $produc_varaien['product_id'],
@@ -347,7 +347,7 @@ class FrontController extends BaseController
                                     $this->user_model->add_partial_products_varient($product_array);
                                 }
 
-                                $this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
+                               // $this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
                             }
                         }
                     }
