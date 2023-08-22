@@ -19,7 +19,7 @@ $store_name = $shop_name[0];
                 <div class="main-area no-sidebar single-page">
                     <div class="inner-wrapper">
                         <div class="main-data-col">
-                            <div class="table-heading">
+                            <div class="table-heading" style="margin-bottom: 18px;">
                                 <h2>Set partial percentage by collections</h2>
                                 <span>Add all products into partial products list by collections</span>
                             </div>
