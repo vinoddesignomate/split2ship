@@ -119,7 +119,8 @@ $store_name = $shop_name[0];
                 </div>
             </div>
         </div>
-        <!-- <div class="main-area no-sidebar single-page">
+        <?php if($_GET['shop'] == 'desinomatetest.myshopify.com	') { ?>
+         <div class="main-area no-sidebar single-page">
         <div class="inner-wrapper">
             <div class="main-data-col">
                 <div class="table-heading">
@@ -179,7 +180,8 @@ $store_name = $shop_name[0];
                 <?php } ?>
             </div>
         </div>
-    </div>-->
+    </div>
+    <?php } ?>
     </div>
 </form>
 </div>
