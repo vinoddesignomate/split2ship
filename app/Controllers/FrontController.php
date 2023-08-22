@@ -271,6 +271,7 @@ class FrontController extends BaseController
                                     "add_date" => date('Y-m-d'),
                                     "collection_id" => $get_lates_colection->collection_id
                                 );
+                                //below function is used for add products into partial list & update partial products of store according their plan
                                 $this->user_model->add_partial_products_collections($payxnowrest_product_add);
                                 foreach ($value['variants'] as $produc_varaien) {
                                     $product_array = array(
@@ -284,9 +285,7 @@ class FrontController extends BaseController
                                     );
                                     $this->user_model->add_partial_products_varient($product_array);
                                 }
-
-
-                                //$this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
+                                
                             }
                         }
                     }
@@ -347,7 +346,7 @@ class FrontController extends BaseController
                                     $this->user_model->add_partial_products_varient($product_array);
                                 }
 
-                               // $this->user_model->update_plan_products(1, $get_lates_colection->shop_url);
+                               
                             }
                         }
                     }
