@@ -104,9 +104,9 @@ $store_name = $shop_name[0];
                             if ($part_page > 1) {
                                 echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
                             }
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
-                            };
+                            // for ($i = 1; $i <= $total_pages; $i++) {
+                            //     echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
+                            // };
                             if ($total_pages > $part_page) {
                                 echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
                             }
