@@ -166,7 +166,7 @@ class AppwhookController extends BaseController
                 if ($jsndata->tags != '') {
                     $orders_sts = 'pending';
                     $pendingamntnnn = explode("_", $jsndata->tags);
-                    $remaing_proice = $pendingamntnnn[1];
+                    $remaing_proice = (isset($pendingamntnnn[1]) ? $pendingamntnnn[1] : '0');
                     $part_type = $pendingamntnnn[0];
                     $order_pay_sts = "partial";
                 } else {

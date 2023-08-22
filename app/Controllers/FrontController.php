@@ -69,10 +69,18 @@ class FrontController extends BaseController
                 $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
 
                 if (!empty($get_resulrs)) {
+                    if(isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage!=""){
+
+                        $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
+                        $partperctg = $get_resulrs[0]->partial_percentage;
+                    }else{
+                        $propartialper = 0; 
+                        $partperctg = 0; 
+                    }
                     $return_array = array(
                         "full_price" => $get_resulrs[0]->price,
-                        "pro_pack" => $get_resulrs[0]->partial_percentage,
-                        "partial_price" => ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price,
+                        "pro_pack" => $partperctg,
+                        "partial_price" => $propartialper,
                         "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
                         "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
                         "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
