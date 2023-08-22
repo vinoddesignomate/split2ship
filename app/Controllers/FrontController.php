@@ -403,7 +403,7 @@ class FrontController extends BaseController
         } else {
             echo "not found";
         }
-        $updateprorespo = array("name" => "run collectioncrn job");
+        $updateprorespo = array("name" => "run collectioncrn job=".json_encode($get_lates_colection));
         $this->user_model->check_test_response($updateprorespo);
     }
     /*
