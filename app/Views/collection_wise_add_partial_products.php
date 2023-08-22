@@ -34,8 +34,8 @@ $store_name = $shop_name[0];
                             $shop_name = explode(".", $_GET['shop']);
                             $fstore_name2 = $shop_name[0];
                             // if (!empty($get_list)) {
-                            $sr = $start_from;
-                            $stsrt = 0;
+                            //$sr = $start_from;
+                            $stsrt = 1;
                             // $start_from = ($page-1) * $num_rec_per_page+1; 
                             foreach ($get_store_collections as $list_collections) {
                                 // echo "<pre>";
@@ -50,7 +50,8 @@ $store_name = $shop_name[0];
 
                             ?>
                                 <tr>
-                                    <td> <?php echo esc($sr + $stsrt); ?></td>
+                                    <!-- <td> <?php echo esc($sr + $stsrt); ?></td> -->
+                                    <td> <?php echo esc($stsrt); ?></td>
                                     <td> <?php echo esc($list_collections->collections_name); ?></td>
                                     <td>
                                         <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
@@ -64,7 +65,8 @@ $store_name = $shop_name[0];
                                     </td>
                                 </tr>
                             <?php
-                                $sr++;
+                               // $sr++;
+                                $stsrt++;
                             } ?>
                         </table>
 
