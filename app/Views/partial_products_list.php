@@ -122,68 +122,6 @@ $store_name = $shop_name[0];
             </div>
         </div>
         
-         <div class="main-area no-sidebar single-page">
-        <div class="inner-wrapper">
-            <div class="main-data-col">
-                <div class="table-heading">
-                    <h2>Set partial percentage by collections</h2>
-                    <span>Add all products into partial products list by collections</span>
-                </div>
-
-                <?php if (!empty($get_store_collections)) { ?>
-                    <div class="table-outer-wrapper">
-                        <table>
-                            <tr>
-                                <th>Sr. No</th>
-                                <th>Collection Name</th>
-                                <th>Partial Percentage</th>
-                             
-                            </tr>
-
-                            <?php
-                            $shop_name = explode(".", $_GET['shop']);
-                            $fstore_name2 = $shop_name[0];
-                            // if (!empty($get_list)) {
-                            $sr = $start_from;
-                            $stsrt = 0;
-                            // $start_from = ($page-1) * $num_rec_per_page+1; 
-                            foreach ($get_store_collections as $list_collections) {
-                                // echo "<pre>";
-                                // print_r($list_collections);
-                                // echo "</pre>";
-
-                                if (isset($get_stored_percentage[$list_collections->collection_id])) {
-                                    $col_pergs = $get_stored_percentage[$list_collections->collection_id]['percentage'];
-                                } else {
-                                    $col_pergs = 0;
-                                }
-
-                            ?>
-                                <tr>
-                                    <td> <?php echo esc($sr + $stsrt); ?></td>
-                                    <td> <?php echo esc($list_collections->collections_name); ?></td>
-                                    <td>
-                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
-                                            <span>
-                                                <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
-                                                <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
-
-                                                <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
-                                            </span>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php
-                                $sr++;
-                            } ?>
-                        </table>
-
-                    </div>
-
-                <?php } ?>
-            </div>
-        </div>
-    </div>
     
     </div>
 </form>
@@ -231,28 +169,7 @@ $store_name = $shop_name[0];
             $("#show_per_text_" + canidid).hide();
         });
 
-        $('.subbtn_coll').on('click', function(e) {
-
-            const d = new Date();
-            let req_time = d.getTime();
-
-            var this_id_frm = $(this).attr('subid');
-            var formdata = $("#sub_form_data_" + this_id_frm).serialize();
-            var shopname = '<?php echo esc($_GET['shop']); ?>';
-            $.ajax({
-                type: "POST",
-                url: "collection_track_partial_percentage?vart=" + req_time,
-                data: 'shop=' + shopname + '&update_per=true&' + formdata,
-                success: function(response) {
-                    window.location.reload();
-                    // $("#show_per_" + this_id_frm).show();
-                    // $("#show_per_" + this_id_frm).html(response);
-                    // $("#show_per_text_" + this_id_frm).hide();
-                }
-
-            });
-            return false;
-        });
+        
 
         //$(".checkAll").click(function() {
         $("body").on("click", "#payxnowandrestondelivery_partial_all", function() {

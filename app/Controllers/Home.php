@@ -747,6 +747,55 @@ class Home extends BaseController
         echo view('templates/footer');
     }
 
+    public function collection_wise_partial_products()
+    {
+        $this->check_subscribe();
+        $data = array();       
+       
+        $get_details = $this->user_model->get_tokens($_GET['shop']);
+
+
+        //get store collections
+        $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+        $collections = json_decode($collections['body'], true);
+        $coll_array = array();
+        foreach ($collections['custom_collections'] as $collection_list) {
+            $coll_array = array(
+                "collection_id" => $collection_list['id'],
+                "collections_name" => $collection_list['title'],
+                "shop_url" => $_GET['shop']
+
+            );
+            $this->user_model->track_collections($coll_array, $_GET['shop']);
+        }
+
+        $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+        $smart_collectionsget = json_decode($smart_collections['body'], true);
+        $smart_coll_array = array();
+
+        //track smart collection
+        if (isset($smart_collectionsget['smart_collections']) && !empty($smart_collectionsget['smart_collections'])) {
+            foreach ($smart_collectionsget['smart_collections'] as $collection_list) {
+                $smart_coll_array = array(
+                    "collection_id" => $collection_list['id'],
+                    "collections_name" => $collection_list['title'],
+                    "shop_url" => $_GET['shop']
+
+                );
+
+                $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
+            }
+        }
+
+        $data['get_store_collections'] = $this->user_model->get_collections($_GET['shop']);
+        $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
+        $data['shopname'] = $_GET['shop'];
+        echo view('templates/header');
+        echo view('collection_wise_add_partial_products', $data);
+        echo view('templates/footer');
+    }
+
     public function product_pagination()
     {
 
