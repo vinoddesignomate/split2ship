@@ -405,13 +405,17 @@ class FrontController extends BaseController
                     "collection_id" => $get_lates_colection->collection_id,
                 );
                 $this->user_model->update_cron_products($payxnowrest_collect_update);
+                //track upgrade message if merchants owner used all products quota for partial add products               
+                $this->user_model->update_data($get_lates_colection->shop_url, array(
+					"package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+				));
             }
             echo "done";
         } else {
             echo "not found";
         }
-        $updateprorespo = array("name" => "run collectioncrn job=".json_encode($get_lates_colection));
-        $this->user_model->check_test_response($updateprorespo);
+        // $updateprorespo = array("name" => "run collectioncrn job=".json_encode($get_lates_colection));
+        // $this->user_model->check_test_response($updateprorespo);
     }
     /*
     ** get dynamnic checkout button color from database

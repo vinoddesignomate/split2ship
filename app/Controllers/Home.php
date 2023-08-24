@@ -140,6 +140,10 @@ class Home extends BaseController
                             $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
                         } else {
                             echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+                            //track upgrade message if merchants owner used all products quota for partial add products               
+                            $this->user_model->update_data($_GET['shop'], array(
+                                "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+                            ));
                         }
                     }
                     //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
