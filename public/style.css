@@ -451,6 +451,8 @@ p.payxnowandrestondelivery-alert {
     text-decoration: none; /* Remove underlines or other decorations */
     cursor: not-allowed; /* Show a "not-allowed" cursor to indicate it's disabled */
   }
+
+  .list_search{gap: 20px;}
   /*************Responsive***********/
   @media only screen and (max-width: 1232px){
     header .payxnowandrestondelivery-header-nav-links ul{background-color: #10277c;}
