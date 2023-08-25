@@ -29,6 +29,15 @@ $store_name = $shop_name[0];
                                 Remove partial payment</button>
 
                         </div>
+                        <?php if($shopname == 'desinomatetest.myshopify.com') { ?>
+                            <div class="search-wrapper">
+                            <form id="cg_list_search" class="custom-search" method="post">
+                                <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
+                                <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                        <?php }
+                        ?>
                     <?php  }
                     if (!empty($get_list)) { ?>
                         <div class="payxnowandrestondelivery-table-outer-wrapper">
