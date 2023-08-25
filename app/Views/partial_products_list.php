@@ -28,8 +28,8 @@ $store_name = $shop_name[0];
                             <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta"><i class="fa fa-trash" aria-hidden="true"></i>
                                 Remove partial payment</button>
 
-                        </div>
-                        <?php if($shopname == 'desinomatetest.myshopify.com') { ?>
+
+                                <?php if($shopname == 'desinomatetest.myshopify.com') { ?>
                             <div class="search-wrapper">
                             <form id="cg_list_search" class="custom-search" method="post">
                                 <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
@@ -38,6 +38,9 @@ $store_name = $shop_name[0];
                         </div>
                         <?php }
                         ?>
+
+                        </div>
+                        
                     <?php  }
                     if (!empty($get_list)) { ?>
                         <div class="payxnowandrestondelivery-table-outer-wrapper">
@@ -197,7 +200,7 @@ $store_name = $shop_name[0];
 
     function remove_prodct() {
 
-        var form_data = new FormData(document.querySelector("form"));
+        var form_data = new FormData(document.querySelector("#removform"));
         if (!form_data.has("assign_remove_pro[]")) {
             alert('Please select any products');
             return false;
