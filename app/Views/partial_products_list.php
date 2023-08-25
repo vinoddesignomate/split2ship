@@ -22,7 +22,7 @@ $store_name = $shop_name[0];
             <div class="payxnowandrestondelivery-inner-wrapper">
                 <div class="payxnowandrestondelivery-main-data-col">
                     <?php if (!empty($get_list)) { ?>
-                        <div class="payxnowandrestondelivery-head-wrapper">
+                        <div class="payxnowandrestondelivery-head-wrapper list_search">
                             <!-- <h2>Product name</h2> -->
 
                             <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta"><i class="fa fa-trash" aria-hidden="true"></i>
