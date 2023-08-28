@@ -692,12 +692,13 @@ class Home extends BaseController
 
         $data['part_page'] = isset($_REQUEST['part_page']) && is_numeric($_REQUEST['part_page']) ? $_REQUEST['part_page'] : 1;
 
-        if(isset($_REQUEST['textsearch']) && $_REQUEST['textsearch']){
-            $search_list = $_REQUEST['textsearch'];
+        if($this->request->getPost('search_text')){
+            $search_list = $this->request->getPost('search_text');
         }else{
             $search_list = "";
         }
-        print_r($this->request->getPost());
+        print_r($this->request->getPost('search_text'));
+        echo $search_list;
         $data['search_list'] = $search_list;
         $limit = 10;
         $initial_page = ($data['part_page'] - 1) * $limit;
