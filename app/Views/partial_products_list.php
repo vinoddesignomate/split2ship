@@ -29,18 +29,18 @@ $store_name = $shop_name[0];
                                 Remove partial payment</button>
 
 
-                                <?php if($shopname == 'desinomatetest.myshopify.com') { ?>
-                            <div class="search-wrapper">
-                            <form id="cg_list_search" class="custom-search" method="post">
-                                <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
-                                <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                        <?php }
-                        ?>
+                            <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
+                                <div class="search-wrapper">
+                                    <form id="cg_list_search" class="custom-search" method="post">
+                                        <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
+                                        <button type="button" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            <?php }
+                            ?>
 
                         </div>
-                        
+
                     <?php  }
                     if (!empty($get_list)) { ?>
                         <div class="payxnowandrestondelivery-table-outer-wrapper">
@@ -115,8 +115,8 @@ $store_name = $shop_name[0];
                             echo "<ul class='payxnowandrestondelivery-pagination'>";
                             if ($part_page > 1) {
                                 echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
-                            }else{
-                                echo "<li><a onclick='abc(event)' href='javascript:void(0);' class='cg_cpliteship_disabled-link payxnowandrestondelivery-button'>Previous</a></li>"; 
+                            } else {
+                                echo "<li><a onclick='abc(event)' href='javascript:void(0);' class='cg_cpliteship_disabled-link payxnowandrestondelivery-button'>Previous</a></li>";
                             }
                             // for ($i = 1; $i <= $total_pages; $i++) {
                             //     echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
@@ -133,8 +133,8 @@ $store_name = $shop_name[0];
                 </div>
             </div>
         </div>
-        
-    
+
+
     </div>
 </form>
 </div>
@@ -181,7 +181,7 @@ $store_name = $shop_name[0];
             $("#show_per_text_" + canidid).hide();
         });
 
-        
+
 
         //$(".checkAll").click(function() {
         $("body").on("click", "#payxnowandrestondelivery_partial_all", function() {
@@ -194,6 +194,24 @@ $store_name = $shop_name[0];
             }
 
 
+        });
+
+        $("body").on("click", "#lstsearchq", function() {
+            var getsearchval = $("#list_search").val();
+            if (getsearchval.length >= 3) {
+                var currentURL = window.location.href;
+                var newParameter = 'newParam=newValue';
+                if (currentURL.indexOf('?') !== -1) {
+
+                    currentURL += '&' + newParameter;
+                } else {
+
+                    currentURL += '?' + newParameter;
+                }
+                window.location.href = currentURL;
+            }else{
+                alert("Please enter minimum 3 characters length");
+            }
         });
 
     });
