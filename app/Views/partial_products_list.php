@@ -29,7 +29,7 @@ $store_name = $shop_name[0];
 
                         <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
                             <div class="flex-wrapper">
-                                <form id="searchbox">
+                                <form id="searchbox" onsubmit="return search_text()">
                                     <div class="search-wrapper">
 
                                         <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
@@ -204,55 +204,13 @@ $store_name = $shop_name[0];
 
         });
 
-        $("body").on("click", "#lstsearchq", function() {
-            var getsearchval = $("#list_search").val();
-            if (getsearchval.length >= 3) {
-                //var currentURL = top.window.location.href();
-                // console.log(top.window);
-                // console.log(top.window.location);
-                // alert(currentURL);
-                // var newParameter = 'newParam=newValue';
-                // if (currentURL.indexOf('?') !== -1) {
-
-                //     currentURL += '&' + newParameter;
-                // } else {
-
-                //     currentURL += '?' + newParameter;
-                // }
-                //top.window.location = currentURL;   
-                top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
-            } else {
-                alert("Please enter minimum 3 characters length");
-            }
-        });
 
     });
 
     function remove_prodct() {
 
         var form_data = new FormData(document.querySelector("#removform"));
-        var getsearchval = $("#list_search").val();
-        if (getsearchval.length > 0) {
-
-            if (getsearchval.length >= 3) {
-                //var currentURL = top.window.location.href();
-                // console.log(top.window);
-                // console.log(top.window.location);
-                // alert(currentURL);
-                // var newParameter = 'newParam=newValue';
-                // if (currentURL.indexOf('?') !== -1) {
-
-                //     currentURL += '&' + newParameter;
-                // } else {
-
-                //     currentURL += '?' + newParameter;
-                // }
-                //top.window.location = currentURL;   
-                top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
-            } else {
-                alert("Please enter minimum 3 characters length");
-            }
-        } else if (!form_data.has("assign_remove_pro[]")) {
+        if (!form_data.has("assign_remove_pro[]")) {
             alert('Please select any products');
             return false;
         } else {
@@ -260,17 +218,28 @@ $store_name = $shop_name[0];
             //return true;
         }
 
+    }
 
-        // if ($(".payxnowandrestondelivery-chkSelect").prop("checked")) {
-        //     var gettxt = confirm('Do you really want to remove selected product(s)?');
-        //     if (gettxt) {
-        //         $("#removform").submit();
-        //     } else {
+    function search_text() {
+        var getsearchval = $("#list_search").val();
+        if (getsearchval.length >= 3) {
+            //var currentURL = top.window.location.href();
+            // console.log(top.window);
+            // console.log(top.window.location);
+            // alert(currentURL);
+            // var newParameter = 'newParam=newValue';
+            // if (currentURL.indexOf('?') !== -1) {
 
-        //     }
-        // } else {
-        //     alert('Please select any products');
-        //     // return false;
-        // }
+            //     currentURL += '&' + newParameter;
+            // } else {
+
+            //     currentURL += '?' + newParameter;
+            // }
+            //top.window.location = currentURL;   
+            top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
+        } else {
+            alert("Please enter minimum 3 characters length");
+        }
+
     }
 </script>
