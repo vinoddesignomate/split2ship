@@ -30,11 +30,14 @@ $store_name = $shop_name[0];
 
 
                             <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
-                                <div class="search-wrapper">
-                                    <form id="cg_list_search" class="custom-search" method="post">
+                                <div class="flex-wrapper">
+                                    <div class="search-wrapper">
+
                                         <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
                                         <button type="button" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
-                                    </form>
+
+                                    </div>
+                                    <a class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="#">Clear</a>
                                 </div>
                             <?php }
                             ?>
@@ -195,7 +198,7 @@ $store_name = $shop_name[0];
 
 
         });
-      
+
         $("body").on("click", "#lstsearchq", function() {
             var getsearchval = $("#list_search").val();
             if (getsearchval.length >= 3) {
