@@ -226,7 +226,27 @@ $store_name = $shop_name[0];
     function remove_prodct() {
 
         var form_data = new FormData(document.querySelector("#removform"));
-        if (!form_data.has("assign_remove_pro[]")) {
+        if (form_data.has("search_text")) {
+            var getsearchval = $("#list_search").val();
+            if (getsearchval.length >= 3) {
+                //var currentURL = top.window.location.href();
+                // console.log(top.window);
+                // console.log(top.window.location);
+                // alert(currentURL);
+                // var newParameter = 'newParam=newValue';
+                // if (currentURL.indexOf('?') !== -1) {
+
+                //     currentURL += '&' + newParameter;
+                // } else {
+
+                //     currentURL += '?' + newParameter;
+                // }
+                //top.window.location = currentURL;   
+                top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
+            } else {
+                alert("Please enter minimum 3 characters length");
+            }
+        } else if (!form_data.has("assign_remove_pro[]")) {
             alert('Please select any products');
             return false;
         } else {
