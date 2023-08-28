@@ -10,42 +10,46 @@ $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
 
 ?>
-<form method="POST" onsubmit="return remove_prodct()" id="removform">
-    <div class="payxnowandrestondelivery-container">
-        <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-            <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Back</a></h5>
 
-        </div>
+<div class="payxnowandrestondelivery-container">
+    <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
+        <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Back</a></h5>
+
     </div>
-    <div class="payxnowandrestondelivery-container">
-        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-            <div class="payxnowandrestondelivery-inner-wrapper">
-                <div class="payxnowandrestondelivery-main-data-col">
-                    <?php if (!empty($get_list)) { ?>
-                        <div class="payxnowandrestondelivery-head-wrapper list_search">
-                            <!-- <h2>Product name</h2> -->
-
-                            <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta"><i class="fa fa-trash" aria-hidden="true"></i>
-                                Remove partial payment</button>
+</div>
+<div class="payxnowandrestondelivery-container">
+    <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+        <div class="payxnowandrestondelivery-inner-wrapper">
+            <div class="payxnowandrestondelivery-main-data-col">
+                <?php if (!empty($get_list)) { ?>
+                    <div class="payxnowandrestondelivery-head-wrapper list_search">
+                        <!-- <h2>Product name</h2> -->
 
 
-                            <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
-                                <div class="flex-wrapper">
+
+                        <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
+                            <div class="flex-wrapper">
+                                <form id="searchbox">
                                     <div class="search-wrapper">
 
                                         <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
-                                        <button type="button" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
+                                        <button type="submit" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
 
                                     </div>
                                     <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
-                                </div>
-                            <?php }
-                            ?>
+                                </form>
+                            </div>
+                        <?php }
+                        ?>
 
-                        </div>
+                    </div>
 
-                    <?php  }
-                    if (!empty($get_list)) { ?>
+                <?php  }
+                if (!empty($get_list)) { ?>
+                    <form method="POST" onsubmit="return remove_prodct()" id="removform">
+                        <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta"><i class="fa fa-trash" aria-hidden="true"></i>
+                            Remove partial payment</button>
+
                         <div class="payxnowandrestondelivery-table-outer-wrapper">
                             <table>
                                 <tr>
@@ -111,35 +115,36 @@ $store_name = $shop_name[0];
                             </table>
 
                         </div>
-                        <?php
-                        $shop_name = explode(".", $_GET['shop']);
-                        $store_namep = $shop_name[0];
-                        if ($total_pages > 1) {
-                            echo "<ul class='payxnowandrestondelivery-pagination'>";
-                            if ($part_page > 1) {
-                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
-                            } else {
-                                echo "<li><a onclick='abc(event)' href='javascript:void(0);' class='cg_cpliteship_disabled-link payxnowandrestondelivery-button'>Previous</a></li>";
-                            }
-                            // for ($i = 1; $i <= $total_pages; $i++) {
-                            //     echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
-                            // };
-                            if ($total_pages > $part_page) {
-                                echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
-                            }
-                            echo "</ul>";
+                    </form>
+                    <?php
+                    $shop_name = explode(".", $_GET['shop']);
+                    $store_namep = $shop_name[0];
+                    if ($total_pages > 1) {
+                        echo "<ul class='payxnowandrestondelivery-pagination'>";
+                        if ($part_page > 1) {
+                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
+                        } else {
+                            echo "<li><a onclick='abc(event)' href='javascript:void(0);' class='cg_cpliteship_disabled-link payxnowandrestondelivery-button'>Previous</a></li>";
                         }
-                        ?>
-                    <?php } ?>
+                        // for ($i = 1; $i <= $total_pages; $i++) {
+                        //     echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . $i . "'>" . $i . "</a></li>";
+                        // };
+                        if ($total_pages > $part_page) {
+                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/partial-products-list?part_page=" . ($part_page + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
+                        }
+                        echo "</ul>";
+                    }
+                    ?>
+                <?php } ?>
 
 
-                </div>
             </div>
         </div>
-
-
     </div>
-</form>
+
+
+</div>
+
 </div>
 
 
@@ -226,8 +231,9 @@ $store_name = $shop_name[0];
     function remove_prodct() {
 
         var form_data = new FormData(document.querySelector("#removform"));
-        if (form_data.has("search_text")) {
-            var getsearchval = $("#list_search").val();
+        var getsearchval = $("#list_search").val();
+        if (getsearchval.length > 0) {
+
             if (getsearchval.length >= 3) {
                 //var currentURL = top.window.location.href();
                 // console.log(top.window);
