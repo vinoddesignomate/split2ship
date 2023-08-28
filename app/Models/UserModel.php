@@ -126,7 +126,7 @@ class UserModel extends Model
         $qbuilds->select('*');
         $qbuilds->where(["shop_url" => $shopurl]);
         if ($searctext != "") {
-            $qbuilds->like("product_title", $shopurl, 'both'); // Using the LIKE operator
+            $qbuilds->like("product_title", $searctext, 'both'); // Using the LIKE operator
         }
         $getquery = $qbuilds->get();
         return $getquery->getResult();
@@ -138,7 +138,7 @@ class UserModel extends Model
         $qbuilds->select('*');
         $qbuilds->where(["shop_url" => $shopurl]);
         if ($searctext != "") {
-            $qbuilds->like("product_title", $shopurl, 'both'); // Using the LIKE operator
+            $qbuilds->like("product_title", $searctext, 'both'); // Using the LIKE operator
         }
         $qbuilds->orderBy('movement', 'desc');
         $qbuilds->limit($limit, $start);
