@@ -29,7 +29,7 @@ $store_name = $shop_name[0];
 
                         <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
                             <div class="flex-wrapper">
-                                <form id="searchbox" class="flex-wrapper" method="POST"  onsubmit="return search_text()">
+                                <form id="searchbox" class="flex-wrapper" method="POST"  onsubmit="return search_text_partial()">
                                     <div class="search-wrapper">
 
                                         <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
@@ -220,7 +220,7 @@ $store_name = $shop_name[0];
 
     }
 
-    function search_text() {
+    function search_text_partial() {
         var getsearchval = $("#list_search").val();
         if (getsearchval.length < 3) {
             //var currentURL = top.window.location.href();
