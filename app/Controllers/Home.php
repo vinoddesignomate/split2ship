@@ -692,15 +692,21 @@ class Home extends BaseController
 
         $data['part_page'] = isset($_REQUEST['part_page']) && is_numeric($_REQUEST['part_page']) ? $_REQUEST['part_page'] : 1;
 
+        if(isset($_REQUEST['textsearch']) && $_REQUEST['textsearch']){
+            $search_list = $_REQUEST['textsearch'];
+        }else{
+            $search_list = "";
+        }
+
         $limit = 10;
         $initial_page = ($data['part_page'] - 1) * $limit;
         $data['start_from'] = ($data['part_page'] - 1) * $limit + 1;
-        $get_totals = $this->user_model->get_partial_product_list($_GET['shop']);
+        $get_totals = $this->user_model->get_partial_product_list($_GET['shop'],$search_list);
         $get_totals_num = count($get_totals);
         $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
         // $total_pages = ceil ($get_totals / $limit);  
         //echo "total_pages".$data['total_pages'];
-        $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], $initial_page, $limit);
+        $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], $initial_page, $limit,$search_list);
 
         $get_details = $this->user_model->get_tokens($_GET['shop']);
 

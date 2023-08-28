@@ -211,7 +211,8 @@ $store_name = $shop_name[0];
 
                 //     currentURL += '?' + newParameter;
                 // }
-                // top.window.location = currentURL;   
+                //top.window.location = currentURL;   
+                top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch='+getsearchval;   
             }else{
                 alert("Please enter minimum 3 characters length");
             }

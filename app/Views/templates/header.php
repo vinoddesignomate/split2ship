@@ -18,7 +18,7 @@
         var actions = window['app-bridge'].actions;
         var createApp = AppBridge.default;
         //var Redirect = actions.Redirect;
-
+        var currentURL = window.location.href;
         const config = {
             apiKey: 'a47ead69b3d83a8042703f093f3cadb2',
             host: new URLSearchParams(location.search).get("host"),
@@ -26,8 +26,8 @@
         };
         const app = createApp(config);
         // const redirect = Redirect.create(app);
-        console.log('hostname');
-        console.log(config.host);
+        console.log('currentURL');
+        console.log(config.shopifyAppBridge.getState().location.currentURL);
     </script>
     <script src='//in.fw-cdn.com/31326200/628621.js' chat='true'>
     </script>
