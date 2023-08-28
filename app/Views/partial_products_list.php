@@ -209,7 +209,7 @@ $store_name = $shop_name[0];
 
                     currentURL += '?' + newParameter;
                 }
-                top.window.location = currentURL;
+                top.window.location = currentURL;   
             }else{
                 alert("Please enter minimum 3 characters length");
             }
