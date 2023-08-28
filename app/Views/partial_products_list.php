@@ -21,30 +21,30 @@ $store_name = $shop_name[0];
     <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
         <div class="payxnowandrestondelivery-inner-wrapper">
             <div class="payxnowandrestondelivery-main-data-col">
-               
-                    <div class="payxnowandrestondelivery-head-wrapper list_search">
-                        <!-- <h2>Product name</h2> -->
+
+                <div class="payxnowandrestondelivery-head-wrapper list_search">
+                    <!-- <h2>Product name</h2> -->
 
 
 
-                        <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
-                            <div class="flex-wrapper">
-                                <form id="searchbox" class="flex-wrapper" method="POST"  onsubmit="return search_text_partial()">
-                                    <div class="search-wrapper">
+                    <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
+                        <div class="flex-wrapper">
+                            <form id="searchbox" class="flex-wrapper" method="POST" onsubmit="return search_text_partial()">
+                                <div class="search-wrapper">
 
-                                        <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
-                                        <button type="submit" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
+                                    <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
+                                    <button type="submit" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
 
-                                    </div>
-                                    <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
-                                </form>
-                            </div>
-                        <?php }
-                        ?>
+                                </div>
+                                <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
+                            </form>
+                        </div>
+                    <?php }
+                    ?>
 
-                    </div>
+                </div>
 
-                <?php  
+                <?php
                 if (!empty($get_list)) { ?>
                     <form method="POST" onsubmit="return remove_prodct()" id="removform">
                         <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta"><i class="fa fa-trash" aria-hidden="true"></i>
@@ -141,7 +141,12 @@ $store_name = $shop_name[0];
             </div>
         </div>
     </div>
-
+    <?php
+    if (empty($get_list)) { ?>
+        <div class="payxnowandrestondelivery-not-found-msg">
+            <h2>Product Not found</h2>
+        </div>
+    <?php } ?>
 
 </div>
 
@@ -237,10 +242,10 @@ $store_name = $shop_name[0];
             // }
             //top.window.location = currentURL;   
             // top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
-       
+
             alert("Please enter minimum 3 characters length");
             return false;
         }
-        
+
     }
 </script>
