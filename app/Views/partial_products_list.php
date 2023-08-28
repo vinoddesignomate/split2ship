@@ -240,6 +240,6 @@ $store_name = $shop_name[0];
         } else {
             alert("Please enter minimum 3 characters length");
         }
-
+        return false;
     }
 </script>
