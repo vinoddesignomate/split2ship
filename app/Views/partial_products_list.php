@@ -37,7 +37,7 @@ $store_name = $shop_name[0];
                                         <button type="button" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
 
                                     </div>
-                                    <a class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="#">Clear</a>
+                                    <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
                                 </div>
                             <?php }
                             ?>
