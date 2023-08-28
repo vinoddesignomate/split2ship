@@ -697,8 +697,8 @@ class Home extends BaseController
         }else{
             $search_list = "";
         }
-        print_r($this->request->getPost('search_text'));
-        echo $search_list;
+        //print_r($this->request->getPost('search_text'));
+        //echo $search_list;
         $data['search_list'] = $search_list;
         $limit = 10;
         $initial_page = ($data['part_page'] - 1) * $limit;
