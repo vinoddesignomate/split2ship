@@ -29,7 +29,7 @@ $store_name = $shop_name[0];
 
                         <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
                             <div class="flex-wrapper">
-                                <form id="searchbox" class="flex-wrapper" onsubmit="return search_text()">
+                                <form id="searchbox" class="flex-wrapper" method="POST"  onsubmit="return search_text()">
                                     <div class="search-wrapper">
 
                                         <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
@@ -222,7 +222,7 @@ $store_name = $shop_name[0];
 
     function search_text() {
         var getsearchval = $("#list_search").val();
-        if (getsearchval.length >= 3) {
+        if (getsearchval.length < 3) {
             //var currentURL = top.window.location.href();
             // console.log(top.window);
             // console.log(top.window.location);
@@ -236,10 +236,11 @@ $store_name = $shop_name[0];
             //     currentURL += '?' + newParameter;
             // }
             //top.window.location = currentURL;   
-            top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
-        } else {
+            // top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
+       
             alert("Please enter minimum 3 characters length");
+            return false;
         }
-        return false;
+        
     }
 </script>
