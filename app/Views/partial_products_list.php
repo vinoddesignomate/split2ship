@@ -200,8 +200,8 @@ $store_name = $shop_name[0];
             var getsearchval = $("#list_search").val();
             if (getsearchval.length >= 3) {
                 //var currentURL = top.window.location.href();
-                console.log(top.window);
-                console.log(top.window.location);
+                // console.log(top.window);
+                // console.log(top.window.location);
                 // alert(currentURL);
                 // var newParameter = 'newParam=newValue';
                 // if (currentURL.indexOf('?') !== -1) {
