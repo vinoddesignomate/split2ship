@@ -1328,6 +1328,14 @@ p.payxnowandrestondelivery-alert {
 .partial-products-list #remove_load_page {
     margin: 5px 0px 20px;
 }
+
+.payxnowandrestondelivery-not-found-msg {
+    text-align: center;
+    padding: 20px 0px;
+}
+.payxnowandrestondelivery-not-found-msg h2 {
+    font-size: 25px;
+}
 /*************Responsive***********/
 
 
