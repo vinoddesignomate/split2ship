@@ -200,6 +200,7 @@ $store_name = $shop_name[0];
             var getsearchval = $("#list_search").val();
             if (getsearchval.length >= 3) {
                 var currentURL = window.location.href;
+                alert(currentURL);
                 var newParameter = 'newParam=newValue';
                 if (currentURL.indexOf('?') !== -1) {
 
@@ -208,7 +209,7 @@ $store_name = $shop_name[0];
 
                     currentURL += '?' + newParameter;
                 }
-                window.location.href = currentURL;
+                top.window.location = currentURL;
             }else{
                 alert("Please enter minimum 3 characters length");
             }
