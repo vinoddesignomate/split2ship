@@ -195,7 +195,12 @@ $store_name = $shop_name[0];
 
 
         });
-
+        window.addEventListener("message", function(event) {
+           // if (event.origin === "http://example.com") { // Replace with your iframe's origin
+                var topLevelURL = event.data;
+                console.log("Top Level URL received from iframe: " + topLevelURL);
+            //}
+        });
         $("body").on("click", "#lstsearchq", function() {
             var getsearchval = $("#list_search").val();
             if (getsearchval.length >= 3) {
@@ -212,8 +217,8 @@ $store_name = $shop_name[0];
                 //     currentURL += '?' + newParameter;
                 // }
                 //top.window.location = currentURL;   
-                top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch='+getsearchval;   
-            }else{
+                top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
+            } else {
                 alert("Please enter minimum 3 characters length");
             }
         });
