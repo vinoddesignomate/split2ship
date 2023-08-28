@@ -199,7 +199,7 @@ $store_name = $shop_name[0];
         $("body").on("click", "#lstsearchq", function() {
             var getsearchval = $("#list_search").val();
             if (getsearchval.length >= 3) {
-                var currentURL = top.window.location.href();
+                //var currentURL = top.window.location.href();
                 console.log(top.window);
                 console.log(top.window.location);
                 // alert(currentURL);
