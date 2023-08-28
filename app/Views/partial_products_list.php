@@ -199,17 +199,19 @@ $store_name = $shop_name[0];
         $("body").on("click", "#lstsearchq", function() {
             var getsearchval = $("#list_search").val();
             if (getsearchval.length >= 3) {
-                var currentURL = top.window.location.href;
-                alert(currentURL);
-                var newParameter = 'newParam=newValue';
-                if (currentURL.indexOf('?') !== -1) {
+                var currentURL = top.window.location.href();
+                console.log(top.window);
+                console.log(top.window.location);
+                // alert(currentURL);
+                // var newParameter = 'newParam=newValue';
+                // if (currentURL.indexOf('?') !== -1) {
 
-                    currentURL += '&' + newParameter;
-                } else {
+                //     currentURL += '&' + newParameter;
+                // } else {
 
-                    currentURL += '?' + newParameter;
-                }
-                top.window.location = currentURL;   
+                //     currentURL += '?' + newParameter;
+                // }
+                // top.window.location = currentURL;   
             }else{
                 alert("Please enter minimum 3 characters length");
             }
