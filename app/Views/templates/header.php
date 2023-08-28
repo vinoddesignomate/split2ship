@@ -27,7 +27,7 @@
         const app = createApp(config);
         // const redirect = Redirect.create(app);
         console.log('currentURL');
-        console.log(config.shopifyAppBridge.getState().location.currentURL);
+        //console.log(config.shopifyAppBridge.getState().location.currentURL);
     </script>
     <script src='//in.fw-cdn.com/31326200/628621.js' chat='true'>
     </script>
