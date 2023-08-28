@@ -143,8 +143,8 @@ class UserModel extends Model
         $qbuilds->orderBy('movement', 'desc');
         $qbuilds->limit($limit, $start);
         $getquery = $qbuilds->get();
-        $lastQuery = $this->db->getLastQuery(); // Get the last executed query
-        echo "Last Query: " . $lastQuery;
+        //$lastQuery = $this->db->getLastQuery(); // Get the last executed query
+        //echo "Last Query: " . $lastQuery;
         return $getquery->getResult();
     }
     public function update_partial_percentage($update_data, $proid)
