@@ -1327,6 +1327,8 @@ p.payxnowandrestondelivery-alert {
 }
 
 /*************Responsive***********/
+
+
 @media only screen and (max-width: 1232px) {
     header .payxnowandrestondelivery-header-nav-links ul {
         background-color: #10277c;
@@ -1469,4 +1471,11 @@ p.payxnowandrestondelivery-alert {
     }
 
 
+}
+
+@media only screen and (max-width: 470px) {
+    .list_search .flex-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
