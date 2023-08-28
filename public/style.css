@@ -1325,7 +1325,9 @@ p.payxnowandrestondelivery-alert {
     max-width: 120px;
     width: 100%;
 }
-
+.partial-products-list #remove_load_page {
+    margin: 5px 0px 20px;
+}
 /*************Responsive***********/
 
 
@@ -1477,5 +1479,8 @@ p.payxnowandrestondelivery-alert {
     .list_search .flex-wrapper {
         flex-wrap: wrap;
         justify-content: center;
+    }
+    form#removform {
+        text-align: center;
     }
 }

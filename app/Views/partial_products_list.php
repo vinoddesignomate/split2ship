@@ -29,7 +29,7 @@ $store_name = $shop_name[0];
 
                         <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
                             <div class="flex-wrapper">
-                                <form id="searchbox" onsubmit="return search_text()">
+                                <form id="searchbox" class="flex-wrapper" onsubmit="return search_text()">
                                     <div class="search-wrapper">
 
                                         <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
