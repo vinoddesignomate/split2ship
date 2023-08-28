@@ -26,8 +26,8 @@
         };
         const app = createApp(config);
         // const redirect = Redirect.create(app);
-        // console.log('hostname');
-        // console.log(config.host);
+        console.log('hostname');
+        console.log(config.host);
     </script>
     <script src='//in.fw-cdn.com/31326200/628621.js' chat='true'>
     </script>
