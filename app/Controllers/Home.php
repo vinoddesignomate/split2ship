@@ -1908,6 +1908,8 @@ class Home extends BaseController
                 "sync_orders_count" => $plane_scane_count,
                 "updated_sync_orders_count" => $plane_scane_count,
                 "plan_status" => $plan_status,
+                "total_products_partial" => 200,
+				"updated_products_partial" => 200,
                 "activate_date" => date('Y-m-d'),
                 "plan_validity" => $plane_start_endate
 
