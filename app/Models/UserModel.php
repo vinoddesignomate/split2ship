@@ -244,7 +244,7 @@ class UserModel extends Model
     {
         $qbuilds = $this->db->table('orders');
         $qbuilds->select('*');
-        $qbuilds->where(["order_status" => 'pending']);
+        //$qbuilds->where(["order_status" => 'pending']);
         $qbuilds->where(["shop_url" => $shopurl]);
         $qbuilds->orderBy('order_date', 'desc');
         $getquery = $qbuilds->get();
