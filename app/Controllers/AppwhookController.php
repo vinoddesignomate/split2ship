@@ -232,7 +232,8 @@ class AppwhookController extends BaseController
                     $orders_data['f_name'] = (isset($jsndata->shipping_address->first_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->first_name) : '');
                     $orders_data['l_name'] = (isset($jsndata->shipping_address->last_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->last_name) : '');
                     //$orders_data['email'] = (isset($jsndata->shipping_address['email']) ? $jsndata->shipping_address['email'] :'' );
-                    $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $jsndata->shipping_address->country : '');
+                   // $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $jsndata->shipping_address->country : '');
+                    $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $this->common->payxnow_encodedata($jsndata->shipping_address->country) : '');
                 } else  if (isset($jsndata->billing_address)) {
 
                     if (isset($jsndata->billing_address->phone)) {
@@ -252,7 +253,7 @@ class AppwhookController extends BaseController
                     $orders_data['f_name'] = (isset($jsndata->billing_address->first_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->first_name) : '');
                     $orders_data['l_name'] = (isset($jsndata->billing_address->last_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->last_name) : '');
                     //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                    $orders_data['country'] = (isset($jsndata->billing_address->country) ? $this->common->payxnow_encodedata($jsndata->billing_address->countr) : '');
+                    $orders_data['country'] = (isset($jsndata->billing_address->country) ? $this->common->payxnow_encodedata($jsndata->billing_address->country) : '');
                 }
                 /// echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
 
