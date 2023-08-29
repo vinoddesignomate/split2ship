@@ -268,6 +268,7 @@ class UserModel extends Model
                         AND orders.shop_url=?
                         AND orders.fullfilment_status = ?
                         AND orders.sync_order = ?
+                        ORDER BY order_date DESC
                         LIMIT " . $start . ", " . $limit . "";
 
 
