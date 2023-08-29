@@ -25,22 +25,18 @@ $store_name = $shop_name[0];
                 <div class="payxnowandrestondelivery-head-wrapper list_search">
                     <!-- <h2>Product name</h2> -->
 
+                    <div class="flex-wrapper">
+                        <form id="searchbox" class="flex-wrapper" method="POST" onsubmit="return search_text_partial()">
+                            <div class="search-wrapper">
 
+                                <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
+                                <button type="submit" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
 
-                    <?php if ($shopname == 'desinomatetest.myshopify.com') { ?>
-                        <div class="flex-wrapper">
-                            <form id="searchbox" class="flex-wrapper" method="POST" onsubmit="return search_text_partial()">
-                                <div class="search-wrapper">
+                            </div>
+                            <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
+                        </form>
+                    </div>
 
-                                    <input type="text" placeholder="Search.." class="srchtctval" id="list_search" name="search_text" value="<?php echo $search_list; ?>">
-                                    <button type="submit" id="lstsearchq" name="search_query"><i class="fa fa-search"></i></button>
-
-                                </div>
-                                <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
-                            </form>
-                        </div>
-                    <?php }
-                    ?>
 
                 </div>
 
@@ -241,7 +237,6 @@ $store_name = $shop_name[0];
             //     currentURL += '?' + newParameter;
             // }
             //top.window.location = currentURL;   
-            // top.window.location = 'https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list?textsearch=' + getsearchval;
 
             alert("Please enter minimum 3 characters length");
             return false;
