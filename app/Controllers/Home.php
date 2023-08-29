@@ -1432,10 +1432,10 @@ class Home extends BaseController
                     // echo "</pre>";
 
 
-                    // echo "create_custom<pre>";
-                    // print_r($create_custom);
-                    // echo "</pre>";
-                    // die(); 
+                    echo "create_custom<pre>";
+                    print_r($create_custom);
+                    echo "</pre>";
+                    die(); 
                     // echo json_encode($create_custom);
                     // echo "store_token=".$store_token;
 
