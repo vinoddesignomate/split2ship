@@ -434,7 +434,7 @@ class AppwhookController extends BaseController
                     $create_custom = array(
                         "order_id" => $jsndata->order_number,
                         "order_date" => $jsndata->created_at,
-                        "channel_id" => $shiprocket_info[0]->channel_id,
+                       // "channel_id" => $shiprocket_info[0]->channel_id,
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $jsndata->billing_address->first_name,
                         "billing_last_name" => $jsndata->billing_address->last_name,
