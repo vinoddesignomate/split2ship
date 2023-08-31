@@ -147,8 +147,13 @@ class AppwhookController extends BaseController
         // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
         // file_put_contents($log_file_data, print_r($jsndata, true)); 
 
+        $resposne_arrayshop = array("name" => "Shop Order Start " . $_GET['whshp']);
+        $this->user_model->check_test_response($resposne_arrayshop);
+
+
         $resposne_array = array("name" => "orderdata" . $webhook_content);
         $this->user_model->check_test_response($resposne_array);
+        
 
         // die();
         // $resposne_array = array("name" => "orderdata".$webhook_content);
@@ -257,8 +262,8 @@ class AppwhookController extends BaseController
                 }
                 /// echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
 
-                $resposne_array = array("name" => "new_orderdata" . json_encode($orders_data));
-                $this->user_model->check_test_response($resposne_array);
+                // $resposne_array = array("name" => "new_orderdata" . json_encode($orders_data));
+                // $this->user_model->check_test_response($resposne_array);
 
                 $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
 
@@ -296,8 +301,9 @@ class AppwhookController extends BaseController
                         // print_r($orders_products_data);
                         // echo "</pre>";
 
-                        $resposne_array = array("name" => "orders_products_data" . json_encode($orders_products_data));
-                        $this->user_model->check_test_response($resposne_array);
+                        // $resposne_array = array("name" => "orders_products_data" . json_encode($orders_products_data));
+                        // $this->user_model->check_test_response($resposne_array);
+
                         $this->user_model->track_orders_products($orders_products_data);
                     }
                 }
@@ -305,8 +311,8 @@ class AppwhookController extends BaseController
                 $subtotal_update = array_sum($reaminming_price);
                 $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
 
-                $resposne_array = array("name" => "subtotal_update" . json_encode($subtotal_update));
-                $this->user_model->check_test_response($resposne_array);
+                // $resposne_array = array("name" => "subtotal_update" . json_encode($subtotal_update));
+                // $this->user_model->check_test_response($resposne_array);
 
                 if (isset($part_type) && $part_type == 'partial') {
                     $order_edit_begain = 'mutation {
@@ -356,7 +362,7 @@ class AppwhookController extends BaseController
                     $commiteditorder = $this->graphql_api_run(array("query" => $order_edit_commit), $_GET['whshp'], $get_resulsts->access_token);
                     $final_result = json_decode($commiteditorder['body']);
 
-                    $resposne_array = array("name" => $webstsrti . "runloop" . $commiteditorder['body']);
+                    $resposne_array = array("name" => $webstsrti . "Edit Partial Order " . $commiteditorder['body']);
                     $this->user_model->check_test_response($resposne_array);
 
                     $send_invoice_email = 'mutation {
@@ -377,8 +383,8 @@ class AppwhookController extends BaseController
                     $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
 
 
-                    $resposne_array = array("name" => "invoiceemail" . $get_resulsts->email . $invoice_email_snd['body'] . $jsndata->contact_email);
-                    $this->user_model->check_test_response($resposne_array);
+                    // $resposne_array = array("name" => "invoiceemail" . $get_resulsts->email . $invoice_email_snd['body'] . $jsndata->contact_email);
+                    // $this->user_model->check_test_response($resposne_array);
                 }
 
                 $get_resulststoken = $this->user_model->get_token($_GET['whshp']);
@@ -483,8 +489,8 @@ class AppwhookController extends BaseController
 
                     // print_r($create_custom);
 
-                    $resposne_array = array("name" => "create_custom=" . json_encode($create_custom));
-                    $this->user_model->check_test_response($resposne_array);
+                    // $resposne_array = array("name" => "create_custom=" . json_encode($create_custom));
+                    // $this->user_model->check_test_response($resposne_array);
 
 
                     //    $resposne_array = array("name" => "create_custom=" . json_encode($create_custom));
@@ -493,7 +499,7 @@ class AppwhookController extends BaseController
                     $get_result = $this->common->create_custom_order($create_custom, $store_token);
                     $decoded_res = json_decode($get_result);
 
-                    $resposne_array = array("name" => "ordersync=" . $get_result);
+                    $resposne_array = array("name" => "Shiprocket ordersync= " . $get_result);
                     $this->user_model->check_test_response($resposne_array);
 
 
@@ -524,6 +530,7 @@ class AppwhookController extends BaseController
                     }
                     $resposne_array = array("name" => "return_array=" . json_encode($return_array));
                     $this->user_model->check_test_response($resposne_array);
+
                 } else  if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'pickr') {
 
 
@@ -601,8 +608,10 @@ class AppwhookController extends BaseController
                         'item_weight' => 0.5,
                         'is_reverse' => false
                     );
-                    $resposne_array = array("name" => "pickrerparms" . json_encode($post_params));
-                    $this->user_model->check_test_response($resposne_array);
+
+                    // $resposne_array = array("name" => "Pickerr Order Sync " . json_encode($post_params));
+                    // $this->user_model->check_test_response($resposne_array);
+
                     // try {
                     $json_params = json_encode($post_params);
                     $url = 'https://www.pickrr.com/api/place-order/';
@@ -628,7 +637,7 @@ class AppwhookController extends BaseController
                     // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
                     // file_put_contents($log_file_data, print_r($result, true));
 
-                    $resposne_array = array("name" => "orderpickrr=" . $result1);
+                    $resposne_array = array("name" => "Pickerr Order Sync= " . $result1);
                     $this->user_model->check_test_response($resposne_array);
 
                     if (isset($result['err'])) {
@@ -710,7 +719,7 @@ class AppwhookController extends BaseController
                     // file_put_contents($log_file_data, print_r($get_result, true));
 
 
-                    $resposne_array = array("name" => "orderpickrr=" . json_encode($get_result));
+                    $resposne_array = array("name" => "DelhiVery Order Sync= " . json_encode($get_result));
                     $this->user_model->check_test_response($resposne_array);
 
                     if (isset($get_result['success']) && ($get_result['success'] == true || $get_result['success'] == 'true')) {
@@ -734,8 +743,8 @@ class AppwhookController extends BaseController
                     // $resposne_array = array("name" => "delhivery" . json_encode($get_result));
                     // $this->user_model->check_test_response($resposne_array);
 
-                    $resposne_array = array("name" => "delhivery return_array=" . json_encode($return_array));
-                    $this->user_model->check_test_response($resposne_array);
+                    // $resposne_array = array("name" => "delhivery return_array=" . json_encode($return_array));
+                    // $this->user_model->check_test_response($resposne_array);
 
                     //$this->order_sync_delhivery($shiprocket_info);
                 }
@@ -752,6 +761,8 @@ class AppwhookController extends BaseController
         // }
         //}
         echo "200 ok";
+        $resposne_array_lst = array("name" => "End Order Sync Process For Shop " . $_GET['whshp']);
+        $this->user_model->check_test_response($resposne_array_lst);
 
         //return json_encode($return_array);
     }
