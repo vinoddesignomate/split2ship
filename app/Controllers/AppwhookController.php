@@ -458,7 +458,7 @@ class AppwhookController extends BaseController
                     foreach ($jsndata->line_items as $productsitm) {
                         if ($productsitm->name != 'Partial Pending Payment') {
                             if ($productsitm->sku == "") {
-                                $getsku = "PARTSKU";
+                                $getsku = "PART" . time();
                             } else {
                                 $getsku = $productsitm->sku;
                             }
