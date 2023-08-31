@@ -267,8 +267,13 @@ class AppwhookController extends BaseController
                     if ($products->name != "Partial Pending Payment") {
                         if ($products->sku == "") {
 
-                            $reaminming_price[] = $products->properties[3]->value;
-                            $prodycprice =  $products->properties[3]->value;
+                            if (isset($products['properties'][3]['value'])) {
+                                $reaminming_price[] = $products['properties'][3]['value'];
+                                $prodycprice =  $products['properties'][3]['value'];
+                            } else {
+                                $reaminming_price[] = 0;
+                                $prodycprice =  0;
+                            }
                             if (isset($products->properties[4]->value)) {
                                 $prosku = $products->properties[4]->value;
                             } else {
