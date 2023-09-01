@@ -86,7 +86,7 @@ class Home extends BaseController
                 // echo view('templates/apbrdgnew', $data);
 
                 // exit();
-            } else {                
+            } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
                 if ($this->request->getPost('assign_save')) {
@@ -692,9 +692,9 @@ class Home extends BaseController
 
         $data['part_page'] = isset($_REQUEST['part_page']) && is_numeric($_REQUEST['part_page']) ? $_REQUEST['part_page'] : 1;
 
-        if($this->request->getPost('search_text')){
+        if ($this->request->getPost('search_text')) {
             $search_list = $this->request->getPost('search_text');
-        }else{
+        } else {
             $search_list = "";
         }
         //print_r($this->request->getPost('search_text'));
@@ -703,12 +703,12 @@ class Home extends BaseController
         $limit = 10;
         $initial_page = ($data['part_page'] - 1) * $limit;
         $data['start_from'] = ($data['part_page'] - 1) * $limit + 1;
-        $get_totals = $this->user_model->get_partial_product_list($_GET['shop'],$search_list);
+        $get_totals = $this->user_model->get_partial_product_list($_GET['shop'], $search_list);
         $get_totals_num = count($get_totals);
         $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
         // $total_pages = ceil ($get_totals / $limit);  
         //echo "total_pages".$data['total_pages'];
-        $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], $initial_page, $limit,$search_list);
+        $data['get_list'] = $this->user_model->get_partial_product_list_pagina($_GET['shop'], $initial_page, $limit, $search_list);
 
         $get_details = $this->user_model->get_tokens($_GET['shop']);
 
@@ -762,8 +762,8 @@ class Home extends BaseController
     public function collection_wise_partial_products()
     {
         $this->check_subscribe();
-        $data = array();       
-       
+        $data = array();
+
         $get_details = $this->user_model->get_tokens($_GET['shop']);
 
 
@@ -1118,9 +1118,8 @@ class Home extends BaseController
                 echo $this->request->getPost('change_partial');
                 // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
                 //echo view('templates/apbrdgnew');
-            }
-            else{
-               // echo "else";
+            } else {
+                // echo "else";
             }
         }
         // echo view('templates/apbrdgnew');
@@ -1435,7 +1434,7 @@ class Home extends BaseController
                     // echo "create_custom<pre>";
                     // print_r($create_custom);
                     // echo "</pre>";
-                   // die(); 
+                    // die(); 
                     // echo json_encode($create_custom);
                     // echo "store_token=".$store_token;
 
@@ -1829,6 +1828,7 @@ class Home extends BaseController
                 if (!empty($plan_details)) {
                     if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->plan_validity > date('Y-m-d')) {
                         $oldprice = $plan_details[0]->plan_price;
+                        $old_plane_name = $plan_details[0]->plan_name;
                         $newprice = $this->plane_details[$_GET['plan']]['price'];
                         $currentdate = date('Y-m-d');
                         // $earlier = new DateTime($currentdate);
@@ -1836,7 +1836,9 @@ class Home extends BaseController
                         // echo "abs_diff=".$abs_diff = $later->diff($earlier)->format("%a");
                         $diff = strtotime($plan_details[0]->plan_validity) - strtotime($currentdate);
                         $getretunvalue = abs(round($diff / 86400));
-                        if ($getretunvalue < 30) {
+                        if ($old_plane_name == 'basic') {
+                            $finalprice = $plane_price;
+                        } else if ($getretunvalue < 30) {
                             if ($newprice > $oldprice) {   //upgrade the plan
                                 $finalprice = $oldprice + ($newprice - $oldprice) * ($getretunvalue / 30);
                                 $finalprice = round($finalprice);
@@ -1909,7 +1911,7 @@ class Home extends BaseController
                 "updated_sync_orders_count" => $plane_scane_count,
                 "plan_status" => $plan_status,
                 "total_products_partial" => 200,
-				"updated_products_partial" => 200,
+                "updated_products_partial" => 200,
                 "activate_date" => date('Y-m-d'),
                 "plan_validity" => $plane_start_endate
 
@@ -1969,7 +1971,7 @@ class Home extends BaseController
 
 
     public function app_configuration()
-    {   
+    {
         $data = array();
         //echo phpinfo();
         if ($this->request->getPost('track_color')) {
