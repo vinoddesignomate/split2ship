@@ -134,8 +134,9 @@ class FrontController extends BaseController
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
                 $line_item  = array(
-                    "title" => $item_cart['title'].' '.$size_order_name,
+                    "title" => $item_cart['title'],
                     "price" => $final_price,
+                    "variant_title"=> $size_order_name,
                     "quantity" => $item_cart['qty'],
                     "requires_shipping" => true,
                     "gift_card" => true,
