@@ -1838,16 +1838,18 @@ class Home extends BaseController
                         $getretunvalue = abs(round($diff / 86400));
                         if ($old_plane_name == 'basic') {
                             $finalprice = $plane_price;
-                        } else if ($getretunvalue < 30) {
-                            if ($newprice > $oldprice) {   //upgrade the plan
-                                $finalprice = $oldprice + ($newprice - $oldprice) * ($getretunvalue / 30);
-                                $finalprice = round($finalprice);
-                            } else { //downgrade the plan
-                                $finalprice = ($oldprice - $newprice) * ($getretunvalue / 30);
-                                $finalprice = round($finalprice);
-                            }
                         } else {
-                            $finalprice = $plane_price;
+                            if ($getretunvalue < 30) {
+                                if ($newprice > $oldprice) {   //upgrade the plan
+                                    $finalprice = $oldprice + ($newprice - $oldprice) * ($getretunvalue / 30);
+                                    $finalprice = round($finalprice);
+                                } else { //downgrade the plan
+                                    $finalprice = ($oldprice - $newprice) * ($getretunvalue / 30);
+                                    $finalprice = round($finalprice);
+                                }
+                            } else {
+                                $finalprice = $plane_price;
+                            }
                         }
                     } else {
                         if ($plan_details[0]->plan_validity == null) {
@@ -1859,7 +1861,7 @@ class Home extends BaseController
                 } else {
                     $finalprice = $plane_price;
                 }
-                $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $finalprice, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => null, "trial_days" => $freetrial)), 'POST', $get_details->access_token, $_GET['shop']);
+                $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $finalprice, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => null, "trial_days" => 0)), 'POST', $get_details->access_token, $_GET['shop']);
 
 
                 //     // $get_subscribe = $this->common->rest_api('/admin/api/2022-04/application_charges.json', array("application_charge" => array("name" => $plane_name, "price" => $plane_price, "return_url" => 'https://' . esc($_GET['shop']) . '/admin/apps/bigthinx-size-app/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . '', "test" => true)), 'POST', $get_details->access_token, $_GET['shop']);
