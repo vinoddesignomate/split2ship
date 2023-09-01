@@ -128,15 +128,17 @@ class FrontController extends BaseController
 
                 if (!empty($size_tems)) {
                     $size_order_name = implode(" ", $size_tems);
+                    $size_order_namenn=" - ".$size_order_name;
                     // $order_name_count = count($create_customqty);
+                }else{
+                    $size_order_namenn="";
                 }
                
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
                 $line_item  = array(
-                    "title" => $item_cart['title'],
+                    "title" => $item_cart['title'].$size_order_namenn,
                     "price" => $final_price,
-                    "variant_title"=> $size_order_name,
                     "quantity" => $item_cart['qty'],
                     "requires_shipping" => true,
                     "gift_card" => true,
