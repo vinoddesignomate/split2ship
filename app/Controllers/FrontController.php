@@ -127,7 +127,7 @@ class FrontController extends BaseController
                 }
 
                 if (!empty($size_tems)) {
-                    $size_order_name = implode("/", $size_tems);
+                    $size_order_name = implode(" ", $size_tems);
                     // $order_name_count = count($create_customqty);
                 }
                
