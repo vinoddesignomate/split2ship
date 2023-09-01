@@ -69,13 +69,13 @@ class FrontController extends BaseController
                 $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
 
                 if (!empty($get_resulrs)) {
-                    if(isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage!=""){
+                    if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
 
                         $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
                         $partperctg = $get_resulrs[0]->partial_percentage;
-                    }else{
-                        $propartialper = 0; 
-                        $partperctg = 0; 
+                    } else {
+                        $propartialper = 0;
+                        $partperctg = 0;
                     }
                     $return_array = array(
                         "full_price" => $get_resulrs[0]->price,
@@ -115,7 +115,24 @@ class FrontController extends BaseController
         foreach ($cartarray as $item_cart) {
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
+                $size_tems = array();
+                foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                    if ($split_varient_options['name'] != "Title") {
+                        $size_tems[] = $split_varient_options['value'];
+                        // $line_item['properties'][] = array(
+                        //     "name" => $split_varient_options['name'],
+                        //     "value" => $split_varient_options['value']
+                        // );
+                    }
+                }
 
+                if (!empty($size_tems)) {
+                    $size_order_name = implode("/", $size_tems);
+                    // $order_name_count = count($create_customqty);
+                }
+                if ($shopname == 'desinomatetest.myshopify.com') {
+                 echo $size_order_name;
+                }
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
                 $line_item  = array(
@@ -162,15 +179,16 @@ class FrontController extends BaseController
         //echo $chekpartial;
         //    print_r($line_item_arra);
 
-        // if ($shopname == 'desinomatetest.myshopify.com') {
-        //     echo "line_item_arra<pre>";
-        //     print_r($line_item_arra);
-        //     echo "</pre>";
-        //     die();
-        // }
-        $final_total_price_rem = str_replace("-", "", $remaining_price);
-        $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-        return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+        if ($shopname == 'desinomatetest.myshopify.com') {
+            echo "line_item_arra<pre>";
+            print_r($line_item_arra);
+            echo "</pre>";
+            die();
+        } else {
+            $final_total_price_rem = str_replace("-", "", $remaining_price);
+            $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
+            return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+        }
         //return $return_array->draft_order->invoice_url;
     }
     function graphql_api_run($query = array(), $shop_url, $acc_token)
@@ -293,7 +311,6 @@ class FrontController extends BaseController
                                     );
                                     $this->user_model->add_partial_products_varient($product_array);
                                 }
-                                
                             }
                         }
                     }
@@ -353,8 +370,6 @@ class FrontController extends BaseController
                                     );
                                     $this->user_model->add_partial_products_varient($product_array);
                                 }
-
-                               
                             }
                         }
                     }
@@ -407,8 +422,8 @@ class FrontController extends BaseController
                 $this->user_model->update_cron_products($payxnowrest_collect_update);
                 //track upgrade message if merchants owner used all products quota for partial add products               
                 $this->user_model->update_data($get_lates_colection->shop_url, array(
-					"package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
-				));
+                    "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+                ));
             }
             echo "done";
         } else {
