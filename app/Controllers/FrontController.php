@@ -177,16 +177,16 @@ class FrontController extends BaseController
         //echo $chekpartial;
         //    print_r($line_item_arra);
 
-        if ($shopname == 'desinomatetest.myshopify.com') {
-            echo "line_item_arra<pre>";
-            print_r($line_item_arra);
-            echo "</pre>";
-            die();
-        } else {
+        // if ($shopname == 'desinomatetest.myshopify.com') {
+        //     echo "line_item_arra<pre>";
+        //     print_r($line_item_arra);
+        //     echo "</pre>";
+        //     die();
+        // } 
             $final_total_price_rem = str_replace("-", "", $remaining_price);
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
             return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-        }
+        
         //return $return_array->draft_order->invoice_url;
     }
     function graphql_api_run($query = array(), $shop_url, $acc_token)
