@@ -130,13 +130,11 @@ class FrontController extends BaseController
                     $size_order_name = implode("/", $size_tems);
                     // $order_name_count = count($create_customqty);
                 }
-                if ($shopname == 'desinomatetest.myshopify.com') {
-                 echo $size_order_name;
-                }
+               
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
                 $line_item  = array(
-                    "title" => $item_cart['title'],
+                    "title" => $item_cart['title'].' '.$size_order_name,
                     "price" => $final_price,
                     "quantity" => $item_cart['qty'],
                     "requires_shipping" => true,
