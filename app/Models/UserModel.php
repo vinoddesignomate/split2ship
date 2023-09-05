@@ -53,7 +53,9 @@ class UserModel extends Model
     {
         $qbuilder = $this->db->table('ppp_products_varient');
         $qbuilder->where('shop_url', $shopurl);
-        $qbuilder->where('product_id', $conditionarray['product_id']);
+        if (isset($conditionarray['product_id']) && $conditionarray['product_id'] != "") {
+            $qbuilder->where('product_id', $conditionarray['product_id']);
+        }
         $qbuilder->where('varient_id', $conditionarray['varient_id']);
         $getquery = $qbuilder->get();
         return $getquery->getResult();
@@ -131,7 +133,7 @@ class UserModel extends Model
         $getquery = $qbuilds->get();
         return $getquery->getResult();
     }
-    public function get_partial_product_list_pagina($shopurl, $start, $limit,$searctext="")
+    public function get_partial_product_list_pagina($shopurl, $start, $limit, $searctext = "")
     {
 
         $qbuilds = $this->db->table('app_partial_products');

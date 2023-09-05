@@ -61,10 +61,16 @@ class FrontController extends BaseController
             } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
                 return 'not_found';
             } else {
-                $condtion_array = array(
-                    "product_id" => $this->request->getPost('pid'),
-                    "varient_id" => $this->request->getPost('vid')
-                );
+                if ($this->request->getPost('pid') != "") {
+                    $condtion_array = array(
+                        "product_id" => $this->request->getPost('pid'),
+                        "varient_id" => $this->request->getPost('vid')
+                    );
+                } else {
+                    $condtion_array = array(
+                        "varient_id" => $this->request->getPost('vid')
+                    );
+                }
                 $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
                 $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
 
@@ -128,16 +134,16 @@ class FrontController extends BaseController
 
                 if (!empty($size_tems)) {
                     $size_order_name = implode("/", $size_tems);
-                    $size_order_namenn=" - ".$size_order_name;
+                    $size_order_namenn = " - " . $size_order_name;
                     // $order_name_count = count($create_customqty);
-                }else{
-                    $size_order_namenn="";
+                } else {
+                    $size_order_namenn = "";
                 }
-               
+
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
                 $line_item  = array(
-                    "title" => $item_cart['title'].$size_order_namenn,
+                    "title" => $item_cart['title'] . $size_order_namenn,
                     "price" => $final_price,
                     "quantity" => $item_cart['qty'],
                     "requires_shipping" => true,
@@ -186,10 +192,10 @@ class FrontController extends BaseController
         //     echo "</pre>";
         //     die();
         // } 
-            $final_total_price_rem = str_replace("-", "", $remaining_price);
-            $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-            return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-        
+        $final_total_price_rem = str_replace("-", "", $remaining_price);
+        $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
+        return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+
         //return $return_array->draft_order->invoice_url;
     }
     function graphql_api_run($query = array(), $shop_url, $acc_token)
