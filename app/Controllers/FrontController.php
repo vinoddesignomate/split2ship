@@ -61,7 +61,7 @@ class FrontController extends BaseController
             } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
                 return 'not_found';
             } else {
-                if ($this->request->getPost('pid') != "") {
+                if ($this->request->getPost('pid')) {
                     $condtion_array = array(
                         "product_id" => $this->request->getPost('pid'),
                         "varient_id" => $this->request->getPost('vid')
