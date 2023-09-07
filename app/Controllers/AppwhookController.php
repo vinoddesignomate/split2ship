@@ -778,9 +778,13 @@ class AppwhookController extends BaseController
             // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
             $get_response = $this->common->get_shiprocket_token($ship_email, $ship_password);
             $new_res = json_decode($get_response);
-
+            if(isset($new_res->token) && $new_res->token !=""){
+                $splitetoken = $new_res->token;
+            }else{
+                $splitetoken = "djurefhfiee";
+            }
             $insert_array = array(
-                "token" => $new_res->token,
+                "token" => $splitetoken,
                 "token_generate_date" => date('Y-m-d'),
                 "token_expiray_date" => date('Y-m-d', strtotime('+10 day')),
                 "shop_url" => $shop_url,
