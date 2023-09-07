@@ -790,7 +790,7 @@ class AppwhookController extends BaseController
                 "shop_url" => $shop_url,
             );
             $this->user_model->track_shiprocket_api_token($insert_array);
-            return $new_res->token;
+            return $splitetoken;
         } else {
             return 'DFTUFTKGdjfifirjfifir';
         }
