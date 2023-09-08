@@ -1986,6 +1986,8 @@ class Home extends BaseController
                 "addcartbtn_cg" => $this->request->getPost('addcartbtn_cg'),
                 "cg_chkout_btn_class" => $this->request->getPost('cg_chkout_btn_class'),
                 "cg_cart_remove_class" => $this->request->getPost('cg_cart_remove_class'),
+                "cart_summary_back_color" => $this->request->getPost('cart_summary_back_color'),
+                "cart_summart_textc" => $this->request->getPost('cart_summart_textc'),
                 "shop_url" => $_GET['shop']
             );
             $this->user_model->track_checkout_button_color($track_color_array);

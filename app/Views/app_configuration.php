@@ -201,16 +201,16 @@ $store_name = $shop_name[0];
                                         <input type="text" data-jscolor="{}" name="full_chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : 'ffffff'); ?>">
                                 </div>
 
-                                <!--<div class="flex-row">
-                                        <label for="">Product page form css class name</label>
-                                        <input type="text" name="cart_form_class" value="<?php echo (isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : ''); ?>">
+                                <div class="flex-row">
+                                        <label for="">Cart Summary Section Background color</label>
+                                        <input type="text" data-jscolor="{}" name="cart_summary_back_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
                                 </div>
                                 <div class="flex-row">
-                                        <label for="">Add to cart button css ID tag</label>
-                                        <input type="text" name="addcartbtn_cg" value="<?php echo (isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : ''); ?>">
+                                        <label for="">Cart Summary Section text color</label>
+                                        <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
                                 </div>
 
-                                <div class="flex-row">
+                                <!--<div class="flex-row">
                                         <label for="">Checkout button css class name </label>
                                         <input type="text" name="cg_chkout_btn_class" value="<?php echo (isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : ''); ?>">
                                 </div>
