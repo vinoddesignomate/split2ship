@@ -7,7 +7,7 @@
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading" style="border: 1px solid #de350a;">
-                    <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">There is some maintenance going on, so if you're facing any issues please contact us</p>
+                    <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">There is some maintenance going on, so if you're facing any issues please contact us on :- <a href="whatsapp://send?abid=9354200590&text=Split2ship App Help">9354200590</a></p>
                 </div>    
             </div>   
         </div>    
