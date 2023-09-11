@@ -91,10 +91,10 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                    $register_shop_info = json_decode($shop_info['body'], true);
+                    // $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $register_shop_info = json_decode($shop_info['body'], true);
 
-                    echo"<pre>"; print_r($register_shop_info); echo "</pre>";
+                    // echo"<pre>"; print_r($register_shop_info); echo "</pre>";
 
                     // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/markpaidorderemail?whshp='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
                 }
@@ -2140,15 +2140,19 @@ class Home extends BaseController
     {
         if ($this->request->getGet('shop')) {
             $get_details = $this->user_model->get_tokens($this->request->getGet('shop'));
-            if ($get_details->email == "") {
+           // if ($get_details->email == "") {
                 $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $register_shop_info = json_decode($shop_info['body'], true);
-
+                if(isset($register_shop_info['shop']['customer_email']) && $register_shop_info['shop']['customer_email'] !=""){
+                    $custemail = $register_shop_info['shop']['customer_email'];
+                }else{
+                    $custemail = $register_shop_info['shop']['email'];
+                }
                 $this->user_model->update_data($get_details->shop_url, array(
                     "first_name" => $register_shop_info['shop']['shop_owner'],
-                    "email" => $register_shop_info['shop']['email'],
+                    "email" => $custemail,
                 ));
-            }
+            //}
             $visitr_ipaddreess =  $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'];
             $track_user_log = array(
                 "name" => $get_details->first_name,
