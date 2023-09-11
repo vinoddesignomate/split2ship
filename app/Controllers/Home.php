@@ -545,136 +545,146 @@ class Home extends BaseController
         //get store collections
         $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
         $collections = json_decode($collections['body'], true);
-        $coll_array = array();
-        if (isset($collections['custom_collections'])) {
-            foreach ($collections['custom_collections'] as $collection_list) {
-                $coll_array = array(
-                    "collection_id" => $collection_list['id'],
-                    "collections_name" => $collection_list['title'],
-                    "shop_url" => $_GET['shop']
 
-                );
-                $this->user_model->track_collections($coll_array, $_GET['shop']);
-            }
-        }
+        if (array_key_exists('errors', $collections)) {
+            // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
+            echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+            // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+            // echo view('templates/apbrdgnew', $data);
 
-        $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-
-        $smart_collectionsget = json_decode($smart_collections['body'], true);
-        $smart_coll_array = array();
-
-        //track smart collection
-        if (isset($smart_collectionsget['smart_collections']) && !empty($smart_collectionsget['smart_collections'])) {
-            foreach ($smart_collectionsget['smart_collections'] as $collection_list) {
-                $smart_coll_array = array(
-                    "collection_id" => $collection_list['id'],
-                    "collections_name" => $collection_list['title'],
-                    "shop_url" => $_GET['shop']
-
-                );
-
-                $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
-            }
-        }
-
-        $get_store_collections = $this->user_model->get_collections($_GET['shop']);
-
-        $parma_array = array("limit" => 50);
-
-        if ((isset($_GET['collectionparms']) && $_GET['collectionparms'] != "")) {
-
-            $colcturl = "/admin/api/2022-04/products.json";
-            $data['checkcol'] = 'yes';
-            // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], 'vendor' => $_GET['vendorname'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
-
-            // /"title"=>"Divya Is The Super Women",
-
-            // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
-
-            if ($this->request->getPost('search_text')) {
-                // print_r($this->request->getPost());
-                $params_array = array(
-                    "collection_id" => $_GET['collectionparms'],
-                    "limit" => 10,
-                    "search_parms" => $this->request->getPost('search_text')
-                );
-                $data['searctxt'] = $this->request->getPost('search_text');
-                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
-                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
-            } else {
-                $params_array = array(
-                    "collection_id" => $_GET['collectionparms'],
-                    "limit" => 10,
-                    //"search_parms" => "Super Women"
-                );
-                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
-                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
-            }
-
-            //$product_list = json_decode($products['body'], true);
-            if (isset($grapql_products_list_prodct['data']['collection'])) {
-                $product_list = $grapql_products_list_prodct['data']['collection']['products'];
-            } else {
-                $product_list = $grapql_products_list_prodct['data']['products'];
-            }
+            // exit();
         } else {
-            $product_list = array();
-            $data['checkcol'] = 'no';
-        }
+            $coll_array = array();
+            if (isset($collections['custom_collections'])) {
+                foreach ($collections['custom_collections'] as $collection_list) {
+                    $coll_array = array(
+                        "collection_id" => $collection_list['id'],
+                        "collections_name" => $collection_list['title'],
+                        "shop_url" => $_GET['shop']
 
-
-
-        // echo "<pre>";
-        // print_r($grapql_products_list_prodct);
-        // echo "</pre>";
-
-        // foreach ($product_list as $edge) {
-        //     //foreach ($edge as $key => $value) {
-        //     foreach ($edge as $key => $value) {
-        //         //foreach ($node['node'] as $value) {
-        //         echo "<pre>";
-        //         print_r($value['node']);               
-        //         echo "</pre>";
-        //         echo $node['node']['id'];
-        //         //}
-        //     }
-        //     // }
-        // }
-        // die();
-        $data['get_part_list'] = $this->user_model->get_partial_productget($_GET['shop']);
-
-
-
-        $data['products'] = $product_list;
-        $data['get_store_collections'] = $get_store_collections;
-        // if (!empty($product_list)) {
-        //     $headers = $products['headers'];
-        //     if (isset($headers['link'])) {
-        //         $nextPageURL = $this->common->str_btwn($headers['link'], '<', '>');
-        //         $nextPageURLparam = parse_url($nextPageURL);
-        //         parse_str($nextPageURLparam['query'], $value);
-        //         $data['page_info'] = $value['page_info'];
-        //     }
-        //     $data['headers_list'] = $headers;
-        // }
-        if (!empty($product_list)) {
-            if (isset($grapql_products_list_prodct['data']['collection'])) {
-                if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage'] == 1) {
-                    $data['pagenewxt'] = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['endCursor'];
-                }
-            } else {
-                if (isset($grapql_products_list_prodct['data']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['products']['pageInfo']['hasNextPage'] == 1) {
-                    $data['pagenewxt'] = $grapql_products_list_prodct['data']['products']['pageInfo']['endCursor'];
+                    );
+                    $this->user_model->track_collections($coll_array, $_GET['shop']);
                 }
             }
+
+            $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+            $smart_collectionsget = json_decode($smart_collections['body'], true);
+            $smart_coll_array = array();
+
+            //track smart collection
+            if (isset($smart_collectionsget['smart_collections']) && !empty($smart_collectionsget['smart_collections'])) {
+                foreach ($smart_collectionsget['smart_collections'] as $collection_list) {
+                    $smart_coll_array = array(
+                        "collection_id" => $collection_list['id'],
+                        "collections_name" => $collection_list['title'],
+                        "shop_url" => $_GET['shop']
+
+                    );
+
+                    $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
+                }
+            }
+
+            $get_store_collections = $this->user_model->get_collections($_GET['shop']);
+
+            $parma_array = array("limit" => 50);
+
+            if ((isset($_GET['collectionparms']) && $_GET['collectionparms'] != "")) {
+
+                $colcturl = "/admin/api/2022-04/products.json";
+                $data['checkcol'] = 'yes';
+                // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], 'vendor' => $_GET['vendorname'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
+
+                // /"title"=>"Divya Is The Super Women",
+
+                // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
+
+                if ($this->request->getPost('search_text')) {
+                    // print_r($this->request->getPost());
+                    $params_array = array(
+                        "collection_id" => $_GET['collectionparms'],
+                        "limit" => 10,
+                        "search_parms" => $this->request->getPost('search_text')
+                    );
+                    $data['searctxt'] = $this->request->getPost('search_text');
+                    $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                    $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+                } else {
+                    $params_array = array(
+                        "collection_id" => $_GET['collectionparms'],
+                        "limit" => 10,
+                        //"search_parms" => "Super Women"
+                    );
+                    $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                    $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+                }
+
+                //$product_list = json_decode($products['body'], true);
+                if (isset($grapql_products_list_prodct['data']['collection'])) {
+                    $product_list = $grapql_products_list_prodct['data']['collection']['products'];
+                } else {
+                    $product_list = $grapql_products_list_prodct['data']['products'];
+                }
+            } else {
+                $product_list = array();
+                $data['checkcol'] = 'no';
+            }
+
+
+
+            // echo "<pre>";
+            // print_r($grapql_products_list_prodct);
+            // echo "</pre>";
+
+            // foreach ($product_list as $edge) {
+            //     //foreach ($edge as $key => $value) {
+            //     foreach ($edge as $key => $value) {
+            //         //foreach ($node['node'] as $value) {
+            //         echo "<pre>";
+            //         print_r($value['node']);               
+            //         echo "</pre>";
+            //         echo $node['node']['id'];
+            //         //}
+            //     }
+            //     // }
+            // }
+            // die();
+            $data['get_part_list'] = $this->user_model->get_partial_productget($_GET['shop']);
+
+
+
+            $data['products'] = $product_list;
+            $data['get_store_collections'] = $get_store_collections;
+            // if (!empty($product_list)) {
+            //     $headers = $products['headers'];
+            //     if (isset($headers['link'])) {
+            //         $nextPageURL = $this->common->str_btwn($headers['link'], '<', '>');
+            //         $nextPageURLparam = parse_url($nextPageURL);
+            //         parse_str($nextPageURLparam['query'], $value);
+            //         $data['page_info'] = $value['page_info'];
+            //     }
+            //     $data['headers_list'] = $headers;
+            // }
+            if (!empty($product_list)) {
+                if (isset($grapql_products_list_prodct['data']['collection'])) {
+                    if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage'] == 1) {
+                        $data['pagenewxt'] = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['endCursor'];
+                    }
+                } else {
+                    if (isset($grapql_products_list_prodct['data']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['products']['pageInfo']['hasNextPage'] == 1) {
+                        $data['pagenewxt'] = $grapql_products_list_prodct['data']['products']['pageInfo']['endCursor'];
+                    }
+                }
+            }
+            $data['chart_details'] = array();
+            if (isset($_GET['vid'])) {
+                $data['chart_details'] = $this->user_model->get_store_chart($_GET['shop'], $_GET['vid']);
+            }
+            echo view('templates/header');
+            echo view('partial_assign_products', $data);
+            echo view('templates/footer');
         }
-        $data['chart_details'] = array();
-        if (isset($_GET['vid'])) {
-            $data['chart_details'] = $this->user_model->get_store_chart($_GET['shop'], $_GET['vid']);
-        }
-        echo view('templates/header');
-        echo view('partial_assign_products', $data);
-        echo view('templates/footer');
     }
 
     public function show_partial_products()
