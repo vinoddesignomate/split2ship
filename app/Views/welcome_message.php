@@ -209,12 +209,12 @@
                                             <label for="">Password
                                             </label>
 
-                                            <input type="text" name="ship_pwd" required id="ship_pwd" placeholder="Enter password" value="<?php echo isset($shiprocket_info[0]->password) ? $shiprocket_info[0]->password : ''; ?>">
+                                            <input type="password" name="ship_pwd" required id="ship_pwd" placeholder="Enter password" value="<?php echo isset($shiprocket_info[0]->password) ? $shiprocket_info[0]->password : ''; ?>">
                                         </div>
-                                        <div class="">
+                                        <!-- <div class="">
                                             <label for="">Channel ID</label>
-                                            <input type="text" id="ship_chnl_id" required name="ship_chnl_id" placeholder="Enter channel id" value="<?php echo isset($shiprocket_info[0]->channel_id) ? $shiprocket_info[0]->channel_id : ''; ?>">
-                                        </div>
+                                            <input type="text" id="ship_chnl_id" required name="ship_chnl_id" placeholder="Enter channel id" value="<?php //echo isset($shiprocket_info[0]->channel_id) ? $shiprocket_info[0]->channel_id : ''; ?>">
+                                        </div> -->
                                     </div>
 
                                     <div id="delhivery" style="display: none;">

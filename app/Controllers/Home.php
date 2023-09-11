@@ -268,7 +268,7 @@ class Home extends BaseController
                                 $update_price = array(
                                     "email" => $this->request->getPost('ship_email'),
                                     "password" => $this->request->getPost('ship_pwd'),
-                                    "channel_id" => $this->request->getPost('ship_chnl_id'),
+                                    //"channel_id" => $this->request->getPost('ship_chnl_id'),
                                     "created" => date('Y-m-d'),
                                     "shop_url" => $_REQUEST['shop'],
                                     "shiping_partner_type" => $this->request->getPost('delivery_partner'),
@@ -2028,7 +2028,7 @@ class Home extends BaseController
                     $update_price = array(
                         "email" => $this->request->getPost('ship_email'),
                         "password" => $this->request->getPost('ship_pwd'),
-                        "channel_id" => $this->request->getPost('ship_chnl_id'),
+                        //"channel_id" => $this->request->getPost('ship_chnl_id'),
                         "created" => date('Y-m-d'),
                         "shop_url" => $_REQUEST['shop'],
                         "shiping_partner_type" => $this->request->getPost('delivery_partner'),
