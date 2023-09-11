@@ -1169,172 +1169,183 @@ class Home extends BaseController
         //echo"<pre>"; print_r($get_data); echo "</pre>";
 
         $all_orders = $this->common->rest_api('/admin/api/2023-01/orders.json?status=any&order=updated_at%20asc', array(), 'GET', $get_details->access_token, $_GET['shop']);
-        // echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
-        if (!empty($all_orders)) {
-            // echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
-            $get_all_oders = json_decode($all_orders['body'], true);
-            // $data['get_all_oders'] = $get_all_oders;
-            // echo "aaa<pre>";
-            // print_r($get_all_oders);
-            // echo "</pre>";
-            // die();
+        $get_all_oders = json_decode($all_orders['body'], true);
+        if (array_key_exists('errors', $get_all_oders)) {
+            // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
+            echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+            // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+            // echo view('templates/apbrdgnew', $data);
 
-            $orders_data = array();
-            $api_orders_data = array();
-            $orders_products_data = array();
-            $api_orders_products_data = array();
+            // exit();
+        } else {
+            if (!empty($all_orders)) {
+                // echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
+                $get_all_oders = json_decode($all_orders['body'], true);
+                // $data['get_all_oders'] = $get_all_oders;
+                // echo "aaa<pre>";
+                // print_r($get_all_oders);
+                // echo "</pre>";
+                // die();
+                $response_home = json_decode($products['body'], true);
+                // echo"<pre>"; print_r($response_home); echo "</pre>"; die();
 
-            foreach ($get_all_oders as $order) {
-                foreach ($order as $key => $value) {
-                    // if ($value['tags'] != '') {
-                    //if ($value['tags'] != '') {
+                $orders_data = array();
+                $api_orders_data = array();
+                $orders_products_data = array();
+                $api_orders_products_data = array();
+
+                foreach ($get_all_oders as $order) {
+                    foreach ($order as $key => $value) {
+                        // if ($value['tags'] != '') {
+                        //if ($value['tags'] != '') {
 
 
 
 
-                    // if ($value['tags'] != '') {
-                    //     $orders_sts = 'pending';
-                    //     $pendingamntnnn = explode("_", $value['tags']);
-                    //     $pendingamnt = $pendingamntnnn[1];
-                    // } else {
-                    //     if ($value['financial_status'] == "pending") {
-                    //         $orders_sts = "cod";
-                    //         $pendingamnt = $value['total_price'];
-                    //     } else {
-                    //         $orders_sts = $value['financial_status'];
-                    //         $pendingamnt = 0;
-                    //     }
-                    // }
-                    // echo "<pre>"; print_r($value); echo"</pre>";
-                    if ($value['financial_status'] == "paid") {
+                        // if ($value['tags'] != '') {
+                        //     $orders_sts = 'pending';
+                        //     $pendingamntnnn = explode("_", $value['tags']);
+                        //     $pendingamnt = $pendingamntnnn[1];
+                        // } else {
+                        //     if ($value['financial_status'] == "pending") {
+                        //         $orders_sts = "cod";
+                        //         $pendingamnt = $value['total_price'];
+                        //     } else {
+                        //         $orders_sts = $value['financial_status'];
+                        //         $pendingamnt = 0;
+                        //     }
+                        // }
+                        // echo "<pre>"; print_r($value); echo"</pre>";
+                        if ($value['financial_status'] == "paid") {
 
-                        $orders_sts = $value['financial_status'];
-                        $pendingamnt = 0;
-                    } else {
-                        if ($value['tags'] != '') {
-                            $orders_sts = 'pending';
-                            $pendingamntnnn = explode("_", $value['tags']);
-                            if (isset($pendingamntnnn[1])) {
-                                $pendingamnt = $pendingamntnnn[1];
-                            } else {
-                                $pendingamnt = 0;
-                            }
+                            $orders_sts = $value['financial_status'];
+                            $pendingamnt = 0;
                         } else {
-                            $orders_sts = "cod";
-                            $pendingamnt = $value['total_price'];
-                        }
-                    }
-
-
-
-                    if (empty($value['fulfillments'])) {
-                        $fullmenststs = "Unfulfilled";
-                    } else {
-                        $fullmenststs = "fulfilled";
-                    }
-                    $orders_data = array(
-                        "order_id" => $value['id'],
-                        "order_number" => $value['order_number'],
-                        "order_status" => $orders_sts,
-                        "order_ccy" => $value['currency'],
-                        "order_date" => $value['created_at'],
-                        "order_price" => $value['current_subtotal_price'],
-                        "email" => $this->common->payxnow_encodedata($value['contact_email']),
-                        "total_price" => $value['total_price'],
-                        "pending_amount" => $pendingamnt,
-                        "shop_url" => $_GET['shop'],
-                        "fullfilment_status" => $fullmenststs
-                    );
-                    if (isset($value['shipping_address'])) {
-                        $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
-                        $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
-                        $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
-                        $orders_data['zip'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
-                        $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
-                        $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['first_name']) : '');
-                        $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
-                        //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                        $orders_data['country'] = (isset($value['shipping_address']['country']) ? $this->common->payxnow_encodedata($value['shipping_address']['country']) : '');
-                    } else  if (isset($value['billing_address'])) {
-
-                        $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['billing_address']['address1']);
-                        $orders_data['city'] = (isset($value['billing_address']['city']) ? $this->common->payxnow_encodedata($value['billing_address']['city']) : '');
-                        $orders_data['state'] = (isset($value['billing_address']['province']) ? $this->common->payxnow_encodedata($value['billing_address']['province']) : '');
-                        $orders_data['zip'] = (isset($value['billing_address']['zip']) ? $value['billing_address']['zip'] : '');
-                        $orders_data['phone'] = (isset($value['billing_address']['phone']) ? $this->common->payxnow_encodedata($value['billing_address']['phone']) : '');
-                        $orders_data['f_name'] = (isset($value['billing_address']['first_name']) ? $this->common->payxnow_encodedata($value['billing_address']['first_name']) : '');
-                        $orders_data['l_name'] = (isset($value['billing_address']['last_name']) ? $this->common->payxnow_encodedata($value['billing_address']['last_name']) : '');
-                        //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                        $orders_data['country'] = (isset($value['billing_address']['country']) ? $this->common->payxnow_encodedata($value['billing_address']['country']) : '');
-                    }
-                    //echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
-
-                    $incid = $this->user_model->track_orders($orders_data, $_GET['shop']);
-                    //echo $value['id'] . '****************' . $incid;
-
-                    // if ($incid == 1) {
-                    $reaminming_price = array();
-                    foreach ($value['line_items'] as $products) {
-                        if ($products['name'] != "Partial Pending Payment") {
-                            if ($products['sku'] == "") {
-                                if (isset($products['properties'][3]['value'])) {
-                                    $reaminming_price[] = $products['properties'][3]['value'];
-                                    $prodycprice =  $products['properties'][3]['value'];
+                            if ($value['tags'] != '') {
+                                $orders_sts = 'pending';
+                                $pendingamntnnn = explode("_", $value['tags']);
+                                if (isset($pendingamntnnn[1])) {
+                                    $pendingamnt = $pendingamntnnn[1];
                                 } else {
-                                    $reaminming_price[] = 0;
-                                    $prodycprice = 0;
-                                }
-                                if (isset($products['properties'][4]['value'])) {
-                                    $prosku = $products['properties'][4]['value'];
-                                } else {
-                                    $prosku = 'PRTTESTSKY';
+                                    $pendingamnt = 0;
                                 }
                             } else {
-                                $prosku = $products['sku'];
-                                $prodycprice =  $products['price'];
+                                $orders_sts = "cod";
+                                $pendingamnt = $value['total_price'];
                             }
-                            $orders_products_data = array(
-                                "order_id" => $value['id'],
-                                "product_id" => $products['id'],
-                                "product_name" => $products['name'],
-                                "product_price" => $prodycprice,
-                                "product_qty" => $products['quantity'],
-                                "product_sku" => $prosku,
-                                "shop_url" => $_GET['shop']
-                            );
-                            // echo "orders_products_data<pre>";
-                            // print_r($orders_products_data);
-                            // echo "</pre>";
-                            $this->user_model->track_orders_products($orders_products_data);
                         }
+
+
+
+                        if (empty($value['fulfillments'])) {
+                            $fullmenststs = "Unfulfilled";
+                        } else {
+                            $fullmenststs = "fulfilled";
+                        }
+                        $orders_data = array(
+                            "order_id" => $value['id'],
+                            "order_number" => $value['order_number'],
+                            "order_status" => $orders_sts,
+                            "order_ccy" => $value['currency'],
+                            "order_date" => $value['created_at'],
+                            "order_price" => $value['current_subtotal_price'],
+                            "email" => $this->common->payxnow_encodedata($value['contact_email']),
+                            "total_price" => $value['total_price'],
+                            "pending_amount" => $pendingamnt,
+                            "shop_url" => $_GET['shop'],
+                            "fullfilment_status" => $fullmenststs
+                        );
+                        if (isset($value['shipping_address'])) {
+                            $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
+                            $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
+                            $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
+                            $orders_data['zip'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
+                            $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
+                            $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['first_name']) : '');
+                            $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
+                            //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
+                            $orders_data['country'] = (isset($value['shipping_address']['country']) ? $this->common->payxnow_encodedata($value['shipping_address']['country']) : '');
+                        } else  if (isset($value['billing_address'])) {
+
+                            $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['billing_address']['address1']);
+                            $orders_data['city'] = (isset($value['billing_address']['city']) ? $this->common->payxnow_encodedata($value['billing_address']['city']) : '');
+                            $orders_data['state'] = (isset($value['billing_address']['province']) ? $this->common->payxnow_encodedata($value['billing_address']['province']) : '');
+                            $orders_data['zip'] = (isset($value['billing_address']['zip']) ? $value['billing_address']['zip'] : '');
+                            $orders_data['phone'] = (isset($value['billing_address']['phone']) ? $this->common->payxnow_encodedata($value['billing_address']['phone']) : '');
+                            $orders_data['f_name'] = (isset($value['billing_address']['first_name']) ? $this->common->payxnow_encodedata($value['billing_address']['first_name']) : '');
+                            $orders_data['l_name'] = (isset($value['billing_address']['last_name']) ? $this->common->payxnow_encodedata($value['billing_address']['last_name']) : '');
+                            //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
+                            $orders_data['country'] = (isset($value['billing_address']['country']) ? $this->common->payxnow_encodedata($value['billing_address']['country']) : '');
+                        }
+                        //echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
+
+                        $incid = $this->user_model->track_orders($orders_data, $_GET['shop']);
+                        //echo $value['id'] . '****************' . $incid;
+
+                        // if ($incid == 1) {
+                        $reaminming_price = array();
+                        foreach ($value['line_items'] as $products) {
+                            if ($products['name'] != "Partial Pending Payment") {
+                                if ($products['sku'] == "") {
+                                    if (isset($products['properties'][3]['value'])) {
+                                        $reaminming_price[] = $products['properties'][3]['value'];
+                                        $prodycprice =  $products['properties'][3]['value'];
+                                    } else {
+                                        $reaminming_price[] = 0;
+                                        $prodycprice = 0;
+                                    }
+                                    if (isset($products['properties'][4]['value'])) {
+                                        $prosku = $products['properties'][4]['value'];
+                                    } else {
+                                        $prosku = 'PRTTESTSKY';
+                                    }
+                                } else {
+                                    $prosku = $products['sku'];
+                                    $prodycprice =  $products['price'];
+                                }
+                                $orders_products_data = array(
+                                    "order_id" => $value['id'],
+                                    "product_id" => $products['id'],
+                                    "product_name" => $products['name'],
+                                    "product_price" => $prodycprice,
+                                    "product_qty" => $products['quantity'],
+                                    "product_sku" => $prosku,
+                                    "shop_url" => $_GET['shop']
+                                );
+                                // echo "orders_products_data<pre>";
+                                // print_r($orders_products_data);
+                                // echo "</pre>";
+                                $this->user_model->track_orders_products($orders_products_data);
+                            }
+                        }
+
+                        //}
+
+                        $subtotal_update = array_sum($reaminming_price);
+                        $this->user_model->update_order_subtotal($value['id'], $subtotal_update, $_GET['shop']);
+                        //}
                     }
-
-                    //}
-
-                    $subtotal_update = array_sum($reaminming_price);
-                    $this->user_model->update_order_subtotal($value['id'], $subtotal_update, $_GET['shop']);
-                    //}
                 }
             }
+
+            $data['order_paging'] = isset($_REQUEST['order_paging']) && is_numeric($_REQUEST['order_paging']) ? $_REQUEST['order_paging'] : 1;
+
+            $limit = 25;
+            $data['orderlimit'] = $limit;
+            $initial_page = ($data['order_paging'] - 1) * $limit;
+
+            $order_list_c = $this->user_model->get_all_orders_totals($_GET['shop']);
+            $total_orders_count = count($order_list_c);
+            $data['total_pages'] = ceil($total_orders_count / $limit); //calculate total pages
+
+
+            $data['order_list'] = $this->user_model->get_all_orders($_GET['shop'], $initial_page, $limit);
+            $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
+            $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
+            echo view('templates/header');
+            echo view('all_orders', $data);
+            echo view('templates/footer');
         }
-
-        $data['order_paging'] = isset($_REQUEST['order_paging']) && is_numeric($_REQUEST['order_paging']) ? $_REQUEST['order_paging'] : 1;
-
-        $limit = 25;
-        $data['orderlimit'] = $limit;
-        $initial_page = ($data['order_paging'] - 1) * $limit;
-
-        $order_list_c = $this->user_model->get_all_orders_totals($_GET['shop']);
-        $total_orders_count = count($order_list_c);
-        $data['total_pages'] = ceil($total_orders_count / $limit); //calculate total pages
-
-
-        $data['order_list'] = $this->user_model->get_all_orders($_GET['shop'], $initial_page, $limit);
-        $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
-        $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
-        echo view('templates/header');
-        echo view('all_orders', $data);
-        echo view('templates/footer');
     }
     function order_sync()
     {
