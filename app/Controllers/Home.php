@@ -1174,10 +1174,10 @@ class Home extends BaseController
             // echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
             $get_all_oders = json_decode($all_orders['body'], true);
             // $data['get_all_oders'] = $get_all_oders;
-            echo "aaa<pre>";
-            print_r($get_all_oders);
-            echo "</pre>";
-            die();
+            // echo "aaa<pre>";
+            // print_r($get_all_oders);
+            // echo "</pre>";
+            // die();
 
             $orders_data = array();
             $api_orders_data = array();
