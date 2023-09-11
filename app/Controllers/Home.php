@@ -777,14 +777,16 @@ class Home extends BaseController
         $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
         $collections = json_decode($collections['body'], true);
         $coll_array = array();
-        foreach ($collections['custom_collections'] as $collection_list) {
-            $coll_array = array(
-                "collection_id" => $collection_list['id'],
-                "collections_name" => $collection_list['title'],
-                "shop_url" => $_GET['shop']
+        if (isset($collections['custom_collections'])) {
+            foreach ($collections['custom_collections'] as $collection_list) {
+                $coll_array = array(
+                    "collection_id" => $collection_list['id'],
+                    "collections_name" => $collection_list['title'],
+                    "shop_url" => $_GET['shop']
 
-            );
-            $this->user_model->track_collections($coll_array, $_GET['shop']);
+                );
+                $this->user_model->track_collections($coll_array, $_GET['shop']);
+            }
         }
 
         $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
