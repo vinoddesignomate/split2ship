@@ -366,19 +366,19 @@ class AppwhookController extends BaseController
                     $this->user_model->check_test_response($resposne_array);
 
                     $send_invoice_email = 'mutation {
-                orderInvoiceSend(
-                    id: "gid://shopify/Order/5468778856752"
-                    email: {from: "saurabh@designomate.com", to: "vinod@designomate.com"}
-                ) {
-                    order {
-                    id
-                    }
-                    userErrors {
-                    field
-                    message
-                    }
-                }
-                }';
+                        orderInvoiceSend(
+                          id: "gid://shopify/Order/' . $jsndata->id . '"
+                          email: {from: "dharmendra@designomate.com", to: "' . $jsndata->email . '"}
+                        ) {
+                          order {
+                            id
+                          }
+                          userErrors {
+                            field
+                            message
+                          }
+                        }
+                      }';
 
                     $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
 
