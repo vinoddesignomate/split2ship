@@ -90,6 +90,12 @@ class Home extends BaseController
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+
+                    $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $register_shop_info = json_decode($shop_info['body'], true);
+
+                    echo"<pre>"; print_r($register_shop_info); echo "</pre>";
+
                     // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/markpaidorderemail?whshp='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
                 }
 
