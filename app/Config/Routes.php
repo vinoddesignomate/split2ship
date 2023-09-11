@@ -81,6 +81,7 @@ $routes->match(['get', 'post'],'/syncallorders', 'AppwhookController::auto_order
 $routes->match(['get', 'post'],'/paidordernotify', 'AppwhookController::paidordernotify');
 $routes->match(['get', 'post'],'/updateordernotify', 'AppwhookController::updateordernotify');
 $routes->match(['get', 'post'],'/orderedt', 'AppwhookController::orderedt');
+$routes->match(['get', 'post'],'/markpaidorderemail', 'AppwhookController::markpaidorderemail');
 
 //GDPR mandatory webhooks url
 $routes->match(['get', 'post'],'/user-data-user', 'GdprController::user_data_request');  //Customer data request endpoint
