@@ -1479,11 +1479,11 @@ class Home extends BaseController
                     // echo "<pre>";
                     // print_r($set_orders);
                     // echo "</pre>";
-
-                    // echo "*******decoded_res<pre>";
-                    // print_r($decoded_res);
-                    // echo "</pre>";
-
+                    if($_REQUEST['shop'] == 'sourceanything.myshopify.com'){
+                        echo "*******decoded_res<pre>";
+                        print_r($decoded_res);
+                        echo "</pre>";
+                    }
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];
                         // //echo "error";
