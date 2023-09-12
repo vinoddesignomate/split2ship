@@ -1201,7 +1201,7 @@ class Home extends BaseController
                 // print_r($get_all_oders);
                 // echo "</pre>";
                 // die();
-                $response_home = json_decode($products['body'], true);
+                //$response_home = json_decode($products['body'], true);
                 // echo"<pre>"; print_r($response_home); echo "</pre>"; die();
 
                 $orders_data = array();
