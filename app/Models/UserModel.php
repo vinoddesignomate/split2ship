@@ -310,6 +310,10 @@ class UserModel extends Model
     }
     public function track_shiprocket_api_token($data_array)
     {
+        //remove old token
+        $del_query = "DELETE FROM shiprocket_api_token WHERE shop_url=?";
+        $this->db->query($del_query, array($data_array['shop_url']));
+
         $this->db->table('shiprocket_api_token')->insert($data_array);
     }
     public function track_sync_order($orderid, $shopid)
