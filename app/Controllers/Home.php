@@ -2067,7 +2067,7 @@ class Home extends BaseController
                             "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
                             "shop_url" => $_REQUEST['shop'],
                         );
-                        print_r($insert_array);
+                        //print_r($insert_array);
                         $this->user_model->track_shiprocket_api_token($insert_array);
                         echo "done_" . $new_res->message;
                     }
@@ -2086,6 +2086,16 @@ class Home extends BaseController
 
                     );
                     //print_r($update_price);
+
+                    $insert_array = array(
+                        "token" => $new_res->token,
+                        "token_generate_date" => date('Y-m-d'),
+                        "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
+                        "shop_url" => $_REQUEST['shop'],
+                    );
+                    print_r($insert_array);
+                    $this->user_model->track_shiprocket_api_token($insert_array);
+
                     $this->user_model->shiprocket_config_db($update_price);
                     echo "done_Information successfully saved";
                     // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/shiprocket-config'</script>";
