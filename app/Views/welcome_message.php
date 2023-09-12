@@ -201,7 +201,7 @@
                                 <div class="payxnowandrestondelivery-form-wrapper">
                                     <span style="font-weight: bold;" id="ermsg"></span>
                                     <div id="ship_roc">
-                                        <div>Please create a API user in shiprocket panel <a tagrget="_blank" onclick='abc(event);' href="https://app.shiprocket.in/api-user">from here</a>, and add those details here.</div>
+                                        <div>Please create a API user in shiprocket panel <a target="_blank" onclick='abc(event);' href="https://app.shiprocket.in/api-user">from here</a>, and add those details here.</div>
                                         <div class="">
                                             <label for="">Email Address</label>
                                             <input type="email" id="ship_email" required name="ship_email" placeholder="abc@email.com" value="<?php echo isset($shiprocket_info[0]->email) ? $shiprocket_info[0]->email : ''; ?>">
