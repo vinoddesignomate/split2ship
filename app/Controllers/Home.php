@@ -1481,7 +1481,7 @@ class Home extends BaseController
                     // echo "</pre>";
                     if($_REQUEST['shop'] == 'sourceanything.myshopify.com'){
 
-                        
+                    echo json_encode($create_custom);
                     echo "create_custom<pre>";
                     print_r($create_custom);
                     echo "</pre>";
