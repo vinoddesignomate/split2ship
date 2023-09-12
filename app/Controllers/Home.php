@@ -2067,6 +2067,7 @@ class Home extends BaseController
                             "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
                             "shop_url" => $_REQUEST['shop'],
                         );
+                        print_r($insert_array);
                         $this->user_model->track_shiprocket_api_token($insert_array);
                         echo "done_" . $new_res->message;
                     }
