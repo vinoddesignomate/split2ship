@@ -8,17 +8,17 @@
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading" style="border: 1px solid #de350a;">
                     <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">There is some maintenance going on, so if you're facing any issues please contact us on :- 9354200590</p>
-                </div>    
-            </div>   
-        </div>    
-        
+                </div>
+            </div>
+        </div>
+
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading">
                     <p class="payxnowandrestondelivery-alert">Since you have split2ship app installed, we recommend not to enable COD app</p>
                 </div>
 
-            </div>   
+            </div>
         </div>
 
         <!-- main-head -->
@@ -170,7 +170,7 @@
             <div class="payxnowandrestondelivery-main-area">
 
                 <form method="post" id="store_user_trk">
-                    <span id="ermsg"></span>
+
                     <div class="payxnowandrestondelivery-inner-wrapper">
                         <div class="payxnowandrestondelivery-side-bar-col">
                             <h2>Delivery Partner </h2>
@@ -199,7 +199,7 @@
                             </div>
                             <div class="payxnowandrestondelivery-form-border">
                                 <div class="payxnowandrestondelivery-form-wrapper">
-
+                                    <span id="ermsg"></span>
                                     <div id="ship_roc">
                                         <div class="">
                                             <label for="">Email Address</label>
@@ -213,7 +213,8 @@
                                         </div>
                                         <!-- <div class="">
                                             <label for="">Channel ID</label>
-                                            <input type="text" id="ship_chnl_id" required name="ship_chnl_id" placeholder="Enter channel id" value="<?php //echo isset($shiprocket_info[0]->channel_id) ? $shiprocket_info[0]->channel_id : ''; ?>">
+                                            <input type="text" id="ship_chnl_id" required name="ship_chnl_id" placeholder="Enter channel id" value="<?php //echo isset($shiprocket_info[0]->channel_id) ? $shiprocket_info[0]->channel_id : ''; 
+                                                                                                                                                    ?>">
                                         </div> -->
                                     </div>
 
