@@ -92,7 +92,7 @@ class Home extends BaseController
                 // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
                 //     $get_register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-			    //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+                //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
                 //     echo "<pre>"; print_r($get_register_webhook); echo"</pre>";
                 //     // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/markpaidorderemail?split_mark_paid_shop='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
@@ -1489,7 +1489,7 @@ class Home extends BaseController
                     //     echo "*******decoded_res<pre>";
                     //     print_r($decoded_res);
                     //     echo "</pre>";
-                   // }
+                    // }
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];
                         // //echo "error";
@@ -2046,14 +2046,29 @@ class Home extends BaseController
 
             if ($this->request->getPost('delivery_partner') == 'ship_roc') {
 
-                $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($_POST['ship_email']) . '&password=' . trim($_POST['ship_pwd']) . '', '', 'POST', '');
+                // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($_POST['ship_email']) . '&password=' . trim($_POST['ship_pwd']) . '', '', 'POST', '');
+                // $new_res = json_decode($get_response);
+
+                $get_response = $this->common->get_shiprocket_token($_POST['ship_email'], $_POST['ship_pwd']);
+
                 $new_res = json_decode($get_response);
+                // print_r($new_res);
+                // die();
                
+
+
                 if (isset($new_res->message)) {
                     if (isset($new_res->errors)) {
-                        echo "error_".json_encode($new_res->errors);
+                        echo "error_" . json_encode($new_res->errors);
                     } else {
-                        echo "done_".$new_res->message;
+                        $insert_array = array(
+                            "token" => $new_res->token,
+                            "token_generate_date" => date('Y-m-d'),
+                            "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
+                            "shop_url" => $_REQUEST['shop'],
+                        );
+                        $this->user_model->track_shiprocket_api_token($insert_array);
+                        echo "done_" . $new_res->message;
                     }
 
                     // echo view('templates/apbrdgnew');
@@ -2148,9 +2163,9 @@ class Home extends BaseController
             if ($get_details->email == "") {
                 $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $register_shop_info = json_decode($shop_info['body'], true);
-                if(isset($register_shop_info['shop']['customer_email']) && $register_shop_info['shop']['customer_email'] !=""){
+                if (isset($register_shop_info['shop']['customer_email']) && $register_shop_info['shop']['customer_email'] != "") {
                     $custemail = $register_shop_info['shop']['customer_email'];
-                }else{
+                } else {
                     $custemail = $register_shop_info['shop']['email'];
                 }
                 $this->user_model->update_data($get_details->shop_url, array(
