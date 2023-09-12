@@ -2065,7 +2065,7 @@ class Home extends BaseController
                     );
                     //print_r($update_price);
                     $this->user_model->shiprocket_config_db($update_price);
-                    echo "Information successfully saved";
+                    echo "done_Information successfully saved";
                     // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/shiprocket-config'</script>";
                 }
             } else if ($this->request->getPost('delivery_partner') == 'delhivery') {
@@ -2080,7 +2080,7 @@ class Home extends BaseController
                 );
                 //print_r($update_price);
                 $this->user_model->shiprocket_config_db($update_price);
-                echo "Information successfully saved";
+                echo "done_Information successfully saved";
             } else {
 
                 $update_price = array(
@@ -2097,7 +2097,7 @@ class Home extends BaseController
                 );
                 //print_r($update_price);
                 $this->user_model->shiprocket_config_db($update_price);
-                echo "Information successfully saved";
+                echo "done_Information successfully saved";
             }
 
             // echo view('templates/apbrdgnew');
