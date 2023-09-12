@@ -2042,7 +2042,7 @@ class Home extends BaseController
 
                 $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($_POST['ship_email']) . '&password=' . trim($_POST['ship_pwd']) . '', '', 'POST', '');
                 $new_res = json_decode($get_response);
-
+                print_r($new_res);
                 if (isset($new_res->message)) {
                     if (isset($new_res->errors)) {
                         echo "error_".json_encode($new_res->errors);
