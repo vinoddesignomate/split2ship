@@ -143,7 +143,7 @@ $fstore_name = $shop_name[0];
                     if (delivery_partner == 'ship_roc') {
                         $("#ship_email").val(response['email']);
                         $("#ship_pwd").val(response['password']);
-                        $("#ship_chnl_id").val(response['channel_id']);
+                        //$("#ship_chnl_id").val(response['channel_id']);
                     } else if (delivery_partner == 'delhivery') {
                         $("#ship_token_delh").val(response['token']);
                     }
@@ -342,7 +342,15 @@ $fstore_name = $shop_name[0];
             url: "shiprocket-config",
             data: 'shop=' + shopname + '&save_users=true&' + formdata,
             success: function(response) {
-                $("#ermsg").html(response);
+                var splitresposn = response.split("_");
+                if(splitresposn[0] == "error"){
+                    $("#ermsg").html(splitresposn[1]);
+                    $("#ermsg").css('color', 'red');
+                }else {
+                    $("#ermsg").html(splitresposn[1]);
+                    $("#ermsg").css('color', 'green');
+                }
+                
 
                 // setTimeout(function() {
                 //     $("#ermsg").hide('blind', {}, 500)

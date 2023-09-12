@@ -2045,9 +2045,9 @@ class Home extends BaseController
 
                 if (isset($new_res->message)) {
                     if (isset($new_res->errors)) {
-                        echo json_encode($new_res->errors);
+                        echo "error_".json_encode($new_res->errors);
                     } else {
-                        echo $new_res->message;
+                        echo "done_".$new_res->message;
                     }
 
                     // echo view('templates/apbrdgnew');

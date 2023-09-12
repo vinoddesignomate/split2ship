@@ -199,7 +199,7 @@
                             </div>
                             <div class="payxnowandrestondelivery-form-border">
                                 <div class="payxnowandrestondelivery-form-wrapper">
-                                    <span style="color: green;font-weight: bold;" id="ermsg"></span>
+                                    <span style="font-weight: bold;" id="ermsg"></span>
                                     <div id="ship_roc">
                                         <div class="">
                                             <label for="">Email Address</label>
