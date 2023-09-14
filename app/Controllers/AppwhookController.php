@@ -439,7 +439,7 @@ class AppwhookController extends BaseController
                         // }
                         $addres2orders = "";
                         if (isset($jsndata->billing_address->address2)) {
-                            $addres2orders = $jsndata->billing_address->address2;
+                            $addres2orders = " ".$jsndata->billing_address->address2;
                         }
 
                         $weightkgs = 1;
@@ -616,7 +616,7 @@ class AppwhookController extends BaseController
 
                     $addres2orders = "";
                     if (isset($jsndata->billing_address->address2)) {
-                        $addres2orders = $jsndata->billing_address->address2;
+                        $addres2orders = " ".$jsndata->billing_address->address2;
                     }
 
                     $weightkgs = 0.5;
@@ -734,7 +734,7 @@ class AppwhookController extends BaseController
 
                     $addres2orders = "";
                     if (isset($jsndata->billing_address->address2)) {
-                        $addres2orders = $jsndata->billing_address->address2;
+                        $addres2orders = " ".$jsndata->billing_address->address2;
                     }
                     $postdata = 'format=json&data={
                             "shipments": [

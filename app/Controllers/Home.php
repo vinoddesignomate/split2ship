@@ -1442,6 +1442,11 @@ class Home extends BaseController
                         }
                     }
 
+                    $addres2orders = "";
+                    if (isset($this->common->payxnow_decodedata($set_orders[0]['shipping_address2']))) {
+                        $addres2orders = " ".$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']);
+                    }
+
                     $create_custom = array(
                         "order_id" => $set_orders[0]['order_number'],
                         //"order_id" => "1025",
@@ -1450,7 +1455,7 @@ class Home extends BaseController
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
                         "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
-                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
+                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$addres2orders,
                         "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
                         "billing_pincode" => $set_orders[0]['zip'],
                         "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
