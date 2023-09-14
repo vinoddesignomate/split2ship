@@ -297,6 +297,7 @@ class UserModel extends Model
                     "phone" => $all_orders->phone,
                     "order_price" => $all_orders->order_price,
                     "total_price" => $all_orders->total_price,
+                    "order_weight" => $all_orders->order_weight,
                 );
             }
             $final_products[$all_orders->order_id]['items'][] = array(
@@ -499,6 +500,7 @@ class UserModel extends Model
                     "phone" => $all_orders->phone,
                     "order_price" => $all_orders->order_price,
                     "total_price" => $all_orders->total_price,
+                    "order_weight" => $all_orders->order_weight,
                 );
             }
             $final_products[$all_orders->order_id]['items'][] = array(
@@ -549,6 +551,7 @@ class UserModel extends Model
                     "zip" => $gtall_orders->zip,
                     "order_price" => $gtall_orders->order_price,
                     "total_price" => $gtall_orders->total_price,
+                    "order_weight" => $gtall_orders->order_weight,
                 );
             }
             $final_productsdel[$gtall_orders->order_id]['items'][] = array(
