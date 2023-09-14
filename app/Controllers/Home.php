@@ -1263,7 +1263,7 @@ class Home extends BaseController
                         }
                         $orders_data = array(
                             "order_id" => $value['id'],
-                            "order_number" => str_replace("#","",$value['name']),
+                            "order_number" => str_replace("#", "", $value['name']),
                             "order_status" => $orders_sts,
                             "order_ccy" => $value['currency'],
                             "order_date" => $value['created_at'],
@@ -1272,7 +1272,8 @@ class Home extends BaseController
                             "total_price" => $value['total_price'],
                             "pending_amount" => $pendingamnt,
                             "shop_url" => $_GET['shop'],
-                            "fullfilment_status" => $fullmenststs
+                            "fullfilment_status" => $fullmenststs,
+                            "order_weight" => $value['total_weight']
                         );
                         if (isset($value['shipping_address'])) {
                             $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
@@ -1430,6 +1431,17 @@ class Home extends BaseController
                         $shipping_pay_method = "Partial";
                         $shipping_pay_amount = $set_orders[0]['order_price'];
                     }
+
+                    $weightkgs = 1;
+                    if ($set_orders[0]['order_weight'] > 0) {
+                        $weightkgs = $set_orders[0]['order_weight'] / 1000;
+                        if ($weightkgs > 0) {
+                            $weightkgs = $weightkgs;
+                        } else {
+                            $weightkgs = 1;
+                        }
+                    }
+
                     $create_custom = array(
                         "order_id" => $set_orders[0]['order_number'],
                         //"order_id" => "1025",
@@ -1438,7 +1450,7 @@ class Home extends BaseController
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
                         "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
-                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
+                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
                         "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
                         "billing_pincode" => $set_orders[0]['zip'],
                         "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
@@ -1451,7 +1463,7 @@ class Home extends BaseController
                         "length" => 1,
                         "breadth" => 1,
                         "height" => 1,
-                        "weight" => 1,
+                        "weight" => $weightkgs,
                     );
 
 
@@ -1626,7 +1638,7 @@ class Home extends BaseController
                     //'to_phone_number' => '9996242898',
                     'to_pincode' => $set_orders[0]['zip'],
                     //'to_pincode' => '132157',
-                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
+                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
                     'quantity' => $order_name_count,
                     'invoice_value' => $shipping_pay_amount,
                     'cod_amount' => $shipping_pay_amount1,
@@ -1708,7 +1720,7 @@ class Home extends BaseController
                     $order_name_count = count($create_custom);
                 }
 
-                
+
 
                 if ($set_orders[0]['order_status'] == 'paid') {
                     $shipping_pay_method = "Prepaid";
@@ -1735,7 +1747,7 @@ class Home extends BaseController
                 $postdata = 'format=json&data={
                 "shipments": [
                     {
-                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) . '",
+                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) . '",
                         "address_type": "home",
                         "phone": "' . $phnum . '",
                         "payment_mode": "' . $shipping_pay_method . '",

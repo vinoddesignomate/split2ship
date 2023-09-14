@@ -206,7 +206,7 @@ class AppwhookController extends BaseController
                 $remaining_price = floatval($remaing_proice);
                 $orders_data = array(
                     "order_id" => $jsndata->id,
-                    "order_number" => str_replace("#","",$jsndata->name),
+                    "order_number" => str_replace("#", "", $jsndata->name),
                     "order_status" => $orders_sts,
                     "order_ccy" => $jsndata->currency,
                     "order_date" => $jsndata->created_at,
@@ -215,7 +215,8 @@ class AppwhookController extends BaseController
                     "total_price" => $order_price + $remaining_price,
                     "pending_amount" => $remaing_proice,
                     "shop_url" => $_GET['whshp'],
-                    "fullfilment_status" => $fullmenststs
+                    "fullfilment_status" => $fullmenststs,
+                    "order_weight" => $jsndata->total_weight
                 );
                 if (isset($jsndata->shipping_address)) {
 
@@ -436,18 +437,29 @@ class AppwhookController extends BaseController
                         //     $shipping_pay_method = "COD";
                         //     $shipping_pay_amount = $jsndata->total_price;
                         // }
-                        $addres2orders="";
-                        if(isset($jsndata->billing_address->address2)){
+                        $addres2orders = "";
+                        if (isset($jsndata->billing_address->address2)) {
                             $addres2orders = $jsndata->billing_address->address2;
                         }
+
+                        $weightkgs = 1;
+                        if ($jsndata->total_weight > 0) {
+                            $weightkgs = $jsndata->total_weight / 1000;
+                            if ($weightkgs > 0) {
+                                $weightkgs = $weightkgs;
+                            } else {
+                                $weightkgs = 1;
+                            }
+                        }
+
                         $create_custom = array(
-                            "order_id" => str_replace("#","",$jsndata->name),
+                            "order_id" => str_replace("#", "", $jsndata->name),
                             "order_date" => $jsndata->created_at,
                             // "channel_id" => $shiprocket_info[0]->channel_id,
                             "comment" => $shipping_pay_method,
                             "billing_customer_name" => $jsndata->billing_address->first_name,
                             "billing_last_name" => $jsndata->billing_address->last_name,
-                            "billing_address" => $jsndata->billing_address->address1.$addres2orders,
+                            "billing_address" => $jsndata->billing_address->address1 . $addres2orders,
                             "billing_city" => $jsndata->billing_address->city,
                             "billing_pincode" => $jsndata->billing_address->zip,
                             "billing_state" => $jsndata->billing_address->province,
@@ -461,12 +473,12 @@ class AppwhookController extends BaseController
                             "length" => 1,
                             "breadth" => 1,
                             "height" => 1,
-                            "weight" => 1,
+                            "weight" => $weightkgs,
                         );
 
                         foreach ($jsndata->line_items as $productsitm) {
                             if ($productsitm->name != 'Partial Pending Payment') {
-                                
+
                                 $priceamnt = 0;
                                 if (isset($productsitm->properties) && isset($productsitm->properties[3]) && $productsitm->properties[3]->name == 'remaining_amount') {
                                     $priceamnt = $productsitm->properties[3]->value;
@@ -602,10 +614,20 @@ class AppwhookController extends BaseController
                     }
 
 
-                    $addres2orders="";
-                        if(isset($jsndata->billing_address->address2)){
-                            $addres2orders = $jsndata->billing_address->address2;
+                    $addres2orders = "";
+                    if (isset($jsndata->billing_address->address2)) {
+                        $addres2orders = $jsndata->billing_address->address2;
+                    }
+
+                    $weightkgs = 0.5;
+                    if ($jsndata->total_weight > 0) {
+                        $weightkgs = $jsndata->total_weight / 1000;
+                        if ($weightkgs > 0) {
+                            $weightkgs = $weightkgs;
+                        } else {
+                            $weightkgs = 0.5;
                         }
+                    }
 
                     $post_params = array(
                         'auth_token' => $shiprocket_info[0]->shp_token,
@@ -620,15 +642,15 @@ class AppwhookController extends BaseController
                         //'to_phone_number' => '9996242898',
                         'to_pincode' => $jsndata->billing_address->zip,
                         //'to_pincode' => '132157',
-                        'to_address' => $jsndata->billing_address->address1.$addres2orders,
+                        'to_address' => $jsndata->billing_address->address1 . $addres2orders,
                         'quantity' => $order_name_count,
                         'invoice_value' => $shipping_pay_amount,
                         'cod_amount' => $shipping_pay_amount1,
-                        'client_order_id' => str_replace("#","",$jsndata->name),
+                        'client_order_id' => str_replace("#", "", $jsndata->name),
                         'item_breadth' => 1,
                         'item_length' => 1,
                         'item_height' => 1,
-                        'item_weight' => 0.5,
+                        'item_weight' => $weightkgs,
                         'is_reverse' => false
                     );
 
@@ -709,21 +731,21 @@ class AppwhookController extends BaseController
                         $phnum = str_replace("-", "", $phnum);
                     }
 
-                    
-                    $addres2orders="";
-                        if(isset($jsndata->billing_address->address2)){
-                            $addres2orders = $jsndata->billing_address->address2;
-                        }
+
+                    $addres2orders = "";
+                    if (isset($jsndata->billing_address->address2)) {
+                        $addres2orders = $jsndata->billing_address->address2;
+                    }
                     $postdata = 'format=json&data={
                             "shipments": [
                                 {
-                                    "add": "' . $jsndata->billing_address->address1.$addres2orders . '",
+                                    "add": "' . $jsndata->billing_address->address1 . $addres2orders . '",
                                     "address_type": "home",
                                     "phone": "' . $phnum . '",
                                     "payment_mode": "' . $shipping_pay_method . '",
                                     "name": "' . $jsndata->billing_address->first_name . ' ' . $jsndata->billing_address->last_name . '",
                                     "pin": "' . $jsndata->billing_address->zip . '",
-                                    "order": "' . str_replace("#","",$jsndata->name) . '",
+                                    "order": "' . str_replace("#", "", $jsndata->name) . '",
                                     "country": "' . $jsndata->billing_address->country . '",
                                     "cod_amount": ' . $shipping_pay_amount . ',
                                     "waybill": "",
