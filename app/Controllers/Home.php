@@ -456,8 +456,8 @@ class Home extends BaseController
             //     $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
             //     echo view('templates/apbrdgnew', $data);
             // } else
-            
-             if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
+
+            if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
                 $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
                 echo view('templates/apbrdgnew', $data);
             }
@@ -1199,9 +1199,11 @@ class Home extends BaseController
                 // echo"aaa<pre>"; print_r($all_orders); echo"</pre>"; die();
                 $get_all_oders = json_decode($all_orders['body'], true);
                 // $data['get_all_oders'] = $get_all_oders;
-                // echo "aaa<pre>";
-                // print_r($get_all_oders);
-                // echo "</pre>";
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                    echo "aaa<pre>";
+                    print_r($get_all_oders);
+                    echo "</pre>";
+                }
                 // die();
                 //$response_home = json_decode($products['body'], true);
                 // echo"<pre>"; print_r($response_home); echo "</pre>"; die();
@@ -2056,7 +2058,7 @@ class Home extends BaseController
                 $new_res = json_decode($get_response);
                 // print_r($new_res);
                 // die();
-               
+
 
 
                 if (isset($new_res->message)) {
