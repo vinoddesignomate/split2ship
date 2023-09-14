@@ -1438,7 +1438,7 @@ class Home extends BaseController
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
                         "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
-                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
+                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
                         "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
                         "billing_pincode" => $set_orders[0]['zip'],
                         "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
@@ -1622,7 +1622,7 @@ class Home extends BaseController
                     //'to_phone_number' => '9996242898',
                     'to_pincode' => $set_orders[0]['zip'],
                     //'to_pincode' => '132157',
-                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']),
+                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
                     'quantity' => $order_name_count,
                     'invoice_value' => $shipping_pay_amount,
                     'cod_amount' => $shipping_pay_amount1,
@@ -1704,29 +1704,7 @@ class Home extends BaseController
                     $order_name_count = count($create_custom);
                 }
 
-                // $post_params = array(
-                //     'auth_token' => '88596e7da4cb8da8fe5ad2ac6ff3acee854253',
-                //     'item_name' => $order_name,
-                //     'from_name' => 'Designomate',
-                //     'from_phone_number' => '9996242898',
-                //     'from_address' => 'A - 130 , 91 SPRINGBOARD , SECTOR 63 , NOIDA , Gautam Buddha Nagar , Uttar Pradesh',
-                //     'from_pincode' => '201302',
-                //     'to_name' =>  $set_orders[0]['cust_fname'] . ' ' . $set_orders[0]['cust_lname'],
-                //     'to_phone_number' => $set_orders[0]['phone'],
-                //     //'to_phone_number' => '9996242898',
-                //     'to_pincode' => $set_orders[0]['zip'],
-                //     //'to_pincode' => '132157',
-                //     'to_address' => $set_orders[0]['shipping_address'],
-                //     'quantity' => $order_name_count,
-                //     'invoice_value' => $set_orders[0]['order_price'],
-                //     'cod_amount' => $set_orders[0]['order_price'],
-                //     'client_order_id' => $set_orders[0]['order_id'],
-                //     'item_breadth' => 1,
-                //     'item_length' => 1,
-                //     'item_height' => 1,
-                //     'item_weight' => 0.5,
-                //     'is_reverse' => false
-                // );
+                
 
                 if ($set_orders[0]['order_status'] == 'paid') {
                     $shipping_pay_method = "Prepaid";
@@ -1753,7 +1731,7 @@ class Home extends BaseController
                 $postdata = 'format=json&data={
                 "shipments": [
                     {
-                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . '",
+                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) . '",
                         "address_type": "home",
                         "phone": "' . $phnum . '",
                         "payment_mode": "' . $shipping_pay_method . '",

@@ -436,8 +436,10 @@ class AppwhookController extends BaseController
                         //     $shipping_pay_method = "COD";
                         //     $shipping_pay_amount = $jsndata->total_price;
                         // }
-
-
+                        $addres2orders="";
+                        if(isset($jsndata->billing_address->address2)){
+                            $addres2orders = $jsndata->billing_address->address2;
+                        }
                         $create_custom = array(
                             "order_id" => str_replace("#","",$jsndata->name),
                             "order_date" => $jsndata->created_at,
@@ -445,7 +447,7 @@ class AppwhookController extends BaseController
                             "comment" => $shipping_pay_method,
                             "billing_customer_name" => $jsndata->billing_address->first_name,
                             "billing_last_name" => $jsndata->billing_address->last_name,
-                            "billing_address" => $jsndata->billing_address->address1,
+                            "billing_address" => $jsndata->billing_address->address1.$addres2orders,
                             "billing_city" => $jsndata->billing_address->city,
                             "billing_pincode" => $jsndata->billing_address->zip,
                             "billing_state" => $jsndata->billing_address->province,
@@ -593,6 +595,10 @@ class AppwhookController extends BaseController
                     }
 
 
+                    $addres2orders="";
+                        if(isset($jsndata->billing_address->address2)){
+                            $addres2orders = $jsndata->billing_address->address2;
+                        }
 
                     $post_params = array(
                         'auth_token' => $shiprocket_info[0]->shp_token,
@@ -607,7 +613,7 @@ class AppwhookController extends BaseController
                         //'to_phone_number' => '9996242898',
                         'to_pincode' => $jsndata->billing_address->zip,
                         //'to_pincode' => '132157',
-                        'to_address' => $jsndata->billing_address->address1,
+                        'to_address' => $jsndata->billing_address->address1.$addres2orders,
                         'quantity' => $order_name_count,
                         'invoice_value' => $shipping_pay_amount,
                         'cod_amount' => $shipping_pay_amount1,
@@ -696,10 +702,15 @@ class AppwhookController extends BaseController
                         $phnum = str_replace("-", "", $phnum);
                     }
 
+                    
+                    $addres2orders="";
+                        if(isset($jsndata->billing_address->address2)){
+                            $addres2orders = $jsndata->billing_address->address2;
+                        }
                     $postdata = 'format=json&data={
                             "shipments": [
                                 {
-                                    "add": "' . $jsndata->billing_address->address1 . '",
+                                    "add": "' . $jsndata->billing_address->address1.$addres2orders . '",
                                     "address_type": "home",
                                     "phone": "' . $phnum . '",
                                     "payment_mode": "' . $shipping_pay_method . '",
