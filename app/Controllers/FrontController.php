@@ -24,7 +24,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
 
-        $plan_details = $this->user_model->get_store_plan($shopname);
+        //$plan_details = $this->user_model->get_store_plan($shopname);
 
         //     $get_details = $this->user_model->get_tokens($shopname);
         //     $products =  $products = $this->common->rest_api('/admin/api/2021-01/products.json', array(), 'GET', $get_details->access_token, $shopname);
@@ -55,47 +55,39 @@ class FrontController extends BaseController
 
         // $testrrffresponse = json_decode($new_response, true);
         // print_r($testrrffresponse);
-        if (!empty($plan_details)) {
-            if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
-                return 'not_found';
-            } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
-                return 'not_found';
+
+
+        if ($this->request->getPost('pid')) {
+            $condtion_array = array(
+                "product_id" => $this->request->getPost('pid'),
+                "varient_id" => $this->request->getPost('vid')
+            );
+        } else {
+            $condtion_array = array(
+                "varient_id" => $this->request->getPost('vid')
+            );
+        }
+        $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
+        $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+
+        if (!empty($get_resulrs)) {
+            if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
+
+                $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
+                $partperctg = $get_resulrs[0]->partial_percentage;
             } else {
-                if ($this->request->getPost('pid')) {
-                    $condtion_array = array(
-                        "product_id" => $this->request->getPost('pid'),
-                        "varient_id" => $this->request->getPost('vid')
-                    );
-                } else {
-                    $condtion_array = array(
-                        "varient_id" => $this->request->getPost('vid')
-                    );
-                }
-                $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
-                $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-
-                if (!empty($get_resulrs)) {
-                    if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
-
-                        $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
-                        $partperctg = $get_resulrs[0]->partial_percentage;
-                    } else {
-                        $propartialper = 0;
-                        $partperctg = 0;
-                    }
-                    $return_array = array(
-                        "full_price" => $get_resulrs[0]->price,
-                        "pro_pack" => $partperctg,
-                        "partial_price" => $propartialper,
-                        "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
-                        "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                        "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-                    );
-                    return json_encode($return_array);
-                } else {
-                    return 'not_found';
-                }
+                $propartialper = 0;
+                $partperctg = 0;
             }
+            $return_array = array(
+                "full_price" => $get_resulrs[0]->price,
+                "pro_pack" => $partperctg,
+                "partial_price" => $propartialper,
+                "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+            );
+            return json_encode($return_array);
         } else {
             return 'not_found';
         }
