@@ -206,7 +206,7 @@ class AppwhookController extends BaseController
                 $remaining_price = floatval($remaing_proice);
                 $orders_data = array(
                     "order_id" => $jsndata->id,
-                    "order_number" => $jsndata->order_number,
+                    "order_number" => str_replace("#","",$jsndata->name),
                     "order_status" => $orders_sts,
                     "order_ccy" => $jsndata->currency,
                     "order_date" => $jsndata->created_at,
@@ -230,6 +230,9 @@ class AppwhookController extends BaseController
 
 
                     $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->shipping_address->address1);
+
+                    $orders_data['shipping_address2'] = (isset($jsndata->shipping_address->address2) ? $this->common->payxnow_encodedata($jsndata->shipping_address->address2) : '');
+
                     $orders_data['city'] = (isset($jsndata->shipping_address->city) ? $this->common->payxnow_encodedata($jsndata->shipping_address->city) : '');
                     $orders_data['state'] = (isset($jsndata->shipping_address->province) ? $this->common->payxnow_encodedata($jsndata->shipping_address->province) : '');
                     $orders_data['zip'] = (isset($jsndata->shipping_address->zip) ? $jsndata->shipping_address->zip : '');
@@ -251,6 +254,9 @@ class AppwhookController extends BaseController
                     }
 
                     $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->billing_address->address1);
+
+                    $orders_data['shipping_address2'] = (isset($jsndata->billing_address->address2) ? $this->common->payxnow_encodedata($jsndata->billing_address->address2) : '');
+
                     $orders_data['city'] = (isset($jsndata->billing_address->city) ? $this->common->payxnow_encodedata($jsndata->billing_address->city) : '');
                     $orders_data['state'] = (isset($jsndata->billing_address->province) ? $this->common->payxnow_encodedata($jsndata->billing_address->province) : '');
                     $orders_data['zip'] = (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '');
@@ -433,7 +439,7 @@ class AppwhookController extends BaseController
 
 
                         $create_custom = array(
-                            "order_id" => $jsndata->order_number,
+                            "order_id" => str_replace("#","",$jsndata->name),
                             "order_date" => $jsndata->created_at,
                             // "channel_id" => $shiprocket_info[0]->channel_id,
                             "comment" => $shipping_pay_method,
@@ -605,7 +611,7 @@ class AppwhookController extends BaseController
                         'quantity' => $order_name_count,
                         'invoice_value' => $shipping_pay_amount,
                         'cod_amount' => $shipping_pay_amount1,
-                        'client_order_id' => $jsndata->order_number,
+                        'client_order_id' => str_replace("#","",$jsndata->name),
                         'item_breadth' => 1,
                         'item_length' => 1,
                         'item_height' => 1,
@@ -699,7 +705,7 @@ class AppwhookController extends BaseController
                                     "payment_mode": "' . $shipping_pay_method . '",
                                     "name": "' . $jsndata->billing_address->first_name . ' ' . $jsndata->billing_address->last_name . '",
                                     "pin": "' . $jsndata->billing_address->zip . '",
-                                    "order": "' . $jsndata->order_number . '",
+                                    "order": "' . str_replace("#","",$jsndata->name) . '",
                                     "country": "' . $jsndata->billing_address->country . '",
                                     "cod_amount": ' . $shipping_pay_amount . ',
                                     "waybill": "",

@@ -1263,7 +1263,7 @@ class Home extends BaseController
                         }
                         $orders_data = array(
                             "order_id" => $value['id'],
-                            "order_number" => $value['order_number'],
+                            "order_number" => str_replace("#","",$value['name']),
                             "order_status" => $orders_sts,
                             "order_ccy" => $value['currency'],
                             "order_date" => $value['created_at'],
@@ -1276,6 +1276,9 @@ class Home extends BaseController
                         );
                         if (isset($value['shipping_address'])) {
                             $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
+
+                            $orders_data['shipping_address2'] = (isset($value['shipping_address']['address2']) ? $this->common->payxnow_encodedata($value['shipping_address']['address2']) : '');
+
                             $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
                             $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
                             $orders_data['zip'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
@@ -1287,6 +1290,7 @@ class Home extends BaseController
                         } else  if (isset($value['billing_address'])) {
 
                             $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['billing_address']['address1']);
+                            $orders_data['shipping_address2'] = (isset($value['billing_address']['address2']) ? $this->common->payxnow_encodedata($value['billing_address']['address2']) : '');
                             $orders_data['city'] = (isset($value['billing_address']['city']) ? $this->common->payxnow_encodedata($value['billing_address']['city']) : '');
                             $orders_data['state'] = (isset($value['billing_address']['province']) ? $this->common->payxnow_encodedata($value['billing_address']['province']) : '');
                             $orders_data['zip'] = (isset($value['billing_address']['zip']) ? $value['billing_address']['zip'] : '');
