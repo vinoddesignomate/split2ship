@@ -452,10 +452,12 @@ class Home extends BaseController
 
             //die();
         } else {
-            if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
-                $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
-                echo view('templates/apbrdgnew', $data);
-            } else if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
+            // if ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count == 0) {
+            //     $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+            //     echo view('templates/apbrdgnew', $data);
+            // } else
+            
+             if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
                 $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
                 echo view('templates/apbrdgnew', $data);
             }

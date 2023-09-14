@@ -28,8 +28,8 @@ $fstore_name = $shop_name[0];
     function new_window_opensplit2ship(event) {
         event.preventDefault();
         var href = event.currentTarget.getAttribute('href')
-        //top.window.location = href;
-        top.window.open(href, '_blank');
+        top.window.location = href;
+        //top.window.open(href, '_blank');
     }
     function abc(event) {
         event.preventDefault();
