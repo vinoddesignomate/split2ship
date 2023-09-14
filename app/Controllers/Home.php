@@ -1625,8 +1625,8 @@ class Home extends BaseController
 
 
                 $weightkgs = 0.5;
-                if ($shiprocket_info[0]->total_weight > 0) {
-                    $weightkgs = $shiprocket_info[0]->total_weight / 1000;
+                if ($set_orders[0]['total_weight'] > 0) {
+                    $weightkgs = $set_orders[0]['total_weight'] / 1000;
                     if ($weightkgs > 0) {
                         $weightkgs = $weightkgs;
                     } else {
