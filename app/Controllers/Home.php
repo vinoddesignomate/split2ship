@@ -1624,6 +1624,15 @@ class Home extends BaseController
                 }
 
 
+                $weightkgs = 0.5;
+                if ($shiprocket_info[0]->total_weight > 0) {
+                    $weightkgs = $shiprocket_info[0]->total_weight / 1000;
+                    if ($weightkgs > 0) {
+                        $weightkgs = $weightkgs;
+                    } else {
+                        $weightkgs = 0.5;
+                    }
+                }
 
                 $post_params = array(
                     'auth_token' => $shiprocket_info[0]->shp_token,
@@ -1646,7 +1655,7 @@ class Home extends BaseController
                     'item_breadth' => 1,
                     'item_length' => 1,
                     'item_height' => 1,
-                    'item_weight' => 0.5,
+                    'item_weight' => $weightkgs,
                     'is_reverse' => false
                 );
                 //print_r($post_params);
