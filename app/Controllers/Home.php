@@ -1443,8 +1443,8 @@ class Home extends BaseController
                     }
 
                     $addres2orders = "";
-                    if ($this->common->payxnow_decodedata($set_orders[0]['shipping_address2'])!== null) {
-                        $addres2orders = " ".$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']);
+                    if ($this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) !== null) {
+                        $addres2orders = " " . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']);
                     }
 
                     $create_custom = array(
@@ -1455,7 +1455,7 @@ class Home extends BaseController
                         "comment" => $shipping_pay_method,
                         "billing_customer_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_fname']),
                         "billing_last_name" => $this->common->payxnow_decodedata($set_orders[0]['cust_lname']),
-                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$addres2orders,
+                        "billing_address" => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $addres2orders,
                         "billing_city" => $this->common->payxnow_decodedata($set_orders[0]['shipping_city']),
                         "billing_pincode" => $set_orders[0]['zip'],
                         "billing_state" => $this->common->payxnow_decodedata($set_orders[0]['state']),
@@ -1504,17 +1504,17 @@ class Home extends BaseController
                     // echo "<pre>";
                     // print_r($set_orders);
                     // echo "</pre>";
-                    if($_REQUEST['shop'] == 'desinomatetest.myshopify.com'){
+                    //if($_REQUEST['shop'] == 'desinomatetest.myshopify.com'){
 
                     // echo json_encode($create_custom)
                     // echo "create_custom<pre>";
                     // print_r($create_custom);
                     // echo "</pre>";
 
-                        echo "*******decoded_res<pre>";
-                        print_r($decoded_res);
-                        echo "</pre>";
-                    }
+                    // echo "*******decoded_res<pre>";
+                    // print_r($decoded_res);
+                    // echo "</pre>";
+                    //}
                     if (isset($decoded_res->message) && $decoded_res->message != "") {
                         // echo $set_orders[0]['order_id'];
                         // //echo "error";
@@ -1639,6 +1639,11 @@ class Home extends BaseController
                     }
                 }
 
+                $addres2orders = "";
+                if ($this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) !== null) {
+                    $addres2orders = " " . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']);
+                }
+
                 $post_params = array(
                     'auth_token' => $shiprocket_info[0]->shp_token,
                     'item_name' => $order_name,
@@ -1652,7 +1657,7 @@ class Home extends BaseController
                     //'to_phone_number' => '9996242898',
                     'to_pincode' => $set_orders[0]['zip'],
                     //'to_pincode' => '132157',
-                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']),
+                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$addres2orders,
                     'quantity' => $order_name_count,
                     'invoice_value' => $shipping_pay_amount,
                     'cod_amount' => $shipping_pay_amount1,
@@ -1758,10 +1763,15 @@ class Home extends BaseController
                     $phnum = str_replace("-", "", $phnum);
                 }
 
+                $addres2orders = "";
+                if ($this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) !== null) {
+                    $addres2orders = " " . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']);
+                }
+
                 $postdata = 'format=json&data={
                 "shipments": [
                     {
-                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $this->common->payxnow_decodedata($set_orders[0]['shipping_address2']) . '",
+                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) .$addres2orders. '",
                         "address_type": "home",
                         "phone": "' . $phnum . '",
                         "payment_mode": "' . $shipping_pay_method . '",
