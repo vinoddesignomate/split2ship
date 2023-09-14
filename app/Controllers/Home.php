@@ -1443,7 +1443,7 @@ class Home extends BaseController
                     }
 
                     $addres2orders = "";
-                    if (isset($this->common->payxnow_decodedata($set_orders[0]['shipping_address2']))) {
+                    if ($this->common->payxnow_decodedata($set_orders[0]['shipping_address2'])!== null) {
                         $addres2orders = " ".$this->common->payxnow_decodedata($set_orders[0]['shipping_address2']);
                     }
 
