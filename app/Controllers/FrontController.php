@@ -134,40 +134,24 @@ class FrontController extends BaseController
 
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
-                if ($shopname == 'desinomatetest.myshopify.com') {
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "product_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "grams" => $item_cart['grams'],
-                        "requires_shipping" => true,
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                            array("name" => "psku", "value" => $item_cart['psku'])
-                        )
-                    );
-                } else {
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "requires_shipping" => true,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                            array("name" => "psku", "value" => $item_cart['psku'])
-                        )
-                    );
-                }
+
+
+                $line_item  = array(
+                    "title" => $item_cart['title'] . $size_order_namenn,
+                    "price" => $final_price,
+                    "quantity" => $item_cart['qty'],
+                    "requires_shipping" => true,
+                    "grams" => $item_cart['grams'],
+                    "gift_card" => true,
+                    "properties" => array(
+                        array("name" => "Note", "value" => "Initial Partial Payment"),
+                        array("name" => "variant_code", "value" => $item_cart['id']),
+                        array("name" => "partial_pay", "value" => $item_cart['price']),
+                        array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                        array("name" => "psku", "value" => $item_cart['psku'])
+                    )
+                );
+
 
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
             } else {
