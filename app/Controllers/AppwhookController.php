@@ -466,11 +466,7 @@ class AppwhookController extends BaseController
 
                         foreach ($jsndata->line_items as $productsitm) {
                             if ($productsitm->name != 'Partial Pending Payment') {
-                                if ($productsitm->sku == "") {
-                                    $getsku = "PART" . time();
-                                } else {
-                                    $getsku = $productsitm->sku;
-                                }
+                                
                                 $priceamnt = 0;
                                 if (isset($productsitm->properties) && isset($productsitm->properties[3]) && $productsitm->properties[3]->name == 'remaining_amount') {
                                     $priceamnt = $productsitm->properties[3]->value;
@@ -484,9 +480,15 @@ class AppwhookController extends BaseController
                                 // }else {
                                 //     $priceamnt = $productsitm->price;
                                 // }
+
+                                if ($productsitm->sku == "") {
+                                    $getsku = "PART" . time();
+                                } else {
+                                    $getsku = $productsitm->sku;
+                                }
                                 $create_custom['order_items'][] = array(
                                     "name" => $productsitm->name,
-                                    "sku" => $skuval,
+                                    "sku" => $getsku,
                                     // "sku" => "PARTDGKI",
                                     "units" => $productsitm->quantity,
                                     // "selling_price" => $productsitm->price
@@ -557,11 +559,16 @@ class AppwhookController extends BaseController
                         if ($products->name != 'Partial Pending Payment') {
                             $create_custom[] = $products->name;
                             $create_customqty[] = $products->qty;
+                            if ($products->sku == "") {
+                                $getsku = "PART" . time();
+                            } else {
+                                $getsku = $products->sku;
+                            }
                             $item_listarr[] = array(
                                 "price" => $products->price,
                                 "item_name" => $products->name,
                                 "quantity" => $products->qty,
-                                "sku" => $products->sku,
+                                "sku" => $getsku,
                             );
                         }
                     }

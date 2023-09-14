@@ -1200,9 +1200,9 @@ class Home extends BaseController
                 $get_all_oders = json_decode($all_orders['body'], true);
                 // $data['get_all_oders'] = $get_all_oders;
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                    echo "aaa<pre>";
-                    print_r($get_all_oders);
-                    echo "</pre>";
+                    // echo "aaa<pre>";
+                    // print_r($get_all_oders);
+                    // echo "</pre>";
                 }
                 // die();
                 //$response_home = json_decode($products['body'], true);
@@ -1569,6 +1569,10 @@ class Home extends BaseController
                 foreach ($set_orders['items'] as $products) {
                     $create_custom[] = $products['name'];
                     $create_customqty[] = $products['qty'];
+
+                    if ($products['sku'] == "") {
+                        $products['sku'] = "PART" . time();
+                    }
                     $item_listarr[] = array(
                         "price" => $products['price'],
                         "item_name" => $products['name'],
