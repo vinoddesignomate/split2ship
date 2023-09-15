@@ -89,14 +89,15 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-               //if ($_GET['shop'] == 'desinomatetest.myshopify.com') { 
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    // $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30371381562.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                    // $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+                    $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30727176496.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
-                    // echo "get_register_webhookset<pre>"; print_r($get_register_webhookset); echo"</pre>";
-                //     // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/markpaidorderemail?split_mark_paid_shop='.$_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
-                // }
+                    echo "get_register_webhookset<pre>";
+                    print_r($get_register_webhookset);
+                    echo "</pre>";
+                }
 
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
@@ -1658,7 +1659,7 @@ class Home extends BaseController
                     //'to_phone_number' => '9996242898',
                     'to_pincode' => $set_orders[0]['zip'],
                     //'to_pincode' => '132157',
-                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']).$addres2orders,
+                    'to_address' => $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $addres2orders,
                     'quantity' => $order_name_count,
                     'invoice_value' => $shipping_pay_amount,
                     'cod_amount' => $shipping_pay_amount1,
@@ -1772,7 +1773,7 @@ class Home extends BaseController
                 $postdata = 'format=json&data={
                 "shipments": [
                     {
-                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) .$addres2orders. '",
+                        "add": "' . $this->common->payxnow_decodedata($set_orders[0]['shipping_address']) . $addres2orders . '",
                         "address_type": "home",
                         "phone": "' . $phnum . '",
                         "payment_mode": "' . $shipping_pay_method . '",
