@@ -165,26 +165,34 @@ $store_name = $shop_name[0];
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5> <b class="text-orange">Step 7: </b>Edit Order confirmation email template - Fine below after.</h5>
 
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;"><tr class="subtotal-line"><td class="subtotal-line__title"><p><span>Subtotal</span></p></td><td class="subtotal-line__value"><strong>{{ subtotal_price | plus: total_order_discount_amount | money }}</strong></td></tr></textarea></div>                        
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;"><tr class="subtotal-line"><td class="subtotal-line__title"><p><span>Subtotal</span></p></td><td class="subtotal-line__value"><strong>{{ subtotal_price | plus: total_order_discount_amount | money }}</strong></td></tr></textarea></div>
                         <h5> Add below code after above code.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}Actual Product Price = Product price + Partial pending payment - product name{% endif %}</textarea></div>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if partial_pending_amount > 0 %}<tr class="subtotal-line"><td class="subtotal-line__title"><p><span>Pending Amount</span></p></td><td class="subtotal-line__value"><strong>{{ partial_pending_amount }}</strong></td></tr>{% endif %}</textarea></div>
                 </div>
 
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5> <b class="text-orange">Step 8: </b>Edit Order confirmation email template - After the closing of this tag &lt;p class="disclaimer__subtext"&gt;.</h5>
+                        <h5> <b class="text-orange">Step 8: </b>Edit Order confirmation email template - Fine below after.</h5>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;"> {% else %}<tr class="subtotal-line"><td class="subtotal-line__title"><p><span>Total</span></p></td><td class="subtotal-line__value"><strong>{{ total_price | money_with_currency }}</strong></td></tr>{% endif %}</textarea></div>
+                        <h5> Add below code after above code.</h5>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if partial_pending_amount > 0 %}<tr class="subtotal-line"><td class="subtotal-line__title"><p><span>Grand Total</span></p></td><td class="subtotal-line__value">{% assign partial_pending_amount2 = partial_pending_amount | append: 0 %}<br/>{% assign partial_pending_amount2 = partial_pending_amount2 | append: 0 %}<strong>{{ total_price | plus: partial_pending_amount2 | money}}</strong></td></tr>{% endif %}</textarea></div>
+                </div>
+
+                <div class=" payxnowandrestondelivery-main-area ">
+                        <h5> <b class="text-orange">Step 9: </b>Edit Order confirmation email template - After the closing of this tag &lt;p class="disclaimer__subtext"&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}Actual Product Price = Product price + Partial pending payment - product name{% endif %}</textarea></div>
                 </div>
-                <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 9:</b> Edit Order refund template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<span>If you had placed a partially paid order then only paid amount will be refunded</span>{% endif %}</textarea>
-                        </div>
-                </div>
+
         </div>
 
         <div class="payxnowandrestondelivery-main-area-row ">
 
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 10:</b>Edit Order invoice template - Add below code in Invoice email.</h5>
+                        <h5><b class="text-orange">Step 10:</b> Edit Order refund template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<span>If you had placed a partially paid order then only paid amount will be refunded</span>{% endif %}</textarea>
+                        </div>
+                </div>
+                <div class=" payxnowandrestondelivery-main-area ">
+                        <h5><b class="text-orange">Step 11:</b>Edit Order invoice template - Add below code in Invoice email.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;"> {% if order.tags != blank %}{% else %}
                <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span> {% endif %}</textarea>
                         </div>
