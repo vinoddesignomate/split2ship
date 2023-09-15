@@ -110,16 +110,28 @@ class FrontController extends BaseController
         $chekpartial = 0;
         $remaining_price = 0;
         $illp = 0;
-        if ($shopname == 'desinomatetest.myshopify.com') {
-            echo "<pre>";
-            print_r($cartarray);
-            echo "</pre>";
-            die();
-        }
+        // if ($shopname == 'desinomatetest.myshopify.com') {
+        //     echo "<pre>";
+        //     print_r($cartarray);
+        //     echo "</pre>";
+        //     die();
+        // }
+        $ilosku = 1;
         foreach ($cartarray as $item_cart) {
+
+            if ($shopname == 'desinomatetest.myshopify.com') {
+                $itmeskysplit = "testsk" . $ilosku;
+            } else {
+                if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
+                    $itmeskysplit =  $item_cart['psku'];
+                } else {
+                    $itmeskysplit =  "PART" . $ilosku . time();
+                }
+            }
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                 $size_tems = array();
+
                 foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
                     if ($split_varient_options['name'] != "Title") {
                         $size_tems[] = $split_varient_options['value'];
@@ -146,7 +158,7 @@ class FrontController extends BaseController
                     "title" => $item_cart['title'] . $size_order_namenn,
                     "price" => $final_price,
                     "quantity" => $item_cart['qty'],
-                    //"sku"=>$item_cart['psku'],
+                    "sku" => $itmeskysplit,
                     "requires_shipping" => true,
                     "grams" => $item_cart['grams'],
                     "gift_card" => true,
@@ -155,7 +167,7 @@ class FrontController extends BaseController
                         array("name" => "variant_code", "value" => $item_cart['id']),
                         array("name" => "partial_pay", "value" => $item_cart['price']),
                         array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                        array("name" => "psku", "value" => $item_cart['psku'])
+                        array("name" => "psku", "value" => $itmeskysplit)
                     )
                 );
 
@@ -166,6 +178,7 @@ class FrontController extends BaseController
                     "variant_id" => $item_cart['id'],
                     "quantity" => $item_cart['qty'],
                     "gift_card" => true,
+                    "sku" => $itmeskysplit,
                     "grams" => $item_cart['grams'],
                     "properties" => array(
                         array("name" => "Note", "value" => "Full Payment"),
@@ -186,6 +199,7 @@ class FrontController extends BaseController
             }
 
             $illp = $illp + 1;
+            $ilosku = $ilosku + 1;
             $line_item_arra[] = $line_item;
         }
         //echo $chekpartial;
