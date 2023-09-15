@@ -110,6 +110,12 @@ class FrontController extends BaseController
         $chekpartial = 0;
         $remaining_price = 0;
         $illp = 0;
+        if ($shopname == 'desinomatetest.myshopify.com') {
+            echo "<pre>";
+            print_r($cartarray);
+            echo "</pre>";
+            die();
+        }
         foreach ($cartarray as $item_cart) {
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
@@ -140,6 +146,7 @@ class FrontController extends BaseController
                     "title" => $item_cart['title'] . $size_order_namenn,
                     "price" => $final_price,
                     "quantity" => $item_cart['qty'],
+                    //"sku"=>$item_cart['psku'],
                     "requires_shipping" => true,
                     "grams" => $item_cart['grams'],
                     "gift_card" => true,
