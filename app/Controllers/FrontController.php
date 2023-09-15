@@ -119,15 +119,13 @@ class FrontController extends BaseController
         $ilosku = 1;
         foreach ($cartarray as $item_cart) {
 
-            if ($shopname == 'desinomatetest.myshopify.com') {
-                $itmeskysplit = "testsk" . $ilosku;
+
+            if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
+                $itmeskysplit =  $item_cart['psku'];
             } else {
-                if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
-                    $itmeskysplit =  $item_cart['psku'];
-                } else {
-                    $itmeskysplit =  "PART" . $ilosku . time();
-                }
+                $itmeskysplit =  "PART" . $ilosku . time();
             }
+
 
             if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                 $size_tems = array();
