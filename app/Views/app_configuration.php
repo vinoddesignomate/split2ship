@@ -153,7 +153,11 @@ $store_name = $shop_name[0];
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 6:</b> Edit Order confirmation email template - Add below code after this code {{ line_title }}.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if line.properties.Note == 'Initial Partial Payment'%}<span>Partial Amount={{line.properties.partial_pay}}</span><br/><span>Pending Amount={{line.properties.remaining_amount}}</span><br/>{% endif %}</textarea></div>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if line.properties.Note == 'Initial Partial Payment'%}<br/><span style="color:red;">Partial Amount={{line.properties.partial_pay}}</span><br/><span style="color:red;">Pending Amount={{line.properties.remaining_amount}}</span><br/>{% endif %}</textarea></div>
+                        <h5>Add below code before  {% for line in subtotal_line_items %}.</h5>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% assign partial_pending_amount = 0 %}</textarea></div>
+                        <h5>Add below code after  {{ line_display }} OR line number 244.</h5>
+                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% assign partial_pending_amount = partial_pending_amount | plus: line.properties.remaining_amount  %}</textarea></div>
                 </div>
         </div>
         <div class="payxnowandrestondelivery-main-area-row ">
