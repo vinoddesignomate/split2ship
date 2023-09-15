@@ -89,15 +89,15 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30727176496589.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                    $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+                //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30727176496589.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
-                    echo "get_register_webhookset<pre>";
-                    print_r($get_register_webhookset);
-                    echo "</pre>";
-                }
+                //     echo "get_register_webhookset<pre>";
+                //     print_r($get_register_webhookset);
+                //     echo "</pre>";
+                // }
 
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
@@ -458,10 +458,36 @@ class Home extends BaseController
             //     echo view('templates/apbrdgnew', $data);
             // } else
 
-            if ($plan_details[0]->plan_validity <= date('Y-m-d')) {
+            if ($plan_details[0]->plan_validity < date('Y-m-d')) {
 
-                $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
-                echo view('templates/apbrdgnew', $data);
+                if ($plan_details[0]->charged_id != "") {
+
+                    $get_details = $this->user_model->get_tokens($_GET['shop']);
+                    $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $plan_details[0]->charged_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+                    if (isset($get_register_webhookset['recurring_application_charge']['status']) && $get_register_webhookset['recurring_application_charge']['status'] == 'active') {
+
+                        $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$plan_details[0]->plan_name]['validity'] . ' days'));
+                        $update_data = array(
+                            "shop_url" => $_GET['shop'],
+                            "charged_id" => $get_register_webhookset['recurring_application_charge']['id'],
+                            "plan_status" => $get_register_webhookset['recurring_application_charge']['status'],
+                            "activate_date" => date('Y-m-d'),
+                            "sync_orders_count" => $this->plane_details[$plan_details[0]->plan_name]['order_sunc'],
+                            "updated_sync_orders_count" => $this->plane_details[$plan_details[0]->plan_name]['order_sunc'],
+                            "total_products_partial" => $this->plane_details[$plan_details[0]->plan_name]['partial_product'],
+                            "updated_products_partial" => $this->plane_details[$plan_details[0]->plan_name]['partial_product'],
+                            "plan_validity" => $plane_start_endate
+                        );
+                        $this->user_model->track_store_subscribe($update_data);
+                    } else {
+                        $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+                        echo view('templates/apbrdgnew', $data);
+                    }
+                } else {
+                    $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+                    echo view('templates/apbrdgnew', $data);
+                }
             }
         }
     }
