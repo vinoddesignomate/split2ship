@@ -149,7 +149,7 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Copy & paste below order confirmation email template into your theme's order confirmation email template.</h5>
-                        <div><textarea style="height: 84px;width: 100%;">{% capture email_title %}
+                        <div><textarea rows="20"  style="width: 100%;">{% capture email_title %}
                                 {% if has_pending_payment %}
                                 Thank you for your order!
                                 {% else %}
