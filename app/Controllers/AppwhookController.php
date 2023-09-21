@@ -1314,6 +1314,8 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_addtocartdata = json_decode($getaddtocartdata);
+        $updateprorespo = array("name" => "cart creat webhook=" . $getaddtocartdata);
+        $this->user_model->check_test_response($updateprorespo);
         foreach($get_addtocartdata->line_items as $cart_item){
             
                 $condtion_array = array(
@@ -1336,8 +1338,7 @@ class AppwhookController extends BaseController
                 );
             $this->user_model->track_cart_itme_data($add_to_cart_line_item);    
         }
-        $updateprorespo = array("name" => "cart creat webhook=" . $getaddtocartdata);
-        $this->user_model->check_test_response($updateprorespo);
+        
     }
 }
 echo "200 ok";
