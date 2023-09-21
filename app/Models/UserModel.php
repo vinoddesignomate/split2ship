@@ -795,7 +795,6 @@ class UserModel extends Model
         $qbuilder = $this->db->table('track_new_webhook');
         $qbuilder->where('shop_url', $shop_url);
         $q = $qbuilder->get();
-        $qbuilder->countAllResults();
         return $q->getResult();
          
     }
