@@ -504,7 +504,7 @@ class FrontController extends BaseController
                 "product_type"=>$itmeprod->product_type,
             );
         }
-        print_r($returnarray);
-        return json_encode($get_products);
+        //print_r($returnarray);
+        return json_encode($returnarray);
     }
 }
