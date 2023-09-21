@@ -801,22 +801,23 @@ class UserModel extends Model
     public function track_cart_itme_data($add_to_cart_line_item)
     {
 
-        $del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
-        $this->db->query($del_query, array($add_to_cart_line_item['shop_url'],$add_to_cart_line_item['cart_id']));
+        //$del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
+        //$this->db->query($del_query, array($add_to_cart_line_item['shop_url'],$add_to_cart_line_item['cart_id']));
 
-        $this->db->table('add_cart_data_store')->insert($add_to_cart_line_item);
-        return $this->db->insertID();
+        // $this->db->table('add_cart_data_store')->insert($add_to_cart_line_item);
+        // return $this->db->insertID();
 
-        // $qbuilder = $this->db->table('add_cart_data_store');
-        // $qbuilder->where('shop_url', $add_to_cart_line_item['shop_url']);
-        // $qbuilder->where('cart_id', $add_to_cart_line_item['cart_id']);
-        // $q = $qbuilder->get();
-        // $qbuilder->countAllResults();
-        // if (!empty($q->getResult())) {
-        //     $this->db->table('add_cart_data_store')->where('shop_url', $add_to_cart_line_item['shop_url'])->where('cart_id', $add_to_cart_line_item['cart_id'])->update($add_to_cart_line_item);
-        //     return $this->db->affectedRows();
-        // } else {
-        //     return  $qbuilder->insert($add_to_cart_line_item);
-        // }
+        $qbuilder = $this->db->table('add_cart_data_store');
+        $qbuilder->where('shop_url', $add_to_cart_line_item['shop_url']);
+        $qbuilder->where('cart_id', $add_to_cart_line_item['cart_id']);
+        $qbuilder->where('variant_id', $add_to_cart_line_item['variant_id']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('add_cart_data_store')->where('shop_url', $add_to_cart_line_item['shop_url'])->where('cart_id', $add_to_cart_line_item['cart_id'])->update($add_to_cart_line_item);
+            return $this->db->affectedRows();
+        } else {
+            return  $qbuilder->insert($add_to_cart_line_item);
+        }
     }
 }
