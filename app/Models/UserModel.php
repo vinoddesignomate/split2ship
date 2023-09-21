@@ -820,4 +820,8 @@ class UserModel extends Model
             return  $qbuilder->insert($add_to_cart_line_item);
         }
     }
+    public function remove_cart_item($add_to_cart_line_item){
+         $del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
+        $this->db->query($del_query, array($add_to_cart_line_item['shop_url'],$add_to_cart_line_item['cart_id']));
+    }
 }

@@ -1355,6 +1355,14 @@ class AppwhookController extends BaseController
         $get_addtocartdata = json_decode($getaddtocartdata);
         $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
         $this->user_model->check_test_response($updateprorespo);
+
+        $remove_cart_item = array(
+            "cart_id" => $get_addtocartdata->id,
+            "shop_url" => $_GET['cshop']
+        );
+
+        $this->user_model->remove_cart_item($remove_cart_item);
+
         foreach ($get_addtocartdata->line_items as $cart_item) {
 
             $condtion_array = array(
