@@ -495,6 +495,6 @@ class FrontController extends BaseController
             "shop_url"=>$this->request->getPost('shopname')
         );
         $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
-        print_r($get_products);
+        return json_encode($get_products);
     }
 }
