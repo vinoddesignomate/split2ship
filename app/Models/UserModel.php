@@ -824,4 +824,11 @@ class UserModel extends Model
          $del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
         $this->db->query($del_query, array($add_to_cart_line_item['shop_url'],$add_to_cart_line_item['cart_id']));
     }
+    public function get_cart_itme_based_on_token($getarra){
+        $cart_qbuilder = $this->db->table('add_cart_data_store');
+        $cart_qbuilder->where('shop_url', $getarra['shop_url']);
+        $cart_qbuilder->where('cart_id', $getarra['cart_id']);
+        $cart_q = $cart_qbuilder->get();
+        return $cart_q->getResult();
+    }
 }

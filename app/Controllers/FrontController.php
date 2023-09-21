@@ -490,5 +490,11 @@ class FrontController extends BaseController
         print_r($this->request->getPost());
         // $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         // $shopname = str_replace("http://", "", $shopname);
+        $setaray = array(
+            "cart_id"=>$this->request->getPost('tokenid'),
+            "shop_url"=>$this->request->getPost('shopname')
+        );
+        $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
+        print_r($get_products);
     }
 }
