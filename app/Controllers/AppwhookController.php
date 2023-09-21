@@ -485,10 +485,10 @@ class AppwhookController extends BaseController
                                 } else {
                                     $priceamnt = $productsitm->price;
                                 }
-                                $skuval = $productsitm->sku;
-                                if (isset($productsitm->properties) && isset($productsitm->properties[4]) && $productsitm->properties[4]->name == 'psku') {
-                                    $skuval = $productsitm->properties[4]->value;
-                                }
+                                // $skuval = $productsitm->sku;
+                                // if (isset($productsitm->properties) && isset($productsitm->properties[4]) && $productsitm->properties[4]->name == 'psku') {
+                                //     $skuval = $productsitm->properties[4]->value;
+                                // }
                                 // }else {
                                 //     $priceamnt = $productsitm->price;
                                 // }
