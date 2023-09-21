@@ -439,7 +439,7 @@ class AppwhookController extends BaseController
                         // }
                         $addres2orders = "";
                         if (isset($jsndata->billing_address->address2)) {
-                            $addres2orders = " ".$jsndata->billing_address->address2;
+                            $addres2orders = " " . $jsndata->billing_address->address2;
                         }
 
                         $weightkgs = 1;
@@ -616,7 +616,7 @@ class AppwhookController extends BaseController
 
                     $addres2orders = "";
                     if (isset($jsndata->billing_address->address2)) {
-                        $addres2orders = " ".$jsndata->billing_address->address2;
+                        $addres2orders = " " . $jsndata->billing_address->address2;
                     }
 
                     $weightkgs = 0.5;
@@ -734,7 +734,7 @@ class AppwhookController extends BaseController
 
                     $addres2orders = "";
                     if (isset($jsndata->billing_address->address2)) {
-                        $addres2orders = " ".$jsndata->billing_address->address2;
+                        $addres2orders = " " . $jsndata->billing_address->address2;
                     }
                     $postdata = 'format=json&data={
                             "shipments": [
@@ -1316,29 +1316,28 @@ class AppwhookController extends BaseController
         $get_addtocartdata = json_decode($getaddtocartdata);
         $updateprorespo = array("name" => "cart creat webhook=" . $getaddtocartdata);
         $this->user_model->check_test_response($updateprorespo);
-        foreach($get_addtocartdata->line_items as $cart_item){
-            
-                $condtion_array = array(
-                    "product_id" => $cart_item->product_id,
-                    "varient_id" => $cart_item->variant_id
-                );
-            
+        foreach ($get_addtocartdata->line_items as $cart_item) {
+
+            $condtion_array = array(
+                "product_id" => $cart_item->product_id,
+                "varient_id" => $cart_item->variant_id
+            );
+
             $get_resulrs = $this->user_model->get_store_product($_GET['cartshop'], $condtion_array);
             if (!empty($get_resulrs)) {
                 $partialtype = "partial";
-            }else{
+            } else {
                 $partialtype = "fullpay";
             }
             $add_to_cart_line_item = array(
-                    "cart_id" =>$get_addtocartdata->id,
-                    "product_id" =>$cart_item->product_id,
-                    "variant_id" =>$cart_item->variant_id,
-                    "shop_url" =>$_GET['cartshop'],
-                    "product_type" =>$partialtype,
-                );
-            $this->user_model->track_cart_itme_data($add_to_cart_line_item);    
+                "cart_id" => $get_addtocartdata->id,
+                "product_id" => $cart_item->product_id,
+                "variant_id" => $cart_item->variant_id,
+                "shop_url" => $_GET['cartshop'],
+                "product_type" => $partialtype,
+            );
+            $this->user_model->track_cart_itme_data($add_to_cart_line_item);
         }
-        
     }
     function update_cart_webhook_data()
     {
@@ -1356,29 +1355,32 @@ class AppwhookController extends BaseController
         $get_addtocartdata = json_decode($getaddtocartdata);
         $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
         $this->user_model->check_test_response($updateprorespo);
-        foreach($get_addtocartdata->line_items as $cart_item){
-            
-                $condtion_array = array(
-                    "product_id" => $cart_item->product_id,
-                    "varient_id" => $cart_item->variant_id
-                );
-            
+        foreach ($get_addtocartdata->line_items as $cart_item) {
+
+            $condtion_array = array(
+                "product_id" => $cart_item->product_id,
+                "varient_id" => $cart_item->variant_id
+            );
+
             $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
             if (!empty($get_resulrs)) {
                 $partialtype = "partial";
-            }else{
+            } else {
                 $partialtype = "fullpay";
             }
+
             $add_to_cart_line_item = array(
-                    "cart_id" =>$get_addtocartdata->id,
-                    "product_id" =>$cart_item->product_id,
-                    "variant_id" =>$cart_item->variant_id,
-                    "shop_url" =>$_GET['cshop'],
-                    "product_type" =>$partialtype,
-                );
-            $this->user_model->track_cart_itme_data($add_to_cart_line_item);    
+                "cart_id" => $get_addtocartdata->id,
+                "product_id" => $cart_item->product_id,
+                "variant_id" => $cart_item->variant_id,
+                "shop_url" => $_GET['cshop'],
+                "product_type" => $partialtype,
+            );
+
+            $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
+            $this->user_model->check_test_response($updateprorespo);
+            $this->user_model->track_cart_itme_data($add_to_cart_line_item);
         }
-        
     }
 }
 echo "200 ok";
