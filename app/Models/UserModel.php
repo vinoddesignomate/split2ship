@@ -804,16 +804,19 @@ class UserModel extends Model
         $del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
         $this->db->query($del_query, array($add_to_cart_line_item['shop_url'],$add_to_cart_line_item['cart_id']));
 
-        $qbuilder = $this->db->table('add_cart_data_store');
-        $qbuilder->where('shop_url', $add_to_cart_line_item['shop_url']);
-        $qbuilder->where('cart_id', $add_to_cart_line_item['cart_id']);
-        $q = $qbuilder->get();
-        $qbuilder->countAllResults();
-        if (!empty($q->getResult())) {
-            $this->db->table('add_cart_data_store')->where('shop_url', $add_to_cart_line_item['shop_url'])->where('cart_id', $add_to_cart_line_item['cart_id'])->update($add_to_cart_line_item);
-            return $this->db->affectedRows();
-        } else {
-            return  $qbuilder->insert($add_to_cart_line_item);
-        }
+        $this->db->table('add_cart_data_store')->insert($add_to_cart_line_item);
+        return $this->db->insertID();
+
+        // $qbuilder = $this->db->table('add_cart_data_store');
+        // $qbuilder->where('shop_url', $add_to_cart_line_item['shop_url']);
+        // $qbuilder->where('cart_id', $add_to_cart_line_item['cart_id']);
+        // $q = $qbuilder->get();
+        // $qbuilder->countAllResults();
+        // if (!empty($q->getResult())) {
+        //     $this->db->table('add_cart_data_store')->where('shop_url', $add_to_cart_line_item['shop_url'])->where('cart_id', $add_to_cart_line_item['cart_id'])->update($add_to_cart_line_item);
+        //     return $this->db->affectedRows();
+        // } else {
+        //     return  $qbuilder->insert($add_to_cart_line_item);
+        // }
     }
 }
