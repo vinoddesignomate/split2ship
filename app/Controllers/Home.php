@@ -89,7 +89,7 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                /*if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
                     //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30146363690.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
@@ -111,7 +111,7 @@ class Home extends BaseController
                         );
                         $this->user_model->insert_addcart_webhooks($webhookarray);
                     }
-                }
+                }*/
 
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());

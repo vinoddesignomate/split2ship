@@ -1303,18 +1303,27 @@ class AppwhookController extends BaseController
     function add_cart_webhook_data()
     {
 
-        // $update_product_content = NULL;
+        $getaddtocartdata = NULL;
 
-        // // Get webhook content from the POST
-        // $webhookpd = fopen('php://input', 'rb');
-        // while (!feof($webhookpd)) {
-        //     $update_product_content .= fread($webhookpd, 4096);
-        // }
+        // Get webhook content from the POST
+        $webhookpd = fopen('php://input', 'rb');
+        while (!feof($webhookpd)) {
+            $getaddtocartdata .= fread($webhookpd, 4096);
+        }
 
-        // fclose($webhookpd);
+        fclose($webhookpd);
 
-        // $get_productsup = json_decode($update_product_content);
-        // $updateprorespo = array("name" => "mark paid webhook=" . $update_product_content);
+        $get_addtocartdata = json_decode($getaddtocartdata);
+        foreach($get_addtocartdata->line_items as $cart_item){
+            $add_to_cart_line_item = array(
+                    "cart_id" =>$get_addtocartdata->id,
+                    "product_id" =>$cart_item->product_id,
+                    "variant_id" =>$cart_item->variant_id,
+                    "shop_url" =>$_GET['cartshop'],
+                );
+            $this->user_model->track_cart_itme_data($add_to_cart_line_item);    
+        }
+        //$updateprorespo = array("name" => "mark paid webhook=" . $getaddtocartdata);
         // $this->user_model->check_test_response($updateprorespo);
     }
 }
