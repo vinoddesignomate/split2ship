@@ -1363,7 +1363,7 @@ class AppwhookController extends BaseController
                     "varient_id" => $cart_item->variant_id
                 );
             
-            $get_resulrs = $this->user_model->get_store_product($_GET['cartshop'], $condtion_array);
+            $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
             if (!empty($get_resulrs)) {
                 $partialtype = "partial";
             }else{
