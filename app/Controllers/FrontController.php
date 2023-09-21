@@ -495,11 +495,16 @@ class FrontController extends BaseController
             "shop_url"=>$this->request->getPost('shopname')
         );
         $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
-        print_r($get_products);
+        
         $returnarray = array();
-        // foreach($get_products as $itmeprod){
-        //     $returnarray = array("varient_id"=>$itmeprod)
-        // }
+        foreach($get_products as $itmeprod){
+            $returnarray[] = array(
+                "varient_id"=>$itmeprod->variant_id,
+                "product_id"=>$itmeprod->product_id,
+                "product_type"=>$itmeprod->product_type,
+            );
+        }
+        print_r($returnarray);
         return json_encode($get_products);
     }
 }
