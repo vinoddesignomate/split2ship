@@ -1340,5 +1340,45 @@ class AppwhookController extends BaseController
         }
         
     }
+    function update_cart_webhook_data()
+    {
+
+        $getaddtocartdata = NULL;
+
+        // Get webhook content from the POST
+        $webhookpd = fopen('php://input', 'rb');
+        while (!feof($webhookpd)) {
+            $getaddtocartdata .= fread($webhookpd, 4096);
+        }
+
+        fclose($webhookpd);
+
+        $get_addtocartdata = json_decode($getaddtocartdata);
+        $updateprorespo = array("name" => "update cart webhook=" . $getaddtocartdata);
+        $this->user_model->check_test_response($updateprorespo);
+        /*foreach($get_addtocartdata->line_items as $cart_item){
+            
+                $condtion_array = array(
+                    "product_id" => $cart_item->product_id,
+                    "varient_id" => $cart_item->variant_id
+                );
+            
+            $get_resulrs = $this->user_model->get_store_product($_GET['cartshop'], $condtion_array);
+            if (!empty($get_resulrs)) {
+                $partialtype = "partial";
+            }else{
+                $partialtype = "fullpay";
+            }
+            $add_to_cart_line_item = array(
+                    "cart_id" =>$get_addtocartdata->id,
+                    "product_id" =>$cart_item->product_id,
+                    "variant_id" =>$cart_item->variant_id,
+                    "shop_url" =>$_GET['cartshop'],
+                    "product_type" =>$partialtype,
+                );
+            $this->user_model->track_cart_itme_data($add_to_cart_line_item);    
+        }*/
+        
+    }
 }
 echo "200 ok";
