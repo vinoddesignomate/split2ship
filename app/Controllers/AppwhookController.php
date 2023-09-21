@@ -1373,7 +1373,7 @@ class AppwhookController extends BaseController
                     "cart_id" =>$get_addtocartdata->id,
                     "product_id" =>$cart_item->product_id,
                     "variant_id" =>$cart_item->variant_id,
-                    "shop_url" =>$_GET['cartshop'],
+                    "shop_url" =>$_GET['cshop'],
                     "product_type" =>$partialtype,
                 );
             $this->user_model->track_cart_itme_data($add_to_cart_line_item);    
