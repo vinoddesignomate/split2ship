@@ -1300,5 +1300,22 @@ class AppwhookController extends BaseController
         // $updateprorespo = array("name" => "mark paid webhook=" . $update_product_content);
         // $this->user_model->check_test_response($updateprorespo);
     }
+    function add_cart_webhook_data()
+    {
+
+        // $update_product_content = NULL;
+
+        // // Get webhook content from the POST
+        // $webhookpd = fopen('php://input', 'rb');
+        // while (!feof($webhookpd)) {
+        //     $update_product_content .= fread($webhookpd, 4096);
+        // }
+
+        // fclose($webhookpd);
+
+        // $get_productsup = json_decode($update_product_content);
+        // $updateprorespo = array("name" => "mark paid webhook=" . $update_product_content);
+        // $this->user_model->check_test_response($updateprorespo);
+    }
 }
 echo "200 ok";

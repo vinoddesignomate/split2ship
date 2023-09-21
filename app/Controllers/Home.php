@@ -89,15 +89,26 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                // if ($_GET['shop'] == 'partialtestapp.myshopify.com') {
+                if ($_GET['shop'] == 'partialtestapp.myshopify.com') {
 
-                //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30146363690.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+                    //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30146363690.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
-                //     echo "get_register_webhookset<pre>";
-                //     print_r($get_register_webhookset);
-                //     echo "</pre>";
-                // }
+                    //     echo "get_register_webhookset<pre>";
+                    //     print_r($get_register_webhookset);
+                    //     echo "</pre>";
+                    $webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
+                    if (empty($webhookdata)) {
+                        $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "carts/create", "address" => 'https://app.payxnowandrestondelivery.com/addtocartdata?cartshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
+
+                        $webhookarray = array(
+                            "webhook_name" => 'cart_create',
+                            "shop_url" => $_GET['shop'],
+                            "movement" => date('Y-m-d')
+                        );
+                        $this->user_model->insert_addcart_webhooks($webhookarray);
+                    }
+                }
 
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());

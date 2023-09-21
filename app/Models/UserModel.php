@@ -775,4 +775,28 @@ class UserModel extends Model
             return  $qbuilder->insert($product_array);
         }
     }
+    public function insert_addcart_webhooks($insert_array)
+    {
+
+        $qbuilder = $this->db->table('track_new_webhook');
+        $qbuilder->where('shop_url', $insert_array['shop_url']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('track_new_webhook')->where('shop_url', $insert_array['shop_url'])->update($insert_array);
+            return $this->db->affectedRows();
+        } else {
+            return  $qbuilder->insert($insert_array);
+        }
+    }
+    public function get_addcart_webhooks($shop_url)
+    {
+
+        $qbuilder = $this->db->table('track_new_webhook');
+        $qbuilder->where('shop_url', $shop_url);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        return $q->getResult();
+         
+    }
 }
