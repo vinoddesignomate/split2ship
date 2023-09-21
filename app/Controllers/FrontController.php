@@ -487,7 +487,7 @@ class FrontController extends BaseController
         }
     }
     public function check_product_type_cart(){
-        print_r($this->request->getPost());
+        //print_r($this->request->getPost());
         // $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         // $shopname = str_replace("http://", "", $shopname);
         $setaray = array(
