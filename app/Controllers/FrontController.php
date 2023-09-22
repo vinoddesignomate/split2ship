@@ -165,7 +165,7 @@ class FrontController extends BaseController
                         array("name" => "variant_code", "value" => $item_cart['id']),
                         array("name" => "partial_pay", "value" => $item_cart['price']),
                         array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                       // array("name" => "psku", "value" => $itmeskysplit)
+                        // array("name" => "psku", "value" => $itmeskysplit)
                     )
                 );
 
@@ -454,9 +454,9 @@ class FrontController extends BaseController
             echo "not found";
         }
         $updateprorespo = array(
-                    "name" => "run collectioncrn job=".json_encode($get_lates_colection),
-                    "movement" => date('Y-m-d H:i')
-                );
+            "name" => "run collectioncrn job=" . json_encode($get_lates_colection),
+            "movement" => date('Y-m-d H:i')
+        );
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
     }
     /*
@@ -489,23 +489,31 @@ class FrontController extends BaseController
             return "no_color";
         }
     }
-    public function check_product_type_cart(){
+    public function check_product_type_cart()
+    {
         //print_r($this->request->getPost());
         // $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         // $shopname = str_replace("http://", "", $shopname);
         $setaray = array(
-            "cart_id"=>$this->request->getPost('tokenid'),
-            "shop_url"=>$this->request->getPost('shopname')
+            "cart_id" => $this->request->getPost('tokenid'),
+            "shop_url" => $this->request->getPost('shopname')
         );
         $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
-        
+
         $returnarray = array();
-        foreach($get_products as $itmeprod){
+
+        foreach ($get_products as $itmeprod) {
+            if ($itmeprod->product_properties != "") {
+                $protiesdstr = str_replace("{", "", $itmeprod->product_properties);
+                $protiesdstr = str_replace("}", "", $protiesdstr);
+            } else {
+                $protiesdstr = "";
+            }
             $returnarray[] = array(
-                "varient_id"=>$itmeprod->variant_id,
-                "product_id"=>$itmeprod->product_id,
-                "product_type"=>$itmeprod->product_type,
-                "product_properties"=>$itmeprod->product_properties,
+                "varient_id" => $itmeprod->variant_id,
+                "product_id" => $itmeprod->product_id,
+                "product_type" => $itmeprod->product_type,
+                "product_properties" => $protiesdstr,
             );
         }
         //print_r($returnarray);
