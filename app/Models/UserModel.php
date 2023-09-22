@@ -831,4 +831,8 @@ class UserModel extends Model
         $cart_q = $cart_qbuilder->get();
         return $cart_q->getResult();
     }
+    public function check_cron_ruinning_stst($data_array)
+    {
+        $this->db->table('cron_run_track')->insert($data_array);
+    }
 }
