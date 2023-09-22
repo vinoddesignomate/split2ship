@@ -91,7 +91,7 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                        $get_register_webhook = $this->common->rest_api('admin/api/2023-07/recurring_application_charges/30826922288.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                        $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/recurring_application_charges/30826922288.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                         $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
                         echo "get_register_webhookset<pre>";
