@@ -505,13 +505,15 @@ class FrontController extends BaseController
         foreach ($get_products as $itmeprod) {
             if ($itmeprod->product_properties != "") {
                 $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
-        
+
                 $proety_size_tems = array();
                 foreach ($protiesdstrrrat as $key => $getprt) {
-                    $proety_size_tems[$key] = $getprt;
+                    if ($key != "parma") {
+                        $proety_size_tems[$key] = $getprt;
+                    }
                 }
                 $proety_size_tems["parma"] = "test";
-        
+
                 $returnarray[] = array(
                     "varient_id" => $itmeprod->variant_id,
                     "product_id" => $itmeprod->product_id,
