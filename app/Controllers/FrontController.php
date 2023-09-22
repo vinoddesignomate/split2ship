@@ -505,6 +505,7 @@ class FrontController extends BaseController
                 "varient_id"=>$itmeprod->variant_id,
                 "product_id"=>$itmeprod->product_id,
                 "product_type"=>$itmeprod->product_type,
+                "product_properties"=>$itmeprod->product_properties,
             );
         }
         //print_r($returnarray);
