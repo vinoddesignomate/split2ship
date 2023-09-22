@@ -503,6 +503,13 @@ class FrontController extends BaseController
         $returnarray = array();
 
         foreach ($get_products as $itmeprod) {
+            
+            $returnarray[] = array(
+                "varient_id" => $itmeprod->variant_id,
+                "product_id" => $itmeprod->product_id,
+                "product_type" => $itmeprod->product_type,
+            );
+
             if ($itmeprod->product_properties != "") {
                 //$protiesdstr = str_replace("{", "", $itmeprod->product_properties);
                 //$protiesdstr = str_replace("}", "", $protiesdstr);
@@ -510,19 +517,14 @@ class FrontController extends BaseController
                
                 $proety_size_tems = array();
                 foreach($protiesdstrrrat as $key=>$getprt){
-                    $proety_size_tems = array($key=>$getprt,);
+                    $returnarray['product_properties'][] = array($key=>$getprt,);
                 }
                 print_r($proety_size_tems);
                 $protiesdstr = $itmeprod->product_properties;
             } else {
                 $protiesdstr = "";
+                $returnarray['product_properties'] = "";
             }
-            $returnarray[] = array(
-                "varient_id" => $itmeprod->variant_id,
-                "product_id" => $itmeprod->product_id,
-                "product_type" => $itmeprod->product_type,
-                "product_properties" => $protiesdstr,
-            );
         }
         //print_r($returnarray);
         return json_encode($returnarray);
