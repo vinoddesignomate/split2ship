@@ -453,8 +453,8 @@ class FrontController extends BaseController
         } else {
             echo "not found";
         }
-        // $updateprorespo = array("name" => "run collectioncrn job=".json_encode($get_lates_colection));
-        // $this->user_model->check_test_response($updateprorespo);
+        $updateprorespo = array("name" => "run collectioncrn job=".json_encode($get_lates_colection));
+        $this->user_model->check_test_response($updateprorespo);
     }
     /*
     ** get dynamnic checkout button color from database
