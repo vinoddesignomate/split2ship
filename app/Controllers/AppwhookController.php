@@ -1377,12 +1377,18 @@ class AppwhookController extends BaseController
                 $partialtype = "fullpay";
             }
 
+            if (isset($cart_item->properties)){
+                $cart_proer = json_encode($cart_item->properties);
+            }else{
+                $cart_proer = "";
+            }
             $add_to_cart_line_item = array(
                 "cart_id" => $get_addtocartdata->id,
                 "product_id" => $cart_item->product_id,
                 "variant_id" => $cart_item->variant_id,
                 "shop_url" => $_GET['cshop'],
                 "product_type" => $partialtype,
+                "product_properties" => $cart_proer,
             );
 
             $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
