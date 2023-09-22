@@ -507,7 +507,12 @@ class FrontController extends BaseController
                 //$protiesdstr = str_replace("{", "", $itmeprod->product_properties);
                 //$protiesdstr = str_replace("}", "", $protiesdstr);
                 $protiesdstrrrat = json_decode($itmeprod->product_properties);
-                print_r($protiesdstrrrat);
+               
+                $proety_size_tems = array();
+                foreach($protiesdstrrrat as $key=>$getprt){
+                    $proety_size_tems[] = array($key=>$getprt,);
+                }
+                print_r($proety_size_tems);
                 $protiesdstr = $itmeprod->product_properties;
             } else {
                 $protiesdstr = "";
