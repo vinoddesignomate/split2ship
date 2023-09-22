@@ -503,27 +503,27 @@ class FrontController extends BaseController
         $returnarray = array();
 
         foreach ($get_products as $itmeprod) {
-            
-            $returnarray[] = array(
-                "varient_id" => $itmeprod->variant_id,
-                "product_id" => $itmeprod->product_id,
-                "product_type" => $itmeprod->product_type,
-            );
-
             if ($itmeprod->product_properties != "") {
-                //$protiesdstr = str_replace("{", "", $itmeprod->product_properties);
-                //$protiesdstr = str_replace("}", "", $protiesdstr);
-                $protiesdstrrrat = json_decode($itmeprod->product_properties);
-               
+                $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
+        
                 $proety_size_tems = array();
-                foreach($protiesdstrrrat as $key=>$getprt){
-                    $returnarray['product_properties'][] = array($key=>$getprt,);
+                foreach ($protiesdstrrrat as $key => $getprt) {
+                    $proety_size_tems[$key] = $getprt;
                 }
-                print_r($proety_size_tems);
-                $protiesdstr = $itmeprod->product_properties;
+        
+                $returnarray[] = array(
+                    "varient_id" => $itmeprod->variant_id,
+                    "product_id" => $itmeprod->product_id,
+                    "product_type" => $itmeprod->product_type,
+                    "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
+                );
             } else {
-                $protiesdstr = "";
-                $returnarray['product_properties'] = "";
+                $returnarray[] = array(
+                    "varient_id" => $itmeprod->variant_id,
+                    "product_id" => $itmeprod->product_id,
+                    "product_type" => $itmeprod->product_type,
+                    "product_properties" => "", // If product_properties is empty
+                );
             }
         }
         //print_r($returnarray);
