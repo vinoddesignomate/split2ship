@@ -510,7 +510,7 @@ class FrontController extends BaseController
                
                 $proety_size_tems = array();
                 foreach($protiesdstrrrat as $key=>$getprt){
-                    $proety_size_tems[] = array($key=>$getprt,);
+                    $proety_size_tems = array($key=>$getprt,);
                 }
                 print_r($proety_size_tems);
                 $protiesdstr = $itmeprod->product_properties;
