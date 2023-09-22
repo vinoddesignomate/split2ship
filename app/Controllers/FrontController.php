@@ -508,11 +508,12 @@ class FrontController extends BaseController
 
                 $proety_size_tems = array();
                 foreach ($protiesdstrrrat as $key => $getprt) {
-                    if ($key != "parma") {
+                    //if ($key != "parma") {
                         $proety_size_tems[$key] = $getprt;
-                    }
+                    //}
+                    unset($proety_size_tems['PARTIAL_PAYMENT']);
                 }
-                $proety_size_tems["parma"] = "test";
+                $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
 
                 $returnarray[] = array(
                     "varient_id" => $itmeprod->variant_id,
