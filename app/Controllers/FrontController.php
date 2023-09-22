@@ -504,8 +504,11 @@ class FrontController extends BaseController
 
         foreach ($get_products as $itmeprod) {
             if ($itmeprod->product_properties != "") {
-                $protiesdstr = str_replace("{", "", $itmeprod->product_properties);
-                $protiesdstr = str_replace("}", "", $protiesdstr);
+                //$protiesdstr = str_replace("{", "", $itmeprod->product_properties);
+                //$protiesdstr = str_replace("}", "", $protiesdstr);
+                $protiesdstrrrat = json_decode($itmeprod->product_properties);
+                print_r($protiesdstrrrat);
+                $protiesdstr = $itmeprod->product_properties;
             } else {
                 $protiesdstr = "";
             }
