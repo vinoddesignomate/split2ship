@@ -510,6 +510,7 @@ class FrontController extends BaseController
                 foreach ($protiesdstrrrat as $key => $getprt) {
                     $proety_size_tems[$key] = $getprt;
                 }
+                $proety_size_tems["parma"] = "test";
         
                 $returnarray[] = array(
                     "varient_id" => $itmeprod->variant_id,
