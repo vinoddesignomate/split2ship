@@ -105,7 +105,7 @@ class Home extends BaseController
                         // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "carts/create", "address" => 'https://app.payxnowandrestondelivery.com/addtocartdata?cartshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
 
 
-                        $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/create", "address" => 'https://app.payxnowandrestondelivery.com/pro_create_evnt?cpwshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);    
+                        //$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/create", "address" => 'https://app.payxnowandrestondelivery.com/pro_create_evnt?cpwshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);    
 
                         // $webhookarray = array(
                         //     "webhook_name" => 'cart_update',
