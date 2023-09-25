@@ -308,7 +308,11 @@ class AppwhookController extends BaseController
                         //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
 
                         if (isset($products->properties[1]->value)) {
-                            $cuvarid = $products->properties[1]->value;
+                            if ($products->properties[1]->name == 'variant_code') {
+                                $cuvarid = $products->properties[1]->value;
+                            } else {
+                                $cuvarid = $products->variant_id;
+                            }
                         } else {
                             $cuvarid = $products->variant_id;
                         }
