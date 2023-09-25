@@ -114,7 +114,7 @@ class FrontController extends BaseController
             echo "<pre>";
             print_r($cartarray);
             echo "</pre>";
-            die();
+            //die();
         }
         $ilosku = 1;
         foreach ($cartarray as $item_cart) {
@@ -196,15 +196,17 @@ class FrontController extends BaseController
                 }
             }
 
-            //code for add variants name & value to order
-            // foreach ($item_cart['allproperties'] as $keypropty=>$proval) {
-            //     if ($split_varient_options['name'] != "Title") {
-            //         $line_item['properties'][] = array(
-            //             "name" => $split_varient_options['name'],
-            //             "value" => $split_varient_options['value']
-            //         );
-            //     }
-            // }
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                //code for add variants name & value to order
+                foreach ($item_cart['allproperties'] as $keypropty => $proval) {
+                    if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
+                        $line_item['properties'][] = array(
+                            "name" => $keypropty,
+                            "value" => $proval
+                        );
+                    }
+                }
+            }
 
             $illp = $illp + 1;
             $ilosku = $ilosku + 1;
@@ -213,12 +215,12 @@ class FrontController extends BaseController
         //echo $chekpartial;
         //    print_r($line_item_arra);
 
-        // if ($shopname == 'desinomatetest.myshopify.com') {
-        //     echo "line_item_arra<pre>";
-        //     print_r($line_item_arra);
-        //     echo "</pre>";
-        //     die();
-        // } 
+        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            echo "line_item_arra<pre>";
+            print_r($line_item_arra);
+            echo "</pre>";
+            die();
+        }
         $final_total_price_rem = str_replace("-", "", $remaining_price);
         $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
         return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
@@ -519,7 +521,7 @@ class FrontController extends BaseController
                 $proety_size_tems = array();
                 foreach ($protiesdstrrrat as $key => $getprt) {
                     //if ($key != "parma") {
-                        $proety_size_tems[$key] = $getprt;
+                    $proety_size_tems[$key] = $getprt;
                     //}
                     unset($proety_size_tems['PARTIAL_PAYMENT']);
                 }
