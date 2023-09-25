@@ -110,12 +110,12 @@ class FrontController extends BaseController
         $chekpartial = 0;
         $remaining_price = 0;
         $illp = 0;
-        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            echo "<pre>";
-            print_r($cartarray);
-            echo "</pre>";
-            //die();
-        }
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     echo "<pre>";
+        //     print_r($cartarray);
+        //     echo "</pre>";
+        //     die();
+        // }
         $ilosku = 1;
         foreach ($cartarray as $item_cart) {
 
@@ -196,8 +196,9 @@ class FrontController extends BaseController
                 }
             }
 
-            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                //code for add variants name & value to order
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //code for add variants name & value to order
+            if (isset($item_cart['allproperties'])) {
                 foreach ($item_cart['allproperties'] as $keypropty => $proval) {
                     if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
                         $line_item['properties'][] = array(
@@ -207,6 +208,7 @@ class FrontController extends BaseController
                     }
                 }
             }
+            //}
 
             $illp = $illp + 1;
             $ilosku = $ilosku + 1;
@@ -215,12 +217,12 @@ class FrontController extends BaseController
         //echo $chekpartial;
         //    print_r($line_item_arra);
 
-        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            echo "line_item_arra<pre>";
-            print_r($line_item_arra);
-            echo "</pre>";
-            die();
-        }
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     echo "line_item_arra<pre>";
+        //     print_r($line_item_arra);
+        //     echo "</pre>";
+        //     die();
+        // }
         $final_total_price_rem = str_replace("-", "", $remaining_price);
         $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
         return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
