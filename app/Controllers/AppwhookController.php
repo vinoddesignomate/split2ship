@@ -1373,8 +1373,10 @@ class AppwhookController extends BaseController
             $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
             if (!empty($get_resulrs)) {
                 $partialtype = "partial";
+                $partial_percentage = $get_resulrs[0]->partial_percentage;
             } else {
                 $partialtype = "fullpay";
+                $partial_percentage = '';
             }
 
             if (isset($cart_item->properties)){
@@ -1389,6 +1391,7 @@ class AppwhookController extends BaseController
                 "shop_url" => $_GET['cshop'],
                 "product_type" => $partialtype,
                 "product_properties" => $cart_proer,
+                "partial_percentage" => $partial_percentage,
             );
 
             $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
