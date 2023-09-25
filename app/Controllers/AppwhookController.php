@@ -318,8 +318,8 @@ class AppwhookController extends BaseController
                         );
                         $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
 
-                        // $resposne_array = array("name" => "remove cart product" . json_encode($removeArray));
-                        // $this->user_model->check_test_response($resposne_array);
+                        $resposne_array = array("name" => "remove cart product" . json_encode($removeArray));
+                        $this->user_model->check_test_response($resposne_array);
 
                         /* if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
                             //below code for remove custom product from partial list only onlyneon store
