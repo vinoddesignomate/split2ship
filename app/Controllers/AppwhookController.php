@@ -312,6 +312,9 @@ class AppwhookController extends BaseController
                         );
                         $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
 
+                        $resposne_array = array("name" => "remove cart product" . json_encode($removeArray));
+                        $this->user_model->check_test_response($resposne_array);
+
                         if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
                             //below code for remove custom product from partial list only onlyneon store
                             $this->user_model->update_plan_products_remove_part($_REQUEST['whshp']);
@@ -843,7 +846,7 @@ class AppwhookController extends BaseController
 
             // $get_response = $this->common->call_api_curl('https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($ship_email) . '&password=' . trim($ship_password) . '', '', 'POST', '');
             $get_response = $this->common->get_shiprocket_token($ship_email, $ship_password);
-            
+
             $resposne_array_lst = array("name" => "token section " . $get_response);
             $this->user_model->check_test_response($resposne_array_lst);
             $new_res = json_decode($get_response);
