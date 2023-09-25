@@ -1411,19 +1411,42 @@ class AppwhookController extends BaseController
         $updateprorespo = array("name" => "create_product=" . $add_proct);
         $this->user_model->check_test_response($updateprorespo);
 
-         $log_filename = WRITEPATH . "whlogslgs";
-        // $log_msg = $resp;
-        if (!file_exists($log_filename)) {
+        //  $log_filename = WRITEPATH . "whlogslgs";
+        // // $log_msg = $resp;
+        // if (!file_exists($log_filename)) {
 
-            mkdir($log_filename, 0777, true);
-        }
-        $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
-        file_put_contents($log_file_data, print_r($get_addtocartdata, true)); 
-
-
-        // if($_GET['cpwshop'] == 'onlyneon1.myshopify.com'){
-
+        //     mkdir($log_filename, 0777, true);
         // }
+        // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+        // file_put_contents($log_file_data, print_r($get_addtocartdata, true)); 
+
+
+        if($_GET['cpwshop'] == 'onlyneon1.myshopify.com'){
+            $payxnowrest_product_add = array(
+                "product_id" => $get_addtocartdata->id,
+                "product_title" => $get_addtocartdata->title,
+                "shop_url" => $_GET['cpwshop'],
+                "partial_percentage" => 30,
+                "add_date" => date('Y-m-d'),
+                "collection_id" => ''
+            );
+            //below function is used for add products into partial list & update partial products of store according their plan
+            $this->user_model->add_partial_products_collections($payxnowrest_product_add);
+
+            foreach ($get_addtocartdata->variants as $produc_varaien) {
+                $product_array = array(
+                    "product_id" => $produc_varaien->product_id,
+                    "varient_id" => $produc_varaien->id,
+                    "title" => $produc_varaien->title,
+                    "price" => $produc_varaien->price,
+                    "partial_percentage" => 30,
+                    "shop_url" => $_GET['cpwshop'],
+                    "collection_id" =>  ''
+                );
+                $this->user_model->add_partial_products_varient($product_array);
+            }
+
+        }
     }
 }
 echo "200 ok";
