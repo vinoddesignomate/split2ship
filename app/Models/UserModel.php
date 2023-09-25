@@ -841,6 +841,17 @@ class UserModel extends Model
 
         // $deleetproductby_varient = "DELETE FROM app_partial_products WHERE product_id = ( SELECT product_id FROM ppp_products_varient WHERE varient_id = ? LIMIT 0,1 )";
     }
+    public function remove_custom_product_partial($removedata){
+
+        //remove products from partial list
+        $deleetproductby_varient_products = "DELETE FROM app_partial_products WHERE product_id = ( SELECT product_id FROM ppp_products_varient WHERE varient_id = ? AND shop_url=? LIMIT 0,1 )";
+        $this->db->query($deleetproductby_varient_products, array($removedata['variant_id'],$removedata['shop_url']));
+
+        //remove varient from partial list
+        $deleetproductby_varient = "DELETE FROM ppp_products_varient WHERE varient_id = ? AND shop_url=?";
+        $this->db->query($deleetproductby_varient, array($removedata['variant_id'],$removedata['shop_url']));
+
+    }
 
     public function add_partial_products_customonly($product_array)
     {
