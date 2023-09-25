@@ -1410,6 +1410,20 @@ class AppwhookController extends BaseController
         $get_addtocartdata = json_decode($add_proct);
         $updateprorespo = array("name" => "create_product=" . $add_proct);
         $this->user_model->check_test_response($updateprorespo);
+
+         $log_filename = "log";
+        // $log_msg = $resp;
+        if (!file_exists($log_filename)) {
+
+            mkdir($log_filename, 0777, true);
+        }
+        $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+        file_put_contents($log_file_data, print_r($get_addtocartdata, true)); 
+
+
+        // if($_GET['cpwshop'] == 'onlyneon1.myshopify.com'){
+
+        // }
     }
 }
 echo "200 ok";
