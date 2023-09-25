@@ -836,7 +836,25 @@ class UserModel extends Model
         $this->db->table('cron_run_track')->insert($data_array);
     }
     public function remove_add_cart_data($removedata){
-        $del_addcartdata_query = "DELETE FROM add_cart_data_store WHERE product_id=? AND shop_url=?";
-        $this->db->query($del_addcartdata_query, array($removedata['product_id'],$removedata['shop_url']));
+        $del_addcartdata_query = "DELETE FROM add_cart_data_store WHERE varient_id=? AND shop_url=?";
+        $this->db->query($del_addcartdata_query, array($removedata['varient_id'],$removedata['shop_url']));
+
+        // $deleetproductby_varient = "DELETE FROM app_partial_products WHERE product_id = ( SELECT product_id FROM ppp_products_varient WHERE varient_id = ? LIMIT 0,1 )";
+    }
+
+    public function add_partial_products_customonly($product_array)
+    {
+        $qbuilder = $this->db->table('app_partial_products');
+        $qbuilder->where('shop_url', $product_array['shop_url']);
+        $qbuilder->where('product_id', $product_array['product_id']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('app_partial_products')->where('shop_url', $product_array['shop_url'])->where('product_id', $product_array['product_id'])->update($product_array);
+            return $this->db->affectedRows();
+        } else {
+            //$this->update_plan_products(1, $product_array['shop_url']);
+            return  $qbuilder->insert($product_array);
+        }
     }
 }

@@ -306,20 +306,26 @@ class AppwhookController extends BaseController
                         );
 
                         //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
+
+                        if (isset($products->properties[1]->value)) {
+                            $cuvarid = $products->properties[1]->value;
+                        } else {
+                            $cuvarid = $products->id;
+                        }
                         $removeArray = array(
-                            "product_id" => $products->id,
+                            "varient_id" => $cuvarid,
                             "shop_url" => $_REQUEST['whshp']
                         );
                         $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
 
-                        $resposne_array = array("name" => "remove cart product" . json_encode($removeArray));
-                        $this->user_model->check_test_response($resposne_array);
+                        // $resposne_array = array("name" => "remove cart product" . json_encode($removeArray));
+                        // $this->user_model->check_test_response($resposne_array);
 
-                        if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
+                        /* if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
                             //below code for remove custom product from partial list only onlyneon store
                             $this->user_model->update_plan_products_remove_part($_REQUEST['whshp']);
                             $this->user_model->remove_partial_product($products->id, $_REQUEST['whshp']);
-                        }
+                        }*/
 
                         // echo "orders_products_data<pre>";
                         // print_r($orders_products_data);
@@ -1454,7 +1460,7 @@ class AppwhookController extends BaseController
                 "collection_id" => ''
             );
             //below function is used for add products into partial list & update partial products of store according their plan
-            $this->user_model->add_partial_products_collections($payxnowrest_product_add);
+            $this->user_model->add_partial_products_customonly($payxnowrest_product_add);
 
             foreach ($get_addtocartdata->variants as $produc_varaien) {
                 $product_array = array(
