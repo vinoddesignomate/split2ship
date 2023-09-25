@@ -835,4 +835,8 @@ class UserModel extends Model
     {
         $this->db->table('cron_run_track')->insert($data_array);
     }
+    public function remove_add_cart_data($removedata){
+        $del_addcartdata_query = "DELETE FROM add_cart_data_store WHERE product_id=? AND shop_url=?";
+        $this->db->query($del_addcartdata_query, array($removedata['product_id'],$removedata['shop_url']));
+    }
 }

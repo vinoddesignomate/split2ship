@@ -304,6 +304,20 @@ class AppwhookController extends BaseController
                             "product_sku" => $prosku,
                             "shop_url" => $_GET['whshp']
                         );
+
+                        //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
+                        $removeArray = array(
+                            "product_id" => $products->id,
+                            "shop_url" => $_REQUEST['whshp']
+                        );
+                        $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
+
+                        if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
+                            //below code for remove custom product from partial list only onlyneon store
+                            $this->user_model->update_plan_products_remove_part($_REQUEST['whshp']);
+                            $this->user_model->remove_partial_product($products->id, $_REQUEST['whshp']);
+                        }
+
                         // echo "orders_products_data<pre>";
                         // print_r($orders_products_data);
                         // echo "</pre>";
@@ -1379,9 +1393,9 @@ class AppwhookController extends BaseController
                 $partial_percentage = '';
             }
 
-            if (isset($cart_item->properties)){
+            if (isset($cart_item->properties)) {
                 $cart_proer = json_encode($cart_item->properties);
-            }else{
+            } else {
                 $cart_proer = "";
             }
             $add_to_cart_line_item = array(
@@ -1399,7 +1413,8 @@ class AppwhookController extends BaseController
             $this->user_model->track_cart_itme_data($add_to_cart_line_item);
         }
     }
-    function product_create_whok(){
+    function product_create_whok()
+    {
 
         $add_proct = NULL;
         // Get webhook content from the POST
@@ -1424,7 +1439,7 @@ class AppwhookController extends BaseController
         // file_put_contents($log_file_data, print_r($get_addtocartdata, true)); 
 
 
-        if($_GET['cpwshop'] == 'onlyneon1.myshopify.com' && $get_addtocartdata->product_type == 'PPLR_HIDDEN_PRODUCT'){
+        if ($_GET['cpwshop'] == 'onlyneon1.myshopify.com' && $get_addtocartdata->product_type == 'PPLR_HIDDEN_PRODUCT') {
             $payxnowrest_product_add = array(
                 "product_id" => $get_addtocartdata->id,
                 "product_title" => $get_addtocartdata->title,
@@ -1448,7 +1463,6 @@ class AppwhookController extends BaseController
                 );
                 $this->user_model->add_partial_products_varient($product_array);
             }
-
         }
     }
 }
