@@ -196,6 +196,16 @@ class FrontController extends BaseController
                 }
             }
 
+            //code for add variants name & value to order
+            // foreach ($item_cart['allproperties'] as $keypropty=>$proval) {
+            //     if ($split_varient_options['name'] != "Title") {
+            //         $line_item['properties'][] = array(
+            //             "name" => $split_varient_options['name'],
+            //             "value" => $split_varient_options['value']
+            //         );
+            //     }
+            // }
+
             $illp = $illp + 1;
             $ilosku = $ilosku + 1;
             $line_item_arra[] = $line_item;
