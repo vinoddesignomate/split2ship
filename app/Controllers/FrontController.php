@@ -519,12 +519,14 @@ class FrontController extends BaseController
                     "varient_id" => $itmeprod->variant_id,
                     "product_id" => $itmeprod->product_id,
                     "product_type" => $itmeprod->product_type,
+                    "partial_percentage" => $itmeprod->partial_percentage,
                     "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
                 );
             } else {
                 $returnarray[] = array(
                     "varient_id" => $itmeprod->variant_id,
                     "product_id" => $itmeprod->product_id,
+                    "partial_percentage" => $itmeprod->partial_percentage,
                     "product_type" => $itmeprod->product_type,
                     "product_properties" => "", // If product_properties is empty
                 );
