@@ -1396,5 +1396,20 @@ class AppwhookController extends BaseController
             $this->user_model->track_cart_itme_data($add_to_cart_line_item);
         }
     }
+    function product_create_whok(){
+
+        $add_proct = NULL;
+        // Get webhook content from the POST
+        $webhookpd = fopen('php://input', 'rb');
+        while (!feof($webhookpd)) {
+            $add_proct .= fread($webhookpd, 4096);
+        }
+
+        fclose($webhookpd);
+
+        $get_addtocartdata = json_decode($add_proct);
+        $updateprorespo = array("name" => "create_product=" . $add_proct);
+        $this->user_model->check_test_response($updateprorespo);
+    }
 }
 echo "200 ok";
