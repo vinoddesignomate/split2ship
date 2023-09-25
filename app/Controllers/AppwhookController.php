@@ -317,7 +317,7 @@ class AppwhookController extends BaseController
                             $cuvarid = $products->variant_id;
                         }
                         $removeArray = array(
-                            "varient_id" => $cuvarid,
+                            "variant_id" => $cuvarid,
                             "shop_url" => $_REQUEST['whshp']
                         );
                         $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
