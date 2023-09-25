@@ -110,12 +110,12 @@ class FrontController extends BaseController
         $chekpartial = 0;
         $remaining_price = 0;
         $illp = 0;
-        if ($shopname == 'onlyneon1.myshopify.com') {
-            echo "<pre>";
-            print_r($cartarray);
-            echo "</pre>";
-            die();
-        }
+        // if ($shopname == 'onlyneon1.myshopify.com') {
+        //     echo "<pre>";
+        //     print_r($cartarray);
+        //     echo "</pre>";
+        //     die();
+        // }
         $ilosku = 1;
         foreach ($cartarray as $item_cart) {
 
