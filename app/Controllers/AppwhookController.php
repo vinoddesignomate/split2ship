@@ -310,7 +310,7 @@ class AppwhookController extends BaseController
                         if (isset($products->properties[1]->value)) {
                             $cuvarid = $products->properties[1]->value;
                         } else {
-                            $cuvarid = $products->id;
+                            $cuvarid = $products->variant_id;
                         }
                         $removeArray = array(
                             "varient_id" => $cuvarid,
