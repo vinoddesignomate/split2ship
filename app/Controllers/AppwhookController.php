@@ -1411,7 +1411,7 @@ class AppwhookController extends BaseController
         $updateprorespo = array("name" => "create_product=" . $add_proct);
         $this->user_model->check_test_response($updateprorespo);
 
-         $log_filename = "log";
+         $log_filename = "writable/whlogslgs";
         // $log_msg = $resp;
         if (!file_exists($log_filename)) {
 
