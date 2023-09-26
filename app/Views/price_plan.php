@@ -205,11 +205,17 @@ $store_name = $shop_name[0];
     function showPopup() {
         var popup = document.getElementById("popup");
         popup.style.display = "block";
+        var body = document.body;
+        body.classList.add("package_popup_visible");
+
     }
 
     // Function to hide the popup
     function hidePopup() {
         var popup = document.getElementById("popup");
         popup.style.display = "none";
+        var body = document.body;
+        // Remove the class from the body element
+        body.classList.remove("package_popup_visible");
     }
 </script>
