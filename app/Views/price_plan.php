@@ -49,9 +49,11 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                    <?php /*if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { */?>
+                    <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">popup</a>
+                    <?php } ?>
 
-                        <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status =='active')) { ?>
+                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
                         <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                     <?php } else { ?>
                         <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
@@ -83,7 +85,7 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status =='active')) { ?>
+                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?>
                         <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
 
                     <?php } else { ?>
@@ -118,7 +120,7 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                     <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status =='active')) { ?>
+                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?>
                         <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                     <?php } else { ?>
                         <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
@@ -151,7 +153,7 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->plan_status =='active')) { ?>
+                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->plan_status == 'active')) { ?>
 
                         <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                     <?php } else { ?>
