@@ -61,11 +61,11 @@ class AppwhookController extends BaseController
         $trackarray = array(
             "shop_url" => $shop_header,
             "sync_orders_count" => 0,
-            "updated_sync_orders_count" => 0,
+            //"updated_sync_orders_count" => 0,
             "total_products_partial" => 0,
-            "updated_products_partial" => 0,
+           // "updated_products_partial" => 0,
             "plan_status" => 'deactivate',
-            "plan_validity" =>  date('Y-m-d', strtotime('-1 day'))
+           // "plan_validity" =>  date('Y-m-d', strtotime('-1 day'))
 
         );
         $userModel->deactivate_price_plane($trackarray);
