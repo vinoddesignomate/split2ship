@@ -21,12 +21,13 @@ $store_name = $shop_name[0];
     /* Styling for the popup container */
     .popup-container {
         display: none;
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: 50%;
         left: 0;
         width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
+        height: auto;
+        max-width: 600px;
+        transform: translateX(50%);
         align-items: center;
         justify-content: center;
     }
