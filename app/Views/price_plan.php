@@ -19,9 +19,12 @@ $store_name = $shop_name[0];
 <!-- main area -->
 <style>
     /* Styling for the popup container */
+    body.price-plan.package_popup_visible {
+    overflow-y: hidden;position: relative;
+}
     .popup-container {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 50%;
         left:50%;
         width: 100%;
@@ -31,14 +34,15 @@ $store_name = $shop_name[0];
         align-items: center;
         justify-content: center;
         z-index: 999;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
     }
 
     /* Styling for the popup content */
     .popup-content {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+       
         text-align: center;
     }
 
@@ -64,9 +68,7 @@ $store_name = $shop_name[0];
         z-index: 111;
     }
     .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button{margin-bottom: 13px;}
-    body.price-plan.package_popup_visible {
-    overflow-y: hidden;
-}
+   
 </style>
 
 <div id="popup" class="popup-container">
