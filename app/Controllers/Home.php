@@ -120,51 +120,61 @@ class Home extends BaseController
                     // print_r($this->request->getPost());
                     // echo view('templates/footer');
                     // die();
+                    //$this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
                     if (!empty($this->request->getPost('assign_pro'))) {
                         $total_synproduct = count($this->request->getPost('assign_pro'));
-                        if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
-                            foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
+                        // if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
+                        if (!empty($get_updated_plan)) {
+                            if ($get_details->total_sync_store_products < $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc']) {
+                                foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
 
-                                //  echo "product_id" . $product_id;
+                                    //  echo "product_id" . $product_id;
 
-                                $collid = $_GET['collectionparms'];
-                                if (isset($get_stored_percentage[$collid])) {
-                                    $col_pergs = $get_stored_percentage[$collid]['percentage'];
-                                } else {
-                                    $col_pergs = 10;
-                                }
+                                    $collid = $_GET['collectionparms'];
+                                    if (isset($get_stored_percentage[$collid])) {
+                                        $col_pergs = $get_stored_percentage[$collid]['percentage'];
+                                    } else {
+                                        $col_pergs = 10;
+                                    }
 
-                                $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                                $product_details = json_decode($get_single_pro['body'], true);
-                                // echo "<pre>"; print_r($product_details['product']['variants']); echo"</pre>";
+                                    $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                                    $product_details = json_decode($get_single_pro['body'], true);
+                                    // echo "<pre>"; print_r($product_details['product']['variants']); echo"</pre>";
 
-                                $product_array = array(
-                                    "product_id" => $product_id,
-                                    "product_title" => $product_details['product']['title'],
-                                    "shop_url" => $_GET['shop'],
-                                    "partial_percentage" => $col_pergs,
-                                    "add_date" => date('Y-m-d')
-                                );
-                                $this->user_model->add_partial_products($product_array);
-
-                                foreach ($product_details['product']['variants'] as $produc_varaien) {
                                     $product_array = array(
-                                        "product_id" => $produc_varaien['product_id'],
-                                        "varient_id" => $produc_varaien['id'],
-                                        "title" => $produc_varaien['title'],
-                                        "price" => $produc_varaien['price'],
+                                        "product_id" => $product_id,
+                                        "product_title" => $product_details['product']['title'],
+                                        "shop_url" => $_GET['shop'],
                                         "partial_percentage" => $col_pergs,
-                                        "shop_url" => $_GET['shop']
+                                        "add_date" => date('Y-m-d')
                                     );
-                                    $this->user_model->add_partial_products_varient($product_array);
+                                    $this->user_model->add_partial_products($product_array);
+
+                                    foreach ($product_details['product']['variants'] as $produc_varaien) {
+                                        $product_array = array(
+                                            "product_id" => $produc_varaien['product_id'],
+                                            "varient_id" => $produc_varaien['id'],
+                                            "title" => $produc_varaien['title'],
+                                            "price" => $produc_varaien['price'],
+                                            "partial_percentage" => $col_pergs,
+                                            "shop_url" => $_GET['shop']
+                                        );
+                                        $this->user_model->add_partial_products_varient($product_array);
+                                    }
                                 }
+                                $update_latest = array(
+                                    "latest_count" => $total_synproduct,
+                                    "shop_url" => $_GET['shop']
+                                );
+                                $this->user_model->track_lates_records($update_latest);
+                                $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
+                            } else {
+                                echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+                                //track upgrade message if merchants owner used all products quota for partial add products               
+                                $this->user_model->update_data($_GET['shop'], array(
+                                    "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+                                ));
                             }
-                            $update_latest = array(
-                                "latest_count" => $total_synproduct,
-                                "shop_url" => $_GET['shop']
-                            );
-                            $this->user_model->track_lates_records($update_latest);
-                            $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
                         } else {
                             echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
                             //track upgrade message if merchants owner used all products quota for partial add products               
@@ -530,53 +540,62 @@ class Home extends BaseController
             //    echo count($this->request->getPost('assign_pro')); die();
             if (!empty($this->request->getPost('assign_pro'))) {
                 $total_synproduct = count($this->request->getPost('assign_pro'));
-                if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
-                    foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
+                if (!empty($get_updated_plan)) {
+                    //if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
+                    if ($get_details->total_sync_store_products < $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc']) {
+                        foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
 
-                        //  echo "product_id" . $product_id;
-                        $get_stored_percentage = $this->user_model->get_collection_percentage($_GET['shop']);
-                        $collid = $_GET['collectionparms'];
-                        if (isset($get_stored_percentage[$collid])) {
-                            $col_pergs = $get_stored_percentage[$collid]['percentage'];
-                        } else {
-                            $col_pergs = 10;
-                        }
+                            //  echo "product_id" . $product_id;
+                            $get_stored_percentage = $this->user_model->get_collection_percentage($_GET['shop']);
+                            $collid = $_GET['collectionparms'];
+                            if (isset($get_stored_percentage[$collid])) {
+                                $col_pergs = $get_stored_percentage[$collid]['percentage'];
+                            } else {
+                                $col_pergs = 10;
+                            }
 
-                        $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                        $product_details = json_decode($get_single_pro['body'], true);
-                        // echo "<pre>"; print_r($product_details['product']['variants']); echo"</pre>";
+                            $get_single_pro = $this->common->rest_api('/admin/api/2022-10/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                            $product_details = json_decode($get_single_pro['body'], true);
+                            // echo "<pre>"; print_r($product_details['product']['variants']); echo"</pre>";
 
-                        $product_array = array(
-                            "product_id" => $product_id,
-                            "product_title" => $product_details['product']['title'],
-                            "shop_url" => $_GET['shop'],
-                            "partial_percentage" => $col_pergs,
-                            "add_date" => date('Y-m-d'),
-                            "collection_id" => $collid
-                        );
-                        $this->user_model->add_partial_products($product_array);
-
-                        foreach ($product_details['product']['variants'] as $produc_varaien) {
                             $product_array = array(
-                                "product_id" => $produc_varaien['product_id'],
-                                "varient_id" => $produc_varaien['id'],
-                                "title" => $produc_varaien['title'],
-                                "price" => $produc_varaien['price'],
-                                "partial_percentage" => $col_pergs,
+                                "product_id" => $product_id,
+                                "product_title" => $product_details['product']['title'],
                                 "shop_url" => $_GET['shop'],
+                                "partial_percentage" => $col_pergs,
+                                "add_date" => date('Y-m-d'),
                                 "collection_id" => $collid
                             );
-                            $this->user_model->add_partial_products_varient($product_array);
-                        }
-                    }
-                    $update_latest = array(
-                        "latest_count" => $total_synproduct,
-                        "shop_url" => $_GET['shop']
-                    );
-                    $this->user_model->track_lates_records($update_latest);
+                            $this->user_model->add_partial_products($product_array);
 
-                    $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
-                    echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-latest-products-list'</script>";
+                            foreach ($product_details['product']['variants'] as $produc_varaien) {
+                                $product_array = array(
+                                    "product_id" => $produc_varaien['product_id'],
+                                    "varient_id" => $produc_varaien['id'],
+                                    "title" => $produc_varaien['title'],
+                                    "price" => $produc_varaien['price'],
+                                    "partial_percentage" => $col_pergs,
+                                    "shop_url" => $_GET['shop'],
+                                    "collection_id" => $collid
+                                );
+                                $this->user_model->add_partial_products_varient($product_array);
+                            }
+                        }
+                        $update_latest = array(
+                            "latest_count" => $total_synproduct,
+                            "shop_url" => $_GET['shop']
+                        );
+                        $this->user_model->track_lates_records($update_latest);
+
+                        $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
+                        echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-latest-products-list'</script>";
+                    } else {
+                        echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+
+                        // $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
+                        // echo view('templates/apbrdgnew', $data);
+
+                    }
                 } else {
                     echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
 
@@ -1905,9 +1924,9 @@ class Home extends BaseController
         $data = array();
         $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
         $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            //$this->user_model->get_all_shops();
-        }
+        //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //$this->user_model->get_all_shops();
+        //}
         echo view('templates/header');
         echo view('price_plan', $data);
         echo view('templates/footer');
