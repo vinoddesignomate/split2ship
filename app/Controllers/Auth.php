@@ -153,7 +153,7 @@ class Auth extends BaseController
 				"shop_url" => $_GET['shop'],
 				"movement" => date('Y-m-d')
 			);
-			$this->user_model->insert_addcart_webhooks($webhookarray);
+			$userModel->insert_addcart_webhooks($webhookarray);
 
 
 			//order create webhook
