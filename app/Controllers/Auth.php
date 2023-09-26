@@ -37,7 +37,7 @@ class Auth extends BaseController
 		$userModel = new UserModel();
 		//$api_key = '3bd84db3e14a8028efd6afb20789f1a9';
 		$api_key = 'a47ead69b3d83a8042703f093f3cadb2';
-		
+
 		//$secret_key = '72c81202c02a79b664d7e6192f7a4f0f';
 		$secret_key = 'ad3c6cab211965d40f051f41205225c3';
 		$parameters = $_GET;
@@ -71,26 +71,26 @@ class Auth extends BaseController
 			//echo"<pre>"; print_r($response); echo"</pre>"; 
 			//die();
 
-			if(isset($response['expires_in'])){
+			if (isset($response['expires_in'])) {
 				$response['expires_in'] = $response['expires_in'];
-			}else {
-				$response['expires_in']="";
+			} else {
+				$response['expires_in'] = "";
 			}
-			if(isset($response['scope'])){
+			if (isset($response['scope'])) {
 				$response['scope'] = $response['scope'];
-			}else {
-				$response['scope']="";
+			} else {
+				$response['scope'] = "";
 			}
 
-			if(isset($response['access_token'])){
+			if (isset($response['access_token'])) {
 				$response['access_token'] = $response['access_token'];
-			}else {
-				$response['access_token']="";
+			} else {
+				$response['access_token'] = "";
 			}
-			if(isset($response['scope'])){
+			if (isset($response['scope'])) {
 				$response['scope'] = $response['scope'];
-			}else {
-				$response['scope']="";
+			} else {
+				$response['scope'] = "";
 			}
 
 			$countrows = $userModel->checktokens($parameters['shop']);
@@ -113,20 +113,20 @@ class Auth extends BaseController
 					"store_status" => 1
 				));
 
-    
+
 
 
 				//install js lib file
 			} else {
-				if(isset($response['expires_in'])){
+				if (isset($response['expires_in'])) {
 					$response['expires_in'] = $response['expires_in'];
-				}else {
-					$response['expires_in']="";
+				} else {
+					$response['expires_in'] = "";
 				}
-				if(isset($response['associated_user_scope'])){
+				if (isset($response['associated_user_scope'])) {
 					$response['associated_user_scope'] = $response['associated_user_scope'];
-				}else {
-					$response['associated_user_scope']="";
+				} else {
+					$response['associated_user_scope'] = "";
 				}
 				$userId = $userModel->update_data($parameters['shop'], array(
 					"access_token" => $response['access_token'],
@@ -143,25 +143,33 @@ class Auth extends BaseController
 
 
 
-			      
+
 
 			//update cart webhook
 			$this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
+			$webhookarray = array(
+				"webhook_name" => 'cart_update',
+				"shop_url" => $_GET['shop'],
+				"movement" => date('Y-m-d')
+			);
+			$this->user_model->insert_addcart_webhooks($webhookarray);
+
+
 			//order create webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/create", "address" => 'https://app.payxnowandrestondelivery.com/syncallorders?whshp='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/create", "address" => 'https://app.payxnowandrestondelivery.com/syncallorders?whshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			//Product Update webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			//order paid webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/paidordernotify?shpname='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/paidordernotify?shpname=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			// app uninstalled webhook 
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "app/uninstalled", "address" => 'https://app.payxnowandrestondelivery.com/cleanup_app?cleanshop='.$_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "app/uninstalled", "address" => 'https://app.payxnowandrestondelivery.com/cleanup_app?cleanshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 			//$register_webhookset = json_decode($register_webhook['body'], true);
 
@@ -184,7 +192,7 @@ class Auth extends BaseController
 			$plan_details = $userModel->get_store_plane($_GET['shop']);
 			// echo"<pre>"; print_r($plan_details); echo"</pre>";
 			// die();
-			if (empty($plan_details)){
+			if (empty($plan_details)) {
 				$plane_start_date = date('Y-m-d');
 				$plane_start_endate = date('Y-m-d', strtotime('+30 days'));
 				$trackarray = array(
@@ -208,7 +216,7 @@ class Auth extends BaseController
 			echo "<script>top.window.location='https://admin.shopify.com/store/" . $auth_store_name . "/apps/pay-x-now-rest-on-delivery'</script>";
 			// $data = array();
 			// $data['pricurl'] = "https://admin.shopify.com/store/" . $auth_store_name . "/apps/pay-x-now-rest-on-delivery";
-            // echo view('templates/apbrdgnew', $data);
+			// echo view('templates/apbrdgnew', $data);
 
 		} else {
 			echo "it is not comming from shopify";

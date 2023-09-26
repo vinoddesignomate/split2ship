@@ -868,4 +868,8 @@ class UserModel extends Model
             return  $qbuilder->insert($product_array);
         }
     }
+    public function remove_update_cart_whook($shopiurl){
+        $delete_update_cart_webhook = "DELETE FROM track_new_webhook WHERE shop_url=?";
+        $this->db->query($delete_update_cart_webhook, array($shopiurl));
+    }
 }

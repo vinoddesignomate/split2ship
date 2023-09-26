@@ -69,6 +69,7 @@ class AppwhookController extends BaseController
 
         );
         $userModel->deactivate_price_plane($trackarray);
+        $userModel->remove_update_cart_whook($shop_header); //remove update cart whook evenet from db
         $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
         $userModel->check_test_response($resposne_array);
         echo "200 ok";
