@@ -20,34 +20,40 @@ $store_name = $shop_name[0];
 <style>
     /* Styling for the popup container */
     body.price-plan.package_popup_visible {
-    overflow-y: hidden;position: relative;
-}
+        overflow-y: hidden;
+        position: relative;
+    }
+
     .popup-container {
         display: none;
         position: fixed;
         top: 50%;
-        left:50%;
+        left: 50%;
         width: 100%;
         height: auto;
-       max-width:400px;
-        transform: translate(-50%,-50%);
+        max-width: 400px;
+        transform: translate(-50%, -50%);
         align-items: center;
         justify-content: center;
-        z-index: 999;padding: 0px 15px;
-        
+        z-index: 999;
+        padding: 0px 15px;
+
     }
 
     /* Styling for the popup content */
     .popup-content p {
-    font-size: 18px;
-    line-height: 130%;
-}
+        font-size: 18px;
+        line-height: 130%;
+    }
+
     .popup-content {
-       
-        text-align: center;box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         background-color: #fff;
         padding: 50px 20px;
-        border-radius: 5px; max-width: 400px;
+        border-radius: 5px;
+        max-width: 400px;
     }
 
     .payxnowandrestondelivery-close-popup-btn {
@@ -71,17 +77,22 @@ $store_name = $shop_name[0];
         left: 0;
         z-index: 111;
     }
-    .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button{margin-bottom: 13px;}
-    @media screen and (max-width:610px){
-        .payxnowandrestondelivery-close-popup-btn{right:12px}
+
+    .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
+        margin-bottom: 13px;
     }
-   
+
+    @media screen and (max-width:610px) {
+        .payxnowandrestondelivery-close-popup-btn {
+            right: 12px
+        }
+    }
 </style>
 
 <div id="popup" class="popup-container">
     <div class="popup-content">
         <!-- <h2>Hello, this is a message!</h2> -->
-        <p>You need to keep only 200 products in partial list for activating this plan.</p>
+        <p id="plmsg"></p>
         <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
     </div>
 </div>
@@ -116,17 +127,19 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                    <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                        <a href="javascript:void(0);" onclick="showPopup()" class="payxnowandrestondelivery-button">popup</a>
-                    <?php }
-                    // if($get_details_store->total_sync_store_products < 200)
-                    ?>
 
-                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
-                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                    <?php } else { ?>
-                        <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
-                    <?php } ?>
+
+                    <?php
+                    if ($get_details_store->total_sync_store_products <= 200) {                    ?>
+
+                        <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
+                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                        <?php } else { ?>
+                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
+                        <?php }
+                    } else { ?>
+                        <a href="javascript:void(0);" onclick="showPopup('basic')" class="payxnowandrestondelivery-button">Buy</a>
+                    <?php  } ?>
                 </div>
             </div>
             <div class="payxnowandrestondelivery-pricing-col">
@@ -238,11 +251,22 @@ $store_name = $shop_name[0];
     var ship_provder = '';
 
     // Function to show the popup
-    function showPopup() {
+    function showPopup(planename) {
         var popup = document.getElementById("popup");
         popup.style.display = "block";
         var body = document.body;
         body.classList.add("package_popup_visible");
+        var plnmsg = "";
+        if (planename === 'basic') {
+            plnmsg = "You need to keep only 200 products in partial list for activating this plan.";
+        } else if (planename === 'advanced') {
+            plnmsg = "You need to keep only 2000 products in partial list for activating this plan.";
+        } else if (planename === 'pro') {
+            plnmsg = "You need to keep only 5000 products in partial list for activating this plan.";
+        } else if (planename === 'ultimate') {
+            plnmsg = "You need to keep only 10000 products in partial list for activating this plan.";
+        }
+        $("#plmsg").html(plnmsg);
 
     }
 
