@@ -1936,7 +1936,7 @@ class Home extends BaseController
                 $stype = "";
             }
             try {
-                if (!empty($plan_details)) {
+                /*if (!empty($plan_details)) {
                     if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->plan_validity > date('Y-m-d')) {
                         $oldprice = $plan_details[0]->plan_price;
                         $old_plane_name = $plan_details[0]->plan_name;
@@ -1971,7 +1971,8 @@ class Home extends BaseController
                     }
                 } else {
                     $finalprice = $plane_price;
-                }
+                }*/
+                $finalprice = $plane_price;
                 $get_subscribe = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges.json', array("recurring_application_charge" => array("name" => $plane_name, "price" => $finalprice, "return_url" => 'https://admin.shopify.com/store/' . $this->shope_name . '/apps/pay-x-now-rest-on-delivery/return_url?shop=' . $_GET['shop'] . '&planname=' . $_GET['plan'] . $stype . '', "test" => null, "trial_days" => 0)), 'POST', $get_details->access_token, $_GET['shop']);
 
 
