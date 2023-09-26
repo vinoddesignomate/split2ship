@@ -40,6 +40,7 @@ $store_name = $shop_name[0];
         text-align: center;
     }
 </style>
+
 <div id="popup" class="popup-container">
     <div class="popup-content">
         <h2>Hello, this is a message!</h2>
@@ -47,6 +48,7 @@ $store_name = $shop_name[0];
         <button onclick="hidePopup()">Close</button>
     </div>
 </div>
+
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-area">
         <div class="payxnowandrestondelivery-head-wrapper">
