@@ -889,7 +889,9 @@ class UserModel extends Model
             echo"<pre>"; print_r($allshop); echo "</pre>";
             $get_allsyncproducts = $this->db->query("SELECT count(*) as totalpro FROM `app_partial_products` WHERE `shop_url`='".$allshop->shop_url."'");
             
-            echo"tot<pre>"; print_r($get_allsyncproducts->getResult()); echo "</pre>";
+            $gettotl = $get_allsyncproducts->getResult();
+            echo "UPDATE ppa_store_token SET total_sync_store_products='".$gettotl[0]->totalpro."' WHERE `shop_url`='".$allshop->shop_url."'";
+            $this->db->query("UPDATE ppa_store_token SET total_sync_store_products='".$gettotl[0]->totalpro."' WHERE `shop_url`='".$allshop->shop_url."'");
             
         }
     }
