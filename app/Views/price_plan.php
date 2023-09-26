@@ -17,8 +17,36 @@ $store_name = $shop_name[0];
 </div>
 <!-- main-head ends -->
 <!-- main area -->
+<style>
+    /* Styling for the popup container */
+    .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        align-items: center;
+        justify-content: center;
+    }
 
-
+    /* Styling for the popup content */
+    .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+</style>
+<div id="popup" class="popup-container">
+    <div class="popup-content">
+        <h2>Hello, this is a message!</h2>
+        <p>This is a simple message popup.</p>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+</div>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-area">
         <div class="payxnowandrestondelivery-head-wrapper">
@@ -50,8 +78,10 @@ $store_name = $shop_name[0];
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
                     <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">popup</a>
-                    <?php } ?>
+                        <a href="javascript:void(0);" onclick="showPopup()" class="payxnowandrestondelivery-button">popup</a>
+                    <?php }
+                    // if($get_details_store->total_sync_store_products < 200)
+                    ?>
 
                     <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
                         <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
@@ -167,4 +197,16 @@ $store_name = $shop_name[0];
 </div>
 <script>
     var ship_provder = '';
+
+    // Function to show the popup
+    function showPopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
+    }
+
+    // Function to hide the popup
+    function hidePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+    }
 </script>
