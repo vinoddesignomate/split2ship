@@ -1906,7 +1906,7 @@ class Home extends BaseController
         $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
         $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
         if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->user_model->get_all_shops();
+            //$this->user_model->get_all_shops();
         }
         echo view('templates/header');
         echo view('price_plan', $data);
