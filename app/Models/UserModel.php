@@ -883,4 +883,10 @@ class UserModel extends Model
         $delete_update_cart_webhook = "DELETE FROM track_new_webhook WHERE shop_url=?";
         $this->db->query($delete_update_cart_webhook, array($shopiurl));
     }
+    public function get_all_shops(){
+        $get_all_shops = $this->db->query("SELECT * FROM ppa_store_token");
+        foreach($get_all_shops->getResult() as $allshop){
+            echo"<pre>"; print_r($allshop); echo "</pre>";
+        }
+    }
 }

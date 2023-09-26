@@ -130,9 +130,8 @@ $store_name = $shop_name[0];
 
 
                     <?php
-                    if ($get_details_store->total_sync_store_products <= 200) {                    ?>
-
-                        <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
+                    if ($get_details_store->total_sync_store_products <= 200) {
+                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
                             <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                         <?php } else { ?>
                             <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
@@ -167,12 +166,17 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?>
-                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                    <?php
+                    if ($get_details_store->total_sync_store_products <= 2000) {
+                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?>
+                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
 
-                    <?php } else { ?>
-                        <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
-                    <?php } ?>
+                        <?php } else { ?>
+                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
+                        <?php }
+                    } else { ?>
+                        <a href="javascript:void(0);" onclick="showPopup('advanced')" class="payxnowandrestondelivery-button">Buy</a>
+                    <?php  } ?>
                 </div>
             </div>
 
@@ -202,11 +206,16 @@ $store_name = $shop_name[0];
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
-                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?>
-                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                    <?php } else { ?>
-                        <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
-                    <?php } ?>
+                    <?php
+                    if ($get_details_store->total_sync_store_products <= 5000) {
+                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?>
+                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                        <?php } else { ?>
+                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
+                        <?php }
+                    } else { ?>
+                        <a href="javascript:void(0);" onclick="showPopup('pro')" class="payxnowandrestondelivery-button">Buy</a>
+                    <?php  } ?>
 
                 </div>
             </div>
