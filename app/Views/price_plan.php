@@ -30,6 +30,7 @@ $store_name = $shop_name[0];
         transform: translateX(50%);
         align-items: center;
         justify-content: center;
+        z-index: 999;
     }
 
     /* Styling for the popup content */
@@ -62,6 +63,7 @@ $store_name = $shop_name[0];
         left: 0;
         z-index: 111;
     }
+    .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button{margin-bottom: 13px;}
 </style>
 
 <div id="popup" class="popup-container">
