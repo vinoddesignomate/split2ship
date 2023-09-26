@@ -29,27 +29,27 @@ $store_name = $shop_name[0];
         left:50%;
         width: 100%;
         height: auto;
-        max-width: 600px;
+       
         transform: translate(-50%,-50%);
         align-items: center;
         justify-content: center;
-        z-index: 999;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
+        z-index: 999;padding: 0px 15px;
+        
     }
 
     /* Styling for the popup content */
     .popup-content {
        
-        text-align: center;
+        text-align: center;box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px; max-width: 600px;
     }
 
     .payxnowandrestondelivery-close-popup-btn {
         position: absolute;
         top: -7px;
-        right: -11px;
+        right: 0px;
         background-color: #10277c;
         color: #fff;
         border-radius: 50%;
@@ -68,6 +68,9 @@ $store_name = $shop_name[0];
         z-index: 111;
     }
     .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button{margin-bottom: 13px;}
+    @media screen and (max-width:610px){
+        .payxnowandrestondelivery-close-popup-btn{right:12px}
+    }
    
 </style>
 
