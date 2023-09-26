@@ -29,7 +29,7 @@ $store_name = $shop_name[0];
         left:50%;
         width: 100%;
         height: auto;
-       
+       max-width: 600px;
         transform: translate(-50%,-50%);
         align-items: center;
         justify-content: center;
