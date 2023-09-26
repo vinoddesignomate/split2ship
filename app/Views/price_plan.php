@@ -64,6 +64,9 @@ $store_name = $shop_name[0];
         z-index: 111;
     }
     .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button{margin-bottom: 13px;}
+    body.price-plan.package_popup_visible {
+    overflow-y: hidden;
+}
 </style>
 
 <div id="popup" class="popup-container">
