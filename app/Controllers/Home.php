@@ -2046,8 +2046,12 @@ class Home extends BaseController
 
         $get_subscribe_list = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges/' . $_REQUEST['charge_id'] . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-
+        
         $get_status = json_decode($get_subscribe_list['body'], true);
+        if($_GET['shop'] == 'desinomatetest.myshopify.com'){
+            echo"<pre>"; print_r($get_status); echo "</pre>";
+            die();
+        }
         $plane_start_date = date('Y-m-d');
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $firsttimevalidity = $this->plane_details[$_REQUEST['planname']]['validity'] + 7;
