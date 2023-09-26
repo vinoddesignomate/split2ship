@@ -68,8 +68,8 @@ $store_name = $shop_name[0];
 
 <div id="popup" class="popup-container">
     <div class="popup-content">
-        <h2>Hello, this is a message!</h2>
-        <p>This is a simple message popup.</p>
+        <!-- <h2>Hello, this is a message!</h2> -->
+        <p>You need to keep only 200 products in partial list for activating this plan.</p>
         <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
     </div>
 </div>
