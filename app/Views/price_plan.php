@@ -40,13 +40,35 @@ $store_name = $shop_name[0];
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         text-align: center;
     }
+
+    .payxnowandrestondelivery-close-popup-btn {
+        position: absolute;
+        top: -7px;
+        right: -11px;
+        background-color: #10277c;
+        color: #fff;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+    }
+
+    body.package_popup_visible:after {
+        content: '';
+        position: fixed;
+        background-color: #0000008a;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 111;
+    }
 </style>
 
 <div id="popup" class="popup-container">
     <div class="popup-content">
         <h2>Hello, this is a message!</h2>
         <p>This is a simple message popup.</p>
-        <button onclick="hidePopup()">Close</button>
+        <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
     </div>
 </div>
 
