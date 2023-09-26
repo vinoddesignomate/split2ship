@@ -628,12 +628,20 @@ class UserModel extends Model
     {
         $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial-" . $updatec . " WHERE shop_url=?";
         $this->db->query($updatests, array($shop_url));
+
+        //update total partial product count in main store db table
+        $update_total_par_product_count = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products + " . $updatec . " WHERE shop_url=?";
+        $this->db->query($update_total_par_product_count, array($shop_url));
     }
 
     public function update_plan_products_remove_part($shop_url)
     {
         $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial+1 WHERE shop_url=?";
         $this->db->query($updatests, array($shop_url));
+
+        //update total partial product count in main store db table
+        $update_total_par_product_count_remove = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products-1 WHERE shop_url=?";
+        $this->db->query($update_total_par_product_count_remove, array($shop_url));
     }
     public function testinsert()
     {
@@ -796,7 +804,6 @@ class UserModel extends Model
         $qbuilder->where('shop_url', $shop_url);
         $q = $qbuilder->get();
         return $q->getResult();
-         
     }
     public function track_cart_itme_data($add_to_cart_line_item)
     {
@@ -820,11 +827,13 @@ class UserModel extends Model
             return  $qbuilder->insert($add_to_cart_line_item);
         }
     }
-    public function remove_cart_item($add_to_cart_line_item){
-         $del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
-        $this->db->query($del_query, array($add_to_cart_line_item['shop_url'],$add_to_cart_line_item['cart_id']));
+    public function remove_cart_item($add_to_cart_line_item)
+    {
+        $del_query = "DELETE FROM add_cart_data_store WHERE shop_url=? AND cart_id=?";
+        $this->db->query($del_query, array($add_to_cart_line_item['shop_url'], $add_to_cart_line_item['cart_id']));
     }
-    public function get_cart_itme_based_on_token($getarra){
+    public function get_cart_itme_based_on_token($getarra)
+    {
         $cart_qbuilder = $this->db->table('add_cart_data_store');
         $cart_qbuilder->where('shop_url', $getarra['shop_url']);
         $cart_qbuilder->where('cart_id', $getarra['cart_id']);
@@ -835,22 +844,23 @@ class UserModel extends Model
     {
         $this->db->table('cron_run_track')->insert($data_array);
     }
-    public function remove_add_cart_data($removedata){
+    public function remove_add_cart_data($removedata)
+    {
         $del_addcartdata_query = "DELETE FROM add_cart_data_store WHERE variant_id=? AND shop_url=?";
-        $this->db->query($del_addcartdata_query, array($removedata['variant_id'],$removedata['shop_url']));
+        $this->db->query($del_addcartdata_query, array($removedata['variant_id'], $removedata['shop_url']));
 
         // $deleetproductby_varient = "DELETE FROM app_partial_products WHERE product_id = ( SELECT product_id FROM ppp_products_varient WHERE varient_id = ? LIMIT 0,1 )";
     }
-    public function remove_custom_product_partial($removedata){
+    public function remove_custom_product_partial($removedata)
+    {
 
         //remove products from partial list
         $deleetproductby_varient_products = "DELETE FROM app_partial_products WHERE product_id = ( SELECT product_id FROM ppp_products_varient WHERE varient_id = ? AND shop_url=? LIMIT 0,1 )";
-        $this->db->query($deleetproductby_varient_products, array($removedata['variant_id'],$removedata['shop_url']));
+        $this->db->query($deleetproductby_varient_products, array($removedata['variant_id'], $removedata['shop_url']));
 
         //remove varient from partial list
         $deleetproductby_varient = "DELETE FROM ppp_products_varient WHERE varient_id = ? AND shop_url=?";
-        $this->db->query($deleetproductby_varient, array($removedata['variant_id'],$removedata['shop_url']));
-
+        $this->db->query($deleetproductby_varient, array($removedata['variant_id'], $removedata['shop_url']));
     }
 
     public function add_partial_products_customonly($product_array)
@@ -868,7 +878,8 @@ class UserModel extends Model
             return  $qbuilder->insert($product_array);
         }
     }
-    public function remove_update_cart_whook($shopiurl){
+    public function remove_update_cart_whook($shopiurl)
+    {
         $delete_update_cart_webhook = "DELETE FROM track_new_webhook WHERE shop_url=?";
         $this->db->query($delete_update_cart_webhook, array($shopiurl));
     }

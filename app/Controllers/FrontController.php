@@ -24,7 +24,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
 
-        //$plan_details = $this->user_model->get_store_plan($shopname);
+        $plan_details = $this->user_model->get_store_plan($shopname);
 
         //     $get_details = $this->user_model->get_tokens($shopname);
         //     $products =  $products = $this->common->rest_api('/admin/api/2021-01/products.json', array(), 'GET', $get_details->access_token, $shopname);
@@ -56,38 +56,41 @@ class FrontController extends BaseController
         // $testrrffresponse = json_decode($new_response, true);
         // print_r($testrrffresponse);
 
-
-        if ($this->request->getPost('pid')) {
-            $condtion_array = array(
-                "product_id" => $this->request->getPost('pid'),
-                "varient_id" => $this->request->getPost('vid')
-            );
-        } else {
-            $condtion_array = array(
-                "varient_id" => $this->request->getPost('vid')
-            );
-        }
-        $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
-        $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-
-        if (!empty($get_resulrs)) {
-            if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
-
-                $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
-                $partperctg = $get_resulrs[0]->partial_percentage;
+        if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+            if ($this->request->getPost('pid')) {
+                $condtion_array = array(
+                    "product_id" => $this->request->getPost('pid'),
+                    "varient_id" => $this->request->getPost('vid')
+                );
             } else {
-                $propartialper = 0;
-                $partperctg = 0;
+                $condtion_array = array(
+                    "varient_id" => $this->request->getPost('vid')
+                );
             }
-            $return_array = array(
-                "full_price" => $get_resulrs[0]->price,
-                "pro_pack" => $partperctg,
-                "partial_price" => $propartialper,
-                "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
-                "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-            );
-            return json_encode($return_array);
+            $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
+            $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+
+            if (!empty($get_resulrs)) {
+                if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
+
+                    $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
+                    $partperctg = $get_resulrs[0]->partial_percentage;
+                } else {
+                    $propartialper = 0;
+                    $partperctg = 0;
+                }
+                $return_array = array(
+                    "full_price" => $get_resulrs[0]->price,
+                    "pro_pack" => $partperctg,
+                    "partial_price" => $propartialper,
+                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                );
+                return json_encode($return_array);
+            } else {
+                return 'not_found';
+            }
         } else {
             return 'not_found';
         }
@@ -303,7 +306,7 @@ class FrontController extends BaseController
         if (!empty($get_lates_colection)) { //check data empty or not  
 
             $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
-            if ($get_updated_plan[0]->updated_products_partial > 0) {
+            if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
                 $cron_limit_set = 50;
                 $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
                 //below block for get products first time from page 1
@@ -508,52 +511,54 @@ class FrontController extends BaseController
         //print_r($this->request->getPost());
         // $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         // $shopname = str_replace("http://", "", $shopname);
-        $setaray = array(
-            "cart_id" => $this->request->getPost('tokenid'),
-            "shop_url" => $this->request->getPost('shopname')
-        );
-        $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
 
+        $plan_details = $this->user_model->get_store_plan($this->request->getPost('shopname'));
+        if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+            $setaray = array(
+                "cart_id" => $this->request->getPost('tokenid'),
+                "shop_url" => $this->request->getPost('shopname')
+            );
+            $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
+            if (!empty($get_products)) {
+                $returnarray = array();
+                foreach ($get_products as $itmeprod) {
+                    if ($itmeprod->product_properties != "") {
+                        $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
 
-        if (!empty($get_products)) {
-            $returnarray = array();
-            foreach ($get_products as $itmeprod) {
-                if ($itmeprod->product_properties != "") {
-                    $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
+                        $proety_size_tems = array();
+                        foreach ($protiesdstrrrat as $key => $getprt) {
+                            //if ($key != "parma") {
+                            $proety_size_tems[$key] = $getprt;
+                            //}
+                            unset($proety_size_tems['PARTIAL_PAYMENT']);
+                        }
+                        $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
 
-                    $proety_size_tems = array();
-                    foreach ($protiesdstrrrat as $key => $getprt) {
-                        //if ($key != "parma") {
-                        $proety_size_tems[$key] = $getprt;
-                        //}
-                        unset($proety_size_tems['PARTIAL_PAYMENT']);
+                        $returnarray[] = array(
+                            "varient_id" => $itmeprod->variant_id,
+                            "product_id" => $itmeprod->product_id,
+                            "product_type" => $itmeprod->product_type,
+                            "partial_percentage" => $itmeprod->partial_percentage,
+                            "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
+                        );
+                    } else {
+                        $returnarray[] = array(
+                            "varient_id" => $itmeprod->variant_id,
+                            "product_id" => $itmeprod->product_id,
+                            "partial_percentage" => $itmeprod->partial_percentage,
+                            "product_type" => $itmeprod->product_type,
+                            "product_properties" => "", // If product_properties is empty
+                        );
                     }
-                    $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
-
-                    $returnarray[] = array(
-                        "varient_id" => $itmeprod->variant_id,
-                        "product_id" => $itmeprod->product_id,
-                        "product_type" => $itmeprod->product_type,
-                        "partial_percentage" => $itmeprod->partial_percentage,
-                        "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
-                    );
-                } else {
-                    $returnarray[] = array(
-                        "varient_id" => $itmeprod->variant_id,
-                        "product_id" => $itmeprod->product_id,
-                        "partial_percentage" => $itmeprod->partial_percentage,
-                        "product_type" => $itmeprod->product_type,
-                        "product_properties" => "", // If product_properties is empty
-                    );
                 }
+                return json_encode($returnarray);
             }
-            return json_encode($returnarray);
-        } 
-        
-        // else {
-        //     echo "not_found";
-        // }
-        //print_r($returnarray);
 
+            // else {
+            //     echo "not_found";
+            // }
+            //print_r($returnarray);
+
+        }
     }
 }

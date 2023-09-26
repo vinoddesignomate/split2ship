@@ -2047,12 +2047,19 @@ class Home extends BaseController
 
         $get_subscribe_list = $this->common->rest_api('/admin/api/2022-10/recurring_application_charges/' . $_REQUEST['charge_id'] . '.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-        
+
         $get_status = json_decode($get_subscribe_list['body'], true);
-        // if($_GET['shop'] == 'desinomatetest.myshopify.com'){
-        //     echo"<pre>"; print_r($get_status); echo "</pre>";
-        //     die();
-        // }
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            echo "<pre>";
+            print_r($get_status);
+            echo "</pre>";
+
+            echo "<pre>";
+            print_r($get_details);
+            echo "</pre>";
+
+            die();
+        }
         $plane_start_date = date('Y-m-d');
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $firsttimevalidity = $this->plane_details[$_REQUEST['planname']]['validity'] + 7;
@@ -2061,20 +2068,42 @@ class Home extends BaseController
             $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$_REQUEST['planname']]['validity'] . ' days'));
         }
 
+        $plan_details = $this->user_model->get_store_plan($_GET['shop']);
+        if ($get_details->total_sync_store_products != "") {
+            $update_order_count = $this->plane_details[$_REQUEST['planname']]['partial_product'] - $get_details->total_sync_store_products;
+        } else {
+            $update_order_count = $this->plane_details[$_REQUEST['planname']]['partial_product'];
+        }
+        if ($plan_details[0]->plan_name == $_REQUEST['planname'] && $plan_details[0]->plan_validity == $get_status['recurring_application_charge']['billing_on']) {
+            $update_data = array(
+                "shop_url" => $_GET['shop'],
+                "charged_id" => $_REQUEST['charge_id'],
+                "plan_status" => $get_status['recurring_application_charge']['status'],
+                "activate_date" => date('Y-m-d'),
+                "plan_name" => $_REQUEST['planname'],
+                "plan_price" => $this->plane_details[$_REQUEST['planname']]['price'],
+                "sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
+                //"updated_sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
+                "total_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
+                "updated_products_partial" => $update_order_count,
+                "plan_validity" => $get_status['recurring_application_charge']['billing_on']
+            );
+        } else {
+            $update_data = array(
+                "shop_url" => $_GET['shop'],
+                "charged_id" => $_REQUEST['charge_id'],
+                "plan_status" => $get_status['recurring_application_charge']['status'],
+                "activate_date" => date('Y-m-d'),
+                "plan_name" => $_REQUEST['planname'],
+                "plan_price" => $this->plane_details[$_REQUEST['planname']]['price'],
+                "sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
+                "updated_sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
+                "total_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
+                "updated_products_partial" => $update_order_count,
+                "plan_validity" => $get_status['recurring_application_charge']['billing_on']
+            );
+        }
 
-        $update_data = array(
-            "shop_url" => $_GET['shop'],
-            "charged_id" => $_REQUEST['charge_id'],
-            "plan_status" => $get_status['recurring_application_charge']['status'],
-            "activate_date" => date('Y-m-d'),
-            "plan_name" => $_REQUEST['planname'],
-            "plan_price" => $this->plane_details[$_REQUEST['planname']]['price'],
-            "sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
-            "updated_sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
-            "total_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
-            "updated_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
-            "plan_validity" => $get_status['recurring_application_charge']['billing_on']
-        );
         //echo"<pre>"; print_r($update_data); echo "</pre>";
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $this->user_model->track_store_subscribe($update_data);
