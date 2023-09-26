@@ -494,7 +494,7 @@ class Home extends BaseController
                             "updated_sync_orders_count" => $this->plane_details[$plan_details[0]->plan_name]['order_sunc'],
                             "total_products_partial" => $this->plane_details[$plan_details[0]->plan_name]['partial_product'],
                             "updated_products_partial" => $this->plane_details[$plan_details[0]->plan_name]['partial_product'],
-                            "plan_validity" => $plane_start_endate
+                            "plan_validity" => $get_register_webhookset['recurring_application_charge']['billing_on']
                         );
                         $this->user_model->track_store_subscribe($update_data);
                     } else {
@@ -2049,10 +2049,10 @@ class Home extends BaseController
 
         
         $get_status = json_decode($get_subscribe_list['body'], true);
-        if($_GET['shop'] == 'desinomatetest.myshopify.com'){
-            echo"<pre>"; print_r($get_status); echo "</pre>";
-            die();
-        }
+        // if($_GET['shop'] == 'desinomatetest.myshopify.com'){
+        //     echo"<pre>"; print_r($get_status); echo "</pre>";
+        //     die();
+        // }
         $plane_start_date = date('Y-m-d');
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $firsttimevalidity = $this->plane_details[$_REQUEST['planname']]['validity'] + 7;
@@ -2073,7 +2073,7 @@ class Home extends BaseController
             "updated_sync_orders_count" => $this->plane_details[$_REQUEST['planname']]['order_sunc'],
             "total_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
             "updated_products_partial" => $this->plane_details[$_REQUEST['planname']]['partial_product'],
-            "plan_validity" => $plane_start_endate
+            "plan_validity" => $get_status['recurring_application_charge']['billing_on']
         );
         //echo"<pre>"; print_r($update_data); echo "</pre>";
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
