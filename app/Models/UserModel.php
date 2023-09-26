@@ -884,7 +884,7 @@ class UserModel extends Model
         $this->db->query($delete_update_cart_webhook, array($shopiurl));
     }
     public function get_all_shops(){
-        $get_all_shops = $this->db->query("SELECT * FROM ppa_store_token LIMIT 20,20");
+        $get_all_shops = $this->db->query("SELECT * FROM ppa_store_token LIMIT 40,20");
         foreach($get_all_shops->getResult() as $allshop){
             echo"<pre>"; print_r($allshop); echo "</pre>";
             $get_allsyncproducts = $this->db->query("SELECT count(*) as totalpro FROM `app_partial_products` WHERE `shop_url`='".$allshop->shop_url."'");
