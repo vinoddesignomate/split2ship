@@ -897,7 +897,13 @@ class UserModel extends Model
     }
 
     public function get_all_stores_expiray_plan(){
-        $get_all_shops_exp = $this->db->query("SELECT * FROM ppa_subscribe_store WHERE plan_validity < '".date('Y-m-d')."' AND charged_id =!'' ");
+
+        // $tokenq = "SELECT * FROM ppa_subscribe_store WHERE token_expiray_date > ?";
+        // $get_roken_query = $this->db->query($tokenq, array(date('Y-m-d')));
+        // return $get_roken_query->getResult();
+
+
+        $get_all_shops_exp = $this->db->query("SELECT * FROM ppa_subscribe_store WHERE plan_validity < '".date('Y-m-d')."' AND charged_id !='' ");
         return $get_all_shops_exp->getResult();        
     }
 }
