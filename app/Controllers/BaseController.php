@@ -38,12 +38,32 @@ class BaseController extends Controller
      * @var array
      */
     protected $helpers = [];
-
+    protected $plane_details2;
     /**
      * Constructor.
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
+        $this->plane_details2 = array(
+            "advanced" => array(
+                "price" => 17.95,
+                "validity" => 30,
+                "order_sunc" => 200,
+                "partial_product" => 2000
+            ),
+            "pro" => array(
+                "price" => 30.95,
+                "validity" => 30,
+                "order_sunc" => 1000000,
+                "partial_product" => 5000
+            ),
+            "ultimate" => array(
+                "price" => 60.95,
+                "validity" => 30,
+                "order_sunc" => 1000000,
+                "partial_product" => 10000
+            )
+        );
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 

@@ -586,12 +586,12 @@ class FrontController extends BaseController
     }
     public function update_store_package_cron()
     {
-        $all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
+        //$all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
         echo "<pre>";
-        print_r($all_expiray_plnane);
+        print_r($this->plane_details2);
         echo "</pre>";
 
-        foreach ($all_expiray_plnane as $allshpal) {
+        /*foreach ($all_expiray_plnane as $allshpal) {
             $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
             $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
@@ -627,6 +627,6 @@ class FrontController extends BaseController
             "movement" => date('Y-m-d H:i')
         );
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
-        echo "done";
+        echo "done";*/
     }
 }
