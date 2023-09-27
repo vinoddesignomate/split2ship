@@ -609,7 +609,7 @@ class FrontController extends BaseController
 
 
                 $update_data = array(
-                    "shop_url" => $_GET['shop'],
+                    "shop_url" => $allshpal->shop_url,
                     "charged_id" => $get_register_webhookset['recurring_application_charge']['id'],
                     "plan_status" => $get_register_webhookset['recurring_application_charge']['status'],
                     "activate_date" => date('Y-m-d'),
