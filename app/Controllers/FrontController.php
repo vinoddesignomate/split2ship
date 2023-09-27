@@ -10,6 +10,7 @@ class FrontController extends BaseController
     protected $base;
     protected $front_model;
     protected $user_model;
+    protected $plane_details;
     function __construct()
     {
         header('Access-Control-Allow-Origin: *');
@@ -17,6 +18,27 @@ class FrontController extends BaseController
         $session = \Config\Services::session();
         //$this->front_model = new FrontModel();
         $this->user_model = new UserModel();
+
+        $this->plane_details = array(
+            "advanced" => array(
+                "price" => 17.95,
+                "validity" => 30,
+                "order_sunc" => 200,
+                "partial_product" => 2000
+            ),
+            "pro" => array(
+                "price" => 30.95,
+                "validity" => 30,
+                "order_sunc" => 1000000,
+                "partial_product" => 5000
+            ),
+            "ultimate" => array(
+                "price" => 60.95,
+                "validity" => 30,
+                "order_sunc" => 1000000,
+                "partial_product" => 10000
+            )
+        );
     }
     public function get_product_details()
     {
@@ -573,16 +595,38 @@ class FrontController extends BaseController
             $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
             $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
-            echo "get_register_webhookset<pre>";
-            print_r($get_register_webhookset);
-            echo "</pre>";
-       }
 
-        // $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30550786326.json', array(), 'GET', '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', '784baf.myshopify.com');
-        //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
-        //     echo "get_register_webhookset<pre>";
-        //     print_r($get_register_webhookset);
-        //     echo "</pre>";
+            if (isset($get_register_webhookset['recurring_application_charge']['status']) && $get_register_webhookset['recurring_application_charge']['status'] == 'active') {
+
+                $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$allshpal->plan_name]['validity'] . ' days'));
+
+                if ($allshpal->total_sync_store_products != "") {
+                    $update_order_count = $this->plane_details[$allshpal->plan_name]['partial_product'] - $allshpal->total_sync_store_products;
+                } else {
+                    $update_order_count = $this->plane_details[$allshpal->plan_name]['partial_product'];
+                }
+
+
+                $update_data = array(
+                    "shop_url" => $_GET['shop'],
+                    "charged_id" => $get_register_webhookset['recurring_application_charge']['id'],
+                    "plan_status" => $get_register_webhookset['recurring_application_charge']['status'],
+                    "activate_date" => date('Y-m-d'),
+                    "sync_orders_count" => $this->plane_details[$allshpal->plan_name]['order_sunc'],
+                    "updated_sync_orders_count" => $this->plane_details[$allshpal->plan_name]['order_sunc'],
+                    "total_products_partial" => $this->plane_details[$allshpal->plan_name]['partial_product'],
+                    "updated_products_partial" => $update_order_count,
+                    "plan_validity" => $get_register_webhookset['recurring_application_charge']['billing_on']
+                );
+                $this->user_model->track_store_subscribe($update_data);
+            }
+        }
+        $updateprorespo = array(
+            "name" => "run update package job=",
+            "movement" => date('Y-m-d H:i')
+        );
+        $this->user_model->check_cron_ruinning_stst($updateprorespo);
+        echo "done";
     }
 }

@@ -904,7 +904,7 @@ class UserModel extends Model
 
 
         $get_all_shops_exp = $this->db->query("
-                                    SELECT ppa_subscribe_store.*,ppa_store_token.access_token
+                                    SELECT ppa_subscribe_store.*,ppa_store_token.access_token,ppa_store_token.total_sync_store_products
                                     FROM ppa_subscribe_store
                                     INNER JOIN ppa_store_token
                                     ON ppa_store_token.shop_url = ppa_subscribe_store.shop_url

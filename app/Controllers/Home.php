@@ -499,6 +499,15 @@ class Home extends BaseController
                     if (isset($get_register_webhookset['recurring_application_charge']['status']) && $get_register_webhookset['recurring_application_charge']['status'] == 'active') {
 
                         $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$plan_details[0]->plan_name]['validity'] . ' days'));
+
+                        //$plan_details = $this->user_model->get_store_plan($_GET['shop']);
+                        if ($get_details->total_sync_store_products != "") {
+                            $update_order_count = $this->plane_details[$plan_details[0]->plan_name]['partial_product'] - $get_details->total_sync_store_products;
+                        } else {
+                            $update_order_count = $this->plane_details[$plan_details[0]->plan_name]['partial_product'];
+                        }
+
+
                         $update_data = array(
                             "shop_url" => $_GET['shop'],
                             "charged_id" => $get_register_webhookset['recurring_application_charge']['id'],
@@ -507,7 +516,7 @@ class Home extends BaseController
                             "sync_orders_count" => $this->plane_details[$plan_details[0]->plan_name]['order_sunc'],
                             "updated_sync_orders_count" => $this->plane_details[$plan_details[0]->plan_name]['order_sunc'],
                             "total_products_partial" => $this->plane_details[$plan_details[0]->plan_name]['partial_product'],
-                            "updated_products_partial" => $this->plane_details[$plan_details[0]->plan_name]['partial_product'],
+                            "updated_products_partial" => $update_order_count,
                             "plan_validity" => $get_register_webhookset['recurring_application_charge']['billing_on']
                         );
                         $this->user_model->track_store_subscribe($update_data);
