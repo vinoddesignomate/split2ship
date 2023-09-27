@@ -2304,6 +2304,7 @@ class Home extends BaseController
                 $this->user_model->update_data($get_details->shop_url, array(
                     "first_name" => $register_shop_info['shop']['shop_owner'],
                     "email" => $custemail,
+                    "total_sync_store_products" => 0
                 ));
             }
             $visitr_ipaddreess =  $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'];
