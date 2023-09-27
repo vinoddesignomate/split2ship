@@ -564,5 +564,6 @@ class FrontController extends BaseController
     }
     public function update_store_package_cron(){
         $all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
+        echo"<pre>"; print_r($all_expiray_plnane); echo "</pre>";
     }
 }
