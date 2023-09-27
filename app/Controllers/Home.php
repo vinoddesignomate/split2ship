@@ -7,7 +7,7 @@ use App\Libraries\Common; // Import library
 class Home extends BaseController
 {
     protected $shope_name;
-    protected $plane_details;
+
     function __construct()
     {
         // ob_start();
@@ -20,26 +20,7 @@ class Home extends BaseController
             //helper(['form', 'url']);
 
 
-            $this->plane_details = array(
-                "advanced" => array(
-                    "price" => 17.95,
-                    "validity" => 30,
-                    "order_sunc" => 200,
-                    "partial_product" => 2000
-                ),
-                "pro" => array(
-                    "price" => 30.95,
-                    "validity" => 30,
-                    "order_sunc" => 1000000,
-                    "partial_product" => 5000
-                ),
-                "ultimate" => array(
-                    "price" => 60.95,
-                    "validity" => 30,
-                    "order_sunc" => 1000000,
-                    "partial_product" => 10000
-                )
-            );
+            
             $shop_name = explode(".", $_REQUEST['shop']);
             $this->shope_name = $shop_name[0];
             $this->user_model = new UserModel();

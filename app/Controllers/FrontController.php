@@ -10,7 +10,7 @@ class FrontController extends BaseController
     protected $base;
     protected $front_model;
     protected $user_model;
-    protected $plane_details;
+ 
     function __construct()
     {
         header('Access-Control-Allow-Origin: *');
@@ -19,26 +19,7 @@ class FrontController extends BaseController
         //$this->front_model = new FrontModel();
         $this->user_model = new UserModel();
 
-        $this->plane_details = array(
-            "advanced" => array(
-                "price" => 17.95,
-                "validity" => 30,
-                "order_sunc" => 200,
-                "partial_product" => 2000
-            ),
-            "pro" => array(
-                "price" => 30.95,
-                "validity" => 30,
-                "order_sunc" => 1000000,
-                "partial_product" => 5000
-            ),
-            "ultimate" => array(
-                "price" => 60.95,
-                "validity" => 30,
-                "order_sunc" => 1000000,
-                "partial_product" => 10000
-            )
-        );
+        
     }
     public function get_product_details()
     {
@@ -586,12 +567,10 @@ class FrontController extends BaseController
     }
     public function update_store_package_cron()
     {
-        //$all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
-        echo "<pre>";
-        print_r($this->plane_details2);
-        echo "</pre>";
+        $all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
+        
 
-        /*foreach ($all_expiray_plnane as $allshpal) {
+        foreach ($all_expiray_plnane as $allshpal) {
             $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
             $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
@@ -627,6 +606,6 @@ class FrontController extends BaseController
             "movement" => date('Y-m-d H:i')
         );
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
-        echo "done";*/
+        echo "done";
     }
 }

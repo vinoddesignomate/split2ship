@@ -38,13 +38,13 @@ class BaseController extends Controller
      * @var array
      */
     protected $helpers = [];
-    protected $plane_details2;
+    protected $plane_details;
     /**
      * Constructor.
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        $this->plane_details2 = array(
+        $this->plane_details = array(
             "advanced" => array(
                 "price" => 17.95,
                 "validity" => 30,
