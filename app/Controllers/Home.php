@@ -254,8 +254,10 @@ class Home extends BaseController
                     }
                     if (isset($grapql_products_list_prodct['data']['collection'])) {
                         $product_list = $grapql_products_list_prodct['data']['collection']['products'];
-                    } else {
+                    } else if (isset($grapql_products_list_prodct['data']['products'])) {
                         $product_list = $grapql_products_list_prodct['data']['products'];
+                    } else {
+                        $product_list = array();
                     }
                 } else {
                     $product_list = array();
@@ -457,7 +459,7 @@ class Home extends BaseController
                 $data['order_list'] = $this->user_model->get_all_orders($_GET['shop'], $initial_page, $limit);
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
-                
+
                 echo view('templates/header');
                 echo view('welcome_message', $data);
                 echo view('templates/footer');
