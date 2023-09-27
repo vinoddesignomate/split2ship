@@ -476,6 +476,7 @@ class FrontController extends BaseController
         );
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
     }
+
     /*
     ** get dynamnic checkout button color from database
     */
@@ -560,5 +561,8 @@ class FrontController extends BaseController
             //print_r($returnarray);
 
         }
+    }
+    public function update_store_package_cron(){
+        $all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
     }
 }

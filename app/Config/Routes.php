@@ -99,6 +99,7 @@ $routes->match(['get', 'post'],'/check-ordercreate', 'FrontController::order_cre
 
 //cron job routes
 $routes->match(['get', 'post'],'/collection_partial_add', 'FrontController::add_collection_partial_cron'); 
+$routes->match(['get', 'post'],'/update-store-plan', 'FrontController::update_store_package_cron'); // function for update expiray plan for auto active via api via cron job
 
 
 /*
