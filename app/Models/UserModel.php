@@ -908,7 +908,8 @@ class UserModel extends Model
                                     FROM ppa_subscribe_store
                                     INNER JOIN ppa_store_token
                                     ON ppa_store_token.shop_url = ppa_subscribe_store.shop_url
-                                    WHERE plan_validity < '".date('Y-m-d')."' AND charged_id !='' ");
+                                    WHERE plan_validity < '".date('Y-m-d')."' AND charged_id !='' 
+                                    AND plan_status='active'");
         return $get_all_shops_exp->getResult();        
     }
 }
