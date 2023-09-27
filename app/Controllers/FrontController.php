@@ -564,25 +564,25 @@ class FrontController extends BaseController
     }
     public function update_store_package_cron()
     {
-        //$all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
-        // echo "<pre>";
-        // print_r($all_expiray_plnane);
-        // echo "</pre>";
+        $all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
+        echo "<pre>";
+        print_r($all_expiray_plnane);
+        echo "</pre>";
 
-        //foreach ($all_expiray_plnane as $allshpal) {
-            // $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
-            // $get_register_webhookset = json_decode($get_register_webhook['body'], true);
-
-            // echo "get_register_webhookset<pre>";
-            // print_r($get_register_webhookset);
-            // echo "</pre>";
-       // }
-
-        $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30550786326.json', array(), 'GET', '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', '784baf.myshopify.com');
+        foreach ($all_expiray_plnane as $allshpal) {
+            $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
             $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
             echo "get_register_webhookset<pre>";
             print_r($get_register_webhookset);
             echo "</pre>";
+       }
+
+        // $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/30550786326.json', array(), 'GET', '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', '784baf.myshopify.com');
+        //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+
+        //     echo "get_register_webhookset<pre>";
+        //     print_r($get_register_webhookset);
+        //     echo "</pre>";
     }
 }
