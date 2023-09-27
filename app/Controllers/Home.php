@@ -457,9 +457,7 @@ class Home extends BaseController
                 $data['order_list'] = $this->user_model->get_all_orders($_GET['shop'], $initial_page, $limit);
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
-                if($_GET['shop'] == 'desinomatetest.myshopify.com'){
-                    echo"<pre>"; print_r( $data['get_details_store']); echo "</pre>";
-                }
+                
                 echo view('templates/header');
                 echo view('welcome_message', $data);
                 echo view('templates/footer');
