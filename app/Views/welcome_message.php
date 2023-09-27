@@ -343,6 +343,86 @@
         </div>
         <!-- main area ends-->
     </section>
+
+    <style>
+        /* Styling for the popup container */
+        body.price-plan.package_popup_visible {
+            overflow-y: hidden;
+            position: relative;
+        }
+
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            transform: translate(-50%, -50%);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 0px 15px;
+
+        }
+
+        /* Styling for the popup content */
+        .popup-content p {
+            font-size: 18px;
+            line-height: 130%;
+        }
+
+        .popup-content {
+
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            padding: 50px 20px;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+
+        .payxnowandrestondelivery-close-popup-btn {
+            position: absolute;
+            top: -7px;
+            right: 0px;
+            background-color: #10277c;
+            color: #fff;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+        }
+
+        body.package_popup_visible:after {
+            content: '';
+            position: fixed;
+            background-color: #0000008a;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 111;
+        }
+
+        .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
+            margin-bottom: 13px;
+        }
+
+        @media screen and (max-width:610px) {
+            .payxnowandrestondelivery-close-popup-btn {
+                right: 12px
+            }
+        }
+    </style>
+
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <!-- <h2>Hello, this is a message!</h2> -->
+            <p id="plmsg"></p>
+            <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
+        </div>
+    </div>
     <!-- **********************************************
                         SECTION-4
     **************************************************** -->
@@ -393,11 +473,16 @@
 
                         </ul>
                         <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
-                                <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                            <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php } ?>
+                            <?php
+                            if ($get_details_store->total_sync_store_products <= 200) {
+                                if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
+                                    <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                                <?php } else { ?>
+                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
+                                <?php }
+                            } else { ?>
+                                <a href="javascript:void(0);" onclick="showPopup('basic')" class="payxnowandrestondelivery-button">Buy</a>
+                            <?php  } ?>
                         </div>
                     </div>
                     <div class="payxnowandrestondelivery-pricing-col">
@@ -425,12 +510,17 @@
 
                         </ul>
                         <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
-                                <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                            <?php
+                            if ($get_details_store->total_sync_store_products <= 2000) {
+                                if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?>
+                                    <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
 
-                            <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php } ?>
+                                <?php } else { ?>
+                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
+                                <?php }
+                            } else { ?>
+                                <a href="javascript:void(0);" onclick="showPopup('advanced')" class="payxnowandrestondelivery-button">Buy</a>
+                            <?php  } ?>
 
                         </div>
                     </div>
@@ -459,11 +549,16 @@
 
                         </ul>
                         <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
-                                <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                            <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php } ?>
+                            <?php
+                            if ($get_details_store->total_sync_store_products <= 5000) {
+                                if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?>
+                                    <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                                <?php } else { ?>
+                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
+                                <?php }
+                            } else { ?>
+                                <a href="javascript:void(0);" onclick="showPopup('pro')" class="payxnowandrestondelivery-button">Buy</a>
+                            <?php  } ?>
                         </div>
                     </div>
                     <div class="payxnowandrestondelivery-pricing-col">
@@ -491,7 +586,8 @@
 
                         </ul>
                         <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->updated_sync_orders_count != 0 && $plan_details[0]->plan_validity >= date('Y-m-d'))) { ?>
+                            <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->plan_status == 'active')) { ?>
+
                                 <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
                             <?php } else { ?>
                                 <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=ultimate" class="payxnowandrestondelivery-button">Buy</a>
@@ -506,4 +602,32 @@
 </div>
 <script>
     var ship_provder = '<?php echo $ship_provider; ?>';
+    // Function to show the popup
+    function showPopup(planename) {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
+        var body = document.body;
+        body.classList.add("package_popup_visible");
+        var plnmsg = "";
+        if (planename === 'basic') {
+            plnmsg = "You need to keep only 200 products in partial list for activating this plan.";
+        } else if (planename === 'advanced') {
+            plnmsg = "You need to keep only 2000 products in partial list for activating this plan.";
+        } else if (planename === 'pro') {
+            plnmsg = "You need to keep only 5000 products in partial list for activating this plan.";
+        } else if (planename === 'ultimate') {
+            plnmsg = "You need to keep only 10000 products in partial list for activating this plan.";
+        }
+        $("#plmsg").html(plnmsg);
+
+    }
+
+    // Function to hide the popup
+    function hidePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+        var body = document.body;
+        // Remove the class from the body element
+        body.classList.remove("package_popup_visible");
+    }
 </script>

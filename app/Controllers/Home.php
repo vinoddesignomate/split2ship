@@ -456,6 +456,7 @@ class Home extends BaseController
 
                 $data['order_list'] = $this->user_model->get_all_orders($_GET['shop'], $initial_page, $limit);
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
+                $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
                 echo view('templates/header');
                 echo view('welcome_message', $data);
                 echo view('templates/footer');
@@ -2072,17 +2073,17 @@ class Home extends BaseController
 
 
         $get_status = json_decode($get_subscribe_list['body'], true);
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            echo "<pre>";
-            print_r($get_status);
-            echo "</pre>";
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     echo "<pre>";
+        //     print_r($get_status);
+        //     echo "</pre>";
 
-            echo "<pre>";
-            print_r($get_details);
-            echo "</pre>";
+        //     echo "<pre>";
+        //     print_r($get_details);
+        //     echo "</pre>";
 
-            die();
-        }
+        //     die();
+        // }
         $plane_start_date = date('Y-m-d');
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $firsttimevalidity = $this->plane_details[$_REQUEST['planname']]['validity'] + 7;
