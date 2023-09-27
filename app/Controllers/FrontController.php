@@ -571,7 +571,7 @@ class FrontController extends BaseController
         
 
         foreach ($all_expiray_plnane as $allshpal) {
-            $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
+            $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
             $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
 
