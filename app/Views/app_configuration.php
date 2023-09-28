@@ -1045,27 +1045,7 @@ $store_name = $shop_name[0];
                         <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2 class="">Upload Zip</h2>
                         </div>
-                        <section class="next-card">
-                                <section class="next-card__section" id="ManualZipCodeCheckBox" data-tg-refresh="zip-codes-container">
-                                        <div class="ui-banner ui-banner--status-warning ui-banner--within-page js-warning-banner" style="display: none;">
-                                                <div class="ui-banner__ribbon"><svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
-                                                                <use xlink:href="#CircleAlertMajor"></use>
-                                                        </svg></div>
-                                                <div class="ui-banner__content-container">
-                                                        <div class="ui-banner__heading">
-                                                                <h2 class="ui-heading js-warning-title">An error has occurred</h2>
-                                                        </div>
-                                                        <div class="ui-banner__content">
-                                                                <div class="ui-type-container ui-type-container--spacing-tight">
-                                                                        <ul class="js-warning-list"></ul>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="next-input-wrapper"><label class="next-label next-label--switch" for="configuration_filter_by_location">Limit where Cash on Delivery is available</label><input name="configuration[filter_by_location]" type="hidden" value="0" autocomplete="off"><input onclick="appActions.visibility.toggleSection('zip-codes');" class="next-checkbox" type="checkbox" value="1" checked="checked" name="configuration[filter_by_location]" id="configuration_filter_by_location"><span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false">
-                                                                <use xlink:href="#next-checkmark-thick"></use>
-                                                        </svg></span></div>
-                                </section>
+                        <section class="next-card">                               
 
                                 <section class="next-card__section " data-hideable-section="zip-codes">
                                         <div class="ui-stack ui-stack--wrap ui-stack--distribution-equal-spacing ui-stack--alignment-center pb">
