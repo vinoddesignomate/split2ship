@@ -2198,6 +2198,7 @@ class Home extends BaseController
             }
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
+        $data['get_allzip'] = $this->user_model->get_all_zipcodes($_GET['shop']);
         echo view('templates/header');
         echo view('app_configuration', $data);
         echo view('templates/footer');
