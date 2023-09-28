@@ -2204,9 +2204,9 @@ class Home extends BaseController
             //     $csvarray[] = array("postalcode"=>$allgetval->zipcodes);
             //     //fputcsv($csvFile, $allgetval->zipcodes);
             // }
-            echo "<pre>";
-            print_r($csvarray);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($csvarray);
+            // echo "</pre>";
 
             // $csvFileName = "export.csv";
             // $csvFile = fopen($csvFileName, 'w');
