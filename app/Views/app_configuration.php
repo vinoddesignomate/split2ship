@@ -1050,6 +1050,7 @@ $store_name = $shop_name[0];
 
                                         <div class="flex-row">
                                                 <label for="">Partial payment color code :</label>
+                                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/exporcsv">Export All</a>
                                                 <input type="file" name="zip_code" accept=".csv">
                                         </div>
                                         <div class="btn-row">

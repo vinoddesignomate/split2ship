@@ -2196,49 +2196,6 @@ class Home extends BaseController
                 }
                 echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
             }
-
-            $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
-
-            // $csvarray = array();
-            // foreach ($get_allzip as $allgetval) {
-            //     $csvarray[] = array("postalcode"=>$allgetval->zipcodes);
-            //     //fputcsv($csvFile, $allgetval->zipcodes);
-            // }
-            // echo "<pre>";
-            // print_r($csvarray);
-            // echo "</pre>";
-
-            // $csvFileName = "export.csv";
-            // $csvFile = fopen($csvFileName, 'w');
-            $csvFile = fopen('php://temp', 'w');
-
-            if (!$csvFile) {
-                die("Failed to create CSV file");
-            }
-
-            // Add a header row to the CSV file (optional)
-            $header = array("Postal Code");
-            fputcsv($csvFile, $header);
-
-            // Loop through the database result and write each row to the CSV file
-            // while ($row = $result->fetch_assoc()) {
-            foreach ($get_allzip as $allgetval) {
-                $lineData = array($allgetval->zipcodes);
-                fputcsv($csvFile, $lineData);
-            }
-
-            // Close the database connection and CSV file
-            //$mysqli->close();
-            //fclose($csvFile);
-            // Set HTTP headers to force download of the CSV file
-            header('Content-Type: text/csv');
-            header('Content-Disposition: attachment; filename="export.csv"');
-
-            // Output the CSV data
-            rewind($csvFile); // Rewind the file pointer to the beginning
-            fpassthru($csvFile); // Output the CSV data to the browser
-            exit; 
-
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         echo view('templates/header');
@@ -2246,6 +2203,39 @@ class Home extends BaseController
         echo view('templates/footer');
     }
 
+    public function exportcsv()
+    {
+        $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
+
+        $csvFile = fopen('php://temp', 'w');
+
+        if (!$csvFile) {
+            die("Failed to create CSV file");
+        }
+
+        // Add a header row to the CSV file (optional)
+        $header = array("Postal Code");
+        fputcsv($csvFile, $header);
+
+        // Loop through the database result and write each row to the CSV file
+        // while ($row = $result->fetch_assoc()) {
+        foreach ($get_allzip as $allgetval) {
+            $lineData = array($allgetval->zipcodes);
+            fputcsv($csvFile, $lineData);
+        }
+
+        // Close the database connection and CSV file
+        //$mysqli->close();
+        //fclose($csvFile);
+        // Set HTTP headers to force download of the CSV file
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="export.csv"');
+
+        // Output the CSV data
+        rewind($csvFile); // Rewind the file pointer to the beginning
+        fpassthru($csvFile); // Output the CSV data to the browser
+        exit;
+    }
     public function shiprocket_config()
     {
 
