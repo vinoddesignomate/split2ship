@@ -102,11 +102,17 @@ class Home extends BaseController
                     // echo view('templates/footer');
                     // die();
                     //$this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
+
                     if (!empty($this->request->getPost('assign_pro'))) {
                         $total_synproduct = count($this->request->getPost('assign_pro'));
                         // if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
                         if (!empty($get_updated_plan)) {
-                            if ($get_details->total_sync_store_products < $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc']) {
+                            if ($get_updated_plan[0]->plan_name == 'basic') {
+                                $total_pro = 200;
+                            } else {
+                                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
+                            }
+                            if ($get_details->total_sync_store_products < $total_pro) {
                                 foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
 
                                     //  echo "product_id" . $product_id;
