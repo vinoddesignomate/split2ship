@@ -2198,8 +2198,14 @@ class Home extends BaseController
             }
 
             $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
+            
+            $csvarray = array();
+            foreach ($get_allzip as $allgetval) {
+                $csvarray[] = array("postalcode"=>$allgetval->zipcodes);
+                //fputcsv($csvFile, $allgetval->zipcodes);
+            }
             echo "<pre>";
-            print_r($get_allzip);
+            print_r($csvarray);
             echo "</pre>";
 
             // $csvFileName = "export.csv";
@@ -2216,8 +2222,8 @@ class Home extends BaseController
 
             // Loop through the database result and write each row to the CSV file
             // while ($row = $result->fetch_assoc()) {
-            foreach ($get_allzip as $allgetval) {
-                fputcsv($csvFile, $allgetval->zipcodes);
+            foreach ($csvarray as $charray) {
+                fputcsv($csvFile, $charray);
             }
 
             // Close the database connection and CSV file
