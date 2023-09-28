@@ -2234,6 +2234,7 @@ class Home extends BaseController
         // Output the CSV data
         rewind($csvFile); // Rewind the file pointer to the beginning
         fpassthru($csvFile); // Output the CSV data to the browser
+        echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         exit;
     }
     public function shiprocket_config()
