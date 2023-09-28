@@ -2175,7 +2175,7 @@ class Home extends BaseController
                 // echo "<pre>";
                 // print_r($_FILES);
                 // echo "</pre>";
-                if (!empty($_FILES)) {
+                if (($_FILES["zip_code"]["tmp_name"] != "")) {
                     $this->user_model->remove_oldzip($_GET['shop']);
                     $csvFile = $_FILES["zip_code"]["tmp_name"];
 
