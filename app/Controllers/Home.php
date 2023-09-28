@@ -2157,12 +2157,12 @@ class Home extends BaseController
         }
         if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
             if ($this->request->getPost('upload_zip')) {
-                echo "<pre>";
-                print_r($this->request->getPost());
-                echo "</pre>";
-                echo "<pre>";
-                print_r($_FILES);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($this->request->getPost());
+                // echo "</pre>";
+                // echo "<pre>";
+                // print_r($_FILES);
+                // echo "</pre>";
                 $this->user_model->remove_oldzip($_GET['shop']);
                 $csvFile = $_FILES["zip_code"]["tmp_name"];
 
@@ -2184,6 +2184,11 @@ class Home extends BaseController
                 }
                 echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
             }
+
+            $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
+            echo "<pre>";
+            print_r($get_allzip);
+            echo "</pre>";
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         echo view('templates/header');

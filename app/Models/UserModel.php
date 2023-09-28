@@ -883,45 +883,51 @@ class UserModel extends Model
         $delete_update_cart_webhook = "DELETE FROM track_new_webhook WHERE shop_url=?";
         $this->db->query($delete_update_cart_webhook, array($shopiurl));
     }
-    public function get_all_shops(){
+    public function get_all_shops()
+    {
         $get_all_shops = $this->db->query("SELECT * FROM ppa_store_token LIMIT 80,20");
-        foreach($get_all_shops->getResult() as $allshop){
-            echo"<pre>"; print_r($allshop); echo "</pre>";
-            $get_allsyncproducts = $this->db->query("SELECT count(*) as totalpro FROM `app_partial_products` WHERE `shop_url`='".$allshop->shop_url."'");
-            
+        foreach ($get_all_shops->getResult() as $allshop) {
+            echo "<pre>";
+            print_r($allshop);
+            echo "</pre>";
+            $get_allsyncproducts = $this->db->query("SELECT count(*) as totalpro FROM `app_partial_products` WHERE `shop_url`='" . $allshop->shop_url . "'");
+
             $gettotl = $get_allsyncproducts->getResult();
-            echo "UPDATE ppa_store_token SET total_sync_store_products='".$gettotl[0]->totalpro."' WHERE `shop_url`='".$allshop->shop_url."'";
-            $this->db->query("UPDATE ppa_store_token SET total_sync_store_products='".$gettotl[0]->totalpro."' WHERE `shop_url`='".$allshop->shop_url."'");
-            
+            echo "UPDATE ppa_store_token SET total_sync_store_products='" . $gettotl[0]->totalpro . "' WHERE `shop_url`='" . $allshop->shop_url . "'";
+            $this->db->query("UPDATE ppa_store_token SET total_sync_store_products='" . $gettotl[0]->totalpro . "' WHERE `shop_url`='" . $allshop->shop_url . "'");
         }
     }
 
-    public function get_all_stores_expiray_plan(){
-
-        // $tokenq = "SELECT * FROM ppa_subscribe_store WHERE token_expiray_date > ?";
-        // $get_roken_query = $this->db->query($tokenq, array(date('Y-m-d')));
-        // return $get_roken_query->getResult();
-
+    public function get_all_stores_expiray_plan()
+    {
 
         $get_all_shops_exp = $this->db->query("
                                     SELECT ppa_subscribe_store.*,ppa_store_token.access_token,ppa_store_token.total_sync_store_products
                                     FROM ppa_subscribe_store
                                     INNER JOIN ppa_store_token
                                     ON ppa_store_token.shop_url = ppa_subscribe_store.shop_url
-                                    WHERE plan_validity < '".date('Y-m-d')."' AND charged_id !='' 
+                                    WHERE plan_validity < '" . date('Y-m-d') . "' AND charged_id !='' 
                                     AND plan_status='active'");
-        return $get_all_shops_exp->getResult();        
+        return $get_all_shops_exp->getResult();
     }
-    public function track_zip_codes($insertdata){       
+    public function track_zip_codes($insertdata)
+    {
 
         //replace new zip codes
         $this->db->table('cg_zip_codes')->insert($insertdata);
     }
 
-    public function remove_oldzip($shopurl){
-        //remove old zip codes
-       
+    public function remove_oldzip($shopurl)
+    {
+        //remove old zip codes       
         $del_query = "DELETE FROM cg_zip_codes WHERE shop_url=?";
         $this->db->query($del_query, array($shopurl));
+    }
+    public function get_all_zipcodes($shopurl)
+    {
+        $zipqbuilder = $this->db->table('cg_zip_codes');
+        $zipqbuilder->where('shop_url', $shopurl);
+        $zipq = $zipqbuilder->get();
+        return $zipq->getResult();
     }
 }
