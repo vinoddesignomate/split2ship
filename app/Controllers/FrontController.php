@@ -640,4 +640,18 @@ class FrontController extends BaseController
         //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         exit;
     }
+    public function zipcodevali()
+    {
+
+        $body_data = file_get_contents('php://input');
+        //echo $body_data;
+        $body_data_decode = json_decode($body_data, TRUE);
+        //print_r($body_data_decode);
+
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+        $zipode = $body_data_decode['zipode'];
+        $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
+        echo"<pre>"; print_r($get_allzip); echo "</pre>";
+    }
 }

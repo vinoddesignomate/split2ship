@@ -923,10 +923,13 @@ class UserModel extends Model
         $del_query = "DELETE FROM cg_zip_codes WHERE shop_url=?";
         $this->db->query($del_query, array($shopurl));
     }
-    public function get_all_zipcodes($shopurl)
+    public function get_all_zipcodes($shopurl, $zipc = "")
     {
         $zipqbuilder = $this->db->table('cg_zip_codes');
         $zipqbuilder->where('shop_url', $shopurl);
+        if ($zipc != "") {
+            $zipqbuilder->where('zipcodes', $zipc);
+        }
         $zipq = $zipqbuilder->get();
         return $zipq->getResult();
     }
