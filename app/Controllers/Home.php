@@ -2198,12 +2198,12 @@ class Home extends BaseController
             }
 
             $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
-            
-            $csvarray = array();
-            foreach ($get_allzip as $allgetval) {
-                $csvarray[] = array("postalcode"=>$allgetval->zipcodes);
-                //fputcsv($csvFile, $allgetval->zipcodes);
-            }
+
+            // $csvarray = array();
+            // foreach ($get_allzip as $allgetval) {
+            //     $csvarray[] = array("postalcode"=>$allgetval->zipcodes);
+            //     //fputcsv($csvFile, $allgetval->zipcodes);
+            // }
             echo "<pre>";
             print_r($csvarray);
             echo "</pre>";
@@ -2222,13 +2222,14 @@ class Home extends BaseController
 
             // Loop through the database result and write each row to the CSV file
             // while ($row = $result->fetch_assoc()) {
-            foreach ($csvarray as $charray) {
-                fputcsv($csvFile, $charray);
+            foreach ($get_allzip as $allgetval) {
+                $lineData = array($allgetval->zipcodes);
+                fputcsv($csvFile, $lineData);
             }
 
             // Close the database connection and CSV file
             //$mysqli->close();
-            fclose($csvFile);
+            //fclose($csvFile);
             // Set HTTP headers to force download of the CSV file
             header('Content-Type: text/csv');
             header('Content-Disposition: attachment; filename="export.csv"');
