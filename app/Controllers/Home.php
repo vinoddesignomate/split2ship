@@ -2155,11 +2155,11 @@ class Home extends BaseController
             $this->user_model->track_checkout_button_color($track_color_array);
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
-        if ($this->request->getPost('upload_zip')) {
+        //if ($this->request->getPost('upload_zip')) {
             echo"<pre>";print_r($this->request->getPost()); echo "</pre>";
             echo"<pre>"; print_r($_FILES); echo "</pre>";
-            die();
-        }
+            //die();
+       // }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         echo view('templates/header');
         echo view('app_configuration', $data);
