@@ -45,6 +45,12 @@ class BaseController extends Controller
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         $this->plane_details = array(
+            "basic" => array(
+                "price" => 0,
+                "validity" => 30,
+                "order_sunc" => 20,
+                "partial_product" => 200
+            ),
             "advanced" => array(
                 "price" => 17.95,
                 "validity" => 30,
