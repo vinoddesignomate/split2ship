@@ -1053,6 +1053,7 @@ $store_name = $shop_name[0];
                                                 <?php if (!empty($get_allzip)) { ?>
                                                         <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>">Export All</a>
                                                 <?php } ?>
+                                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>">Sample CSV</a>
                                                 <input type="file" name="zip_code" accept=".csv">
                                         </div>
                                         <div class="btn-row">

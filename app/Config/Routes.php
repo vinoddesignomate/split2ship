@@ -58,6 +58,7 @@ $routes->match(['get', 'post'],'/get_shipping_partners', 'Home::get_shipping_par
 $routes->match(['get', 'post'],'/track_userinf', 'Home::track_userinfo');
 $routes->match(['get', 'post'],'/collection-wise-partial-products', 'Home::collection_wise_partial_products');
 $routes->match(['get', 'post'],'/exporcsv', 'FrontController::exportcsv');
+$routes->match(['get', 'post'],'/samplfcsv', 'FrontController::samplfcsv');
 
 
 
