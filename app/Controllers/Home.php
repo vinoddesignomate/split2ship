@@ -2178,7 +2178,7 @@ class Home extends BaseController
                                 "shop_url" => $_GET['shop'],
                                 "movement" => date('Y-m-d H:i:s')
                             );
-                            $this->user_model->track_zip_codes($_GET['shop']); //replace OR insert zip codes
+                            $this->user_model->track_zip_codes($zipcode_data); //replace OR insert zip codes
                         }
                     }
                 }
