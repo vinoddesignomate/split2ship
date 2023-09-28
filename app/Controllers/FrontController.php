@@ -652,6 +652,11 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
         $zipode = $body_data_decode['zipode'];
         $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
-        echo"<pre>"; print_r($get_allzip); echo "</pre>";
+        //echo"<pre>"; print_r($get_allzip); echo "</pre>";
+        if (empty($get_allzip)) {
+            echo "valid";
+        } else {
+            echo "invalid";
+        }
     }
 }
