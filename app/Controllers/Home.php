@@ -2158,6 +2158,7 @@ class Home extends BaseController
         if ($this->request->getPost('upload_zip')) {
             echo"<pre>";print_r($this->request->getPost()); echo "</pre>";
             echo"<pre>"; print_r($_FILES); echo "</pre>";
+            die();
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         echo view('templates/header');
