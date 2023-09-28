@@ -2175,22 +2175,24 @@ class Home extends BaseController
                 // echo "<pre>";
                 // print_r($_FILES);
                 // echo "</pre>";
-                $this->user_model->remove_oldzip($_GET['shop']);
-                $csvFile = $_FILES["zip_code"]["tmp_name"];
+                if (!empty($_FILES)) {
+                    $this->user_model->remove_oldzip($_GET['shop']);
+                    $csvFile = $_FILES["zip_code"]["tmp_name"];
 
-                if (($handle = fopen($csvFile, "r")) !== false) {
+                    if (($handle = fopen($csvFile, "r")) !== false) {
 
-                    while (($data = fgetcsv($handle)) !== false) {
-                        // echo "data<pre>";
-                        // print_r($data);
-                        // echo "</pre>";
-                        if ($data[0] != 'Postal code') {
-                            $zipcode_data = array(
-                                "zipcodes" => $data[0],
-                                "shop_url" => $_GET['shop'],
-                                "movement" => date('Y-m-d H:i:s')
-                            );
-                            $this->user_model->track_zip_codes($zipcode_data); //replace OR insert zip codes
+                        while (($data = fgetcsv($handle)) !== false) {
+                            // echo "data<pre>";
+                            // print_r($data);
+                            // echo "</pre>";
+                            if ($data[0] != 'Postal code') {
+                                $zipcode_data = array(
+                                    "zipcodes" => $data[0],
+                                    "shop_url" => $_GET['shop'],
+                                    "movement" => date('Y-m-d H:i:s')
+                                );
+                                $this->user_model->track_zip_codes($zipcode_data); //replace OR insert zip codes
+                            }
                         }
                     }
                 }
@@ -2204,7 +2206,7 @@ class Home extends BaseController
         echo view('templates/footer');
     }
 
-   
+
     public function shiprocket_config()
     {
 
