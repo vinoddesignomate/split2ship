@@ -2237,6 +2237,7 @@ class Home extends BaseController
             // Output the CSV data
             rewind($csvFile); // Rewind the file pointer to the beginning
             fpassthru($csvFile); // Output the CSV data to the browser
+            exit; 
 
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
