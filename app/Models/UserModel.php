@@ -912,4 +912,12 @@ class UserModel extends Model
                                     AND plan_status='active'");
         return $get_all_shops_exp->getResult();        
     }
+    public function track_zip_codes($insertdata){
+        //remove old zip codes
+        $del_query = "DELETE FROM cg_zip_codes WHERE shop_url=?";
+        $this->db->query($del_query, array($insertdata['shop_url']));
+
+        //replace new zip codes
+        $this->db->table('cg_zip_codes')->insert($insertdata);
+    }
 }
