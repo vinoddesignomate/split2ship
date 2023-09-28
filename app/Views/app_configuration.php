@@ -1051,7 +1051,7 @@ $store_name = $shop_name[0];
                                         <div class="flex-row">
                                                 <label for="">Partial payment color code :</label>
                                                 <?php if (!empty($get_allzip)) { ?>
-                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>">Export All</a>
+                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>">Export All</a> | 
                                                 <?php } ?>
                                                 <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>">Sample CSV</a>
                                                 <input type="file" name="zip_code" accept=".csv">
