@@ -2203,40 +2203,7 @@ class Home extends BaseController
         echo view('templates/footer');
     }
 
-    public function exportcsv()
-    {
-        $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
-
-        $csvFile = fopen('php://temp', 'w');
-
-        if (!$csvFile) {
-            die("Failed to create CSV file");
-        }
-
-        // Add a header row to the CSV file (optional)
-        $header = array("Postal Code");
-        fputcsv($csvFile, $header);
-
-        // Loop through the database result and write each row to the CSV file
-        // while ($row = $result->fetch_assoc()) {
-        foreach ($get_allzip as $allgetval) {
-            $lineData = array($allgetval->zipcodes);
-            fputcsv($csvFile, $lineData);
-        }
-
-        // Close the database connection and CSV file
-        //$mysqli->close();
-        //fclose($csvFile);
-        // Set HTTP headers to force download of the CSV file
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="export.csv"');
-
-        // Output the CSV data
-        rewind($csvFile); // Rewind the file pointer to the beginning
-        fpassthru($csvFile); // Output the CSV data to the browser
-        echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
-        exit;
-    }
+   
     public function shiprocket_config()
     {
 

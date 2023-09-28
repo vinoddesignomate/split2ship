@@ -10,7 +10,7 @@ class FrontController extends BaseController
     protected $base;
     protected $front_model;
     protected $user_model;
- 
+
     function __construct()
     {
         header('Access-Control-Allow-Origin: *');
@@ -18,8 +18,6 @@ class FrontController extends BaseController
         $session = \Config\Services::session();
         //$this->front_model = new FrontModel();
         $this->user_model = new UserModel();
-
-        
     }
     public function get_product_details()
     {
@@ -568,7 +566,7 @@ class FrontController extends BaseController
     public function update_store_package_cron()
     {
         $all_expiray_plnane = $this->user_model->get_all_stores_expiray_plan();
-        
+
 
         foreach ($all_expiray_plnane as $allshpal) {
             $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
@@ -607,5 +605,39 @@ class FrontController extends BaseController
         );
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
         echo "done";
+    }
+    public function exportcsv()
+    {
+        $get_allzip = $this->user_model->get_all_zipcodes($_GET['shop']);
+
+        $csvFile = fopen('php://temp', 'w');
+
+        if (!$csvFile) {
+            die("Failed to create CSV file");
+        }
+
+        // Add a header row to the CSV file (optional)
+        $header = array("Postal Code");
+        fputcsv($csvFile, $header);
+
+        // Loop through the database result and write each row to the CSV file
+        // while ($row = $result->fetch_assoc()) {
+        foreach ($get_allzip as $allgetval) {
+            $lineData = array($allgetval->zipcodes);
+            fputcsv($csvFile, $lineData);
+        }
+
+        // Close the database connection and CSV file
+        //$mysqli->close();
+        //fclose($csvFile);
+        // Set HTTP headers to force download of the CSV file
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="export.csv"');
+
+        // Output the CSV data
+        rewind($csvFile); // Rewind the file pointer to the beginning
+        fpassthru($csvFile); // Output the CSV data to the browser
+        //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+        exit;
     }
 }
