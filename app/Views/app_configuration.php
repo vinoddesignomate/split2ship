@@ -1053,7 +1053,7 @@ $store_name = $shop_name[0];
                                                 <input type="file" name="zip_code" accept=".csv">
                                         </div>
                                         <div class="btn-row">
-                                                <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                                <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                         </div>
 
                                 </form>
