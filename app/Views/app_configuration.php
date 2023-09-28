@@ -1054,7 +1054,7 @@ $store_name = $shop_name[0];
                                                         <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>">Export All</a> | 
                                                 <?php } ?>
                                                 <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>">Sample CSV</a>
-                                                <input type="file" name="zip_code" accept=".csv">
+                                                <input type="file" required name="zip_code" accept=".csv">
                                         </div>
                                         <div class="btn-row">
                                                 <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
