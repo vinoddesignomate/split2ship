@@ -2229,7 +2229,7 @@ class Home extends BaseController
 
             // Close the database connection and CSV file
             //$mysqli->close();
-            fclose($csvFile);
+            //fclose($csvFile);
             // Set HTTP headers to force download of the CSV file
             header('Content-Type: text/csv');
             header('Content-Disposition: attachment; filename="export.csv"');
