@@ -1049,7 +1049,7 @@ $store_name = $shop_name[0];
                                 <form method="post" enctype="multipart/form-data">
 
                                         <div class="flex-row">
-                                                <label for="">Partial payment color code :</label>
+                                                <label for="">Serviced postal codes</label>
                                                 <?php if (!empty($get_allzip)) { ?>
                                                         <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>">Export All</a> | 
                                                 <?php } ?>
