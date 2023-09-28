@@ -2163,6 +2163,17 @@ class Home extends BaseController
                 echo "<pre>";
                 print_r($_FILES);
                 echo "</pre>";
+
+                $csvFile = $_FILES["zip_code"]["tmp_name"];
+
+                if (($handle = fopen($csvFile, "r")) !== false) {
+
+                    while (($data = fgetcsv($handle)) !== false) {
+                        echo "data<pre>";
+                        print_r($data);
+                        echo "</pre>";
+                    }
+                }
                 //die();
             }
         }
