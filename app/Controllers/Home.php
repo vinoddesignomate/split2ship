@@ -2202,8 +2202,9 @@ class Home extends BaseController
             print_r($get_allzip);
             echo "</pre>";
 
-            $csvFileName = "export.csv";
-            $csvFile = fopen($csvFileName, 'w');
+            // $csvFileName = "export.csv";
+            // $csvFile = fopen($csvFileName, 'w');
+            $csvFile = fopen('php://temp', 'w');
 
             if (!$csvFile) {
                 die("Failed to create CSV file");
@@ -2214,22 +2215,22 @@ class Home extends BaseController
             fputcsv($csvFile, $header);
 
             // Loop through the database result and write each row to the CSV file
-           // while ($row = $result->fetch_assoc()) {
-           foreach($get_allzip as $allgetval){
+            // while ($row = $result->fetch_assoc()) {
+            foreach ($get_allzip as $allgetval) {
                 fputcsv($csvFile, $get_allzip->zipcodes);
             }
 
             // Close the database connection and CSV file
             //$mysqli->close();
             fclose($csvFile);
-
             // Set HTTP headers to force download of the CSV file
             header('Content-Type: text/csv');
-            header('Content-Disposition: attachment; filename="' . $csvFileName . '"');
-            readfile($csvFileName);
+            header('Content-Disposition: attachment; filename="export.csv"');
 
-            // Delete the CSV file from the server (optional)
-            unlink($csvFileName);
+            // Output the CSV data
+            rewind($csvFile); // Rewind the file pointer to the beginning
+            fpassthru($csvFile); // Output the CSV data to the browser
+
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         echo view('templates/header');
