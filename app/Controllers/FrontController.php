@@ -656,10 +656,10 @@ class FrontController extends BaseController
 
         // Loop through the database result and write each row to the CSV file
         // while ($row = $result->fetch_assoc()) {
-       // foreach ($get_allzip as $allgetval) {
-            //$lineData = array($allgetval->zipcodes);
-            fputcsv($csvFile, $examplarray);
-       // }
+       foreach ($examplarray as $key=>$allgetval) {
+            $lineData = array($allgetval);
+            fputcsv($csvFile, $lineData);
+       }
 
         // Close the database connection and CSV file
         //$mysqli->close();
