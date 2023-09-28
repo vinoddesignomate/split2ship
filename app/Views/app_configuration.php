@@ -149,7 +149,7 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's order confirmation email template.</h5>
-                        <div><textarea rows="20"  style="width: 100%;">{% capture email_title %}
+                        <div><textarea rows="20" style="width: 100%;">{% capture email_title %}
                                 {% if has_pending_payment %}
                                 Thank you for your order!
                                 {% else %}
@@ -1040,6 +1040,83 @@ $store_name = $shop_name[0];
                         </form>
                 </div>
         </div>
+        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                        <div class="payxnowandrestondelivery-head-wrapper">
+                                <h2 class="">Upload Zip</h2>
+                        </div>
+                        <section class="next-card">
+                                <section class="next-card__section" id="ManualZipCodeCheckBox" data-tg-refresh="zip-codes-container">
+                                        <div class="ui-banner ui-banner--status-warning ui-banner--within-page js-warning-banner" style="display: none;">
+                                                <div class="ui-banner__ribbon"><svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+                                                                <use xlink:href="#CircleAlertMajor"></use>
+                                                        </svg></div>
+                                                <div class="ui-banner__content-container">
+                                                        <div class="ui-banner__heading">
+                                                                <h2 class="ui-heading js-warning-title">An error has occurred</h2>
+                                                        </div>
+                                                        <div class="ui-banner__content">
+                                                                <div class="ui-type-container ui-type-container--spacing-tight">
+                                                                        <ul class="js-warning-list"></ul>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="next-input-wrapper"><label class="next-label next-label--switch" for="configuration_filter_by_location">Limit where Cash on Delivery is available</label><input name="configuration[filter_by_location]" type="hidden" value="0" autocomplete="off"><input onclick="appActions.visibility.toggleSection('zip-codes');" class="next-checkbox" type="checkbox" value="1" checked="checked" name="configuration[filter_by_location]" id="configuration_filter_by_location"><span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false">
+                                                                <use xlink:href="#next-checkmark-thick"></use>
+                                                        </svg></span></div>
+                                </section>
+
+                                <section class="next-card__section " data-hideable-section="zip-codes">
+                                        <div class="ui-stack ui-stack--wrap ui-stack--distribution-equal-spacing ui-stack--alignment-center pb">
+                                                <div class="ui-stack-item">
+                                                        <h3 class="next-heading next-heading--no-margin">Serviced postal codes</h3>
+                                                </div>
+                                                <div class="ui-stack-item" id="ManualZipCodeCount" data-tg-refresh="zip-code-count">
+                                                        <label class="btn btn--link" for="configuration_zip_codes_csv">Replace CSV</label>
+
+                                                        <button class="ui-button btn btn--link ssl" onclick="appActions.openModal(this)" data-modal-path="/manual_zip_codes/edit" data-modal-title="Add postal codes" data-modal-height="112" data-modal-delete="Delete" data-show-delete-button="true" data-tertiary="disabled" data-delete-target-path="/manual_zip_codes/delete_all" data-delete-modal-title="Delete postal codes?" data-delete-modal-message="Are you sure you want to delete manual codes?" data-form-id="edit_zip_codes" data-refresh-target-path="/configuration/edit" data-refresh-target-keys="zip-codes-container" type="button" name="button">Manual entry</button>
+                                                </div>
+                                        </div>
+                                        <div class="drop-to-upload drop-to-upload--file-exists">
+
+
+                                                <div class="drop-to-upload__file-exists">
+                                                        <button name="button" type="button" class="btn btn--plain ppr pt" onclick="appActions.remove(this, true)" data-delete-target-path="/csv_zip_codes/delete" data-delete-modal-title="Delete postal codes?" data-delete-modal-message="Are you sure you want to delete csv codes?" data-refresh-target-path="/configuration/edit" data-refresh-target-keys="zip-codes-container">
+                                                                <svg aria-hidden="true" focusable="false" class="next-icon next-icon--color-slate-lighter next-icon--size-12">
+                                                                        <use xlink:href="#next-remove"></use>
+                                                                </svg>
+                                                        </button>
+                                                        <svg aria-labelledby="FileUpload" role="img" class="next-icon next-icon--color-slate-lightest next-icon--size-40">
+                                                                <title id="FileUpload">File upload icon</title>
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#file"></use>
+                                                        </svg>
+
+                                                        <div class="drag-to-upload__vertical-rule"></div>
+
+                                                        <div class="drop-to-upload__file-details drop-to-upload__text-span">
+                                                                <p>example.csv</p>
+                                                                <p class="type--subdued">
+                                                                        <span class="tag tag--slate-lightest type--size-small">CSV</span>
+                                                                        <span id="CSVZipCodesCount">
+                                                                                50 postal codes
+                                                                        </span>
+                                                                </p>
+                                                        </div>
+                                                </div>
+
+
+                                                <input class="drop-to-upload__input" accept=".csv" size="30" type="file" name="configuration[zip_codes_csv]" id="configuration_zip_codes_csv">
+                                        </div>
+
+                                        <div class="button-group space-above--small" id="ManualZipCodeExport" data-tg-refresh="zip-code-count">
+                                                <a class="btn btn-primary " href="/configuration/export">Export all</a>
+                                                <div class="space-above--small next-input__help-text"><a href="/configuration/example_csv">Example CSV</a></div>
+                                        </div>
+                                </section>
+                        </section>
+                </div>
+        <?php } ?>
 </div>
 
 </div>
