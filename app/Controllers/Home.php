@@ -2201,6 +2201,35 @@ class Home extends BaseController
             echo "<pre>";
             print_r($get_allzip);
             echo "</pre>";
+
+            $csvFileName = "export.csv";
+            $csvFile = fopen($csvFileName, 'w');
+
+            if (!$csvFile) {
+                die("Failed to create CSV file");
+            }
+
+            // Add a header row to the CSV file (optional)
+            $header = array("Postal Code");
+            fputcsv($csvFile, $header);
+
+            // Loop through the database result and write each row to the CSV file
+           // while ($row = $result->fetch_assoc()) {
+           foreach($get_allzip as $allgetval){
+                fputcsv($csvFile, $get_allzip->zipcodes);
+            }
+
+            // Close the database connection and CSV file
+            //$mysqli->close();
+            fclose($csvFile);
+
+            // Set HTTP headers to force download of the CSV file
+            header('Content-Type: text/csv');
+            header('Content-Disposition: attachment; filename="' . $csvFileName . '"');
+            readfile($csvFileName);
+
+            // Delete the CSV file from the server (optional)
+            unlink($csvFileName);
         }
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         echo view('templates/header');
