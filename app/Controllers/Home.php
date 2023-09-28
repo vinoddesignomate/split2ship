@@ -2217,7 +2217,7 @@ class Home extends BaseController
             // Loop through the database result and write each row to the CSV file
             // while ($row = $result->fetch_assoc()) {
             foreach ($get_allzip as $allgetval) {
-                fputcsv($csvFile, $get_allzip->zipcodes);
+                fputcsv($csvFile, $allgetval->zipcodes);
             }
 
             // Close the database connection and CSV file
