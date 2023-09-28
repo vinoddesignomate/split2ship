@@ -78,11 +78,11 @@ class Home extends BaseController
                 // echo "get_register_webhookset<pre>";
                 // print_r($get_register_webhookset);
                 // echo "</pre>";
-                $webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
+                //$webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
                 //      echo "get_register_webhookset<pre>";
                 //     print_r($webhookdata);
                 //     echo "</pre>";
-                if (empty($webhookdata)) {
+                /*if (empty($webhookdata)) {
                     $this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
 
 
@@ -94,7 +94,7 @@ class Home extends BaseController
                         "movement" => date('Y-m-d')
                     );
                     $this->user_model->insert_addcart_webhooks($webhookarray);
-                }
+                }*/
                 // }
 
                 if ($this->request->getPost('assign_save')) {

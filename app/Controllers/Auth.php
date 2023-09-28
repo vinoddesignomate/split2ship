@@ -150,12 +150,12 @@ class Auth extends BaseController
 			//update cart webhook
 			$this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
-			$webhookarray = array(
-				"webhook_name" => 'cart_update',
-				"shop_url" => $_GET['shop'],
-				"movement" => date('Y-m-d')
-			);
-			$userModel->insert_addcart_webhooks($webhookarray);
+			// $webhookarray = array(
+			// 	"webhook_name" => 'cart_update',
+			// 	"shop_url" => $_GET['shop'],
+			// 	"movement" => date('Y-m-d')
+			// );
+			// $userModel->insert_addcart_webhooks($webhookarray);
 
 
 			//order create webhook
