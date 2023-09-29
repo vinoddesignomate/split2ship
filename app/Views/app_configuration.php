@@ -1054,30 +1054,7 @@ $store_name = $shop_name[0];
                         </form>
                 </div>
         </div>
-        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                        <div class="payxnowandrestondelivery-head-wrapper">
-                                <h2 class="">Upload Zip Codes</h2>
-                        </div>
-                        <div class="edit-form-wrapper">
-                                <form method="post" enctype="multipart/form-data">
-
-                                        <div class="flex-row">
-                                                <label for="">Serviced postal codes</label>
-                                                <?php if (!empty($get_allzip)) { ?>
-                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a> 
-                                                <?php } ?>
-                                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
-                                                <input type="file" required name="zip_code" accept=".csv">
-                                        </div>
-                                        <div class="btn-row">
-                                                <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                                        </div>
-
-                                </form>
-                        </div>
-                </div>
-        <?php } ?>
+      
         </div>
 </div>
 

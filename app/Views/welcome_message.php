@@ -268,337 +268,365 @@
         </div>
         <!-- main area ends-->
     </section>
-    <!-- **********************************************
+
+    <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+        <section class="payxnowandrestondelivery-sec-space">
+            <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                <div class="payxnowandrestondelivery-head-wrapper">
+                    <h2 class="">Upload Zip Codes</h2>
+                </div>
+                <div class="edit-form-wrapper">
+                    <form method="post" enctype="multipart/form-data">
+
+                        <div class="flex-row">
+                            <label for="">Serviced postal codes</label>
+                            <?php if (!empty($get_allzip)) { ?>
+                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
+                            <?php } ?>
+                            <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
+                            <input type="file" required name="zip_code" accept=".csv">
+                        </div>
+                        <div class="btn-row">
+                            <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <section>
+            <?php } ?>
+
+            <!-- **********************************************
                         SECTION-3
     **************************************************** -->
-    <section class="payxnowandrestondelivery-sec-space">
-        <!-- main-head -->
-        <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-head">
-                <div class="payxnowandrestondelivery-main-heading">
-                    <h1>Order Summary</h1>
+            <section class="payxnowandrestondelivery-sec-space">
+                <!-- main-head -->
+                <div class="payxnowandrestondelivery-container">
+                    <div class="payxnowandrestondelivery-main-head">
+                        <div class="payxnowandrestondelivery-main-heading">
+                            <h1>Order Summary</h1>
 
+                        </div>
+
+                    </div>
                 </div>
+                <!-- main-head ends -->
 
-            </div>
-        </div>
-        <!-- main-head ends -->
-
-        <!-- main area -->
-        <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
-                <div class="payxnowandrestondelivery-inner-wrapper">
-                    <div class="payxnowandrestondelivery-main-data-col">
-                        <div class="payxnowandrestondelivery-table-outer-wrapper">
-                            <table>
-                                <tr>
-
-                                    <th>Customer</th>
-                                    <th>Pending Amount</th>
-                                    <th>Total Amount</th>
-                                </tr>
-
-                                <?php
-
-                                if (!empty($order_list)) {
-                                    foreach ($order_list as $get_all_products) {
-
-
-
-                                        if (trim($get_all_products->order_status) == 'pending') {
-                                            $chkedsts = "";
-                                        } else {
-                                            $chkedsts = "checked";
-                                        }
-
-                                        if ($get_all_products->sync_order == 1) {
-                                            $chkedsts1 = "checked";
-                                        } else {
-                                            $chkedsts1 = "";
-                                        }
-
-                                ?>
+                <!-- main area -->
+                <div class="payxnowandrestondelivery-container">
+                    <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
+                        <div class="payxnowandrestondelivery-inner-wrapper">
+                            <div class="payxnowandrestondelivery-main-data-col">
+                                <div class="payxnowandrestondelivery-table-outer-wrapper">
+                                    <table>
                                         <tr>
 
-                                            <td><?php echo esc($myCommon->payxnow_decodedata($get_all_products->f_name) . ' ' . $myCommon->payxnow_decodedata($get_all_products->l_name)); ?></td>
-                                            <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->pending_amount . ' ' . $get_all_products->order_ccy); ?></span></td>
-                                            <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->total_price . ' ' . $get_all_products->order_ccy); ?></span></td>
-
+                                            <th>Customer</th>
+                                            <th>Pending Amount</th>
+                                            <th>Total Amount</th>
                                         </tr>
 
-                                <?php }
-                                } ?>
-                            </table>
-                        </div>
-                        <?php
-                        $shop_name = explode(".", $_GET['shop']);
-                        $store_namep = $shop_name[0];
-                        ?>
-                        <div class="payxnowandrestondelivery-btn-col">
-                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_namep) ?>/apps/pay-x-now-rest-on-delivery/show-orders" class="payxnowandrestondelivery-button">View More</a>
+                                        <?php
+
+                                        if (!empty($order_list)) {
+                                            foreach ($order_list as $get_all_products) {
+
+
+
+                                                if (trim($get_all_products->order_status) == 'pending') {
+                                                    $chkedsts = "";
+                                                } else {
+                                                    $chkedsts = "checked";
+                                                }
+
+                                                if ($get_all_products->sync_order == 1) {
+                                                    $chkedsts1 = "checked";
+                                                } else {
+                                                    $chkedsts1 = "";
+                                                }
+
+                                        ?>
+                                                <tr>
+
+                                                    <td><?php echo esc($myCommon->payxnow_decodedata($get_all_products->f_name) . ' ' . $myCommon->payxnow_decodedata($get_all_products->l_name)); ?></td>
+                                                    <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->pending_amount . ' ' . $get_all_products->order_ccy); ?></span></td>
+                                                    <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->total_price . ' ' . $get_all_products->order_ccy); ?></span></td>
+
+                                                </tr>
+
+                                        <?php }
+                                        } ?>
+                                    </table>
+                                </div>
+                                <?php
+                                $shop_name = explode(".", $_GET['shop']);
+                                $store_namep = $shop_name[0];
+                                ?>
+                                <div class="payxnowandrestondelivery-btn-col">
+                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_namep) ?>/apps/pay-x-now-rest-on-delivery/show-orders" class="payxnowandrestondelivery-button">View More</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- main area ends-->
+            </section>
+
+            <style>
+                /* Styling for the popup container */
+                body.price-plan.package_popup_visible {
+                    overflow-y: hidden;
+                    position: relative;
+                }
+
+                .popup-container {
+                    display: none;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    width: 100%;
+                    height: auto;
+                    max-width: 400px;
+                    transform: translate(-50%, -50%);
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 999;
+                    padding: 0px 15px;
+
+                }
+
+                /* Styling for the popup content */
+                .popup-content p {
+                    font-size: 18px;
+                    line-height: 130%;
+                }
+
+                .popup-content {
+
+                    text-align: center;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                    background-color: #fff;
+                    padding: 50px 20px;
+                    border-radius: 5px;
+                    max-width: 400px;
+                }
+
+                .payxnowandrestondelivery-close-popup-btn {
+                    position: absolute;
+                    top: -7px;
+                    right: 0px;
+                    background-color: #10277c;
+                    color: #fff;
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                }
+
+                body.package_popup_visible:after {
+                    content: '';
+                    position: fixed;
+                    background-color: #0000008a;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 111;
+                }
+
+                .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
+                    margin-bottom: 13px;
+                }
+
+                @media screen and (max-width:610px) {
+                    .payxnowandrestondelivery-close-popup-btn {
+                        right: 12px
+                    }
+                }
+            </style>
+
+            <div id="popup" class="popup-container">
+                <div class="popup-content">
+                    <!-- <h2>Hello, this is a message!</h2> -->
+                    <p id="plmsg"></p>
+                    <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
+                </div>
             </div>
-        </div>
-        <!-- main area ends-->
-    </section>
-
-    <style>
-        /* Styling for the popup container */
-        body.price-plan.package_popup_visible {
-            overflow-y: hidden;
-            position: relative;
-        }
-
-        .popup-container {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-            transform: translate(-50%, -50%);
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            padding: 0px 15px;
-
-        }
-
-        /* Styling for the popup content */
-        .popup-content p {
-            font-size: 18px;
-            line-height: 130%;
-        }
-
-        .popup-content {
-
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            background-color: #fff;
-            padding: 50px 20px;
-            border-radius: 5px;
-            max-width: 400px;
-        }
-
-        .payxnowandrestondelivery-close-popup-btn {
-            position: absolute;
-            top: -7px;
-            right: 0px;
-            background-color: #10277c;
-            color: #fff;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-        }
-
-        body.package_popup_visible:after {
-            content: '';
-            position: fixed;
-            background-color: #0000008a;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 111;
-        }
-
-        .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
-            margin-bottom: 13px;
-        }
-
-        @media screen and (max-width:610px) {
-            .payxnowandrestondelivery-close-popup-btn {
-                right: 12px
-            }
-        }
-    </style>
-
-    <div id="popup" class="popup-container">
-        <div class="popup-content">
-            <!-- <h2>Hello, this is a message!</h2> -->
-            <p id="plmsg"></p>
-            <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
-        </div>
-    </div>
-    <!-- **********************************************
+            <!-- **********************************************
                         SECTION-4
     **************************************************** -->
-    <section class="payxnowandrestondelivery-sec-space">
-        <!-- main-head -->
-        <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-head">
-                <div class="payxnowandrestondelivery-main-heading">
-                    <h1>Upgrade</h1>
+            <section class="payxnowandrestondelivery-sec-space">
+                <!-- main-head -->
+                <div class="payxnowandrestondelivery-container">
+                    <div class="payxnowandrestondelivery-main-head">
+                        <div class="payxnowandrestondelivery-main-heading">
+                            <h1>Upgrade</h1>
+                        </div>
+
+                    </div>
                 </div>
+                <!-- main-head ends -->
+                <?php
+                $shop_name = explode(".", $_GET['shop']);
+                $store_name = $shop_name[0];
 
-            </div>
-        </div>
-        <!-- main-head ends -->
-        <?php
-        $shop_name = explode(".", $_GET['shop']);
-        $store_name = $shop_name[0];
+                ?>
+                <!-- main area -->
+                <div class="payxnowandrestondelivery-container">
+                    <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-pricing-sec">
+                        <div class="payxnowandrestondelivery-head-wrapper">
+                            <h2>Pricing</h2>
 
-        ?>
-        <!-- main area -->
-        <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-pricing-sec">
-                <div class="payxnowandrestondelivery-head-wrapper">
-                    <h2>Pricing</h2>
+                        </div>
+                        <div class="payxnowandrestondelivery-inner-wrapper payxnowandrestondelivery-pricing-row">
+                            <div class="payxnowandrestondelivery-pricing-col">
+                                <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
 
+                                    <h4 class="payxnowandrestondelivery-pink-bg">Basic</h4>
+                                    <li>
+                                        <h3 class="payxnowandrestondelivery-text-violet">Free</h3>
+                                    </li>
+                                    <li>
+                                        <p>200 products partial add</p>
+                                    </li>
+                                    <li>
+                                        <p>20 orders sync</p>
+                                    </li>
+                                    <li>
+                                        <p>Integration with all shipping</p>
+                                    </li>
+                                    <li>
+                                        <p>Offer partial payment on upto 200 products</p>
+                                    </li>
+                                    <br><br><br>
+
+                                </ul>
+                                <div class="payxnowandrestondelivery-pricing-btn">
+                                    <?php
+                                    if ($get_details_store->total_sync_store_products <= 200) {
+                                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
+                                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                                        <?php } else { ?>
+                                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
+                                        <?php }
+                                    } else { ?>
+                                        <a href="javascript:void(0);" onclick="showPopup('basic')" class="payxnowandrestondelivery-button">Buy</a>
+                                    <?php  } ?>
+                                </div>
+                            </div>
+                            <div class="payxnowandrestondelivery-pricing-col">
+                                <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
+
+                                    <h4 class="payxnowandrestondelivery-blue-bg">Advanced</h4>
+                                    <li>
+                                        <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">17.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
+                                    </li>
+                                    <li>
+                                        <p>2000 products partial add</p>
+                                    </li>
+                                    <li>
+                                        <p>200 order sync</p>
+                                    </li>
+                                    <li>
+                                        <p>Email Support</p>
+                                    </li>
+                                    <li>
+                                        <p>Integration with all shipping</p>
+                                    </li>
+                                    <li>
+                                        <p>Offer partial payment on upto 2000 products</p>
+                                    </li>
+
+                                </ul>
+                                <div class="payxnowandrestondelivery-pricing-btn">
+                                    <?php
+                                    if ($get_details_store->total_sync_store_products <= 2000) {
+                                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?>
+                                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+
+                                        <?php } else { ?>
+                                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
+                                        <?php }
+                                    } else { ?>
+                                        <a href="javascript:void(0);" onclick="showPopup('advanced')" class="payxnowandrestondelivery-button">Buy</a>
+                                    <?php  } ?>
+
+                                </div>
+                            </div>
+                            <div class="payxnowandrestondelivery-pricing-col">
+                                <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
+
+                                    <h4 class="payxnowandrestondelivery-green-bg">Pro</h4>
+                                    <li>
+                                        <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">30.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
+                                    </li>
+                                    <li>
+                                        <p>5000 products partial add</p>
+                                    </li>
+                                    <li>
+                                        <p>Unlimited orders sync</p>
+                                    </li>
+                                    <li>
+                                        <p>Premium Support</p>
+                                    </li>
+                                    <li>
+                                        <p>Integration with all shipping</p>
+                                    </li>
+                                    <li>
+                                        <p>Offer partial payment on upto 5000 products</p>
+                                    </li>
+
+                                </ul>
+                                <div class="payxnowandrestondelivery-pricing-btn">
+                                    <?php
+                                    if ($get_details_store->total_sync_store_products <= 5000) {
+                                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?>
+                                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                                        <?php } else { ?>
+                                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
+                                        <?php }
+                                    } else { ?>
+                                        <a href="javascript:void(0);" onclick="showPopup('pro')" class="payxnowandrestondelivery-button">Buy</a>
+                                    <?php  } ?>
+                                </div>
+                            </div>
+                            <div class="payxnowandrestondelivery-pricing-col">
+                                <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
+
+                                    <h4 class="payxnowandrestondelivery-yellow-bg">Ultimate</h4>
+                                    <li>
+                                        <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">60.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
+                                    </li>
+                                    <li>
+                                        <p>10000 products partial add</p>
+                                    </li>
+                                    <li>
+                                        <p>Unlimited orders sync</p>
+                                    </li>
+                                    <li>
+                                        <p>Premium Support</p>
+                                    </li>
+                                    <li>
+                                        <p>Integration with all shipping</p>
+                                    </li>
+                                    <li>
+                                        <p>Offer partial payment on upto 10000 products</p>
+                                    </li>
+
+                                </ul>
+                                <div class="payxnowandrestondelivery-pricing-btn">
+                                    <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->plan_status == 'active')) { ?>
+
+                                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                                    <?php } else { ?>
+                                        <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=ultimate" class="payxnowandrestondelivery-button">Buy</a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
-                <div class="payxnowandrestondelivery-inner-wrapper payxnowandrestondelivery-pricing-row">
-                    <div class="payxnowandrestondelivery-pricing-col">
-                        <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
-
-                            <h4 class="payxnowandrestondelivery-pink-bg">Basic</h4>
-                            <li>
-                                <h3 class="payxnowandrestondelivery-text-violet">Free</h3>
-                            </li>
-                            <li>
-                                <p>200 products partial add</p>
-                            </li>
-                            <li>
-                                <p>20 orders sync</p>
-                            </li>
-                            <li>
-                                <p>Integration with all shipping</p>
-                            </li>
-                            <li>
-                                <p>Offer partial payment on upto 200 products</p>
-                            </li>
-                            <br><br><br>
-
-                        </ul>
-                        <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php
-                            if ($get_details_store->total_sync_store_products <= 200) {
-                                if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
-                                    <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                                <?php } else { ?>
-                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
-                                <?php }
-                            } else { ?>
-                                <a href="javascript:void(0);" onclick="showPopup('basic')" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php  } ?>
-                        </div>
-                    </div>
-                    <div class="payxnowandrestondelivery-pricing-col">
-                        <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
-
-                            <h4 class="payxnowandrestondelivery-blue-bg">Advanced</h4>
-                            <li>
-                                <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">17.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
-                            </li>
-                            <li>
-                                <p>2000 products partial add</p>
-                            </li>
-                            <li>
-                                <p>200 order sync</p>
-                            </li>
-                            <li>
-                                <p>Email Support</p>
-                            </li>
-                            <li>
-                                <p>Integration with all shipping</p>
-                            </li>
-                            <li>
-                                <p>Offer partial payment on upto 2000 products</p>
-                            </li>
-
-                        </ul>
-                        <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php
-                            if ($get_details_store->total_sync_store_products <= 2000) {
-                                if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?>
-                                    <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-
-                                <?php } else { ?>
-                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=advanced" class="payxnowandrestondelivery-button">Buy</a>
-                                <?php }
-                            } else { ?>
-                                <a href="javascript:void(0);" onclick="showPopup('advanced')" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php  } ?>
-
-                        </div>
-                    </div>
-                    <div class="payxnowandrestondelivery-pricing-col">
-                        <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
-
-                            <h4 class="payxnowandrestondelivery-green-bg">Pro</h4>
-                            <li>
-                                <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">30.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
-                            </li>
-                            <li>
-                                <p>5000 products partial add</p>
-                            </li>
-                            <li>
-                                <p>Unlimited orders sync</p>
-                            </li>
-                            <li>
-                                <p>Premium Support</p>
-                            </li>
-                            <li>
-                                <p>Integration with all shipping</p>
-                            </li>
-                            <li>
-                                <p>Offer partial payment on upto 5000 products</p>
-                            </li>
-
-                        </ul>
-                        <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php
-                            if ($get_details_store->total_sync_store_products <= 5000) {
-                                if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?>
-                                    <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                                <?php } else { ?>
-                                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=pro" class="payxnowandrestondelivery-button">Buy</a>
-                                <?php }
-                            } else { ?>
-                                <a href="javascript:void(0);" onclick="showPopup('pro')" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php  } ?>
-                        </div>
-                    </div>
-                    <div class="payxnowandrestondelivery-pricing-col">
-                        <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
-
-                            <h4 class="payxnowandrestondelivery-yellow-bg">Ultimate</h4>
-                            <li>
-                                <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">60.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
-                            </li>
-                            <li>
-                                <p>10000 products partial add</p>
-                            </li>
-                            <li>
-                                <p>Unlimited orders sync</p>
-                            </li>
-                            <li>
-                                <p>Premium Support</p>
-                            </li>
-                            <li>
-                                <p>Integration with all shipping</p>
-                            </li>
-                            <li>
-                                <p>Offer partial payment on upto 10000 products</p>
-                            </li>
-
-                        </ul>
-                        <div class="payxnowandrestondelivery-pricing-btn">
-                            <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->plan_status == 'active')) { ?>
-
-                                <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                            <?php } else { ?>
-                                <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=ultimate" class="payxnowandrestondelivery-button">Buy</a>
-                            <?php } ?>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
 </div>
 <script>
     var ship_provder = '<?php echo $ship_provider; ?>';
