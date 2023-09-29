@@ -297,6 +297,7 @@
 
                 </div>
             </div>
+            <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                     <h2 class="">Upload Zip Codes</h2>
@@ -318,6 +319,7 @@
 
                     </form>
                 </div>
+            </div>
             </div>
             <section>
             <?php } ?>
