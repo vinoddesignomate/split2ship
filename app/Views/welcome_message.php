@@ -1,3 +1,20 @@
+<style>
+     .payxnowandrestondelivery-zip-flex-row{display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 39px;
+    flex-wrap: wrap;}
+    .payxnowandrestondelivery-zip-flex-row > div {
+    flex: 1;
+}
+.postal-btn{margin-bottom: 10px;
+    background-color: #28a745;
+    color: #fff;padding: 5px 26px;margin-right: 10px;}
+    .postal-btn:hover{background-color: #3b3b3b;}
+    @media only screen and (max-width: 767px) {
+                .payxnowandrestondelivery-zip-flex-row{display: block;}
+    }
+</style>
 <div class="payxnowandrestondelivery-body-wrapper">
     <!-- **********************************************
                         SECTION-1
@@ -271,15 +288,15 @@
 
     <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
         <section class="payxnowandrestondelivery-sec-space">
-        <div class="payxnowandrestondelivery-container">
-                    <div class="payxnowandrestondelivery-main-head">
-                        <div class="payxnowandrestondelivery-main-heading">
-                            <h1>Upload Postal Codes</h1>
-
-                        </div>
+            <div class="payxnowandrestondelivery-container">
+                <div class="payxnowandrestondelivery-main-head">
+                    <div class="payxnowandrestondelivery-main-heading">
+                        <h1>Upload Postal Codes</h1>
 
                     </div>
+
                 </div>
+            </div>
             <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                     <h2 class="">Upload Zip Codes</h2>
