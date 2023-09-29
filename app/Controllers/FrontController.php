@@ -688,9 +688,9 @@ class FrontController extends BaseController
         $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
         //echo"<pre>"; print_r($get_allzip); echo "</pre>";
         if (empty($get_allzip)) {
-            echo "valid";
-        } else {
             echo "invalid";
+        } else {
+            echo "valid";
         }
     }
 }
