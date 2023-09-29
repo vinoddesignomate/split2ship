@@ -991,6 +991,7 @@ $store_name = $shop_name[0];
                         </div>
                 </div>
         </div>
+        <div class="flex-row">
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                         <h2 class="">Checkout button colors</h2>
@@ -1064,6 +1065,7 @@ $store_name = $shop_name[0];
                         </div>
                 </div>
         <?php } ?>
+        </div>
 </div>
 
 </div>
