@@ -65,7 +65,14 @@
         xmp {
                 margin: 0;
         }
-
+        .payxnowandrestondelivery-zip-flex-row{display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 39px;
+    flex-wrap: wrap;}
+    .payxnowandrestondelivery-zip-flex-row > div {
+    flex: 1;
+}
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
                         flex: auto;
@@ -991,7 +998,7 @@ $store_name = $shop_name[0];
                         </div>
                 </div>
         </div>
-        <div class="flex-row">
+        <div class="payxnowandrestondelivery-zip-flex-row">
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                         <h2 class="">Checkout button colors</h2>
@@ -1052,9 +1059,9 @@ $store_name = $shop_name[0];
                                         <div class="flex-row">
                                                 <label for="">Serviced postal codes</label>
                                                 <?php if (!empty($get_allzip)) { ?>
-                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>">Export All</a> | 
+                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a> | 
                                                 <?php } ?>
-                                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>">Sample CSV</a>
+                                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
                                                 <input type="file" required name="zip_code" accept=".csv">
                                         </div>
                                         <div class="btn-row">
