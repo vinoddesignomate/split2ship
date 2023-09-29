@@ -271,6 +271,15 @@
 
     <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
         <section class="payxnowandrestondelivery-sec-space">
+        <div class="payxnowandrestondelivery-container">
+                    <div class="payxnowandrestondelivery-main-head">
+                        <div class="payxnowandrestondelivery-main-heading">
+                            <h1>Upload Postal Codes</h1>
+
+                        </div>
+
+                    </div>
+                </div>
             <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                     <h2 class="">Upload Zip Codes</h2>
