@@ -73,6 +73,11 @@
     .payxnowandrestondelivery-zip-flex-row > div {
     flex: 1;
 }
+.postal-btn-export{margin-bottom: 10px;
+    background-color: #28a745;
+    color: #fff;padding: 5px 26px;margin-right: 10px;}
+    .postal-btn:hover{background-color: #3b3b3b;}
+    
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
                         flex: auto;
@@ -94,6 +99,7 @@
         }
 
         @media only screen and (max-width: 767px) {
+                .payxnowandrestondelivery-zip-flex-row{display: block;}
                 .payxnowandrestondelivery-main-area h5 {
                         padding-left: 0px;
                 }
@@ -1059,7 +1065,7 @@ $store_name = $shop_name[0];
                                         <div class="flex-row">
                                                 <label for="">Serviced postal codes</label>
                                                 <?php if (!empty($get_allzip)) { ?>
-                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a> | 
+                                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a> 
                                                 <?php } ?>
                                                 <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
                                                 <input type="file" required name="zip_code" accept=".csv">
