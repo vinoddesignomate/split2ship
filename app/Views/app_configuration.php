@@ -73,7 +73,7 @@
     .payxnowandrestondelivery-zip-flex-row > div {
     flex: 1;
 }
-.postal-btn-export{margin-bottom: 10px;
+.postal-btn{margin-bottom: 10px;
     background-color: #28a745;
     color: #fff;padding: 5px 26px;margin-right: 10px;}
     .postal-btn:hover{background-color: #3b3b3b;}
