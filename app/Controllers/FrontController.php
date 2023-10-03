@@ -110,7 +110,7 @@ class FrontController extends BaseController
         $cartarray = $body_data_decode['cart_item'];
 
         $get_details = $this->user_model->get_tokens($shopname);
-        if ($get_details->zip_code_enable_disabled) {
+        if ($get_details->zip_code_enable_disabled == 0) {
             $line_item_arra = array();
             $chekpartial = 0;
             $remaining_price = 0;
