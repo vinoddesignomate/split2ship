@@ -315,7 +315,7 @@
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                     <div class="payxnowandrestondelivery-head-wrapper">
                         <h2 class="">Upload Zip Codes</h2>
-                        <p><input type="checkbox" name="zip_en_dis" <?php if ($get_details->zip_code_enable_disabled == 1) { ?> checked <?php } ?> style="float: left;width: 1%;">Enabled zipcode validation</p>
+                        <p><input type="checkbox" name="zip_en_dis" <?php if ($get_details->zip_code_enable_disabled == 1) { ?> checked <?php } ?> style="float: left;width: 1%;">Enable Partial payment by postal code</p>
                     </div>
                     <?php if ($get_details->zip_code_enable_disabled == 0) { ?>
                         <div id="zipc_en_dis" class="edit-form-wrapper" style="display: none;">
