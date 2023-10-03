@@ -301,8 +301,9 @@
             <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                 <div class="payxnowandrestondelivery-head-wrapper">
                     <h2 class="">Upload Zip Codes</h2>
+                    <p><input type="checkbox" name="zip_en_dis" style="float: left;width: 1%;">Enabled zipcode validation</p>
                 </div>
-                <div class="edit-form-wrapper">
+                <div id="zipc_en_dis" class="edit-form-wrapper" style="display: none;">
                     <form method="post" enctype="multipart/form-data">
 
                         <div class="flex-row">
