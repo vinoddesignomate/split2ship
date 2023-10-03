@@ -2368,7 +2368,7 @@ class Home extends BaseController
     }
     public function zipcode_enabledis(){
         
-        echo"<pre>"; print_r($this->request->getPost('shop')); echo "</pre>";
+        echo"<pre>"; print_r($this->request->getPost()); echo "</pre>";
 
         
     }
