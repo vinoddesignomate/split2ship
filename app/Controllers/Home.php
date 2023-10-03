@@ -2366,4 +2366,10 @@ class Home extends BaseController
             $this->user_model->track_user_log($track_user_log);
         }
     }
+    public function zipcode_enabledis(){
+        
+        echo"<pre>"; print_r($this->request->getPost('shop')); echo "</pre>";
+
+        
+    }
 }

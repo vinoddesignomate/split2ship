@@ -675,11 +675,24 @@
     var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
     radioButtons.forEach(function(radioButton) {
         radioButton.addEventListener('change', function(event) {
+            var enblvar = 0;
             if (radioButton.checked) {
                 $("#zipc_en_dis").show();
+                enblvar=1;
             } else {
                 $("#zipc_en_dis").hide();
+                enblvar=0;
             }
+            var shopname = '<?php echo esc($_GET['shop']); ?>';
+            $.ajax({
+                type: "POST",
+                url: "enablezipprocess",
+                data: 'shop=' + shopname+'&enblvar='+enblvar,
+                success: function(response) {
+                    
+                }
+
+            });
         });
     });
     var ship_provder = '<?php echo $ship_provider; ?>';
