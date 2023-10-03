@@ -55,6 +55,7 @@ class Home extends BaseController
             }
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
+            $data['get_details'] = $get_details;
             $products =  $products = $this->common->rest_api('/admin/api/2022-10/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
 
@@ -2203,7 +2204,7 @@ class Home extends BaseController
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
-        
+
         echo view('templates/header');
         echo view('app_configuration', $data);
         echo view('templates/footer');
@@ -2366,10 +2367,14 @@ class Home extends BaseController
             $this->user_model->track_user_log($track_user_log);
         }
     }
-    public function zipcode_enabledis(){
-        
-        echo"<pre>"; print_r($this->request->getPost()); echo "</pre>";
+    public function zipcode_enabledis()
+    {
 
-        
+        if ($this->request->getPost('shop')) {
+            $this->user_model->update_data($this->request->getPost('shop'), array(
+                "zip_code_enable_disabled" => $this->request->getPost('enblvar')
+            ));
+            
+        }
     }
 }
