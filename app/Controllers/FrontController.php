@@ -321,6 +321,7 @@ class FrontController extends BaseController
                     $line_item = array(
                         "variant_id" => $item_cart['id'],
                         "quantity" => $item_cart['qty'],
+                        "price" => $item_cart['price'],
                         "gift_card" => true,
                         "sku" => $itmeskysplit,
                         "grams" => $item_cart['grams'],
