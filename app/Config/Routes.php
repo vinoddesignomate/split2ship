@@ -75,6 +75,7 @@ $routes->match(['get', 'post'],'/return_url', 'Home::get_subscribe_return');
 //store front end routes
 $routes->match(['get', 'post'],'/frontend-handler', 'FrontController::get_product_details');
 $routes->match(['get', 'post'],'/frontend-temp-ord', 'FrontController::create_draft_order');
+$routes->match(['get', 'post'],'/frontend-temp-ord-zip', 'FrontController::create_draft_order_zip');
 $routes->match(['get', 'post'],'/edit-order-graphl', 'FrontController::edit_order_partial');
 $routes->match(['get', 'post'],'/frontend-getdata', 'FrontController::test_proxychk');
 $routes->match(['get', 'post'],'/frontend-handler-dynamic-color', 'FrontController::getfront_color_code');
