@@ -1,18 +1,32 @@
 <style>
-     .payxnowandrestondelivery-zip-flex-row{display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 39px;
-    flex-wrap: wrap;}
-    .payxnowandrestondelivery-zip-flex-row > div {
-    flex: 1;
-}
-.postal-btn{margin-bottom: 10px;
-    background-color: #28a745;
-    color: #fff;padding: 5px 26px;margin-right: 10px;}
-    .postal-btn:hover{background-color: #3b3b3b;}
+    .payxnowandrestondelivery-zip-flex-row {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 39px;
+        flex-wrap: wrap;
+    }
+
+    .payxnowandrestondelivery-zip-flex-row>div {
+        flex: 1;
+    }
+
+    .postal-btn {
+        margin-bottom: 10px;
+        background-color: #28a745;
+        color: #fff;
+        padding: 5px 26px;
+        margin-right: 10px;
+    }
+
+    .postal-btn:hover {
+        background-color: #3b3b3b;
+    }
+
     @media only screen and (max-width: 767px) {
-                .payxnowandrestondelivery-zip-flex-row{display: block;}
+        .payxnowandrestondelivery-zip-flex-row {
+            display: block;
+        }
     }
 </style>
 <div class="payxnowandrestondelivery-body-wrapper">
@@ -298,29 +312,29 @@
                 </div>
             </div>
             <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                <div class="payxnowandrestondelivery-head-wrapper">
-                    <h2 class="">Upload Zip Codes</h2>
-                    <p><input type="checkbox" name="zip_en_dis" style="float: left;width: 1%;">Enabled zipcode validation</p>
-                </div>
-                <div id="zipc_en_dis" class="edit-form-wrapper" style="display: none;">
-                    <form method="post" enctype="multipart/form-data">
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                    <div class="payxnowandrestondelivery-head-wrapper">
+                        <h2 class="">Upload Zip Codes</h2>
+                        <p><input type="checkbox" name="zip_en_dis" style="float: left;width: 1%;">Enabled zipcode validation</p>
+                    </div>
+                    <div id="zipc_en_dis" class="edit-form-wrapper" style="display: none;">
+                        <form method="post" enctype="multipart/form-data">
 
-                        <div class="flex-row">
-                            <label for="">Serviced postal codes</label>
-                            <?php if (!empty($get_allzip)) { ?>
-                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
-                            <?php } ?>
-                            <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
-                            <input type="file" required name="zip_code" accept=".csv">
-                        </div>
-                        <div class="btn-row">
-                            <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                        </div>
+                            <div class="flex-row">
+                                <label for="">Serviced postal codes</label>
+                                <?php if (!empty($get_allzip)) { ?>
+                                    <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
+                                <?php } ?>
+                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
+                                <input type="file" required name="zip_code" accept=".csv">
+                            </div>
+                            <div class="btn-row">
+                                <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                            </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
             <section>
             <?php } ?>
@@ -658,6 +672,16 @@
                 </div>
 </div>
 <script>
+    var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
+    radioButtons.forEach(function(radioButton) {
+        radioButton.addEventListener('change', function(event) {
+            if (radioButton.checked) {
+                $("#zipc_en_dis").show();
+            } else {
+                $("#zipc_en_dis").hide();
+            }
+        });
+    });
     var ship_provder = '<?php echo $ship_provider; ?>';
     // Function to show the popup
     function showPopup(planename) {
