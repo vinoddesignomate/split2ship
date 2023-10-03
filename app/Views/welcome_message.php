@@ -300,7 +300,7 @@
         <!-- main area ends-->
     </section>
 
-    <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+    
         <section class="payxnowandrestondelivery-sec-space">
             <div class="payxnowandrestondelivery-container">
                 <div class="payxnowandrestondelivery-main-head">
@@ -341,7 +341,7 @@
                         </div>
                 </div>
                 <section>
-                <?php } ?>
+                
 
                 <!-- **********************************************
                         SECTION-3
