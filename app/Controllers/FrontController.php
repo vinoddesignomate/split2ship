@@ -306,13 +306,13 @@ class FrontController extends BaseController
                     "requires_shipping" => true,
                     "grams" => $item_cart['grams'],
                     "gift_card" => true,
-                    "applied_discount" => array(
-                        "description" => "Custom discount",
-                        "title" => "Custom discount",
-                        "value_type" => "fixed_amount",
-                        "value" => "250.00",
-                        "amount" => "250.00",
-                    ),
+                    // "applied_discount" => array(
+                    //     "description" => "Custom discount",
+                    //     "title" => "Custom discount",
+                    //     "value_type" => "fixed_amount",
+                    //     "value" => "250.00",
+                    //     "amount" => "250.00",
+                    // ),
                     "properties" => array(
                         array("name" => "Note", "value" => "Initial Partial Payment"),
                         array("name" => "variant_code", "value" => $item_cart['id']),
@@ -332,13 +332,13 @@ class FrontController extends BaseController
                     "gift_card" => true,
                     "sku" => $itmeskysplit,
                     "grams" => $item_cart['grams'],
-                    "applied_discount" => array(
-                        "description" => "Custom discount",
-                        "title" => "Custom discount",
-                        "value_type" => "fixed_amount",
-                        "value" => "250.00",
-                        "amount" => "250.00",
-                    ),
+                    // "applied_discount" => array(
+                    //     "description" => "Custom discount",
+                    //     "title" => "Custom discount",
+                    //     "value_type" => "fixed_amount",
+                    //     "value" => "250.00",
+                    //     "amount" => "250.00",
+                    // ),
                     "properties" => array(
                         array("name" => "Note", "value" => "Full Payment"),
                         array("name" => "full_pay", "value" => $item_cart['price'])
