@@ -251,129 +251,129 @@ class FrontController extends BaseController
         $cartarray = $body_data_decode['cart_item'];
 
         $get_details = $this->user_model->get_tokens($shopname);
-       
-            $line_item_arra = array();
-            $chekpartial = 0;
-            $remaining_price = 0;
-            $illp = 0;
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //     echo "<pre>";
-            //     print_r($cartarray);
-            //     echo "</pre>";
-            //     die();
-            // }
-            $ilosku = 1;
-            foreach ($cartarray as $item_cart) {
+
+        $line_item_arra = array();
+        $chekpartial = 0;
+        $remaining_price = 0;
+        $illp = 0;
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     echo "<pre>";
+        //     print_r($cartarray);
+        //     echo "</pre>";
+        //     die();
+        // }
+        $ilosku = 1;
+        foreach ($cartarray as $item_cart) {
 
 
-                if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
-                    $itmeskysplit =  $item_cart['psku'];
-                } else {
-                    $itmeskysplit =  "PART" . $ilosku . time();
-                }
+            if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
+                $itmeskysplit =  $item_cart['psku'];
+            } else {
+                $itmeskysplit =  "PART" . $ilosku . time();
+            }
 
 
-                if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
-                    $size_tems = array();
+            if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
+                $size_tems = array();
 
-                    foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
-                        if ($split_varient_options['name'] != "Title") {
-                            $size_tems[] = $split_varient_options['value'];
-                            // $line_item['properties'][] = array(
-                            //     "name" => $split_varient_options['name'],
-                            //     "value" => $split_varient_options['value']
-                            // );
-                        }
-                    }
-
-                    if (!empty($size_tems)) {
-                        $size_order_name = implode("/", $size_tems);
-                        $size_order_namenn = " - " . $size_order_name;
-                        // $order_name_count = count($create_customqty);
-                    } else {
-                        $size_order_namenn = "";
-                    }
-
-                    $chekpartial = 1;
-                    $final_price = $item_cart['price'] / $item_cart['qty'];
-
-
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "sku" => $itmeskysplit,
-                        "requires_shipping" => true,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                            // array("name" => "psku", "value" => $itmeskysplit)
-                        )
-                    );
-
-
-                    $remaining_price = $remaining_price + $item_cart['rem_p'];
-                } else {
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "price" => $item_cart['price'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => true
-                    );
-                }
-
-                //code for add variants name & value to order
                 foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
                     if ($split_varient_options['name'] != "Title") {
+                        $size_tems[] = $split_varient_options['value'];
+                        // $line_item['properties'][] = array(
+                        //     "name" => $split_varient_options['name'],
+                        //     "value" => $split_varient_options['value']
+                        // );
+                    }
+                }
+
+                if (!empty($size_tems)) {
+                    $size_order_name = implode("/", $size_tems);
+                    $size_order_namenn = " - " . $size_order_name;
+                    // $order_name_count = count($create_customqty);
+                } else {
+                    $size_order_namenn = "";
+                }
+
+                $chekpartial = 1;
+                $final_price = $item_cart['price'] / $item_cart['qty'];
+
+
+                $line_item  = array(
+                    "title" => $item_cart['title'] . $size_order_namenn,
+                    "price" => $final_price,
+                    "quantity" => $item_cart['qty'],
+                    "sku" => $itmeskysplit,
+                    "requires_shipping" => true,
+                    "grams" => $item_cart['grams'],
+                    "gift_card" => true,
+                    "properties" => array(
+                        array("name" => "Note", "value" => "Initial Partial Payment"),
+                        array("name" => "variant_code", "value" => $item_cart['id']),
+                        array("name" => "partial_pay", "value" => $item_cart['price']),
+                        array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
+                        // array("name" => "psku", "value" => $itmeskysplit)
+                    )
+                );
+
+
+                $remaining_price = $remaining_price + $item_cart['rem_p'];
+            } else {
+                $line_item = array(
+                    "variant_id" => $item_cart['id'],
+                    "quantity" => $item_cart['qty'],
+                    "price" => $item_cart['price'],
+                    "gift_card" => true,
+                    "sku" => $itmeskysplit,
+                    "grams" => $item_cart['grams'],
+                    "properties" => array(
+                        array("name" => "Note", "value" => "Full Payment"),
+                        array("name" => "full_pay", "value" => $item_cart['price'])
+                    ),
+                    "requires_shipping" => true
+                );
+            }
+
+            //code for add variants name & value to order
+            foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                if ($split_varient_options['name'] != "Title") {
+                    $line_item['properties'][] = array(
+                        "name" => $split_varient_options['name'],
+                        "value" => $split_varient_options['value']
+                    );
+                }
+            }
+
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //code for add variants name & value to order
+            if (isset($item_cart['allproperties'])) {
+                foreach ($item_cart['allproperties'] as $keypropty => $proval) {
+                    if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
                         $line_item['properties'][] = array(
-                            "name" => $split_varient_options['name'],
-                            "value" => $split_varient_options['value']
+                            "name" => $keypropty,
+                            "value" => $proval
                         );
                     }
                 }
-
-                // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                //code for add variants name & value to order
-                if (isset($item_cart['allproperties'])) {
-                    foreach ($item_cart['allproperties'] as $keypropty => $proval) {
-                        if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
-                            $line_item['properties'][] = array(
-                                "name" => $keypropty,
-                                "value" => $proval
-                            );
-                        }
-                    }
-                }
-                //}
-
-                $illp = $illp + 1;
-                $ilosku = $ilosku + 1;
-                $line_item_arra[] = $line_item;
             }
-            //echo $chekpartial;
-            //    print_r($line_item_arra);
+            //}
 
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //     echo "line_item_arra<pre>";
-            //     print_r($line_item_arra);
-            //     echo "</pre>";
-            //     die();
-            // }
-            $final_total_price_rem = str_replace("-", "", $remaining_price);
-            $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-            return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-        
+            $illp = $illp + 1;
+            $ilosku = $ilosku + 1;
+            $line_item_arra[] = $line_item;
+        }
+        //echo $chekpartial;
+        //    print_r($line_item_arra);
+
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     echo "line_item_arra<pre>";
+        //     print_r($line_item_arra);
+        //     echo "</pre>";
+        //     die();
+        // }
+        $final_total_price_rem = str_replace("-", "", $remaining_price);
+        $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
+        return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+
 
         //return $return_array->draft_order->invoice_url;
     }
@@ -830,16 +830,20 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $zipode = $body_data_decode['zipode'];
-        $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
-        //echo"<pre>"; print_r($get_allzip); echo "</pre>";
-        $zip_regex = "/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/"; 
+        $zip_regex = "/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/";
         $pregmatchvar = preg_match($zip_regex, $zipode);
-        echo $pregmatchvar;
-        echo "invalid";
-        // if (empty($get_allzip)) {
-        //     echo "valid";
-        // } else {
-        //     echo "invalid";
-        // }
+        if ($pregmatchvar == 1) {          
+
+            $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
+
+
+            if (empty($get_allzip)) {
+                echo "valid";
+            } else {
+                echo "invalid";
+            }
+        } else {
+            echo "invalidzip";
+        }
     }
 }
