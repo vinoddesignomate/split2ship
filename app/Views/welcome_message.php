@@ -325,7 +325,7 @@
                             <form method="post" enctype="multipart/form-data">
 
                                 <div class="flex-row">
-                                    <label for="">Upload Serviceable postal codes</label>
+                                    <label for="">Upload Non serviceable postal codes</label>
                                     <?php if (!empty($get_allzip)) { ?>
                                         <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
                                     <?php } ?>
