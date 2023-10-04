@@ -385,7 +385,7 @@ class FrontController extends BaseController
         //     die();
         // }
         $final_total_price_rem = str_replace("-", "", $remaining_price);
-        $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem), "applied_discount" => array("description" => "Custom discount","title" => "Custom discount","value_type" => "fixed_amount","value" => "250.00","amount" => "250.00"));
+        $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem,"applied_discount" => array("description" => "Custom discount","title" => "Custom discount","value_type" => "fixed_amount","value" => "250.00","amount" => "250.00")));
         return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
 
 
