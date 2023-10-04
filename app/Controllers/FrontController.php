@@ -306,6 +306,13 @@ class FrontController extends BaseController
                     "requires_shipping" => true,
                     "grams" => $item_cart['grams'],
                     "gift_card" => true,
+                    "applied_discount" => array(
+                        "description" => "Custom discount",
+                        "title" => "Custom discount",
+                        "value_type" => "fixed_amount",
+                        "value" => "250.00",
+                        "amount" => "250.00",
+                    ),
                     "properties" => array(
                         array("name" => "Note", "value" => "Initial Partial Payment"),
                         array("name" => "variant_code", "value" => $item_cart['id']),
@@ -325,6 +332,13 @@ class FrontController extends BaseController
                     "gift_card" => true,
                     "sku" => $itmeskysplit,
                     "grams" => $item_cart['grams'],
+                    "applied_discount" => array(
+                        "description" => "Custom discount",
+                        "title" => "Custom discount",
+                        "value_type" => "fixed_amount",
+                        "value" => "250.00",
+                        "amount" => "250.00",
+                    ),
                     "properties" => array(
                         array("name" => "Note", "value" => "Full Payment"),
                         array("name" => "full_pay", "value" => $item_cart['price'])
@@ -832,7 +846,7 @@ class FrontController extends BaseController
         $zipode = $body_data_decode['zipode'];
         $zip_regex = "/^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$/";
         $pregmatchvar = preg_match($zip_regex, $zipode);
-        if ($pregmatchvar == 1) {          
+        if ($pregmatchvar == 1) {
 
             $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
 
