@@ -832,10 +832,13 @@ class FrontController extends BaseController
         $zipode = $body_data_decode['zipode'];
         $get_allzip = $this->user_model->get_all_zipcodes($shopname, $zipode);
         //echo"<pre>"; print_r($get_allzip); echo "</pre>";
+        $zip_regex = "/^[1-9]{6}(?:-[1-9]{4})?$/"; 
+        $pregmatchvar = preg_match($zip_regex, $zipode);
+        echo $pregmatchvar;
         if (empty($get_allzip)) {
-            echo "invalid";
-        } else {
             echo "valid";
+        } else {
+            echo "invalid";
         }
     }
 }
