@@ -835,10 +835,11 @@ class FrontController extends BaseController
         $zip_regex = "/^[1-9]{6}(?:-[1-9]{4})?$/"; 
         $pregmatchvar = preg_match($zip_regex, $zipode);
         echo $pregmatchvar;
-        if (empty($get_allzip)) {
-            echo "valid";
-        } else {
-            echo "invalid";
-        }
+        echo "invalid";
+        // if (empty($get_allzip)) {
+        //     echo "valid";
+        // } else {
+        //     echo "invalid";
+        // }
     }
 }
