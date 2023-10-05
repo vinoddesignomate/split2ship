@@ -73,9 +73,9 @@ class Home extends BaseController
 
                  if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                // $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                $getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                 echo "getprietuleidrec<pre>";
