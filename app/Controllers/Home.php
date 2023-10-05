@@ -71,16 +71,16 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                // if ($_GET['shop'] == 'onlyneon1.myshopify.com') {
+                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
                 // $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                // $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/recurring_application_charges/30827217200.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                // $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+                $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                // echo "get_register_webhookset<pre>";
-                // print_r($get_register_webhookset);
-                // echo "</pre>";
+                echo "getprietuleidrec<pre>";
+                print_r($getprietuleidrec);
+                echo "</pre>";
                 //$webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
                 //      echo "get_register_webhookset<pre>";
                 //     print_r($webhookdata);
@@ -98,7 +98,7 @@ class Home extends BaseController
                     );
                     $this->user_model->insert_addcart_webhooks($webhookarray);
                 }*/
-                // }
+                }
 
                 if ($this->request->getPost('assign_save')) {
                     // print_r($this->request->getPost());
