@@ -626,7 +626,7 @@ class UserModel extends Model
     }
     public function update_plan_products($updatec, $shop_url)
     {
-        $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial-" . $updatec . " WHERE shop_url=?";
+        $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial-" . $updatec . " WHERE shop_url=? AND updated_products_partial > 0";
         $this->db->query($updatests, array($shop_url));
 
         //update total partial product count in main store db table
@@ -640,7 +640,7 @@ class UserModel extends Model
         $this->db->query($updatests, array($shop_url));
 
         //update total partial product count in main store db table
-        $update_total_par_product_count_remove = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products-1 WHERE shop_url=?";
+        $update_total_par_product_count_remove = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products-1 WHERE shop_url=? AND total_sync_store_products > 0";
         $this->db->query($update_total_par_product_count_remove, array($shop_url));
     }
     public function testinsert()
