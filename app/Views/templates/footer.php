@@ -414,6 +414,7 @@ $fstore_name = $shop_name[0];
                 processData: false,
                 contentType: false,
                 success: function(response) {
+                    document.getElementById('zipcsvform').reset();
                     if (response == "invalid") {
                         $("#filmsg").html("Please select any csv file");
                         $("#filmsg").css("color", "red");
@@ -421,7 +422,7 @@ $fstore_name = $shop_name[0];
                         $("#filmsg").html("Please select only csv file");
                         $("#filmsg").css("color", "red");
                     } else if (response == "done") {
-                        $("#filmsg").html("File uploaded successfully");
+                        $("#filmsg").html("File upload successfully");
                         $("#filmsg").css("color", "green");
                         $("#clickfile").css("display", "none");
                         $("#export_id").css("display", "inline-block");
