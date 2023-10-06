@@ -322,7 +322,7 @@
                     <?php } else { ?>
                         <div id="zipc_en_dis" class="edit-form-wrapper">
                         <?php } ?>
-                        <form method="post" id="zipcsvform" enctype="multipart/form-data">
+                        <form id="zipcsvform" enctype="multipart/form-data">
 
                             <div class="flex-row">
                                 <label for="">Upload Non serviceable postal codes</label>
@@ -676,10 +676,7 @@
                     </div>
         </div>
         <script>
-            $("#zipcsvform").submit(function(e) {
-                e.preventDefault();
-                console.log('submit form submit');
-            });
+          
             var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
             radioButtons.forEach(function(radioButton) {
                 radioButton.addEventListener('change', function(event) {

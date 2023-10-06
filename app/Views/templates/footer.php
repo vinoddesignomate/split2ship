@@ -25,12 +25,14 @@ $fstore_name = $shop_name[0];
         // return false;
 
     }
+
     function new_window_opensplit2ship(event) {
         event.preventDefault();
         var href = event.currentTarget.getAttribute('href')
         top.window.location = href;
         //top.window.open(href, '_blank');
     }
+
     function abc(event) {
         event.preventDefault();
         var href = event.currentTarget.getAttribute('href')
@@ -301,11 +303,11 @@ $fstore_name = $shop_name[0];
         var update_id = $("#partial_textinput_" + this_id_frm).val();
         var priid = $("#priid_" + this_id_frm).val();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
-        
+
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
-            data: 'shop=' + shopname + '&update_per=true&change_partial='+partial_percentage+'&update_id='+this_id_frm+'&proid='+priid,
+            data: 'shop=' + shopname + '&update_per=true&change_partial=' + partial_percentage + '&update_id=' + this_id_frm + '&proid=' + priid,
             success: function(response) {
                 $("#show_per_" + this_id_frm).show();
                 $("#show_per_" + this_id_frm).html(response);
@@ -324,7 +326,7 @@ $fstore_name = $shop_name[0];
         var formdata = $("#sub_form_data_" + this_id_frm).serialize();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         var priid = $("#priid_" + this_id_frm).val();
-  
+
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
@@ -348,14 +350,14 @@ $fstore_name = $shop_name[0];
             data: 'shop=' + shopname + '&save_users=true&' + formdata,
             success: function(response) {
                 var splitresposn = response.split("_");
-                if(splitresposn[0] == "error"){
+                if (splitresposn[0] == "error") {
                     $("#ermsg").html(splitresposn[1]);
                     $("#ermsg").css('color', 'red');
-                }else {
+                } else {
                     $("#ermsg").html(splitresposn[1]);
                     $("#ermsg").css('color', 'green');
                 }
-                
+
 
                 // setTimeout(function() {
                 //     $("#ermsg").hide('blind', {}, 500)
@@ -372,13 +374,13 @@ $fstore_name = $shop_name[0];
     $("#checkAll").click(function() {
 
         if ($(this).prop("checked")) {
-                // let ddtatrr = $(this).attr('dattatrr');
-                // console.log(ddtatrr);
-                //$(".chkSelect").prop("checked", true);
-                $("[dattatrr=not_added]").prop("checked", true);
-            } else {
-                $(".payxnowandrestondelivery-chkSelect").prop("checked", false);
-            }
+            // let ddtatrr = $(this).attr('dattatrr');
+            // console.log(ddtatrr);
+            //$(".chkSelect").prop("checked", true);
+            $("[dattatrr=not_added]").prop("checked", true);
+        } else {
+            $(".payxnowandrestondelivery-chkSelect").prop("checked", false);
+        }
 
         //$('input:checkbox').not(this).prop('checked', this.checked);
     });
@@ -392,6 +394,32 @@ $fstore_name = $shop_name[0];
         data: 'shop=' + shopname,
         success: function(response) {}
 
+    });
+
+    $(document).ready(function() {
+        // Attach a submit event handler to the form
+        $("#zipcsvform").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formData = new FormData(this); // Create a FormData object
+
+            // Send an AJAX POST request to the server
+            $.ajax({
+                type: "POST",
+                url: "your_server_endpoint.php", // Replace with your server-side script URL
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Handle the server's response here
+                    console.log("Server response:", response);
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors here
+                    console.error("Error:", error);
+                },
+            });
+        });
     });
 </script>
 
