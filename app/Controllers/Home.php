@@ -803,7 +803,7 @@ class Home extends BaseController
 
     public function show_partial_products()
     {
-        $this->check_subscribe();
+        //$this->check_subscribe();
         $data = array();
         if (!isset($_GET['part_page'])) {
             $page_number = 1;
