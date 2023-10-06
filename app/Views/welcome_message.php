@@ -323,11 +323,11 @@
                         <div id="zipc_en_dis" class="edit-form-wrapper">
                         <?php } ?>
                         <form id="zipcsvform" enctype="multipart/form-data">
-                                <input type="hidden" name ="shop" value="<?php echo $_GET['shop']?>"/>
+                            <input type="hidden" name="shop" value="<?php echo $_GET['shop'] ?>" />
                             <div class="flex-row">
                                 <label for="">Upload Non serviceable postal codes</label>
                                 <?php if (!empty($get_allzip)) { ?>
-                                    <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
+                                    <a id="clickfile" onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
                                 <?php } ?>
                                 <span id="export_id" style="display: none;"></span>
                                 <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
@@ -678,7 +678,6 @@
                     </div>
         </div>
         <script>
-          
             var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
             radioButtons.forEach(function(radioButton) {
                 radioButton.addEventListener('change', function(event) {
