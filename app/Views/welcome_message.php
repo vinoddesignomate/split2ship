@@ -300,48 +300,48 @@
         <!-- main area ends-->
     </section>
 
-    
-        <section class="payxnowandrestondelivery-sec-space">
-            <div class="payxnowandrestondelivery-container">
-                <div class="payxnowandrestondelivery-main-head">
-                    <div class="payxnowandrestondelivery-main-heading">
-                        <h1>Patial payment by Postal codes</h1>
 
-                    </div>
+    <section class="payxnowandrestondelivery-sec-space">
+        <div class="payxnowandrestondelivery-container">
+            <div class="payxnowandrestondelivery-main-head">
+                <div class="payxnowandrestondelivery-main-heading">
+                    <h1>Patial payment by Postal codes</h1>
 
                 </div>
+
             </div>
-            <div class="payxnowandrestondelivery-container">
-                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                    <div class="payxnowandrestondelivery-head-wrapper">
-                        <h2 class="">Upload Zip Codes</h2>
-                        <p><input type="checkbox" name="zip_en_dis" <?php if ($get_details->zip_code_enable_disabled == 1) { ?> checked <?php } ?> style="float: left;width: 1%;">Enable Partial payment by postal code</p>
-                    </div>
-                    <?php if ($get_details->zip_code_enable_disabled == 0) { ?>
-                        <div id="zipc_en_dis" class="edit-form-wrapper" style="display: none;">
-                        <?php } else { ?>
-                            <div id="zipc_en_dis" class="edit-form-wrapper">
-                            <?php } ?>
-                            <form method="post" enctype="multipart/form-data">
-
-                                <div class="flex-row">
-                                    <label for="">Upload Non serviceable postal codes</label>
-                                    <?php if (!empty($get_allzip)) { ?>
-                                        <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
-                                    <?php } ?>
-                                    <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
-                                    <input type="file" required name="zip_code" accept=".csv">
-                                </div>
-                                <div class="btn-row">
-                                    <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                                </div>
-
-                            </form>
-                            </div>
-                        </div>
+        </div>
+        <div class="payxnowandrestondelivery-container">
+            <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                <div class="payxnowandrestondelivery-head-wrapper">
+                    <h2 class="">Upload Zip Codes</h2>
+                    <p><input type="checkbox" name="zip_en_dis" <?php if ($get_details->zip_code_enable_disabled == 1) { ?> checked <?php } ?> style="float: left;width: 1%;">Enable Partial payment by postal code</p>
                 </div>
-                <section>
-                
+                <?php if ($get_details->zip_code_enable_disabled == 0) { ?>
+                    <div id="zipc_en_dis" class="edit-form-wrapper" style="display: none;">
+                    <?php } else { ?>
+                        <div id="zipc_en_dis" class="edit-form-wrapper">
+                        <?php } ?>
+                        <form method="post" id="zipcsvform" enctype="multipart/form-data">
+
+                            <div class="flex-row">
+                                <label for="">Upload Non serviceable postal codes</label>
+                                <?php if (!empty($get_allzip)) { ?>
+                                    <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
+                                <?php } ?>
+                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
+                                <input type="file" required name="zip_code" accept=".csv">
+                            </div>
+                            <div class="btn-row">
+                                <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                            </div>
+
+                        </form>
+                        </div>
+                    </div>
+            </div>
+            <section>
+
 
                 <!-- **********************************************
                         SECTION-3
@@ -674,58 +674,62 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <script>
-                var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
-                radioButtons.forEach(function(radioButton) {
-                    radioButton.addEventListener('change', function(event) {
-                        var enblvar = 0;
-                        if (radioButton.checked) {
-                            $("#zipc_en_dis").show();
-                            enblvar = 1;
-                        } else {
-                            $("#zipc_en_dis").hide();
-                            enblvar = 0;
+        </div>
+        <script>
+            $("#zipcsvform").submit(function(e) {
+                e.preventDefault();
+                console.log('submit form submit');
+            });
+            var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
+            radioButtons.forEach(function(radioButton) {
+                radioButton.addEventListener('change', function(event) {
+                    var enblvar = 0;
+                    if (radioButton.checked) {
+                        $("#zipc_en_dis").show();
+                        enblvar = 1;
+                    } else {
+                        $("#zipc_en_dis").hide();
+                        enblvar = 0;
+                    }
+                    var shopname = '<?php echo esc($_GET['shop']); ?>';
+                    $.ajax({
+                        type: "POST",
+                        url: "enablezipprocess",
+                        data: 'shop=' + shopname + '&enblvar=' + enblvar,
+                        success: function(response) {
+
                         }
-                        var shopname = '<?php echo esc($_GET['shop']); ?>';
-                        $.ajax({
-                            type: "POST",
-                            url: "enablezipprocess",
-                            data: 'shop=' + shopname + '&enblvar=' + enblvar,
-                            success: function(response) {
 
-                            }
-
-                        });
                     });
                 });
-                var ship_provder = '<?php echo $ship_provider; ?>';
-                // Function to show the popup
-                function showPopup(planename) {
-                    var popup = document.getElementById("popup");
-                    popup.style.display = "block";
-                    var body = document.body;
-                    body.classList.add("package_popup_visible");
-                    var plnmsg = "";
-                    if (planename === 'basic') {
-                        plnmsg = "You need to keep only 200 products in partial list for activating this plan.";
-                    } else if (planename === 'advanced') {
-                        plnmsg = "You need to keep only 2000 products in partial list for activating this plan.";
-                    } else if (planename === 'pro') {
-                        plnmsg = "You need to keep only 5000 products in partial list for activating this plan.";
-                    } else if (planename === 'ultimate') {
-                        plnmsg = "You need to keep only 10000 products in partial list for activating this plan.";
-                    }
-                    $("#plmsg").html(plnmsg);
-
+            });
+            var ship_provder = '<?php echo $ship_provider; ?>';
+            // Function to show the popup
+            function showPopup(planename) {
+                var popup = document.getElementById("popup");
+                popup.style.display = "block";
+                var body = document.body;
+                body.classList.add("package_popup_visible");
+                var plnmsg = "";
+                if (planename === 'basic') {
+                    plnmsg = "You need to keep only 200 products in partial list for activating this plan.";
+                } else if (planename === 'advanced') {
+                    plnmsg = "You need to keep only 2000 products in partial list for activating this plan.";
+                } else if (planename === 'pro') {
+                    plnmsg = "You need to keep only 5000 products in partial list for activating this plan.";
+                } else if (planename === 'ultimate') {
+                    plnmsg = "You need to keep only 10000 products in partial list for activating this plan.";
                 }
+                $("#plmsg").html(plnmsg);
 
-                // Function to hide the popup
-                function hidePopup() {
-                    var popup = document.getElementById("popup");
-                    popup.style.display = "none";
-                    var body = document.body;
-                    // Remove the class from the body element
-                    body.classList.remove("package_popup_visible");
-                }
-            </script>
+            }
+
+            // Function to hide the popup
+            function hidePopup() {
+                var popup = document.getElementById("popup");
+                popup.style.display = "none";
+                var body = document.body;
+                // Remove the class from the body element
+                body.classList.remove("package_popup_visible");
+            }
+        </script>
