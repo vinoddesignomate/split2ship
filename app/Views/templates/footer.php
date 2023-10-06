@@ -405,7 +405,7 @@ $fstore_name = $shop_name[0];
 
             //var formData = $("#zipcsvform").serialize();
             var formData = new FormData(this);
-           
+            $("#filmsg").html("Please wait while uploading...");
             // Send an AJAX POST request to the server
             $.ajax({
                 type: "POST",
