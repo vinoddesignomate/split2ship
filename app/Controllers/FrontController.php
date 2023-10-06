@@ -881,7 +881,7 @@ class FrontController extends BaseController
 
             $fileType = $_FILES['zip_code']['type'];
             if ($fileType == 'text/csv' || $fileType == 'application/csv') {
-                $this->user_model->remove_oldzip($_GET['shop']);
+                $this->user_model->remove_oldzip($this->request->getPost('shop'));
                 $csvFile = $_FILES["zip_code"]["tmp_name"];
 
                 if (($handle = fopen($csvFile, "r")) !== false) {
