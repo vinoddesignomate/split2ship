@@ -403,7 +403,8 @@ $fstore_name = $shop_name[0];
 
            // var formData = new FormData(this); // Create a FormData object
 
-            var formData = $("#zipcsvform").serialize();
+            //var formData = $("#zipcsvform").serialize();
+            var formData = new FormData(this);
 
             // Send an AJAX POST request to the server
             $.ajax({
