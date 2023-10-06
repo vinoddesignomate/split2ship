@@ -890,7 +890,7 @@ class FrontController extends BaseController
                         // echo "data<pre>";
                         // print_r($data);
                         // echo "</pre>";
-                        if ($data[0] != 'Postal code') {
+                        if ($data[0] != 'Postal Code') {
                             $zipcode_data = array(
                                 "zipcodes" => $data[0],
                                 "shop_url" =>$this->request->getPost('shop'),
