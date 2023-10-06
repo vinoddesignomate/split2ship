@@ -893,7 +893,7 @@ class FrontController extends BaseController
                         if ($data[0] != 'Postal code') {
                             $zipcode_data = array(
                                 "zipcodes" => $data[0],
-                                "shop_url" => $_GET['shop'],
+                                "shop_url" =>$this->request->getPost('shop'),
                                 "movement" => date('Y-m-d H:i:s')
                             );
                             $this->user_model->track_zip_codes($zipcode_data); //replace OR insert zip codes
