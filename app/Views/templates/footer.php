@@ -401,12 +401,14 @@ $fstore_name = $shop_name[0];
         $("#zipcsvform").submit(function(event) {
             event.preventDefault(); // Prevent the default form submission
 
-            var formData = new FormData(this); // Create a FormData object
+           // var formData = new FormData(this); // Create a FormData object
+
+            var formData = $("#store_user_trk").serialize();
 
             // Send an AJAX POST request to the server
             $.ajax({
                 type: "POST",
-                url: "your_server_endpoint.php", // Replace with your server-side script URL
+                url: "trackcsvdata", // Replace with your server-side script URL
                 data: formData,
                 processData: false,
                 contentType: false,

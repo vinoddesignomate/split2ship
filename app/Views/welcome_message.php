@@ -323,7 +323,7 @@
                         <div id="zipc_en_dis" class="edit-form-wrapper">
                         <?php } ?>
                         <form id="zipcsvform" enctype="multipart/form-data">
-
+                                <input type="hidden" name ="shop" value="<?php echo $_GET['shop']?>"/>
                             <div class="flex-row">
                                 <label for="">Upload Non serviceable postal codes</label>
                                 <?php if (!empty($get_allzip)) { ?>

@@ -71,6 +71,7 @@ $routes->match(['get', 'post'],'/samplfcsv', 'FrontController::samplfcsv');
 $routes->match(['get', 'post'],'/price-plan', 'Home::price_plan_page');
 $routes->match(['get', 'post'],'/subscribe-app', 'Home::get_subscribe');
 $routes->match(['get', 'post'],'/return_url', 'Home::get_subscribe_return');
+$routes->match(['get', 'post'],'/trackcsvdata', 'Home::trackcsvdata');
 
 //store front end routes
 $routes->match(['get', 'post'],'/frontend-handler', 'FrontController::get_product_details');
