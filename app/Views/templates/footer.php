@@ -425,7 +425,7 @@ $fstore_name = $shop_name[0];
                         $("#filmsg").css("color", "green");
                         $("#clickfile").css("display", "none");
                         $("#export_id").css("display", "inline-block");
-                        $("#export_id").html('<a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>');
+                        $("#export_id").html('<a onclick="abc(event);" href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>');
                     }
                     // Handle the server's response here
                     // console.log("Server response:", response);
