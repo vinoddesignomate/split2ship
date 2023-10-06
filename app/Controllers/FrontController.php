@@ -256,12 +256,12 @@ class FrontController extends BaseController
         $chekpartial = 0;
         $remaining_price = 0;
         $illp = 0;
-        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            echo "<pre>";
-            print_r($body_data_decode);
-            echo "</pre>";
-            die();
-        }
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     echo "<pre>";
+        //     print_r($cartarray);
+        //     echo "</pre>";
+        //     die();
+        // }
         $ilosku = 1;
         foreach ($cartarray as $item_cart) {
 
@@ -325,74 +325,26 @@ class FrontController extends BaseController
 
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
             } else {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-
-                    if ($item_cart['price'] != $item_cart['item_original_price']) {
-                        $coupencodeprice = $item_cart['item_original_price'] - $item_cart['price'];
-                        $line_item = array(
-                            "variant_id" => $item_cart['id'],
-                            "quantity" => $item_cart['qty'],
-                            "price" => $item_cart['price'],
-                            "gift_card" => true,
-                            "sku" => $itmeskysplit,
-                            "grams" => $item_cart['grams'],
-                            "applied_discount" => array(
-                                "description" => "Custom discount",
-                                "title" => "Custom discount",
-                                "value_type" => "fixed_amount",
-                                "value" => $coupencodeprice . ".00",
-                                "amount" => $coupencodeprice . ".00",
-                            ),
-                            "properties" => array(
-                                array("name" => "Note", "value" => "Full Payment"),
-                                array("name" => "full_pay", "value" => $item_cart['price'])
-                            ),
-                            "requires_shipping" => true
-                        );
-                    } else {
-                        $line_item = array(
-                            "variant_id" => $item_cart['id'],
-                            "quantity" => $item_cart['qty'],
-                            "price" => $item_cart['price'],
-                            "gift_card" => true,
-                            "sku" => $itmeskysplit,
-                            "grams" => $item_cart['grams'],
-                            // "applied_discount" => array(
-                            //     "description" => "Custom discount",
-                            //     "title" => "Custom discount",
-                            //     "value_type" => "fixed_amount",
-                            //     "value" => "250.00",
-                            //     "amount" => "250.00",
-                            // ),
-                            "properties" => array(
-                                array("name" => "Note", "value" => "Full Payment"),
-                                array("name" => "full_pay", "value" => $item_cart['price'])
-                            ),
-                            "requires_shipping" => true
-                        );
-                    }
-                } else {
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "price" => $item_cart['price'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        // "applied_discount" => array(
-                        //     "description" => "Custom discount",
-                        //     "title" => "Custom discount",
-                        //     "value_type" => "fixed_amount",
-                        //     "value" => "250.00",
-                        //     "amount" => "250.00",
-                        // ),
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => true
-                    );
-                }
+                $line_item = array(
+                    "variant_id" => $item_cart['id'],
+                    "quantity" => $item_cart['qty'],
+                    "price" => $item_cart['price'],
+                    "gift_card" => true,
+                    "sku" => $itmeskysplit,
+                    "grams" => $item_cart['grams'],
+                    // "applied_discount" => array(
+                    //     "description" => "Custom discount",
+                    //     "title" => "Custom discount",
+                    //     "value_type" => "fixed_amount",
+                    //     "value" => "250.00",
+                    //     "amount" => "250.00",
+                    // ),
+                    "properties" => array(
+                        array("name" => "Note", "value" => "Full Payment"),
+                        array("name" => "full_pay", "value" => $item_cart['price'])
+                    ),
+                    "requires_shipping" => true
+                );
             }
 
             //code for add variants name & value to order
