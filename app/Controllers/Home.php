@@ -435,39 +435,10 @@ class Home extends BaseController
                     }
                 }
 
-                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                    if ($this->request->getPost('upload_zip')) {
-                        // echo "<pre>";
-                        // print_r($this->request->getPost());
-                        // echo "</pre>";
-                        // echo "<pre>";
-                        // print_r($_FILES);
-                        // echo "</pre>";
-                        if (($_FILES["zip_code"]["tmp_name"] != "")) {
-                            $this->user_model->remove_oldzip($_GET['shop']);
-                            $csvFile = $_FILES["zip_code"]["tmp_name"];
-
-                            if (($handle = fopen($csvFile, "r")) !== false) {
-
-                                while (($data = fgetcsv($handle)) !== false) {
-                                    // echo "data<pre>";
-                                    // print_r($data);
-                                    // echo "</pre>";
-                                    if ($data[0] != 'Postal code') {
-                                        $zipcode_data = array(
-                                            "zipcodes" => $data[0],
-                                            "shop_url" => $_GET['shop'],
-                                            "movement" => date('Y-m-d H:i:s')
-                                        );
-                                        $this->user_model->track_zip_codes($zipcode_data); //replace OR insert zip codes
-                                    }
-                                }
-                            }
-                        }
-                        echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery'</script>";
-                    }
+                
+                    
                     $data['get_allzip'] = $this->user_model->get_all_zipcodes($_GET['shop']);
-                }
+                
 
                 $data['order_paging'] = isset($_REQUEST['order_paging']) && is_numeric($_REQUEST['order_paging']) ? $_REQUEST['order_paging'] : 1;
 

@@ -401,11 +401,11 @@ $fstore_name = $shop_name[0];
         $("#zipcsvform").submit(function(event) {
             event.preventDefault(); // Prevent the default form submission
 
-           // var formData = new FormData(this); // Create a FormData object
+            // var formData = new FormData(this); // Create a FormData object
 
             //var formData = $("#zipcsvform").serialize();
             var formData = new FormData(this);
-
+           
             // Send an AJAX POST request to the server
             $.ajax({
                 type: "POST",
@@ -414,12 +414,24 @@ $fstore_name = $shop_name[0];
                 processData: false,
                 contentType: false,
                 success: function(response) {
+                    if (response == "invalid") {
+                        $("#filmsg").html("Please select any csv file");
+                        $("#filmsg").css("color", "red");
+                    } else if (response == "invalid_format") {
+                        $("#filmsg").html("Please select only csv file");
+                        $("#filmsg").css("color", "red");
+                    } else if (response == "done") {
+                        $("#filmsg").html("File uploaded successfully");
+                        $("#filmsg").css("color", "green");
+                        $("#export_id").css("display", "inline-block");
+                        $("#export_id").html('<a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>');
+                    }
                     // Handle the server's response here
-                    console.log("Server response:", response);
+                    // console.log("Server response:", response);
                 },
                 error: function(xhr, status, error) {
                     // Handle errors here
-                    console.error("Error:", error);
+                    //console.error("Error:", error);
                 },
             });
         });

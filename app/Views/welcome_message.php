@@ -329,11 +329,13 @@
                                 <?php if (!empty($get_allzip)) { ?>
                                     <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
                                 <?php } ?>
+                                <span id="export_id" style="display: none;"></span>
                                 <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
                                 <input type="file" required name="zip_code" accept=".csv">
                             </div>
                             <div class="btn-row">
                                 <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                <span id="filmsg"></span>
                             </div>
 
                         </form>
