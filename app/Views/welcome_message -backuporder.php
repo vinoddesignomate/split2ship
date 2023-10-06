@@ -346,6 +346,80 @@
             <section>
 
 
+                <!-- **********************************************
+                        SECTION-3
+    **************************************************** -->
+                <!--<section class="payxnowandrestondelivery-sec-space">
+                 
+                    <div class="payxnowandrestondelivery-container">
+                        <div class="payxnowandrestondelivery-main-head">
+                            <div class="payxnowandrestondelivery-main-heading">
+                                <h1>Order Summary</h1>
+
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                    <div class="payxnowandrestondelivery-container">
+                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
+                            <div class="payxnowandrestondelivery-inner-wrapper">
+                                <div class="payxnowandrestondelivery-main-data-col">
+                                    <div class="payxnowandrestondelivery-table-outer-wrapper">
+                                        <table>
+                                            <tr>
+
+                                                <th>Customer</th>
+                                                <th>Pending Amount</th>
+                                                <th>Total Amount</th>
+                                            </tr>
+
+                                            <?php
+
+                                            if (!empty($order_list)) {
+                                                foreach ($order_list as $get_all_products) {
+
+
+
+                                                    if (trim($get_all_products->order_status) == 'pending') {
+                                                        $chkedsts = "";
+                                                    } else {
+                                                        $chkedsts = "checked";
+                                                    }
+
+                                                    if ($get_all_products->sync_order == 1) {
+                                                        $chkedsts1 = "checked";
+                                                    } else {
+                                                        $chkedsts1 = "";
+                                                    }
+
+                                            ?>
+                                                    <tr>
+
+                                                        <td><?php echo esc($myCommon->payxnow_decodedata($get_all_products->f_name) . ' ' . $myCommon->payxnow_decodedata($get_all_products->l_name)); ?></td>
+                                                        <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->pending_amount . ' ' . $get_all_products->order_ccy); ?></span></td>
+                                                        <td class="payxnowandrestondelivery-amount-bg"><span><?php echo esc($get_all_products->total_price . ' ' . $get_all_products->order_ccy); ?></span></td>
+
+                                                    </tr>
+
+                                            <?php }
+                                            } ?>
+                                        </table>
+                                    </div>
+                                    <?php
+                                    $shop_name = explode(".", $_GET['shop']);
+                                    $store_namep = $shop_name[0];
+                                    ?>
+                                    <div class="payxnowandrestondelivery-btn-col">
+                                        <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_namep) ?>/apps/pay-x-now-rest-on-delivery/show-orders" class="payxnowandrestondelivery-button">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </section>-->
+
                 <style>
                     /* Styling for the popup container */
                     body.price-plan.package_popup_visible {
