@@ -2140,6 +2140,7 @@ class Home extends BaseController
         } else {
             $update_order_count = $this->plane_details[$_REQUEST['planname']]['partial_product'];
         }
+        print_r($plan_details);
         if ($plan_details[0]->plan_name == $_REQUEST['planname'] && $plan_details[0]->plan_validity == $get_status['recurring_application_charge']['billing_on']) {
             $update_data = array(
                 "shop_url" => $_GET['shop'],
