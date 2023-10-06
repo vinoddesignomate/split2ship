@@ -469,9 +469,18 @@ class FrontController extends BaseController
         if (!empty($get_lates_colection)) { //check data empty or not  
 
             $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
-            if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
+            $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
+
+            if ($get_updated_plan[0]->plan_name == 'basic') {
+                $total_pro = 200;
+            } else {
+                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
+            }
+
+            //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
+            if ($get_details->total_sync_store_products < $total_pro) {
                 $cron_limit_set = 50;
-                $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
+
                 //below block for get products first time from page 1
                 if ($get_lates_colection->cron_page_num == 1) {
                     $data = array();
