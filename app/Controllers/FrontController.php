@@ -873,4 +873,14 @@ class FrontController extends BaseController
             echo "invalidzip";
         }
     }
+
+    public function trackcsvdata()
+    {
+        echo "<pre>";
+        print_r($this->request->getPost());
+        echo "</pre>";
+        echo "<pre>";
+        print_r($_FILES);
+        echo "</pre>";
+    }
 }
