@@ -934,6 +934,6 @@ class FrontController extends BaseController
         // echo "getprietuleidrec<pre>";
         // print_r($return_array);
         // echo "</pre>";
-        json_encode($return_array);
+        return json_encode($return_array);
     }
 }
