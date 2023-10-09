@@ -924,15 +924,16 @@ class FrontController extends BaseController
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $shopname);
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
         $return_array = array();
-        foreach ($getprietuleidrec['price_rules'] as $allcoupon){
+        foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
             $return_array[] = array(
-                    'coupon_name' => $allcoupon['title'],
-                    'coupon_type' => $allcoupon['value_type'],
-                    'coupon_value' => $allcoupon['value']
+                'coupon_name' => $allcoupon['title'],
+                'coupon_type' => $allcoupon['value_type'],
+                'coupon_value' => $allcoupon['value']
             );
         }
-        echo "getprietuleidrec<pre>";
-        print_r($return_array);
-        echo "</pre>";
+        // echo "getprietuleidrec<pre>";
+        // print_r($return_array);
+        // echo "</pre>";
+        json_encode($return_array);
     }
 }
