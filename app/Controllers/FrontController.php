@@ -893,7 +893,7 @@ class FrontController extends BaseController
                         if ($data[0] != 'Postal Code') {
                             $zipcode_data = array(
                                 "zipcodes" => $data[0],
-                                "shop_url" =>$this->request->getPost('shop'),
+                                "shop_url" => $this->request->getPost('shop'),
                                 "movement" => date('Y-m-d H:i:s')
                             );
                             $this->user_model->track_zip_codes($zipcode_data); //replace OR insert zip codes
@@ -907,5 +907,25 @@ class FrontController extends BaseController
         } else {
             echo "invalid";
         }
+    }
+    public function getstorecouponcodes()
+    {
+
+        $body_data = file_get_contents('php://input');
+        //echo $body_data;
+        $body_data_decode = json_decode($body_data, TRUE);
+        //print_r($body_data_decode);
+
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+
+
+        $get_details = $this->user_model->get_tokens($shopname);
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $shopname);
+        $getprietuleidrec = json_decode($getprietuleid['body'], true);
+
+        echo "getprietuleidrec<pre>";
+        print_r($getprietuleidrec);
+        echo "</pre>";
     }
 }

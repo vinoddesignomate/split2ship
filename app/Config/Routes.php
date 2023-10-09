@@ -83,6 +83,7 @@ $routes->match(['get', 'post'],'/frontend-handler-dynamic-color', 'FrontControll
 $routes->match(['get', 'post'],'/frontend-track-pro', 'FrontController::check_product_type_cart');
 $routes->match(['get', 'post'],'/frontend-zipcodev', 'FrontController::zipcodevali');
 $routes->match(['get', 'post'],'/trackcsvdata', 'FrontController::trackcsvdata');
+$routes->match(['get', 'post'],'/frontend-handler-pre-coupon', 'FrontController::getstorecouponcodes');
 
 //webhook urls
 $routes->match(['get', 'post'],'/order-sync', 'Home::order_sync');
