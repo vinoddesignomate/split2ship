@@ -965,9 +965,9 @@ class FrontController extends BaseController
                 'coupon_value' => $allcoupon['value']
             );
         }
-        // echo "getprietuleidrec<pre>";
-        // print_r($return_array);
-        // echo "</pre>";
+        echo "getprietuleidrec<pre>";
+        print_r($return_array);
+        echo "</pre>";
         return json_encode($return_array);
     }
 }
