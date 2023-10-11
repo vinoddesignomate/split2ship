@@ -162,7 +162,7 @@ class FrontController extends BaseController
                         "price" => $final_price,
                         "quantity" => $item_cart['qty'],
                         "sku" => $itmeskysplit,
-                       // "variant_id" => $item_cart['id'],
+                        // "variant_id" => $item_cart['id'],
                         "requires_shipping" => true,
                         "grams" => $item_cart['grams'],
                         "gift_card" => true,
@@ -178,18 +178,50 @@ class FrontController extends BaseController
 
                     $remaining_price = $remaining_price + $item_cart['rem_p'];
                 } else {
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => true
-                    );
+
+                    if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                        if ($item_cart['price'] != $item_cart['item_original_price']) {
+                            $coupencodeprice = $item_cart['item_original_price'] - $item_cart['price'];
+                            $getcpncodep = $body_data_decode['getcpncode'];
+                            if ($getcpncodep != "") {
+                                $couponname = $getcpncodep;
+                            } else {
+                                $couponname = 'GiftDiscount';
+                            }
+                            $line_item = array(
+                                "variant_id" => $item_cart['id'],
+                                "quantity" => $item_cart['qty'],
+                                "gift_card" => true,
+                                "sku" => $itmeskysplit,
+                                "grams" => $item_cart['grams'],
+                                "applied_discount" => array(
+                                    "description" => $couponname,
+                                    "title" => $couponname,
+                                    "value_type" => "fixed_amount",
+                                    "value" => $coupencodeprice . ".00",
+                                    "amount" => $coupencodeprice . ".00",
+                                ),
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Full Payment"),
+                                    array("name" => "full_pay", "value" => $item_cart['price'])
+                                ),
+                                "requires_shipping" => true
+                            );
+                        }
+                    } else {
+                        $line_item = array(
+                            "variant_id" => $item_cart['id'],
+                            "quantity" => $item_cart['qty'],
+                            "gift_card" => true,
+                            "sku" => $itmeskysplit,
+                            "grams" => $item_cart['grams'],
+                            "properties" => array(
+                                array("name" => "Note", "value" => "Full Payment"),
+                                array("name" => "full_pay", "value" => $item_cart['price'])
+                            ),
+                            "requires_shipping" => true
+                        );
+                    }
                 }
 
                 //code for add variants name & value to order
