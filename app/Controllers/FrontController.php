@@ -186,7 +186,7 @@ class FrontController extends BaseController
                         if ($getcpncodep != "") {
                             $couponname = $getcpncodep;
                         } else {
-                            $couponname = 'GiftDiscount';
+                            $couponname = 'Automatic';
                         }
                         $line_item = array(
                             "variant_id" => $item_cart['id'],
