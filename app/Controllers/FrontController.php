@@ -956,7 +956,7 @@ class FrontController extends BaseController
         foreach($body_data_decode['carttknval'] as $crtval){
             $prdyid[] = $crtval['product_id'];
         }
-        print_r($prdyid);
+        //print_r($prdyid);
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
 
@@ -967,6 +967,11 @@ class FrontController extends BaseController
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
             if ($allcoupon['target_type'] != 'shipping_line') {
+                
+                $getvalues = array_intersect($prdyid,$allcoupon['entitled_product_ids']);
+                echo "getvalues<pre>";
+                print_r($getvalues);
+                echo "</pre>";
                 $return_array[] = array(
                     'coupon_name' => $allcoupon['title'],
                     'coupon_type' => $allcoupon['value_type'],
@@ -975,9 +980,9 @@ class FrontController extends BaseController
                 );
             }
         }
-        echo "getprietuleidrec<pre>";
-        print_r($getprietuleidrec);
-        echo "</pre>";
+        // echo "getprietuleidrec<pre>";
+        // print_r($getprietuleidrec);
+        // echo "</pre>";
         //return json_encode($return_array);
     }
 }
