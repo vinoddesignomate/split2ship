@@ -962,15 +962,18 @@ class FrontController extends BaseController
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
-            $return_array[] = array(
-                'coupon_name' => $allcoupon['title'],
-                'coupon_type' => $allcoupon['value_type'],
-                'coupon_value' => $allcoupon['value']
-            );
+            if ($allcoupon['target_type'] != 'shipping_line') {
+                $return_array[] = array(
+                    'coupon_name' => $allcoupon['title'],
+                    'coupon_type' => $allcoupon['value_type'],
+                    'coupon_value' => $allcoupon['value'],
+                    'entitled_product_ids' => $allcoupon['entitled_product_ids']
+                );
+            }
         }
-        echo "getprietuleidrec<pre>";
-        print_r($getprietuleidrec);
-        echo "</pre>";
+        // echo "getprietuleidrec<pre>";
+        // print_r($getprietuleidrec);
+        // echo "</pre>";
         return json_encode($return_array);
     }
 }
