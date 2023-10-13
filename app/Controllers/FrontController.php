@@ -956,7 +956,7 @@ class FrontController extends BaseController
         foreach ($body_data_decode['carttknval'] as $crtval) {
             $prdyid[] = $crtval['product_id'];
         }
-        
+        $prdyid = array("1256","25968");
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
 
