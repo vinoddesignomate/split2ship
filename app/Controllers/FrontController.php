@@ -951,11 +951,12 @@ class FrontController extends BaseController
         $body_data = file_get_contents('php://input');
         //echo $body_data;
         $body_data_decode = json_decode($body_data, TRUE);
-       
+
         $prdyid = array();
-        foreach($body_data_decode['carttknval'] as $crtval){
+        foreach ($body_data_decode['carttknval'] as $crtval) {
             $prdyid[] = $crtval['product_id'];
         }
+        $prdyid = array("12626","55896");
         //print_r($prdyid);
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
@@ -967,22 +968,30 @@ class FrontController extends BaseController
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
             if ($allcoupon['target_type'] != 'shipping_line') {
-                
-                $getvalues = array_intersect($prdyid,$allcoupon['entitled_product_ids']);
-                echo "getvalues<pre>";
-                print_r($getvalues);
-                echo "</pre>";
+                if (!empty($allcoupon['entitled_product_ids'])) {
+                    $getvalues = array_intersect($prdyid, $allcoupon['entitled_product_ids']);
+                    echo "getvalues<pre>";
+                    print_r($getvalues);
+                    echo "</pre>";
+                    if (empty($getvalues)) {
+                        $disbaleval = 0;
+                    } else {
+                        $disbaleval = 1;
+                    }
+                } else {
+                    $disbaleval = 0;
+                }
                 $return_array[] = array(
                     'coupon_name' => $allcoupon['title'],
                     'coupon_type' => $allcoupon['value_type'],
                     'coupon_value' => $allcoupon['value'],
-                    'entitled_product_ids' => $allcoupon['entitled_product_ids']
+                    'disbaleval' => $disbaleval
                 );
             }
         }
-        // echo "getprietuleidrec<pre>";
-        // print_r($getprietuleidrec);
-        // echo "</pre>";
+        echo "getprietuleidrec<pre>";
+        print_r($return_array);
+        echo "</pre>";
         //return json_encode($return_array);
     }
 }
