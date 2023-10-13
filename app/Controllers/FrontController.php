@@ -951,7 +951,7 @@ class FrontController extends BaseController
         $body_data = file_get_contents('php://input');
         //echo $body_data;
         $body_data_decode = json_decode($body_data, TRUE);
-        //print_r($body_data_decode);
+        print_r($body_data_decode);
 
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
