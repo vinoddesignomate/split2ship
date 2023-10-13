@@ -951,8 +951,12 @@ class FrontController extends BaseController
         $body_data = file_get_contents('php://input');
         //echo $body_data;
         $body_data_decode = json_decode($body_data, TRUE);
-        print_r($body_data_decode);
-
+       
+        $prdyid = array();
+        foreach($body_data_decode['carttknval'] as $crtval){
+            $prdyid[] = $crtval['product_id'];
+        }
+        print_r($prdyid);
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
 
@@ -971,9 +975,9 @@ class FrontController extends BaseController
                 );
             }
         }
-        // echo "getprietuleidrec<pre>";
-        // print_r($getprietuleidrec);
-        // echo "</pre>";
-        return json_encode($return_array);
+        echo "getprietuleidrec<pre>";
+        print_r($getprietuleidrec);
+        echo "</pre>";
+        //return json_encode($return_array);
     }
 }
