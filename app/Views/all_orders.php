@@ -165,9 +165,9 @@ $store_namep = $shop_name[0];
                     if ($order_paging > 1) {
                         echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/show-orders?order_paging=" . ($order_paging - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
                     }
-                    for ($i = 1; $i <= $total_pages; $i++) {
-                        echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/show-orders?order_paging=" . $i . "'>" . $i . "</a></li>";
-                    };
+                    // for ($i = 1; $i <= $total_pages; $i++) {
+                    //     echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/show-orders?order_paging=" . $i . "'>" . $i . "</a></li>";
+                    // };
                     if ($total_pages > $order_paging) {
                         echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/show-orders?order_paging=" . ($order_paging + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
                     }
