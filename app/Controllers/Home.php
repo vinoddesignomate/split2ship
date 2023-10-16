@@ -1150,9 +1150,9 @@ class Home extends BaseController
         $all_orders = $this->common->rest_api('/admin/api/2023-01/orders.json?status=any&order=updated_at%20asc', array(), 'GET', $get_details->access_token, $_GET['shop']);
         $get_all_oders = json_decode($all_orders['body'], true);
 
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            echo"<pre>"; print_r($get_all_oders); echo "</pre>";
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     echo"<pre>"; print_r($get_all_oders); echo "</pre>";
+        // }
         if (array_key_exists('errors', $get_all_oders)) {
             // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
             echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";

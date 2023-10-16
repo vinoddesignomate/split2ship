@@ -20,6 +20,7 @@ $store_name = $shop_name[0];
                     <div class="inner-wrapper">
                         <div class="main-data-col">
                             <div class="table-heading" style="margin-bottom: 18px;">
+                            <span id="showcoltrckmsg"></span>
                                 <h2>Set partial percentage by collections</h2>
                                 <span>Add all products into partial products list by collections</span>
                             </div>
@@ -102,7 +103,9 @@ $store_name = $shop_name[0];
                 url: "collection_track_partial_percentage?vart=" + req_time,
                 data: 'shop=' + shopname + '&update_per=true&' + formdata,
                 success: function(response) {
-                    window.location.reload();
+                    $("#showcoltrckmsg").html('Please wait, we have started synching all products in background. It will take some time. You can leave this screen');
+                    $("#showcoltrckmsg").css('color','green');
+                    //window.location.reload();
                     // $("#show_per_" + this_id_frm).show();
                     // $("#show_per_" + this_id_frm).html(response);
                     // $("#show_per_text_" + this_id_frm).hide();
