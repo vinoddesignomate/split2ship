@@ -20,8 +20,8 @@ $store_name = $shop_name[0];
                     <div class="inner-wrapper">
                         <div class="main-data-col">
                             <div class="table-heading" style="margin-bottom: 18px;">
-                            <span id="showcoltrckmsg"><?php if(!empty($check_bulk_products_status)){ ?> We have started synching all products in background. It will take some time. You can leave this screen.<?php } ?></span>
-                                <h2>Set partial percentage by collections</h2>
+                            <span id="showcoltrckmsg" style="color:green;font-weight:700;"><?php if(!empty($check_bulk_products_status)){ ?> We have started synching all products in background. It will take some time. You can leave this screen.<?php } ?></span>
+                                <h2 style="margin-top: 7px;">Set partial percentage by collections</h2>
                                 <span>Add all products into partial products list by collections</span>
                             </div>
 
