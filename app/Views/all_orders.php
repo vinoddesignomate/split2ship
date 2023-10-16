@@ -164,6 +164,8 @@ $store_namep = $shop_name[0];
                     echo "<ul class='payxnowandrestondelivery-pagination'>";
                     if ($order_paging > 1) {
                         echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/show-orders?order_paging=" . ($order_paging - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
+                    }else {
+                        echo "<li><a onclick='abc(event)' href='javascript:void(0);' class='cg_cpliteship_disabled-link payxnowandrestondelivery-button'>Previous</a></li>";
                     }
                     // for ($i = 1; $i <= $total_pages; $i++) {
                     //     echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/show-orders?order_paging=" . $i . "'>" . $i . "</a></li>";
