@@ -607,6 +607,15 @@ class UserModel extends Model
         $updatests = "UPDATE ppa_subscribe_store SET updated_sync_orders_count=updated_sync_orders_count-" . $updatec . " WHERE shop_url=?";
         $this->db->query($updatests, array($shop_url));
     }
+    public function check_bulk_products_status($shopurl)
+    {
+        $get_collsts = "SELECT * FROM collections_percentage
+                          WHERE shop_url=?
+                          AND cron_run=?";
+
+        $get_coll_resultsts = $this->db->query($get_collsts, array($shopurl, 0));
+        return $get_coll_resultsts->getResult();
+    }
 
     public function get_collection_percentage($shopurl)
     {
@@ -615,6 +624,7 @@ class UserModel extends Model
 
         $get_coll_result = $this->db->query($get_coll_precn, array($shopurl));
         $final_products = array();
+        $get_collection_running = array();
 
         foreach ($get_coll_result->getResult() as $all_coll_per) {
             // echo "<pre>";

@@ -71,21 +71,21 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                //$getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    //$getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                //$getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    //$getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                // echo "getprietuleidrec<pre>";
-                // print_r($getprietuleidrec);
-                // echo "</pre>";
-                //$webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
-                //      echo "get_register_webhookset<pre>";
-                //     print_r($webhookdata);
-                //     echo "</pre>";
-                /*if (empty($webhookdata)) {
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
+                    //$webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
+                    //      echo "get_register_webhookset<pre>";
+                    //     print_r($webhookdata);
+                    //     echo "</pre>";
+                    /*if (empty($webhookdata)) {
                     $this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
 
 
@@ -161,16 +161,16 @@ class Home extends BaseController
                             } else {
                                 echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
                                 //track upgrade message if merchants owner used all products quota for partial add products               
-                                $this->user_model->update_data($_GET['shop'], array(
-                                    "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
-                                ));
+                                // $this->user_model->update_data($_GET['shop'], array(
+                                //     "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+                                // ));
                             }
                         } else {
                             echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
                             //track upgrade message if merchants owner used all products quota for partial add products               
-                            $this->user_model->update_data($_GET['shop'], array(
-                                "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
-                            ));
+                            // $this->user_model->update_data($_GET['shop'], array(
+                            //     "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+                            // ));
                         }
                     }
                     //  echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/products-list?collectionparms=" . $this->request->getPost('get_coll') . "'</script>";
@@ -332,9 +332,9 @@ class Home extends BaseController
                 } else {
                     $data['ship_provider'] = "";
                 }
-                
-                    
-                $data['get_allzip'] = $this->user_model->get_all_zipcodes($_GET['shop']);                
+
+
+                $data['get_allzip'] = $this->user_model->get_all_zipcodes($_GET['shop']);
 
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
@@ -399,6 +399,10 @@ class Home extends BaseController
                             "plan_validity" => $get_register_webhookset['recurring_application_charge']['billing_on']
                         );
                         $this->user_model->track_store_subscribe($update_data);
+                        //below code for update package upgrade message blank when user upgrade the package
+                        $this->user_model->update_data($_GET['shop'], array(
+                            "package_upgrade_message" => ''
+                        ));
                     } else {
                         $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
                         echo view('templates/apbrdgnew', $data);
@@ -787,8 +791,11 @@ class Home extends BaseController
             }
         }
 
+
         $data['get_store_collections'] = $this->user_model->get_collections($_GET['shop']);
         $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
+        $data['check_bulk_products_status'] = $this->user_model->check_bulk_products_status($_GET['shop']);
+        $data['get_details'] = $this->user_model->get_tokens($_GET['shop']);
         $data['shopname'] = $_GET['shop'];
         echo view('templates/header');
         echo view('collection_wise_add_partial_products', $data);
@@ -1956,6 +1963,11 @@ class Home extends BaseController
 
             );
             $this->user_model->track_store_subscribe($trackarray);
+            //below code for update package upgrade message blank when user upgrade the package
+            $this->user_model->update_data($_GET['shop'], array(
+                "package_upgrade_message" => ''
+            ));
+
             echo "<script>alert('Free plan activated successfully'); window.parent.location.href='" . $return_url_res . "'</script>";
             $data = array();
             $data['pricurl'] = $return_url_res;
@@ -1999,7 +2011,7 @@ class Home extends BaseController
         } else {
             $update_order_count = $this->plane_details[$_REQUEST['planname']]['partial_product'];
         }
-       // print_r($plan_details);
+        // print_r($plan_details);
         if (!empty($plan_details) && $plan_details[0]->plan_name == $_REQUEST['planname'] && $plan_details[0]->plan_validity == $get_status['recurring_application_charge']['billing_on']) {
             $update_data = array(
                 "shop_url" => $_GET['shop'],
@@ -2033,10 +2045,18 @@ class Home extends BaseController
         //echo"<pre>"; print_r($update_data); echo "</pre>";
         if (isset($_REQUEST['typu']) && $_REQUEST['typu'] == 'f') {
             $this->user_model->track_store_subscribe($update_data);
+            //below code for update package upgrade message blank when user upgrade the package
+            $this->user_model->update_data($_GET['shop'], array(
+                "package_upgrade_message" => ''
+            ));
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery'</script>";
             echo view('templates/apbrdgnew');
         } else {
             $this->user_model->update_plan_after_payment($update_data);
+            //below code for update package upgrade message blank when user upgrade the package
+            $this->user_model->update_data($_GET['shop'], array(
+                "package_upgrade_message" => ''
+            ));
             echo "<script>alert('" . $_REQUEST['planname'] . " plan activated successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
             echo view('templates/apbrdgnew');
         }
@@ -2236,8 +2256,6 @@ class Home extends BaseController
             $this->user_model->update_data($this->request->getPost('shop'), array(
                 "zip_code_enable_disabled" => $this->request->getPost('enblvar')
             ));
-            
         }
     }
-    
 }
