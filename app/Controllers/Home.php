@@ -2258,4 +2258,7 @@ class Home extends BaseController
             ));
         }
     }
+    public function exchange_return_split(){
+        echo "Exchange app";
+    }
 }
