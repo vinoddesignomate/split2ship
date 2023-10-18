@@ -25,7 +25,7 @@
             forceRedirect: false
         };
         const app = createApp(config);
-        app.route({
+       /* app.route({
             path: '/apps/splitexchange',
             render: () => {
                 // Render your custom template or section here
@@ -41,7 +41,7 @@
 
                 container.innerHTML = customHTML;
             },
-        });
+        });*/
         // const redirect = Redirect.create(app);
         //console.log('currentURL');
         //console.log(config.shopifyAppBridge.getState().location.currentURL);
