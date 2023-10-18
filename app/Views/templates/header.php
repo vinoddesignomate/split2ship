@@ -25,6 +25,23 @@
             forceRedirect: false
         };
         const app = createApp(config);
+        app.route({
+            path: '/apps/splitexchange',
+            render: () => {
+                // Render your custom template or section here
+                // Get a reference to the container where you want to render your HTML
+                const container = document.querySelector('#MainContent');
+                // Create an HTML element, e.g., a div, and set its innerHTML to your HTML content
+                const customHTML = `
+                        <div>
+                            <h1>Your Custom HTML Content</h1>
+                            <p>This is your custom content.</p>
+                        </div>
+                        `;
+
+                container.innerHTML = customHTML;
+            },
+        });
         // const redirect = Redirect.create(app);
         //console.log('currentURL');
         //console.log(config.shopifyAppBridge.getState().location.currentURL);
@@ -64,7 +81,7 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
                                 Products</a></li>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'collection-wise-partial-products') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
-                        Bulk Enable Partial Payment</a></li>
+                                Bulk Enable Partial Payment</a></li>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'partial-products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">
                                 Partial Products List</a></li>
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'show-orders') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/show-orders"><img src="/public/images/orders.svg" class="payxnowandrestondelivery-hide-hover" alt="orders-icon"><img src="/public/images/order-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="orders-icon">
