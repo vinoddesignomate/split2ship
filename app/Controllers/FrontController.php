@@ -993,4 +993,7 @@ class FrontController extends BaseController
         // echo "</pre>";
         return json_encode($return_array);
     }
+    public function exchange_return_split(){
+        echo "Exchange app";
+    }
 }
