@@ -1,4 +1,11 @@
 <style>
+    #split_returns_landing_iframe {
+        width: 1px;
+        min-width: 100%;
+        border: 0;
+        box-shadow: none;
+    }
+
     .formContainer {
         display: flex;
         flex-direction: column;
