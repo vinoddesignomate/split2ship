@@ -31,23 +31,25 @@
     <div class="line"></div><span class="cursor-pointer leading-[24px]">View the full return policy</span>
 </div>
 <script type="text/javascript">
-    const orderNumberInput = document.getElementById('order_number_val');
-    const orderEmailInput = document.getElementById('order_email_val');
-    const submitButton = document.getElementById('submit_button');
+    document.addEventListener('DOMContentLoaded', function() {
+        const orderNumberInput = document.getElementById('order_number_val');
+        const orderEmailInput = document.getElementById('order_email_val');
+        const submitButton = document.getElementById('submit_button');
 
-    // Add event listeners to the text input fields
-    orderNumberInput.addEventListener('input', checkInputs);
-    orderEmailInput.addEventListener('input', checkInputs);
+        // Add event listeners to the text input fields
+        orderNumberInput.addEventListener('input', checkInputs);
+        orderEmailInput.addEventListener('input', checkInputs);
 
-    // Function to check both input fields and enable the button if both have content
-    function checkInputs() {
-        const orderNumberValue = orderNumberInput.value.trim();
-        const orderEmailValue = orderEmailInput.value.trim();
+        // Function to check both input fields and enable the button if both have content
+        function checkInputs() {
+            const orderNumberValue = orderNumberInput.value.trim();
+            const orderEmailValue = orderEmailInput.value.trim();
 
-        if (orderNumberValue !== '' && orderEmailValue !== '') {
-            submitButton.removeAttribute('disabled');
-        } else {
-            submitButton.setAttribute('disabled', 'disabled');
+            if (orderNumberValue !== '' && orderEmailValue !== '') {
+                submitButton.removeAttribute('disabled');
+            } else {
+                submitButton.setAttribute('disabled', 'disabled');
+            }
         }
-    }
+    });
 </script>
