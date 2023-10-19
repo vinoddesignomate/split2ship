@@ -994,6 +994,8 @@ class FrontController extends BaseController
         return json_encode($return_array);
     }
     public function exchange_return_split(){
+        $data = array();
         echo "Exchange app";
+        echo view('exchange_return', $data);
     }
 }
