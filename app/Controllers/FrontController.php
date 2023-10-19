@@ -1001,11 +1001,11 @@ class FrontController extends BaseController
         // $shopname = str_replace("http://", "", $shopname);
 
 
-        // $get_details = $this->user_model->get_tokens($_GET['shop']);
-        // $getprietuleid = $this->common->rest_api('/admin/api/2022-01/orders.json??name=1130&email=vinod@designomate.com', array(), 'GET', $get_details->access_token, $_GET['shop']);
-        // $getprietuleidrec = json_decode($getprietuleid['body'], true);
+        $get_details = $this->user_model->get_tokens($_GET['shop']);
+        $getprietuleid = $this->common->rest_api('/admin/api/2022-01/orders.json??name=1130&email=vinod@designomate.com', array(), 'GET', $get_details->access_token, $_GET['shop']);
+        $getprietuleidrec = json_decode($getprietuleid['body'], true);
          echo "getprietuleidrec<pre>";
-        print_r($_REQUEST);
+        print_r($getprietuleidrec);
         echo "</pre>";
         echo view('exchange_return', $data);
     }
