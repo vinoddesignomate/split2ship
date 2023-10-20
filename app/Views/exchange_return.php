@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-        </div><button id="split_exchng" type="button" class="_xButton_l3r25_2 _fromLogin_l3r25_22 _block_l3r25_38" style="cursor: default;"><span class="_content_l3r25_56"><span>Start Your Return</span></span></button><span style="text-align: center; word-break: break-word;"><span class="Polaris-TextStyle--variationSubdued">You have a maximum of 30 days from the date of your purchase to make a return.</span></span>
+        </div><button id="split_exchng" type="button" disbaled class="_xButton_l3r25_2 _fromLogin_l3r25_22 _block_l3r25_38" style="cursor: default;"><span class="_content_l3r25_56"><span>Start Your Return</span></span></button><span style="text-align: center; word-break: break-word;"><span class="Polaris-TextStyle--variationSubdued">You have a maximum of 30 days from the date of your purchase to make a return.</span></span>
         <div class="line"></div><span class="cursor-pointer leading-[24px]">View the full return policy</span>
     </form>
     <script type="text/javascript">
@@ -64,9 +64,17 @@
         function getinpoutdata() {
             var inputField = document.getElementById("order_number_val");
             var inputField2 = document.getElementById("order_email_val");
+            var split_exchngButton = document.getElementById('split_exchng');
             var enteredText = inputField.value;
             var enteredText2 = inputField2.value;
             console.log("Entered text: " + enteredText);
             console.log("Entered text2: " + enteredText2);
+
+            if (inputField !== '' && inputField2 !== '') {
+                split_exchngButton.removeAttribute('disabled');
+            } else {
+                split_exchngButton.setAttribute('disabled', 'disabled');
+            }
+
         }
     </script>
