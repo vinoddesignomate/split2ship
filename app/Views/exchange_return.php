@@ -60,6 +60,7 @@
         });
 
         function getinpoutdata() {
+            var inputField = document.getElementById("order_number_val");
             const enteredText = inputField.value;
             console.log("Entered text: " + enteredText);
         }
