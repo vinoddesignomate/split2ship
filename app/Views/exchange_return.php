@@ -34,7 +34,27 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("split_exchng").addEventListener("click", function() {
-                alert("Button clicked!");
+                //alert("Button clicked!");
+
+                var shop_name = document.location.origin;
+                var datavr = JSON.stringify(dataarray);
+                var getcpncode = getCookieval('aply_cpn');
+                var send_data = JSON.stringify({
+                    'shopname': '<?php echo $_GET['shop'];?>'
+                });
+
+                fetch('https://app.payxnowandrestondelivery.com/fetch-order', {
+                        method: 'POST',
+                        body: send_data
+                    })
+                    .then(response => response.text())
+                    .then(response => {                      
+
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             });
 
         });

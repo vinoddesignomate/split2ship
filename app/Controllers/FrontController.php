@@ -1009,4 +1009,12 @@ class FrontController extends BaseController
         // echo "</pre>";
         echo view('exchange_return', $data);
     }
+    public function fetch_echange_orders(){
+        $body_data = file_get_contents('php://input');
+        $body_data_decode = json_decode($body_data, TRUE);
+
+        echo "getprietuleidrec<pre>";
+        print_r($body_data_decode);
+        echo "</pre>";
+    }
 }
