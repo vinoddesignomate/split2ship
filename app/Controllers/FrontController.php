@@ -1010,19 +1010,30 @@ class FrontController extends BaseController
             $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders.json?name=' . $body_data_decode['ordernum'] . '&email=' . $body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $get_all_oders = json_decode($getprietuleid['body'], true);
-
+            $products_array = array();
             foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
-                   
-                    foreach ($value['line_items'] as $products) {
 
-                        echo "products<pre>";
-                        print_r($products);
-                        echo "</pre>";
+                    foreach ($value['line_items'] as $products) {
+                        if ($products['name'] != "Partial Pending Payment") {
+                            if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                                $item_price = $products['properties'][2]['value'] + $products['properties'][3]['value'];
+                            } else {
+                                $item_price = $products['price'];
+                            }
+                            $products_array[] = array(
+                                "title" => $products['name'],
+                                "price" => $item_price,
+                                "price" => $products['quantity']
+                            );
+                        }
                     }
                 }
             }
 
+            echo "products<pre>";
+            print_r($products_array);
+            echo "</pre>";
             // echo "getprietuleidrec<pre>";
             // print_r($get_all_oders);
             // echo "</pre>";

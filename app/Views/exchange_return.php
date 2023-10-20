@@ -60,7 +60,7 @@
                         method: 'POST',
                         body: send_data
                     })
-                    .then(response => response.text())
+                    .then(response => response.json())
                     .then(response => {
 
 
