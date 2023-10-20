@@ -32,5 +32,5 @@
         <div class="line"></div><span class="cursor-pointer leading-[24px]">View the full return policy</span>
     </form>
     <script type="text/javascript">
-
+        alert('testing...');
     </script>
