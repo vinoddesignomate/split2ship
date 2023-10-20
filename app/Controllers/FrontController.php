@@ -993,28 +993,29 @@ class FrontController extends BaseController
         // echo "</pre>";
         return json_encode($return_array);
     }
-    public function exchange_return_split(){
+    public function exchange_return_split()
+    {
         $data = array();
         echo "Exchange app";
-
-        // $shopname = str_replace("https://", "", $body_data_decode['shopname']);
-        // $shopname = str_replace("http://", "", $shopname);
-
-
-        // $get_details = $this->user_model->get_tokens($_GET['shop']);
-        // $getprietuleid = $this->common->rest_api('/admin/api/2022-01/orders.json??name=1130&email=vinod@designomate.com', array(), 'GET', $get_details->access_token, $_GET['shop']);
-        // $getprietuleidrec = json_decode($getprietuleid['body'], true);
-        //  echo "getprietuleidrec<pre>";
-        // print_r($getprietuleidrec);
-        // echo "</pre>";
         echo view('exchange_return', $data);
     }
-    public function fetch_echange_orders(){
+    public function fetch_echange_orders()
+    {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
+        if ((isset($body_data_decode['ordernum']) && $body_data_decode['ordernum'] != "") && (isset($body_data_decode['emailf']) && $body_data_decode['emailf'] != "")) {
 
-        echo "getprietuleidrec<pre>";
-        print_r($body_data_decode);
-        echo "</pre>";
+            $get_details = $this->user_model->get_tokens($body_data_decode['shop']);
+
+            $getprietuleid = $this->common->rest_api('/admin/api/2022-01/orders.json?name='.$body_data_decode['ordernum'].'&email='.$body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+            $getprietuleidrec = json_decode($getprietuleid['body'], true);
+
+            echo "getprietuleidrec<pre>";
+            print_r($getprietuleidrec);
+            echo "</pre>";
+        } else {
+            echo "invalid";
+        }
     }
 }
