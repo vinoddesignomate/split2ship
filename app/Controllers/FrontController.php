@@ -1024,7 +1024,7 @@ class FrontController extends BaseController
                             $products_array[] = array(
                                 "title" => $products['name'],
                                 "price" => $item_price,
-                                "price" => $products['quantity']
+                                "quantity" => $products['quantity']
                             );
                         }
                     }
