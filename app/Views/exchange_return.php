@@ -70,7 +70,7 @@
             console.log("Entered text: " + enteredText);
             console.log("Entered text2: " + enteredText2);
 
-            if (inputField !== '' && inputField2 !== '') {
+            if (enteredText !== '' && enteredText2 !== '') {
                 split_exchngButton.removeAttribute('disabled');
             } else {
                 split_exchngButton.setAttribute('disabled', 'disabled');
