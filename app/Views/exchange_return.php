@@ -34,10 +34,10 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
 
-            const inputField = document.getElementById("order_number_val");
+            var inputField = document.getElementById("order_number_val");
             inputField.addEventListener("input", function() {
                 // This function will be called whenever the user enters or changes text.
-                alert('get enter');
+                //alert('get enter');
                 const enteredText = inputField.value;
                 console.log("Entered text: " + enteredText);
             });
