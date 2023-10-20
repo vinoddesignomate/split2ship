@@ -1003,17 +1003,28 @@ class FrontController extends BaseController
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
-        if ((isset($body_data_decode['ordernum']) && $body_data_decode['ordernum'] != "") && (isset($body_data_decode['emailf']) && $body_data_decode['emailf'] != "")) {   
+        if ((isset($body_data_decode['ordernum']) && $body_data_decode['ordernum'] != "") && (isset($body_data_decode['emailf']) && $body_data_decode['emailf'] != "")) {
 
             $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
-            $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders.json?name='.$body_data_decode['ordernum'].'&email='.$body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+            $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders.json?name=' . $body_data_decode['ordernum'] . '&email=' . $body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
-            $getprietuleidrec = json_decode($getprietuleid['body'], true);
+            $get_all_oders = json_decode($getprietuleid['body'], true);
 
-            echo "getprietuleidrec<pre>";
-            print_r($getprietuleidrec);
-            echo "</pre>";
+            foreach ($get_all_oders as $order) {
+                foreach ($order as $key => $value) {
+                    foreach ($value['line_items'] as $products) {
+
+                        echo "getprietuleidrec<pre>";
+                        print_r($products['images']);
+                        echo "</pre>";
+                    }
+                }
+            }
+
+            // echo "getprietuleidrec<pre>";
+            // print_r($get_all_oders);
+            // echo "</pre>";
         } else {
             echo "invalid";
         }
