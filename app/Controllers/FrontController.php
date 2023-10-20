@@ -1007,7 +1007,7 @@ class FrontController extends BaseController
 
             $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
-            $getprietuleid = $this->common->rest_api('/admin/api/2022-01/orders.json?name='.$body_data_decode['ordernum'].'&email='.$body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $_GET['shop']);
+            $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders.json?name='.$body_data_decode['ordernum'].'&email='.$body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
