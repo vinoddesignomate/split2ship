@@ -35,7 +35,9 @@
         document.addEventListener("DOMContentLoaded", function() {
 
             var inputField = document.getElementById("order_number_val");
+            var inputField2 = document.getElementById("order_email_val");
             inputField.addEventListener("input", getinpoutdata);
+            inputField2.addEventListener("input", getinpoutdata);
 
             document.getElementById("split_exchng").addEventListener("click", function() {
 
@@ -61,7 +63,10 @@
 
         function getinpoutdata() {
             var inputField = document.getElementById("order_number_val");
-            const enteredText = inputField.value;
+            var inputField2 = document.getElementById("order_email_val");
+            var enteredText = inputField.value;
+            var enteredText2 = inputField2.value;
             console.log("Entered text: " + enteredText);
+            console.log("Entered text2: " + enteredText2);
         }
     </script>
