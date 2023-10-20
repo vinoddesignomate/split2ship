@@ -33,10 +33,19 @@
     </form>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
+
+            const inputField = document.getElementById("order_number_val");
+            inputField.addEventListener("input", function() {
+                // This function will be called whenever the user enters or changes text.
+                alert('get enter');
+                const enteredText = inputField.value;
+                console.log("Entered text: " + enteredText);
+            });
+
             document.getElementById("split_exchng").addEventListener("click", function() {
-                               
+
                 var send_data = JSON.stringify({
-                    'shopname': '<?php echo $_GET['shop'];?>'
+                    'shopname': '<?php echo $_GET['shop']; ?>'
                 });
 
                 fetch('https://app.payxnowandrestondelivery.com/fetch-order', {
@@ -44,7 +53,7 @@
                         body: send_data
                     })
                     .then(response => response.text())
-                    .then(response => {                      
+                    .then(response => {
 
 
                     })
