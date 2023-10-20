@@ -40,9 +40,20 @@
             inputField2.addEventListener("input", getinpoutdata);
 
             document.getElementById("split_exchng").addEventListener("click", function() {
-
+                var ordernum = document.getElementById("order_number_val");
+                var emailfields = document.getElementById("order_email_val");
+                var orderf = "";
+                var emailf = "";
+                if (ordernum) {
+                    orderf = ordernum.value;
+                }
+                if (emailfields) {
+                    emailf = emailfields.value;
+                }
                 var send_data = JSON.stringify({
-                    'shopname': '<?php echo $_GET['shop']; ?>'
+                    'shopname': '<?php echo $_GET['shop']; ?>',
+                    'ordernum': orderf,
+                    'emailf': emailf,
                 });
 
                 fetch('https://app.payxnowandrestondelivery.com/fetch-order', {
