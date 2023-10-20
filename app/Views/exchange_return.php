@@ -35,12 +35,7 @@
         document.addEventListener("DOMContentLoaded", function() {
 
             var inputField = document.getElementById("order_number_val");
-            inputField.addEventListener("input", function() {
-                // This function will be called whenever the user enters or changes text.
-                //alert('get enter');
-                const enteredText = inputField.value;
-                console.log("Entered text: " + enteredText);
-            });
+            inputField.addEventListener("input", getinpoutdata);
 
             document.getElementById("split_exchng").addEventListener("click", function() {
 
@@ -63,4 +58,9 @@
             });
 
         });
+
+        function getinpoutdata() {
+            const enteredText = inputField.value;
+            console.log("Entered text: " + enteredText);
+        }
     </script>
