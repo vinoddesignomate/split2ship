@@ -1013,12 +1013,12 @@ class FrontController extends BaseController
 
             foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
-                    echo "getprietuleidrec<pre>";
-                    print_r($value['images']);
-                    echo "</pre>";
+                   
                     foreach ($value['line_items'] as $products) {
 
-                       
+                        echo "products<pre>";
+                        print_r($products);
+                        echo "</pre>";
                     }
                 }
             }
