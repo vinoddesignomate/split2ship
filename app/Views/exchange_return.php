@@ -31,6 +31,22 @@
         </div><button id="split_exchng" type="button" class="_xButton_l3r25_2 _fromLogin_l3r25_22 _block_l3r25_38" disabled style="cursor: default;"><span class="_content_l3r25_56"><span>Start Your Return</span></span></button><span style="text-align: center; word-break: break-word;"><span class="Polaris-TextStyle--variationSubdued">You have a maximum of 30 days from the date of your purchase to make a return.</span></span>
         <div class="line"></div><span class="cursor-pointer leading-[24px]">View the full return policy</span>
     </form>
+
+
+
+    <div style="display:none" class="Polaris-Layout__Section">
+        <div class="Polaris-Stack Polaris-Stack--alignmentCenter">
+            <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                <div class="_titleContainer_y6eic_2">
+                    <h2 id="Polaris-Heading_head" class="Polaris-Heading"> </h2>
+                    <span id="Polaris-Heading_date" class="Polaris-TextStyle--variationSubdued"></span>
+                </div>
+            </div>
+            <div class="Polaris-Stack__Item"><button class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
+        </div>
+    </div>
+
+
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
 
@@ -62,7 +78,13 @@
                     })
                     .then(response => response.json())
                     .then(response => {
-                        console.log(response);
+                        //console.log(response);
+                        const exhcshow_orders = document.querySelector(".Polaris-Layout__Section");
+                        if (exhcshow_orders) {
+                            exhcshow_orders.style.display = "block";
+                        }
+                        document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
+                        document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
 
                     })
                     .catch(error => {
@@ -78,8 +100,8 @@
             var split_exchngButton = document.getElementById('split_exchng');
             var enteredText = inputField.value;
             var enteredText2 = inputField2.value;
-            console.log("Entered text: " + enteredText);
-            console.log("Entered text2: " + enteredText2);
+            // console.log("Entered text: " + enteredText);
+            // console.log("Entered text2: " + enteredText2);
 
             if (enteredText !== '' && enteredText2 !== '') {
                 split_exchngButton.removeAttribute('disabled');
