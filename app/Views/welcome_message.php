@@ -104,14 +104,14 @@
         padding: 30px;
         border-radius: 0;
         border-left: 8px solid #1760A5;
-        border-right: 8px solid #10277C;
+        border-right: 8px solid #10277cde;
         border-top: 8px solid #1760A5;
-        border-bottom: 8px solid #10277C;
+        border-bottom: 8px solid #10277cde;
     }
 
     #popup_config .payxnowandrestondelivery-close-popup-btn {
         border-radius: 0 !important;
-        right: 3px;
+        right: 7px;
     }
 
     #popup_config .popup-content p {
