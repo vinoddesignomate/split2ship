@@ -65,19 +65,31 @@
         xmp {
                 margin: 0;
         }
-        .payxnowandrestondelivery-zip-flex-row{display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 39px;
-    flex-wrap: wrap;}
-    .payxnowandrestondelivery-zip-flex-row > div {
-    flex: 1;
-}
-.postal-btn{margin-bottom: 10px;
-    background-color: #28a745;
-    color: #fff;padding: 5px 26px;margin-right: 10px;}
-    .postal-btn:hover{background-color: #3b3b3b;}
-    
+
+        .payxnowandrestondelivery-zip-flex-row {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                gap: 39px;
+                flex-wrap: wrap;
+        }
+
+        .payxnowandrestondelivery-zip-flex-row>div {
+                flex: 1;
+        }
+
+        .postal-btn {
+                margin-bottom: 10px;
+                background-color: #28a745;
+                color: #fff;
+                padding: 5px 26px;
+                margin-right: 10px;
+        }
+
+        .postal-btn:hover {
+                background-color: #3b3b3b;
+        }
+
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
                         flex: auto;
@@ -99,7 +111,10 @@
         }
 
         @media only screen and (max-width: 767px) {
-                .payxnowandrestondelivery-zip-flex-row{display: block;}
+                .payxnowandrestondelivery-zip-flex-row {
+                        display: block;
+                }
+
                 .payxnowandrestondelivery-main-area h5 {
                         padding-left: 0px;
                 }
@@ -123,6 +138,16 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
+        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+                <div class="payxnowandrestondelivery-container">
+                        <div class="payxnowandrestondelivery-main-head">
+                                <div class="alert-wrapper payxnowandrestondelivery-main-heading">
+                                        <p class="payxnowandrestondelivery-alert">Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
+                                </div>
+
+                        </div>
+                </div>
+        <?php } ?>
 
         <div class=" payxnowandrestondelivery-main-area ">
 
@@ -1005,40 +1030,40 @@ $store_name = $shop_name[0];
                 </div>
         </div>
         <div class="payxnowandrestondelivery-zip-flex-row">
-        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                <div class="payxnowandrestondelivery-head-wrapper">
-                        <h2 class="">Checkout button colors</h2>
-                </div>
-                <div class="edit-form-wrapper">
-                        <form method="post">
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                        <div class="payxnowandrestondelivery-head-wrapper">
+                                <h2 class="">Checkout button colors</h2>
+                        </div>
+                        <div class="edit-form-wrapper">
+                                <form method="post">
 
-                                <div class="flex-row">
-                                        <label for="">Partial payment color code :</label>
-                                        <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
-                                </div>
-                                <div class="flex-row">
-                                        <label for="">Partial payment button text color code :</label>
-                                        <input type="text" data-jscolor="{}" name="chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : 'ffffff'); ?>">
-                                </div>
-                                <div class="flex-row">
-                                        <label for="">Full payment color code :</label>
-                                        <input type="text" data-jscolor="{}" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
-                                </div>
-                                <div class="flex-row">
-                                        <label for="">Full payment button text color code :</label>
-                                        <input type="text" data-jscolor="{}" name="full_chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : 'ffffff'); ?>">
-                                </div>
+                                        <div class="flex-row">
+                                                <label for="">Partial payment color code :</label>
+                                                <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
+                                        </div>
+                                        <div class="flex-row">
+                                                <label for="">Partial payment button text color code :</label>
+                                                <input type="text" data-jscolor="{}" name="chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : 'ffffff'); ?>">
+                                        </div>
+                                        <div class="flex-row">
+                                                <label for="">Full payment color code :</label>
+                                                <input type="text" data-jscolor="{}" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
+                                        </div>
+                                        <div class="flex-row">
+                                                <label for="">Full payment button text color code :</label>
+                                                <input type="text" data-jscolor="{}" name="full_chk_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : 'ffffff'); ?>">
+                                        </div>
 
-                                <div class="flex-row">
-                                        <label for="">Cart Summary Section Background color</label>
-                                        <input type="text" data-jscolor="{}" name="cart_summary_back_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
-                                </div>
-                                <div class="flex-row">
-                                        <label for="">Cart Summary Section text color</label>
-                                        <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
-                                </div>
+                                        <div class="flex-row">
+                                                <label for="">Cart Summary Section Background color</label>
+                                                <input type="text" data-jscolor="{}" name="cart_summary_back_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
+                                        </div>
+                                        <div class="flex-row">
+                                                <label for="">Cart Summary Section text color</label>
+                                                <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
+                                        </div>
 
-                                <!--<div class="flex-row">
+                                        <!--<div class="flex-row">
                                         <label for="">Checkout button css class name </label>
                                         <input type="text" name="cg_chkout_btn_class" value="<?php echo (isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : ''); ?>">
                                 </div>
@@ -1047,14 +1072,14 @@ $store_name = $shop_name[0];
                                         <input type="text" name="cg_cart_remove_class" value="<?php echo (isset($gtbtncolor[0]->cg_cart_remove_class) ? $gtbtncolor[0]->cg_cart_remove_class : ''); ?>">
                                 </div>-->
 
-                                <div class="btn-row">
-                                        <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                                </div>
+                                        <div class="btn-row">
+                                                <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                        </div>
 
-                        </form>
+                                </form>
+                        </div>
                 </div>
-        </div>
-      
+
         </div>
 </div>
 
