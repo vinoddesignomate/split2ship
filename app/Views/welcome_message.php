@@ -101,12 +101,12 @@
 
     #popup_config .popup-content {
         max-width: 650px;
-        padding: 30px 20px;
+        padding: 30px;
         border-radius: 0;
-        border-left: 6px solid #10277C;
-        border-right: 6px solid #10277C;
-        border-top: 6px solid #1760A5;
-        border-bottom: 6px solid #1760A5;
+        border-left: 8px solid #1760A5;
+        border-right: 8px solid #10277C;
+        border-top: 8px solid #1760A5;
+        border-bottom: 8px solid #10277C;
     }
 
     #popup_config .payxnowandrestondelivery-close-popup-btn {
