@@ -98,7 +98,6 @@
     /***************config popup css start */
 
 
-
     #popup_config {
         max-width: 650px;
     }
@@ -121,7 +120,8 @@
 
     #popup_config .popup-content p {
         font-size: 19px;
-        color: #000;
+        color: #000c;
+        line-height: 1.4;
     }
 
     #popup_config .popup-content p a {
