@@ -148,13 +148,13 @@
     **************************************************** -->
     <section class="payxnowandrestondelivery-sec-space">
 
-        <div class="payxnowandrestondelivery-container">
+        <!--<div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading" style="border: 1px solid #de350a;">
                     <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">There is some maintenance going on, so if you're facing any issues please contact us on :- 9354200590</p>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
