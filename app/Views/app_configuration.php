@@ -133,6 +133,31 @@ $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
 
 ?>
+<style>
+        .configpageinstr {
+                padding: 0;
+        }
+
+        .configpageinstr .payxnowandrestondelivery-main-head {
+                margin-top: 0;
+                margin-bottom: 30px;
+        }
+
+        .configpageinstr .alert-wrapper {
+                padding: 10px 25px;
+                border-radius: 0;
+                background-color: #f7e62140;
+                border: 3px solid #320c4e3d;
+        }
+
+        .configpageinstr p.payxnowandrestondelivery-alert {
+                font-size: 16px;
+                color: #0C0C0C;
+                font-weight: normal;
+                line-height: 1.4;
+                text-align: center;
+        }
+</style>
 <script src="/public/jscolor.js"></script>
 <div class="payxnowandrestondelivery-whiteAreaDiv payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
