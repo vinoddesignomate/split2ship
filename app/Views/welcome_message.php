@@ -95,6 +95,30 @@
         margin-bottom: 13px;
     }
 
+    #popup_config {
+        max-width: 650px;
+    }
+
+    #popup_config .popup-content {
+        max-width: 650px;
+        padding: 30px 20px;
+        border-radius: 0;
+        border-left: 6px solid #10277C;
+        border-right: 6px solid #10277C;
+        border-top: 6px solid #1760A5;
+        border-bottom: 6px solid #1760A5;
+    }
+
+    #popup_config .payxnowandrestondelivery-close-popup-btn {
+        border-radius: 0 !important;
+        right: 3px;
+    }
+
+    #popup_config .popup-content p {
+        font-size: 17px;
+        color: #000;
+    }
+
     @media screen and (max-width:610px) {
         .payxnowandrestondelivery-close-popup-btn {
             right: 12px
@@ -687,6 +711,7 @@
                 // Remove the class from the body element
                 body.classList.remove("package_popup_visible");
             }
+
             function config_hidePopup() {
                 var popup = document.getElementById("popup_config");
                 popup.style.display = "none";
