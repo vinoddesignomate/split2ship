@@ -29,6 +29,86 @@
         }
     }
 </style>
+
+<style>
+    /* Styling for the popup container */
+    body.price-plan.package_popup_visible {
+        overflow-y: hidden;
+        position: relative;
+    }
+
+    .popup-container {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 0px 15px;
+
+    }
+
+    /* Styling for the popup content */
+    .popup-content p {
+        font-size: 18px;
+        line-height: 130%;
+    }
+
+    .popup-content {
+
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        padding: 50px 20px;
+        border-radius: 5px;
+        max-width: 400px;
+    }
+
+    .payxnowandrestondelivery-close-popup-btn {
+        position: absolute;
+        top: -7px;
+        right: 0px;
+        background-color: #10277c;
+        color: #fff;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+    }
+
+    body.package_popup_visible:after {
+        content: '';
+        position: fixed;
+        background-color: #0000008a;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 111;
+    }
+
+    .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
+        margin-bottom: 13px;
+    }
+
+    @media screen and (max-width:610px) {
+        .payxnowandrestondelivery-close-popup-btn {
+            right: 12px
+        }
+    }
+</style>
+
+<div id="popup" class="popup-container">
+    <div class="popup-content">
+        <!-- <h2>Hello, this is a message!</h2> -->
+        <p id="plmsg"></p>
+        <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
+    </div>
+</div>
 <div class="payxnowandrestondelivery-body-wrapper">
     <!-- **********************************************
                         SECTION-1
@@ -51,10 +131,17 @@
 
             </div>
         </div>
-        <?php //if ($get_details_store->show_config_popup == '1') { ?>
+        <?php //if ($get_details_store->show_config_popup == '1') { 
+        ?>
         <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
             <script type="text/javascript">
-                show_popup_config();
+                //show_popup_config();
+
+                var popup = document.getElementById("popup");
+                popup.style.display = "block";
+                var body = document.body;
+                body.classList.add("package_popup_visible");
+                $("#plmsg").html('Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes');
             </script>
         <?php } ?>
 
@@ -352,85 +439,6 @@
             <section>
 
 
-                <style>
-                    /* Styling for the popup container */
-                    body.price-plan.package_popup_visible {
-                        overflow-y: hidden;
-                        position: relative;
-                    }
-
-                    .popup-container {
-                        display: none;
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        width: 100%;
-                        height: auto;
-                        max-width: 400px;
-                        transform: translate(-50%, -50%);
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 999;
-                        padding: 0px 15px;
-
-                    }
-
-                    /* Styling for the popup content */
-                    .popup-content p {
-                        font-size: 18px;
-                        line-height: 130%;
-                    }
-
-                    .popup-content {
-
-                        text-align: center;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-                        background-color: #fff;
-                        padding: 50px 20px;
-                        border-radius: 5px;
-                        max-width: 400px;
-                    }
-
-                    .payxnowandrestondelivery-close-popup-btn {
-                        position: absolute;
-                        top: -7px;
-                        right: 0px;
-                        background-color: #10277c;
-                        color: #fff;
-                        border-radius: 50%;
-                        width: 25px;
-                        height: 25px;
-                    }
-
-                    body.package_popup_visible:after {
-                        content: '';
-                        position: fixed;
-                        background-color: #0000008a;
-                        width: 100%;
-                        height: 100%;
-                        top: 0;
-                        left: 0;
-                        z-index: 111;
-                    }
-
-                    .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
-                        margin-bottom: 13px;
-                    }
-
-                    @media screen and (max-width:610px) {
-                        .payxnowandrestondelivery-close-popup-btn {
-                            right: 12px
-                        }
-                    }
-                </style>
-
-                <div id="popup" class="popup-container">
-                    <div class="popup-content">
-                        <!-- <h2>Hello, this is a message!</h2> -->
-                        <p id="plmsg"></p>
-                        <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
-                    </div>
-                </div>
                 <!-- **********************************************
                         SECTION-4
     **************************************************** -->
