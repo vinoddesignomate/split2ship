@@ -687,4 +687,11 @@
                 // Remove the class from the body element
                 body.classList.remove("package_popup_visible");
             }
+            function config_hidePopup() {
+                var popup = document.getElementById("popup_config");
+                popup.style.display = "none";
+                var body = document.body;
+                // Remove the class from the body element
+                body.classList.remove("package_popup_visible");
+            }
         </script>
