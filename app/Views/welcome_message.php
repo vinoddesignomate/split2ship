@@ -119,6 +119,11 @@
         color: #000;
     }
 
+    #popup_config .popup-content p a {
+        color: #1760a5;
+        text-decoration: underline;
+    }
+
     @media screen and (max-width:610px) {
         .payxnowandrestondelivery-close-popup-btn {
             right: 12px
