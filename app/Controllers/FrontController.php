@@ -1031,7 +1031,7 @@ class FrontController extends BaseController
                         "order_date" => $value['created_at'],
                         "order_price" => $value['current_subtotal_price'],
                         "email" => $this->common->payxnow_encodedata($value['contact_email']),
-                        "shop_url" => $_GET['shop'],
+                        "shop_url" => $body_data_decode['shopname'],
                         "fullfilment_status" => $fullmenststs
                     );
                     if (isset($value['shipping_address'])) {
@@ -1062,7 +1062,7 @@ class FrontController extends BaseController
                     }
                     //echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
 
-                    $incid = $this->exchange_model->track_exchange_orders($orders_data, $_GET['shop']);
+                    $incid = $this->exchange_model->track_exchange_orders($orders_data, $body_data_decode['shopname']);
 
                     foreach ($value['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
@@ -1078,7 +1078,7 @@ class FrontController extends BaseController
                                 "product_name" => $products['name'],
                                 "product_price" => $item_price,
                                 "product_qty" => $products['quantity'],
-                                "shop_url" => $_GET['shop']
+                                "shop_url" => $body_data_decode['shopname']
                             );
 
 
