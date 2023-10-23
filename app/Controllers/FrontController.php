@@ -1042,7 +1042,7 @@ class FrontController extends BaseController
                         $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
                         $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
                         $orders_data['pincode'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
-                        $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
+                        //$orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
                         $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['first_name']) : '');
                         $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
                         //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
