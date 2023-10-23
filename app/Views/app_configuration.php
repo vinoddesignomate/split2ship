@@ -139,7 +139,7 @@ $store_name = $shop_name[0];
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
         <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                <div class="payxnowandrestondelivery-container">
+                <div class="payxnowandrestondelivery-container configpageinstr">
                         <div class="payxnowandrestondelivery-main-head">
                                 <div class="alert-wrapper payxnowandrestondelivery-main-heading">
                                         <p class="payxnowandrestondelivery-alert">Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
