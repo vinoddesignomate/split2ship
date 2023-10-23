@@ -51,11 +51,11 @@
 
             </div>
         </div>
-        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            echo "<pre>";
-            print_r($get_details_store);
-            echo "</pre>";
-        } ?>
+        <?php if ($get_details_store['show_config_popup'] == '1') { ?>
+            <script type="text/javascript">
+                showPopup_config();
+            </script>
+        <?php } ?>
 
         <!-- main-head -->
         <div class="payxnowandrestondelivery-container">
@@ -649,6 +649,15 @@
                     plnmsg = "You need to keep only 10000 products in partial list for activating this plan.";
                 }
                 $("#plmsg").html(plnmsg);
+
+            }
+
+            function showPopup_config() {
+                var popup = document.getElementById("popup");
+                popup.style.display = "block";
+                var body = document.body;
+                body.classList.add("package_popup_visible");
+                $("#plmsg").html('Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes');
 
             }
 
