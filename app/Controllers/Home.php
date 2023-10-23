@@ -338,6 +338,10 @@ class Home extends BaseController
 
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
+                
+                $this->user_model->update_data($_GET['shop'], array(
+					"show_config_popup" => 0
+				));
 
                 echo view('templates/header');
                 echo view('welcome_message', $data);

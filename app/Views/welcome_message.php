@@ -51,6 +51,11 @@
 
             </div>
         </div>
+        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            echo "<pre>";
+            print_r($get_details_store);
+            echo "</pre>";
+        } ?>
 
         <!-- main-head -->
         <div class="payxnowandrestondelivery-container">
@@ -335,7 +340,7 @@
                             </div>
                             <div class="btn-row">
                                 <button type="submit" name="upload_zip" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                               
+
                             </div>
                             <span id="filmsg"></span>
 
