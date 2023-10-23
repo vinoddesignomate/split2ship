@@ -53,7 +53,7 @@
         </div>
         <?php if ($get_details_store->show_config_popup == '1') { ?>
             <script type="text/javascript">
-                showPopup_config();
+                show_popup_config();
             </script>
         <?php } ?>
 
@@ -652,7 +652,7 @@
 
             }
 
-            function showPopup_config() {
+            function show_popup_config() {
                 var popup = document.getElementById("popup");
                 popup.style.display = "block";
                 var body = document.body;
