@@ -4,12 +4,14 @@ namespace App\Controllers;
 
 use App\Models\FrontModel;
 use App\Models\UserModel;
+use App\Models\ExchangeappModel;
 
 class FrontController extends BaseController
 {
     protected $base;
     protected $front_model;
     protected $user_model;
+    protected $exchange_model;
 
     function __construct()
     {
@@ -18,6 +20,7 @@ class FrontController extends BaseController
         $session = \Config\Services::session();
         //$this->front_model = new FrontModel();
         $this->user_model = new UserModel();
+        $this->exchange_model = new ExchangeappModel();
     }
     public function get_product_details()
     {
@@ -1011,8 +1014,55 @@ class FrontController extends BaseController
 
             $get_all_oders = json_decode($getprietuleid['body'], true);
             $products_array = array();
-            foreach ($get_all_oders as $order) {
+           /* foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
+
+                    if (empty($value['fulfillments'])) {
+                        $fullmenststs = "Unfulfilled";
+                    } else {
+                        $fullmenststs = "fulfilled";
+                    }
+
+                    $orders_data = array(
+                        "order_id" => $value['id'],
+                        "order_number" => str_replace("#", "", $value['name']),
+                        "order_status" => 'processing',
+                        "order_ccy" => $value['currency'],
+                        "order_date" => $value['created_at'],
+                        "order_price" => $value['current_subtotal_price'],
+                        "email" => $this->common->payxnow_encodedata($value['contact_email']),
+                        "shop_url" => $_GET['shop'],
+                        "fullfilment_status" => $fullmenststs
+                    );
+                    if (isset($value['shipping_address'])) {
+                        $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['shipping_address']['address1']);
+
+                        $orders_data['shipping_address2'] = (isset($value['shipping_address']['address2']) ? $this->common->payxnow_encodedata($value['shipping_address']['address2']) : '');
+
+                        $orders_data['city'] = (isset($value['shipping_address']['city']) ? $this->common->payxnow_encodedata($value['shipping_address']['city']) : '');
+                        $orders_data['state'] = (isset($value['shipping_address']['province']) ? $this->common->payxnow_encodedata($value['shipping_address']['province']) : '');
+                        $orders_data['pincode'] = (isset($value['shipping_address']['zip']) ? $value['shipping_address']['zip'] : '');
+                        $orders_data['phone'] = (isset($value['shipping_address']['phone']) ? $this->common->payxnow_encodedata($value['shipping_address']['phone']) : '');
+                        $orders_data['f_name'] = (isset($value['shipping_address']['first_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['first_name']) : '');
+                        $orders_data['l_name'] = (isset($value['shipping_address']['last_name']) ? $this->common->payxnow_encodedata($value['shipping_address']['last_name']) : '');
+                        //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
+                        $orders_data['country'] = (isset($value['shipping_address']['country']) ? $this->common->payxnow_encodedata($value['shipping_address']['country']) : '');
+                    } else  if (isset($value['billing_address'])) {
+
+                        $orders_data['shipping_address'] = $this->common->payxnow_encodedata($value['billing_address']['address1']);
+                        $orders_data['shipping_address2'] = (isset($value['billing_address']['address2']) ? $this->common->payxnow_encodedata($value['billing_address']['address2']) : '');
+                        $orders_data['city'] = (isset($value['billing_address']['city']) ? $this->common->payxnow_encodedata($value['billing_address']['city']) : '');
+                        $orders_data['state'] = (isset($value['billing_address']['province']) ? $this->common->payxnow_encodedata($value['billing_address']['province']) : '');
+                        $orders_data['pincode'] = (isset($value['billing_address']['zip']) ? $value['billing_address']['zip'] : '');
+                        //$orders_data['phone'] = (isset($value['billing_address']['phone']) ? $this->common->payxnow_encodedata($value['billing_address']['phone']) : '');
+                        $orders_data['fname'] = (isset($value['billing_address']['first_name']) ? $this->common->payxnow_encodedata($value['billing_address']['first_name']) : '');
+                        $orders_data['l_name'] = (isset($value['billing_address']['last_name']) ? $this->common->payxnow_encodedata($value['billing_address']['last_name']) : '');
+                        //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
+                        $orders_data['country'] = (isset($value['billing_address']['country']) ? $this->common->payxnow_encodedata($value['billing_address']['country']) : '');
+                    }
+                    //echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
+
+                    $incid = $this->exchange_model->track_exchange_orders($orders_data, $_GET['shop']);
 
                     foreach ($value['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
@@ -1029,14 +1079,14 @@ class FrontController extends BaseController
                         }
                     }
                 }
-            }
+            }*/
 
-            echo "products<pre>";
-            print_r($products_array);
-            echo "</pre>";
-            // echo "getprietuleidrec<pre>";
-            // print_r($get_all_oders);
+            // echo "products<pre>";
+            // print_r($products_array);
             // echo "</pre>";
+            echo "getprietuleidrec<pre>";
+            print_r($get_all_oders);
+            echo "</pre>";
         } else {
             echo "invalid";
         }
