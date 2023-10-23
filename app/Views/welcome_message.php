@@ -51,7 +51,7 @@
 
             </div>
         </div>
-        <?php if ($get_details_store['show_config_popup'] == '1') { ?>
+        <?php if ($get_details_store->show_config_popup == '1') { ?>
             <script type="text/javascript">
                 showPopup_config();
             </script>
