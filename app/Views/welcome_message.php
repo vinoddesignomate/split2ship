@@ -166,7 +166,11 @@
         </div>
         <?php //if ($get_details_store->show_config_popup == '1') { 
         ?>
-        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+
+            $shop_name = explode(".", $_GET['shop']);
+            $store_namecnf = $shop_name[0];
+        ?>
             <script type="text/javascript">
                 //show_popup_config();
 
@@ -174,7 +178,7 @@
                 popup.style.display = "block";
                 var body = document.body;
                 body.classList.add("package_popup_visible");
-                document.getElementById('plmsg_config').innerHTML = 'Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. <br/> <br/> Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes';
+                document.getElementById('plmsg_config').innerHTML = 'Please visit the <a href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">configuration settings</a> page first to review the installation instructions for the app. Alternatively, you can reach out to us via WhatsApp at 9354200590, or send us an email at saurabh@cgcolors.com. Our Shopify expert will then proceed to install and configure the app on your store. This process typically takes no more than 30 minutes.';
             </script>
         <?php } ?>
 
