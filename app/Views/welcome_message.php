@@ -141,7 +141,7 @@
                 popup.style.display = "block";
                 var body = document.body;
                 body.classList.add("package_popup_visible");
-                $("#plmsg").html('Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes');
+                document.getElementById('plmsg').innerHTML = 'Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes';
             </script>
         <?php } ?>
 
