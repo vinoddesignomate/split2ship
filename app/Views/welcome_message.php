@@ -109,6 +109,15 @@
         <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
     </div>
 </div>
+
+<div id="popup_config" class="popup-container config_popup">
+    <div class="popup-content">
+        <!-- <h2>Hello, this is a message!</h2> -->
+        <p id="plmsg_config"></p>
+        <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
+    </div>
+</div>
+
 <div class="payxnowandrestondelivery-body-wrapper">
     <!-- **********************************************
                         SECTION-1
@@ -137,11 +146,11 @@
             <script type="text/javascript">
                 //show_popup_config();
 
-                var popup = document.getElementById("popup");
+                var popup = document.getElementById("popup_config");
                 popup.style.display = "block";
                 var body = document.body;
                 body.classList.add("package_popup_visible");
-                document.getElementById('plmsg').innerHTML = 'Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes';
+                document.getElementById('plmsg_config').innerHTML = 'Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. <br/> Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes';
             </script>
         <?php } ?>
 
