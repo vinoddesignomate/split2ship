@@ -1014,7 +1014,7 @@ class FrontController extends BaseController
 
             $get_all_oders = json_decode($getprietuleid['body'], true);
             $products_array = array();
-           /* foreach ($get_all_oders as $order) {
+            foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
 
                     if (empty($value['fulfillments'])) {
@@ -1071,22 +1071,33 @@ class FrontController extends BaseController
                             } else {
                                 $item_price = $products['price'];
                             }
-                            $products_array[] = array(
-                                "title" => $products['name'],
-                                "price" => $item_price,
-                                "quantity" => $products['quantity']
+
+                            $orders_products_data = array(
+                                "order_id" => $value['id'],
+                                "product_id" => $products['id'],
+                                "product_name" => $products['name'],
+                                "product_price" => $item_price,
+                                "product_qty" => $products['quantity'],
+                                "shop_url" => $_GET['shop']
                             );
+
+
+
+                            $this->user_model->track_orders_products_exchange($orders_products_data);
                         }
                     }
                 }
-            }*/
+            }
+            $products_array = array();
+            if (isset($get_all_oders['orders'][0]['created_at'])) {
+                $products_array = array(
+                    "order_num" => $body_data_decode['ordernum'],
+                    "order_date" => $get_all_oders['orders'][0]['created_at']
+                );
+            }
 
-            // echo "products<pre>";
-            // print_r($products_array);
-            // echo "</pre>";
-            echo "getprietuleidrec<pre>";
-            print_r($get_all_oders);
-            echo "</pre>";
+
+            json_encode($products_array);
         } else {
             echo "invalid";
         }

@@ -39,5 +39,21 @@ class ExchangeappModel extends Model
             return '1';
         }
     }
+    public function track_orders_products_exchange($data_array)
+    {
+
+        $qbuilder = $this->db->table('orders_products');
+        $qbuilder->where('product_id', $data_array['product_id']);
+        $qbuilder->where('order_id', $data_array['order_id']);
+        $qbuilder->where('shop_url', $data_array['shop_url']);
+        $q = $qbuilder->get();
+        // $qbuilder->countAllResults();
+        if (empty($q->getResult())) {
+            return  $this->db->table('orders_products')->insert($data_array);
+        } else {
+            $this->db->table('orders_products')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
+            return '';
+        }
+    }
 }
 ?>
