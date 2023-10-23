@@ -114,7 +114,7 @@
     <div class="popup-content">
         <!-- <h2>Hello, this is a message!</h2> -->
         <p id="plmsg_config"></p>
-        <button class="payxnowandrestondelivery-close-popup-btn" onclick="hidePopup()">X</button>
+        <button class="payxnowandrestondelivery-close-popup-btn" onclick="config_hidePopup()">X</button>
     </div>
 </div>
 
