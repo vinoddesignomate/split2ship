@@ -1083,7 +1083,7 @@ class FrontController extends BaseController
 
 
 
-                            $this->user_model->track_orders_products_exchange($orders_products_data);
+                            $this->exchange_model->track_orders_products_exchange($orders_products_data);
                         }
                     }
                 }
