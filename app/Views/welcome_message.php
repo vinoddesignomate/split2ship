@@ -105,7 +105,7 @@
 
     #popup_config .popup-content {
         max-width: 650px;
-        padding: 40px;
+        padding: 30px;
         border-radius: 0;
         border-left: 8px solid #1760A5;
         border-right: 8px solid #10277cde;
@@ -131,9 +131,9 @@
 
     .closeButtonCg {
         width: 100%;
-        margin-top: 20px;
+        margin-top: 30px;
         display: block;
-        text-align: right;
+        text-align: center;
     }
 
     .closeButtonCg a {
