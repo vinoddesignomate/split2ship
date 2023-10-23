@@ -1097,7 +1097,7 @@ class FrontController extends BaseController
             }
 
 
-            json_encode($products_array);
+            echo json_encode($products_array);
         } else {
             echo "invalid";
         }
