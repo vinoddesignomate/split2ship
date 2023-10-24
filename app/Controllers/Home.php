@@ -1295,11 +1295,11 @@ class Home extends BaseController
                                         $reaminming_price[] = 0;
                                         $prodycprice = 0;
                                     }
-                                    if (isset($products['properties'][4]['value'])) {
-                                        $prosku = $products['properties'][4]['value'];
-                                    } else {
-                                        $prosku = 'PRTTESTSKY';
-                                    }
+                                    // if (isset($products['properties'][4]['value'])) {
+                                    //     $prosku = $products['properties'][4]['value'];
+                                    // } else {
+                                    //     $prosku = 'PRTTESTSKY';
+                                    // }
                                 } else {
                                     $prosku = $products['sku'];
                                     $prodycprice =  $products['price'];
