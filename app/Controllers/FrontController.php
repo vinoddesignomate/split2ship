@@ -1141,4 +1141,9 @@ class FrontController extends BaseController
             echo "invalid";
         }
     }
+    function get_orders_info(){
+        $body_data = file_get_contents('php://input');
+        $body_data_decode = json_decode($body_data, TRUE);
+        echo"<pre>";print_r($body_data_decode);echo"</pre>";
+    }
 }
