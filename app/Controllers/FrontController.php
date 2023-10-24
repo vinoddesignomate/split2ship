@@ -1039,8 +1039,8 @@ class FrontController extends BaseController
             $get_all_oders = json_decode($getprietuleid['body'], true);
             $products_array = array();
 
-            // echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
-            // die();
+            echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
+            die();
             foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
 
