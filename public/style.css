@@ -1336,6 +1336,9 @@ p.payxnowandrestondelivery-alert {
 .payxnowandrestondelivery-not-found-msg h2 {
     font-size: 25px;
 }
+
+.configvideotg{display:grid; gap:20px; align-items:center;}
+.configvideotg iframe{display:flex; gap:20px; width:50%;}
 /*************Responsive***********/
 
 
