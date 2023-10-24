@@ -1105,6 +1105,7 @@ class FrontController extends BaseController
                                     $productvarient = "";
                                 }
                             } else {
+                                $productvarient = $products['variant_id'];
                             }
                             $orders_products_data = array(
                                 "order_id" => $value['id'],
