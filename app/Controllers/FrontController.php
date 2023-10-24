@@ -171,7 +171,7 @@ class FrontController extends BaseController
                         "gift_card" => true,
                         "properties" => array(
                             array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),                            
+                            array("name" => "variant_code", "value" => $item_cart['id']),
                             array("name" => "partial_pay", "value" => $item_cart['price']),
                             array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
                             array("name" => "product_id_code", "value" => $item_cart['product_id']),
@@ -1013,7 +1013,7 @@ class FrontController extends BaseController
             $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
 
-           /* $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/44320678019376.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+            /* $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/44320678019376.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getvrntimg = json_decode($getvarimg['body'], true);
             //echo"<pre>"; print_r($getvrntimg); echo "</pre>";
@@ -1032,15 +1032,15 @@ class FrontController extends BaseController
                 }
             }
             echo "image_url=".$image_url;*/
-            
+
 
             $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders.json?name=' . $body_data_decode['ordernum'] . '&email=' . $body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $get_all_oders = json_decode($getprietuleid['body'], true);
             $products_array = array();
 
-            echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
-            die();
+            // echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
+            // die();
             foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
 
@@ -1098,10 +1098,18 @@ class FrontController extends BaseController
                             } else {
                                 $item_price = $products['price'];
                             }
-
+                            if ($products['variant_id'] == "") {
+                                if (isset($products['properties'][1]['value']) && $products['properties'][1]['value'] == 'variant_code') {
+                                    $productvarient = $products['properties'][1]['value'];
+                                } else {
+                                    $productvarient = "";
+                                }
+                            } else {
+                            }
                             $orders_products_data = array(
                                 "order_id" => $value['id'],
                                 "product_id" => $products['id'],
+                                "varient_id" => $productvarient,
                                 "product_name" => $products['name'],
                                 "product_price" => $item_price,
                                 "product_qty" => $products['quantity'],
