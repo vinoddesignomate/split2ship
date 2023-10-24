@@ -1039,8 +1039,8 @@ class FrontController extends BaseController
             $get_all_oders = json_decode($getprietuleid['body'], true);
             $products_array = array();
 
-            echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
-            die();
+            // echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
+            // die();
             foreach ($get_all_oders as $order) {
                 foreach ($order as $key => $value) {
 
@@ -1095,18 +1095,20 @@ class FrontController extends BaseController
                         if ($products['name'] != "Partial Pending Payment") {
                             if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
                                 $item_price = $products['properties'][2]['value'] + $products['properties'][3]['value'];
+                                $productvarient = $products['properties'][1]['value'];
                             } else {
                                 $item_price = $products['price'];
-                            }
-                            if ($products['variant_id'] == "") {
-                                if (isset($products['properties'][1]['value']) && $products['properties'][1]['value'] == 'variant_code') {
-                                    $productvarient = $products['properties'][1]['value'];
-                                } else {
-                                    $productvarient = "";
-                                }
-                            } else {
                                 $productvarient = $products['variant_id'];
                             }
+                            // if ($products['variant_id'] == "") {
+                            //     if (isset($products['properties'][1]['value']) && $products['properties'][1]['value'] == 'variant_code') {
+                            //         $productvarient = $products['properties'][1]['value'];
+                            //     } else {
+                            //         $productvarient = "";
+                            //     }
+                            // } else {
+                            //     $productvarient = $products['variant_id'];
+                            // }
                             $orders_products_data = array(
                                 "order_id" => $value['id'],
                                 "product_id" => $products['id'],
