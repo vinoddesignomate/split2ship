@@ -1056,6 +1056,11 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-n_jfzlHmv4?si=hD7jDwM0962z-MtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+        </div>
+        <div class="payxnowandrestondelivery-zip-flex-row">
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                         <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2 class="">Checkout button colors</h2>
                         </div>
