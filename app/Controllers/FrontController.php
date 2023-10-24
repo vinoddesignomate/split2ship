@@ -1010,6 +1010,14 @@ class FrontController extends BaseController
 
             $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
+
+            $getvarimg = $this->common->rest_api('/admin/api/2021-07/variants/44320678019376.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+
+            $getvrntimg = json_decode($getvarimg['body'], true);
+            echo"<pre>"; print_r($getvrntimg); echo "</pre>";
+
+            
+
             $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders.json?name=' . $body_data_decode['ordernum'] . '&email=' . $body_data_decode['emailf'], array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $get_all_oders = json_decode($getprietuleid['body'], true);
