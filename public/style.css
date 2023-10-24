@@ -1325,6 +1325,7 @@ p.payxnowandrestondelivery-alert {
     max-width: 120px;
     width: 100%;
 }
+
 .partial-products-list #remove_load_page {
     margin: 5px 0px 20px;
 }
@@ -1333,12 +1334,28 @@ p.payxnowandrestondelivery-alert {
     text-align: center;
     padding: 20px 0px;
 }
+
 .payxnowandrestondelivery-not-found-msg h2 {
     font-size: 25px;
 }
 
-.configvideotg{display:grid; gap:20px; align-items:center;}
-.configvideotg iframe{display:flex; gap:20px; width:50%;}
+.configvideotg {
+    align-items: center;
+    display: block
+}
+
+.configvideotg iframe {
+    width: 48%;
+    margin: .5%;
+}
+
+@media screen and (max-width:991px) {
+    .configvideotg iframe {
+        width: 100%;
+        margin: 15px 0;
+    }
+}
+
 /*************Responsive***********/
 
 
@@ -1491,6 +1508,7 @@ p.payxnowandrestondelivery-alert {
         flex-wrap: wrap;
         justify-content: center;
     }
+
     form#removform {
         text-align: center;
     }
