@@ -1144,6 +1144,8 @@ class FrontController extends BaseController
     function get_orders_info(){
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
-        echo"<pre>";print_r($body_data_decode);echo"</pre>";
+       
+        $getresultdata = $this->exchange_model->get_order_info($body_data_decode['orderid']);
+        echo"<pre>";print_r($getresultdata);echo"</pre>";
     }
 }

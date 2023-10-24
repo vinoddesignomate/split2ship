@@ -1056,17 +1056,27 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                        <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                
-                        <h3>How to Integrate Shiprocket with Spli2ship Shopify app | Shiprocket Integration | Spli2ship</h3>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-n_jfzlHmv4?si=DFl1lnoGBHwWxrvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        
-                        <h3>How to Integrate Delhivery with the Spli2ship Shopify app | Delhivery Integration | Spli2ship </h3>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-KjR1dQm2Rw?si=q6aqdGiUyikCfMAp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        
-                        <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <div class="iframeMainDiv">
+
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
+                        </div>
+                        <div class="iframeMainDiv">
+
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/-n_jfzlHmv4?si=DFl1lnoGBHwWxrvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <h3>How to Integrate Shiprocket with Spli2ship Shopify app | Shiprocket Integration | Spli2ship</h3>
+                        </div>
+                        <div class="iframeMainDiv">
+
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/-KjR1dQm2Rw?si=q6aqdGiUyikCfMAp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <h3>How to Integrate Delhivery with the Spli2ship Shopify app | Delhivery Integration | Spli2ship </h3>
+
+                        </div>
+                        <div class="iframeMainDiv">
+
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
+                        </div>
                 </div>
         </div>
         <div class="payxnowandrestondelivery-zip-flex-row">

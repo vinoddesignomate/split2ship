@@ -55,5 +55,11 @@ class ExchangeappModel extends Model
             return '';
         }
     }
+    public function get_order_info($orderid){
+        $getexchange_data = $this->db->table('cg_exchange_return_order_products');
+        $getexchange_data->where('order_id', $orderid);
+        $getresultdata = $getexchange_data->get();
+        return $getresultdata->getResult();
+    }
 }
 ?>

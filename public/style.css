@@ -1344,9 +1344,15 @@ p.payxnowandrestondelivery-alert {
     display: block
 }
 
-.configvideotg iframe {
+.configvideotg .iframeMainDiv {
     width: 48%;
     margin: .5%;
+}
+
+.configvideotg .iframeMainDiv h3 {
+    font-size: 23px;
+    color: #000;
+    font-weight: normal;
 }
 
 @media screen and (max-width:991px) {
