@@ -1340,7 +1340,6 @@ p.payxnowandrestondelivery-alert {
 }
 
 
-
 .configvideotg {
     display: block;
     text-align: center;
@@ -1349,13 +1348,16 @@ p.payxnowandrestondelivery-alert {
 .configvideotg .iframeMainDiv {
     width: 48%;
     margin: .5%;
+    margin-bottom: 25px;
     display: inline-block;
 }
 
 .configvideotg .iframeMainDiv h3 {
-    font-size: 23px;
+    font-size: 19px;
     color: #000;
     font-weight: normal;
+    margin: 12px 0;
+    padding: 0;
 }
 
 .configvideotg .iframeMainDiv iframe {
