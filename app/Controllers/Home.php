@@ -340,7 +340,7 @@ class Home extends BaseController
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
                 
                 $this->user_model->update_data($_GET['shop'], array(
-					"show_config_popup" => 0
+					"show_config_popup" => 1
 				));
 
                 echo view('templates/header');

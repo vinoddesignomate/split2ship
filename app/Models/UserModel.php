@@ -380,7 +380,7 @@ class UserModel extends Model
     }
     public function update_shops_status($shop_url)
     {
-        $updatests = "UPDATE ppa_store_token SET store_status=0 WHERE shop_url=?";
+        $updatests = "UPDATE ppa_store_token SET store_status=0,show_config_popup=0 WHERE shop_url=?";
         $this->db->query($updatests, array($shop_url));
     }
     public function delete_webhooks($webhookid)

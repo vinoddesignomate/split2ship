@@ -206,11 +206,9 @@ $store_namecnf = $shop_name[0];
 
             </div>
         </div>
-        <?php //if ($get_details_store->show_config_popup == '1') { 
+        <?php if ($get_details_store->show_config_popup == '0') {
         ?>
-        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-        ?>
             <script type="text/javascript">
                 //show_popup_config();
 
