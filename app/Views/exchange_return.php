@@ -49,7 +49,9 @@
 
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-
+            var orderid = getCookie('orderid');
+            console.log('orderid');
+            console.log(orderid);
             var inputField = document.getElementById("order_number_val");
             var inputField2 = document.getElementById("order_email_val");
             inputField.addEventListener("input", getinpoutdata);
@@ -109,13 +111,7 @@
                     .then(response => response.json())
                     .then(response => {
                         //console.log(response);
-                        const exhcshow_orders = document.querySelector(".Polaris-Layout__Section");
-                        if (exhcshow_orders) {
-                            exhcshow_orders.style.display = "block";
-                        }
-                        setCookie('orderid', response.order_id, 365);
-                        document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
-                        document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
+                       
 
                     })
                     .catch(error => {
