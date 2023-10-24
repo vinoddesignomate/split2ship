@@ -42,6 +42,7 @@
                     <span id="Polaris-Heading_date" class="Polaris-TextStyle--variationSubdued"></span>
                 </div>
             </div>
+            <input type="hidden" id="ordif" name="ordid" value=""/>
             <div class="Polaris-Stack__Item"><button id="getorderinfo" class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
         </div>
     </div>
@@ -86,6 +87,7 @@
                             exhcshow_orders.style.display = "block";
                         }
                         setCookie('orderid', response.order_id, 365);
+                        document.getElementById('ordif').value = response.order_id;
                         document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
                         document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
 
@@ -97,7 +99,7 @@
 
             //select order info by order id
             document.getElementById("getorderinfo").addEventListener("click", function() {
-                var orderid = getCookie('orderid');
+                var orderid = document.getElementById('ordif').value;
 
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
