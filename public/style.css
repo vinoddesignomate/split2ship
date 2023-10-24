@@ -1339,20 +1339,27 @@ p.payxnowandrestondelivery-alert {
     font-size: 25px;
 }
 
+
+
 .configvideotg {
-    align-items: center;
-    display: block
+    display: block;
+    text-align: center;
 }
 
 .configvideotg .iframeMainDiv {
     width: 48%;
     margin: .5%;
+    display: inline-block;
 }
 
 .configvideotg .iframeMainDiv h3 {
     font-size: 23px;
     color: #000;
     font-weight: normal;
+}
+
+.configvideotg .iframeMainDiv irame {
+    width: 100%;
 }
 
 @media screen and (max-width:991px) {
