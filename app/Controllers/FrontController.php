@@ -171,10 +171,10 @@ class FrontController extends BaseController
                         "gift_card" => true,
                         "properties" => array(
                             array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "product_id_code", "value" => $item_cart['product_id']),
+                            array("name" => "variant_code", "value" => $item_cart['id']),                            
                             array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
+                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                            array("name" => "product_id_code", "value" => $item_cart['product_id']),
                             // array("name" => "psku", "value" => $itmeskysplit)
                         )
                     );
@@ -356,8 +356,8 @@ class FrontController extends BaseController
                         array("name" => "Note", "value" => "Initial Partial Payment"),
                         array("name" => "variant_code", "value" => $item_cart['id']),
                         array("name" => "partial_pay", "value" => $item_cart['price']),
+                        array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
                         array("name" => "product_id_code", "value" => $item_cart['product_id']),
-                        array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
                         // array("name" => "psku", "value" => $itmeskysplit)
                     )
                 );
