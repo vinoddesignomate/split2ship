@@ -1059,6 +1059,10 @@ $store_name = $shop_name[0];
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/-n_jfzlHmv4?si=DFl1lnoGBHwWxrvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-KjR1dQm2Rw?si=q6aqdGiUyikCfMAp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
         </div>
         <div class="payxnowandrestondelivery-zip-flex-row">
