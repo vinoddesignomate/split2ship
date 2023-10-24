@@ -165,7 +165,7 @@ class FrontController extends BaseController
                         "price" => $final_price,
                         "quantity" => $item_cart['qty'],
                         "sku" => $itmeskysplit,
-                        // "variant_id" => $item_cart['id'],
+                        "product_id" => $item_cart['product_id'],
                         "requires_shipping" => true,
                         "grams" => $item_cart['grams'],
                         "gift_card" => true,
