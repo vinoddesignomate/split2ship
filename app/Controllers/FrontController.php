@@ -1129,6 +1129,7 @@ class FrontController extends BaseController
             $products_array = array();
             if (isset($get_all_oders['orders'][0]['created_at'])) {
                 $products_array = array(
+                    "order_id" => $get_all_oders['orders'][0]['id'],
                     "order_num" => $body_data_decode['ordernum'],
                     "order_date" => $get_all_oders['orders'][0]['created_at']
                 );
