@@ -174,7 +174,7 @@ class FrontController extends BaseController
                             array("name" => "variant_code", "value" => $item_cart['id']),
                             array("name" => "partial_pay", "value" => $item_cart['price']),
                             array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                            array("name" => "product_id_code", "value" => $item_cart['product_id']),
+                           // array("name" => "product_id_code", "value" => $item_cart['product_id']),
                             // array("name" => "psku", "value" => $itmeskysplit)
                         )
                     );
@@ -357,7 +357,7 @@ class FrontController extends BaseController
                         array("name" => "variant_code", "value" => $item_cart['id']),
                         array("name" => "partial_pay", "value" => $item_cart['price']),
                         array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                        array("name" => "product_id_code", "value" => $item_cart['product_id']),
+                        //array("name" => "product_id_code", "value" => $item_cart['product_id']),
                         // array("name" => "psku", "value" => $itmeskysplit)
                     )
                 );
@@ -1126,11 +1126,12 @@ class FrontController extends BaseController
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
+        $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
         $getresultdata = $this->exchange_model->get_order_info($body_data_decode['orderid']);
-        echo "<pre>";
-        print_r($getresultdata);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($getresultdata);
+        // echo "</pre>";
         foreach ($getresultdata as $getorderinfo) {
             // $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/44320678019376.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
@@ -1138,12 +1139,12 @@ class FrontController extends BaseController
             // //echo"<pre>"; print_r($getvrntimg); echo "</pre>";
 
 
-            // $getimfsrcdata = $this->common->rest_api('/admin/api/2021-07/products/8084846838064.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+         $getimfsrcdata = $this->common->rest_api('/admin/api/2021-07/products/'.$getorderinfo->product_id.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
-            // $getimfdata = json_decode($getimfsrcdata['body'], true);
-            // echo "<pre>getimfdata";
-            // print_r($getimfdata);
-            // echo "</pre>";
+            $getimfdata = json_decode($getimfsrcdata['body'], true);
+            echo "<pre>getimfdata";
+            print_r($getimfdata);
+            echo "</pre>";
             // $image_url = null;
             // foreach ($getimfdata['product']['images'] as $image) {
             //     // Check if the image is associated with the variant
