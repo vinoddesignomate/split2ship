@@ -63,6 +63,7 @@ $routes->match(['get', 'post'],'/enablezipprocess', 'Home::zipcode_enabledis');
 //exchange & return routes
 $routes->match(['get', 'post'],'/exchangereturn-split', 'FrontController::exchange_return_split');
 $routes->match(['get', 'post'],'/fetch-order', 'FrontController::fetch_echange_orders');
+$routes->match(['get', 'post'],'/fetch-order-info', 'FrontController::get_orders_info');
 
 
 $routes->match(['get', 'post'],'/exporcsv', 'FrontController::exportcsv');

@@ -42,7 +42,7 @@
                     <span id="Polaris-Heading_date" class="Polaris-TextStyle--variationSubdued"></span>
                 </div>
             </div>
-            <div class="Polaris-Stack__Item"><button class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
+            <div class="Polaris-Stack__Item"><button id="getorderinfo" class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
         </div>
     </div>
 
@@ -112,7 +112,37 @@
                         if (exhcshow_orders) {
                             exhcshow_orders.style.display = "block";
                         }
-                       // setCookie('orderid', result_array["pro_pack"], 365);
+                        setCookie('orderid', response.order_id, 365);
+                        document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
+                        document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+
+            //select order info by order id
+            document.getElementById("getorderinfo").addEventListener("click", function() {
+                var orderid = getCookie('orderid');
+                
+                var send_data = JSON.stringify({
+                    'shopname': '<?php echo $_GET['shop']; ?>',
+                    'orderid': orderid
+                });
+
+                fetch('https://app.payxnowandrestondelivery.com/fetch-order-info', {
+                        method: 'POST',
+                        body: send_data
+                    })
+                    .then(response => response.json())
+                    .then(response => {
+                        //console.log(response);
+                        const exhcshow_orders = document.querySelector(".Polaris-Layout__Section");
+                        if (exhcshow_orders) {
+                            exhcshow_orders.style.display = "block";
+                        }
+                        setCookie('orderid', response.order_id, 365);
                         document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
                         document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
 
