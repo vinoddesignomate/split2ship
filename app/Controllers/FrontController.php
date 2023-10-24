@@ -1014,7 +1014,13 @@ class FrontController extends BaseController
             $getvarimg = $this->common->rest_api('/admin/api/2021-07/variants/44320678019376.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getvrntimg = json_decode($getvarimg['body'], true);
-            echo"<pre>"; print_r($getvrntimg); echo "</pre>";
+            //echo"<pre>"; print_r($getvrntimg); echo "</pre>";
+
+            
+            $getimfsrcdata = $this->common->rest_api('/admin/api/2021-07/images/'.$getvrntimg['variant']['image_id'].'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+
+            $getimfdata = json_decode($getimfsrcdata['body'], true);
+            echo"<pre>getimfdata"; print_r($getimfdata); echo "</pre>";
 
             
 
