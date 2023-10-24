@@ -296,6 +296,7 @@ class AppwhookController extends BaseController
                                 // } else {
                                 //     $prosku = 'PRTTESTSKY';
                                 // }
+                                $prosku = 'PRTTESTSKY'.time();
                             } else {
                                 $prosku = $products->sku;
                                 $prodycprice =  $products->price;
