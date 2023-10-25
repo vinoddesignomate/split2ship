@@ -117,7 +117,7 @@
         </div>
     </div>
     <div id="order_info">
-        
+
     </div>
 
 
@@ -185,8 +185,11 @@
                     })
                     .then(response => response.json())
                     .then(response => {
-                        console.log(response.length);
-                        document.getElementById('order_info').innerHTML = '<div class="boxesMain09"><div class="forIMGpurpose"><img src="" /></div><div class="forTextpurpose"><h4>New Collection Products</h4><h5>1500.00 x 1</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div></div>';
+                        var infiohtm = "";
+                        for (var i = 0; i < response.length; i++) {
+                            infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x 1</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div></div>';
+                        }
+                        document.getElementById('order_info').innerHTML = infiohtm;
 
 
                     })
@@ -196,28 +199,6 @@
             });
 
         });
-
-        function setCookie(cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        function getCookie(cname) {
-            let name = cname + "=";
-            let ca = document.cookie.split(";");
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == " ") {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
 
         function getinpoutdata() {
             var inputField = document.getElementById("order_number_val");
