@@ -157,7 +157,7 @@
                         if (exhcshow_orders) {
                             exhcshow_orders.style.display = "block";
                         }
-                        setCookie('orderid', response.order_id, 365);
+                        
                         document.getElementById('ordif').value = response.order_id;
                         document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
                         document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
