@@ -1129,9 +1129,9 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
         $getresultdata = $this->exchange_model->get_order_info($body_data_decode['orderid']);
-        // echo "<pre>";
-        // print_r($getresultdata);
-        // echo "</pre>";
+        echo "<pre>";
+        print_r($getresultdata);
+        echo "</pre>";
         foreach ($getresultdata as $getorderinfo) {
             $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/' . $getorderinfo->varient_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
@@ -1145,16 +1145,25 @@ class FrontController extends BaseController
                 $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
                 $getimfdata = json_decode($getimfsrcdata['body'], true);
-                echo "<pre>getimfdata";
-                print_r($getimfdata);
-                echo "</pre>";
+                // echo "<pre>getimfdata";
+                // print_r($getimfdata);
+                // echo "</pre>";
                 $image_url = null;
-                foreach ($getimfdata['product']['images'] as $image) {
-                    // Check if the image is associated with the variant
-                    if (in_array($getorderinfo->varient_id, $image['variant_ids'])) {
-                        $image_url = $image['src'];
-                        break;
+                if (!empty($getimfdata['product']['images'])) {
+                    foreach ($getimfdata['product']['images'] as $image) {
+                        // Check if the image is associated with the variant
+                        if (in_array($getorderinfo->varient_id, $image['variant_ids'])) {
+                            $image_url = $image['src'];
+                            break;
+                        }
                     }
+                    if ($image_url == "") {
+                        $image_url = $getimfdata['product']['image']['src'];
+                    } else {
+                        $image_url = $image_url;
+                    }
+                } else {
+                    $image_url = "https://cdn.shopifycdn.net/s/files/1/0580/0080/1969/t/1/assets/no-product-logo.png?v=1627632339";
                 }
                 echo "image_url=" . $image_url;
             }
