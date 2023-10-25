@@ -122,9 +122,8 @@
     <div id="popup_config" class="popup-container config_popup">
         <div class="popup-content">
             <!-- <h2>Hello, this is a message!</h2> -->
-            <p id="plmsg_config">Please visit the <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">configuration settings</a> page first to review the installation instructions for the app. Alternatively, you can reach out to us via WhatsApp at <a onclick="abc(event);" href="tel:+919354200590">9354200590</a>, or send us an email at <a onclick="abc(event);" href="mailto:saurabh@cgcolors.com">saurabh@cgcolors.com</a>. <br /><br />Our Shopify expert will then proceed to install and configure the app on your store. This process typically takes no more than 30 minutes.</p>
-            <div class="closeButtonCg"><a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Close</a></div>
-            <!-- <button class="payxnowandrestondelivery-close-popup-btn" onclick="config_hidePopup()">X</button> -->
+            <p id="plmsg_config">Please visit the  page first to review the installation instructions for the app. Alternatively, you can reach out to us via WhatsApp at <a onclick="abc(event);" href="tel:+919354200590">9354200590</a>, or send us an email at <a onclick="abc(event);" href="mailto:saurabh@cgcolors.com">saurabh@cgcolors.com</a>. <br /><br />Our Shopify expert will then proceed to install and configure the app on your store. This process typically takes no more than 30 minutes.</p>
+            
         </div>
     </div>
 
