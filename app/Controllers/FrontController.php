@@ -1129,9 +1129,9 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
         $getresultdata = $this->exchange_model->get_order_info($body_data_decode['orderid']);
-        echo "<pre>";
-        print_r($getresultdata);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($getresultdata);
+        // echo "</pre>";
         $returnProductArray = array();
         foreach ($getresultdata as $getorderinfo) {
             $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/' . $getorderinfo->varient_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
@@ -1164,7 +1164,7 @@ class FrontController extends BaseController
                         $image_url = $image_url;
                     }
                 } else {
-                    $image_url = "https://cdn.shopifycdn.net/s/files/1/0580/0080/1969/t/1/assets/no-product-logo.png?v=1627632339";
+                    $image_url = "https://cdn.shopifycdn.net/s/files/1/0580/0080/1969/t/1/assets/no-product-logo.png";
                 }
                 //echo "image_url=" . $image_url;
                 $returnProductArray[] = array(
