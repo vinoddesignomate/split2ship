@@ -1,3 +1,73 @@
+<style>
+    .boxesMain09 {
+        width: 100%;
+        box-sizing: border-box;
+        float: left;
+        clear: both;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0px 1px 2px #cccccc7a;
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .boxesMain09 .forIMGpurpose {
+        width: 25%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 15px;
+        float: left;
+    }
+
+    .boxesMain09 .forIMGpurpose img {
+        width: 100%;
+    }
+
+    .boxesMain09 .forTextpurpose {
+        width: 75%;
+        box-sizing: border-box;
+        padding-left: 30px;
+        float: left;
+    }
+
+    .forTextpurpose h4 {
+        font-size: 18px;
+        color: #000;
+        margin: 0 0 20px 0;
+        font-weight: normal;
+        line-height: 1.4;
+    }
+
+    .forTextpurpose h5 {
+        font-size: 14px;
+        color: #000;
+        margin: 0 0 20px 0;
+        font-weight: normal;
+        line-height: 1.4;
+    }
+
+    .boxesMain09 .reasonDefine {
+        border-top: 1px solid #ccc;
+        margin: 0;
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin-top: 25px;
+        padding-top: 25px;
+    }
+
+    .boxesMain09 .reasonDefine h6 {
+        font-size: 15px;
+        color: #000;
+        margin: 0;
+        font-weight: normal;
+        line-height: 1.4;
+    }
+
+    .boxesMain09 .reasonDefine h6 span {
+        color: #666;
+    }
+</style>
 <div class="formContainer customInput" style="--bg-color: #000000; --opacity: 0.50; --radius: 24px;">
     <form action="post">
         <div class="headerForm">Return Center</div>
@@ -42,8 +112,31 @@
                     <span id="Polaris-Heading_date" class="Polaris-TextStyle--variationSubdued"></span>
                 </div>
             </div>
-            <input type="hidden" id="ordif" name="ordid" value=""/>
+            <input type="hidden" id="ordif" name="ordid" value="" />
             <div class="Polaris-Stack__Item"><button id="getorderinfo" class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
+        </div>
+    </div>
+    <div style="display: none;">
+        <div class="boxesMain09">
+            <div class="forIMGpurpose"><img src="" /></div>
+            <div class="forTextpurpose">
+                <h4>New Collection Products</h4>
+                <h5>1500.00 x 1</h5>
+            </div>
+            <div class="reasonDefine">
+                <h6>Non Reason: <span>Unfulfilled</span></h6>
+            </div>
+        </div>
+
+        <div class="boxesMain09">
+            <div class="forIMGpurpose"><img src="" /></div>
+            <div class="forTextpurpose">
+                <h4>New Collection Products</h4>
+                <h5>1500.00 x 1</h5>
+            </div>
+            <div class="reasonDefine">
+                <h6>Non Reason: <span>Unfulfilled</span></h6>
+            </div>
         </div>
     </div>
 
@@ -113,7 +206,7 @@
                     .then(response => response.json())
                     .then(response => {
                         //console.log(response);
-                       
+
 
                     })
                     .catch(error => {
