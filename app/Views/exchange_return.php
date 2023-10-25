@@ -116,28 +116,8 @@
             <div class="Polaris-Stack__Item"><button id="getorderinfo" class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
         </div>
     </div>
-    <div id="order_info" style="display: none;">
-        <div class="boxesMain09">
-            <div class="forIMGpurpose"><img src="" /></div>
-            <div class="forTextpurpose">
-                <h4>New Collection Products</h4>
-                <h5>1500.00 x 1</h5>
-            </div>
-            <div class="reasonDefine">
-                <h6>Non Reason: <span>Unfulfilled</span></h6>
-            </div>
-        </div>
-
-        <div class="boxesMain09">
-            <div class="forIMGpurpose"><img src="" /></div>
-            <div class="forTextpurpose">
-                <h4>New Collection Products</h4>
-                <h5>1500.00 x 1</h5>
-            </div>
-            <div class="reasonDefine">
-                <h6>Non Reason: <span>Unfulfilled</span></h6>
-            </div>
-        </div>
+    <div id="order_info">
+        
     </div>
 
 
@@ -205,8 +185,8 @@
                     })
                     .then(response => response.json())
                     .then(response => {
-                        //console.log(response);
-                        document.getElementById('order_info').style.display = 'inline-block';
+                        console.log(response.length);
+                        document.getElementById('order_info').innerHTML = '<div class="boxesMain09"><div class="forIMGpurpose"><img src="" /></div><div class="forTextpurpose"><h4>New Collection Products</h4><h5>1500.00 x 1</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div></div>';
 
 
                     })
