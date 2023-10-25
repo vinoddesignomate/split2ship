@@ -191,7 +191,7 @@
                         }
                         document.getElementById('input_start_process').style.display = "none";
                         for (var i = 0; i < response.length; i++) {
-                            infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x 1</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div></div>';
+                            infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div></div>';
                         }
                         document.getElementById('order_info').innerHTML = infiohtm;
 
