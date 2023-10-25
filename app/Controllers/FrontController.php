@@ -1133,18 +1133,18 @@ class FrontController extends BaseController
         print_r($getresultdata);
         echo "</pre>";
         foreach ($getresultdata as $getorderinfo) {
-            // $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/44320678019376.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+            $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/'.$getorderinfo->varient_id.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
-            // $getvrntimg = json_decode($getvarimg['body'], true);
-            // //echo"<pre>"; print_r($getvrntimg); echo "</pre>";
+            $getvrntimg = json_decode($getvarimg['body'], true);
+            echo"<pre>"; print_r($getvrntimg); echo "</pre>";
 
 
          $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/'.$getorderinfo->product_id.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getimfdata = json_decode($getimfsrcdata['body'], true);
-            echo "<pre>getimfdata";
-            print_r($getimfdata);
-            echo "</pre>";
+            // echo "<pre>getimfdata";
+            // print_r($getimfdata);
+            // echo "</pre>";
             // $image_url = null;
             // foreach ($getimfdata['product']['images'] as $image) {
             //     // Check if the image is associated with the variant
