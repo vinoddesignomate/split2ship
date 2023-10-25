@@ -174,7 +174,7 @@ class FrontController extends BaseController
                             array("name" => "variant_code", "value" => $item_cart['id']),
                             array("name" => "partial_pay", "value" => $item_cart['price']),
                             array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                           // array("name" => "product_id_code", "value" => $item_cart['product_id']),
+                            // array("name" => "product_id_code", "value" => $item_cart['product_id']),
                             // array("name" => "psku", "value" => $itmeskysplit)
                         )
                     );
@@ -1129,31 +1129,35 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
 
         $getresultdata = $this->exchange_model->get_order_info($body_data_decode['orderid']);
-        echo "<pre>";
-        print_r($getresultdata);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($getresultdata);
+        // echo "</pre>";
         foreach ($getresultdata as $getorderinfo) {
-            $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/'.$getorderinfo->varient_id.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+            $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/' . $getorderinfo->varient_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getvrntimg = json_decode($getvarimg['body'], true);
-            echo"<pre>"; print_r($getvrntimg); echo "</pre>";
-
-
-         $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/'.$getorderinfo->product_id.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
-
-            $getimfdata = json_decode($getimfsrcdata['body'], true);
-            // echo "<pre>getimfdata";
-            // print_r($getimfdata);
+            // echo "<pre>";
+            // print_r($getvrntimg);
             // echo "</pre>";
-            // $image_url = null;
-            // foreach ($getimfdata['product']['images'] as $image) {
-            //     // Check if the image is associated with the variant
-            //     if (in_array('44320678019376', $image['variant_ids'])) {
-            //         $image_url = $image['src'];
-            //         break;
-            //     }
-            // }
-            // echo "image_url=" . $image_url;
+            if (!empty($getvarimg)) {
+                $product_id = $getvrntimg['variant']['product_id'];
+
+                $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+
+                $getimfdata = json_decode($getimfsrcdata['body'], true);
+                echo "<pre>getimfdata";
+                print_r($getimfdata);
+                echo "</pre>";
+                // $image_url = null;
+                // foreach ($getimfdata['product']['images'] as $image) {
+                //     // Check if the image is associated with the variant
+                //     if (in_array('44320678019376', $image['variant_ids'])) {
+                //         $image_url = $image['src'];
+                //         break;
+                //     }
+                // }
+                // echo "image_url=" . $image_url;
+            }
         }
     }
 }
