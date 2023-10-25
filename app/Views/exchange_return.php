@@ -1,4 +1,3 @@
-
 <style>
     .boxesMain09 {
         width: 100%;
@@ -120,11 +119,18 @@
     <div id="order_info">
 
     </div>
-
+    <div id="popup_config" class="popup-container config_popup">
+        <div class="popup-content">
+            <!-- <h2>Hello, this is a message!</h2> -->
+            <p id="plmsg_config">Please visit the <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">configuration settings</a> page first to review the installation instructions for the app. Alternatively, you can reach out to us via WhatsApp at <a onclick="abc(event);" href="tel:+919354200590">9354200590</a>, or send us an email at <a onclick="abc(event);" href="mailto:saurabh@cgcolors.com">saurabh@cgcolors.com</a>. <br /><br />Our Shopify expert will then proceed to install and configure the app on your store. This process typically takes no more than 30 minutes.</p>
+            <div class="closeButtonCg"><a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Close</a></div>
+            <!-- <button class="payxnowandrestondelivery-close-popup-btn" onclick="config_hidePopup()">X</button> -->
+        </div>
+    </div>
 
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-         
+
             var inputField = document.getElementById("order_number_val");
             var inputField2 = document.getElementById("order_email_val");
             inputField.addEventListener("input", getinpoutdata);
@@ -159,7 +165,7 @@
                             exhcshow_orders.style.display = "block";
                         }
                         document.getElementById('input_start_process').style.display = "none";
-                        
+
                         document.getElementById('ordif').value = response.order_id;
                         document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
                         document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
@@ -169,6 +175,21 @@
                         console.error('Error:', error);
                     });
             });
+
+            // Get a reference to your checkbox element
+            var plorischeckbox = document.querySelector('.Polaris-Checkbox__Input');
+
+            // Add an event listener to the checkbox
+            plorischeckbox.addEventListener('change', function(evnt) {
+                console.log(plorischeckbox);
+                console.log(plorischeckbox.id);
+                if (plorischeckbox.checked) {
+                    alert('Checkbox is checked!');
+                } else {
+                    alert('Checkbox is unchecked!');
+                }
+            });
+
 
             //select order info by order id
             document.getElementById("getorderinfo").addEventListener("click", function() {
