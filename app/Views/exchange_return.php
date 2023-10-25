@@ -116,7 +116,7 @@
             <div class="Polaris-Stack__Item"><button id="getorderinfo" class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
         </div>
     </div>
-    <div style="display: none;">
+    <div id="order_info" style="display: none;">
         <div class="boxesMain09">
             <div class="forIMGpurpose"><img src="" /></div>
             <div class="forTextpurpose">
@@ -206,6 +206,7 @@
                     .then(response => response.json())
                     .then(response => {
                         //console.log(response);
+                        document.getElementById('order_info').style.display = 'inline-block';
 
 
                     })
