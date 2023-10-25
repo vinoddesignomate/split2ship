@@ -1169,6 +1169,7 @@ class FrontController extends BaseController
                 //echo "image_url=" . $image_url;
                 $returnProductArray[] = array(
                     "product_name" => $getorderinfo->product_name,
+                    "id" => $getorderinfo->id,
                     "product_price" => $getorderinfo->product_price,
                     "product_qty" => $getorderinfo->product_qty,
                     "product_image" => $image_url,
