@@ -69,7 +69,7 @@
     }
 </style>
 <div class="formContainer customInput" style="--bg-color: #000000; --opacity: 0.50; --radius: 24px;">
-    <form action="post">
+    <form action="post" id="input_start_process">
         <div class="headerForm">Return Center</div>
         <div class="noShadowInputContainer removeTop">
             <div class="">
@@ -157,6 +157,7 @@
                         if (exhcshow_orders) {
                             exhcshow_orders.style.display = "block";
                         }
+                        document.getElementById('input_start_process').style.display = "none";
                         
                         document.getElementById('ordif').value = response.order_id;
                         document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
@@ -184,6 +185,11 @@
                     .then(response => response.json())
                     .then(response => {
                         var infiohtm = "";
+                        const exhcshow_orders = document.querySelector(".Polaris-Layout__Section");
+                        if (exhcshow_orders) {
+                            exhcshow_orders.style.display = "none";
+                        }
+                        document.getElementById('input_start_process').style.display = "none";
                         for (var i = 0; i < response.length; i++) {
                             infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x 1</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div></div>';
                         }
