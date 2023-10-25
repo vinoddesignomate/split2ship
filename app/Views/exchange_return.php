@@ -1,3 +1,8 @@
+<!-- Add Polaris CSS -->
+<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/7.10.0/polaris.min.css" />
+
+<!-- Add Polaris JavaScript -->
+<script src="https://sdks.shopifycdn.com/polaris/7.10.0/polaris.min.js"></script>
 <style>
     .boxesMain09 {
         width: 100%;
