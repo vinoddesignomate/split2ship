@@ -1,3 +1,4 @@
+
 <style>
     .boxesMain09 {
         width: 100%;
@@ -119,28 +120,11 @@
     <div id="order_info">
 
     </div>
-    <div style="height:500px">
-        <div class="Polaris-Frame" data-polaris-layer="true">
-            <div class="Polaris-Frame__Skip">
-                <a href="#AppFrameMain">Skip to content</a>
-            </div>
-            <div class="Polaris-Frame__ContextualSaveBar Polaris-Frame-CSSAnimation--startFade">
-            </div>
-            <main class="Polaris-Frame__Main" id="AppFrameMain" data-has-global-ribbon="false">
-                <div class="Polaris-Frame__Content">
-                    <button class="Polaris-Button" type="button">
-                        <span class="Polaris-Button__Content">
-                            <span class="Polaris-Button__Text">Open</span>
-                        </span>
-                    </button>
-                </div>
-            </main>
-        </div>
-    </div>
+
 
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-
+         
             var inputField = document.getElementById("order_number_val");
             var inputField2 = document.getElementById("order_email_val");
             inputField.addEventListener("input", getinpoutdata);
@@ -175,7 +159,7 @@
                             exhcshow_orders.style.display = "block";
                         }
                         document.getElementById('input_start_process').style.display = "none";
-
+                        
                         document.getElementById('ordif').value = response.order_id;
                         document.getElementById('Polaris-Heading_head').innerHTML = "Order number: #" + response.order_num;
                         document.getElementById('Polaris-Heading_date').innerHTML = response.order_date;
