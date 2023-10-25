@@ -123,7 +123,7 @@
 
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-            var orderid = getCookie('orderid');
+         
             console.log('orderid');
             console.log(orderid);
             var inputField = document.getElementById("order_number_val");
