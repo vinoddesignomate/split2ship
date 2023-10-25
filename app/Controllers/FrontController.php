@@ -1136,9 +1136,9 @@ class FrontController extends BaseController
             $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/' . $getorderinfo->varient_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getvrntimg = json_decode($getvarimg['body'], true);
-            // echo "<pre>";
-            // print_r($getvrntimg);
-            // echo "</pre>";
+            echo "<pre>";
+            print_r($getvrntimg);
+            echo "</pre>";
             if (!empty($getvarimg)) {
                 $product_id = $getvrntimg['variant']['product_id'];
 
