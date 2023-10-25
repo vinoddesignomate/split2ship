@@ -119,13 +119,13 @@
     <div id="order_info">
 
     </div>
-    <div id="popup_config" class="popup-container config_popup">
+    <!--<div id="popup_config" class="popup-container config_popup">
         <div class="popup-content">
-            <!-- <h2>Hello, this is a message!</h2> -->
+         
             <p id="plmsg_config">Please visit the  page first to review the installation instructions for the app. Alternatively, you can reach out to us via WhatsApp at <a onclick="abc(event);" href="tel:+919354200590">9354200590</a>, or send us an email at <a onclick="abc(event);" href="mailto:saurabh@cgcolors.com">saurabh@cgcolors.com</a>. <br /><br />Our Shopify expert will then proceed to install and configure the app on your store. This process typically takes no more than 30 minutes.</p>
             
         </div>
-    </div>
+    </div>-->
 
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
