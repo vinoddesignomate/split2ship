@@ -124,8 +124,6 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
          
-            console.log('orderid');
-            console.log(orderid);
             var inputField = document.getElementById("order_number_val");
             var inputField2 = document.getElementById("order_email_val");
             inputField.addEventListener("input", getinpoutdata);
