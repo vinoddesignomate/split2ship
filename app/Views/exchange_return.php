@@ -177,16 +177,18 @@
             });
 
             // Get a reference to your checkbox element
-            var plorischeckbox = document.querySelector('.Polaris-Checkbox__Input');
+           // var plorischeckbox = document.querySelector('.Polaris-Checkbox__Input');
 
             // Add an event listener to the checkbox
-            plorischeckbox.addEventListener('change', function(evnt) {
-                console.log(plorischeckbox);
-                console.log(plorischeckbox.id);
-                if (plorischeckbox.checked) {
-                    alert('Checkbox is checked!');
-                } else {
-                    alert('Checkbox is unchecked!');
+            document.querySelector('body').addEventListener('click', function(event) {
+                if (event.target.classList.contains('Polaris-Checkbox__Input')) {
+                    //console.log(plorischeckbox);
+                    console.log(event.target.id);
+                    if (event.target.checked) {
+                        alert('Checkbox is checked!');
+                    } else {
+                        alert('Checkbox is unchecked!');
+                    }
                 }
             });
 
