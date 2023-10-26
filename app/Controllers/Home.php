@@ -125,7 +125,7 @@ class Home extends BaseController
 
                     //                                     ));
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-10/fulfillments.json', $fulfilarray, 'POST', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/fulfillments.json', $fulfilarray, 'POST', $get_details->access_token, $_GET['shop']);
 
                     echo "getprietuleid<pre>";
                     print_r($getprietuleid);
