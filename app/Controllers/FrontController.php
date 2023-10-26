@@ -124,6 +124,12 @@ class FrontController extends BaseController
             //     echo "</pre>";
             //     die();
             // }
+
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                $reqship = false;
+            }else{
+                $reqship = true;
+            }
             $ilosku = 1;
             foreach ($cartarray as $item_cart) {
 
@@ -166,7 +172,7 @@ class FrontController extends BaseController
                         "quantity" => $item_cart['qty'],
                         "sku" => $itmeskysplit,
                         //"product_id" => $item_cart['product_id'],
-                        "requires_shipping" => true,
+                        "requires_shipping" => $reqship,
                         "grams" => $item_cart['grams'],
                         "gift_card" => true,
                         "properties" => array(
@@ -209,7 +215,7 @@ class FrontController extends BaseController
                                 array("name" => "Note", "value" => "Full Payment"),
                                 array("name" => "full_pay", "value" => $item_cart['price'])
                             ),
-                            "requires_shipping" => true
+                            "requires_shipping" => $reqship
                         );
                     } else {
                         $line_item = array(
@@ -222,7 +228,7 @@ class FrontController extends BaseController
                                 array("name" => "Note", "value" => "Full Payment"),
                                 array("name" => "full_pay", "value" => $item_cart['price'])
                             ),
-                            "requires_shipping" => true
+                            "requires_shipping" => $reqship
                         );
                     }
                 }
