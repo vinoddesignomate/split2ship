@@ -44,6 +44,7 @@ class Common
         $headers[] = "";
         //if (!is_null($access_token)) {
         $headers[] = "X-Shopify-Access-Token: " . $access_token;
+        $headers[] = "Content-Type: application/json" ;
         // $headers[] = "X-Shopify-Access-Token: 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";
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         //}
