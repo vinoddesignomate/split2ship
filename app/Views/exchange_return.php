@@ -67,6 +67,68 @@
     .boxesMain09 .reasonDefine h6 span {
         color: #666;
     }
+
+    /***************config popup css start */
+
+
+    #popup_config {
+        max-width: 650px;
+    }
+
+    #popup_config .popup-content {
+        max-width: 650px;
+        padding: 30px;
+        border-radius: 0;
+        border-left: 8px solid #1760A5;
+        border-right: 8px solid #10277cde;
+        border-top: 8px solid #1760A5;
+        border-bottom: 8px solid #10277cde;
+    }
+
+    #popup_config .payxnowandrestondelivery-close-popup-btn {
+        border-radius: 0 !important;
+        color: #ffffffe0;
+        right: 7px;
+    }
+
+    #popup_config .popup-content p {
+        font-size: 19px;
+        color: #000c;
+        line-height: 1.4;
+    }
+
+    #popup_config .popup-content p a {
+        color: #1760a5;
+        text-decoration: underline;
+    }
+
+    .closeButtonCg {
+        width: 100%;
+        margin-top: 30px;
+        display: block;
+        text-align: center;
+    }
+
+    .closeButtonCg a {
+        display: inline-block;
+        background: #1760A5;
+        color: #fff;
+        border: nne;
+        transition: all .4s ease-in-out;
+        padding: 10px 30px;
+    }
+
+    .closeButtonCg a:hover {
+        background: #10277cde
+    }
+
+    @media screen and (max-width:767px) {
+        #popup_config .popup-content {
+            padding: 25px;
+        }
+    }
+
+    /************config popup css end*/
 </style>
 <div class="formContainer customInput" style="--bg-color: #000000; --opacity: 0.50; --radius: 24px;">
     <form action="post" id="input_start_process">
@@ -190,7 +252,7 @@
                         popup.style.display = "block";
                         var body = document.body;
                         body.classList.add("package_popup_visible");
-                        
+
                     } else {
                         alert('Checkbox is unchecked!');
                     }
