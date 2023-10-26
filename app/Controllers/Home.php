@@ -139,11 +139,11 @@ class Home extends BaseController
                     print_r($getprietuleid);
                     echo "</pre>";
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5480547320112/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
