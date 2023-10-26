@@ -74,41 +74,70 @@ class Home extends BaseController
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    $jsondecod ='{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
-                    echo"<pre>"; print_r(json_decode($jsondecod,true)); echo "</pre>";
+                    $jsondecod = '{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
+                    echo "<pre>";
+                    print_r(json_decode($jsondecod, true));
+                    echo "</pre>";
 
-                    $jayParsedAry = [
-                        "fulfillment" => [
-                              "line_items_by_fulfillment_order" => [
-                                 [
-                                    "fulfillment_order_id" => 5522593284400 
-                                 ] 
-                              ], 
-                              "tracking_info" => [
-                                       "number" => "MS1562678", 
-                                       "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678" 
-                                    ] 
-                           ] 
-                     ]; 
+                    // $jayParsedAry = [
+                    //     "fulfillment" => [
+                    //         "line_items_by_fulfillment_order" => [
+                    //             [
+                    //                 "fulfillment_order_id" => 5522593284400
+                    //             ]
+                    //         ],
+                    //         "tracking_info" => [
+                    //             "number" => "MS1562678",
+                    //             "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678"
+                    //         ]
+                    //     ]
+                    // ];
+
+                    //  array("fulfillment" => array("line_items_by_fulfillment_order" =>array(array   ("fulfillment_order_id" => 1046000814
+                    //                                 )
+
+                    // ),
+
+                    //                     [tracking_info] => Array
+                    //                         (
+                    //                             [number] => MS1562678
+                    //                             [url] => https://www.my-shipping-company.com?tracking_number=MS1562678
+                    //                         )
+
+
+
+                    //                         );
+
+                    $fulfilarray = array("fulfillment" => array(
+                        "line_items_by_fulfillment_order" => array(array("fulfillment_order_id" => 5522593284400)),
+                        "tracking_info" => array(
+                            "number" => "MS1562678",
+                            "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678",
+                        )
+                    ));
+
+                    echo "fulfilarray<pre>";
+                    print_r($fulfilarray);
+                    echo "</pre>";
 
                     //  $orditmearray = array("fulfillment"=>array(
                     //                                         "line_items_by_fulfillment_order"=>array("fulfillment_order_id"=>1046000814)
 
                     //                                     ));
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-10/fulfillments.json', $jayParsedAry, 'POST', $get_details->access_token, $_GET['shop']);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/fulfillments.json', $jayParsedAry, 'POST', $get_details->access_token, $_GET['shop']);
 
-                    echo "getprietuleid<pre>";
-                    print_r($getprietuleid);
-                    echo "</pre>";
+                    // echo "getprietuleid<pre>";
+                    // print_r($getprietuleid);
+                    // echo "</pre>";
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
-                   
-                   // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'POST', $get_details->access_token, $_GET['shop']);
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
+
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'POST', $get_details->access_token, $_GET['shop']);
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     //$getprietuleidrec = json_decode($getprietuleid['body'], true);
@@ -373,10 +402,10 @@ class Home extends BaseController
 
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
-                
+
                 $this->user_model->update_data($_GET['shop'], array(
-					"show_config_popup" => 1
-				));
+                    "show_config_popup" => 1
+                ));
 
                 echo view('templates/header');
                 echo view('welcome_message', $data);
@@ -1335,7 +1364,7 @@ class Home extends BaseController
                                     // } else {
                                     //     $prosku = 'PRTTESTSKY';
                                     // }
-                                    $prosku = 'PRTTESTSKY'.time();
+                                    $prosku = 'PRTTESTSKY' . time();
                                 } else {
                                     $prosku = $products['sku'];
                                     $prodycprice =  $products['price'];
@@ -2298,5 +2327,4 @@ class Home extends BaseController
             ));
         }
     }
-    
 }
