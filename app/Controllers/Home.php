@@ -74,7 +74,8 @@ class Home extends BaseController
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    /*{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}*/
+                    $jsondecod ='{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
+                    echo"<pre>"; print_r(json_decode($jsondecod,true)); echo "</pre>";
 
                     $jayParsedAry = [
                         "fulfillment" => [
