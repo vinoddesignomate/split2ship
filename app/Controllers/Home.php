@@ -111,7 +111,11 @@ class Home extends BaseController
                     $fulfilarray = array("fulfillment" => array(
                         "line_items_by_fulfillment_order" => array(
                             array(
-                                "fulfillment_order_id" => 5523663618352
+                                "fulfillment_order_id" => 5523663618352,
+                                "fulfillment_order_line_items" => array(
+                                    "id" => 44320869220656,
+                                    "quantity" => 1
+                                )
                             )
                         ),
                         "tracking_info" => array(
@@ -129,7 +133,7 @@ class Home extends BaseController
 
                     //                                     ));
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/fulfillments.json', array($fulfilarray), 'POST', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/fulfillments.json', $fulfilarray, 'POST', $get_details->access_token, $_GET['shop']);
 
                     echo "getprietuleid<pre>";
                     print_r($getprietuleid);
