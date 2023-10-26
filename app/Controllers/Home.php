@@ -150,6 +150,10 @@ class Home extends BaseController
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
+                    echo "getprietuleid<pre>";
+                    print_r($getprietuleid);
+                    echo "</pre>";
+
                     echo "getprietuleidrec<pre>";
                     print_r($getprietuleidrec);
                     echo "</pre>";
