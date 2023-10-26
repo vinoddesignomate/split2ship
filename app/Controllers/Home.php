@@ -145,7 +145,7 @@ class Home extends BaseController
                     // print_r($getprietuleidrec);
                     // echo "</pre>";
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5523757400368/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5480547320112/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
