@@ -125,11 +125,12 @@ class FrontController extends BaseController
             //     die();
             // }
 
-            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                $reqship = false;
-            }else{
-                $reqship = true;
-            }
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //     $reqship = false;
+            // }else{
+            //     $reqship = true;
+            // }
+            $reqship = true;
             $ilosku = 1;
             foreach ($cartarray as $item_cart) {
 
