@@ -74,10 +74,10 @@ class Home extends BaseController
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    $jsondecod = '{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
-                    echo "<pre>";
-                    print_r(json_decode($jsondecod, true));
-                    echo "</pre>";
+                    // $jsondecod = '{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
+                    // echo "<pre>";
+                    // print_r(json_decode($jsondecod, true));
+                    // echo "</pre>";
 
                     // $jayParsedAry = [
                     //     "fulfillment" => [
@@ -124,9 +124,9 @@ class Home extends BaseController
                         )
                     ));
 
-                    echo "fulfilarray<pre>";
-                    print_r($fulfilarray);
-                    echo "</pre>";
+                    // echo "fulfilarray<pre>";
+                    // print_r($fulfilarray);
+                    // echo "</pre>";
 
                     //  $orditmearray = array("fulfillment"=>array(
                     //                                         "line_items_by_fulfillment_order"=>array("fulfillment_order_id"=>1046000814)
@@ -150,9 +150,9 @@ class Home extends BaseController
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    echo "getprietuleid<pre>";
-                    print_r($getprietuleid);
-                    echo "</pre>";
+                    // echo "getprietuleid<pre>";
+                    // print_r($getprietuleid);
+                    // echo "</pre>";
 
                     echo "getprietuleidrec<pre>";
                     print_r($getprietuleidrec);
