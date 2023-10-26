@@ -79,7 +79,7 @@ class Home extends BaseController
                     // print_r(json_decode($jsondecod, true));
                     // echo "</pre>";
 
-                   $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5523663618352/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                   /*$getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5523663618352/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                    
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
                     $fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
@@ -115,7 +115,7 @@ class Home extends BaseController
 
                     echo "fulfiledorder<pre>";
                     print_r($getprietuleid);
-                    echo "</pre>";
+                    echo "</pre>";*/
 
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
