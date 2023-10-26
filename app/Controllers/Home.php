@@ -73,7 +73,41 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    //$getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+                    /*{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}*/
+
+                    $jayParsedAry = [
+                        "fulfillment" => [
+                              "line_items_by_fulfillment_order" => [
+                                 [
+                                    "fulfillment_order_id" => 5522593284400 
+                                 ] 
+                              ], 
+                              "tracking_info" => [
+                                       "number" => "MS1562678", 
+                                       "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678" 
+                                    ] 
+                           ] 
+                     ]; 
+
+                    //  $orditmearray = array("fulfillment"=>array(
+                    //                                         "line_items_by_fulfillment_order"=>array("fulfillment_order_id"=>1046000814)
+
+                    //                                     ));
+
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-10/fulfillments.json', $jayParsedAry, 'POST', $get_details->access_token, $_GET['shop']);
+
+                    echo "getprietuleid<pre>";
+                    print_r($getprietuleid);
+                    echo "</pre>";
+
+                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
+                   
+                   // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/discount_codes/lookup.json?code=0TVDBNGKT4XD', array(), 'POST', $get_details->access_token, $_GET['shop']);
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     //$getprietuleidrec = json_decode($getprietuleid['body'], true);
