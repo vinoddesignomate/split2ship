@@ -358,7 +358,9 @@ class AppwhookController extends BaseController
                     // $this->user_model->check_test_response($resposne_array);
 
                     if (isset($part_type) && $part_type == 'partial') {
-                        $order_edit_begain = 'mutation {
+
+                        if ($_GET['whshp'] != 'desinomatetest.myshopify.com') {
+                            $order_edit_begain = 'mutation {
                 orderEditBegin(id: "gid://shopify/Order/' . $jsndata->id . '") {
                 calculatedOrder {
                 id
@@ -366,12 +368,12 @@ class AppwhookController extends BaseController
                 }
                 }';
 
-                        $edit_order_return = $this->graphql_api_run(array("query" => $order_edit_begain), $_GET['whshp'], $get_resulsts->access_token);
-                        $get_resposne_editorders = json_decode($edit_order_return['body']);
-                        $calculate_order_id = $get_resposne_editorders->data->orderEditBegin->calculatedOrder->id;
+                            $edit_order_return = $this->graphql_api_run(array("query" => $order_edit_begain), $_GET['whshp'], $get_resulsts->access_token);
+                            $get_resposne_editorders = json_decode($edit_order_return['body']);
+                            $calculate_order_id = $get_resposne_editorders->data->orderEditBegin->calculatedOrder->id;
 
-                        //add custom item into orders
-                        $order_edit_add_custom = 'mutation {
+                            //add custom item into orders
+                            $order_edit_add_custom = 'mutation {
                 orderEditAddCustomItem(id: "' . $calculate_order_id . '", price: {amount: ' . $remaing_proice . ', currencyCode: ' . $jsndata->currency . '}, quantity: 1, title: "Partial Pending Payment") {
                   calculatedLineItem {
                     id
@@ -386,11 +388,11 @@ class AppwhookController extends BaseController
                 }
               }';
 
-                        $edit_custom_order = $this->graphql_api_run(array("query" => $order_edit_add_custom), $_GET['whshp'], $get_resulsts->access_token);
+                            $edit_custom_order = $this->graphql_api_run(array("query" => $order_edit_add_custom), $_GET['whshp'], $get_resulsts->access_token);
 
 
-                        //commit edit orders process
-                        $order_edit_commit = 'mutation {
+                            //commit edit orders process
+                            $order_edit_commit = 'mutation {
                 orderEditCommit(id: "' . $calculate_order_id . '") {
                   order {
                     id
@@ -402,13 +404,13 @@ class AppwhookController extends BaseController
                 }
               }';
 
-                        $commiteditorder = $this->graphql_api_run(array("query" => $order_edit_commit), $_GET['whshp'], $get_resulsts->access_token);
-                        $final_result = json_decode($commiteditorder['body']);
+                            $commiteditorder = $this->graphql_api_run(array("query" => $order_edit_commit), $_GET['whshp'], $get_resulsts->access_token);
+                            $final_result = json_decode($commiteditorder['body']);
 
-                        $resposne_array = array("name" => $webstsrti . "Edit Partial Order " . $commiteditorder['body']);
-                        $this->user_model->check_test_response($resposne_array);
+                            $resposne_array = array("name" => $webstsrti . "Edit Partial Order " . $commiteditorder['body']);
+                            $this->user_model->check_test_response($resposne_array);
 
-                        $send_invoice_email = 'mutation {
+                            $send_invoice_email = 'mutation {
                         orderInvoiceSend(
                           id: "gid://shopify/Order/' . $jsndata->id . '"
                           email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
@@ -423,9 +425,8 @@ class AppwhookController extends BaseController
                         }
                       }';
 
-                        $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
-
-
+                            $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
+                        }
                         // $resposne_array = array("name" => "invoiceemail" . $send_invoice_email . $get_resulsts->email . $invoice_email_snd['body'] . $jsndata->contact_email . 'toemail=' . $jsndata->email);
                         // $this->user_model->check_test_response($resposne_array);
 
