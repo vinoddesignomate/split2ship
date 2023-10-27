@@ -141,7 +141,7 @@ class Home extends BaseController
 
                         $actl_shipping_addrss = array(
                             "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                            "first_name" => $$getprietuleidrec['order']['shipping_address']['last_name'],
+                            "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
                             "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
                             "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
                             "phone" => $store_phnum,
