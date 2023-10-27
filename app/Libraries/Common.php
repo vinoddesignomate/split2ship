@@ -517,7 +517,8 @@ class Common
 
         curl_close($curl);
         $return_array = json_decode($response);
+        return $response;
         // print_r($return_array);
-        return $return_array->draft_order->invoice_url;
+        //return $return_array->draft_order->invoice_url;
     }
 }
