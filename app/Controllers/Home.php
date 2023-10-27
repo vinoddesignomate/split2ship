@@ -153,7 +153,7 @@ class Home extends BaseController
                     } else {
                         $actl_shipping_addrss = array();
                     }
-                    $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => $discoutnarray));
+                    $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     echo"<pre>"; print_r($final_array); echo "</pre>";
                     // $resposne_array = array("name" => "actual order" . json_encode($final_array));
                     // $this->user_model->check_test_response($resposne_array);
