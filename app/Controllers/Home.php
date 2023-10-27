@@ -186,7 +186,7 @@ class Home extends BaseController
                             "discount_codes" => [
                                 [
                                     "code" => "partialcode",
-                                    "amount" => 470,
+                                    "amount" => $paid_price,
                                     "type" => "fixed_amount"
                                 ]
                             ]
@@ -199,11 +199,11 @@ class Home extends BaseController
                     // $resposne_array = array("name" => "actual order" . json_encode($final_array));
                     // $this->user_model->check_test_response($resposne_array);
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
+                    echo "<pre>";
+                    print_r(json_decode($getorderarry));
+                    echo "</pre>";
 
                     // echo $getorderarry;
 
