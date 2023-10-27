@@ -83,7 +83,7 @@ class Home extends BaseController
 
                     $paid_price = 0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
-                        //if ($products->name != "Partial Pending Payment") {
+                    if ($products['name'] != "Partial Pending Payment") {
                         if ($products['sku'] == "") {
 
                             $prosku = 'PRTTESTSKY' . time();
@@ -121,7 +121,7 @@ class Home extends BaseController
                         );
                         $paid_price = $paid_price + $products['price'];
 
-                        // }
+                        }
                     }
                     $discoutnarray = array(
                         "code" => "partialcode",
