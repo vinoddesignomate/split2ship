@@ -85,6 +85,7 @@ class Home extends BaseController
                     echo "</pre>";
                     //die();
                     $paid_price = 0;
+                    $line_items = []; // Initialize an array to store line items
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
@@ -123,12 +124,12 @@ class Home extends BaseController
                                 "requires_shipping" => true
                             );
 
-                            $line_items = [
+                            $line_items[] = 
                                 [
                                     "variant_id" => $productvarient,
-                                    "quantity" => $products['quantity'],
-                                ],
-                            ];
+                                    "quantity" => $products['quantity']
+                                ];
+                            
 
                             $paid_price = $paid_price + $products['price'];
                         }
@@ -163,7 +164,7 @@ class Home extends BaseController
                     } else {
                         $actl_shipping_addrss = array();
                     }
-                    $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
+                    // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     // echo "<pre>";
                     // print_r($final_array);
                     // echo "</pre>";
@@ -171,7 +172,7 @@ class Home extends BaseController
                     // Define the order data
                     $order_data = [
                         "order" => [
-                            "line_items" => $line_items,
+                            "line_items" => $line_item,
                             "shipping_address" => [
                                 "first_name" => "John",
                                 "last_name" => "Doe",
