@@ -83,7 +83,7 @@ class Home extends BaseController
                     echo "getprietuleidrec<pre>";
                     print_r(json_decode($etisus));
                     echo "</pre>";
-                    die();
+                    //die();
                     $paid_price = 0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                     if ($products['name'] != "Partial Pending Payment") {
@@ -161,9 +161,9 @@ class Home extends BaseController
                     // $resposne_array = array("name" => "actual order" . json_encode($final_array));
                     // $this->user_model->check_test_response($resposne_array);
 
-                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $final_array);
+                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $final_array);
 
-                    echo $getorderarry;
+                    // echo $getorderarry;
 
 
                     // $jsondecod = '{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
