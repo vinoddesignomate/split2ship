@@ -187,7 +187,7 @@ class Home extends BaseController
                             "discount_codes" => [
                                 [
                                     "code" => "partialcode",
-                                    "amount" => 470,
+                                    "amount" => $paid_price,
                                     "type" => "fixed_amount"
                                 ]
                             ]
