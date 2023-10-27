@@ -74,11 +74,11 @@ class Home extends BaseController
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5524761903408.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                   
+
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
-                    
+
 
                     echo "getprietuleidrec<pre>";
                     print_r(json_decode($etisus));
@@ -86,44 +86,51 @@ class Home extends BaseController
                     //die();
                     $paid_price = 0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
-                    if ($products['name'] != "Partial Pending Payment") {
-                        if ($products['sku'] == "") {
+                        if ($products['name'] != "Partial Pending Payment") {
+                            if ($products['sku'] == "") {
 
-                            $prosku = 'PRTTESTSKY' . time();
-                        } else {
-                            $prosku = $products['sku'];
-                            $prodycprice =  $products['price'];
-                        }
+                                $prosku = 'PRTTESTSKY' . time();
+                            } else {
+                                $prosku = $products['sku'];
+                                $prodycprice =  $products['price'];
+                            }
 
-                        if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
-                            $item_price = $products['properties'][2]['value'];
-                            $productvarient = $products['properties'][1]['value'];
-                        } else {
-                            $item_price = $products['price'];
-                            $productvarient = $products['variant_id'];
-                        }
+                            if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                                $item_price = $products['properties'][2]['value'];
+                                $productvarient = $products['properties'][1]['value'];
+                            } else {
+                                $item_price = $products['price'];
+                                $productvarient = $products['variant_id'];
+                            }
 
-                        $line_item[] = array(
-                            "variant_id" => $productvarient,
-                            "quantity" => $products['quantity'],
-                            "gift_card" => true,
-                            "sku" => $prosku,
-                            "grams" => $products['grams'],
-                            // "applied_discount" => array(
-                            //     "description" => 'Partial Payment',
-                            //     "title" => 'Partial Payment',
-                            //     "value_type" => "fixed_amount",
-                            //     "value" => $item_price . ".00",
-                            //     "amount" => $item_price . ".00",
-                            // ),
-                            "properties" => array(
-                                array("name" => "Note", "value" => "Actual order"),
-                                array("name" => "full_pay", "value" => $item_price)
-                            ),
-                            "requires_shipping" => true
-                        );
-                        $paid_price = $paid_price + $products['price'];
+                            $line_item[] = array(
+                                "variant_id" => $productvarient,
+                                "quantity" => $products['quantity'],
+                                "gift_card" => true,
+                                "sku" => $prosku,
+                                "grams" => $products['grams'],
+                                // "applied_discount" => array(
+                                //     "description" => 'Partial Payment',
+                                //     "title" => 'Partial Payment',
+                                //     "value_type" => "fixed_amount",
+                                //     "value" => $item_price . ".00",
+                                //     "amount" => $item_price . ".00",
+                                // ),
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Actual order"),
+                                    array("name" => "full_pay", "value" => $item_price)
+                                ),
+                                "requires_shipping" => true
+                            );
 
+                            $line_items = [
+                                [
+                                    "variant_id" => $productvarient,
+                                    "quantity" => $products['quantity'],
+                                ],
+                            ];
+
+                            $paid_price = $paid_price + $products['price'];
                         }
                     }
                     $discoutnarray = array(
@@ -157,11 +164,41 @@ class Home extends BaseController
                         $actl_shipping_addrss = array();
                     }
                     $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
-                    echo"<pre>"; print_r($final_array); echo "</pre>";
+                    // echo "<pre>";
+                    // print_r($final_array);
+                    // echo "</pre>";
+
+                    // Define the order data
+                    $order_data = [
+                        "order" => [
+                            "line_items" => $line_items,
+                            "shipping_address" => [
+                                "first_name" => "John",
+                                "last_name" => "Doe",
+                                "address1" => "123 Main St",
+                                "phone" => "555-555-5555",
+                                "city" => "City",
+                                "province" => "State",
+                                "country" => "Country",
+                                "zip" => "12345"
+                            ],
+                            "discount_codes" => [
+                                [
+                                    "code" => "partialcode",
+                                    "amount" => 470,
+                                    "type" => "fixed_amount"
+                                ]
+                            ]
+                        ]
+                    ];
+                     echo "<pre>";
+                    print_r($order_data);
+                    echo "</pre>";
+
                     // $resposne_array = array("name" => "actual order" . json_encode($final_array));
                     // $this->user_model->check_test_response($resposne_array);
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $final_array);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
                     // echo $getorderarry;
 
@@ -171,7 +208,7 @@ class Home extends BaseController
                     // print_r(json_decode($jsondecod, true));
                     // echo "</pre>";
 
-                   /*$getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5523663618352/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5523663618352/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                    
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
                     $fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
@@ -215,7 +252,7 @@ class Home extends BaseController
                     // print_r($getprietuleidrec);
                     // echo "</pre>";
 
-                    
+
 
 
                     //$webhookdata = $this->user_model->get_addcart_webhooks($_GET['shop']);
