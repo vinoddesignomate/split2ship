@@ -73,7 +73,7 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5524761903408.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5525162230064.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
