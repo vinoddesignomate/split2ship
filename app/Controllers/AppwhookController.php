@@ -149,7 +149,7 @@ class AppwhookController extends BaseController
         // file_put_contents($log_file_data, print_r($jsndata, true)); 
 
         $plan_details = $this->user_model->get_store_plan($_GET['whshp']); //get store price plane
-        
+
         //check store order count accoring to paid plane 
         if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
             $resposne_arrayshop = array("name" => "Shop Order Start " . $_GET['whshp']);
@@ -296,7 +296,7 @@ class AppwhookController extends BaseController
                                 // } else {
                                 //     $prosku = 'PRTTESTSKY';
                                 // }
-                                $prosku = 'PRTTESTSKY'.time();
+                                $prosku = 'PRTTESTSKY' . time();
                             } else {
                                 $prosku = $products->sku;
                                 $prodycprice =  $products->price;
@@ -426,8 +426,113 @@ class AppwhookController extends BaseController
                         $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
 
 
-                        $resposne_array = array("name" => "invoiceemail" . $send_invoice_email . $get_resulsts->email . $invoice_email_snd['body'] . $jsndata->contact_email . 'toemail=' . $jsndata->email);
-                        $this->user_model->check_test_response($resposne_array);
+                        // $resposne_array = array("name" => "invoiceemail" . $send_invoice_email . $get_resulsts->email . $invoice_email_snd['body'] . $jsndata->contact_email . 'toemail=' . $jsndata->email);
+                        // $this->user_model->check_test_response($resposne_array);
+
+                        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+
+                            //get fulfilment id of order
+                            $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $jsndata->id . '/fulfillment_orders.json', array(), 'GET', $get_resulsts->access_token, $_GET['whshp']);
+
+                            $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                            $fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
+
+                            $fulfilarray = array("fulfillment" => array(
+                                "line_items_by_fulfillment_order" => array(
+                                    array(
+                                        "fulfillment_order_id" => $fulfilid,
+                                        // "fulfillment_order_line_items" => array(
+                                        //     "id" => 44320869220656,
+                                        //     "quantity" => 1
+                                        // )
+                                    )
+                                ),
+                                "tracking_info" => array(
+                                    "number" => "MS1562678",
+                                    "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678",
+                                )
+                            ));
+
+                            $getprietuleid = $this->common->create_fulfilmentorders($get_resulsts->access_token, $_GET['whshp'], $fulfilarray);
+                            // $paid_price = 0;
+                            // foreach ($jsndata->line_items as $products) {
+                            //     //if ($products->name != "Partial Pending Payment") {
+                            //     if ($products->sku == "") {
+
+                            //         $prosku = 'PRTTESTSKY' . time();
+                            //     } else {
+                            //         $prosku = $products->sku;
+                            //         $prodycprice =  $products->price;
+                            //     }
+
+                            //     if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                            //         $item_price = $products['properties'][2]['value'];
+                            //         $productvarient = $products['properties'][1]['value'];
+                            //     } else {
+                            //         $item_price = $products['price'];
+                            //         $productvarient = $products['variant_id'];
+                            //     }
+
+                            //     $line_item[] = array(
+                            //         "variant_id" => $productvarient,
+                            //         "quantity" => $products->quantity,
+                            //         "gift_card" => true,
+                            //         "sku" => $prosku,
+                            //         "grams" => $products->grams,
+                            //         // "applied_discount" => array(
+                            //         //     "description" => 'Partial Payment',
+                            //         //     "title" => 'Partial Payment',
+                            //         //     "value_type" => "fixed_amount",
+                            //         //     "value" => $item_price . ".00",
+                            //         //     "amount" => $item_price . ".00",
+                            //         // ),
+                            //         "properties" => array(
+                            //             array("name" => "Note", "value" => "Actual order"),
+                            //             array("name" => "full_pay", "value" => $item_price)
+                            //         ),
+                            //         "requires_shipping" => true
+                            //     );
+                            //     $paid_price = $paid_price + $products['price'];
+
+                            //     // }
+                            // }
+                            // $discoutnarray = array(
+                            //     "code" => "partialcode",
+                            //     "amount" => $paid_price,
+                            //     "type" => "fixed_amount",
+                            // );
+                            // if (isset($jsndata->shipping_address)) {
+
+                            //     if (isset($jsndata->shipping_address->phone)) {
+                            //         $store_phnum = str_replace(" ", "", $jsndata->shipping_address->phone);
+                            //         $store_phnum = str_replace("(", "", $store_phnum);
+                            //         $store_phnum = str_replace(")", "", $store_phnum);
+                            //         $store_phnum = str_replace("-", "", $store_phnum);
+                            //     } else {
+                            //         $store_phnum = "";
+                            //     }
+
+                            //     $actl_shipping_addrss = array(
+                            //         "first_name" => $jsndata->shipping_address->first_name,
+                            //         "first_name" => $jsndata->shipping_address->last_name,
+                            //         "address1" => $jsndata->shipping_address->address1,
+                            //         "address2" => (isset($jsndata->shipping_address->address2) ? $jsndata->shipping_address->address2 : ''),
+                            //         "phone" => $store_phnum,
+                            //         "city" => $jsndata->shipping_address->city,
+                            //         "province" => $jsndata->shipping_address->province,
+                            //         "zip" => $jsndata->shipping_address->zip,
+                            //         "country" => $jsndata->shipping_address->country,
+                            //     );
+                            // } else {
+                            //     $actl_shipping_addrss = array();
+                            // }
+                            // $final_array = array("order" => array("line_items" => $line_item, "email" => $jsndata->email, "shipping_address" => $actl_shipping_addrss, "discount_codes" => $discoutnarray));
+
+                            // $resposne_array = array("name" => "actual order" . json_encode($final_array));
+                            // $this->user_model->check_test_response($resposne_array);
+
+                            // $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $final_array);
+                        }
                     }
 
                     $get_resulststoken = $this->user_model->get_token($_GET['whshp']);
