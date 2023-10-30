@@ -555,10 +555,10 @@ class AppwhookController extends BaseController
                                     "note_attributes"=> [
                                         [
                                             "name"=> "Suffix",
-                                            "value"=> str_replace("#", "", $jsndata->name)  # Add your desired suffix here
+                                            "value"=> $jsndata->name  # Add your desired suffix here
                                         ]
                                     ],
-                                    "name"=> str_replace("#", "", $jsndata->name),
+                                    "name"=> $jsndata->name,
                                     "discount_codes" => [
                                         [
                                             "code" => "partialcode",
