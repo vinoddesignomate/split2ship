@@ -555,10 +555,10 @@ class AppwhookController extends BaseController
                                     "note_attributes"=> [
                                         [
                                             "name"=> "Suffix",
-                                            "value"=> $jsndata->name  # Add your desired suffix here
+                                            "value"=> $jsndata->name.'-SplitOrder'  # Add your desired suffix here
                                         ]
                                     ],
-                                    "name"=> $jsndata->name,
+                                    "name"=> $jsndata->name.'-SplitOrder',
                                     "discount_codes" => [
                                         [
                                             "code" => "partialcode",
