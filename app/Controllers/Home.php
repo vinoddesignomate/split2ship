@@ -73,6 +73,14 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
+                     $getshoptax = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                     $getrestshop = json_decode($getshoptax['body'], true);
+
+                     echo "getrestshop<pre>";
+                     print_r($getrestshop);
+                     echo "</pre>";
+
+
                      $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5528381849904.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                      $getprietuleidrec = json_decode($getprietuleid['body'], true);
@@ -84,7 +92,7 @@ class Home extends BaseController
                     print_r($getprietuleidrec);
                     echo "</pre>";
                     die();
-                    
+
                     // $paid_price = 0;
                     // $line_items = []; // Initialize an array to store line items
                     // foreach ($getprietuleidrec['order']['line_items'] as $products) {
