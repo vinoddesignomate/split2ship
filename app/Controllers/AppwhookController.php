@@ -552,6 +552,12 @@ class AppwhookController extends BaseController
                                     "customer" => [
                                         "id" => $jsndata->customer->id
                                     ],
+                                    "note_attributes"=> [
+                                        [
+                                            "name"=> "Suffix",
+                                            "value"=> "-".$jsndata->id  # Add your desired suffix here
+                                        ]
+                                    ],
                                     "discount_codes" => [
                                         [
                                             "code" => "partialcode",
