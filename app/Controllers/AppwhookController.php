@@ -576,7 +576,7 @@ class AppwhookController extends BaseController
 
                             $send_invoice_email = 'mutation {
                                 orderInvoiceSend(
-                                  id: "gid://shopify/Order/' . $decode_get_actual_orders['id'] . '"
+                                  id: "gid://shopify/Order/' . $decode_get_actual_orders->order->id . '"
                                   email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
                                 ) {
                                   order {
