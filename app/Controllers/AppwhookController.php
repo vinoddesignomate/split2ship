@@ -566,7 +566,30 @@ class AppwhookController extends BaseController
                             // $resposne_array = array("name" => "actual order" . json_encode($final_array));
                             // $this->user_model->check_test_response($resposne_array);
 
-                            $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
+                            $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
+
+                            $decode_get_actual_orders = json_decode($get_actual_orders);
+
+                            $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
+                            $this->user_model->check_test_response($resposne_array);
+
+
+                            $send_invoice_email = 'mutation {
+                                orderInvoiceSend(
+                                  id: "gid://shopify/Order/' . $decode_get_actual_orders['id'] . '"
+                                  email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
+                                ) {
+                                  order {
+                                    id
+                                  }
+                                  userErrors {
+                                    field
+                                    message
+                                  }
+                                }
+                              }';
+
+                            $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
                         }
                     }
 
