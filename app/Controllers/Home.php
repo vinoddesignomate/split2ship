@@ -73,97 +73,97 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5525162230064.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5525162230064.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
+                    // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
-                    die();
-                    $paid_price = 0;
-                    $line_items = []; // Initialize an array to store line items
-                    foreach ($getprietuleidrec['order']['line_items'] as $products) {
-                        if ($products['name'] != "Partial Pending Payment") {
-                            if ($products['sku'] == "") {
+                    // // echo "getprietuleidrec<pre>";
+                    // // print_r($getprietuleidrec);
+                    // // echo "</pre>";
+                    // // die();
+                    // $paid_price = 0;
+                    // $line_items = []; // Initialize an array to store line items
+                    // foreach ($getprietuleidrec['order']['line_items'] as $products) {
+                    //     if ($products['name'] != "Partial Pending Payment") {
+                    //         if ($products['sku'] == "") {
 
-                                $prosku = 'PRTTESTSKY' . time();
-                            } else {
-                                $prosku = $products['sku'];
-                                $prodycprice =  $products['price'];
-                            }
+                    //             $prosku = 'PRTTESTSKY' . time();
+                    //         } else {
+                    //             $prosku = $products['sku'];
+                    //             $prodycprice =  $products['price'];
+                    //         }
 
-                            if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
-                                $item_price = $products['properties'][2]['value'];
-                                $productvarient = $products['properties'][1]['value'];
-                            } else {
-                                $item_price = $products['price'];
-                                $productvarient = $products['variant_id'];
-                            }
+                    //         if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                    //             $item_price = $products['properties'][2]['value'];
+                    //             $productvarient = $products['properties'][1]['value'];
+                    //         } else {
+                    //             $item_price = $products['price'];
+                    //             $productvarient = $products['variant_id'];
+                    //         }
 
-                            $line_item[] = array(
-                                "variant_id" => $productvarient,
-                                "quantity" => $products['quantity'],
-                                "gift_card" => true,
-                                "sku" => $prosku,
-                                "grams" => $products['grams'],
-                                // "applied_discount" => array(
-                                //     "description" => 'Partial Payment',
-                                //     "title" => 'Partial Payment',
-                                //     "value_type" => "fixed_amount",
-                                //     "value" => $item_price . ".00",
-                                //     "amount" => $item_price . ".00",
-                                // ),
-                                "properties" => array(
-                                    array("name" => "Note", "value" => "Actual order"),
-                                    array("name" => "full_pay", "value" => $item_price)
-                                ),
-                                "requires_shipping" => true
-                            );
+                    //         $line_item[] = array(
+                    //             "variant_id" => $productvarient,
+                    //             "quantity" => $products['quantity'],
+                    //             "gift_card" => true,
+                    //             "sku" => $prosku,
+                    //             "grams" => $products['grams'],
+                    //             // "applied_discount" => array(
+                    //             //     "description" => 'Partial Payment',
+                    //             //     "title" => 'Partial Payment',
+                    //             //     "value_type" => "fixed_amount",
+                    //             //     "value" => $item_price . ".00",
+                    //             //     "amount" => $item_price . ".00",
+                    //             // ),
+                    //             "properties" => array(
+                    //                 array("name" => "Note", "value" => "Actual order"),
+                    //                 array("name" => "full_pay", "value" => $item_price)
+                    //             ),
+                    //             "requires_shipping" => true
+                    //         );
 
-                            $line_items[] = 
-                                [
-                                    "variant_id" => $productvarient,
-                                    "quantity" => $products['quantity']
-                                ];
+                    //         $line_items[] = 
+                    //             [
+                    //                 "variant_id" => $productvarient,
+                    //                 "quantity" => $products['quantity']
+                    //             ];
                             
 
-                            $paid_price = $paid_price + $products['price'];
-                        }
-                    }
-                    $discoutnarray = array(
-                        "code" => "partialcode",
-                        "amount" => $paid_price,
-                        "type" => "fixed_amount",
-                    );
-                    if (isset($getprietuleidrec['order']['shipping_address'])) {
+                    //         $paid_price = $paid_price + $products['price'];
+                    //     }
+                    // }
+                    // $discoutnarray = array(
+                    //     "code" => "partialcode",
+                    //     "amount" => $paid_price,
+                    //     "type" => "fixed_amount",
+                    // );
+                    // if (isset($getprietuleidrec['order']['shipping_address'])) {
 
-                        if (isset($getprietuleidrec['order']['shipping_address']['phone'])) {
-                            $store_phnum = str_replace(" ", "", $getprietuleidrec['order']['shipping_address']['phone']);
-                            $store_phnum = str_replace("(", "", $store_phnum);
-                            $store_phnum = str_replace(")", "", $store_phnum);
-                            $store_phnum = str_replace("-", "", $store_phnum);
-                        } else {
-                            $store_phnum = "";
-                        }
+                    //     if (isset($getprietuleidrec['order']['shipping_address']['phone'])) {
+                    //         $store_phnum = str_replace(" ", "", $getprietuleidrec['order']['shipping_address']['phone']);
+                    //         $store_phnum = str_replace("(", "", $store_phnum);
+                    //         $store_phnum = str_replace(")", "", $store_phnum);
+                    //         $store_phnum = str_replace("-", "", $store_phnum);
+                    //     } else {
+                    //         $store_phnum = "";
+                    //     }
 
-                        $actl_shipping_addrss = array(
-                            "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                            "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
-                            "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                            "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                            "phone" => $store_phnum,
-                            "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                            "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                            "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                            "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                        );
-                    } else {
-                        $actl_shipping_addrss = array();
-                    }
+                    //     $actl_shipping_addrss = array(
+                    //         "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                    //         "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
+                    //         "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                    //         "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                    //         "phone" => $store_phnum,
+                    //         "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                    //         "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                    //         "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                    //         "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                    //     );
+                    // } else {
+                    //     $actl_shipping_addrss = array();
+                    // }
                     // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     // echo "<pre>";
                     // print_r($final_array);
@@ -2266,7 +2266,7 @@ class Home extends BaseController
                 "shop_url" => $_GET['shop']
             );
             $this->user_model->track_checkout_button_color($track_color_array);
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+           // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
