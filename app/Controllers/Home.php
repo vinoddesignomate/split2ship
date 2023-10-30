@@ -81,7 +81,7 @@ class Home extends BaseController
 
 
                     echo "getprietuleidrec<pre>";
-                    print_r(json_decode($etisus));
+                    print_r($getprietuleidrec);
                     echo "</pre>";
                     die();
                     $paid_price = 0;
