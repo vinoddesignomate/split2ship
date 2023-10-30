@@ -571,7 +571,7 @@ class AppwhookController extends BaseController
                             $decode_get_actual_orders = json_decode($get_actual_orders);
 
                             $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
-                            $this->user_model->check_test_response($resposne_array);
+                            $this->user_model->check_test_response($resposne_array); 
 
 
                             $send_invoice_email = 'mutation {
