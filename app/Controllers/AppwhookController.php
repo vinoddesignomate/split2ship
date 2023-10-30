@@ -561,7 +561,7 @@ class AppwhookController extends BaseController
                                     "name"=> $jsndata->name.'-SplitOrder',
                                     "discount_codes" => [
                                         [
-                                            "code" => "partialcode",
+                                            "code" => "Partial Payment",
                                             "amount" => $paid_price,
                                             "type" => "fixed_amount"
                                         ]
