@@ -70,8 +70,8 @@ class AppwhookController extends BaseController
         );
         $userModel->deactivate_price_plane($trackarray);
         $userModel->remove_update_cart_whook($shop_header); //remove update cart whook evenet from db
-        $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
-        $userModel->check_test_response($resposne_array);
+        // $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
+        // $userModel->check_test_response($resposne_array);
         echo "200 ok";
         exit();
     }
@@ -152,12 +152,12 @@ class AppwhookController extends BaseController
 
         //check store order count accoring to paid plane 
         if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-            $resposne_arrayshop = array("name" => "Shop Order Start " . $_GET['whshp']);
-            $this->user_model->check_test_response($resposne_arrayshop);
+            // $resposne_arrayshop = array("name" => "Shop Order Start " . $_GET['whshp']);
+            // $this->user_model->check_test_response($resposne_arrayshop);
 
 
-            $resposne_array = array("name" => "orderdata" . $webhook_content);
-            $this->user_model->check_test_response($resposne_array);
+            // $resposne_array = array("name" => "orderdata" . $webhook_content);
+            // $this->user_model->check_test_response($resposne_array);
 
 
             // die();
@@ -408,7 +408,7 @@ class AppwhookController extends BaseController
                             $final_result = json_decode($commiteditorder['body']);
 
                             $resposne_array = array("name" => $webstsrti . "Edit Partial Order " . $commiteditorder['body']);
-                            $this->user_model->check_test_response($resposne_array);
+                            //$this->user_model->check_test_response($resposne_array);
 
                             $send_invoice_email = 'mutation {
                         orderInvoiceSend(
@@ -722,7 +722,7 @@ class AppwhookController extends BaseController
                             $decoded_res = json_decode($get_result);
 
                             $resposne_array = array("name" => "Shiprocket ordersync= " . $get_result);
-                            $this->user_model->check_test_response($resposne_array);
+                            //$this->user_model->check_test_response($resposne_array);
 
 
 
