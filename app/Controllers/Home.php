@@ -2258,9 +2258,9 @@ class Home extends BaseController
                 "chk_btn_color" => $this->request->getPost('chk_btn_color'),
                 "full_chk_btn_color" => $this->request->getPost('full_chk_btn_color'),
                 //"cart_form_class" => $this->request->getPost('cart_form_class'),
-                "addcartbtn_cg" => $this->request->getPost('addcartbtn_cg'),
-                "cg_chkout_btn_class" => $this->request->getPost('cg_chkout_btn_class'),
-                "cg_cart_remove_class" => $this->request->getPost('cg_cart_remove_class'),
+                //"addcartbtn_cg" => $this->request->getPost('addcartbtn_cg'),
+               // "cg_chkout_btn_class" => $this->request->getPost('cg_chkout_btn_class'),
+               // "cg_cart_remove_class" => $this->request->getPost('cg_cart_remove_class'),
                 "cart_summary_back_color" => $this->request->getPost('cart_summary_back_color'),
                 "cart_summart_textc" => $this->request->getPost('cart_summart_textc'),
                 "shop_url" => $_GET['shop']
