@@ -73,7 +73,7 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5525162230064.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5525162230064.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -83,7 +83,7 @@ class Home extends BaseController
                     echo "getprietuleidrec<pre>";
                     print_r(json_decode($etisus));
                     echo "</pre>";
-                    //die();
+                    die();
                     $paid_price = 0;
                     $line_items = []; // Initialize an array to store line items
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
@@ -170,40 +170,40 @@ class Home extends BaseController
                     // echo "</pre>";
 
                     // Define the order data
-                    $order_data = [
-                        "order" => [
-                            "line_items" => $line_items,
-                            "financial_status"=>"pending",
-                            "shipping_address" => [
-                                "first_name" => "John",
-                                "last_name" => "Doe",
-                                "address1" => "123 Main St",
-                                "phone" => "555-555-5555",
-                                "city" => "City",
-                                "province" => "State",
-                                "country" => "Country",
-                                "zip" => "12345"
-                            ],
-                            "discount_codes" => [
-                                [
-                                    "code" => "partialcode",
-                                    "amount" => $paid_price,
-                                    "type" => "fixed_amount"
-                                ]
-                            ]
-                        ]
-                    ];
-                     echo "<pre>";
-                    print_r($order_data);
-                    echo "</pre>";
+                    // $order_data = [
+                    //     "order" => [
+                    //         "line_items" => $line_items,
+                    //         "financial_status"=>"pending",
+                    //         "shipping_address" => [
+                    //             "first_name" => "John",
+                    //             "last_name" => "Doe",
+                    //             "address1" => "123 Main St",
+                    //             "phone" => "555-555-5555",
+                    //             "city" => "City",
+                    //             "province" => "State",
+                    //             "country" => "Country",
+                    //             "zip" => "12345"
+                    //         ],
+                    //         "discount_codes" => [
+                    //             [
+                    //                 "code" => "partialcode",
+                    //                 "amount" => $paid_price,
+                    //                 "type" => "fixed_amount"
+                    //             ]
+                    //         ]
+                    //     ]
+                    // ];
+                    //  echo "<pre>";
+                    // print_r($order_data);
+                    // echo "</pre>";
 
                    
 
-                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    echo "<pre>";
-                    print_r(json_decode($getorderarry));
-                    echo "</pre>";*/
+                    // echo "<pre>";
+                    // print_r(json_decode($getorderarry));
+                    // echo "</pre>";
 
                     // echo $getorderarry;
 
