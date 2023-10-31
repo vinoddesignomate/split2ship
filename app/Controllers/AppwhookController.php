@@ -467,7 +467,7 @@ class AppwhookController extends BaseController
                                     // }
 
                                     if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
-                                        $item_price = $products->properties[2]->value;
+                                        $item_price = $products->properties[2]->value+$products->properties[3]->value;
                                         $productvarient = $products->properties[1]->value;
                                     } else {
                                         $item_price = $products->price;
@@ -493,28 +493,30 @@ class AppwhookController extends BaseController
                                         ),
                                         "requires_shipping" => true
                                     );
-                                    // $tax_lines = [];
-                                    // if (!empty($products->tax_lines)) {
-                                    //     foreach ($products->tax_lines as $tax_items) {
-                                    //         $tax_lines[] = [
-                                    //             'title' => $tax_items->title,
-                                    //             'price' => $tax_items->price, 
-                                    //             'rate' => $tax_items->rate, 
-                                    //         ];
-                                    //     }
-                                    // }
+                                    $tax_lines = [];
+                                    if (!empty($products->tax_lines)) {
+                                        foreach ($products->tax_lines as $tax_items) {
+                                            $taxamount = $item_price * $tax_items->rate;
+                                            $tax_lines[] = [
+                                                'title' => $tax_items->title,
+                                                'price' => $taxamount, 
+                                                'rate' => $tax_items->rate, 
+                                            ];
+                                        }
+                                    }
 
                                     $line_items[] =
                                         [
                                             "variant_id" => $productvarient,
                                             "quantity" => $products->quantity,
-                                            'tax_lines' => [
-                                                [
-                                                    'title' => 'IGST',  // Tax title
-                                                    'price' => 40,        // Tax amount
-                                                    'rate' => 0.18,           // Tax rate in percentage
-                                                ]
-                                            ]
+                                            "tax_lines" => $tax_lines,
+                                            // 'tax_lines' => [
+                                            //     [
+                                            //         'title' => 'IGST',  // Tax title
+                                            //         'price' => 40,        // Tax amount
+                                            //         'rate' => 0.18,           // Tax rate in percentage
+                                            //     ]
+                                            // ]
                                         ];
 
                                     $paid_price = $paid_price + $products->price;
