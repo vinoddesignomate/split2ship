@@ -448,10 +448,10 @@ class AppwhookController extends BaseController
                                         // )
                                     )
                                 ),
-                                "tracking_info" => array(
-                                    "number" => "MS1562678",
-                                    "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678",
-                                )
+                                // "tracking_info" => array(
+                                //     "number" => "MS1562678",
+                                //     "url" => "https://www.my-shipping-company.com?tracking_number=MS1562678",
+                                // )
                             ));
 
                             $getprietuleid = $this->common->create_fulfilmentorders($get_resulsts->access_token, $_GET['whshp'], $fulfilarray);
