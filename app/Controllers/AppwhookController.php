@@ -470,10 +470,12 @@ class AppwhookController extends BaseController
                                         $item_price = $products->properties[2]->value;
                                         $tax_price = $products->properties[3]->value;
                                         $productvarient = $products->properties[1]->value;
+                                        $paidprice_get = $products->price;
                                     } else {
                                         $item_price = $products->price;
                                         $productvarient = $products->variant_id;
                                         $tax_price = 0;
+                                        $paidprice_get = $products->properties[1]->value;
                                     }
 
                                     $line_item[] = array(
@@ -526,7 +528,7 @@ class AppwhookController extends BaseController
                                             // ]
                                         ];
 
-                                    $paid_price = $paid_price + $products->price;
+                                    $paid_price = $paid_price + $paidprice_get;
                                 }
                             }
                             $discoutnarray = array(
