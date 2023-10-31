@@ -81,7 +81,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5529536758064.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5529568018736.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -108,9 +108,11 @@ class Home extends BaseController
                             if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
                                 $item_price = $products['properties'][2]['value'] + $products['properties'][2]['value'];
                                 $productvarient = $products['properties'][1]['value'];
+                                $paidprice_get = $products['price'];
                             } else {
                                 $item_price = $products['price'];
                                 $productvarient = $products['variant_id'];
+                                $paidprice_get = $products['properties'][1]['value'];
                             }
 
                             $line_item[] = array(
@@ -152,7 +154,7 @@ class Home extends BaseController
                                 ];
 
 
-                            $paid_price = $paid_price + $products['price'];
+                            $paid_price = $paid_price + $paidprice_get;
                         }
                     }
                     $discoutnarray = array(
