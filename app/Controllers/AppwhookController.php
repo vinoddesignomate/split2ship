@@ -589,8 +589,8 @@ class AppwhookController extends BaseController
                             ];
 
 
-                            // $resposne_array = array("name" => "actual order" . json_encode($final_array));
-                            // $this->user_model->check_test_response($resposne_array);
+                            $resposne_array = array("name" => "actual order_data" . json_encode($order_data));
+                            $this->user_model->check_test_response($resposne_array);
 
                             $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
