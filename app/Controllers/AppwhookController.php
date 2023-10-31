@@ -467,11 +467,13 @@ class AppwhookController extends BaseController
                                     // }
 
                                     if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
-                                        $item_price = $products->properties[2]->value+$products->properties[3]->value;
+                                        $item_price = $products->properties[2]->value + $products->properties[3]->value;
+                                        $tax_price = $products->properties[3]->value;
                                         $productvarient = $products->properties[1]->value;
                                     } else {
                                         $item_price = $products->price;
                                         $productvarient = $products->variant_id;
+                                        $tax_price = 0;
                                     }
 
                                     $line_item[] = array(
@@ -496,11 +498,16 @@ class AppwhookController extends BaseController
                                     $tax_lines = [];
                                     if (!empty($products->tax_lines)) {
                                         foreach ($products->tax_lines as $tax_items) {
-                                            $taxamount = $item_price * $tax_items->rate;
+                                            if ($tax_price == 0) {
+                                                $taxamount = 0;
+                                            } else {
+                                                $taxamount = $tax_price * $tax_items->rate;
+                                            }
+
                                             $tax_lines[] = [
                                                 'title' => $tax_items->title,
-                                                'price' => $taxamount, 
-                                                'rate' => $tax_items->rate, 
+                                                'price' => $taxamount,
+                                                'rate' => $tax_items->rate,
                                             ];
                                         }
                                     }
