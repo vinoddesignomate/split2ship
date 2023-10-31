@@ -582,6 +582,13 @@ class AppwhookController extends BaseController
                                             "amount" => $paid_price,
                                             "type" => "fixed_amount"
                                         ]
+                                    ],
+                                    "tax_lines" => [
+                                        [
+                                            "price" => 10,
+                                            "rate" => "0.18",
+                                            "title" => "IGST"
+                                        ]
                                     ]
                                 ]
                             ];
