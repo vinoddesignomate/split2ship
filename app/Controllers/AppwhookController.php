@@ -508,13 +508,13 @@ class AppwhookController extends BaseController
                                         [
                                             "variant_id" => $productvarient,
                                             "quantity" => $products->quantity,
-                                            // 'tax_lines' => [
-                                            //     [
-                                            //         'title' => 'Sales Tax',  // Tax title
-                                            //         'price' => 10.00,        // Tax amount
-                                            //         'rate' => 5.0,           // Tax rate in percentage
-                                            //     ],
-                                            // ]
+                                            'tax_lines' => [
+                                                [
+                                                    'title' => 'IGST',  // Tax title
+                                                    'price' => 40,        // Tax amount
+                                                    'rate' => 0.18,           // Tax rate in percentage
+                                                ]
+                                            ]
                                         ];
 
                                     $paid_price = $paid_price + $products->price;
@@ -581,13 +581,6 @@ class AppwhookController extends BaseController
                                             "code" => "Partial Payment",
                                             "amount" => $paid_price,
                                             "type" => "fixed_amount"
-                                        ]
-                                    ],
-                                    "tax_lines" => [
-                                        [
-                                            "price" => 275.40,
-                                            "rate" => 0.18,
-                                            "title" => "IGST"
                                         ]
                                     ]
                                 ]
