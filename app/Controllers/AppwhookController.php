@@ -493,11 +493,28 @@ class AppwhookController extends BaseController
                                         ),
                                         "requires_shipping" => true
                                     );
+                                    // $tax_lines = [];
+                                    // if (!empty($products->tax_lines)) {
+                                    //     foreach ($products->tax_lines as $tax_items) {
+                                    //         $tax_lines[] = [
+                                    //             'title' => $tax_items->title,
+                                    //             'price' => $tax_items->price, 
+                                    //             'rate' => $tax_items->rate, 
+                                    //         ];
+                                    //     }
+                                    // }
 
                                     $line_items[] =
                                         [
                                             "variant_id" => $productvarient,
-                                            "quantity" => $products->quantity
+                                            "quantity" => $products->quantity,
+                                            // 'tax_lines' => [
+                                            //     [
+                                            //         'title' => 'Sales Tax',  // Tax title
+                                            //         'price' => 10.00,        // Tax amount
+                                            //         'rate' => 5.0,           // Tax rate in percentage
+                                            //     ],
+                                            // ]
                                         ];
 
                                     $paid_price = $paid_price + $products->price;
@@ -552,13 +569,13 @@ class AppwhookController extends BaseController
                                     "customer" => [
                                         "id" => $jsndata->customer->id
                                     ],
-                                    "note_attributes"=> [
+                                    "note_attributes" => [
                                         [
-                                            "name"=> "Suffix",
-                                            "value"=> $jsndata->name.'-SplitOrder'  # Add your desired suffix here
+                                            "name" => "Suffix",
+                                            "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
                                         ]
                                     ],
-                                    "name"=> $jsndata->name.'-SplitOrder',
+                                    "name" => $jsndata->name . '-SplitOrder',
                                     "discount_codes" => [
                                         [
                                             "code" => "Partial Payment",
@@ -578,7 +595,7 @@ class AppwhookController extends BaseController
                             $decode_get_actual_orders = json_decode($get_actual_orders);
 
                             $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
-                            $this->user_model->check_test_response($resposne_array); 
+                            $this->user_model->check_test_response($resposne_array);
 
 
                             $send_invoice_email = 'mutation {

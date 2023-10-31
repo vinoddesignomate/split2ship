@@ -76,12 +76,12 @@ class Home extends BaseController
                      $getshoptax = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                      $getrestshop = json_decode($getshoptax['body'], true);
 
-                     echo "getrestshop<pre>";
-                     print_r($getrestshop);
-                     echo "</pre>";
+                    //  echo "getrestshop<pre>";
+                    //  print_r($getrestshop);
+                    //  echo "</pre>";
 
 
-                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5528381849904.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5528591630640.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                      $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
