@@ -73,140 +73,152 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                     $getshoptax = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                     $getrestshop = json_decode($getshoptax['body'], true);
+                    // $getshoptax = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getrestshop = json_decode($getshoptax['body'], true);
 
                     //  echo "getrestshop<pre>";
                     //  print_r($getrestshop);
                     //  echo "</pre>";
 
 
-                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5529249546544.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5529274745136.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
-                    die();
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
+                    //die();
 
-                    // $paid_price = 0;
-                    // $line_items = []; // Initialize an array to store line items
-                    // foreach ($getprietuleidrec['order']['line_items'] as $products) {
-                    //     if ($products['name'] != "Partial Pending Payment") {
-                    //         if ($products['sku'] == "") {
+                    $paid_price = 0;
+                    $line_items = []; // Initialize an array to store line items
+                    foreach ($getprietuleidrec['order']['line_items'] as $products) {
+                        if ($products['name'] != "Partial Pending Payment") {
+                            if ($products['sku'] == "") {
 
-                    //             $prosku = 'PRTTESTSKY' . time();
-                    //         } else {
-                    //             $prosku = $products['sku'];
-                    //             $prodycprice =  $products['price'];
-                    //         }
+                                $prosku = 'PRTTESTSKY' . time();
+                            } else {
+                                $prosku = $products['sku'];
+                                $prodycprice =  $products['price'];
+                            }
 
-                    //         if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
-                    //             $item_price = $products['properties'][2]['value'];
-                    //             $productvarient = $products['properties'][1]['value'];
-                    //         } else {
-                    //             $item_price = $products['price'];
-                    //             $productvarient = $products['variant_id'];
-                    //         }
+                            if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                                $item_price = $products['properties'][2]['value'] + $products['properties'][2]['value'];
+                                $productvarient = $products['properties'][1]['value'];
+                            } else {
+                                $item_price = $products['price'];
+                                $productvarient = $products['variant_id'];
+                            }
 
-                    //         $line_item[] = array(
-                    //             "variant_id" => $productvarient,
-                    //             "quantity" => $products['quantity'],
-                    //             "gift_card" => true,
-                    //             "sku" => $prosku,
-                    //             "grams" => $products['grams'],
-                    //             // "applied_discount" => array(
-                    //             //     "description" => 'Partial Payment',
-                    //             //     "title" => 'Partial Payment',
-                    //             //     "value_type" => "fixed_amount",
-                    //             //     "value" => $item_price . ".00",
-                    //             //     "amount" => $item_price . ".00",
-                    //             // ),
-                    //             "properties" => array(
-                    //                 array("name" => "Note", "value" => "Actual order"),
-                    //                 array("name" => "full_pay", "value" => $item_price)
-                    //             ),
-                    //             "requires_shipping" => true
-                    //         );
+                            $line_item[] = array(
+                                "variant_id" => $productvarient,
+                                "quantity" => $products['quantity'],
+                                "gift_card" => true,
+                                "sku" => $prosku,
+                                "grams" => $products['grams'],
+                                // "applied_discount" => array(
+                                //     "description" => 'Partial Payment',
+                                //     "title" => 'Partial Payment',
+                                //     "value_type" => "fixed_amount",
+                                //     "value" => $item_price . ".00",
+                                //     "amount" => $item_price . ".00",
+                                // ),
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Actual order"),
+                                    array("name" => "full_pay", "value" => $item_price)
+                                ),
+                                "requires_shipping" => true
+                            );
+                            $tax_lines = [];
+                            if (!empty($products->tax_lines)) {
+                                foreach ($products->tax_lines as $tax_items) {
+                                    $taxamount = $item_price * $tax_items['rate'];
+                                    $tax_lines[] = [
+                                        'title' => $tax_items['title'],
+                                        'price' => $taxamount,
+                                        'rate' => $tax_items['rate'],
+                                    ];
+                                }
+                            }
 
-                    //         $line_items[] = 
-                    //             [
-                    //                 "variant_id" => $productvarient,
-                    //                 "quantity" => $products['quantity']
-                    //             ];
-                            
+                            $line_items[] =
+                                [
+                                    "variant_id" => $productvarient,
+                                    "quantity" => $products['quantity'],
+                                    'tax_lines' => $tax_lines,
+                                ];
 
-                    //         $paid_price = $paid_price + $products['price'];
-                    //     }
-                    // }
-                    // $discoutnarray = array(
-                    //     "code" => "partialcode",
-                    //     "amount" => $paid_price,
-                    //     "type" => "fixed_amount",
-                    // );
-                    // if (isset($getprietuleidrec['order']['shipping_address'])) {
 
-                    //     if (isset($getprietuleidrec['order']['shipping_address']['phone'])) {
-                    //         $store_phnum = str_replace(" ", "", $getprietuleidrec['order']['shipping_address']['phone']);
-                    //         $store_phnum = str_replace("(", "", $store_phnum);
-                    //         $store_phnum = str_replace(")", "", $store_phnum);
-                    //         $store_phnum = str_replace("-", "", $store_phnum);
-                    //     } else {
-                    //         $store_phnum = "";
-                    //     }
+                            $paid_price = $paid_price + $products['price'];
+                        }
+                    }
+                    $discoutnarray = array(
+                        "code" => "partialcode",
+                        "amount" => $paid_price,
+                        "type" => "fixed_amount",
+                    );
+                    if (isset($getprietuleidrec['order']['shipping_address'])) {
 
-                    //     $actl_shipping_addrss = array(
-                    //         "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                    //         "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
-                    //         "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                    //         "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                    //         "phone" => $store_phnum,
-                    //         "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                    //         "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                    //         "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                    //         "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                    //     );
-                    // } else {
-                    //     $actl_shipping_addrss = array();
-                    // }
+                        if (isset($getprietuleidrec['order']['shipping_address']['phone'])) {
+                            $store_phnum = str_replace(" ", "", $getprietuleidrec['order']['shipping_address']['phone']);
+                            $store_phnum = str_replace("(", "", $store_phnum);
+                            $store_phnum = str_replace(")", "", $store_phnum);
+                            $store_phnum = str_replace("-", "", $store_phnum);
+                        } else {
+                            $store_phnum = "";
+                        }
+
+                        $actl_shipping_addrss = array(
+                            "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                            "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
+                            "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                            "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                            "phone" => $store_phnum,
+                            "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                            "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                            "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                            "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                        );
+                    } else {
+                        $actl_shipping_addrss = array();
+                    }
                     // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     // echo "<pre>";
                     // print_r($final_array);
                     // echo "</pre>";
 
                     // Define the order data
-                    // $order_data = [
-                    //     "order" => [
-                    //         "line_items" => $line_items,
-                    //         "financial_status"=>"pending",
-                    //         "shipping_address" => [
-                    //             "first_name" => "John",
-                    //             "last_name" => "Doe",
-                    //             "address1" => "123 Main St",
-                    //             "phone" => "555-555-5555",
-                    //             "city" => "City",
-                    //             "province" => "State",
-                    //             "country" => "Country",
-                    //             "zip" => "12345"
-                    //         ],
-                    //         "discount_codes" => [
-                    //             [
-                    //                 "code" => "partialcode",
-                    //                 "amount" => $paid_price,
-                    //                 "type" => "fixed_amount"
-                    //             ]
-                    //         ]
-                    //     ]
-                    // ];
-                    //  echo "<pre>";
-                    // print_r($order_data);
-                    // echo "</pre>";
+                    $order_data = [
+                        "order" => [
+                            "line_items" => $line_items,
+                            "financial_status" => "pending",
+                            "shipping_address" => [
+                                "first_name" => "John",
+                                "last_name" => "Doe",
+                                "address1" => "123 Main St",
+                                "phone" => "555-555-5555",
+                                "city" => "City",
+                                "province" => "State",
+                                "country" => "Country",
+                                "zip" => "12345"
+                            ],
+                            "discount_codes" => [
+                                [
+                                    "code" => "partialcode",
+                                    "amount" => $paid_price,
+                                    "type" => "fixed_amount"
+                                ]
+                            ]
+                        ]
+                    ];
+                    echo "<pre>";
+                    print_r($order_data);
+                    echo "</pre>";
 
-                   
+
 
                     // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
@@ -2268,8 +2280,8 @@ class Home extends BaseController
                 "full_chk_btn_color" => $this->request->getPost('full_chk_btn_color'),
                 //"cart_form_class" => $this->request->getPost('cart_form_class'),
                 //"addcartbtn_cg" => $this->request->getPost('addcartbtn_cg'),
-               // "cg_chkout_btn_class" => $this->request->getPost('cg_chkout_btn_class'),
-               // "cg_cart_remove_class" => $this->request->getPost('cg_cart_remove_class'),
+                // "cg_chkout_btn_class" => $this->request->getPost('cg_chkout_btn_class'),
+                // "cg_cart_remove_class" => $this->request->getPost('cg_cart_remove_class'),
                 "cart_summary_back_color" => $this->request->getPost('cart_summary_back_color'),
                 "cart_summart_textc" => $this->request->getPost('cart_summart_textc'),
                 "shop_url" => $_GET['shop']
