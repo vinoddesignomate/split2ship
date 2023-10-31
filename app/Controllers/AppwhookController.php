@@ -586,7 +586,7 @@ class AppwhookController extends BaseController
                                     "tax_lines" => [
                                         [
                                             "price" => 10,
-                                            "rate" => "0.18",
+                                            "rate" => 0.18,
                                             "title" => "IGST"
                                         ]
                                     ]
