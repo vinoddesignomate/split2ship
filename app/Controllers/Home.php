@@ -133,8 +133,8 @@ class Home extends BaseController
                                 "requires_shipping" => true
                             );
                             $tax_lines = [];
-                            if (!empty($products->tax_lines)) {
-                                foreach ($products->tax_lines as $tax_items) {
+                            if (!empty($products['tax_lines'])) {
+                                foreach ($products['tax_lines'] as $tax_items) {
                                     $taxamount = $item_price * $tax_items['rate'];
                                     $tax_lines[] = [
                                         'title' => $tax_items['title'],
