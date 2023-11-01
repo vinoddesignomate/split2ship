@@ -197,7 +197,7 @@ class Home extends BaseController
                     // echo "</pre>";
 
                     // Define the order data
-                    $linitemdisount+$paid_price;
+                    $finaldiscount = $linitemdisount+$paid_price;
                     $order_data = [
                         "order" => [
                             "line_items" => $line_items,
@@ -223,7 +223,7 @@ class Home extends BaseController
                             "discount_codes" => [
                                 [
                                     "code" => "partialcode+itemdiscount",
-                                    "amount" => $paid_price,
+                                    "amount" => $finaldiscount,
                                     "type" => "fixed_amount"
                                 ]
                             ],
