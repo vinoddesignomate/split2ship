@@ -224,7 +224,9 @@ class FrontController extends BaseController
 
                     //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                     if ($item_cart['price'] != $item_cart['item_original_price']) {
-                        $coupencodeprice = $item_cart['item_original_price'] - $item_cart['price'];
+
+                        
+                        $coupencodeprice = $item_cart['item_original_price'] * $item_cart['qty'] - $item_cart['price'];
                         $getcpncodep = $body_data_decode['getcpncode'];
                         if ($getcpncodep != "") {
                             $couponname = $getcpncodep;
