@@ -118,12 +118,12 @@ class FrontController extends BaseController
             $chekpartial = 0;
             $remaining_price = 0;
             $illp = 0;
-            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                echo "<pre>";
-                print_r($cartarray);
-                echo "</pre>";
-                //die();
-            }
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //     echo "<pre>";
+            //     print_r($cartarray);
+            //     echo "</pre>";
+            //     die();
+            // }
 
             // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
             //     $reqship = false;
@@ -299,12 +299,12 @@ class FrontController extends BaseController
             //echo $chekpartial;
             //    print_r($line_item_arra);
 
-            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                echo "line_item_arra<pre>";
-                print_r($line_item_arra);
-                echo "</pre>";
-                die();
-            }
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //     echo "line_item_arra<pre>";
+            //     print_r($line_item_arra);
+            //     echo "</pre>";
+            //     die();
+            // }
             $final_total_price_rem = str_replace("-", "", $remaining_price);
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
