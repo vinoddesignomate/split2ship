@@ -81,7 +81,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5529568018736.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5529704202544.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -121,13 +121,7 @@ class Home extends BaseController
                                 "gift_card" => true,
                                 "sku" => $prosku,
                                 "grams" => $products['grams'],
-                                // "applied_discount" => array(
-                                //     "description" => 'Partial Payment',
-                                //     "title" => 'Partial Payment',
-                                //     "value_type" => "fixed_amount",
-                                //     "value" => $item_price . ".00",
-                                //     "amount" => $item_price . ".00",
-                                // ),
+
                                 "properties" => array(
                                     array("name" => "Note", "value" => "Actual order"),
                                     array("name" => "full_pay", "value" => $item_price)
@@ -197,6 +191,13 @@ class Home extends BaseController
                         "order" => [
                             "line_items" => $line_items,
                             "financial_status" => "pending",
+                            "transactions" => [
+                                [
+                                    "kind" => "authorization",
+                                    "status" => "success",
+                                    "gateway" => "Cash on Delivery"
+                                ]
+                            ],
                             "shipping_address" => [
                                 "first_name" => "John",
                                 "last_name" => "Doe",
@@ -213,7 +214,17 @@ class Home extends BaseController
                                     "amount" => $paid_price,
                                     "type" => "fixed_amount"
                                 ]
-                            ]
+                            ],
+                            "customer" => [
+                                "id" => $getprietuleidrec['order']['customer']['id']
+                            ],
+                            "note_attributes" => [
+                                [
+                                    "name" => "Suffix",
+                                    "value" => $getprietuleidrec['order']['name'] . '-SplitOrder'  # Add your desired suffix here
+                                ]
+                            ],
+                            "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
                         ]
                     ];
                     echo "<pre>";
@@ -222,11 +233,11 @@ class Home extends BaseController
 
 
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
+                    echo "<pre>";
+                    print_r(json_decode($getorderarry));
+                    echo "</pre>";
 
                     // echo $getorderarry;
 
