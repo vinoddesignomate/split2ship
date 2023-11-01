@@ -145,7 +145,8 @@ class Home extends BaseController
                                         $taxamount = $tax_price * $tax_items['rate'];
                                        
                                     }
-                                    $taxamounttotal = $taxamounttotal+$taxamount;
+                                    $getitemtx = $tax_price+$taxamount;
+                                    $taxamounttotal = $taxamounttotal+$getitemtx;
                                     $tax_lines[] = [
                                         'title' => $tax_items['title'],
                                         'price' => $taxamount,
