@@ -601,7 +601,7 @@ class AppwhookController extends BaseController
                             $resposne_array = array("name" => "actual order_data" . json_encode($order_data));
                             $this->user_model->check_test_response($resposne_array);
 
-                            $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
+                           /* $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
                             $decode_get_actual_orders = json_decode($get_actual_orders);
 
@@ -624,7 +624,7 @@ class AppwhookController extends BaseController
                                 }
                               }';
 
-                            $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
+                            $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);*/
                         }
                     }
 
