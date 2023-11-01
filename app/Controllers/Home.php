@@ -107,7 +107,7 @@ class Home extends BaseController
                             }
 
                             if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
-                                $item_price = $products['properties'][2]['value'] + $products['properties'][2]['value'];
+                                $item_price = $products['properties'][2]['value'] + $products['properties'][3]['value'];
                                 $productvarient = $products['properties'][1]['value'];
                                 $paidprice_get = $products['price'];
                             } else {
