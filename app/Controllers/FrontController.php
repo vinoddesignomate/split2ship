@@ -179,28 +179,46 @@ class FrontController extends BaseController
                         $adddsicount = array();
                     }
                     //calculating partial product discount amount end code
-
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "sku" => $itmeskysplit,
-                        //"product_id" => $item_cart['product_id'],
-                        "requires_shipping" => $reqship,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                            $adddsicount
-                            //array("name" => "Discount", "value" => $item_cart['product_id']),
-                            // array("name" => "psku", "value" => $itmeskysplit)
-                        )
-                    );
-
-
+                    if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                        $line_item  = array(
+                            "title" => $item_cart['title'] . $size_order_namenn,
+                            "price" => $final_price,
+                            "quantity" => $item_cart['qty'],
+                            "sku" => $itmeskysplit,
+                            //"product_id" => $item_cart['product_id'],
+                            "requires_shipping" => $reqship,
+                            "grams" => $item_cart['grams'],
+                            "gift_card" => true,
+                            "properties" => array(
+                                array("name" => "Note", "value" => "Initial Partial Payment"),
+                                array("name" => "variant_code", "value" => $item_cart['id']),
+                                array("name" => "partial_pay", "value" => $item_cart['price']),
+                                array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                                $adddsicount
+                                //array("name" => "Discount", "value" => $item_cart['product_id']),
+                                // array("name" => "psku", "value" => $itmeskysplit)
+                            )
+                        );
+                    } else {
+                        $line_item  = array(
+                            "title" => $item_cart['title'] . $size_order_namenn,
+                            "price" => $final_price,
+                            "quantity" => $item_cart['qty'],
+                            "sku" => $itmeskysplit,
+                            //"product_id" => $item_cart['product_id'],
+                            "requires_shipping" => $reqship,
+                            "grams" => $item_cart['grams'],
+                            "gift_card" => true,
+                            "properties" => array(
+                                array("name" => "Note", "value" => "Initial Partial Payment"),
+                                array("name" => "variant_code", "value" => $item_cart['id']),
+                                array("name" => "partial_pay", "value" => $item_cart['price']),
+                                array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
+                                //array("name" => "Discount", "value" => $item_cart['product_id']),
+                                // array("name" => "psku", "value" => $itmeskysplit)
+                            )
+                        );
+                    }
                     $remaining_price = $remaining_price + $item_cart['rem_p'];
                 } else {
 
