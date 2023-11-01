@@ -118,12 +118,12 @@ class FrontController extends BaseController
             $chekpartial = 0;
             $remaining_price = 0;
             $illp = 0;
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //     echo "<pre>";
-            //     print_r($cartarray);
-            //     echo "</pre>";
-            //     die();
-            // }
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                echo "<pre>";
+                print_r($cartarray);
+                echo "</pre>";
+                die();
+            }
 
             // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
             //     $reqship = false;
@@ -976,9 +976,9 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $shopname);
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
-         echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+        //  echo "getprietuleidrec<pre>";
+        //             print_r($getprietuleidrec);
+        //             echo "</pre>";
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
             if ($allcoupon['target_type'] != 'shipping_line') {
