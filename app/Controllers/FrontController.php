@@ -122,7 +122,7 @@ class FrontController extends BaseController
                 echo "<pre>";
                 print_r($cartarray);
                 echo "</pre>";
-                die();
+                //die();
             }
 
             // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
@@ -166,6 +166,19 @@ class FrontController extends BaseController
                     $chekpartial = 1;
                     $final_price = $item_cart['price'] / $item_cart['qty'];
 
+                    //calculating partial product discount amount start code
+
+                    $remamoun = str_replace("-", "", $item_cart['rem_p']);
+                    $payprice = $item_cart['price'];
+                    $total_price = $payprice + $remamoun;
+                    $itmorgprice = $item_cart['item_original_price'] * $item_cart['qty'];
+                    $dicountcodepay = $itmorgprice - $total_price;
+                    if ($dicountcodepay > 0) {
+                        $adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
+                    } else {
+                        $adddsicount = array();
+                    }
+                    //calculating partial product discount amount end code
 
                     $line_item  = array(
                         "title" => $item_cart['title'] . $size_order_namenn,
@@ -181,7 +194,8 @@ class FrontController extends BaseController
                             array("name" => "variant_code", "value" => $item_cart['id']),
                             array("name" => "partial_pay", "value" => $item_cart['price']),
                             array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                            // array("name" => "product_id_code", "value" => $item_cart['product_id']),
+                            $adddsicount
+                            //array("name" => "Discount", "value" => $item_cart['product_id']),
                             // array("name" => "psku", "value" => $itmeskysplit)
                         )
                     );
@@ -265,12 +279,12 @@ class FrontController extends BaseController
             //echo $chekpartial;
             //    print_r($line_item_arra);
 
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //     echo "line_item_arra<pre>";
-            //     print_r($line_item_arra);
-            //     echo "</pre>";
-            //     die();
-            // }
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                echo "line_item_arra<pre>";
+                print_r($line_item_arra);
+                echo "</pre>";
+                die();
+            }
             $final_total_price_rem = str_replace("-", "", $remaining_price);
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
