@@ -112,11 +112,13 @@ class Home extends BaseController
                                 $productvarient = $products['properties'][1]['value'];
                                 $paidprice_get = $products['price'];
                                 $item_discount_item = $products['properties'][4]['value'];
+                                $tax_price = $products['properties'][3]['value'];
                             } else {
                                 $item_price = $products['price'];
                                 $item_discount_item = $products['total_discount'];
                                 $productvarient = $products['variant_id'];
                                 $paidprice_get = $products['properties'][1]['value'];
+                                $tax_price = 0;
                             }
                             $total_item_price = $total_item_price + $item_price;
                             $linitemdisount = $linitemdisount+$item_discount_item;
@@ -136,7 +138,11 @@ class Home extends BaseController
                             $tax_lines = [];
                             if (!empty($products['tax_lines'])) {
                                 foreach ($products['tax_lines'] as $tax_items) {
-                                    $taxamount = $item_price * $tax_items['rate'];
+                                    if ($tax_price == 0) {
+                                        $taxamount = 0;
+                                    } else {
+                                        $taxamount = $tax_price * $tax_items['rate'];
+                                    }
                                     $tax_lines[] = [
                                         'title' => $tax_items['title'],
                                         'price' => $taxamount,
