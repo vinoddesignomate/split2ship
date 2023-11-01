@@ -97,6 +97,7 @@ class Home extends BaseController
                     $total_item_price = 0;
                     $line_items = []; // Initialize an array to store line items
                     $linitemdisount=0;
+                    $taxamounttotal=0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
@@ -142,13 +143,17 @@ class Home extends BaseController
                                         $taxamount = 0;
                                     } else {
                                         $taxamount = $tax_price * $tax_items['rate'];
+                                       
                                     }
+                                    $taxamounttotal = $taxamounttotal+$taxamount;
                                     $tax_lines[] = [
                                         'title' => $tax_items['title'],
                                         'price' => $taxamount,
                                         'rate' => $tax_items['rate'],
                                     ];
                                 }
+                            }else{
+                                $taxamounttotal = $taxamounttotal+$tax_price;
                             }
 
                             $line_items[] =
@@ -244,18 +249,18 @@ class Home extends BaseController
                             ]
                         ]
                     ];
-                    echo "total_item_price=" . $total_item_price;
+                    echo "taxamounttotal=" . $taxamounttotal;
                     echo "<pre>";
                     print_r($order_data);
                     echo "</pre>";
 
 
 
-                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    echo "<pre>";
-                    print_r(json_decode($getorderarry));
-                    echo "</pre>";
+                    // echo "<pre>";
+                    // print_r(json_decode($getorderarry));
+                    // echo "</pre>";
 
                     // echo $getorderarry;
 
