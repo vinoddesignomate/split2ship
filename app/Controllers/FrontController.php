@@ -168,16 +168,17 @@ class FrontController extends BaseController
 
                     //calculating partial product discount amount start code
 
-                    $remamoun = str_replace("-", "", $item_cart['rem_p']);
-                    $payprice = $item_cart['price'];
-                    $total_price = $payprice + $remamoun;
-                    $itmorgprice = $item_cart['item_original_price'] * $item_cart['qty'];
-                    $dicountcodepay = $itmorgprice - $total_price;
-                    
+
+
                     //calculating partial product discount amount end code
                     if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-
-                        if ($dicountcodepay > 0) {
+                        if ($item_cart['price'] != $item_cart['item_original_price']) {
+                            $remamoun = str_replace("-", "", $item_cart['rem_p']);
+                            $payprice = $item_cart['price'];
+                            $total_price = $payprice + $remamoun;
+                            $itmorgprice = $item_cart['item_original_price'] * $item_cart['qty'];
+                            $dicountcodepay = $itmorgprice - $total_price;
+                            //if ($dicountcodepay > 0) {
                             $adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
                             $line_item  = array(
                                 "title" => $item_cart['title'] . $size_order_namenn,
@@ -216,8 +217,6 @@ class FrontController extends BaseController
                                 )
                             );
                         }
-
-                        
                     } else {
                         $line_item  = array(
                             "title" => $item_cart['title'] . $size_order_namenn,
@@ -244,7 +243,7 @@ class FrontController extends BaseController
                     //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                     if ($item_cart['price'] != $item_cart['item_original_price']) {
 
-                        
+
                         $coupencodeprice = $item_cart['item_original_price'] * $item_cart['qty'] - $item_cart['price'];
                         $getcpncodep = $body_data_decode['getcpncode'];
                         if ($getcpncodep != "") {
@@ -322,7 +321,7 @@ class FrontController extends BaseController
             //     echo "line_item_arra<pre>";
             //     print_r($line_item_arra);
             //     echo "</pre>";
-               
+
             // }
             $final_total_price_rem = str_replace("-", "", $remaining_price);
 
