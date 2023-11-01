@@ -119,7 +119,7 @@ class Home extends BaseController
                                 $productvarient = $products['variant_id'];
                                 $paidprice_get = $products['properties'][1]['value'];
                                 $tax_price = 0;
-                            }
+                            }  
                             $total_item_price = $total_item_price + $item_price;
                             $linitemdisount = $linitemdisount+$item_discount_item;
                             $line_item[] = array(
