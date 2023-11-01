@@ -96,6 +96,7 @@ class Home extends BaseController
                     $paid_price = 0;
                     $total_item_price = 0;
                     $line_items = []; // Initialize an array to store line items
+                    $linitemdisount=0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
@@ -118,6 +119,7 @@ class Home extends BaseController
                                 $paidprice_get = $products['properties'][1]['value'];
                             }
                             $total_item_price = $total_item_price + $item_price;
+                            $linitemdisount = $linitemdisount+$item_discount_item;
                             $line_item[] = array(
                                 "variant_id" => $productvarient,
                                 "quantity" => $products['quantity'],
@@ -148,11 +150,11 @@ class Home extends BaseController
                                     "variant_id" => $productvarient,
                                     "quantity" => $products['quantity'],
                                     'tax_lines' => $tax_lines,
-                                    "applied_discount" => [
-                                        "value_type" => 'fixed_amount',
-                                        "value" => $item_discount_item,
-                                        "amount" => $item_discount_item
-                                    ]
+                                    // "applied_discount" => [
+                                    //     "value_type" => 'fixed_amount',
+                                    //     "value" => $item_discount_item,
+                                    //     "amount" => $item_discount_item
+                                    // ]
                                 ];
 
 
@@ -221,6 +223,11 @@ class Home extends BaseController
                                 [
                                     "code" => "partialcode",
                                     "amount" => $paid_price,
+                                    "type" => "fixed_amount"
+                                ],
+                                [
+                                    "code" => "itemdiscount",
+                                    "amount" => $linitemdisount,
                                     "type" => "fixed_amount"
                                 ]
                             ],
