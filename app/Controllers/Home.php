@@ -121,7 +121,7 @@ class Home extends BaseController
                                 $paidprice_get = $products['properties'][1]['value'];
                                 $tax_price = 0;
                             }  
-                            $total_item_price = $total_item_price + $item_price;
+                            
                             $linitemdisount = $linitemdisount+$item_discount_item;
                             $line_item[] = array(
                                 "variant_id" => $productvarient,
@@ -218,7 +218,7 @@ class Home extends BaseController
                                 [
                                     "kind" => "authorization",
                                     "status" => "success",
-                                    "amount" => 252,
+                                    "amount" => $taxamounttotal,
                                     "gateway" => "Cash on Delivery"
                                 ]
                             ],

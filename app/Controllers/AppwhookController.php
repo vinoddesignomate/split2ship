@@ -456,6 +456,8 @@ class AppwhookController extends BaseController
 
                             $getprietuleid = $this->common->create_fulfilmentorders($get_resulsts->access_token, $_GET['whshp'], $fulfilarray);
                             $paid_price = 0;
+                            $linitemdisount = 0;
+                            $taxamounttotal = 0;
                             foreach ($jsndata->line_items as $products) {
                                 if ($products->name != "Partial Pending Payment") {
                                     // if ($products->sku == "") {
@@ -470,14 +472,25 @@ class AppwhookController extends BaseController
                                         $item_price = $products->properties[2]->value;
                                         $tax_price = $products->properties[3]->value;
                                         $productvarient = $products->properties[1]->value;
+                                        if (isset($products->properties[4]->value)) {
+                                            $item_discount_item = $products->properties[4]->value;
+                                        } else {
+                                            $item_discount_item = 0;
+                                        }
                                         $paidprice_get = $products->price;
                                     } else {
                                         $item_price = $products->price;
+                                        if ($products->total_discount != "") {
+                                            $item_discount_item = $products->total_discount;
+                                        } else {
+                                            $item_discount_item = 0;
+                                        }
                                         $productvarient = $products->variant_id;
                                         $tax_price = 0;
                                         $paidprice_get = $products->properties[1]->value;
                                     }
 
+                                    $linitemdisount = $linitemdisount + $item_discount_item;
                                     $line_item[] = array(
                                         "variant_id" => $productvarient,
                                         "quantity" => $products->quantity,
@@ -505,13 +518,16 @@ class AppwhookController extends BaseController
                                             } else {
                                                 $taxamount = $tax_price * $tax_items->rate;
                                             }
-
+                                            $getitemtx = $tax_price + $taxamount;
+                                            $taxamounttotal = $taxamounttotal + $getitemtx;
                                             $tax_lines[] = [
                                                 'title' => $tax_items->title,
                                                 'price' => $taxamount,
                                                 'rate' => $tax_items->rate,
                                             ];
                                         }
+                                    } else {
+                                        $taxamounttotal = $taxamounttotal + $tax_price;
                                     }
 
                                     $line_items[] =
@@ -562,11 +578,26 @@ class AppwhookController extends BaseController
                                 $actl_shipping_addrss = array();
                             }
                             // $final_array = array("order" => array("line_items" => $line_item, "email" => $jsndata->email, "shipping_address" => $actl_shipping_addrss, "discount_codes" => $discoutnarray));
+                            if ($linitemdisount > 0) {
+                                $finaldiscount = $linitemdisount + $paid_price;
+                                $titla_name = "Partial Payment+Applied Discount";
+                            } else {
+                                $finaldiscount = $paid_price;
+                                $titla_name = "Partial Payment";
+                            }
 
                             $order_data = [
                                 "order" => [
                                     "line_items" => $line_items,
                                     "financial_status" => "pending",
+                                    "transactions" => [
+                                        [
+                                            "kind" => "authorization",
+                                            "status" => "success",
+                                            "amount" => $taxamounttotal,
+                                            "gateway" => "Cash on Delivery"
+                                        ]
+                                    ],
                                     "shipping_address" => [
                                         "first_name" => $jsndata->shipping_address->first_name,
                                         "last_name" => $jsndata->shipping_address->last_name,
@@ -589,19 +620,19 @@ class AppwhookController extends BaseController
                                     "name" => $jsndata->name . '-SplitOrder',
                                     "discount_codes" => [
                                         [
-                                            "code" => "Partial Payment",
-                                            "amount" => $paid_price,
+                                            "code" => $titla_name,
+                                            "amount" => $finaldiscount,
                                             "type" => "fixed_amount"
                                         ]
                                     ]
                                 ]
-                            ];  
+                            ];
 
 
                             $resposne_array = array("name" => "actual order_data" . json_encode($order_data));
                             $this->user_model->check_test_response($resposne_array);
 
-                           /* $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
+                            /* $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
                             $decode_get_actual_orders = json_decode($get_actual_orders);
 
