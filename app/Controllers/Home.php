@@ -94,6 +94,7 @@ class Home extends BaseController
                     // die();
 
                     $paid_price = 0;
+                    $total_item_price = 0;
                     $line_items = []; // Initialize an array to store line items
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
@@ -114,7 +115,7 @@ class Home extends BaseController
                                 $productvarient = $products['variant_id'];
                                 $paidprice_get = $products['properties'][1]['value'];
                             }
-
+                            $total_item_price = $total_item_price+$item_price;
                             $line_item[] = array(
                                 "variant_id" => $productvarient,
                                 "quantity" => $products['quantity'],
@@ -227,6 +228,7 @@ class Home extends BaseController
                             ]
                         ]
                     ];
+                    echo "total_item_price=".$total_item_price;
                     echo "<pre>";
                     print_r($order_data);
                     echo "</pre>";
