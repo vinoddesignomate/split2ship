@@ -195,6 +195,7 @@ class Home extends BaseController
                                 [
                                     "kind" => "authorization",
                                     "status" => "success",
+                                    "amount" => 252,
                                     "gateway" => "Cash on Delivery"
                                 ]
                             ],
