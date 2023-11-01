@@ -91,7 +91,7 @@ class Home extends BaseController
                     echo "getprietuleidrec<pre>";
                     print_r($getprietuleidrec);
                     echo "</pre>";
-                     die();
+                    // die();
 
                     $paid_price = 0;
                     $total_item_price = 0;
@@ -110,12 +110,14 @@ class Home extends BaseController
                                 $item_price = $products['properties'][2]['value'] + $products['properties'][3]['value'];
                                 $productvarient = $products['properties'][1]['value'];
                                 $paidprice_get = $products['price'];
+                                $item_discount_item = $products['properties'][4]['value'];
                             } else {
                                 $item_price = $products['price'];
+                                $item_discount_item = $products['total_discount'];
                                 $productvarient = $products['variant_id'];
                                 $paidprice_get = $products['properties'][1]['value'];
                             }
-                            $total_item_price = $total_item_price+$item_price;
+                            $total_item_price = $total_item_price + $item_price;
                             $line_item[] = array(
                                 "variant_id" => $productvarient,
                                 "quantity" => $products['quantity'],
@@ -146,11 +148,11 @@ class Home extends BaseController
                                     "variant_id" => $productvarient,
                                     "quantity" => $products['quantity'],
                                     'tax_lines' => $tax_lines,
-                                    // "applied_discount" =>[
-                                    //     "value_type" =>'fixed_amount',
-                                    //     "value" =>'',
-                                    //     "amount" =>'',
-                                    // ]
+                                    "applied_discount" => [
+                                        "value_type" => 'fixed_amount',
+                                        "value" => $item_discount_item,
+                                        "amount" => $item_discount_item
+                                    ]
                                 ];
 
 
@@ -233,18 +235,18 @@ class Home extends BaseController
                             ]
                         ]
                     ];
-                    echo "total_item_price=".$total_item_price;
+                    echo "total_item_price=" . $total_item_price;
                     echo "<pre>";
                     print_r($order_data);
                     echo "</pre>";
 
 
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
+                    echo "<pre>";
+                    print_r(json_decode($getorderarry));
+                    echo "</pre>";
 
                     // echo $getorderarry;
 
