@@ -678,10 +678,10 @@ class AppwhookController extends BaseController
                             $return_array = array();
 
 
-                            if ($jsndata->billing_address->phone == "") {
+                            if ($jsndata->shipping_address->phone == "") {
                                 $phnum = "9865986598";
                             } else {
-                                $phnum = str_replace(" ", "", $jsndata->billing_address->phone);
+                                $phnum = str_replace(" ", "", $jsndata->shipping_address->phone);
                                 $phnum = str_replace("(", "", $phnum);
                                 $phnum = str_replace(")", "", $phnum);
                                 $phnum = str_replace("-", "", $phnum);
@@ -703,8 +703,8 @@ class AppwhookController extends BaseController
                             //     $shipping_pay_amount = $jsndata->total_price;
                             // }
                             $addres2orders = "";
-                            if (isset($jsndata->billing_address->address2)) {
-                                $addres2orders = " " . $jsndata->billing_address->address2;
+                            if (isset($jsndata->shipping_address->address2)) {
+                                $addres2orders = " " . $jsndata->shipping_address->address2;
                             }
 
                             $weightkgs = 1;
@@ -722,13 +722,13 @@ class AppwhookController extends BaseController
                                 "order_date" => $jsndata->created_at,
                                 // "channel_id" => $shiprocket_info[0]->channel_id,
                                 "comment" => $shipping_pay_method,
-                                "billing_customer_name" => $jsndata->billing_address->first_name,
-                                "billing_last_name" => $jsndata->billing_address->last_name,
-                                "billing_address" => $jsndata->billing_address->address1 . $addres2orders,
-                                "billing_city" => $jsndata->billing_address->city,
-                                "billing_pincode" => $jsndata->billing_address->zip,
-                                "billing_state" => $jsndata->billing_address->province,
-                                "billing_country" => $jsndata->billing_address->country,
+                                "billing_customer_name" => $jsndata->shipping_address->first_name,
+                                "billing_last_name" => $jsndata->shipping_address->last_name,
+                                "billing_address" => $jsndata->shipping_address->address1 . $addres2orders,
+                                "billing_city" => $jsndata->shipping_address->city,
+                                "billing_pincode" => $jsndata->shipping_address->zip,
+                                "billing_state" => $jsndata->shipping_address->province,
+                                "billing_country" => $jsndata->shipping_address->country,
                                 "billing_email" => $jsndata->customer->email,
                                 "billing_phone" => trim($phnum),
                                 "shipping_is_billing" => true,
