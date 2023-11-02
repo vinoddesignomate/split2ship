@@ -245,7 +245,7 @@ class FrontController extends BaseController
 
 
                         $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
-                        $coupencodeprice = $coupencodeprice/$item_cart['qty'];
+                        $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
                         $getcpncodep = $body_data_decode['getcpncode'];
                         if ($getcpncodep != "") {
                             $couponname = $getcpncodep;
