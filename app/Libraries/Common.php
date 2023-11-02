@@ -291,7 +291,7 @@ class Common
         //echo $response;
 
         curl_close($curl);
-        echo $response;
+       // echo $response;
         $return_array = json_decode($response);
         // print_r($return_array);
         return $return_array->draft_order->invoice_url;
