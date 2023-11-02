@@ -98,6 +98,7 @@ class Home extends BaseController
                     $line_items = []; // Initialize an array to store line items
                     $linitemdisount=0;
                     $taxamounttotal=0;
+                    $final_total_orderval=0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
@@ -109,7 +110,10 @@ class Home extends BaseController
                             }
 
                             if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
-                                $item_price = $products['properties'][2]['value'] + $products['properties'][3]['value'];
+                                $item_price_actualval = $products['properties'][2]['value'] + $products['properties'][3]['value'];
+                                if(isset($products['properties'][4]['value'])){
+                                   $item_price_actualval = $item_price_actualval+ $products['properties'][4]['value'];
+                                }
                                 $productvarient = $products['properties'][1]['value'];
                                 $paidprice_get = $products['price'];
                                 $item_discount_item = $products['properties'][4]['value'];
@@ -120,8 +124,9 @@ class Home extends BaseController
                                 $productvarient = $products['variant_id'];
                                 $paidprice_get = $products['properties'][1]['value'];
                                 $tax_price = 0;
+                                $item_price_actualval = $products['properties'][1]['value']+$products['total_discount'];
                             }  
-                            
+                            $final_total_orderval = $final_total_orderval+$item_price_actualval;
                             $linitemdisount = $linitemdisount+$item_discount_item;
                             $line_item[] = array(
                                 "variant_id" => $productvarient,
@@ -251,7 +256,7 @@ class Home extends BaseController
                             ]
                         ]
                     ];
-                    echo "taxamounttotal=" . $taxamounttotal;
+                    echo "final_total_orderval=" . $final_total_orderval;
                     echo "<pre>";
                     print_r($order_data);
                     echo "</pre>";
