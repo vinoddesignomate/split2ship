@@ -182,7 +182,13 @@ class FrontController extends BaseController
                             //$adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
                             //$discounfroundedValue = round($dicountcodepay, 2);
                             //$formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
-                            $formattedValuediscount = sprintf("%.2f", $dicountcodepay);
+                            //$formattedValuediscount = sprintf("%.2f", $dicountcodepay);
+
+                           
+                            $roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
+                            $formattedValuediscount = number_format($roundedValue, 2, '.', '');
+
+
                             $line_item  = array(
                                 "title" => $item_cart['title'] . $size_order_namenn,
                                 "price" => $final_price,
@@ -249,10 +255,10 @@ class FrontController extends BaseController
 
 
                         $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
-                       
-                       $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
+
+                        $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
                         //$coupencodeprice = ($item_cart['line_level_total_discount'] / $item_cart['qty']);
-                       // $coupencodeprice = round($coupencodeprice);
+                        // $coupencodeprice = round($coupencodeprice);
 
                         $getcpncodep = $body_data_decode['getcpncode'];
                         if ($getcpncodep != "") {
