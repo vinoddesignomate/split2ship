@@ -247,7 +247,7 @@ class FrontController extends BaseController
                         $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
                         //$coupencodeprice = ($coupencodeprice / $item_cart['qty']);
                         $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
-                        $coupencodeprice = round($coupencodeprice);
+                       // $coupencodeprice = round($coupencodeprice);
 
                         $getcpncodep = $body_data_decode['getcpncode'];
                         if ($getcpncodep != "") {
@@ -265,8 +265,8 @@ class FrontController extends BaseController
                                 "description" => $couponname,
                                 "title" => $couponname,
                                 "value_type" => "fixed_amount",
-                                "value" => $coupencodeprice . ".00",
-                                "amount" => $coupencodeprice . ".00",
+                                "value" => $coupencodeprice,
+                                "amount" => $coupencodeprice,
                             ),
                             "properties" => array(
                                 array("name" => "Note", "value" => "Full Payment"),
