@@ -179,7 +179,7 @@ class FrontController extends BaseController
                             $itmorgprice = $item_cart['original_line_price'];
                             $dicountcodepay = $itmorgprice - $total_price;
                             //if ($dicountcodepay > 0) {
-                            $adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
+                            //$adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
                             $line_item  = array(
                                 "title" => $item_cart['title'] . $size_order_namenn,
                                 "price" => $final_price,
@@ -192,9 +192,9 @@ class FrontController extends BaseController
                                 "properties" => array(
                                     array("name" => "Note", "value" => "Initial Partial Payment"),
                                     array("name" => "variant_code", "value" => $item_cart['id']),
-                                    array("name" => "partial_pay", "value" => $item_cart['price']),
+                                    array("name" => "partial_pay", "value" => number_format($item_cart['price'], 2, '.', '')),
                                     array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                                    array("name" => "Discount", "value" => $dicountcodepay)
+                                    array("name" => "Discount", "value" => number_format($dicountcodepay, 2, '.', ''))
                                     //array("name" => "Discount", "value" => $item_cart['product_id']),
                                     // array("name" => "psku", "value" => $itmeskysplit)
                                 )
