@@ -115,7 +115,7 @@ class Home extends BaseController
                                    $item_price_actualval = $item_price_actualval+ $products['properties'][4]['value'];
                                 }
                                 $productvarient = $products['properties'][1]['value'];
-                                $paidprice_get = $products['price'];
+                                $paidprice_get = $products['properties'][2]['value'];
                                 $item_discount_item = $products['properties'][4]['value'];
                                 $tax_price = $products['properties'][3]['value'];
                             } else {
