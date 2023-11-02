@@ -119,9 +119,9 @@ class FrontController extends BaseController
             $remaining_price = 0;
             $illp = 0;
             if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                echo "<pre>";
-                print_r($cartarray);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($cartarray);
+                // echo "</pre>";
                 //die();
             }
 
@@ -323,14 +323,15 @@ class FrontController extends BaseController
                 echo "line_item_arra<pre>";
                 print_r($line_item_arra);
                 echo "</pre>";
-                
-
             }
             $final_total_price_rem = str_replace("-", "", $remaining_price);
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-
-            return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                return $this->common->draft_order_creat2($get_details->access_token, $shopname, $final_array);
+            } else {
+                return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+            }
         } else {
             echo "zip_enabled";
         }

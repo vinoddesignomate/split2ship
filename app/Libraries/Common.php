@@ -253,6 +253,49 @@ class Common
         // print_r($return_array);
         return $return_array->draft_order->invoice_url;
     }
+    public function draft_order_creat2($token, $shopname, $final_array)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $shopname . '/admin/api/2022-10/draft_orders.json',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            // CURLOPT_POSTFIELDS => '{
+            //     "draft_order":{
+            //         "line_items":[
+            //             {
+            //             "title":"Test One",
+            //             "price":"20.00",
+            //             "quantity":1
+            //            },
+            //            {
+            //            "variant_id": 43254815850724,
+            //            "quantity": 1
+            //            }
+            //     ]                   
+            //     }
+            // }', 
+            CURLOPT_POSTFIELDS => json_encode($final_array),
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        //echo $response;
+
+        curl_close($curl);
+        echo $response;
+        $return_array = json_decode($response);
+        // print_r($return_array);
+        return $return_array->draft_order->invoice_url;
+    }
     function create_custom_order($post_data, $store_token)
     {
 
