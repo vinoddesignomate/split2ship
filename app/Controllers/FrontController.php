@@ -194,7 +194,8 @@ class FrontController extends BaseController
                                     array("name" => "variant_code", "value" => $item_cart['id']),
                                     array("name" => "partial_pay", "value" => number_format($item_cart['price'], 2, '.', '')),
                                     array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                                    array("name" => "Discount", "value" => number_format($dicountcodepay, 2, '.', ''))
+                                    array("name" => "Discount", "value" => $dicountcodepay)
+                                    //array("name" => "Discount", "value" => number_format($dicountcodepay, 2, '.', ''))
                                     //array("name" => "Discount", "value" => $item_cart['product_id']),
                                     // array("name" => "psku", "value" => $itmeskysplit)
                                 )
@@ -245,8 +246,9 @@ class FrontController extends BaseController
 
 
                         $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
-                        //$coupencodeprice = ($coupencodeprice / $item_cart['qty']);
-                        $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
+                       
+                       $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
+                        //$coupencodeprice = ($item_cart['line_level_total_discount'] / $item_cart['qty']);
                        // $coupencodeprice = round($coupencodeprice);
 
                         $getcpncodep = $body_data_decode['getcpncode'];

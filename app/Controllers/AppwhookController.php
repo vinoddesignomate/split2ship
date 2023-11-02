@@ -492,25 +492,25 @@ class AppwhookController extends BaseController
                                     }
 
                                     $linitemdisount = $linitemdisount + $item_discount_item;
-                                    $line_item[] = array(
-                                        "variant_id" => $productvarient,
-                                        "quantity" => $products->quantity,
-                                        "gift_card" => true,
-                                        "sku" => $prosku,
-                                        "grams" => $products->grams,
-                                        // "applied_discount" => array(
-                                        //     "description" => 'Partial Payment',
-                                        //     "title" => 'Partial Payment',
-                                        //     "value_type" => "fixed_amount",
-                                        //     "value" => $item_price . ".00",
-                                        //     "amount" => $item_price . ".00",
-                                        // ),
-                                        "properties" => array(
-                                            array("name" => "Note", "value" => "Actual order"),
-                                            array("name" => "full_pay", "value" => $item_price)
-                                        ),
-                                        "requires_shipping" => true
-                                    );
+                                    // $line_item[] = array(
+                                    //     "variant_id" => $productvarient,
+                                    //     "quantity" => $products->quantity,
+                                    //     "gift_card" => true,
+                                    //     "sku" => $prosku,
+                                    //     "grams" => $products->grams,
+                                    //     // "applied_discount" => array(
+                                    //     //     "description" => 'Partial Payment',
+                                    //     //     "title" => 'Partial Payment',
+                                    //     //     "value_type" => "fixed_amount",
+                                    //     //     "value" => $item_price . ".00",
+                                    //     //     "amount" => $item_price . ".00",
+                                    //     // ),
+                                    //     "properties" => array(
+                                    //         array("name" => "Note", "value" => "Actual order"),
+                                    //         array("name" => "full_pay", "value" => $item_price)
+                                    //     ),
+                                    //     "requires_shipping" => true
+                                    // );
                                     $tax_lines = [];
                                     if (!empty($products->tax_lines)) {
                                         foreach ($products->tax_lines as $tax_items) {
