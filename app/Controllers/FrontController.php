@@ -118,12 +118,12 @@ class FrontController extends BaseController
             $chekpartial = 0;
             $remaining_price = 0;
             $illp = 0;
-            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                echo "<pre>";
-                print_r($cartarray);
-                echo "</pre>";
-                die();
-            }
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //     echo "<pre>";
+            //     print_r($cartarray);
+            //     echo "</pre>";
+            //     die();
+            // }
 
             // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
             //     $reqship = false;
@@ -176,7 +176,7 @@ class FrontController extends BaseController
                     if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                         if ($total_price != $item_cart['item_original_price']) {
 
-                            $itmorgprice = $item_cart['item_original_price'] * $item_cart['qty'];
+                            $itmorgprice = $item_cart['original_line_price'];
                             $dicountcodepay = $itmorgprice - $total_price;
                             //if ($dicountcodepay > 0) {
                             $adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
@@ -241,10 +241,10 @@ class FrontController extends BaseController
                 } else {
 
                     //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                    if ($item_cart['price'] != $item_cart['item_original_price']) {
+                    if ($item_cart['line_price'] != $item_cart['original_line_price']) {
 
 
-                        $coupencodeprice = $item_cart['item_original_price'] * $item_cart['qty'] - $item_cart['price'];
+                        $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
                         $getcpncodep = $body_data_decode['getcpncode'];
                         if ($getcpncodep != "") {
                             $couponname = $getcpncodep;
