@@ -321,6 +321,7 @@ class FrontController extends BaseController
                 echo "line_item_arra<pre>";
                 print_r($line_item_arra);
                 echo "</pre>";
+                
 
             }
             $final_total_price_rem = str_replace("-", "", $remaining_price);
