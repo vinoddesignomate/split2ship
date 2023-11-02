@@ -88,9 +88,9 @@ class Home extends BaseController
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
                     // die();
 
                     $paid_price = 0;
@@ -145,6 +145,7 @@ class Home extends BaseController
                                         $taxamount = $tax_price * $tax_items['rate'];
                                        
                                     }
+                                    echo "tax_price=".$tax_price;
                                     $getitemtx = $tax_price+$taxamount;
                                     $taxamounttotal = $taxamounttotal+$getitemtx;
                                     $tax_lines[] = [
