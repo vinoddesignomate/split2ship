@@ -185,8 +185,8 @@ class FrontController extends BaseController
                             //$formattedValuediscount = sprintf("%.2f", $dicountcodepay);
 
                            
-                            $roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
-                            $formattedValuediscount = number_format($roundedValue, 2, '.', '');
+                            //$roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
+                            $formattedValuediscount = number_format($dicountcodepay, 2, '.', '');
 
 
                             $line_item  = array(
