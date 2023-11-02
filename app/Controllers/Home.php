@@ -128,19 +128,19 @@ class Home extends BaseController
                             }  
                             $final_total_orderval = $final_total_orderval+$item_price_actualval;
                             $linitemdisount = $linitemdisount+$item_discount_item;
-                            $line_item[] = array(
-                                "variant_id" => $productvarient,
-                                "quantity" => $products['quantity'],
-                                "gift_card" => true,
-                                "sku" => $prosku,
-                                "grams" => $products['grams'],
+                            // $line_item[] = array(
+                            //     "variant_id" => $productvarient,
+                            //     "quantity" => $products['quantity'],
+                            //     "gift_card" => true,
+                            //     "sku" => $prosku,
+                            //     "grams" => $products['grams'],
 
-                                "properties" => array(
-                                    array("name" => "Note", "value" => "Actual order"),
-                                    array("name" => "full_pay", "value" => $item_price)
-                                ),
-                                "requires_shipping" => true
-                            );
+                            //     "properties" => array(
+                            //         array("name" => "Note", "value" => "Actual order"),
+                            //         array("name" => "full_pay", "value" => $item_price)
+                            //     ),
+                            //     "requires_shipping" => true
+                            // );
                             $tax_lines = [];
                             if (!empty($products['tax_lines'])) {
                                 foreach ($products['tax_lines'] as $tax_items) {
