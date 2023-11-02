@@ -180,8 +180,9 @@ class FrontController extends BaseController
                             $dicountcodepay = $itmorgprice - $total_price;
                             //if ($dicountcodepay > 0) {
                             //$adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
-                            $discounfroundedValue = round($dicountcodepay, 2);
-                            $formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
+                            //$discounfroundedValue = round($dicountcodepay, 2);
+                            //$formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
+                            $formattedValuediscount = sprintf("%.2f", $dicountcodepay);
                             $line_item  = array(
                                 "title" => $item_cart['title'] . $size_order_namenn,
                                 "price" => $final_price,
