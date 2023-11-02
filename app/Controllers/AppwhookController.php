@@ -657,7 +657,7 @@ class AppwhookController extends BaseController
 
                             $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
 
-                            $resposne_array = array("name" => "actual order invoice_email_snd=" . $invoice_email_snd);
+                            $resposne_array = array("name" => "actual order invoice_email_snd=" . json_encode($invoice_email_snd));
                             $this->user_model->check_test_response($resposne_array);
 
                         }
