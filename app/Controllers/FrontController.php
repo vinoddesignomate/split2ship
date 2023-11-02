@@ -169,13 +169,13 @@ class FrontController extends BaseController
                     //calculating partial product discount amount start code
 
 
-
+                    $remamoun = str_replace("-", "", $item_cart['rem_p']);
+                    $payprice = $item_cart['price'];
+                    $total_price = $payprice + $remamoun;
                     //calculating partial product discount amount end code
                     if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                        if ($item_cart['price'] != $item_cart['item_original_price']) {
-                            $remamoun = str_replace("-", "", $item_cart['rem_p']);
-                            $payprice = $item_cart['price'];
-                            $total_price = $payprice + $remamoun;
+                        if ($total_price != $item_cart['item_original_price']) {
+
                             $itmorgprice = $item_cart['item_original_price'] * $item_cart['qty'];
                             $dicountcodepay = $itmorgprice - $total_price;
                             //if ($dicountcodepay > 0) {
