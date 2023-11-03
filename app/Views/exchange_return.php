@@ -272,6 +272,24 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); // Prevent the default form submission
                 console.log(form.innerHTML);
+                var formData_content = new FormData(form);
+                var send_data = JSON.stringify({
+                    'shopname': '<?php echo $_GET['shop']; ?>',
+                    'formdata': formData_content
+                });
+
+                fetch('https://app.payxnowandrestondelivery.com/fetch-track-return', {
+                        method: 'POST',
+                        body: send_data
+                    })
+                    .then(response => response.json())
+                    .then(response => {
+
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
 
             });
 
