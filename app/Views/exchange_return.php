@@ -250,8 +250,9 @@
                     var idattr = event.target.getAttribute('idattr');
                     if (event.target.checked) {
                         console.log(idattr);
-                        document.getElementById("setva_" + idattr).value = idattr;
+                       
                         document.getElementById("reason_" + idattr).style.display = 'inline-block';
+                        document.getElementById("setva_" + event.target.id).value = event.target.id;
                         // alert('Checkbox is checked!');
 
                         // var popup = document.getElementById("popup_config");
