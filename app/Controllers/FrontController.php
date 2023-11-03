@@ -173,7 +173,7 @@ class FrontController extends BaseController
                     $payprice = $item_cart['price'];
                     $total_price = $payprice + $remamoun;
                     //calculating partial product discount amount end code
-                    if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                    if ($shopname == 'desinomatetest.myshopify.com') {
                         if ($total_price != $item_cart['item_original_price']) {
 
                             $itmorgprice = $item_cart['original_line_price'];
@@ -184,7 +184,7 @@ class FrontController extends BaseController
                             //$formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
                             //$formattedValuediscount = sprintf("%.2f", $dicountcodepay);
 
-                           
+
                             //$roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
                             $formattedValuediscount = number_format($dicountcodepay, 2, '.', '');
 
@@ -340,7 +340,7 @@ class FrontController extends BaseController
             $final_total_price_rem = str_replace("-", "", $remaining_price);
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            if ($shopname == 'desinomatetest.myshopify.com') {
                 return $this->common->draft_order_creat2($get_details->access_token, $shopname, $final_array);
             } else {
                 return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
