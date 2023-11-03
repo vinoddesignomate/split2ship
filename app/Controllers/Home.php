@@ -168,7 +168,7 @@ class Home extends BaseController
                                 [
                                     "variant_id" => $productvarient,
                                     "quantity" => $products['quantity'],
-                                    'tax_lines' => $tax_lines,
+                                    //'tax_lines' => $tax_lines,
                                     // "applied_discount" => [
                                     //     "value_type" => 'fixed_amount',
                                     //     "value" => $item_discount_item,
@@ -221,13 +221,8 @@ class Home extends BaseController
                         "order" => [
                             "line_items" => $line_items,
                             "financial_status" => "pending",
-                            // "tax_lines" => [
-                            //     [
-                            //         "price" => $order_tax,
-                            //         "rate" => 0.18,
-                            //         "title" => 'IGST'
-                            //     ]
-                            // ],
+                            "tax_lines" => $tax_lines,
+                            "total_tax"=>$order_tax,
                             "transactions" => [
                                 [
                                     "kind" => "authorization",
