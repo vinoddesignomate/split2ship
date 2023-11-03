@@ -670,11 +670,7 @@ class AppwhookController extends BaseController
 
                     $get_resulststoken = $this->user_model->get_token($_GET['whshp']);
 
-                    if (empty($get_resulststoken)) {
-                        $store_token = $this->update_token($_GET['whshp']);
-                    } else {
-                        $store_token = $get_resulststoken[0]->token;
-                    }
+
                     //$get_all_orders = $this->user_model->get_products_orders($_GET['whshp']);
                     $shiprocket_info = $this->user_model->get_shiprocket_config_home($_GET['whshp']);
 
@@ -682,6 +678,11 @@ class AppwhookController extends BaseController
 
 
                     if (isset($shiprocket_info[0]->enable_shipping_type) && $shiprocket_info[0]->enable_shipping_type == 'ship_roc') {
+                        if (empty($get_resulststoken)) {
+                            $store_token = $this->update_token($_GET['whshp']);
+                        } else {
+                            $store_token = $get_resulststoken[0]->token;
+                        }
                         if ($store_token != "in_correct") {
                             $create_custom = array();
                             $return_array = array();
