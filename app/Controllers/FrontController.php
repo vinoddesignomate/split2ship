@@ -1081,6 +1081,10 @@ class FrontController extends BaseController
     {
         $data = array();
         echo "Exchange app";
+        print_r($this->request->getPost());
+        // if ($this->request->getPost('search_text')) {
+
+        // }
         echo view('exchange_return', $data);
     }
     public function fetch_echange_orders()
