@@ -179,7 +179,9 @@
         </div>
     </div>
     <div id="order_info">
+        <form method="post">
 
+        </form>
     </div>
     <div id="popup_config" style="display:none;" class="popup-container config_popup">
         <div class="popup-content">
@@ -246,15 +248,17 @@
                     //console.log(plorischeckbox);
                     console.log(event.target.id);
                     if (event.target.checked) {
-                        alert('Checkbox is checked!');
+                        var idattr = event.target.getAttribute('idattr');
+                        console.log(idattr);
+                        // alert('Checkbox is checked!');
 
-                        var popup = document.getElementById("popup_config");
-                        popup.style.display = "block";
-                        var body = document.body;
-                        body.classList.add("package_popup_visible");
+                        // var popup = document.getElementById("popup_config");
+                        // popup.style.display = "block";
+                        // var body = document.body;
+                        // body.classList.add("package_popup_visible");
 
                     } else {
-                        alert('Checkbox is unchecked!');
+                        //alert('Checkbox is unchecked!');
                     }
                 }
             });
@@ -282,7 +286,7 @@
                         }
                         document.getElementById('input_start_process').style.display = "none";
                         for (var i = 0; i < response.length; i++) {
-                            infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['id'] + '" type="checkbox" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" aria-checked="false" value=""></span></div>';
+                            infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['id'] + '" type="checkbox" idattr="'+i+'" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" aria-checked="false" value=""></span><select id="reason_'+i+'" style="display:none;" name="get_reason[]"><option>Arrive too late</option><option>Poor Quality</option><option>Looks Different</option><option>Does suit me</option><option>Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
                         }
                         document.getElementById('order_info').innerHTML = infiohtm;
 
