@@ -81,7 +81,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5532118188336.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5532451111216.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -96,9 +96,10 @@ class Home extends BaseController
                     $paid_price = 0;
                     $total_item_price = 0;
                     $line_items = []; // Initialize an array to store line items
-                    $linitemdisount=0;
-                    $taxamounttotal=0;
-                    $final_total_orderval=0;
+                    $linitemdisount = 0;
+                    $taxamounttotal = 0;
+                    $final_total_orderval = 0;
+                    $order_tax = 0;
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
@@ -111,8 +112,8 @@ class Home extends BaseController
 
                             if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
                                 $item_price_actualval = $products['properties'][2]['value'] + $products['properties'][3]['value'];
-                                if(isset($products['properties'][4]['value'])){
-                                   $item_price_actualval = $item_price_actualval+ $products['properties'][4]['value'];
+                                if (isset($products['properties'][4]['value'])) {
+                                    $item_price_actualval = $item_price_actualval + $products['properties'][4]['value'];
                                 }
                                 $productvarient = $products['properties'][1]['value'];
                                 $paidprice_get = $products['properties'][2]['value'];
@@ -124,10 +125,10 @@ class Home extends BaseController
                                 $productvarient = $products['variant_id'];
                                 $paidprice_get = $products['properties'][1]['value'];
                                 $tax_price = 0;
-                                $item_price_actualval = $products['properties'][1]['value']+$products['total_discount'];
-                            }  
-                            $final_total_orderval = $final_total_orderval+$item_price_actualval;
-                            $linitemdisount = $linitemdisount+$item_discount_item;
+                                $item_price_actualval = $products['properties'][1]['value'] + $products['total_discount'];
+                            }
+                            $final_total_orderval = $final_total_orderval + $item_price_actualval;
+                            $linitemdisount = $linitemdisount + $item_discount_item;
                             // $line_item[] = array(
                             //     "variant_id" => $productvarient,
                             //     "quantity" => $products['quantity'],
@@ -148,19 +149,19 @@ class Home extends BaseController
                                         $taxamount = 0;
                                     } else {
                                         $taxamount = $tax_price * $tax_items['rate'];
-                                       
                                     }
                                     //echo "tax_price=".$tax_price;
-                                    $getitemtx = $tax_price+$taxamount;
-                                    $taxamounttotal = $taxamounttotal+$getitemtx;
+                                    $getitemtx = $tax_price + $taxamount;
+                                    $taxamounttotal = $taxamounttotal + $getitemtx;
+                                    $order_tax = $order_tax + $taxamount;
                                     $tax_lines[] = [
                                         'title' => $tax_items['title'],
                                         'price' => $taxamount,
                                         'rate' => $tax_items['rate'],
                                     ];
                                 }
-                            }else{
-                                $taxamounttotal = $taxamounttotal+$tax_price;
+                            } else {
+                                $taxamounttotal = $taxamounttotal + $tax_price;
                             }
 
                             $line_items[] =
@@ -215,11 +216,18 @@ class Home extends BaseController
                     // echo "</pre>";
 
                     // Define the order data
-                    $finaldiscount = $linitemdisount+$paid_price;
+                    $finaldiscount = $linitemdisount + $paid_price;
                     $order_data = [
                         "order" => [
                             "line_items" => $line_items,
                             "financial_status" => "pending",
+                            "tax_lines" => [
+                                [
+                                    "price" => $order_tax,
+                                    "rate" => 0.18,
+                                    "title" => 'IGST'
+                                ]
+                            ],
                             "transactions" => [
                                 [
                                     "kind" => "authorization",
@@ -263,11 +271,11 @@ class Home extends BaseController
 
 
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
+                    echo "<pre>";
+                    print_r(json_decode($getorderarry));
+                    echo "</pre>";
 
                     // echo $getorderarry;
 
