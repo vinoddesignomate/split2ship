@@ -245,11 +245,10 @@
             // Add an event listener to the checkbox
             document.querySelector('body').addEventListener('click', function(event) {
                 if (event.target.classList.contains('Polaris-Checkbox__Input')) {
-                    //console.log(plorischeckbox);
-                    console.log(event.target.id);
-                    if (event.target.checked) {
-                        var idattr = event.target.getAttribute('idattr');
+                    var idattr = event.target.getAttribute('idattr');
+                    if (event.target.checked) {                        
                         console.log(idattr);
+                        document.getAnimations("reason_"+idattr).style.display = 'inline-block';
                         // alert('Checkbox is checked!');
 
                         // var popup = document.getElementById("popup_config");
@@ -258,6 +257,7 @@
                         // body.classList.add("package_popup_visible");
 
                     } else {
+                        document.getAnimations("reason_"+idattr).style.display = 'none';
                         //alert('Checkbox is unchecked!');
                     }
                 }
@@ -285,8 +285,10 @@
                             exhcshow_orders.style.display = "none";
                         }
                         document.getElementById('input_start_process').style.display = "none";
+                        var lpid=1;
                         for (var i = 0; i < response.length; i++) {
-                            infiohtm += '<div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['id'] + '" type="checkbox" idattr="'+i+'" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" aria-checked="false" value=""></span><select id="reason_'+i+'" style="display:none;" name="get_reason[]"><option>Arrive too late</option><option>Poor Quality</option><option>Looks Different</option><option>Does suit me</option><option>Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
+                            infiohtm += '<input type="hidden" name="getid" value="'+response[i]['varient_id']+'"><div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['varient_id'] + '" type="checkbox" idattr="'+lpid+'" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" aria-checked="false" value=""></span><select id="reason_'+lpid+'" style="display:none;" name="get_reason[]"><option>Arrive too late</option><option>Poor Quality</option><option>Looks Different</option><option>Does suit me</option><option>Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
+                            lpid++;
                         }
                         document.getElementById('order_info').innerHTML = infiohtm;
 
