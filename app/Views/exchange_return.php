@@ -262,7 +262,7 @@
 
                     } else {
                         document.getElementById("reason_" + idattr).style.display = 'none';
-                        document.getElementById("setva_" + idattr).value = '';
+                        document.getElementById("setva_" + event.target.id).value = '';
                         //alert('Checkbox is unchecked!');
                     }
                 }
