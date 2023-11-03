@@ -458,6 +458,8 @@ class AppwhookController extends BaseController
                             $paid_price = 0;
                             $linitemdisount = 0;
                             $taxamounttotal = 0;
+                            $order_tax = 0;
+                            $tax_lines = [];
                             foreach ($jsndata->line_items as $products) {
                                 if ($products->name != "Partial Pending Payment") {
                                     // if ($products->sku == "") {
@@ -511,7 +513,7 @@ class AppwhookController extends BaseController
                                     //     ),
                                     //     "requires_shipping" => true
                                     // );
-                                    $tax_lines = [];
+
                                     if (!empty($products->tax_lines)) {
                                         foreach ($products->tax_lines as $tax_items) {
                                             if ($tax_price == 0) {
@@ -521,6 +523,7 @@ class AppwhookController extends BaseController
                                             }
                                             $getitemtx = $tax_price + $taxamount;
                                             $taxamounttotal = $taxamounttotal + $getitemtx;
+                                            $order_tax = $order_tax + $taxamount;
                                             $tax_lines[] = [
                                                 'title' => $tax_items->title,
                                                 'price' => $taxamount,
@@ -535,7 +538,7 @@ class AppwhookController extends BaseController
                                         [
                                             "variant_id" => $productvarient,
                                             "quantity" => $products->quantity,
-                                            "tax_lines" => $tax_lines,
+                                            //"tax_lines" => $tax_lines,
                                             // 'tax_lines' => [
                                             //     [
                                             //         'title' => 'IGST',  // Tax title
@@ -591,6 +594,8 @@ class AppwhookController extends BaseController
                                 "order" => [
                                     "line_items" => $line_items,
                                     "financial_status" => "pending",
+                                    "tax_lines" => $tax_lines,
+                                    "total_tax" => $order_tax,
                                     "transactions" => [
                                         [
                                             "kind" => "authorization",
@@ -660,7 +665,6 @@ class AppwhookController extends BaseController
 
                             $resposne_array = array("name" => "actual order invoice_email_snd=" . json_encode($invoice_email_snd));
                             $this->user_model->check_test_response($resposne_array);
-
                         }
                     }
 
