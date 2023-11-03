@@ -248,7 +248,7 @@
                     var idattr = event.target.getAttribute('idattr');
                     if (event.target.checked) {                        
                         console.log(idattr);
-                        document.getAnimations("reason_"+idattr).style.display = 'inline-block';
+                        document.getElementById("reason_"+idattr).style.display = 'inline-block';
                         // alert('Checkbox is checked!');
 
                         // var popup = document.getElementById("popup_config");
@@ -257,7 +257,7 @@
                         // body.classList.add("package_popup_visible");
 
                     } else {
-                        document.getAnimations("reason_"+idattr).style.display = 'none';
+                        document.getElementById("reason_"+idattr).style.display = 'none';
                         //alert('Checkbox is unchecked!');
                     }
                 }
