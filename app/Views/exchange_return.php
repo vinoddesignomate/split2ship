@@ -178,9 +178,11 @@
             <div class="Polaris-Stack__Item"><button id="getorderinfo" class="_xButton_l3r25_2 _active_l3r25_41" style="cursor: pointer;"><span class="_content_l3r25_56"><span>Create return</span></span></button></div>
         </div>
     </div>
-    <div id="order_info">
+    <div>
         <form method="post">
-
+            <div id="order_info">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <div id="popup_config" style="display:none;" class="popup-container config_popup">
@@ -246,9 +248,9 @@
             document.querySelector('body').addEventListener('click', function(event) {
                 if (event.target.classList.contains('Polaris-Checkbox__Input')) {
                     var idattr = event.target.getAttribute('idattr');
-                    if (event.target.checked) {                        
+                    if (event.target.checked) {
                         console.log(idattr);
-                        document.getElementById("reason_"+idattr).style.display = 'inline-block';
+                        document.getElementById("reason_" + idattr).style.display = 'inline-block';
                         // alert('Checkbox is checked!');
 
                         // var popup = document.getElementById("popup_config");
@@ -257,7 +259,7 @@
                         // body.classList.add("package_popup_visible");
 
                     } else {
-                        document.getElementById("reason_"+idattr).style.display = 'none';
+                        document.getElementById("reason_" + idattr).style.display = 'none';
                         //alert('Checkbox is unchecked!');
                     }
                 }
@@ -285,9 +287,9 @@
                             exhcshow_orders.style.display = "none";
                         }
                         document.getElementById('input_start_process').style.display = "none";
-                        var lpid=1;
+                        var lpid = 1;
                         for (var i = 0; i < response.length; i++) {
-                            infiohtm += '<input type="hidden" name="getid" value="'+response[i]['varient_id']+'"><div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['varient_id'] + '" type="checkbox" idattr="'+lpid+'" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" aria-checked="false" value=""></span><select id="reason_'+lpid+'" style="display:none;" name="get_reason[]"><option>Arrive too late</option><option>Poor Quality</option><option>Looks Different</option><option>Does suit me</option><option>Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
+                            infiohtm += '<input type="hidden" name="getid" value="' + response[i]['varient_id'] + '"><div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['varient_id'] + '" type="checkbox" idattr="' + lpid + '" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" aria-checked="false" value=""></span><select id="reason_' + lpid + '" style="display:none;" name="get_reason[]"><option>Arrive too late</option><option>Poor Quality</option><option>Looks Different</option><option>Does suit me</option><option>Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
                             lpid++;
                         }
                         document.getElementById('order_info').innerHTML = infiohtm;
