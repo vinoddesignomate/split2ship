@@ -168,7 +168,7 @@ class Home extends BaseController
                                 [
                                     "variant_id" => $productvarient,
                                     "quantity" => $products['quantity'],
-                                    'tax_lines' => $tax_lines,
+                                    //'tax_lines' => $tax_lines,
                                     // "applied_discount" => [
                                     //     "value_type" => 'fixed_amount',
                                     //     "value" => $item_discount_item,
