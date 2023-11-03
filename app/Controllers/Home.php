@@ -100,6 +100,7 @@ class Home extends BaseController
                     $taxamounttotal = 0;
                     $final_total_orderval = 0;
                     $order_tax = 0;
+                    $tax_lines = [];
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
                             if ($products['sku'] == "") {
@@ -142,7 +143,7 @@ class Home extends BaseController
                             //     ),
                             //     "requires_shipping" => true
                             // );
-                            $tax_lines = [];
+                           
                             if (!empty($products['tax_lines'])) {
                                 foreach ($products['tax_lines'] as $tax_items) {
                                     if ($tax_price == 0) {
