@@ -594,7 +594,8 @@ class FrontController extends BaseController
             } else {
                 $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
             }
-
+            $resposne_array = array("name" => "cron issue get_details=" . json_encode($get_details));
+            $this->user_model->check_test_response($resposne_array);
             //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
             if ($get_details->total_sync_store_products < $total_pro) {
                 $cron_limit_set = 50;
@@ -602,10 +603,13 @@ class FrontController extends BaseController
                 //below block for get products first time from page 1
                 if ($get_lates_colection->cron_page_num == 1) {
                     $data = array();
-                    $colcturl = "/admin/api/2022-04/products.json";
+                    $colcturl = "/admin/api/2023-07/products.json";
                     $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
 
                     $product_list = json_decode($products['body'], true);
+                    $resposne_array = array("name" => "cron issue product_list=" . json_encode($product_list));
+                      $this->user_model->check_test_response($resposne_array);
+
                     if (!empty($product_list)) {
                         $headers = $products['headers'];
                         if (isset($headers['link'])) {
