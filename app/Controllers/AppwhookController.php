@@ -474,7 +474,7 @@ class AppwhookController extends BaseController
                                         $item_price = $products->properties[2]->value;
                                         $tax_price = $products->properties[3]->value;
                                         $productvarient = $products->properties[1]->value;
-                                        if (isset($products->properties[4]->value)) {
+                                        if (isset($products->properties[4]->value) && $products->properties[4]->name=='Discount') {
                                             $item_discount_item = $products->properties[4]->value;
                                         } else {
                                             $item_discount_item = 0;
