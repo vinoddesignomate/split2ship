@@ -159,6 +159,7 @@ class AppwhookController extends BaseController
         foreach ($jsndata->line_items as $products) {
             //set condition for get only main products
             if (!empty($products->properties) && isset($products->properties)) {
+                $chkpropeties = array("proertie" => "get");
                 if ($products->name != "Partial Pending Payment") {
                     if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
                         $item_price = $products->properties[2]->value;
@@ -212,6 +213,8 @@ class AppwhookController extends BaseController
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
+            } else {
+                $chkpropeties = array();
             }
         }
         //get user address
@@ -263,7 +266,7 @@ class AppwhookController extends BaseController
             $finaldiscount = $paid_price;
             $titla_name = "Partial Payment";
         }
-        if (!empty($line_items)) {
+        if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
                     "line_items" => $line_items,
