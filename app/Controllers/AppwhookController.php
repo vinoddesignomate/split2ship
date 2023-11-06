@@ -483,7 +483,7 @@ class AppwhookController extends BaseController
                                         $paidprice_get = $products->properties[2]->value;
                                     } else {
                                         $item_price = $products->price;
-                                        if ($products->total_discount != "") {
+                                        if (isset($products->total_discount) && $products->total_discount != "") {
                                             $item_discount_item = $products->total_discount;
                                         } else {
                                             $item_discount_item = 0;
