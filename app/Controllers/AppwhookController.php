@@ -1111,14 +1111,18 @@ class AppwhookController extends BaseController
             $new_res = json_decode($get_response);
             // print_r($new_res);
             // die();
-            $insert_array = array(
-                "token" => $new_res->token,
-                "token_generate_date" => date('Y-m-d'),
-                "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
-                "shop_url" => $shop_url,
-            );
-            $this->user_model->track_shiprocket_api_token($insert_array);
-            return $new_res->token;
+            if (!empty($new_res)) {
+                $insert_array = array(
+                    "token" => $new_res->token,
+                    "token_generate_date" => date('Y-m-d'),
+                    "token_expiray_date" => date('Y-m-d', strtotime('+5 day')),
+                    "shop_url" => $shop_url,
+                );
+                $this->user_model->track_shiprocket_api_token($insert_array);
+                return $new_res->token;
+            } else {
+                return "in_correct";
+            }
         } else {
             return "in_correct";
         }
