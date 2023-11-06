@@ -594,8 +594,7 @@ class FrontController extends BaseController
             } else {
                 $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
             }
-            $resposne_array = array("name" => "cron issue get_details=" . json_encode($get_details));
-            $this->user_model->check_test_response($resposne_array);
+
             //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
             if ($get_details->total_sync_store_products < $total_pro) {
                 $cron_limit_set = 50;
@@ -608,8 +607,6 @@ class FrontController extends BaseController
 
                     $product_list = json_decode($products['body'], true);
                     if (!array_key_exists('errors', $product_list)) {
-                        $resposne_array = array("name" => "cron issue product_list=" . json_encode($product_list));
-                        $this->user_model->check_test_response($resposne_array);
 
                         if (!empty($product_list)) {
                             $headers = $products['headers'];
@@ -623,13 +620,7 @@ class FrontController extends BaseController
 
 
                             foreach ($product_list as $product) {
-                                $resposne_array = array("name" => "cron issue product=" . json_encode($product));
-                                $this->user_model->check_test_response($resposne_array);
                                 foreach ($product as $key => $value) {
-
-                                    $resposne_array = array("name" => "cron issue=" . json_encode($value));
-                                    $this->user_model->check_test_response($resposne_array);
-
                                     $payxnowrest_product_add = array(
                                         "product_id" => $value['id'],
                                         "product_title" => $value['title'],
