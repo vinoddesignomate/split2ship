@@ -72,7 +72,7 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                if ($_GET['shop'] == 'partialtestapp.myshopify.com') {
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
                     // $getshoptax = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getrestshop = json_decode($getshoptax['body'], true);
