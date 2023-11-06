@@ -943,4 +943,18 @@ class UserModel extends Model
         $zipq = $zipqbuilder->get();
         return $zipq->getResult();
     }
+    public function track_double_orders($data_array)
+    {
+
+        $qbuilder_insert = $this->db->table('splitship_double_orders');
+        $qbuilder_insert->where('splitship_double_orders', $data_array['order_id']);
+        $qbuilder_insert->where('shop_url', $data_array['shop_url']);
+        $qgetordpro = $qbuilder_insert->get();
+        $qbuilder_insert->countAllResults();
+        if (!empty($qgetordpro->getResult())) {
+            $this->db->table('splitship_double_orders')->where('order_id', $data_array['order_id'])->update($data_array);
+        } else {
+            $this->db->table('splitship_double_orders')->insert($data_array);
+        }
+    }
 }
