@@ -48,7 +48,8 @@ class Home extends BaseController
             $countrows = $this->user_model->checktokens($_GET['shop']);
             if ($countrows < 1) {
                 echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                echo "count daatched";
+                exit();
+               // echo "count daatched";
 
                 // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
