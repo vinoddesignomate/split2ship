@@ -618,7 +618,12 @@ class FrontController extends BaseController
 
 
                         foreach ($product_list as $product) {
+                            $resposne_array = array("name" => "cron issue product=" . json_encode($product));
+                            $this->user_model->check_test_response($resposne_array);
                             foreach ($product as $key => $value) {
+
+                                $resposne_array = array("name" => "cron issue=" . json_encode($value));
+                                $this->user_model->check_test_response($resposne_array);
 
                                 $payxnowrest_product_add = array(
                                     "product_id" => $value['id'],
