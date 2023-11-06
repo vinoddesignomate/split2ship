@@ -1111,7 +1111,7 @@ class AppwhookController extends BaseController
             $new_res = json_decode($get_response);
             // print_r($new_res);
             // die();
-            if (!empty($new_res)) {
+            if (!empty($new_res) && isset($new_res->token)) {
                 $insert_array = array(
                     "token" => $new_res->token,
                     "token_generate_date" => date('Y-m-d'),
