@@ -49,7 +49,7 @@ class Home extends BaseController
             if ($countrows < 1) {
                 echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
                 exit();
-               // echo "count daatched";
+                // echo "count daatched";
 
                 // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
@@ -73,6 +73,12 @@ class Home extends BaseController
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
 
                     // $getshoptax = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getrestshop = json_decode($getshoptax['body'], true);
@@ -144,7 +150,7 @@ class Home extends BaseController
                     //         //     ),
                     //         //     "requires_shipping" => true
                     //         // );
-                           
+
                     //         if (!empty($products['tax_lines'])) {
                     //             foreach ($products['tax_lines'] as $tax_items) {
                     //                 if ($tax_price == 0) {
@@ -283,7 +289,7 @@ class Home extends BaseController
                     // echo "</pre>";
 
                     $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5532451111216/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-                   
+
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
                     //$fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
 
