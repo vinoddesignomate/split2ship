@@ -313,7 +313,7 @@ class AppwhookController extends BaseController
             //update second order which is created by API
             $track_double_order = array(
                 "orderid_paid" => $jsndata->id,
-                "order_id_cod" => $jsndata->name,
+                "order_id_cod" => $decode_get_actual_orders->order->id,
                 "order_number_cod" => $jsndata->name . '-SplitOrder',
                 "shop_url" => $_GET['whshp'],
                 "status" => 'success',
