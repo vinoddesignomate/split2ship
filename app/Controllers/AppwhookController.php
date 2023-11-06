@@ -120,14 +120,18 @@ class AppwhookController extends BaseController
     }
     function create_double_cod_orders($jsndata, $get_resulsts)
     {
-        $track_double_order = array(
-            "orderid_paid" => $jsndata->id,
-            "order_number_paid" => $jsndata->name,
-            "shop_url" => $_GET['whshp'],
-            "status" => 'pending_cod',
-        );
-        //track main order into database
-        $this->user_model->track_double_orders($track_double_order);
+        if (!isset($code_has_run)) {
+            $track_double_order = array(
+                "orderid_paid" => $jsndata->id,
+                "order_number_paid" => $jsndata->name,
+                "shop_url" => $_GET['whshp'],
+                "status" => 'pending_cod',
+                "movement" => date("Y-m-d H:i:s"),
+            );
+            $code_has_run = true;
+            //track main order into database
+            $this->user_model->track_double_orders($track_double_order);
+        }
 
         //get fullfilment id from main order
         $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $jsndata->id . '/fulfillment_orders.json', array(), 'GET', $get_resulsts->access_token, $_GET['whshp']);
