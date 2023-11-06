@@ -328,7 +328,7 @@ class AppwhookController extends BaseController
                     "shop_url" => $_GET['whshp'],
                     "status" => 'success',
                 );
-                $this->user_model->track_double_orders($track_double_order);
+                $this->user_model->track_double_orders_update($track_double_order);
 
                 $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
                 $this->user_model->check_test_response($resposne_array);

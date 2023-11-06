@@ -957,4 +957,7 @@ class UserModel extends Model
             $this->db->table('splitship_double_orders')->insert($data_array);
         }
     }
+    public function track_double_orders_update($data_array){
+        $this->db->table('splitship_double_orders')->where('orderid_paid', $data_array['orderid_paid'])->where('shop_url', $data_array['shop_url'])->update($data_array);
+    }
 }
