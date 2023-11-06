@@ -352,6 +352,8 @@ class AppwhookController extends BaseController
                 $this->user_model->check_test_response($resposne_array);
             }
         }
+        echo "200 ok";
+        exit();
     }
 
     function auto_ordersync()
@@ -1082,7 +1084,8 @@ class AppwhookController extends BaseController
                 $this->user_model->check_test_response($resposne_array_lst);
             }
         }
-
+        echo "200 ok";
+        exit();
         //return json_encode($return_array);
     }
 
