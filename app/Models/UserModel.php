@@ -947,12 +947,12 @@ class UserModel extends Model
     {
 
         $qbuilder_insert = $this->db->table('splitship_double_orders');
-        $qbuilder_insert->where('splitship_double_orders', $data_array['order_id']);
+        $qbuilder_insert->where('orderid_paid', $data_array['orderid_paid']);
         $qbuilder_insert->where('shop_url', $data_array['shop_url']);
         $qgetordpro = $qbuilder_insert->get();
         $qbuilder_insert->countAllResults();
         if (!empty($qgetordpro->getResult())) {
-            $this->db->table('splitship_double_orders')->where('order_id', $data_array['order_id'])->update($data_array);
+            $this->db->table('splitship_double_orders')->where('orderid_paid', $data_array['orderid_paid'])->update($data_array);
         } else {
             $this->db->table('splitship_double_orders')->insert($data_array);
         }
