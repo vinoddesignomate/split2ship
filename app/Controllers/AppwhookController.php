@@ -152,8 +152,8 @@ class AppwhookController extends BaseController
 
         //check store order count accoring to paid plane 
         if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-            // $resposne_arrayshop = array("name" => "Shop Order Start " . $_GET['whshp']);
-            // $this->user_model->check_test_response($resposne_arrayshop);
+            $resposne_arrayshop = array("name" => "Shop Order Start " . $_GET['whshp']);
+            $this->user_model->check_test_response($resposne_arrayshop);
 
 
             // $resposne_array = array("name" => "orderdata" . $webhook_content);
@@ -798,7 +798,7 @@ class AppwhookController extends BaseController
                             $decoded_res = json_decode($get_result);
 
                             $resposne_array = array("name" => "Shiprocket ordersync= " . $get_result);
-                            //$this->user_model->check_test_response($resposne_array);
+                            $this->user_model->check_test_response($resposne_array);
 
 
 
@@ -929,8 +929,8 @@ class AppwhookController extends BaseController
                             'is_reverse' => false
                         );
 
-                        // $resposne_array = array("name" => "Pickerr Order Sync " . json_encode($post_params));
-                        // $this->user_model->check_test_response($resposne_array);
+                        $resposne_array = array("name" => "Pickerr Order Sync " . json_encode($post_params));
+                        $this->user_model->check_test_response($resposne_array);
 
                         // try {
                         $json_params = json_encode($post_params);
@@ -1635,8 +1635,8 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_addtocartdata = json_decode($getaddtocartdata);
-        $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
-        $this->user_model->check_test_response($updateprorespo);
+        // $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
+        // $this->user_model->check_test_response($updateprorespo);
 
         $remove_cart_item = array(
             "cart_id" => $get_addtocartdata->id,
@@ -1676,8 +1676,8 @@ class AppwhookController extends BaseController
                 "partial_percentage" => $partial_percentage,
             );
 
-            $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
-            $this->user_model->check_test_response($updateprorespo);
+            // $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
+            // $this->user_model->check_test_response($updateprorespo);
             $this->user_model->track_cart_itme_data($add_to_cart_line_item);
         }
     }
