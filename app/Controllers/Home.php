@@ -81,7 +81,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5532451111216.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                   /* $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5532451111216.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -263,7 +263,7 @@ class Home extends BaseController
                     echo "final_total_orderval=" . $final_total_orderval;
                     echo "<pre>";
                     print_r($order_data);
-                    echo "</pre>";
+                    echo "</pre>";*/
 
 
 
