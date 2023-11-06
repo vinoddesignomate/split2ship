@@ -315,6 +315,7 @@ class AppwhookController extends BaseController
                 "orderid_paid" => $jsndata->id,
                 "order_id_cod" => $jsndata->name,
                 "order_number_cod" => $jsndata->name . '-SplitOrder',
+                "shop_url" => $_GET['whshp'],
                 "status" => 'success',
             );
             $this->user_model->track_double_orders($track_double_order);
