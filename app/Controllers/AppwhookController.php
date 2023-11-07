@@ -392,7 +392,7 @@ class AppwhookController extends BaseController
                 $this->user_model->check_test_response($resposne_arrayshop);
                 $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
                 if (empty($get_orders_details)) {
-                    /*if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                    if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
                         $remaing_proice = 0;
 
                         if ($jsndata->tags != '') {
@@ -567,12 +567,12 @@ class AppwhookController extends BaseController
                         $subtotal_update = array_sum($reaminming_price);
                         $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
                         $this->create_double_cod_orders($jsndata, $get_resulsts);
-                    } else {*/
+                    } else {
                         $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
                         $this->user_model->check_test_response($resposne_array_lst);
                         $this->create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti);
                         echo "200 ok";
-                   // }
+                    }
                 }
             }
         }
