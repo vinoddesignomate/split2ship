@@ -588,9 +588,9 @@ class AppwhookController extends BaseController
                         $subtotal_update = array_sum($reaminming_price);
                         $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
 
-                        if ($_GET['whshp'] != 'desinomatetest.myshopify.com') {
+                        //if ($_GET['whshp'] != 'desinomatetest.myshopify.com') {
                             $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
-                        }
+                        //}
 
                         // $resposne_array = array("name" => "subtotal_update" . json_encode($subtotal_update));
                         // $this->user_model->check_test_response($resposne_array);
