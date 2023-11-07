@@ -118,7 +118,7 @@ class AppwhookController extends BaseController
             return array("headers" => $headers, "body" => $response[1]);
         }
     }
-    function create_double_cod_orders($jsndata, $get_resulsts)
+    function create_double_cod_orders($jsndata, $get_resulsts, $part_type)
     {
         if (!isset($code_has_run)) {
             $track_double_order = array(
@@ -395,7 +395,8 @@ class AppwhookController extends BaseController
                 $this->user_model->check_test_response($resposne_arrayshop);
                 $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
                 if (empty($get_orders_details)) {
-                    if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                    //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                    if ($get_resulsts->update_app == 1) {
                         $remaing_proice = 0;
 
                         if ($jsndata->tags != '') {
@@ -569,7 +570,13 @@ class AppwhookController extends BaseController
 
                         $subtotal_update = array_sum($reaminming_price);
                         $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
-                        $this->create_double_cod_orders($jsndata, $get_resulsts);
+                        if (isset($part_type) && $part_type == 'partial') {
+                            $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
+                            $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
+                        } else {
+                            $resposne_array_lst = array("name" => "run full " . $_GET['whshp']);
+                            $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+                        }
                     } else {
                         $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
                         $this->user_model->check_test_response($resposne_array_lst);
