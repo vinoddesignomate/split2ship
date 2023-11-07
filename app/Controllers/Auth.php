@@ -111,6 +111,7 @@ class Auth extends BaseController
 					//"auth_code" => $parameters['code'],
 					"created" => $curdate,
 					"store_status" => 1,
+					"update_app" => 1
 					//"total_sync_store_products" => 0
 				));
 
@@ -136,6 +137,7 @@ class Auth extends BaseController
 					"auth_code" => $parameters['code'],
 					"associated_user_scope" => $response['associated_user_scope'],
 					"store_status" => 1,
+					"update_app" => 1
 					//"total_sync_store_products" => 0
 				));
 			}
