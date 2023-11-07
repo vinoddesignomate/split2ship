@@ -1513,7 +1513,7 @@ class AppwhookController extends BaseController
     public function update_productswebhk()
     {
 
-        $updateprorespo = array("name" => "update cart webhook");
+        $updateprorespo = array("name" => "update product webhook");
         $this->user_model->check_test_response($updateprorespo);
         $update_product_content = NULL;
 
