@@ -338,7 +338,7 @@ class AppwhookController extends BaseController
                 $this->user_model->check_test_response($resposne_array);
 
 
-                $send_invoice_email = 'mutation {
+                /* $send_invoice_email = 'mutation {
             orderInvoiceSend(
               id: "gid://shopify/Order/' . $decode_get_actual_orders->order->id . '"
               email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
@@ -356,7 +356,7 @@ class AppwhookController extends BaseController
                 $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);
 
                 $resposne_array = array("name" => "actual order invoice_email_snd=" . json_encode($invoice_email_snd));
-                $this->user_model->check_test_response($resposne_array);
+                $this->user_model->check_test_response($resposne_array);*/
             }
         }
         echo "200 ok";
@@ -588,7 +588,9 @@ class AppwhookController extends BaseController
                         $subtotal_update = array_sum($reaminming_price);
                         $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
 
-                        $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+                        if ($_GET['whshp'] != 'desinomatetest.myshopify.com') {
+                            $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+                        }
 
                         // $resposne_array = array("name" => "subtotal_update" . json_encode($subtotal_update));
                         // $this->user_model->check_test_response($resposne_array);
@@ -1513,7 +1515,7 @@ class AppwhookController extends BaseController
     public function update_productswebhk()
     {
 
-        
+
         $update_product_content = NULL;
 
         // Get webhook content from the POST
@@ -1530,7 +1532,7 @@ class AppwhookController extends BaseController
             "product_id" => $get_productsup->id,
             "shop_url" => $_GET['pxupprshp']
         );
-        $updateprorespo = array("name" => "update product webhook for=".$_GET['pxupprshp']);
+        $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
         $this->user_model->check_test_response($updateprorespo);
 
         $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
@@ -1558,7 +1560,6 @@ class AppwhookController extends BaseController
                 );
                 $this->user_model->add_partial_products_varient($product_array);
             }
-            
         }
 
         // $log_filename = "log";
