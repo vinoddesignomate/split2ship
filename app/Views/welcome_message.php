@@ -184,6 +184,15 @@ $store_namecnf = $shop_name[0];
     </div>
 </div>
 
+<div id="popup_config_update_app" class="popup-container config_popup" style="display: none;">
+    <div class="popup-content">
+        <!-- <h2>Hello, this is a message!</h2> -->
+        <p id="plmsg_config">Please update app for new spilt order feature</p>
+        <div class="closeButtonCg"><a onclick="abc(event);" href="https://app.payxnowandrestondelivery.com/public/install?shop=<?php echo esc($_GET['shop']); ?>">Update Now</a></div>
+        <!-- <button class="payxnowandrestondelivery-close-popup-btn" onclick="config_hidePopup()">X</button> -->
+    </div>
+</div>
+
 <div class="payxnowandrestondelivery-body-wrapper">
     <!-- **********************************************
                         SECTION-1
@@ -213,6 +222,20 @@ $store_namecnf = $shop_name[0];
                 //show_popup_config();
 
                 var popup = document.getElementById("popup_config");
+                popup.style.display = "block";
+                var body = document.body;
+                body.classList.add("package_popup_visible");
+            </script>
+        <?php }
+
+
+        if ($get_details_store->update_app == '0') {
+        ?>
+
+            <script type="text/javascript">
+                //show_popup_config();
+
+                var popup = document.getElementById("popup_config_update_app");
                 popup.style.display = "block";
                 var body = document.body;
                 body.classList.add("package_popup_visible");
