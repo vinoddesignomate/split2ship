@@ -352,7 +352,7 @@ class Home extends BaseController
                     );
                     $this->user_model->insert_addcart_webhooks($webhookarray);
                 }*/
-                    $get_register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
 
                     echo "get_register_webhookset<pre>";
