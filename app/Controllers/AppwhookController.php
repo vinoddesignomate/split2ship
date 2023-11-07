@@ -396,7 +396,7 @@ class AppwhookController extends BaseController
 
         //check store order count accoring to paid plane 
         if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-            $resposne_arrayshop = array("name" => "Shop Order Start=" . $_GET['whshp']);
+            $resposne_arrayshop = array("name" => "Shop Order Start=" . json_encode($jsndata));
             $this->user_model->check_test_response($resposne_arrayshop);
 
             if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
