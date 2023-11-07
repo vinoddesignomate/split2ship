@@ -1280,17 +1280,87 @@ class FrontController extends BaseController
         $getallorders = $this->user_model->get_failed_order();
         if (!empty($getallorders)) {
             foreach ($getallorders as $faikedorder) {
-                echo "<pre>";
-                print_r($faikedorder);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($faikedorder);
+                // echo "</pre>";
                 $get_details = $this->user_model->get_tokens($faikedorder->shop_url);
 
                 $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/' . $faikedorder->orderid_paid . '.json', array(), 'GET', $get_details->access_token, $faikedorder->shop_url);
 
                 $getprietuleidrec = json_decode($getprietuleid['body'], true);
-                echo "getprietuleidrec<pre>";
-                print_r($getprietuleidrec);
-                echo "</pre>";
+                // echo "getprietuleidrec<pre>";
+                // print_r($getprietuleidrec);
+                // echo "</pre>";
+
+                $paid_price = 0;
+                $linitemdisount = 0;
+                $taxamounttotal = 0;
+                $order_tax = 0;
+                $tax_lines = [];
+                $line_items = [];
+
+                /*foreach ($getprietuleidrec['order']['line_items'] as $products) {
+                    //set condition for get only main products
+                    if (!empty($products['properties']) && isset($products['properties'])) {
+                        $chkpropeties = array("proertie" => "get");
+                        if ($products['name'] != "Partial Pending Payment") {
+                            if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                                $item_price = $products['properties'][2]['value'];
+                                $tax_price = $products['properties'][3]['value'];
+                                $productvarient = $products['properties'][1]['value'];
+                                if (isset($products['properties'][4]['value']) && $products['properties'][4]['name'] == 'Discount') {
+                                    $item_discount_item = $products['properties'][4]['value'];
+                                } else {
+                                    $item_discount_item = 0;
+                                }
+                                $paidprice_get = $products['properties'][2]['value'];
+                            } else {
+                                $item_price = $products['price'];
+                                if (isset($products['total_discount']) && $products['total_discount'] != "") {
+                                    $item_discount_item = $products['total_discount'];
+                                } else {
+                                    $item_discount_item = 0;
+                                }
+                                $productvarient = $products['variant_id'];
+                                $tax_price = 0;
+                                $paidprice_get = $products['properties'][1]['value'];
+                            }
+        
+                            $linitemdisount = $linitemdisount + $item_discount_item;
+        
+                            if (!empty($products->tax_lines)) {
+                                foreach ($products->tax_lines as $tax_items) {
+                                    if ($tax_price == 0) {
+                                        $taxamount = 0;
+                                    } else {
+                                        $taxamount = $tax_price * $tax_items->rate;
+                                    }
+                                    $getitemtx = $tax_price + $taxamount;
+                                    $taxamounttotal = $taxamounttotal + $getitemtx;
+                                    $order_tax = $order_tax + $taxamount;
+                                    $tax_lines[] = [
+                                        'title' => $tax_items->title,
+                                        'price' => $taxamount,
+                                        'rate' => $tax_items->rate,
+                                    ];
+                                }
+                            } else {
+                                $taxamounttotal = $taxamounttotal + $tax_price;
+                            }
+        
+                            $line_items[] =
+                                [
+                                    "variant_id" => $productvarient,
+                                    "quantity" => $products->quantity
+                                ];
+        
+                            $paid_price = $paid_price + $paidprice_get;
+                        }
+                    } else {
+                        $chkpropeties = array();
+                    }
+                }*/
+
             }
         }
     }
