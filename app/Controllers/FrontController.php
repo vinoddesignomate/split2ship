@@ -1280,8 +1280,17 @@ class FrontController extends BaseController
         $getallorders = $this->user_model->get_failed_order();
         if (!empty($getallorders)) {
             foreach ($getallorders as $faikedorder) {
-                echo"<pre>"; print_r($faikedorder); echo "</pre>";
-                //$get_details = $this->user_model->get_tokens($get_lates_colection->shop_url);
+                echo "<pre>";
+                print_r($faikedorder);
+                echo "</pre>";
+                $get_details = $this->user_model->get_tokens($faikedorder['shop_url']);
+
+                $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/' . $faikedorder['orderid_paid'] . '.json', array(), 'GET', $get_details->access_token, $faikedorder['shop_url']);
+
+                $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                echo "getprietuleidrec<pre>";
+                print_r($getprietuleidrec);
+                echo "</pre>";
             }
         }
     }
