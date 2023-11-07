@@ -1513,8 +1513,7 @@ class AppwhookController extends BaseController
     public function update_productswebhk()
     {
 
-        $updateprorespo = array("name" => "update product webhook");
-        $this->user_model->check_test_response($updateprorespo);
+        
         $update_product_content = NULL;
 
         // Get webhook content from the POST
@@ -1531,6 +1530,9 @@ class AppwhookController extends BaseController
             "product_id" => $get_productsup->id,
             "shop_url" => $_GET['pxupprshp']
         );
+        $updateprorespo = array("name" => "update product webhook for=".$_GET['pxupprshp']);
+        $this->user_model->check_test_response($updateprorespo);
+
         $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
         // echo "<pre>";
         // print_r($get_partpecentage);
