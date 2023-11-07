@@ -381,9 +381,9 @@ class AppwhookController extends BaseController
         fclose($webhook);
 
         $jsndata = json_decode($webhook_content);
-        $resposne_array_lst = array("name" => "start with every ordr=" . $_GET['whshp']);
-        $this->user_model->check_test_response($resposne_array_lst);
-        
+        // $resposne_array_lst = array("name" => "start with every ordr=" . $_GET['whshp']);
+        // $this->user_model->check_test_response($resposne_array_lst);
+
         if (isset($_GET['whshp']) && $_GET['whshp'] != "") {
             $get_resulsts = $this->user_model->get_tokens($_GET['whshp']);
 
