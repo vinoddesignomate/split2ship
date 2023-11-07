@@ -288,15 +288,15 @@ class Home extends BaseController
                     // print_r(json_decode($jsondecod, true));
                     // echo "</pre>";
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5532451111216/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/5532451111216/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
-                    //$fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // //$fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
 
 
-                    echo "getprietuleidrec id<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec id<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
 
 
 
@@ -352,6 +352,12 @@ class Home extends BaseController
                     );
                     $this->user_model->insert_addcart_webhooks($webhookarray);
                 }*/
+                    $get_register_webhook = $this->common->rest_api('/admin/api/2022-07/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+
+                    echo "get_register_webhookset<pre>";
+                    print_r($get_register_webhookset);
+                    echo "</pre>";
                 }
 
                 if ($this->request->getPost('assign_save')) {
