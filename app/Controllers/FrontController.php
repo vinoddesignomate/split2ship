@@ -1277,7 +1277,7 @@ class FrontController extends BaseController
         // $this->user_model->check_test_response($resposne_array);
         // echo "insert";       
 
-        $getallorders = $this->user_model->get_failed_order();
+       /* $getallorders = $this->user_model->get_failed_order();
         if (!empty($getallorders)) {
             foreach ($getallorders as $faikedorder) {
                 // echo "<pre>";
@@ -1359,9 +1359,9 @@ class FrontController extends BaseController
                     } else {
                         $chkpropeties = array();
                     }
-                }*/
+                }
 
             }
-        }
+        }*/
     }
 }
