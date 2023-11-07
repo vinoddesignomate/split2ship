@@ -1271,4 +1271,18 @@ class FrontController extends BaseController
         $body_data_decode = json_decode($body_data, TRUE);
         print_r($body_data_decode);
     }
+    public function update_double_create()
+    {
+        // $resposne_array = array("name" => "insertion from AWS");
+        // $this->user_model->check_test_response($resposne_array);
+        // echo "insert";       
+
+        $getallorders = $this->user_model->get_failed_order();
+        if (!empty($getallorders)) {
+            foreach ($getallorders as $faikedorder) {
+                echo"<pre>"; print_r($faikedorder); echo "</pre>";
+                //$get_details = $this->user_model->get_tokens($get_lates_colection->shop_url);
+            }
+        }
+    }
 }

@@ -964,4 +964,9 @@ class UserModel extends Model
         $this->db->query($delquery, array($data_array['order_number_cod'],$data_array['shop_url'],'pending_cod'));
         
     }
+    public function get_failed_order(){
+        $getquery = "SELECT * FROM splitship_double_orders WHERE status=? AND order_number_paid NOT LIKE '%-SplitOrder%'";
+        $getdata = $this->db->query($getquery, array('pending_cod'));
+        return $getdata->getResult();
+    }
 }
