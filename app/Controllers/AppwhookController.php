@@ -357,6 +357,7 @@ class AppwhookController extends BaseController
 
                 $resposne_array = array("name" => "actual order invoice_email_snd=" . json_encode($invoice_email_snd));
                 $this->user_model->check_test_response($resposne_array);*/
+                $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
             }
         }
         echo "200 ok";
