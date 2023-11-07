@@ -59,39 +59,42 @@ class FrontController extends BaseController
 
         // $testrrffresponse = json_decode($new_response, true);
         // print_r($testrrffresponse);
-
-        if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-            if ($this->request->getPost('pid')) {
-                $condtion_array = array(
-                    "product_id" => $this->request->getPost('pid'),
-                    "varient_id" => $this->request->getPost('vid')
-                );
-            } else {
-                $condtion_array = array(
-                    "varient_id" => $this->request->getPost('vid')
-                );
-            }
-            $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
-            $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-
-            if (!empty($get_resulrs)) {
-                if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
-
-                    $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
-                    $partperctg = $get_resulrs[0]->partial_percentage;
+        if (!empty($plan_details)) {
+            if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+                if ($this->request->getPost('pid')) {
+                    $condtion_array = array(
+                        "product_id" => $this->request->getPost('pid'),
+                        "varient_id" => $this->request->getPost('vid')
+                    );
                 } else {
-                    $propartialper = 0;
-                    $partperctg = 0;
+                    $condtion_array = array(
+                        "varient_id" => $this->request->getPost('vid')
+                    );
                 }
-                $return_array = array(
-                    "full_price" => $get_resulrs[0]->price,
-                    "pro_pack" => $partperctg,
-                    "partial_price" => $propartialper,
-                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
-                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-                );
-                return json_encode($return_array);
+                $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
+                $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+
+                if (!empty($get_resulrs)) {
+                    if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
+
+                        $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
+                        $partperctg = $get_resulrs[0]->partial_percentage;
+                    } else {
+                        $propartialper = 0;
+                        $partperctg = 0;
+                    }
+                    $return_array = array(
+                        "full_price" => $get_resulrs[0]->price,
+                        "pro_pack" => $partperctg,
+                        "partial_price" => $propartialper,
+                        "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                        "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                        "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                    );
+                    return json_encode($return_array);
+                } else {
+                    return 'not_found';
+                }
             } else {
                 return 'not_found';
             }
@@ -1277,7 +1280,7 @@ class FrontController extends BaseController
         // $this->user_model->check_test_response($resposne_array);
         // echo "insert";       
 
-       /* $getallorders = $this->user_model->get_failed_order();
+        /* $getallorders = $this->user_model->get_failed_order();
         if (!empty($getallorders)) {
             foreach ($getallorders as $faikedorder) {
                 // echo "<pre>";
