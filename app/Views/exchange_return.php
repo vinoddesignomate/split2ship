@@ -275,7 +275,7 @@
                 var formnew = document.getElementById('ordertrackfrm');
                 var formData_content = new FormData(formnew);
                 console.log(formData_content);
-                return false;
+                //return false;
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
                     'formdata': formData_content
