@@ -294,12 +294,13 @@
                     }
                 });
 
-                const inputprid = document.querySelectorAll('select[name="get_reason[]"]');
+                const inputprid = document.querySelectorAll('select[name="getid[]"]');
                 const prctidvalValues = [];
 
                 inputprid.forEach(function(textElement) {
                     const txtvalue = textElement;
                     console.log(txtvalue);
+                    console.log(txtvalue.value.length);
                     // for (let i = 0; i < txtvalue.value.length; i++) {
                     //     const txtval = txtvalue[i];
                     //     if (txtval !="") {
