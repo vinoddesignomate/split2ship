@@ -1093,7 +1093,7 @@ class FrontController extends BaseController
         // }
         echo view('exchange_return', $data);
     }
-    public function fetch_echange_orders()
+    public function fetch_exhange_orders()
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
@@ -1108,6 +1108,16 @@ class FrontController extends BaseController
 
             $get_all_oders = json_decode($getprietuleid['body'], true);
             $products_array = array();
+
+            // Filter the orders for the exact order name "1301"
+            $searchName = $body_data_decode['ordernum'];
+            $exactMatchOrders = array_filter($get_all_oders['orders'], function ($order) use ($searchName) {
+                return $order['name'] === $searchName;
+            });
+
+            // Print the exact match orders
+            print_r($exactMatchOrders);
+
 
             // echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
             // die();
