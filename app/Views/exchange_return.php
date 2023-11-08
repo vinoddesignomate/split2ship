@@ -273,11 +273,12 @@
                 e.preventDefault(); // Prevent the default form submission
                 console.log(form.innerHTML);
                 var formData_content = new FormData(form);
+                console.log(formData_content);
+                return false;
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
                     'formdata': formData_content
                 });
-
                 fetch('https://app.payxnowandrestondelivery.com/fetch-track-return', {
                         method: 'POST',
                         body: send_data
