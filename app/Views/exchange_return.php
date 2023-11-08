@@ -272,7 +272,8 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); // Prevent the default form submission
                 console.log(form.innerHTML);
-                var formData_content = new FormData(form);
+                var formnew = document.getElementById('ordertrackfrm');
+                var formData_content = new FormData(formnew);
                 console.log(formData_content);
                 return false;
                 var send_data = JSON.stringify({
