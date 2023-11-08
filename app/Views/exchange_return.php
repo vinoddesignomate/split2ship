@@ -268,17 +268,22 @@
                 }
             });
 
-            var form = document.getElementById('ordertrackfrm');
-            form.addEventListener('submit', function(e) {
+            // var form = document.getElementById('ordertrackfrm');
+            // form.addEventListener('submit', function(e) {
+            document.getElementById('ordertrackfrm').addEventListener('submit', function(e) {
                 e.preventDefault(); // Prevent the default form submission
-                console.log(form.innerHTML);
-                var formnew = document.getElementById('ordertrackfrm');
-                var formData_content = new FormData(formnew);
-                console.log(formData_content);
+
+                // Get the form data using FormData
+                var formData = new FormData(this);
+                //e.preventDefault(); // Prevent the default form submission
+                // console.log(form.innerHTML);
+                // var formnew = document.getElementById('ordertrackfrm');
+                // var formData_content = new FormData(formnew);
+                console.log(formData);
                 //return false;
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
-                    'formdata': formData_content
+                    'formdata': formData
                 });
                 fetch('https://app.payxnowandrestondelivery.com/fetch-track-return', {
                         method: 'POST',
