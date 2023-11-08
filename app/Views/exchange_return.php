@@ -294,7 +294,7 @@
                     }
                 });
 
-                const inputprid = document.querySelectorAll('select[name="getid[]"]');
+                const inputprid = document.querySelectorAll('input[name="getid[]"]');
                 const prctidvalValues = [];
 
                 inputprid.forEach(function(textElement) {
