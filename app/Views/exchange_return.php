@@ -297,19 +297,19 @@
                 const inputprid = document.querySelectorAll('select[name="get_reason[]"]');
                 const prctidvalValues = [];
 
-                inputprid.forEach(function(selectElement) {
-                    const txtvalue = selectElement;
-
-                    for (let i = 0; i < txtvalue.value.length; i++) {
-                        const txtval = txtvalue[i];
-                        if (txtval !="") {
-                            prctidvalValues.push(txtval.value);
-                        }
-                    }
+                inputprid.forEach(function(textElement) {
+                    const txtvalue = textElement;
+                    console.log(txtvalue);
+                    // for (let i = 0; i < txtvalue.value.length; i++) {
+                    //     const txtval = txtvalue[i];
+                    //     if (txtval !="") {
+                    //         prctidvalValues.push(txtval.value);
+                    //     }
+                    // }
                 });
 
-                console.log('prctidvalValues');
-                console.log(prctidvalValues);
+                //console.log('prctidvalValues');
+                //console.log(prctidvalValues);
                 //return false;
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
