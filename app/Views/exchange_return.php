@@ -280,7 +280,22 @@
                 // var formnew = document.getElementById('ordertrackfrm');
                 // var formData_content = new FormData(formnew);
                 console.log(formData);
-                //return false;
+                const selectElements = document.querySelectorAll('select[name="get_reason[]"]');
+                const selectedOptionValues = [];
+
+                selectElements.forEach(function(selectElement) {
+                    const options = selectElement.options;
+
+                    for (let j = 0; j < options.length; j++) {
+                        const option = options[j];
+                        if (option.selected) {
+                            selectedOptionValues.push(option.value);
+                        }
+                    }
+                });
+                console.log('selectedOptionValues');
+                console.log(selectedOptionValues);
+                return false;
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
                     'formdata': formData
