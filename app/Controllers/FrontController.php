@@ -1272,7 +1272,7 @@ class FrontController extends BaseController
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
-        print_r($body_data_decode);
+        echo $body_data;
     }
     public function update_double_create()
     {
