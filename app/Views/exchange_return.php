@@ -294,19 +294,11 @@
                     }
                 });
 
-                const inputprid = document.querySelectorAll('input[name="getid[]"]');
-                const prctidvalValues = [];
+                const hiddenInputElements  = document.querySelectorAll('input[name="getid[]"]');
+                const hiddenInputValues = [];
 
-                inputprid.forEach(function(textElement) {
-                    const txtvalue = textElement;
-                    console.log(txtvalue);
-                    console.log(txtvalue.value.length);
-                    // for (let i = 0; i < txtvalue.value.length; i++) {
-                    //     const txtval = txtvalue[i];
-                    //     if (txtval !="") {
-                    //         prctidvalValues.push(txtval.value);
-                    //     }
-                    // }
+                hiddenInputElements.forEach(function(hiddenInput) {
+                    hiddenInputValues.push(hiddenInput.value);
                 });
 
                 //console.log('prctidvalValues');
@@ -315,6 +307,7 @@
                 var send_data = JSON.stringify({
                     'shopname': '<?php echo $_GET['shop']; ?>',
                     'reason': selectedOptionValues,
+                    'productid': hiddenInputValues,
                 });
                 fetch('https://app.payxnowandrestondelivery.com/fetch-track-return', {
                         method: 'POST',
