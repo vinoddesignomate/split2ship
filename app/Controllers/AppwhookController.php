@@ -520,6 +520,13 @@ class AppwhookController extends BaseController
                                     $prosku = $products->sku;
                                     $prodycprice =  $products->price;
                                 }
+                                //for pricse
+                                // if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
+
+
+                                // }else{
+                                    
+                                // }
                                 $orders_products_data = array(
                                     "order_id" => $jsndata->id,
                                     "product_id" => $products->id,
