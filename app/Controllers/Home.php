@@ -130,7 +130,7 @@ class Home extends BaseController
                                 //     $item_price_actualval = $item_price_actualval + $products['properties'][4]['value'];
                                 // }
                                 $productvarient = $products['properties'][1]['value'];
-                                $paidprice_get = $products['properties'][2]['value'];
+                                $paidprice_get = $products['properties'][2]['value'] + $products['properties'][3]['value'];
                                 if (isset($products['properties'][4]['value']) && $products['properties'][4]['name'] == 'Discount') {
                                     $item_discount_item = $products['properties'][4]['value'];
                                 } else {
