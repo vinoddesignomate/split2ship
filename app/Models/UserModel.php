@@ -222,9 +222,9 @@ class UserModel extends Model
         $qbuilder->where('shop_url', $data_array['shop_url']);
         $q = $qbuilder->get();
         if (empty($q->getResult())) {
-            return  $this->db->table('orders_products')->insert($data_array);
+            return  $this->db->table('track_order_exchange_app')->insert($data_array);
         } else {
-            $this->db->table('orders_products')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
+            $this->db->table('track_order_exchange_app')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
             return '';
         }
     }
