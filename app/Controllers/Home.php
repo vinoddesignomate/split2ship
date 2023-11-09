@@ -194,7 +194,7 @@ class Home extends BaseController
                                 "product_price" => $paidprice_get,
                                 "product_qty" => $products['quantity'],
                                 "product_sku" => $prosku,
-                                "shop_url" => $_GET['whshp'],
+                                "shop_url" => $_GET['shop'],
                                 "product_discount" => $item_discount_item,
                                 "product_text" => $taxamounttotal,
                             );
