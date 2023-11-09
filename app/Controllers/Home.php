@@ -101,10 +101,10 @@ class Home extends BaseController
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
-                    die();
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
+                    // die();
 
                     $paid_price = 0;
                     $total_item_price = 0;
@@ -167,13 +167,13 @@ class Home extends BaseController
 
                             if (!empty($products['tax_lines'])) {
                                 foreach ($products['tax_lines'] as $tax_items) {
-                                    if ($tax_price == 0) {
+                                    if ($paidprice_get == 0) {
                                         $taxamount = 0;
                                     } else {
-                                        $taxamount = $tax_price * $tax_items['rate'];
+                                        $taxamount = $paidprice_get * $tax_items['rate'];
                                     }
                                     //echo "tax_price=".$tax_price;
-                                    $getitemtx = $tax_price + $taxamount;
+                                    $getitemtx = $paidprice_get + $taxamount;
                                     $taxamounttotal = $taxamounttotal + $getitemtx;
                                     $order_tax = $order_tax + $taxamount;
                                     $tax_lines[] = [
@@ -183,7 +183,7 @@ class Home extends BaseController
                                     ];
                                 }
                             } else {
-                                $taxamounttotal = $taxamounttotal + $tax_price;
+                                $taxamounttotal = $taxamounttotal + $paidprice_get;
                             }
 
                             $orders_products_data = array(
@@ -196,7 +196,7 @@ class Home extends BaseController
                                 "product_sku" => $prosku,
                                 "shop_url" => $_GET['whshp'],
                                 "product_discount" => $item_discount_item,
-                                "product_text" => $item_discount_item,
+                                "product_text" => $taxamounttotal,
                             );
 
                             $line_items[] =
@@ -297,7 +297,7 @@ class Home extends BaseController
                     ];
                     // echo "final_total_orderval=" . $final_total_orderval;
                     echo "<pre>";
-                    print_r($order_data);
+                    print_r($orders_products_data);
                     echo "</pre>";
 
 
