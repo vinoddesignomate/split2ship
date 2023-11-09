@@ -186,7 +186,7 @@ class Home extends BaseController
                                 $taxamounttotal = $taxamounttotal + $paidprice_get;
                             }
 
-                            $orders_products_data = array(
+                            $orders_products_data[] = array(
                                 "order_id" => $getprietuleidrec['order']['id'],
                                 "product_id" => $products['id'],
                                 "varient_id" => $productvarient,
