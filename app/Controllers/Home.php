@@ -101,9 +101,9 @@ class Home extends BaseController
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
                     // die();
 
                     $paid_price = 0;
