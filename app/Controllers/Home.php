@@ -188,11 +188,11 @@ class Home extends BaseController
 
                             $orders_products_data = array(
                                 "order_id" => $getprietuleidrec['order']['id'],
-                                "product_id" => $products->id,
+                                "product_id" => $products['id'],
                                 "varient_id" => $productvarient,
-                                "product_name" => $products->name,
+                                "product_name" => $products['name'],
                                 "product_price" => $paidprice_get,
-                                "product_qty" => $products->quantity,
+                                "product_qty" => $products['quantity'],
                                 "product_sku" => $prosku,
                                 "shop_url" => $_GET['whshp'],
                                 "product_discount" => $item_discount_item,
