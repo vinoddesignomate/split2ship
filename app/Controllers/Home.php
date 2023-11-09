@@ -184,6 +184,7 @@ class Home extends BaseController
                                 }
                             } else {
                                 $taxamounttotal = $taxamounttotal + $paidprice_get;
+                                $order_tax = 0;
                             }
 
                             $orders_products_data[] = array(
@@ -196,7 +197,7 @@ class Home extends BaseController
                                 "product_sku" => $prosku,
                                 "shop_url" => $_GET['shop'],
                                 "product_discount" => $item_discount_item,
-                                "product_tax" => $taxamounttotal,
+                                "product_tax" => $order_tax,
                             );
 
                             $line_items[] =
