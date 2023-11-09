@@ -94,16 +94,16 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5533126000944.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5543676379440.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    // echo "getprietuleidrec<pre>";
-                    // print_r($getprietuleidrec);
-                    // echo "</pre>";
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
                     // die();
 
                     $paid_price = 0;
@@ -196,7 +196,7 @@ class Home extends BaseController
                                 "product_sku" => $prosku,
                                 "shop_url" => $_GET['shop'],
                                 "product_discount" => $item_discount_item,
-                                "product_text" => $taxamounttotal,
+                                "product_tax" => $taxamounttotal,
                             );
 
                             $line_items[] =
