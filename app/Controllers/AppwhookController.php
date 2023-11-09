@@ -534,12 +534,13 @@ class AppwhookController extends BaseController
                                     }
                                 } else {
                                     $productvarient = $products->variant_id;
-                                    $paidprice_get1 = $products->properties[1]->value;
+                                    
                                     if (isset($products->total_discount) && $products->total_discount != "") {
                                         $item_discount_item2 = $products->total_discount;
                                     } else {
                                         $item_discount_item2 = 0;
                                     }
+                                    $paidprice_get1 = $products->properties['1']->value;
                                 }
 
                                 if (!empty($products->tax_lines)) {
