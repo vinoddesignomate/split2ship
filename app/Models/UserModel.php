@@ -216,15 +216,18 @@ class UserModel extends Model
     public function track_orders_products($data_array)
     {
 
-        $qbuilder = $this->db->table('track_order_exchange_app');
+        $qbuilder = $this->db->table('orders_products');
         $qbuilder->where('product_id', $data_array['product_id']);
         $qbuilder->where('order_id', $data_array['order_id']);
         $qbuilder->where('shop_url', $data_array['shop_url']);
         $q = $qbuilder->get();
+        // $qbuilder->countAllResults();
         if (empty($q->getResult())) {
-            return  $this->db->table('track_order_exchange_app')->insert($data_array);
+            // $del_query = "DELETE FROM orders_products WHERE order_id=?";
+            // $this->db->query($del_query, array($data_array['order_id']));
+            return  $this->db->table('orders_products')->insert($data_array);
         } else {
-            $this->db->table('track_order_exchange_app')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
+            $this->db->table('orders_products')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
             return '';
         }
     }
@@ -965,10 +968,5 @@ class UserModel extends Model
         $getquery = "SELECT * FROM splitship_double_orders WHERE status=? AND order_number_paid NOT LIKE '%-SplitOrder%'";
         $getdata = $this->db->query($getquery, array('pending_cod'));
         return $getdata->getResult();
-    }
-    public function update_double_order_with_old($doubleorderid,$orderid, $shopurl)
-    {
-        $update_q = 'UPDATE track_order_exchange_app SET new_double_order_id=? WHERE order_id=? AND shop_url=?';
-        $this->db->query($update_q, array($doubleorderid,$orderid, $shopurl));
     }
 }
