@@ -502,7 +502,7 @@ class AppwhookController extends BaseController
                         $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
                         $reaminming_price = array();
                         foreach ($jsndata->line_items as $products) {
-                            if ($products->name != "Partial Pending Payment") {
+                            if ($products->name != "Partial Pending Payment") { 
                                 if ($products->sku == "") {
 
                                     if (isset($products->properties[3]->value)) {
