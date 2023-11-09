@@ -494,8 +494,8 @@ class AppwhookController extends BaseController
                         }
                         /// echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
 
-                        // $resposne_array = array("name" => "new_orderdata" . json_encode($orders_data));
-                        // $this->user_model->check_test_response($resposne_array);
+                        $resposne_array = array("name" => "lineitemfor=" . json_encode($jsndata->line_items));
+                        $this->user_model->check_test_response($resposne_array);
 
                         $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
                         $reaminming_price = array();
