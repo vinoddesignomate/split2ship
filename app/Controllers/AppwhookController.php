@@ -575,7 +575,8 @@ class AppwhookController extends BaseController
                                     "product_sku" => $prosku,
                                     "product_discount" => $item_discount_item2,
                                     "product_tax" => $order_tax1,
-                                    "shop_url" => $_GET['whshp']
+                                    "shop_url" => $_GET['whshp'],
+                                    "movement" => date("Y-m-d H:i:s")
                                 );
 
                                 //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
