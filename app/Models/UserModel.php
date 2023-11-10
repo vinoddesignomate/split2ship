@@ -216,6 +216,22 @@ class UserModel extends Model
     public function track_orders_products($data_array)
     {
 
+        $qbuilder = $this->db->table('orders_products');
+        $qbuilder->where('product_id', $data_array['product_id']);
+        $qbuilder->where('order_id', $data_array['order_id']);
+        $qbuilder->where('shop_url', $data_array['shop_url']);
+        $q = $qbuilder->get();
+        if (empty($q->getResult())) {
+            return  $this->db->table('orders_products')->insert($data_array);
+        } else {
+            $this->db->table('orders_products')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
+            return '';
+        }
+    }
+
+   /* public function track_orders_products($data_array)
+    {
+
         $qbuilder = $this->db->table('track_order_exchange_app');
         $qbuilder->where('product_id', $data_array['product_id']);
         $qbuilder->where('order_id', $data_array['order_id']);
@@ -227,7 +243,7 @@ class UserModel extends Model
             $this->db->table('track_order_exchange_app')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
             return '';
         }
-    }
+    }*/
     public function get_all_orders($shopurl, $start, $limit)
     {
         $qbuilds = $this->db->table('orders');

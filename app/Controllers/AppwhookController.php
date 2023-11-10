@@ -526,57 +526,57 @@ class AppwhookController extends BaseController
                                     $prodycprice =  $products->price;
                                 }
                                 //for pricse
-                                if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
-                                    $paidprice_get1 = $products->properties[2]->value + $products->properties[3]->value;
-                                    $productvarient = $products->properties[1]->value;
+                                // if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
+                                //     $paidprice_get1 = $products->properties[2]->value + $products->properties[3]->value;
+                                //     $productvarient = $products->properties[1]->value;
 
-                                    if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
-                                        $item_discount_item2 = $products->properties[4]->value;
-                                    } else {
-                                        $item_discount_item2 = 0;
-                                    }
-                                } else {
-                                    $productvarient = $products->variant_id;
+                                //     if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
+                                //         $item_discount_item2 = $products->properties[4]->value;
+                                //     } else {
+                                //         $item_discount_item2 = 0;
+                                //     }
+                                // } else {
+                                //     $productvarient = $products->variant_id;
 
-                                    if (isset($products->total_discount) && $products->total_discount != "") {
-                                        $item_discount_item2 = $products->total_discount;
-                                    } else {
-                                        $item_discount_item2 = 0;
-                                    }
-                                    if (isset($products->properties[1]->value) && $products->properties[1]->name == 'full_pay') {
-                                        $paidprice_get1 = $products->properties[1]->value;
-                                    } else {
-                                        $paidprice_get1 = $products->price;
-                                    }
-                                }
+                                //     if (isset($products->total_discount) && $products->total_discount != "") {
+                                //         $item_discount_item2 = $products->total_discount;
+                                //     } else {
+                                //         $item_discount_item2 = 0;
+                                //     }
+                                //     if (isset($products->properties[1]->value) && $products->properties[1]->name == 'full_pay') {
+                                //         $paidprice_get1 = $products->properties[1]->value;
+                                //     } else {
+                                //         $paidprice_get1 = $products->price;
+                                //     }
+                                // }
 
-                                if (!empty($products->tax_lines)) {
-                                    $order_tax1 = 0;
-                                    foreach ($products->tax_lines as $tax_items) {
-                                        if ($paidprice_get1 == 0) {
-                                            $taxamount = 0;
-                                        } else {
-                                            $taxamount = $paidprice_get1 * $tax_items->rate;
-                                        }
+                                // if (!empty($products->tax_lines)) {
+                                //     $order_tax1 = 0;
+                                //     foreach ($products->tax_lines as $tax_items) {
+                                //         if ($paidprice_get1 == 0) {
+                                //             $taxamount = 0;
+                                //         } else {
+                                //             $taxamount = $paidprice_get1 * $tax_items->rate;
+                                //         }
 
-                                        $order_tax1 = $order_tax1 + $taxamount;
-                                    }
-                                } else {
-                                    $order_tax1 = 0;
-                                }
+                                //         $order_tax1 = $order_tax1 + $taxamount;
+                                //     }
+                                // } else {
+                                //     $order_tax1 = 0;
+                                // }
 
                                 $orders_products_data = array(
                                     "order_id" => $jsndata->id,
                                     "product_id" => $products->id,
-                                    "varient_id" => $productvarient,
+                                    //"varient_id" => $productvarient,
                                     "product_name" => $products->name,
-                                    "product_price" => $paidprice_get1,
+                                    "product_price" => $prodycprice,
                                     "product_qty" => $products->quantity,
                                     "product_sku" => $prosku,
-                                    "product_discount" => $item_discount_item2,
-                                    "product_tax" => $order_tax1,
+                                    //"product_discount" => $item_discount_item2,
+                                   // "product_tax" => $order_tax1,
                                     "shop_url" => $_GET['whshp'],
-                                    "movement" => date("Y-m-d H:i:s")
+                                    //"movement" => date("Y-m-d H:i:s")
                                 );
 
                                 //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
