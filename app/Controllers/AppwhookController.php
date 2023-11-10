@@ -546,7 +546,7 @@ class AppwhookController extends BaseController
                                     if (isset($products->properties[1]->value) && $products->properties[1]->name == 'full_pay') {
                                         $paidprice_get1 = $products->properties[1]->value;
                                     } else {
-                                        $paidprice_get1 = 0;
+                                        $paidprice_get1 = $products->price;
                                     }
                                 }
 
