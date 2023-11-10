@@ -810,52 +810,54 @@ class FrontController extends BaseController
         // $shopname = str_replace("http://", "", $shopname);
 
         $plan_details = $this->user_model->get_store_plan($this->request->getPost('shopname'));
-        if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-            $setaray = array(
-                "cart_id" => $this->request->getPost('tokenid'),
-                "shop_url" => $this->request->getPost('shopname')
-            );
-            $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
-            if (!empty($get_products)) {
-                $returnarray = array();
-                foreach ($get_products as $itmeprod) {
-                    if ($itmeprod->product_properties != "") {
-                        $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
+        if (!empty($plan_details)) {
+            if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+                $setaray = array(
+                    "cart_id" => $this->request->getPost('tokenid'),
+                    "shop_url" => $this->request->getPost('shopname')
+                );
+                $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
+                if (!empty($get_products)) {
+                    $returnarray = array();
+                    foreach ($get_products as $itmeprod) {
+                        if ($itmeprod->product_properties != "") {
+                            $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
 
-                        $proety_size_tems = array();
-                        foreach ($protiesdstrrrat as $key => $getprt) {
-                            //if ($key != "parma") {
-                            $proety_size_tems[$key] = $getprt;
-                            //}
-                            unset($proety_size_tems['PARTIAL_PAYMENT']);
+                            $proety_size_tems = array();
+                            foreach ($protiesdstrrrat as $key => $getprt) {
+                                //if ($key != "parma") {
+                                $proety_size_tems[$key] = $getprt;
+                                //}
+                                unset($proety_size_tems['PARTIAL_PAYMENT']);
+                            }
+                            $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
+
+                            $returnarray[] = array(
+                                "varient_id" => $itmeprod->variant_id,
+                                "product_id" => $itmeprod->product_id,
+                                "product_type" => $itmeprod->product_type,
+                                "partial_percentage" => $itmeprod->partial_percentage,
+                                "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
+                            );
+                        } else {
+                            $returnarray[] = array(
+                                "varient_id" => $itmeprod->variant_id,
+                                "product_id" => $itmeprod->product_id,
+                                "partial_percentage" => $itmeprod->partial_percentage,
+                                "product_type" => $itmeprod->product_type,
+                                "product_properties" => "", // If product_properties is empty
+                            );
                         }
-                        $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
-
-                        $returnarray[] = array(
-                            "varient_id" => $itmeprod->variant_id,
-                            "product_id" => $itmeprod->product_id,
-                            "product_type" => $itmeprod->product_type,
-                            "partial_percentage" => $itmeprod->partial_percentage,
-                            "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
-                        );
-                    } else {
-                        $returnarray[] = array(
-                            "varient_id" => $itmeprod->variant_id,
-                            "product_id" => $itmeprod->product_id,
-                            "partial_percentage" => $itmeprod->partial_percentage,
-                            "product_type" => $itmeprod->product_type,
-                            "product_properties" => "", // If product_properties is empty
-                        );
                     }
+                    return json_encode($returnarray);
                 }
-                return json_encode($returnarray);
+
+                // else {
+                //     echo "not_found";
+                // }
+                //print_r($returnarray);
+
             }
-
-            // else {
-            //     echo "not_found";
-            // }
-            //print_r($returnarray);
-
         }
     }
     public function update_store_package_cron()
