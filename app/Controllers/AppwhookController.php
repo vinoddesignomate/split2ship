@@ -501,7 +501,7 @@ class AppwhookController extends BaseController
                         $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
                         $reaminming_price = array();
 
-                        $resposne_array245 = array("name" => "actual line resposne_array245" . json_encode($jsndata->line_items));
+                        $resposne_array245 = array("name" => "actual line resposne_array245" . $_GET['whshp'].'=='.json_encode($jsndata->line_items));
                         $this->user_model->check_test_response($resposne_array245);
 
                         foreach ($jsndata->line_items as $products) {
