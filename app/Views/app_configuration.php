@@ -1057,6 +1057,11 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                         <div class="iframeMainDiv">
+                                <h3>Introducing Split2Ship: PayPart | Rest COD | What is Split2Ship? | Split2Ship Shopify App</h3>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Chb8-5TVE_8?si=QTQ_JIiscES2VaLd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                        </div>
+                        <div class="iframeMainDiv">
                                 <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
