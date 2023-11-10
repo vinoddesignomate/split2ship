@@ -157,8 +157,7 @@ class AppwhookController extends BaseController
         $line_items = [];
         //get main orders products details 
 
-        $resposne_array245 = array("name" => "actual line items" . json_encode($jsndata->line_items));
-        $this->user_model->check_test_response($resposne_array245);
+
 
         foreach ($jsndata->line_items as $products) {
             //set condition for get only main products
@@ -501,6 +500,10 @@ class AppwhookController extends BaseController
 
                         $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
                         $reaminming_price = array();
+
+                        $resposne_array245 = array("name" => "actual line resposne_array245" . json_encode($jsndata->line_items));
+                        $this->user_model->check_test_response($resposne_array245);
+
                         foreach ($jsndata->line_items as $products) {
                             if ($products->name != "Partial Pending Payment") {
                                 if ($products->sku == "") {
@@ -746,6 +749,7 @@ class AppwhookController extends BaseController
         $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
 
         $reaminming_price = array();
+        $paidprice_get1 = 0;
         foreach ($jsndata->line_items as $products) {
             if ($products->name != "Partial Pending Payment") {
                 if ($products->sku == "") {
@@ -778,7 +782,7 @@ class AppwhookController extends BaseController
                     }
                 } else {
                     $productvarient = $products->variant_id;
-                    
+
                     if (isset($products->total_discount) && $products->total_discount != "") {
                         $item_discount_item2 = $products->total_discount;
                     } else {
