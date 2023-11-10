@@ -772,7 +772,7 @@ class AppwhookController extends BaseController
                     $prosku = $products->sku;
                     $prodycprice =  $products->price;
                 }
-                if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
+                /*if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
                     $paidprice_get1 = $products->properties[2]->value + $products->properties[3]->value;
                     $productvarient = $products->properties[1]->value;
 
@@ -809,18 +809,18 @@ class AppwhookController extends BaseController
                     }
                 } else {
                     $order_tax1 = 0;
-                }
+                }*/
 
                 $orders_products_data = array(
                     "order_id" => $jsndata->id,
                     "product_id" => $products->id,
-                    "varient_id" => $productvarient,
+                   // "varient_id" => $productvarient,
                     "product_name" => $products->name,
-                    "product_price" => $paidprice_get1,
+                    "product_price" => $prodycprice,
                     "product_qty" => $products->quantity,
                     "product_sku" => $prosku,
-                    "product_discount" => $item_discount_item2,
-                    "product_tax" => $order_tax1,
+                    //"product_discount" => $item_discount_item2,
+                   // "product_tax" => $order_tax1,
                     "shop_url" => $_GET['whshp']
                 );
 
