@@ -1180,7 +1180,7 @@ $store_name = $shop_name[0];
                                         <h2 class="">Cart button setting</h2>
                                 </div>
                                 <div class="payxnowandrestondelivery-form-wrap">
-                                        <form method="post">
+                                        <form method="post" onsubmit="return validate_chkcart()">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
                                                         <input type="checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
                                                         <label for="test1">add to cart</label>
@@ -1205,3 +1205,23 @@ $store_name = $shop_name[0];
 </div>
 
 </div>
+<script type="text/javascript">
+        function validate_chkcart() {
+                var checkboxes = document.querySelectorAll('.checkbox');
+                var isChecked = false;
+
+                checkboxes.forEach(function(checkbox) {
+                        if (checkbox.checked) {
+                                isChecked = true;
+                        }
+                });
+
+                if (isChecked) {
+                        alert('At least one checkbox is checked!');
+                        return true; // Form will be submitted
+                } else {
+                        alert('Please select at least one checkbox.');
+                        return false; // Form won't be submitted
+                }
+        }
+</script>
