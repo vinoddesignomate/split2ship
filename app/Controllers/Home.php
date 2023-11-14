@@ -2381,19 +2381,31 @@ class Home extends BaseController
         }
         if ($this->request->getPost('track_cart_config')) {
 
-            $track_color_array = array();
-            foreach ($this->request->getPost('cart_show_btn') as $key => $value) {
-                $addcart = ($value == 'addtocart') ? 1 : 0;
-                $buycart = ($value == 'buywithpartial') ? 1 : 0;
-                $fullbuycart = ($value == 'fullbuynow') ? 1 : 0;
+            $track_color_array = array(
+                "add_to_cartbtn" => 0,
+                "buy_partial_btn" => 0,
+                "full_pay_buybtn" => 0,
+                "shop_url" => $_GET['shop']
+            );
 
-                $track_color_array[] = array(
-                    "add_to_cartbtn" => $addcart,
-                    "buy_partial_btn" => $buycart,
-                    "full_pay_buybtn" => $fullbuycart,
-                    "shop_url" => $_GET['shop']
-                );
+            foreach ($this->request->getPost('cart_show_btn') as $key => $value) {
+                switch ($value) {
+                    case 'addtocart':
+                        $track_color_array["add_to_cartbtn"] = 1;
+                        break;
+                    case 'buywithpartial':
+                        $track_color_array["buy_partial_btn"] = 1;
+                        break;
+                    case 'fullbuynow':
+                        $track_color_array["full_pay_buybtn"] = 1;
+                        break;
+                }
             }
+
+            // Now $track_color_array contains the values from the last iteration
+            // If you want to insert this array into a database, you can uncomment the following line:
+            // $this->user_model->track_checkout_button_color($track_color_array);
+
             echo "<pre>";
             print_r($track_color_array);
             echo "</pre>";
