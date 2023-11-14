@@ -1215,7 +1215,7 @@ $store_name = $shop_name[0];
                                 isChecked = true;
                         }
                 });
-
+                console.log(isChecked);
                 if (isChecked) {
                         alert('At least one checkbox is checked!');
                         return true; // Form will be submitted
