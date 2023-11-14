@@ -1178,7 +1178,7 @@ $store_name = $shop_name[0];
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col">
                                 <div class="payxnowandrestondelivery-head-wrapper">
                                         <h2 class="">Cart button setting</h2>
-                                        <span id="cart_error"></span>
+                                        <span style="color: red;font-weight: 700;" id="cart_error"></span>
                                 </div>
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form method="post" onsubmit="return validate_chkcart()">
