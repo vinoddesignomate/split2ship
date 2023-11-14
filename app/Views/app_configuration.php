@@ -1187,11 +1187,11 @@ $store_name = $shop_name[0];
                                                         <label for="test1">add to cart</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" class="splite_checkbox" d="test2" name="cart_show_btn[]" value="buywithpartial">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" d="test2" name="cart_show_btn[]" value="buywithpartial">
                                                         <label for="test2">buy now with partial</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" class="splite_checkbox" id="test3" name="cart_show_btn[]" value="fullbuynow">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="test3" name="cart_show_btn[]" value="fullbuynow">
                                                         <label for="test3">buy now</label>
                                                 </div>
 
