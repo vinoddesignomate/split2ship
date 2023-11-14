@@ -1180,7 +1180,7 @@ $store_name = $shop_name[0];
                                         <h2 class="">Cart button setting</h2>
                                 </div>
                                 <div class="payxnowandrestondelivery-form-wrap">
-                                        <form action="">
+                                        <form method="post">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
                                                         <input type="checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
                                                         <label for="test1">add to cart</label>
