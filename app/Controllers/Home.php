@@ -57,10 +57,10 @@ class Home extends BaseController
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
             //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                // if ($get_details->update_app == 0) {
-                //     echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                //     exit();
-                // }
+            // if ($get_details->update_app == 0) {
+            //     echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+            //     exit();
+            // }
             //}
             $data['get_details'] = $get_details;
             $products =  $products = $this->common->rest_api('/admin/api/2022-10/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
@@ -112,7 +112,7 @@ class Home extends BaseController
                     $linitemdisount = 0;
                     $taxamounttotal = 0;
                     $final_total_orderval = 0;
-                   
+
                     $tax_lines = [];
                     foreach ($getprietuleidrec['order']['line_items'] as $products) {
                         if ($products['name'] != "Partial Pending Payment") {
@@ -2378,6 +2378,10 @@ class Home extends BaseController
             );
             $this->user_model->track_checkout_button_color($track_color_array);
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+        }
+        if ($this->request->getPost('track_cart_config')) {
+            echo"<pre>"; print_r($this->request->getPost()); echo"</pre>";
+
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
