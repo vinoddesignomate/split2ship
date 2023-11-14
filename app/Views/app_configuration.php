@@ -1183,7 +1183,7 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form method="post" onsubmit="return validate_chkcart()">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" class="splite_checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
                                                         <label for="test1">add to cart</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
@@ -1220,7 +1220,7 @@ $store_name = $shop_name[0];
                         return true; // Form will be submitted
                 } else {
                         document.getElementById('cart_error').innerHTML = 'Please select at least one option';
-                        return false; 
+                        return false;
 
                 }
         }
