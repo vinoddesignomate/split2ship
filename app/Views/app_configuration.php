@@ -1182,15 +1182,15 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form method="post" onsubmit="return validate_chkcart()">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
+                                                        <input type="checkbox" class="splite_checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
                                                         <label for="test1">add to cart</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" id="test2" name="cart_show_btn[]" value="buywithpartial">
+                                                        <input type="checkbox" class="splite_checkbox" d="test2" name="cart_show_btn[]" value="buywithpartial">
                                                         <label for="test2">buy now with partial</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" id="test3" name="cart_show_btn[]" value="fullbuynow">
+                                                        <input type="checkbox" class="splite_checkbox" id="test3" name="cart_show_btn[]" value="fullbuynow">
                                                         <label for="test3">buy now</label>
                                                 </div>
 
@@ -1207,10 +1207,11 @@ $store_name = $shop_name[0];
 </div>
 <script type="text/javascript">
         function validate_chkcart() {
-                var checkboxes = document.querySelectorAll('.checkbox');
+                var checkboxes = document.querySelectorAll('.splite_checkbox');
                 var isChecked = false;
 
                 checkboxes.forEach(function(checkbox) {
+                        console.log(checkbox);
                         if (checkbox.checked) {
                                 isChecked = true;
                         }
