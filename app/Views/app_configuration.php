@@ -1177,20 +1177,20 @@ $store_name = $shop_name[0];
                 ?>
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col">
                                 <div class="payxnowandrestondelivery-head-wrapper">
-                                        <h2 class="">test heading</h2>
+                                        <h2 class="">Cart button setting</h2>
                                 </div>
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form action="">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" id="test1" name="" value="">
+                                                        <input type="checkbox" id="test1" name="cart_show_btn" value="addtocart">
                                                         <label for="test1">add to cart</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" id="test2" name="" value="">
+                                                        <input type="checkbox" id="test2" name="cart_show_btn" value="buywithpartial">
                                                         <label for="test2">buy now with partial</label>
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" id="test3" name="" value="">
+                                                        <input type="checkbox" id="test3" name="cart_show_btn" value="fullbuynow">
                                                         <label for="test3">buy now</label>
                                                 </div>
 
