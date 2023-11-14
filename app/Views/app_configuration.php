@@ -1178,6 +1178,7 @@ $store_name = $shop_name[0];
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col">
                                 <div class="payxnowandrestondelivery-head-wrapper">
                                         <h2 class="">Cart button setting</h2>
+                                        <span id="cart_error"></span>
                                 </div>
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form method="post" onsubmit="return validate_chkcart()">
@@ -1209,20 +1210,18 @@ $store_name = $shop_name[0];
         function validate_chkcart() {
                 var checkboxes = document.querySelectorAll('.splite_checkbox');
                 var isChecked = false;
-
                 checkboxes.forEach(function(checkbox) {
-                        console.log(checkbox);
                         if (checkbox.checked) {
                                 isChecked = true;
                         }
                 });
-                console.log(isChecked);
+
                 if (isChecked) {
-                        alert('At least one checkbox is checked!');
                         return true; // Form will be submitted
                 } else {
-                        alert('Please select at least one checkbox.');
-                        return false; // Form won't be submitted
+                        document.getElementById('cart_error').innerHTML = 'Please select at least one option';
+                        return false; 
+
                 }
         }
 </script>
