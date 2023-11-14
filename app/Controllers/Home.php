@@ -2405,7 +2405,7 @@ class Home extends BaseController
                 );
                 //$this->user_model->track_checkout_button_color($track_color_array);
             }
-            echo"<per>"; print_r($track_color_array); echo "</per>";
+            echo"<pre>"; print_r($track_color_array); echo "</pre>";
 
             //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
