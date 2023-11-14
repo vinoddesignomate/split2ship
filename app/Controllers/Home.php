@@ -2381,6 +2381,7 @@ class Home extends BaseController
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
+        $data['shpname'] = $_GET['shop'];
 
         echo view('templates/header');
         echo view('app_configuration', $data);

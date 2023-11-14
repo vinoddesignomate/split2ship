@@ -1144,6 +1144,23 @@ $store_name = $shop_name[0];
                                 </form>
                         </div>
                 </div>
+                <?php if ($shpname == 'desinomatetest.myshopify.com') {
+
+                ?>
+                        <div class="payxnowandrestondelivery-flex-col">
+                                <div class="payxnowandrestondelivery-head-wrapper">
+                                        <h2 class="">test heading</h2>
+                                </div>
+                                <div class="payxnowandrestondelivery-form-wrap">
+                                        <form action="">
+                                                <input type="checkbox" id="" name="" value="">
+                                                <label for="">Test</label>
+                                                <input type="submit" value="Submit">
+                                        </form>
+                                </div>
+
+                        </div>
+                <?php } ?>
 
         </div>
 </div>
