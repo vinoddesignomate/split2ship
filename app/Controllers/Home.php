@@ -2381,31 +2381,22 @@ class Home extends BaseController
         }
         if ($this->request->getPost('track_cart_config')) {
 
+            $track_color_array = array();
             foreach ($this->request->getPost('cart_show_btn') as $key => $value) {
-                if ($value == 'addtocart') {
-                    $addcart = 1;
-                } else {
-                    $addcart = 0;
-                }
-                if ($value == 'buywithpartial') {
-                    $buycart = 1;
-                } else {
-                    $buycart = 0;
-                }
-                if ($value == 'fullbuynow') {
-                    $fullbuycart = 1;
-                } else {
-                    $fullbuycart = 0;
-                }
+                $addcart = ($value == 'addtocart') ? 1 : 0;
+                $buycart = ($value == 'buywithpartial') ? 1 : 0;
+                $fullbuycart = ($value == 'fullbuynow') ? 1 : 0;
+
                 $track_color_array[] = array(
                     "add_to_cartbtn" => $addcart,
                     "buy_partial_btn" => $buycart,
                     "full_pay_buybtn" => $fullbuycart,
                     "shop_url" => $_GET['shop']
                 );
-                //$this->user_model->track_checkout_button_color($track_color_array);
             }
-            echo"<pre>"; print_r($track_color_array); echo "</pre>";
+            echo "<pre>";
+            print_r($track_color_array);
+            echo "</pre>";
 
             //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
