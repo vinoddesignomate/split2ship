@@ -100,7 +100,8 @@
         }
 
         .payxnowandrestondelivery-form-wrap label {
-                margin: 0 0 0 10px;text-transform:capitalize;
+                margin: 0 0 0 10px;
+                text-transform: capitalize;
         }
 
         .payxnowandrestondelivery-form-wrap {
@@ -1193,7 +1194,7 @@ $store_name = $shop_name[0];
                                                         <label for="test3">buy now</label>
                                                 </div>
 
-                                                <input type="submit" value="Submit">
+                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                         </form>
                                 </div>
 
