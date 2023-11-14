@@ -89,7 +89,24 @@
         .postal-btn:hover {
                 background-color: #3b3b3b;
         }
-
+        .payxnowandrestondelivery-form-wrap input[type="checkbox"] {
+         width: auto;
+         }
+         .payxnowandrestondelivery-form-wrap .payxnowandrestondelivery-checkbox-wrap{
+                display: flex;
+                align-items: center;
+         }
+         .payxnowandrestondelivery-form-wrap label {
+             margin: 0 0 0 10px;
+        }
+        .payxnowandrestondelivery-form-wrap{
+                max-width: 500px;
+    width: 100%;
+    margin-top: 25px;
+    border: 1px solid #E6E7E9;
+    padding: 27px 24px 34px;
+    border-radius: 3px;
+        }
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
                         flex: auto;
@@ -1147,14 +1164,17 @@ $store_name = $shop_name[0];
                 <?php if ($shpname == 'desinomatetest.myshopify.com') {
 
                 ?>
-                        <div class="payxnowandrestondelivery-flex-col">
+                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col">
                                 <div class="payxnowandrestondelivery-head-wrapper">
                                         <h2 class="">test heading</h2>
                                 </div>
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form action="">
+                                                <div class="payxnowandrestondeliver-checkbox-wrap">
                                                 <input type="checkbox" id="" name="" value="">
                                                 <label for="">Test</label>
+                                                </div>
+                                               
                                                 <input type="submit" value="Submit">
                                         </form>
                                 </div>
