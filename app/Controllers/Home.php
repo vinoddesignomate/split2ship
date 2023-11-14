@@ -2401,16 +2401,8 @@ class Home extends BaseController
                         break;
                 }
             }
-
-            // Now $track_color_array contains the values from the last iteration
-            // If you want to insert this array into a database, you can uncomment the following line:
-            // $this->user_model->track_checkout_button_color($track_color_array);
-
-            echo "<pre>";
-            print_r($track_color_array);
-            echo "</pre>";
-
-            //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+            $this->user_model->track_checkout_button_color($track_color_array);
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
