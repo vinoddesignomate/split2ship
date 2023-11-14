@@ -796,6 +796,9 @@ class FrontController extends BaseController
                 "cg_cart_remove_class" => isset($gtbtncolor[0]->cg_cart_remove_class) ? $gtbtncolor[0]->cg_cart_remove_class : 'remove',
                 "cart_summary_back_color" => isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : '#fff',
                 "cart_summart_textc" => isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : '#000',
+                "add_to_cartbtn" => $gtbtncolor[0]->add_to_cartbtn,
+                "add_to_cartbtn" => $gtbtncolor[0]->buy_partial_btn,
+                "add_to_cartbtn" => $gtbtncolor[0]->full_pay_buybtn
 
             );
             return json_encode($return_array);
