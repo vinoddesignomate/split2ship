@@ -1183,7 +1183,7 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form method="post" onsubmit="return validate_chkcart()">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart" onclick="toggleTextBox('cartid', 'addcartbtntext')">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart" onclick="toggleTextBox('cartid', 'cartbtnlabel')">
                                                         <label for="cartid">add to cart</label>
                                                 </div>
                                                 <div class="flex-row" id="cartbtnlabel" style="display: none;">
@@ -1191,7 +1191,7 @@ $store_name = $shop_name[0];
                                                         <input type="text" id="addcartbtntext" name="addcartbtntext" value="">
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" d="partby" name="cart_show_btn[]"  onclick="toggleTextBox('partby', 'partialbuybtntext')" value="buywithpartial">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" d="partby" name="cart_show_btn[]"  onclick="toggleTextBox('partby', 'partialbuy')" value="buywithpartial">
                                                         <label for="partby">buy now with partial</label>
                                                 </div>
                                                 <div class="flex-row" id="partialbuy" style="display: none;">
@@ -1244,10 +1244,10 @@ $store_name = $shop_name[0];
                 textbox.style.display = checkbox.checked ? 'block' : 'none';
         }
 
-        // var cartchkbox = document.querySelectorAll('input[name="cart_show_btn[]"]');
-        // cartchkbox.forEach(function(chtents) {
-        //         chtents.addEventListener('change', function(newevent) {
-        //                 console.log(newevent.target.defaultValue);
-        //         });
-        // });
+        var cartchkbox = document.querySelectorAll('input[name="cart_show_btn[]"]');
+        cartchkbox.forEach(function(chtents) {
+                chtents.addEventListener('change', function(newevent) {
+                        console.log(newevent.target.defaultValue);
+                });
+        });
 </script>
