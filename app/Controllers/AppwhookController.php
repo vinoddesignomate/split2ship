@@ -593,10 +593,10 @@ class AppwhookController extends BaseController
                                     "movement" => date("Y-m-d H:i:s")
                                 );
 
-                                if ($prodycprice != 0) {
+                                //if ($prodycprice != 0) {
                                     //$this->user_model->track_orders_products($orders_products_data);
                                     $this->user_model->track_orders_products_forexchange($orders_products_data);
-                                }
+                               // }
 
                                 //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
 
