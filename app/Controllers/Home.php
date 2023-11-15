@@ -2401,6 +2401,15 @@ class Home extends BaseController
                         break;
                 }
             }
+            if ($this->request->getPost('addcartbtntext') != "") {
+                $track_color_array["full_pay_buybtn"] = $this->request->getPost('addcartbtntext');
+            }
+            if ($this->request->getPost('partialbuybtntext') != "") {
+                $track_color_array["partial_buy_now"] = $this->request->getPost('partialbuybtntext');
+            }
+            if ($this->request->getPost('fullbuybtntext') != "") {
+                $track_color_array["full_buy_now"] = $this->request->getPost('fullbuybtntext');
+            }
             $this->user_model->track_checkout_button_color($track_color_array);
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
