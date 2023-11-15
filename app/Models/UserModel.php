@@ -229,7 +229,7 @@ class UserModel extends Model
         }
     }
 
-   /* public function track_orders_products($data_array)
+    public function track_orders_products_forexchange($data_array)
     {
 
         $qbuilder = $this->db->table('track_order_exchange_app');
@@ -243,7 +243,7 @@ class UserModel extends Model
             $this->db->table('track_order_exchange_app')->where('order_id', $data_array['order_id'])->where('product_id', $data_array['product_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
             return '';
         }
-    }*/
+    }
     public function get_all_orders($shopurl, $start, $limit)
     {
         $qbuilds = $this->db->table('orders');
@@ -970,21 +970,22 @@ class UserModel extends Model
             $this->db->table('splitship_double_orders')->insert($data_array);
         }
     }
-    public function track_double_orders_update($data_array){
+    public function track_double_orders_update($data_array)
+    {
         $this->db->table('splitship_double_orders')->where('orderid_paid', $data_array['orderid_paid'])->where('shop_url', $data_array['shop_url'])->update($data_array);
-        $delquery="DELETE FROM splitship_double_orders WHERE order_number_paid=? AND shop_url=? AND status=?";
+        $delquery = "DELETE FROM splitship_double_orders WHERE order_number_paid=? AND shop_url=? AND status=?";
 
-        $this->db->query($delquery, array($data_array['order_number_cod'],$data_array['shop_url'],'pending_cod'));
-        
+        $this->db->query($delquery, array($data_array['order_number_cod'], $data_array['shop_url'], 'pending_cod'));
     }
-    public function get_failed_order(){
+    public function get_failed_order()
+    {
         $getquery = "SELECT * FROM splitship_double_orders WHERE status=? AND order_number_paid NOT LIKE '%-SplitOrder%'";
         $getdata = $this->db->query($getquery, array('pending_cod'));
         return $getdata->getResult();
     }
-    public function update_double_order_with_old($doubleorderid,$orderid, $shopurl)
+    public function update_double_order_with_old($doubleorderid, $orderid, $shopurl)
     {
         $update_q = 'UPDATE track_order_exchange_app SET new_double_order_id=? WHERE order_id=? AND shop_url=?';
-        $this->db->query($update_q, array($doubleorderid,$orderid, $shopurl));
+        $this->db->query($update_q, array($doubleorderid, $orderid, $shopurl));
     }
 }
