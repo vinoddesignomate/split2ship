@@ -1186,6 +1186,10 @@ $store_name = $shop_name[0];
                                                         <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="test1" name="cart_show_btn[]" value="addtocart">
                                                         <label for="test1">add to cart</label>
                                                 </div>
+                                                <div class="flex-row">
+                                                        <label for="">Cart Summary Section text color</label>
+                                                        <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
+                                                </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
                                                         <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" d="test2" name="cart_show_btn[]" value="buywithpartial">
                                                         <label for="test2">buy now with partial</label>
