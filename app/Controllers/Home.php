@@ -2402,13 +2402,13 @@ class Home extends BaseController
                 }
             }
             if ($this->request->getPost('addcartbtntext') != "") {
-                $track_color_array["full_pay_buybtn"] = $this->request->getPost('addcartbtntext');
+                $track_color_array["add_to_cart_text"] = $this->request->getPost('addcartbtntext');
             }
             if ($this->request->getPost('partialbuybtntext') != "") {
-                $track_color_array["partial_buy_now"] = $this->request->getPost('partialbuybtntext');
+                $track_color_array["partial_buy_now_text"] = $this->request->getPost('partialbuybtntext');
             }
             if ($this->request->getPost('fullbuybtntext') != "") {
-                $track_color_array["full_buy_now"] = $this->request->getPost('fullbuybtntext');
+                $track_color_array["full_buy_now_text"] = $this->request->getPost('fullbuybtntext');
             }
             echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
             echo "<pre>"; print_r($track_color_array); echo"</pre>";
