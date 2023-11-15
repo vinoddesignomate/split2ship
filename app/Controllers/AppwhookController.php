@@ -584,7 +584,7 @@ class AppwhookController extends BaseController
                                     "product_id" => $products->id,
                                     "varient_id" => $productvarient,
                                     "product_name" => $products->name,
-                                    "product_price" => $prodycprice,
+                                    "product_price" => $paidprice_get1,
                                     "product_qty" => $products->quantity,
                                     "product_sku" => $prosku,
                                     "product_discount" => $item_discount_item2,
@@ -848,17 +848,17 @@ class AppwhookController extends BaseController
                     "product_id" => $products->id,
                     "varient_id" => $productvarient,
                     "product_name" => $products->name,
-                    "product_price" => $prodycprice,
+                    "product_price" => $paidprice_get1,
                     "product_qty" => $products->quantity,
                     "product_sku" => $prosku,
                     "product_discount" => $item_discount_item2,
                     "product_tax" => $order_tax1,
                     "shop_url" => $_GET['whshp']
                 );
-                if ($prodycprice != 0) {
+                //if ($prodycprice != 0) {
                     //$this->user_model->track_orders_products($orders_products_data);
                     $this->user_model->track_orders_products_forexchange($orders_products_data);
-                }
+                //}
 
                 //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
 
