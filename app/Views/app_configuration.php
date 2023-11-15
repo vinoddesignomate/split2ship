@@ -1191,7 +1191,7 @@ $store_name = $shop_name[0];
                                                         <input type="text" id="addcartbtntext" name="addcartbtntext" value="">
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" d="partby" name="cart_show_btn[]"  onclick="toggleTextBox('partby', 'partialbuy')" value="buywithpartial">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="partby" name="cart_show_btn[]"  onclick="toggleTextBox('partby', 'partialbuy')" value="buywithpartial">
                                                         <label for="partby">buy now with partial</label>
                                                 </div>
                                                 <div class="flex-row" id="partialbuy" style="display: none;">
@@ -1199,8 +1199,8 @@ $store_name = $shop_name[0];
                                                         <input type="text" id="partialbuybtntext" name="partialbuybtntext" value="">
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="test3" name="cart_show_btn[]" value="fullbuynow">
-                                                        <label for="test3">buy now</label>
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" onclick="toggleTextBox('fullbuysplit', 'fullbtnbuy')" value="fullbuynow">
+                                                        <label for="fullbuysplit">buy now</label>
                                                 </div>
                                                 <div class="flex-row" id="fullbtnbuy" style="display: none;">
                                                         <label for="">Partial Buy button text</label>
