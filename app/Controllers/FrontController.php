@@ -1121,7 +1121,7 @@ class FrontController extends BaseController
             });
 
             // Print the exact match orders
-            print_r($exactMatchOrders);
+           // print_r($exactMatchOrders);
 
 
             // echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
