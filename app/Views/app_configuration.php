@@ -1240,7 +1240,7 @@ $store_name = $shop_name[0];
         var cartchkbox = document.querySelectorAll('input[name="cart_show_btn[]"]');
         cartchkbox.forEach(function(chtents) {
                 chtents.addEventListener('change', function(newevent) {
-                        console.log(newevent);
+                        console.log(newevent.target.defaultValue);
                 });
         });
 </script>
