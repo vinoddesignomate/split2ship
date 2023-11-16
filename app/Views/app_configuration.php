@@ -1183,13 +1183,13 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-form-wrap">
                                         <form method="post" onsubmit="return validate_chkcart()">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart" onclick="toggleTextBox('cartid', 'cartbtnlabel')">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
                                                         <label for="cartid">add to cart</label>
                                                 </div>
-                                                <div class="flex-row" id="cartbtnlabel" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
+                                                <!-- <div class="flex-row" id="cartbtnlabel" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
                                                         <label for="">add to cart button text</label>
                                                         <input type="text" id="addcartbtntext" name="addcartbtntext" value="<?php echo (isset($gtbtncolor[0]->add_to_cart_text) ? $gtbtncolor[0]->add_to_cart_text : ''); ?>">
-                                                </div>
+                                                </div> -->
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
                                                         <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="partby" name="cart_show_btn[]"  onclick="toggleTextBox('partby', 'partialbuy')" value="buywithpartial">
                                                         <label for="partby">buy now with partial</label>
@@ -1199,13 +1199,13 @@ $store_name = $shop_name[0];
                                                         <input type="text" id="partialbuybtntext" name="partialbuybtntext" value="<?php echo (isset($gtbtncolor[0]->partial_buy_now_text) ? $gtbtncolor[0]->partial_buy_now_text : ''); ?>">
                                                 </div>
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" onclick="toggleTextBox('fullbuysplit', 'fullbtnbuy')" value="fullbuynow">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
                                                         <label for="fullbuysplit">buy now</label>
                                                 </div>
-                                                <div class="flex-row" id="fullbtnbuy" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
+                                                <!-- <div class="flex-row" id="fullbtnbuy" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
                                                         <label for="">Full Buy button text</label>
                                                         <input type="text" name="fullbuybtntext" value="<?php echo (isset($gtbtncolor[0]->full_buy_now_text) ? $gtbtncolor[0]->full_buy_now_text : ''); ?>">
-                                                </div>
+                                                </div> -->
 
                                                 <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                         </form>
