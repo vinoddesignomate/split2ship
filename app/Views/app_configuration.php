@@ -1172,7 +1172,7 @@ $store_name = $shop_name[0];
                                 </form>
                         </div>
                 </div>
-                <?php if ($shpname == 'desinomatetest.myshopify.com') {
+                <?php //if ($shpname == 'desinomatetest.myshopify.com') {
 
                 ?>
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col">
@@ -1212,7 +1212,7 @@ $store_name = $shop_name[0];
                                 </div>
 
                         </div>
-                <?php } ?>
+                <?php //} ?>
 
         </div>
 </div>
