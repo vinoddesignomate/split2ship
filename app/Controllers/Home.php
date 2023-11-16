@@ -2385,6 +2385,9 @@ class Home extends BaseController
                 "add_to_cartbtn" => 0,
                 "buy_partial_btn" => 0,
                 "full_pay_buybtn" => 0,
+                "add_to_cart_text" => '',
+                "partial_buy_now_text" => '',
+                "full_buy_now_text" => '',
                 "shop_url" => $_GET['shop']
             );
 
