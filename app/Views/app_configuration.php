@@ -1203,7 +1203,7 @@ $store_name = $shop_name[0];
                                                         <label for="fullbuysplit">buy now</label>
                                                 </div>
                                                 <div class="flex-row" id="fullbtnbuy" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
-                                                        <label for="">Partial Buy button text</label>
+                                                        <label for="">Full Buy button text</label>
                                                         <input type="text" name="fullbuybtntext" value="<?php echo (isset($gtbtncolor[0]->full_buy_now_text) ? $gtbtncolor[0]->full_buy_now_text : ''); ?>">
                                                 </div>
 
