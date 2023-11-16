@@ -1186,7 +1186,7 @@ $store_name = $shop_name[0];
                                                         <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart" onclick="toggleTextBox('cartid', 'cartbtnlabel')">
                                                         <label for="cartid">add to cart</label>
                                                 </div>
-                                                <div class="flex-row" id="cartbtnlabel" style="display: none;">
+                                                <div class="flex-row" id="cartbtnlabel" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?> >
                                                         <label for="">add to cart button text</label>
                                                         <input type="text" id="addcartbtntext" name="addcartbtntext" value="">
                                                 </div>
