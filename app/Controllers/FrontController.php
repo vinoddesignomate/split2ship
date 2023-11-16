@@ -798,7 +798,10 @@ class FrontController extends BaseController
                 "cart_summart_textc" => isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : '#000',
                 "add_to_cartbtn" => $gtbtncolor[0]->add_to_cartbtn,
                 "buy_partial_btn" => $gtbtncolor[0]->buy_partial_btn,
-                "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn
+                "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn,
+                "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
+                "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
+                "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text
 
             );
             return json_encode($return_array);
