@@ -2410,10 +2410,10 @@ class Home extends BaseController
             if ($this->request->getPost('fullbuybtntext') != "") {
                 $track_color_array["full_buy_now_text"] = $this->request->getPost('fullbuybtntext');
             }
-            echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
-            echo "<pre>"; print_r($track_color_array); echo"</pre>";
+            // echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
+            // echo "<pre>"; print_r($track_color_array); echo"</pre>";
             $this->user_model->track_checkout_button_color($track_color_array);
-            //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
