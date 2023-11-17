@@ -320,9 +320,9 @@ class AppwhookController extends BaseController
 
             $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
-            $resposne_array = array("name" => "plus order" . $_GET['whshp']);
-            $this->user_model->check_test_response($resposne_array); 
-            
+            // $resposne_array = array("name" => "plus order" . $_GET['whshp']);
+            // $this->user_model->check_test_response($resposne_array); 
+
             $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
 
             $decode_get_actual_orders = json_decode($get_actual_orders);
@@ -361,8 +361,8 @@ class AppwhookController extends BaseController
 
                 $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);*/
 
-                $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
-                $this->user_model->check_test_response($resposne_array);
+                // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
+                // $this->user_model->check_test_response($resposne_array);
                 $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
             }
         }
@@ -647,8 +647,9 @@ class AppwhookController extends BaseController
                             $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
                             $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
                         } else {
-                            $resposne_array_lst = array("name" => "update_plan_orders2=" . $_GET['whshp']);
-                            $this->user_model->check_test_response($resposne_array_lst);
+
+                            // $resposne_array_lst = array("name" => "update_plan_orders2=" . $_GET['whshp']);
+                            // $this->user_model->check_test_response($resposne_array_lst);
                             
                             $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
                         }
