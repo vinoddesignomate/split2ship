@@ -801,7 +801,13 @@ class FrontController extends BaseController
                 "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn,
                 "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
                 "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
-                "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text
+                "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
+                "add_cart_btn_color" => $gtbtncolor[0]->add_cart_btn_color,
+                "add_cart_text_color" => $gtbtncolor[0]->add_cart_text_color,
+                "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
+                "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
+                "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
+                "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
 
             );
             return json_encode($return_array);
