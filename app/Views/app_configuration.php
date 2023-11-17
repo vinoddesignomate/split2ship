@@ -1218,29 +1218,29 @@ $store_name = $shop_name[0];
                                 <form method="post">
                                         <div class="flex-row">
                                                 <label for="">Add to cart button color</label>
-                                                <input type="text" data-jscolor="{}" name="add_cart_btn_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="add_cart_btn_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_btn_color) ? $gtbtncolor[0]->add_cart_btn_color : ''); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Add to cart button text color</label>
-                                                <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_text_color) ? $gtbtncolor[0]->add_cart_text_color : ''); ?>">
                                         </div>
 
                                         <div class="flex-row">
                                                 <label for="">Partial buy now button color</label>
-                                                <input type="text" data-jscolor="{}" name="partialbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="partialbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_btn_color) ? $gtbtncolor[0]->partial_buynow_btn_color : ''); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Partial buy now button text color</label>
-                                                <input type="text" data-jscolor="{}" name="partialbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="partialbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_text_color) ? $gtbtncolor[0]->partial_buynow_text_color : ''); ?>">
                                         </div>
 
                                         <div class="flex-row">
                                                 <label for="">Full buy now button color</label>
-                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_btn_color) ? $gtbtncolor[0]->full_buy_btn_color : ''); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Full buy now button text color</label>
-                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_text_color) ? $gtbtncolor[0]->full_buy_text_color : ''); ?>">
                                         </div>
 
                                         <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
