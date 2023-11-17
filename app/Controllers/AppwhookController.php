@@ -643,6 +643,8 @@ class AppwhookController extends BaseController
                             $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
                         } else {
                             $resposne_array_lst = array("name" => "run full " . $_GET['whshp']);
+                            $this->user_model->check_test_response($resposne_array_lst);
+                            
                             $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
                         }
                     } else {
