@@ -620,6 +620,11 @@ class UserModel extends Model
         $updatests = "UPDATE ppa_subscribe_store SET updated_sync_orders_count=updated_sync_orders_count-" . $updatec . " WHERE shop_url=?";
         $this->db->query($updatests, array($shop_url));
     }
+    public function update_plan_orders_plus($updatec, $shop_url)
+    {
+        $updatests = "UPDATE ppa_subscribe_store SET updated_sync_orders_count=updated_sync_orders_count+" . $updatec . " WHERE shop_url=?";
+        $this->db->query($updatests, array($shop_url));
+    }
     public function check_bulk_products_status($shopurl)
     {
         $get_collsts = "SELECT * FROM collections_percentage

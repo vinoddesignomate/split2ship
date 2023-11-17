@@ -320,6 +320,8 @@ class AppwhookController extends BaseController
 
             $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
+            $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
+
             $decode_get_actual_orders = json_decode($get_actual_orders);
             if (isset($decode_get_actual_orders->order->id)) {
 
