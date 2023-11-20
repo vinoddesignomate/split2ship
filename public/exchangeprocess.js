@@ -155,11 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((response) => {
           if (response.msg == "done") {
-            var jsonvarientString = JSON.stringify(hiddenInputValues);
-            set_ck_value("sel_varients", jsonvarientString, 365);
+            // var jsonvarientString = JSON.stringify(hiddenInputValues);
+            // set_ck_value("sel_varients", jsonvarientString, 365);
             // Storing an array
-            var myArray = [1, 2, 3];
-            sessionStorage.setItem("arrayKey", JSON.stringify(hiddenInputValues));
+           // var myArray = [1, 2, 3];
+            sessionStorage.setItem("hiddenInputValues_sess", JSON.stringify(hiddenInputValues));
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
@@ -175,10 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("spli2ship_return")
     .addEventListener("click", function () {
-        console.log(sessionStorage.getItem('arrayKey'));
-      var process_val = get_ck_value("sel_varients");
-      //var vartarray = JSON.parse(process_val)
-      console.log(process_val);
+     var gethidenvar = sessionStorage.getItem('hiddenInputValues_sess');
+     var getvararray = JSON.parse(gethidenvar);      
+      console.log(getvararray);
     });
 
   //select order info by order id
