@@ -302,7 +302,7 @@
                 hiddenInputElements.forEach(function(hiddenInput) {
                     hiddenInputValues.push(hiddenInput.value);
                 });
-
+                var orderid = document.getElementById('ordif').value;
                 //console.log('prctidvalValues');
                 //console.log(prctidvalValues);
                 //return false;
@@ -310,6 +310,7 @@
                     'shopname': '<?php echo $_GET['shop']; ?>',
                     'reason': selectedOptionValues,
                     'productid': hiddenInputValues,
+                    'orderid': orderid,
                 });
                 fetch('https://app.payxnowandrestondelivery.com/fetch-track-return', {
                         method: 'POST',
