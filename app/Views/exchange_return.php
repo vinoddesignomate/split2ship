@@ -288,13 +288,15 @@
 
                     for (let j = 0; j < options.length; j++) {
                         const option = options[j];
-                        if (option.selected) {
-                            selectedOptionValues.push(option.value);
+                        if (option.value != "") {
+                            if (option.selected) {
+                                selectedOptionValues.push(option.value);
+                            }
                         }
                     }
                 });
 
-                const hiddenInputElements  = document.querySelectorAll('input[name="getid[]"]');
+                const hiddenInputElements = document.querySelectorAll('input[name="getid[]"]');
                 const hiddenInputValues = [];
 
                 hiddenInputElements.forEach(function(hiddenInput) {
@@ -347,7 +349,7 @@
                         document.getElementById('input_start_process').style.display = "none";
                         var lpid = 1;
                         for (var i = 0; i < response.length; i++) {
-                            infiohtm += '<input type="hidden" name="getid[]" id="setva_' + response[i]['varient_id'] + '" value=""><div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['varient_id'] + '" type="checkbox" idattr="' + lpid + '" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" name="checkbox_name[]" aria-checked="false" value=""></span><select id="reason_' + lpid + '" style="display:none;" name="get_reason[]"><option>Arrive too late</option><option>Poor Quality</option><option>Looks Different</option><option>Does suit me</option><option>Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
+                            infiohtm += '<input type="hidden" name="getid[]" id="setva_' + response[i]['varient_id'] + '" value=""><div class="boxesMain09"><div class="forIMGpurpose"><img src="' + response[i]['product_image'] + '" /></div><div class="forTextpurpose"><h4>' + response[i]['product_name'] + '</h4><h5>' + response[i]['product_price'] + ' x ' + response[i]['product_qty'] + '</h5></div><div class="reasonDefine"><h6>Non Reason: <span>Unfulfilled</span></h6></div><span><input id="' + response[i]['varient_id'] + '" type="checkbox" idattr="' + lpid + '" class="Polaris-Checkbox__Input" aria-invalid="false" role="checkbox" name="checkbox_name[]" aria-checked="false" value=""></span><select id="reason_' + lpid + '" style="display:none;" name="get_reason[]"><option value="">Select Reason</option><option value="arrive_late">Arrive too late</option><option value="poor_qlty">Poor Quality</option><option value="looks_diffferent">Looks Different</option><option value="des_suit_me">Does suit me</option><option value="parcel_damge">Parcel damaged on arrival</option><option>Poor Quality</option></select></div>';
                             lpid++;
                         }
                         document.getElementById('order_info').innerHTML = infiohtm;
