@@ -300,7 +300,9 @@
                 const hiddenInputValues = [];
 
                 hiddenInputElements.forEach(function(hiddenInput) {
-                    hiddenInputValues.push(hiddenInput.value);
+                    if (hiddenInput.value != "") {
+                        hiddenInputValues.push(hiddenInput.value);
+                    }
                 });
                 var orderid = document.getElementById('ordif').value;
                 //console.log('prctidvalValues');
