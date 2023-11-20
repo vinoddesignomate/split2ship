@@ -174,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("spli2ship_return")
     .addEventListener("click", function () {
         var process_val = get_ck_value('sel_varients');
-        var vartarray = JSON.parse(process_val)
-        console.log(vartarray);
+        //var vartarray = JSON.parse(process_val)
+        console.log(process_val);
     });
 
   //select order info by order id
