@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
             set_ck_value("sel_varients", jsonvarientString, 365);
             // Storing an array
             var myArray = [1, 2, 3];
-            sessionStorage.setItem("arrayKey", JSON.stringify(myArray));
+            sessionStorage.setItem("arrayKey", JSON.stringify(hiddenInputValues));
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
