@@ -1,3 +1,24 @@
+function get_ck_value(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function set_ck_value(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 document.addEventListener("DOMContentLoaded", function () {
   var inputField = document.getElementById("order_number_val");
   var inputField2 = document.getElementById("order_email_val");
@@ -87,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // console.log(form.innerHTML);
       // var formnew = document.getElementById('ordertrackfrm');
       // var formData_content = new FormData(formnew);
-      
+
       const selectElements = document.querySelectorAll(
         'select[name="get_reason[]"]'
       );
@@ -132,9 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((response) => {
-            console.log('response');
-            console.log(response);
-          if (response.msg == 'done') {
+          
+          if (response.msg == "done") {
+            set_ck_value("sel_varients", hiddenInputValues, 365);
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
@@ -143,8 +164,15 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
+    });
+
+  document
+    .getElementById("spli2ship_return")
+    .addEventListener("click", function () {
+        var process_val = get_ck_value('sel_varients');
+        console.log(process_val);
     });
 
   //select order info by order id
@@ -172,7 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
             exhcshow_orders.style.display = "none";
           }
           document.getElementById("input_start_process").style.display = "none";
-          document.getElementById("ordertrackfrm").style.display = "inline-block";
+          document.getElementById("ordertrackfrm").style.display =
+            "inline-block";
           var lpid = 1;
           for (var i = 0; i < response.length; i++) {
             infiohtm +=

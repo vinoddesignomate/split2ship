@@ -187,8 +187,8 @@
         
     </div>
     <div id="exchange_reason_process" style="display:none;" class="popup-container config_popup">
-        <button type="button" class="btn btn-primary">Return</button>
-        <button type="button" class="btn btn-primary">Replace with same item</button>
+        <button type="button" id="spli2ship_return" class="btn btn-primary">Return</button>
+        <button type="button" id="spli2ship_exchange" class="btn btn-primary">Replace with same item</button>
     </div>
     <script type="text/javascript">
         var shopname = '<?php echo $_GET['shop']; ?>';
