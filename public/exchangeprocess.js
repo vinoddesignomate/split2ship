@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => {
             console.log('response');
             console.log(response);
-          if (response == 1) {
+          if (response.msg == 'done') {
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
