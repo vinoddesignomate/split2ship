@@ -19,6 +19,7 @@ function set_ck_value(cname, cvalue, exdays) {
   let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   var inputField = document.getElementById("order_number_val");
   var inputField2 = document.getElementById("order_email_val");
@@ -155,7 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => {
           
           if (response.msg == "done") {
-            set_ck_value("sel_varients", hiddenInputValues, 365);
+            var jsonvarientString = JSON.stringify(hiddenInputValues);
+            set_ck_value("sel_varients", jsonvarientString, 365);
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
@@ -172,7 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("spli2ship_return")
     .addEventListener("click", function () {
         var process_val = get_ck_value('sel_varients');
-        console.log(process_val);
+        var vartarray = JSON.parse(process_val)
+        console.log(vartarray);
     });
 
   //select order info by order id
