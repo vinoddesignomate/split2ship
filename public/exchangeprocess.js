@@ -135,9 +135,10 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((response) => {
+            console.log(response);
           if (response == "done") {
             document.getElementById("exchange_reason_process").style.display =
-              "block";
+              "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
           } else {
             alert(response);
