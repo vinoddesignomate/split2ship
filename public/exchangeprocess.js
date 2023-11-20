@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((response) => {
-          //console.log(response);
           const exhcshow_orders = document.querySelector(
             ".Polaris-Layout__Section"
           );
@@ -57,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.target.classList.contains("Polaris-Checkbox__Input")) {
       var idattr = event.target.getAttribute("idattr");
       if (event.target.checked) {
-        console.log(idattr);
-
         document.getElementById("reason_" + idattr).style.display =
           "inline-block";
         document.getElementById("setva_" + event.target.id).value =
@@ -90,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // console.log(form.innerHTML);
       // var formnew = document.getElementById('ordertrackfrm');
       // var formData_content = new FormData(formnew);
-      console.log(formData);
+      
       const selectElements = document.querySelectorAll(
         'select[name="get_reason[]"]'
       );
@@ -135,8 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((response) => {
+            console.log('response');
             console.log(response);
-          if (response == "done") {
+          if (response == 1) {
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
