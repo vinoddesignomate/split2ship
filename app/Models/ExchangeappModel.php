@@ -61,5 +61,21 @@ class ExchangeappModel extends Model
         $getresultdata = $getexchange_data->get();
         return $getresultdata->getResult();
     }
+    public function update_exchnage_reason($data_array)
+    {
+
+        $qbuilder = $this->db->table('cg_exchange_return_order_products');
+        $qbuilder->where('varient_id', $data_array['varient_id']);
+        $qbuilder->where('order_id', $data_array['order_id']);
+        $qbuilder->where('shop_url', $data_array['shop_url']);
+        $q = $qbuilder->get();
+        // $qbuilder->countAllResults();
+        if (empty($q->getResult())) {
+            return  $this->db->table('cg_exchange_return_order_products')->insert($data_array);
+        } else {
+            $this->db->table('cg_exchange_return_order_products')->where('order_id', $data_array['order_id'])->where('varient_id', $data_array['varient_id'])->where('shop_url', $data_array['shop_url'])->update($data_array);
+            return '';
+        }
+    }
 }
 ?>

@@ -1130,7 +1130,7 @@ class FrontController extends BaseController
             });
 
             // Print the exact match orders
-           // print_r($exactMatchOrders);
+            // print_r($exactMatchOrders);
 
 
             // echo"<pre>get_all_oders"; print_r($get_all_oders); echo "</pre>";
@@ -1296,8 +1296,25 @@ class FrontController extends BaseController
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
-        print_r($body_data_decode);
-        echo $body_data;
+        //print_r($body_data_decode);
+        try {
+            $i = 0;
+            foreach ($body_data_decode['productid'] as $key => $getprodv) {
+                //if($getprodv)
+                $orders_products_data = array(
+                    "order_id" => $body_data_decode['orderid'],
+                    "varient_id" => $getprodv,
+                    "shop_url" => $body_data_decode['shopname'],
+                    "return_exchange_reason" => $body_data_decode['reason'][$i]
+                );
+                $this->exchange_model->update_exchnage_reason($orders_products_data);
+                $i++;
+            }
+            echo"done";
+        } catch (Exception $e) {
+            // Handle the exception here
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
     }
     public function update_double_create()
     {
