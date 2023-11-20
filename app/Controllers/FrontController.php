@@ -1310,11 +1310,14 @@ class FrontController extends BaseController
                 $this->exchange_model->update_exchnage_reason($orders_products_data);
                 $i++;
             }
-            echo"done";
+            $return['msg'] = "done";
+           // echo"done";
         } catch (Exception $e) {
             // Handle the exception here
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            $return['msg'] = $e->getMessage();
+           // echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
+        return $return;
     }
     public function update_double_create()
     {
