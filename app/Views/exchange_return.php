@@ -179,7 +179,7 @@
         </div>
     </div>
     <div>
-        <form id="ordertrackfrm" method="post">
+        <form id="ordertrackfrm" method="post" style="display: none;">
             <div id="order_info">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
             exhcshow_orders.style.display = "none";
           }
           document.getElementById("input_start_process").style.display = "none";
+          document.getElementById("ordertrackfrm").style.display = "inline-block";
           var lpid = 1;
           for (var i = 0; i < response.length; i++) {
             infiohtm +=
