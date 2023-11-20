@@ -1317,7 +1317,7 @@ class FrontController extends BaseController
             $return['msg'] = $e->getMessage();
            // echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
-        return $return;
+        return json_encode($return);
     }
     public function update_double_create()
     {
