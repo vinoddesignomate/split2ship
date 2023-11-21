@@ -613,10 +613,10 @@ class Home extends BaseController
                         echo view('templates/apbrdgnew');
                     }
                 }
-                // echo "this main page9";
+               
                 $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
 
-                //order list info section
+               
                 if (!empty($data['shiprocket_info'])) {
                     $data['ship_provider'] = $data['shiprocket_info'][0]->shiping_partner_type;
                 } else {
