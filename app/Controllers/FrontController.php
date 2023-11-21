@@ -852,12 +852,17 @@ class FrontController extends BaseController
                                 "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
                             );
                         } else {
+                            if ($itmeprod->product_type == "partial") {
+                                $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
+                            } else {
+                                $proety_size_tems = array();
+                            }
                             $returnarray[] = array(
                                 "varient_id" => $itmeprod->variant_id,
                                 "product_id" => $itmeprod->product_id,
                                 "partial_percentage" => $itmeprod->partial_percentage,
                                 "product_type" => $itmeprod->product_type,
-                                "product_properties" => "", // If product_properties is empty
+                                "product_properties" => $proety_size_tems, // If product_properties is empty
                             );
                         }
                     }
@@ -1306,11 +1311,11 @@ class FrontController extends BaseController
                 $i++;
             }
             $return['msg'] = "done";
-           // echo"done";
+            // echo"done";
         } catch (Exception $e) {
             // Handle the exception here
             $return['msg'] = $e->getMessage();
-           // echo 'Caught exception: ',  $e->getMessage(), "\n";
+            // echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
         return json_encode($return);
     }
