@@ -852,18 +852,18 @@ class FrontController extends BaseController
                                 "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
                             );
                         } else {
-                            // if ($itmeprod->product_type == "partial") {
-                            //     $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
-                            // } else {
-                            //     $proety_size_tems = array();
-                            // }
+                            if ($itmeprod->product_type == "partial") {
+                                $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
+                            } else {
+                                $proety_size_tems = "";
+                            }
                             $returnarray[] = array(
                                 "varient_id" => $itmeprod->variant_id,
                                 "product_id" => $itmeprod->product_id,
                                 "partial_percentage" => $itmeprod->partial_percentage,
                                 "product_type" => $itmeprod->product_type,
-                               // "product_properties" => $proety_size_tems, // If product_properties is empty
-                                "product_properties" => '', // If product_properties is empty
+                                "product_properties" => $proety_size_tems, // If product_properties is empty
+                                //"product_properties" => '', // If product_properties is empty
                             );
                         }
                     }
