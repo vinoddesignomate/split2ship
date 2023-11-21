@@ -369,8 +369,8 @@ $store_namecnf = $shop_name[0];
     <!-- **********************************************
                         SECTION-2
     **************************************************** -->
-    <section class="payxnowandrestondelivery-sec-space">
-        <!-- main-head -->
+    <!--<section class="payxnowandrestondelivery-sec-space">
+       
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="payxnowandrestondelivery-main-heading">
@@ -384,9 +384,7 @@ $store_namecnf = $shop_name[0];
 
             </div>
         </div>
-        <!-- main-head ends -->
-
-        <!-- main area -->
+       
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-area">
 
@@ -433,11 +431,7 @@ $store_namecnf = $shop_name[0];
 
                                             <input type="password" name="ship_pwd" required id="ship_pwd" placeholder="Enter password" value="<?php echo isset($shiprocket_info[0]->password) ? $shiprocket_info[0]->password : ''; ?>">
                                         </div>
-                                        <!-- <div class="">
-                                            <label for="">Channel ID</label>
-                                            <input type="text" id="ship_chnl_id" required name="ship_chnl_id" placeholder="Enter channel id" value="<?php //echo isset($shiprocket_info[0]->channel_id) ? $shiprocket_info[0]->channel_id : ''; 
-                                                                                                                                                    ?>">
-                                        </div> -->
+                                     
                                     </div>
 
                                     <div id="delhivery" style="display: none;">
@@ -487,8 +481,8 @@ $store_namecnf = $shop_name[0];
 
             </div>
         </div>
-        <!-- main area ends-->
-    </section>
+       
+    </section>-->
 
 
     <section class="payxnowandrestondelivery-sec-space">
