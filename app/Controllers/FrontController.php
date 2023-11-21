@@ -820,7 +820,7 @@ class FrontController extends BaseController
         //print_r($this->request->getPost());
         // $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         // $shopname = str_replace("http://", "", $shopname);
-
+        $returnarray = array();
         $plan_details = $this->user_model->get_store_plan($this->request->getPost('shopname'));
         if (!empty($plan_details)) {
             if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
@@ -830,7 +830,7 @@ class FrontController extends BaseController
                 );
                 $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
                 if (!empty($get_products)) {
-                    $returnarray = array();
+                   
                     foreach ($get_products as $itmeprod) {
                         if ($itmeprod->product_properties != "") {
                             $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
@@ -867,16 +867,13 @@ class FrontController extends BaseController
                             );
                         }
                     }
-                    return json_encode($returnarray);
+                    
                 }
-
-                // else {
-                //     echo "not_found";
-                // }
-                //print_r($returnarray);
+                
 
             }
         }
+        return json_encode($returnarray);
     }
     public function update_store_package_cron()
     {
