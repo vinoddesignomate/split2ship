@@ -2558,8 +2558,13 @@ class Home extends BaseController
             );
             echo json_encode($return_array);
         } else if ($_REQUEST['delv_parnter'] == 'delhivery') {
+            if(empty($return_data)){
+                $return_datatoken="ddfftgthh48758";
+            }else{
+                $return_datatoken = $return_data[0]->token;
+            }
             $return_array = array(
-                "token" => $return_data[0]->token,
+                "token" => $return_datatoken,
             );
             echo json_encode($return_array);
         } else if ($_REQUEST['delv_parnter'] == 'pickr') {
