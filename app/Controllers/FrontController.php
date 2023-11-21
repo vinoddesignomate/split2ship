@@ -852,6 +852,7 @@ class FrontController extends BaseController
                                 "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
                             );
                         } else {
+                            $proety_size_tems = array();
                             if ($itmeprod->product_type == "partial") {
                                 $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
                             } else {
