@@ -599,9 +599,9 @@ class AppwhookController extends BaseController
                                 );
 
                                 //if ($prodycprice != 0) {
-                                    //$this->user_model->track_orders_products($orders_products_data);
-                                    $this->user_model->track_orders_products_forexchange($orders_products_data);
-                               // }
+                                //$this->user_model->track_orders_products($orders_products_data);
+                                $this->user_model->track_orders_products_forexchange($orders_products_data);
+                                // }
 
                                 //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
 
@@ -637,7 +637,7 @@ class AppwhookController extends BaseController
                                 // $resposne_array = array("name" => "orders_products_data" . json_encode($orders_products_data));
                                 // $this->user_model->check_test_response($resposne_array);
 
-                                
+
                             }
                         }
 
@@ -650,7 +650,7 @@ class AppwhookController extends BaseController
 
                             // $resposne_array_lst = array("name" => "update_plan_orders2=" . $_GET['whshp']);
                             // $this->user_model->check_test_response($resposne_array_lst);
-                            
+
                             $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
                         }
                     } else {
@@ -864,8 +864,8 @@ class AppwhookController extends BaseController
                     "shop_url" => $_GET['whshp']
                 );
                 //if ($prodycprice != 0) {
-                    //$this->user_model->track_orders_products($orders_products_data);
-                    $this->user_model->track_orders_products_forexchange($orders_products_data);
+                //$this->user_model->track_orders_products($orders_products_data);
+                $this->user_model->track_orders_products_forexchange($orders_products_data);
                 //}
 
                 //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
@@ -1904,31 +1904,37 @@ class AppwhookController extends BaseController
         }
 
         fclose($webhookpd);
+        $shopenablearray = array(
+            "onlyneon1.myshopify.com",
+            "3d-printing-store-india.myshopify.com",
+            "desinomatetest.myshopify.com",
+        );
+        if (in_array($_GET['cartshop'], $shopenablearray)) {
+            $get_addtocartdata = json_decode($getaddtocartdata);
+            $updateprorespo = array("name" => "cart creat webhook=" . $getaddtocartdata);
+            $this->user_model->check_test_response($updateprorespo);
+            foreach ($get_addtocartdata->line_items as $cart_item) {
 
-        $get_addtocartdata = json_decode($getaddtocartdata);
-        $updateprorespo = array("name" => "cart creat webhook=" . $getaddtocartdata);
-        $this->user_model->check_test_response($updateprorespo);
-        foreach ($get_addtocartdata->line_items as $cart_item) {
+                $condtion_array = array(
+                    "product_id" => $cart_item->product_id,
+                    "varient_id" => $cart_item->variant_id
+                );
 
-            $condtion_array = array(
-                "product_id" => $cart_item->product_id,
-                "varient_id" => $cart_item->variant_id
-            );
-
-            $get_resulrs = $this->user_model->get_store_product($_GET['cartshop'], $condtion_array);
-            if (!empty($get_resulrs)) {
-                $partialtype = "partial";
-            } else {
-                $partialtype = "fullpay";
+                $get_resulrs = $this->user_model->get_store_product($_GET['cartshop'], $condtion_array);
+                if (!empty($get_resulrs)) {
+                    $partialtype = "partial";
+                } else {
+                    $partialtype = "fullpay";
+                }
+                $add_to_cart_line_item = array(
+                    "cart_id" => $get_addtocartdata->id,
+                    "product_id" => $cart_item->product_id,
+                    "variant_id" => $cart_item->variant_id,
+                    "shop_url" => $_GET['cartshop'],
+                    "product_type" => $partialtype,
+                );
+                $this->user_model->track_cart_itme_data($add_to_cart_line_item);
             }
-            $add_to_cart_line_item = array(
-                "cart_id" => $get_addtocartdata->id,
-                "product_id" => $cart_item->product_id,
-                "variant_id" => $cart_item->variant_id,
-                "shop_url" => $_GET['cartshop'],
-                "product_type" => $partialtype,
-            );
-            $this->user_model->track_cart_itme_data($add_to_cart_line_item);
         }
     }
     function update_cart_webhook_data()
@@ -1945,50 +1951,57 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_addtocartdata = json_decode($getaddtocartdata);
-        // $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
-        // $this->user_model->check_test_response($updateprorespo);
-
-        $remove_cart_item = array(
-            "cart_id" => $get_addtocartdata->id,
-            "shop_url" => $_GET['cshop']
+        $shopenablearray = array(
+            "onlyneon1.myshopify.com",
+            "3d-printing-store-india.myshopify.com",
+            "desinomatetest.myshopify.com",
         );
-
-        $this->user_model->remove_cart_item($remove_cart_item);
-
-        foreach ($get_addtocartdata->line_items as $cart_item) {
-
-            $condtion_array = array(
-                "product_id" => $cart_item->product_id,
-                "varient_id" => $cart_item->variant_id
-            );
-
-            $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
-            if (!empty($get_resulrs)) {
-                $partialtype = "partial";
-                $partial_percentage = $get_resulrs[0]->partial_percentage;
-            } else {
-                $partialtype = "fullpay";
-                $partial_percentage = '';
-            }
-
-            if (isset($cart_item->properties)) {
-                $cart_proer = json_encode($cart_item->properties);
-            } else {
-                $cart_proer = "";
-            }
-            $add_to_cart_line_item = array(
-                "cart_id" => $get_addtocartdata->id,
-                "product_id" => $cart_item->product_id,
-                "variant_id" => $cart_item->variant_id,
-                "shop_url" => $_GET['cshop'],
-                "product_type" => $partialtype,
-                "product_properties" => $cart_proer,
-                "partial_percentage" => $partial_percentage,
-            );
-
-            // $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
+        if (in_array($_GET['cshop'], $shopenablearray)) {
+            // $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
             // $this->user_model->check_test_response($updateprorespo);
-            $this->user_model->track_cart_itme_data($add_to_cart_line_item);
+
+            $remove_cart_item = array(
+                "cart_id" => $get_addtocartdata->id,
+                "shop_url" => $_GET['cshop']
+            );
+
+            $this->user_model->remove_cart_item($remove_cart_item);
+
+            foreach ($get_addtocartdata->line_items as $cart_item) {
+
+                $condtion_array = array(
+                    "product_id" => $cart_item->product_id,
+                    "varient_id" => $cart_item->variant_id
+                );
+
+                $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
+                if (!empty($get_resulrs)) {
+                    $partialtype = "partial";
+                    $partial_percentage = $get_resulrs[0]->partial_percentage;
+                } else {
+                    $partialtype = "fullpay";
+                    $partial_percentage = '';
+                }
+
+                if (isset($cart_item->properties)) {
+                    $cart_proer = json_encode($cart_item->properties);
+                } else {
+                    $cart_proer = "";
+                }
+                $add_to_cart_line_item = array(
+                    "cart_id" => $get_addtocartdata->id,
+                    "product_id" => $cart_item->product_id,
+                    "variant_id" => $cart_item->variant_id,
+                    "shop_url" => $_GET['cshop'],
+                    "product_type" => $partialtype,
+                    "product_properties" => $cart_proer,
+                    "partial_percentage" => $partial_percentage,
+                );
+
+                // $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
+                // $this->user_model->check_test_response($updateprorespo);
+                $this->user_model->track_cart_itme_data($add_to_cart_line_item);
+            }
         }
     }
     function product_create_whok()
