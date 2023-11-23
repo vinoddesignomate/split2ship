@@ -1355,14 +1355,28 @@ class FrontController extends BaseController
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
-        echo"<pre>"; print_r($body_data_decode); echo "</pre>";
+        echo "<pre>";
+        print_r($body_data_decode);
+        echo "</pre>";
         if ($body_data_decode['getreturn'] == 'info') {
             $moreparms = array(
                 "order_id" => $body_data_decode['orderid'],
                 "shop_url" => $body_data_decode['shopname']
             );
-            $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'],$moreparms);
-            echo"<pre>"; print_r($getdata); echo "</pre>";
+            $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'], $moreparms);
+            echo "<pre>";
+            print_r($getdata);
+            echo "</pre>";
+        }
+        $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
+        foreach ($body_data_decode['varid'] as $key => $value) {
+            $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products.json?ids=' . $value . '', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+
+            $getimfdata = json_decode($getimfsrcdata['body'], true);
+
+            echo "getimfdata<pre>";
+            print_r($getimfdata);
+            echo "</pre>";
         }
     }
     public function update_double_create()
