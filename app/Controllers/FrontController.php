@@ -1361,7 +1361,7 @@ class FrontController extends BaseController
                 "order_id" => $body_data_decode['orderid'],
                 "shop_url" => $body_data_decode['shopname']
             );
-            $getdata = $this->exchange_model->update_exchnage_reason($body_data_decode['varid'],$moreparms);
+            $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'],$moreparms);
             echo"<pre>"; print_r($getdata); echo "</pre>";
         }
     }
