@@ -55,8 +55,7 @@ class ExchangeappModel extends Model
             return '';
         }
     }
-    public function get_order_info($orderid)
-    {
+    public function get_order_info($orderid){
         $getexchange_data = $this->db->table('cg_exchange_return_order_products');
         $getexchange_data->where('order_id', $orderid);
         $getresultdata = $getexchange_data->get();
@@ -78,19 +77,16 @@ class ExchangeappModel extends Model
             return '';
         }
     }
-    public function get_items_info($varientsids, $arrayprms)
-    {
+    public function get_items_info($varientsids,$arrayprms){
         // $qbuilder = $this->db->table('track_order_exchange_app');
         // $qbuilder->where('varient_id', $arrayprms['varient_id']);
         // $qbuilder->where('order_id', $arrayprms['order_id']);
         // $qbuilder->where('shop_url', $arrayprms['shop_url']);
+        $vids = implode(",", $varientsids);
+        echo  $vids;
         // $getexquery = "SELECT * FROM track_order_exchange_app WHERE varient_id IN (?) AND order_id=? AND shop_url=?";
         // $getreslt = $this->db->query($getexquery,array(implode(",", $varientsids),$arrayprms['order_id'],$arrayprms['shop_url']));
-        $getexquery = "SELECT * FROM track_order_exchange_app WHERE varient_id IN (" . implode(',', array_fill(0, count(explode(',', $varientsids)), '?')) . ") AND order_id=? AND shop_url=?";
-        $queryParams = array_merge(explode(',', $varientsids), array($arrayprms['order_id'], $arrayprms['shop_url']));
-        $getreslt = $this->db->query($getexquery, $queryParams);
-
-
-        return $getreslt->getResult();
+        // return $getreslt->getResult();
     }
 }
+?>
