@@ -84,7 +84,7 @@ class ExchangeappModel extends Model
         // $qbuilder->where('shop_url', $arrayprms['shop_url']);
         $vids = implode(",", $varientsids);
         //echo  $vids;
-        $getexquery = "SELECT * FROM track_order_exchange_app WHERE varient_id IN (".$vids.") AND order_id=? AND shop_url=?";
+        $getexquery = "SELECT * FROM track_order_exchange_app WHERE varient_id IN (".$vids.") AND new_double_order_id=? AND shop_url=?";
         $getreslt = $this->db->query($getexquery,array($arrayprms['order_id'],$arrayprms['shop_url']));
         return $getreslt->getResult();
     }
