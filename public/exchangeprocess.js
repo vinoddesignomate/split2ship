@@ -158,8 +158,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // var jsonvarientString = JSON.stringify(hiddenInputValues);
             // set_ck_value("sel_varients", jsonvarientString, 365);
             // Storing an array
-           // var myArray = [1, 2, 3];
-            sessionStorage.setItem("hiddenInputValues_sess", JSON.stringify(hiddenInputValues));
+            // var myArray = [1, 2, 3];
+            sessionStorage.setItem(
+              "hiddenInputValues_sess",
+              JSON.stringify(hiddenInputValues)
+            );
             document.getElementById("exchange_reason_process").style.display =
               "inline-block";
             document.getElementById("ordertrackfrm").style.display = "none";
@@ -172,12 +175,28 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-  document
-    .getElementById("spli2ship_return")
-    .addEventListener("click", function () {
-     var gethidenvar = sessionStorage.getItem('hiddenInputValues_sess');
-     var getvararray = JSON.parse(gethidenvar);      
+  document.getElementById("spli2ship_return").addEventListener("click", function () {
+    
+      var gethidenvar = sessionStorage.getItem("hiddenInputValues_sess");
+      var getvararray = JSON.parse(gethidenvar);
       console.log(getvararray);
+      var orderid = document.getElementById("ordif").value;
+      var send_data = JSON.stringify({
+        shopname: shopname,
+        varid: getvararray,
+        orderid: orderid,
+        getreturn: 'info',
+      });
+      fetch("https://app.payxnowandrestondelivery.com/fetch-return-process", {
+        method: "POST",
+        body: send_data,
+      })
+        .then((response) => response.json())
+        .then((response) => {
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     });
 
   //select order info by order id

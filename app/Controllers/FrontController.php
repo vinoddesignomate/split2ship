@@ -1351,6 +1351,19 @@ class FrontController extends BaseController
         }
         return json_encode($return);
     }
+    public function track_return_process()
+    {
+        $body_data = file_get_contents('php://input');
+        $body_data_decode = json_decode($body_data, TRUE);
+        if ($body_data_decode['info'] == 'info') {
+            $moreparms = array(
+                "order_id" => $body_data_decode['orderid'],
+                "shop_url" => $body_data_decode['shopname']
+            );
+            $getdata = $this->exchange_model->update_exchnage_reason($body_data_decode['varid'],$moreparms);
+            echo"<pre>"; print_r($getdata); echo "</pre>";
+        }
+    }
     public function update_double_create()
     {
         // $resposne_array = array("name" => "insertion from AWS");

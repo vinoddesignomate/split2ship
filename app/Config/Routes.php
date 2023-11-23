@@ -65,6 +65,7 @@ $routes->match(['get', 'post'],'/exchangereturn-split', 'FrontController::exchan
 $routes->match(['get', 'post'],'/fetch-order', 'FrontController::fetch_exhange_orders');
 $routes->match(['get', 'post'],'/fetch-order-info', 'FrontController::get_orders_info');
 $routes->match(['get', 'post'],'/fetch-track-return', 'FrontController::track_return_exchange_order');
+$routes->match(['get', 'post'],'/fetch-return-process', 'FrontController::track_return_process');
 
 
 $routes->match(['get', 'post'],'/exporcsv', 'FrontController::exportcsv');
