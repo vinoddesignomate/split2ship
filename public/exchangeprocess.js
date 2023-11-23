@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   document.getElementById("spli2ship_return").addEventListener("click", function () {
-    
+
       var gethidenvar = sessionStorage.getItem("hiddenInputValues_sess");
       var getvararray = JSON.parse(gethidenvar);
       console.log(getvararray);
@@ -193,6 +193,8 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((response) => {
+          document.getElementById('exchange_reason_process').style.display = 'none';
+          document.getElementById('return_exchange_info').style.display = 'block';
         })
         .catch((error) => {
           console.error("Error:", error);

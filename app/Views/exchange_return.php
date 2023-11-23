@@ -122,6 +122,82 @@
         background: #10277cde
     }
 
+    .outer-wrapper .container {
+        max-width: 1240px;
+        padding: 0px 15px;
+        margin: 0 auto;
+    }
+
+    .main-head {
+        text-align: center;
+        text-transform: capitalize;
+        margin: 15px 0px;
+    }
+
+    .outer-box {
+        background-color: #fff;
+        border-radius: 23px;
+        padding: 20px;
+        margin: 15px 0px;
+    }
+
+    .flex-wrapper {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .flex-wrapper .left-col {
+        width: calc(70% - 25px);
+    }
+
+    .flex-wrapper .right-col {
+        width: calc(30% - 25px);
+    }
+
+    .price-flex-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+
+    .price-sec .flex-row {
+        justify-content: space-between;
+    }
+
+    .outer-box h4 {
+        margin-bottom: 15px;
+    }
+
+    .outer-box p {
+        font-size: 16px;
+        line-height: 150%;
+    }
+
+    .price-sec {
+        border-top: 1px solid #cfcaca;
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+
+    .outer-box .flex-row {
+        display: flex;
+        align-items: start;
+        gap: 15px;
+        border-bottom: 1px solid #ccc8c8;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 767px) {
+
+        .flex-wrapper .right-col,
+        .flex-wrapper .left-col {
+            width: 100%
+        }
+    }
+
     @media screen and (max-width:767px) {
         #popup_config .popup-content {
             padding: 25px;
@@ -184,11 +260,75 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        
+
     </div>
     <div id="exchange_reason_process" style="display:none;" class="popup-container config_popup">
         <button type="button" id="spli2ship_return" class="btn btn-primary">Return</button>
         <button type="button" id="spli2ship_exchange" class="btn btn-primary">Replace with same item</button>
+    </div>
+    <div class="outer-wrapper" id="return_exchange_info" style="display:none;">
+        <div class="container">
+            <div class="main-head">
+                <h2>check your return request</h2>
+            </div>
+            <div class="flex-wrapper">
+                <div class="left-col">
+                    <div class="outer-box box1">
+                        <h4>Refund to your shopify store credit</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam praesentium nostrum fuga
+                            dolore, laudantium fugit soluta iure ut quibusdam dolor.</p>
+                    </div>
+                    <div class="outer-box box2">
+                        <h4>Ship on your own</h4>
+                        <div class="flex-row">
+                            <div class="img-col">
+                                <img src="./prod-img.png" alt="">
+                            </div>
+                            <div class="text-col">
+                                <p><b>Lorem ipsum</b></p>
+                                <p>200.00</p>
+                            </div>
+
+                        </div>
+                        <p><b>Return Reason: </b>Arrived too late</p>
+                    </div>
+                    <div class="outer-box box3">
+                        <h4>Ship on your own</h4>
+                        <div class="flex-row">
+                            <div class="img-col">
+                                <img src="./prod-img.png" alt="">
+                            </div>
+                            <div class="text-col">
+                                <p><b>Lorem ipsum</b></p>
+                                <p>200.00</p>
+                            </div>
+
+                        </div>
+                        <p><b>Return Reason: </b>Arrived too late</p>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="outer-box">
+                        <h4>Refund</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        <div class="price-sec">
+                            <div class="price-flex-row">
+                                <p>Subtotal</p>
+                                <p>1400.00</p>
+                            </div>
+                            <div class="price-flex-row">
+                                <p>Discount</p>
+                                <p>0.00</p>
+                            </div>
+                            <div class="price-flex-row">
+                                <p>Tax</p>
+                                <p>0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
         var shopname = '<?php echo $_GET['shop']; ?>';
