@@ -1370,7 +1370,8 @@ class FrontController extends BaseController
         }
         $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
         foreach ($body_data_decode['varid'] as $key => $value) {
-            $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products.json?ids=' . $value . '', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+            echo "value=".$value;
+            $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/variants/'.$value.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
             $getimfdata = json_decode($getimfsrcdata['body'], true);
 
