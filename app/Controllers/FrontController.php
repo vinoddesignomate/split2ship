@@ -1355,7 +1355,7 @@ class FrontController extends BaseController
     {
         $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
-        if ($body_data_decode['info'] == 'info') {
+        if ($body_data_decode['getreturn'] == 'info') {
             $moreparms = array(
                 "order_id" => $body_data_decode['orderid'],
                 "shop_url" => $body_data_decode['shopname']
