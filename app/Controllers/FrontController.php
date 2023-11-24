@@ -1368,10 +1368,14 @@ class FrontController extends BaseController
             // echo "<pre>";
             // print_r($getdata);
             // echo "</pre>";
-            foreach($getdata as $getdata){
+            foreach ($getdata as $getdata) {
                 $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata->product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
                 $getimfdata = json_decode($getimfsrcdata['body'], true);
+
+                echo "getimfdata<pre>";
+                print_r($getimfdata);
+                echo "</pre>";
                 $image_url = null;
                 if (!empty($getimfdata['product']['images'])) {
                     foreach ($getimfdata['product']['images'] as $image) {
@@ -1409,7 +1413,7 @@ class FrontController extends BaseController
 
         //     $getimfdata = json_decode($getimfsrcdata['body'], true);
 
-           
+
         // }
         return json_encode($return_info);
     }
