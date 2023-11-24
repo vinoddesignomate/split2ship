@@ -1414,8 +1414,12 @@ class FrontController extends BaseController
                     );
                 }
             }
+            return json_encode($return_info);
+        } else  if ($body_data_decode['getreturn'] == 'track_return') {
+            echo "<pre>";
+            print_r($body_data_decode);
+            echo "</pre>";
         }
-        return json_encode($return_info);
     }
     public function update_double_create()
     {

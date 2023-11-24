@@ -232,8 +232,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
    
     document.getElementById("cg_btn_submit").addEventListener("click", function () {
-      console.log('globalResponse');
-      console.log(globalResponse);
+      var orderid = document.getElementById("ordif").value;
+      var send_data = JSON.stringify({
+        shopname: shopname,
+        alldata: globalResponse,
+        orderid: orderid,
+        getreturn: "track_return",
+      });
+      fetch("https://app.payxnowandrestondelivery.com/fetch-return-process", {
+        method: "POST",
+        body: send_data,
+      })
+        .then((response) => response.json())
+        .then((response) => {
+         
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
     });
 
   //select order info by order id
