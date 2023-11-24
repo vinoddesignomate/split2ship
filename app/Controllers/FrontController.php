@@ -1364,21 +1364,19 @@ class FrontController extends BaseController
                 "shop_url" => $body_data_decode['shopname']
             );
             $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'], $moreparms);
-            // echo "<pre>";
-            // print_r($getdata);
-            // echo "</pre>";
+            echo "<pre>";
+            print_r($getdata);
+            echo "</pre>";
         }
-        $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
-        foreach ($body_data_decode['varid'] as $key => $value) {
-           // echo "value=".$value;
-            $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/variants/'.$value.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+        // $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
+        // foreach ($body_data_decode['varid'] as $key => $value) {
+        //    // echo "value=".$value;
+        //     $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/variants/'.$value.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
-            $getimfdata = json_decode($getimfsrcdata['body'], true);
+        //     $getimfdata = json_decode($getimfsrcdata['body'], true);
 
-            // echo "getimfdata<pre>";
-            // print_r($getimfdata);
-            // echo "</pre>";
-        }
+           
+        // }
         return json_encode($getdata);
     }
     public function update_double_create()

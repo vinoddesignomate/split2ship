@@ -278,7 +278,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam praesentium nostrum fuga
                             dolore, laudantium fugit soluta iure ut quibusdam dolor.</p>
                     </div>
-                    <div class="outer-box box2">
+                    <div class="outer-box box">
                         <h4>Ship on your own</h4>
                         <div class="flex-row">
                             <div class="img-col">
@@ -292,7 +292,7 @@
                         </div>
                         <p><b>Return Reason: </b>Arrived too late</p>
                     </div>
-                    <div class="outer-box box3">
+                    <div class="outer-box box">
                         <h4>Ship on your own</h4>
                         <div class="flex-row">
                             <div class="img-col">
