@@ -1366,9 +1366,9 @@ class FrontController extends BaseController
                 "shop_url" => $body_data_decode['shopname']
             );
             $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'], $moreparms);
-            // echo "<pre>";
-            // print_r($getdata);
-            // echo "</pre>";
+            echo "<pre>";
+            print_r($getdata);
+            echo "</pre>";
             foreach ($getdata as $getdata) {
                 $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata->product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
