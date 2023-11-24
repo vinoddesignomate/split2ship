@@ -220,9 +220,10 @@ document.addEventListener("DOMContentLoaded", function () {
               cg_tax += parseFloat(response[i]["product_tax"]);
           }
           document.getElementById("cg_prtct_info").innerHTML = infiohtm;
-          console.log(cg_sub_total);
-          console.log(cg_discount);
-          console.log(cg_tax);
+          document.getElementById("cg_subt").innerHTML = cg_sub_total;
+          document.getElementById("cg_disocunt").innerHTML = cg_discount;
+          document.getElementById("cg_ptax").innerHTML = cg_tax;
+         
         })
         .catch((error) => {
           console.error("Error:", error);

@@ -288,15 +288,15 @@
                         <div class="price-sec">
                             <div class="price-flex-row">
                                 <p>Subtotal</p>
-                                <p>1400.00</p>
+                                <p id="cg_subt"></p>
                             </div>
                             <div class="price-flex-row">
                                 <p>Discount</p>
-                                <p>0.00</p>
+                                <p id="cg_disocunt">0.00</p>
                             </div>
                             <div class="price-flex-row">
                                 <p>Tax</p>
-                                <p>0.00</p>
+                                <p id="cg_ptax">0.00</p>
                             </div>
                         </div>
                     </div>
