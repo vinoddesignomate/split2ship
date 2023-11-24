@@ -215,9 +215,9 @@ document.addEventListener("DOMContentLoaded", function () {
               response[i]["exchange_reason"] +
               "</p></div>";
             
-              cg_sub_total += response[i]["product_price"];
-              cg_discount += response[i]["product_discount"];
-              cg_tax += response[i]["product_tax"];
+              cg_sub_total += parseFloat(response[i]["product_price"]);
+              cg_discount += parseFloat(response[i]["product_discount"]);
+              cg_tax += parseFloat(response[i]["product_tax"]);
           }
           document.getElementById("cg_prtct_info").innerHTML = infiohtm;
           console.log(cg_sub_total);
