@@ -174,10 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
           console.error("Error:", error);
         });
     });
-
-  document
-    .getElementById("spli2ship_return")
-    .addEventListener("click", function () {
+    var globalResponse;
+  document.getElementById("spli2ship_return").addEventListener("click", function () {
       var gethidenvar = sessionStorage.getItem("hiddenInputValues_sess");
       var getvararray = JSON.parse(gethidenvar);
       console.log(getvararray);
@@ -194,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((response) => {
+          globalResponse = response;
           //document.getElementById('exchange_reason_process').style.display = 'none';
           document.getElementById("return_exchange_info").style.display =
             "block";
@@ -229,6 +228,12 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => {
           console.error("Error:", error);
         });
+    });
+
+   
+    document.getElementById("cg_btn_submit").addEventListener("click", function () {
+      console.log('globalResponse');
+      console.log(globalResponse);
     });
 
   //select order info by order id

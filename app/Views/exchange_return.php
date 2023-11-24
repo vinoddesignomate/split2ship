@@ -305,6 +305,7 @@
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary" id="cg_btn_submit">Submit</button>
             </div>
         </div>
     </div>
