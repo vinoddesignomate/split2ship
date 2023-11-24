@@ -269,10 +269,23 @@ class AppwhookController extends BaseController
             $finaldiscount = $paid_price;
             $titla_name = "Partial Payment";
         }
-        if($jsndata->taxes_included == 1 ){
-            $txincude = 1;
-        }else{
-            $txincude = false;
+        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+
+            if ($jsndata->taxes_included == 1) {
+                $txincude = 1;
+                $finalprice = $taxamounttotal-$order_tax;
+            } else {
+                $txincude = false;
+                $finalprice = $taxamounttotal;
+            }
+
+        } else {
+            if ($jsndata->taxes_included == 1) {
+                $txincude = 1;
+            } else {
+                $txincude = false;
+            }
+            $finalprice = $taxamounttotal;
         }
         if (!empty($chkpropeties)) {
             $order_data = [
@@ -285,7 +298,7 @@ class AppwhookController extends BaseController
                         [
                             "kind" => "authorization",
                             "status" => "success",
-                            "amount" => $taxamounttotal,
+                            "amount" => $finalprice,
                             "gateway" => "Cash on Delivery"
                         ]
                     ],
@@ -299,7 +312,7 @@ class AppwhookController extends BaseController
                         "country" => $country,
                         "zip" => $zip
                     ],
-                    "taxes_included"=>$txincude,
+                    "taxes_included" => $txincude,
                     "customer" => [
                         "id" => $jsndata->customer->id
                     ],
