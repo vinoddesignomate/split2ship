@@ -269,7 +269,7 @@ class AppwhookController extends BaseController
             $finaldiscount = $paid_price;
             $titla_name = "Partial Payment";
         }
-        // if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+       
 
         if ($jsndata->taxes_included == 1) {
             $txincude = 1;
@@ -279,15 +279,6 @@ class AppwhookController extends BaseController
             $finalprice = $taxamounttotal;
         }
 
-        // } else {
-        //     if ($jsndata->taxes_included == 1) {
-        //         $txincude = 1;
-        //     } else {
-        //         $txincude = false;
-        //     }
-        //     $finalprice = $taxamounttotal;
-        // }
-        
         if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
