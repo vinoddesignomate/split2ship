@@ -269,7 +269,7 @@ class AppwhookController extends BaseController
             $finaldiscount = $paid_price;
             $titla_name = "Partial Payment";
         }
-        if($jsndata->taxes_included ==1){
+        if($jsndata->taxes_included == 1 ){
             $txincude = 1;
         }else{
             $txincude = false;
@@ -299,7 +299,7 @@ class AppwhookController extends BaseController
                         "country" => $country,
                         "zip" => $zip
                     ],
-                    "taxes_included"=>false,
+                    "taxes_included"=>$txincude,
                     "customer" => [
                         "id" => $jsndata->customer->id
                     ],
