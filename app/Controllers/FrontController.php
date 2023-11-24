@@ -1358,15 +1358,49 @@ class FrontController extends BaseController
         // echo "<pre>";
         // print_r($body_data_decode);
         // echo "</pre>";
+        $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
         if ($body_data_decode['getreturn'] == 'info') {
             $moreparms = array(
                 "order_id" => $body_data_decode['orderid'],
                 "shop_url" => $body_data_decode['shopname']
             );
             $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'], $moreparms);
-            echo "<pre>";
-            print_r($getdata);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($getdata);
+            // echo "</pre>";
+            foreach($getdata as $getdata){
+                $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata->product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+
+                $getimfdata = json_decode($getimfsrcdata['body'], true);
+                $image_url = null;
+                if (!empty($getimfdata['product']['images'])) {
+                    foreach ($getimfdata['product']['images'] as $image) {
+                        // Check if the image is associated with the variant
+                        if (in_array($getdata->varient_id, $image['variant_ids'])) {
+                            $image_url = $image['src'];
+                            break;
+                        }
+                    }
+                    if ($image_url == "") {
+                        $image_url = $getimfdata['product']['image']['src'];
+                    } else {
+                        $image_url = $image_url;
+                    }
+                } else {
+                    $image_url = "https://cdn.shopifycdn.net/s/files/1/0580/0080/1969/t/1/assets/no-product-logo.png";
+                }
+
+                $return_info[] = array(
+                    "product_name" => $getdata->product_name,
+                    "id" => $getdata->id,
+                    "varient_id" => $getdata->varient_id,
+                    "product_price" => $getdata->product_price,
+                    "product_qty" => $getdata->product_qty,
+                    "product_image" => $image_url,
+                    "product_discount" => $getdata->product_discount,
+                    "product_tax" => $getdata->product_tax,
+                );
+            }
         }
         // $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
         // foreach ($body_data_decode['varid'] as $key => $value) {
@@ -1377,7 +1411,7 @@ class FrontController extends BaseController
 
            
         // }
-        return json_encode($getdata);
+        return json_encode($return_info);
     }
     public function update_double_create()
     {
