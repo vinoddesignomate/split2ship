@@ -274,7 +274,7 @@ class AppwhookController extends BaseController
         if ($jsndata->taxes_included == 1) {
             $txincude = 1;
             $finalprice = $taxamounttotal - $order_tax;
-            $finalprice = $finalprice - $finaldiscount;
+            //$finalprice = $finalprice - $finaldiscount;
         } else {
             $txincude = false;
             $finalprice = $taxamounttotal;
