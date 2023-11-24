@@ -1380,9 +1380,9 @@ class FrontController extends BaseController
 
                     $getimfdata = json_decode($getimfsrcdata['body'], true);
 
-                    echo "getimfdata<pre>";
-                    print_r($getimfdata);
-                    echo "</pre>";
+                    // echo "getimfdata<pre>";
+                    // print_r($getimfdata);
+                    // echo "</pre>";
                     $image_url = null;
                     if (!empty($getimfdata['product']['images'])) {
                         foreach ($getimfdata['product']['images'] as $image) {
@@ -1414,15 +1414,6 @@ class FrontController extends BaseController
                 }
             }
         }
-        // $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
-        // foreach ($body_data_decode['varid'] as $key => $value) {
-        //    // echo "value=".$value;
-        //     $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/variants/'.$value.'.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
-
-        //     $getimfdata = json_decode($getimfsrcdata['body'], true);
-
-
-        // }
         return json_encode($return_info);
     }
     public function update_double_create()
