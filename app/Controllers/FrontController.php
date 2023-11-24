@@ -1366,45 +1366,52 @@ class FrontController extends BaseController
                 "shop_url" => $body_data_decode['shopname']
             );
             $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'], $moreparms);
-            echo "<pre>";
-            print_r($getdata);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($getdata);
+            // echo "</pre>";
             foreach ($getdata as $getdata) {
-                $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata->product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
-                $getimfdata = json_decode($getimfsrcdata['body'], true);
+                $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/' . $getdata->varient_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
 
-                echo "getimfdata<pre>";
-                print_r($getimfdata);
-                echo "</pre>";
-                $image_url = null;
-                if (!empty($getimfdata['product']['images'])) {
-                    foreach ($getimfdata['product']['images'] as $image) {
-                        // Check if the image is associated with the variant
-                        if (in_array($getdata->varient_id, $image['variant_ids'])) {
-                            $image_url = $image['src'];
-                            break;
+                $getvrntimg = json_decode($getvarimg['body'], true);
+                if (!empty($getvarimg)) {
+                    $product_id = $getvrntimg['variant']['product_id'];
+                    $getimfsrcdata = $this->common->rest_api('/admin/api/2023-07/products/' . $product_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
+
+                    $getimfdata = json_decode($getimfsrcdata['body'], true);
+
+                    echo "getimfdata<pre>";
+                    print_r($getimfdata);
+                    echo "</pre>";
+                    $image_url = null;
+                    if (!empty($getimfdata['product']['images'])) {
+                        foreach ($getimfdata['product']['images'] as $image) {
+                            // Check if the image is associated with the variant
+                            if (in_array($getdata->varient_id, $image['variant_ids'])) {
+                                $image_url = $image['src'];
+                                break;
+                            }
                         }
-                    }
-                    if ($image_url == "") {
-                        $image_url = $getimfdata['product']['image']['src'];
+                        if ($image_url == "") {
+                            $image_url = $getimfdata['product']['image']['src'];
+                        } else {
+                            $image_url = $image_url;
+                        }
                     } else {
-                        $image_url = $image_url;
+                        $image_url = "https://cdn.shopifycdn.net/s/files/1/0580/0080/1969/t/1/assets/no-product-logo.png";
                     }
-                } else {
-                    $image_url = "https://cdn.shopifycdn.net/s/files/1/0580/0080/1969/t/1/assets/no-product-logo.png";
-                }
 
-                $return_info[] = array(
-                    "product_name" => $getdata->product_name,
-                    "id" => $getdata->id,
-                    "varient_id" => $getdata->varient_id,
-                    "product_price" => $getdata->product_price,
-                    "product_qty" => $getdata->product_qty,
-                    "product_image" => $image_url,
-                    "product_discount" => $getdata->product_discount,
-                    "product_tax" => $getdata->product_tax,
-                );
+                    $return_info[] = array(
+                        "product_name" => $getdata->product_name,
+                        "id" => $getdata->id,
+                        "varient_id" => $getdata->varient_id,
+                        "product_price" => $getdata->product_price,
+                        "product_qty" => $getdata->product_qty,
+                        "product_image" => $image_url,
+                        "product_discount" => $getdata->product_discount,
+                        "product_tax" => $getdata->product_tax,
+                    );
+                }
             }
         }
         // $get_details = $this->user_model->get_tokens($body_data_decode['shopname']);
