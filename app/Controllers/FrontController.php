@@ -1366,9 +1366,9 @@ class FrontController extends BaseController
                 "shop_url" => $body_data_decode['shopname']
             );
             $getdata = $this->exchange_model->get_items_info($body_data_decode['varid'], $moreparms);
-            echo "<pre>";
-            print_r($getdata);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($getdata);
+            // echo "</pre>";
             foreach ($getdata as $getdata) {
 
                 $getvarimg = $this->common->rest_api('/admin/api/2023-07/variants/' . $getdata->varient_id . '.json', array(), 'GET', $get_details->access_token, $body_data_decode['shopname']);
@@ -1410,6 +1410,7 @@ class FrontController extends BaseController
                         "product_image" => $image_url,
                         "product_discount" => $getdata->product_discount,
                         "product_tax" => $getdata->product_tax,
+                        "exchange_reason" => $getdata->return_exchange_reason,
                     );
                 }
             }
