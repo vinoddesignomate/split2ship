@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var cg_sub_total = 0;
           var cg_discount = 0;
           var cg_tax = 0;
+          var infiohtm = "";
           for (var i = 0; i < response.length; i++) {
             infiohtm +=
               '<div class="outer-box box"><h4>' +
