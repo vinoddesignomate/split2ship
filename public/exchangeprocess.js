@@ -175,8 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-  document.getElementById("spli2ship_return").addEventListener("click", function () {
-
+  document
+    .getElementById("spli2ship_return")
+    .addEventListener("click", function () {
       var gethidenvar = sessionStorage.getItem("hiddenInputValues_sess");
       var getvararray = JSON.parse(gethidenvar);
       console.log(getvararray);
@@ -185,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         shopname: shopname,
         varid: getvararray,
         orderid: orderid,
-        getreturn: 'info',
+        getreturn: "info",
       });
       fetch("https://app.payxnowandrestondelivery.com/fetch-return-process", {
         method: "POST",
@@ -194,7 +195,33 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((response) => {
           //document.getElementById('exchange_reason_process').style.display = 'none';
-          document.getElementById('return_exchange_info').style.display = 'block';
+          document.getElementById("return_exchange_info").style.display =
+            "block";
+          var cg_sub_total = 0;
+          var cg_discount = 0;
+          var cg_tax = 0;
+          for (var i = 0; i < response.length; i++) {
+            infiohtm +=
+              '<div class="outer-box box"><h4>' +
+              response[i]["product_name"] +
+              '</h4><div class="flex-row"><div class="img-col"><img src="' +
+              response[i]["product_image"] +
+              '" alt=""></div><div class="text-col"><p><b>Lorem ipsum</b></p><p>' +
+              response[i]["product_price"] +
+              "x" +
+              response[i]["product_qty"] +
+              "</p></div></div><p><b>Return Reason: </b>" +
+              response[i]["exchange_reason"] +
+              "</p></div>";
+            lpid++;
+            cg_sub_total = cg_sub_total+response[i]["product_price"];
+            cg_discount = cg_discount+response[i]["product_discount"];
+            cg_tax = cg_tax+response[i]["product_tax"];
+          }
+          document.getElementById("cg_prtct_info").innerHTML = infiohtm;
+          console.log(cg_sub_total);
+          console.log(cg_discount);
+          console.log(cg_tax);
         })
         .catch((error) => {
           console.error("Error:", error);

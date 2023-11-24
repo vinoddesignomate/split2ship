@@ -278,34 +278,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam praesentium nostrum fuga
                             dolore, laudantium fugit soluta iure ut quibusdam dolor.</p>
                     </div>
-                    <div class="outer-box box">
-                        <h4>Ship on your own</h4>
-                        <div class="flex-row">
-                            <div class="img-col">
-                                <img src="./prod-img.png" alt="">
-                            </div>
-                            <div class="text-col">
-                                <p><b>Lorem ipsum</b></p>
-                                <p>200.00</p>
-                            </div>
-
-                        </div>
-                        <p><b>Return Reason: </b>Arrived too late</p>
-                    </div>
-                    <div class="outer-box box">
-                        <h4>Ship on your own</h4>
-                        <div class="flex-row">
-                            <div class="img-col">
-                                <img src="./prod-img.png" alt="">
-                            </div>
-                            <div class="text-col">
-                                <p><b>Lorem ipsum</b></p>
-                                <p>200.00</p>
-                            </div>
-
-                        </div>
-                        <p><b>Return Reason: </b>Arrived too late</p>
-                    </div>
+                    <div id="cg_prtct_info"></div>
                 </div>
                 <div class="right-col">
                     <div class="outer-box">
