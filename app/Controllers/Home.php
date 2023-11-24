@@ -78,7 +78,8 @@ class Home extends BaseController
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
 
-                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
@@ -94,7 +95,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5543676379440.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5398621749461.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -105,7 +106,7 @@ class Home extends BaseController
                     print_r($getprietuleidrec);
                     echo "</pre>";
                     // die();
-
+                    /*
                     $paid_price = 0;
                     $total_item_price = 0;
                     $line_items = []; // Initialize an array to store line items
@@ -613,10 +614,10 @@ class Home extends BaseController
                         echo view('templates/apbrdgnew');
                     }
                 }
-               
+
                 $data['shiprocket_info'] = $this->user_model->get_shiprocket_config_home($_GET['shop']);
 
-               
+
                 if (!empty($data['shiprocket_info'])) {
                     $data['ship_provider'] = $data['shiprocket_info'][0]->shiping_partner_type;
                 } else {
@@ -2558,9 +2559,9 @@ class Home extends BaseController
             );
             echo json_encode($return_array);
         } else if ($_REQUEST['delv_parnter'] == 'delhivery') {
-            if(empty($return_data)){
-                $return_datatoken="ddfftgthh48758";
-            }else{
+            if (empty($return_data)) {
+                $return_datatoken = "ddfftgthh48758";
+            } else {
                 $return_datatoken = $return_data[0]->token;
             }
             $return_array = array(
