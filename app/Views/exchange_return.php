@@ -189,6 +189,7 @@
         padding-bottom: 20px;
         margin-bottom: 20px;
     }
+    .img-col img{width: 10%;}
 
     @media screen and (max-width: 767px) {
 

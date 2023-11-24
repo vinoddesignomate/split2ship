@@ -198,8 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("return_exchange_info").style.display =
             "block";
           var cg_sub_total = 0;
-          var cg_discount = 0;
-         
+          var cg_discount = 0;         
           var cg_tax = 0;
           var infiohtm = "";
           for (var i = 0; i < response.length; i++) {
@@ -216,9 +215,9 @@ document.addEventListener("DOMContentLoaded", function () {
               response[i]["exchange_reason"] +
               "</p></div>";
             
-            cg_sub_total = cg_sub_total+response[i]["product_price"];
-            cg_discount = cg_discount+response[i]["product_discount"];
-            cg_tax = cg_tax+response[i]["product_tax"];
+              cg_sub_total += response[i]["product_price"];
+              cg_discount += response[i]["product_discount"];
+              cg_tax += response[i]["product_tax"];
           }
           document.getElementById("cg_prtct_info").innerHTML = infiohtm;
           console.log(cg_sub_total);
