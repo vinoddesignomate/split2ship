@@ -223,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("cg_subt").innerHTML = cg_sub_total;
           document.getElementById("cg_disocunt").innerHTML = cg_discount;
           document.getElementById("cg_ptax").innerHTML = cg_tax;
+          document.getElementById("cg_totalrefund").innerHTML = cg_sub_total + cg_discount + cg_tax;
          
         })
         .catch((error) => {

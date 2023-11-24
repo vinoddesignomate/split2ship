@@ -292,11 +292,15 @@
                             </div>
                             <div class="price-flex-row">
                                 <p>Discount</p>
-                                <p id="cg_disocunt">0.00</p>
+                                <p id="cg_disocunt"></p>
                             </div>
                             <div class="price-flex-row">
                                 <p>Tax</p>
-                                <p id="cg_ptax">0.00</p>
+                                <p id="cg_ptax"></p>
+                            </div>
+                            <div class="price-flex-row">
+                                <p><b>Total Refund</b></p>
+                                <p id="cg_totalrefund"></p>
                             </div>
                         </div>
                     </div>
