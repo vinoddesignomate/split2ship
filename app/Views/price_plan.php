@@ -91,9 +91,9 @@ $store_name = $shop_name[0];
 <?php
 
 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-echo "get_details_store<pre>";
-                    print_r($get_details_store);
-                    echo "</pre>";
+    echo "get_details_store<pre>";
+    print_r($get_details_store);
+    echo "</pre>";
 }
 ?>
 <div id="popup" class="popup-container">
@@ -138,14 +138,18 @@ echo "get_details_store<pre>";
 
                     <?php
                     if ($get_details_store->total_sync_store_products <= 200) {
-                        if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
-                            <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
-                        <?php } else { ?>
-                            <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic" class="payxnowandrestondelivery-button">Buy</a>
-                        <?php }
-                    } else { ?>
-                        <a href="javascript:void(0);" onclick="showPopup('basic')" class="payxnowandrestondelivery-button">Buy</a>
-                    <?php  } ?>
+                        $showplan = "<a onclick='abc(event);' href='https://admin.shopify.com/store/" . esc($store_name) . "/apps/pay-x-now-rest-on-delivery/subscribe-app?plan=basic' class='payxnowandrestondelivery-button'>Buy</a>";
+                    } else {
+                        $showplan = "<a href='javascript:void(0);' onclick='showPopup('basic')' class='payxnowandrestondelivery-button'>Buy</a>";
+                    }
+                    if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?>
+                        <a href="javascript:void(0);" class="payxnowandrestondelivery-button">Active</a>
+                    <?php } else {
+
+                        echo $showplan; ?>
+
+                    <?php }
+                    ?>
                 </div>
             </div>
             <div class="payxnowandrestondelivery-pricing-col">
