@@ -54,18 +54,18 @@ $store_name = $shop_name[0];
                             <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
                         </form>
                     </div>
-                    <?php if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                    <?php
 
-                        
-                        if ($total_add_products == $get_updated_plan) {
+
+                    if ($total_add_products >= $get_updated_plan) {
                     ?>
-                            <div class="additionalCGtextred">Your product limit exhausted <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
-                        <?php
-                        } else {
-                        ?>
-                            <div class="additionalCGtext">Your products limit <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
+                        <div class="additionalCGtextred">Your product limit exhausted <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="additionalCGtext">Your products limit <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
                     <?php }
-                    } ?>
+                    ?>
 
                 </div>
 
