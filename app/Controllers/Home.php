@@ -2455,7 +2455,7 @@ class Home extends BaseController
     {
         $data = array();
         echo view('templates/header');
-        echo view('app_configuration', $data);
+        echo view('app_tutorial_page', $data);
         echo view('templates/footer');
     }
 
