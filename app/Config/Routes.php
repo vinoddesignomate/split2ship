@@ -54,6 +54,7 @@ $routes->match(['get', 'post'],'/track_partial_percentage', 'Home::track_partial
 $routes->match(['get', 'post'],'/collection_track_partial_percentage', 'Home::collection_track_partial_percentage');
 $routes->match(['get', 'post'],'/shiprocket-config', 'Home::shiprocket_config');
 $routes->match(['get', 'post'],'/app-configuration', 'Home::app_configuration');
+$routes->match(['get', 'post'],'/app-tutorials', 'Home::app_tutorials');
 $routes->match(['get', 'post'],'/get_shipping_partners', 'Home::get_shipping_partners');
 $routes->match(['get', 'post'],'/track_userinf', 'Home::track_userinfo');
 $routes->match(['get', 'post'],'/collection-wise-partial-products', 'Home::collection_wise_partial_products');

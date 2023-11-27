@@ -191,16 +191,16 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
-        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                <div class="payxnowandrestondelivery-container configpageinstr">
-                        <div class="payxnowandrestondelivery-main-head">
-                                <div class="alert-wrapper payxnowandrestondelivery-main-heading">
-                                        <p class="payxnowandrestondelivery-alert">Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
-                                </div>
 
+        <div class="payxnowandrestondelivery-container configpageinstr">
+                <div class="payxnowandrestondelivery-main-head">
+                        <div class="alert-wrapper payxnowandrestondelivery-main-heading">
+                                <p class="payxnowandrestondelivery-alert">Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - 9354200590 else send us an email to saurabh@cgcolors.com. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
                         </div>
+
                 </div>
-        <?php } ?>
+        </div>
+
 
         <div class=" payxnowandrestondelivery-main-area ">
 
@@ -239,7 +239,7 @@ $store_name = $shop_name[0];
         </div> -->
         <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's order confirmation email template.</h5>
+                        <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's <b>Order Confirmation</b> email template.</h5>
                         <div><textarea rows="20" style="width: 100%;">{% capture email_title %}
                                 {% if has_pending_payment %}
                                 Thank you for your order!
@@ -1067,12 +1067,12 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-area-row ">
 
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 6:</b> Edit Order refund template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
+                        <h5><b class="text-orange">Step 6:</b> Edit <b>Order refund</b> template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if order.tags != blank %}<span>If you had placed a partially paid order then only paid amount will be refunded</span>{% endif %}</textarea>
                         </div>
                 </div>
                 <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 7:</b>Edit Order invoice template - Add below code in Invoice email.</h5>
+                        <h5><b class="text-orange">Step 7:</b>Edit <b>Order Invoice</b> template - Add below code in Invoice email.</h5>
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;"> {% if order.tags != blank %}{% else %}
                <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span> {% endif %}</textarea>
                         </div>
@@ -1082,46 +1082,37 @@ $store_name = $shop_name[0];
                         </div>
                 </div>
         </div>
-        <div class="payxnowandrestondelivery-zip-flex-row">
+       <!-- <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                        <!-- <div class="iframeMainDiv">
+                         <div class="iframeMainDiv">
                                 <h3>Introducing Split2Ship: PayPart | Rest COD | What is Split2Ship? | Split2Ship Shopify App</h3>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/Chb8-5TVE_8?si=QTQ_JIiscES2VaLd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-                        </div> -->
+                        </div> 
                         <div class="iframeMainDiv">
                                 <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                         </div>
-                        <!-- <div class="iframeMainDiv">
+                        <div class="iframeMainDiv">
                                 <h3>How to Integrate Shiprocket with Spli2ship Shopify app | Shiprocket Integration | Spli2ship</h3>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/-n_jfzlHmv4?si=DFl1lnoGBHwWxrvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-                        </div> -->
-                        <!-- <div class="iframeMainDiv">
-                                <h3>How to Integrate Delhivery with the Spli2ship Shopify app | Delhivery Integration | Spli2ship </h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/-KjR1dQm2Rw?si=q6aqdGiUyikCfMAp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-                        </div> -->
+                        </div> 
+                      
                         <div class="iframeMainDiv">
                                 <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                         </div>
-                        <!-- <div class="iframeMainDiv">
-                                <h3>How the new feature of our app "Shipping Module" works | Shipping Module | Shipping partners</h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/GugrWGMGUr0?si=7--PFJjsjMs_jNaJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div> -->
+                      
                         <div class="iframeMainDiv">
                                 <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                         </div>
                 </div>
-        </div>
+        </div>-->
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                         <div class="payxnowandrestondelivery-head-wrapper">

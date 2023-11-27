@@ -2451,6 +2451,13 @@ class Home extends BaseController
         echo view('app_configuration', $data);
         echo view('templates/footer');
     }
+    public function app_tutorials()
+    {
+        $data = array();
+        echo view('templates/header');
+        echo view('app_configuration', $data);
+        echo view('templates/footer');
+    }
 
 
     public function shiprocket_config()

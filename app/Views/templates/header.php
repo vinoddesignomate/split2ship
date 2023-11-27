@@ -25,23 +25,23 @@
             forceRedirect: false
         };
         const app = createApp(config);
-       /* app.route({
-            path: '/apps/splitexchange',
-            render: () => {
-                // Render your custom template or section here
-                // Get a reference to the container where you want to render your HTML
-                const container = document.querySelector('#MainContent');
-                // Create an HTML element, e.g., a div, and set its innerHTML to your HTML content
-                const customHTML = `
-                        <div>
-                            <h1>Your Custom HTML Content</h1>
-                            <p>This is your custom content.</p>
-                        </div>
-                        `;
+        /* app.route({
+             path: '/apps/splitexchange',
+             render: () => {
+                 // Render your custom template or section here
+                 // Get a reference to the container where you want to render your HTML
+                 const container = document.querySelector('#MainContent');
+                 // Create an HTML element, e.g., a div, and set its innerHTML to your HTML content
+                 const customHTML = `
+                         <div>
+                             <h1>Your Custom HTML Content</h1>
+                             <p>This is your custom content.</p>
+                         </div>
+                         `;
 
-                container.innerHTML = customHTML;
-            },
-        });*/
+                 container.innerHTML = customHTML;
+             },
+         });*/
         // const redirect = Redirect.create(app);
         //console.log('currentURL');
         //console.log(config.shopifyAppBridge.getState().location.currentURL);
@@ -88,7 +88,9 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
                                 Orders</a></li> -->
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'price-plan') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan"><img src="/public/images/pricing.svg" class="payxnowandrestondelivery-hide-hover" alt="pricing-icon"><img src="/public/images/pricing-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="pricing-icon">
                                 Pricing</a></li>
-                        <!-- <li><a onclick='abc(event);' class="<?php echo ($page_name == 'shiprocket-config') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/shopifypartialapp/public/index.php/shiprocket-config">Shiprocket Config</a></li> -->
+
+                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-tutorials') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">        Tutorials</a></li>
+
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-configuration') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration"><img src="/public/images/configuration.svg" alt="configuration-icon" class="payxnowandrestondelivery-hide-hover"><img src="/public/images/configuration-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="configuration-icon">Configuration</a></li>
                     </ul>
                 </nav>
