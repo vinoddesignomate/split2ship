@@ -1034,9 +1034,9 @@ class Home extends BaseController
         $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
         $data['shopname'] = $_GET['shop'];
         if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-        $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
-        $data['get_updated_plan'] = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
-        $data['get_details'] = $get_details;
+            $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
+            $data['get_updated_plan'] = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
+            $data['get_details'] = $get_details;
         }
         // echo "<pre>";
         // print_r($data['get_stored_percentage']);
@@ -2600,13 +2600,15 @@ class Home extends BaseController
                 ));
             }
             $visitr_ipaddreess =  $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'];
-            $track_user_log = array(
-                "name" => $get_details->first_name,
-                "email" => $get_details->email,
-                "shop_url" => $get_details->shop_url,
-                "ipaddress" => $visitr_ipaddreess,
-            );
-            $this->user_model->track_user_log($track_user_log);
+            if ($get_details->first_name != "") {
+                $track_user_log = array(
+                    "name" => $get_details->first_name,
+                    "email" => $get_details->email,
+                    "shop_url" => $get_details->shop_url,
+                    "ipaddress" => $visitr_ipaddreess,
+                );
+                $this->user_model->track_user_log($track_user_log);
+            }
         }
     }
     public function zipcode_enabledis()
