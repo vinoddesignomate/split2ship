@@ -55,13 +55,15 @@ $store_name = $shop_name[0];
                         </form>
                     </div>
                     <?php if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                        if ($get_details->total_sync_store_products == $get_updated_plan) {
+
+                        
+                        if ($total_add_products == $get_updated_plan) {
                     ?>
-                            <div class="additionalCGtextred">Your product limit exhausted <?php echo $get_details->total_sync_store_products; ?>/<?php echo $get_updated_plan; ?></div>
+                            <div class="additionalCGtextred">Your product limit exhausted <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
                         <?php
                         } else {
                         ?>
-                            <div class="additionalCGtext">Your products limit <?php echo $get_details->total_sync_store_products; ?>/<?php echo $get_updated_plan; ?></div>
+                            <div class="additionalCGtext">Your products limit <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
                     <?php }
                     } ?>
 
