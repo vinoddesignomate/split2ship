@@ -813,6 +813,7 @@ class UserModel extends Model
                 echo"<pre>"; print_r($get_details); echo"</pre>";
                 echo"<pre>"; print_r($product_array); echo"</pre>";
                 $this->update_plan_products(1, $product_array['shop_url']);
+                unset($product_array['total_pro']);
                 return  $qbuilder->insert($product_array);
             }
         }
