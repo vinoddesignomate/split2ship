@@ -19,6 +19,15 @@ $store_name = $shop_name[0];
         padding: 10px;
         font-size: 15px;
     }
+
+    .additionalCGtextred {
+        display: inline-block;
+        color: #000;
+        letter-spacing: .2px;
+        background: red;
+        padding: 10px;
+        font-size: 15px;
+    }
 </style>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
@@ -45,9 +54,16 @@ $store_name = $shop_name[0];
                             <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
                         </form>
                     </div>
-                    <?php if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') { ?>
-                        <div class="additionalCGtext">Your products limit <?php echo $get_details->total_sync_store_products; ?>/<?php echo $get_updated_plan; ?></div>
-                    <?php } ?>
+                    <?php if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                        if ($get_details->total_sync_store_products == $get_updated_plan) {
+                    ?>
+                            <div class="additionalCGtextred">Your product limit exhausted <?php echo $get_details->total_sync_store_products; ?>/<?php echo $get_updated_plan; ?></div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="additionalCGtext">Your products limit <?php echo $get_details->total_sync_store_products; ?>/<?php echo $get_updated_plan; ?></div>
+                    <?php }
+                    } ?>
 
                 </div>
 
