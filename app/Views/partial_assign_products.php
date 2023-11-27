@@ -161,5 +161,15 @@
 
         });
 
+        $(".custom-search").submit(function(event) {            
+            var sel_val = $("#get_coll").val();
+            if(sel_val == ""){
+                alert("Please select any collection");
+                event.preventDefault(); 
+            }else{
+
+            }
+        });
+
     });
 </script>
