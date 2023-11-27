@@ -808,6 +808,8 @@ class UserModel extends Model
             return $this->db->affectedRows();
         } else {
             $get_details = $this->get_tokens($product_array['shop_url']);
+            echo"<pre>"; print_r($get_details); echo"</pre>";
+            echo"<pre>"; print_r($product_array); echo"</pre>";
             if ($get_details->total_sync_store_products < $product_array['total_pro']) {
                 $this->update_plan_products(1, $product_array['shop_url']);
                 return  $qbuilder->insert($product_array);
