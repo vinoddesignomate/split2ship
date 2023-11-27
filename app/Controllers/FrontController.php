@@ -1419,6 +1419,7 @@ class FrontController extends BaseController
             echo "<pre>";
             print_r($body_data_decode);
             echo "</pre>";
+        
         }
     }
     public function update_double_create()
