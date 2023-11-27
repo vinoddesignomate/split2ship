@@ -90,11 +90,11 @@ $store_name = $shop_name[0];
 </style>
 <?php
 
-if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-    echo "get_details_store<pre>";
-    print_r($get_details_store);
-    echo "</pre>";
-}
+// if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+//     echo "get_details_store<pre>";
+//     print_r($get_details_store);
+//     echo "</pre>";
+// }
 ?>
 <div id="popup" class="popup-container">
     <div class="popup-content">
