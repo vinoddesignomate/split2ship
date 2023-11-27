@@ -16,7 +16,7 @@
 
                         </select>
                         <div class="search-wrapper">
-                            <form class="custom-search" action="" method="post">
+                            <form class="custom-search" action="" id="prudtsearch" method="post">
                                 <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
                                 <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
                             </form>
@@ -161,7 +161,7 @@
 
         });
 
-        $(".custom-search").submit(function(event) {            
+        $("#prudtsearch").submit(function(event) {            
             var sel_val = $("#get_coll").val();
             console.log(sel_val);
             if(sel_val == ""){
