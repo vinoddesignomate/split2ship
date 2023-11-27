@@ -163,6 +163,7 @@
 
         $(".custom-search").submit(function(event) {            
             var sel_val = $("#get_coll").val();
+            console.log(sel_val);
             if(sel_val == ""){
                 alert("Please select any collection");
                 event.preventDefault(); 
