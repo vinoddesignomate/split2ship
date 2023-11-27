@@ -1033,6 +1033,11 @@ class Home extends BaseController
         $data['get_store_collections'] = $this->user_model->get_collections($_GET['shop']);
         $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
         $data['shopname'] = $_GET['shop'];
+        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
+        $data['get_updated_plan'] = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
+        $data['get_details'] = $get_details;
+        }
         // echo "<pre>";
         // print_r($data['get_stored_percentage']);
         // echo "</pre>";

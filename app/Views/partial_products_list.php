@@ -10,7 +10,16 @@ $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
 
 ?>
-
+<style>
+    .additionalCGtext {
+        display: inline-block;
+        color: #000;
+        letter-spacing: .2px;
+        background: #F2F6FF;
+        padding: 10px;
+        font-size: 15px;
+    }
+</style>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
         <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Back</a></h5>
@@ -36,7 +45,9 @@ $store_name = $shop_name[0];
                             <a onclick='abc(event);' class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list">Clear</a>
                         </form>
                     </div>
-
+                    <?php if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') { ?>
+                        <div class="additionalCGtext">Your products limit <?php echo $get_details->total_sync_store_products; ?>/<?php echo $get_updated_plan; ?></div>
+                    <?php } ?>
 
                 </div>
 
