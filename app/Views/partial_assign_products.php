@@ -1,34 +1,33 @@
-<form method="POST" action="">
+<div class="payxnowandrestondelivery-container">
+    <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page">
+        <div class="payxnowandrestondelivery-inner-wrapper">
+            <div class="payxnowandrestondelivery-side-bar-col">
+                <h2>Pick Collection</h2>
+                <div class="payxnowandrestondelivery-custom-select">
+                    <select style="display:block;" class="colidchk" required id="get_coll" name="get_coll">
+                        <option value="0">Select Collection...</option>
+                        <?php foreach ($get_store_collections as $get_collections) { ?>
 
-    <div class="payxnowandrestondelivery-container">
-        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page">
-            <div class="payxnowandrestondelivery-inner-wrapper">
-                <div class="payxnowandrestondelivery-side-bar-col">
-                    <h2>Pick Collection</h2>
-                    <div class="payxnowandrestondelivery-custom-select">
-                        <select style="display:block;" class="colidchk" required id="get_coll" name="get_coll">
-                            <option value="0">Select Collection...</option>
-                            <?php foreach ($get_store_collections as $get_collections) { ?>
+                            <option <?php if (isset($_GET['collectionparms']) && $_GET['collectionparms'] == $get_collections->collection_id) { ?> selected <?php } ?> value="<?php echo esc($get_collections->collection_id); ?>"><?php echo esc($get_collections->collections_name); ?></option>
 
-                                <option <?php if (isset($_GET['collectionparms']) && $_GET['collectionparms'] == $get_collections->collection_id) { ?> selected <?php } ?> value="<?php echo esc($get_collections->collection_id); ?>"><?php echo esc($get_collections->collections_name); ?></option>
+                        <?php } ?>
 
-                            <?php } ?>
-
-                        </select>
-                        <div class="search-wrapper">
-                            <form class="custom-search" action="" id="prudtsearch" method="post">
-                                <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
-                                <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                        <!--<div style="margin-top: 11px;width: 67%;">
+                    </select>
+                    <div class="search-wrapper">
+                        <form class="custom-search" action="" id="prudtsearch" method="post">
+                            <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
+                            <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <!--<div style="margin-top: 11px;width: 67%;">
                             <form method="post" action="">
                                 <input type="text" name="search_string">
                                 <button type="submit" name="search" value="Search" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta"></button>
                             </form>
                         </div>-->
-                    </div>
                 </div>
+            </div>
+            <form method="POST" action="">
                 <div class="payxnowandrestondelivery-main-data-col">
                     <div class="payxnowandrestondelivery-head-wrapper">
                         <h2>Product name</h2>
@@ -114,18 +113,19 @@
                     }
                     ?>
                     <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
-                        
+
                         <?php if ($checkcol == 'yes') { ?>
                             <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Partial payment setup</button>
                             <!-- <a href="#" class="button">+ &nbsp; Partial payment setup</a> -->
                         <?php } ?>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <?php if ($checkcol == 'yes') { ?>
-        <!-- <div class="rowSep">
+</div>
+<?php if ($checkcol == 'yes') { ?>
+    <!-- <div class="rowSep">
 
             <div class="rowSepCol12 btnM30 text-center-00">
 
@@ -134,8 +134,8 @@
             </div>
 
         </div> -->
-    <?php } ?>
-</form>
+<?php } ?>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -161,13 +161,13 @@
 
         });
 
-        $("#prudtsearch").submit(function(event) {            
+        $("#prudtsearch").submit(function(event) {
             var sel_val = $("#get_coll").val();
             console.log(sel_val);
-            if(sel_val == ""){
+            if (sel_val == "") {
                 alert("Please select any collection");
-                event.preventDefault(); 
-            }else{
+                event.preventDefault();
+            } else {
 
             }
         });
