@@ -807,8 +807,11 @@ class UserModel extends Model
             $this->db->table('app_partial_products')->where('shop_url', $product_array['shop_url'])->where('product_id', $product_array['product_id'])->update($product_array);
             return $this->db->affectedRows();
         } else {
-            $this->update_plan_products(1, $product_array['shop_url']);
-            return  $qbuilder->insert($product_array);
+            $get_details = $this->get_tokens($product_array['shop_url']);
+            if ($get_details->total_sync_store_products < $product_array['total_pro']) {
+                $this->update_plan_products(1, $product_array['shop_url']);
+                return  $qbuilder->insert($product_array);
+            }
         }
     }
     public function insert_addcart_webhooks($insert_array)

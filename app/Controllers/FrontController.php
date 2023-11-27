@@ -631,7 +631,7 @@ class FrontController extends BaseController
             if ($get_updated_plan[0]->plan_name == 'basic') {
                 $total_pro = 200;
             } else {
-                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
+                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
             }
 
             //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
@@ -666,7 +666,8 @@ class FrontController extends BaseController
                                         "shop_url" => $get_lates_colection->shop_url,
                                         "partial_percentage" => $get_lates_colection->partial_percentage,
                                         "add_date" => date('Y-m-d'),
-                                        "collection_id" => $get_lates_colection->collection_id
+                                        "collection_id" => $get_lates_colection->collection_id,
+                                        "total_pro" => $total_pro
                                     );
                                     //below function is used for add products into partial list & update partial products of store according their plan
                                     $this->user_model->add_partial_products_collections($payxnowrest_product_add);
@@ -727,7 +728,8 @@ class FrontController extends BaseController
                                         "shop_url" => $get_lates_colection->shop_url,
                                         "partial_percentage" => $get_lates_colection->partial_percentage,
                                         "add_date" => date('Y-m-d'),
-                                        "collection_id" => $get_lates_colection->collection_id
+                                        "collection_id" => $get_lates_colection->collection_id,
+                                        "total_pro" => $total_pro
                                     );
                                     $this->user_model->add_partial_products_collections($payxnowrest_product_add);
                                     foreach ($value['variants'] as $produc_varaien) {
