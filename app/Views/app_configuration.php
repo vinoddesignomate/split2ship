@@ -1120,7 +1120,7 @@ $store_name = $shop_name[0];
                                         ?>
                                                 <div class="flex-row">
                                                         <label for="">Text 1 </label>
-                                                        <input type="text" name="cg_partial_dep_text" value="<?php echo (isset($gtbtncolor[0]->partial_dep_text) ? $gtbtncolor[0]->partial_dep_text : 'Partial Deposit'); ?>">
+                                                        <input type="text" name="cg_partial_dep_text" value="<?php echo ((isset($gtbtncolor[0]->partial_dep_text) && $gtbtncolor[0]->partial_dep_text!="") ? $gtbtncolor[0]->partial_dep_text : 'Partial Deposit'); ?>">
                                                 </div>
                                                 <div class="flex-row">
                                                         <label for="">Text 2 </label>
