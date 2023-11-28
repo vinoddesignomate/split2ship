@@ -212,7 +212,7 @@ class FrontController extends BaseController
                     $payprice = $item_cart['price'];
                     $total_price = $payprice + $remamoun;
                     //calculating partial product discount amount end code
-                    //if ($shopname == 'desinomatetest.myshopify.com') {
+                    if ($shopname == 'desinomatetest.myshopify.com') {
                         if ($total_price != $item_cart['item_original_price']) {
 
                             $itmorgprice = $item_cart['original_line_price'];
@@ -266,7 +266,7 @@ class FrontController extends BaseController
                                 )
                             );
                         }
-                   /* } else {
+                    } else {
                         $line_item  = array(
                             "title" => $item_cart['title'] . $size_order_namenn,
                             "price" => $final_price,
@@ -285,7 +285,7 @@ class FrontController extends BaseController
                                 // array("name" => "psku", "value" => $itmeskysplit)
                             )
                         );
-                    }*/
+                    }
                     $remaining_price = $remaining_price + $item_cart['rem_p'];
                 } else {
 
@@ -416,7 +416,6 @@ class FrontController extends BaseController
         //     die();
         // }
         $ilosku = 1;
-        $reqship = true;
         foreach ($cartarray as $item_cart) {
 
 
@@ -450,138 +449,57 @@ class FrontController extends BaseController
 
                 $chekpartial = 1;
                 $final_price = $item_cart['price'] / $item_cart['qty'];
-                $remamoun = str_replace("-", "", $item_cart['rem_p']);
-                $payprice = $item_cart['price'];
-                $total_price = $payprice + $remamoun;
-                //calculating partial product discount amount end code
-                //if ($shopname == 'desinomatetest.myshopify.com') {
-                    if ($total_price != $item_cart['item_original_price']) {
-
-                        $itmorgprice = $item_cart['original_line_price'];
-                        $dicountcodepay = $itmorgprice - $total_price;
-                        //if ($dicountcodepay > 0) {
-                        //$adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
-                        //$discounfroundedValue = round($dicountcodepay, 2);
-                        //$formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
-                        //$formattedValuediscount = sprintf("%.2f", $dicountcodepay);
 
 
-                        //$roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
-                        $formattedValuediscount = number_format($dicountcodepay, 2, '.', '');
+                $line_item  = array(
+                    "title" => $item_cart['title'] . $size_order_namenn,
+                    "price" => $final_price,
+                    "quantity" => $item_cart['qty'],
+                    //"variant_id" => $item_cart['id'],
+                    "sku" => $itmeskysplit,
+                    "requires_shipping" => true,
+                    "grams" => $item_cart['grams'],
+                    "gift_card" => true,
+                    // "applied_discount" => array(
+                    //     "description" => "Custom discount",
+                    //     "title" => "Custom discount",
+                    //     "value_type" => "fixed_amount",
+                    //     "value" => "250.00",
+                    //     "amount" => "250.00",
+                    // ),
+                    "properties" => array(
+                        array("name" => "Note", "value" => "Initial Partial Payment"),
+                        array("name" => "variant_code", "value" => $item_cart['id']),
+                        array("name" => "partial_pay", "value" => $item_cart['price']),
+                        array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                        //array("name" => "product_id_code", "value" => $item_cart['product_id']),
+                        // array("name" => "psku", "value" => $itmeskysplit)
+                    )
+                );
 
 
-                        $line_item  = array(
-                            "title" => $item_cart['title'] . $size_order_namenn,
-                            "price" => $final_price,
-                            "quantity" => $item_cart['qty'],
-                            "sku" => $itmeskysplit,
-                            //"product_id" => $item_cart['product_id'],
-                            "requires_shipping" => $reqship,
-                            "grams" => $item_cart['grams'],
-                            "gift_card" => true,
-                            "properties" => array(
-                                array("name" => "Note", "value" => "Initial Partial Payment"),
-                                array("name" => "variant_code", "value" => $item_cart['id']),
-                                array("name" => "partial_pay", "value" => number_format($item_cart['price'], 2, '.', '')),
-                                array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                                array("name" => "Discount", "value" => $formattedValuediscount)
-                                //array("name" => "Discount", "value" => number_format($dicountcodepay, 2, '.', ''))
-                                //array("name" => "Discount", "value" => $item_cart['product_id']),
-                                // array("name" => "psku", "value" => $itmeskysplit)
-                            )
-                        );
-                    } else {
-                        $line_item  = array(
-                            "title" => $item_cart['title'] . $size_order_namenn,
-                            "price" => $final_price,
-                            "quantity" => $item_cart['qty'],
-                            "sku" => $itmeskysplit,
-                            //"product_id" => $item_cart['product_id'],
-                            "requires_shipping" => $reqship,
-                            "grams" => $item_cart['grams'],
-                            "gift_card" => true,
-                            "properties" => array(
-                                array("name" => "Note", "value" => "Initial Partial Payment"),
-                                array("name" => "variant_code", "value" => $item_cart['id']),
-                                array("name" => "partial_pay", "value" => $item_cart['price']),
-                                array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                            )
-                        );
-                    }
-              /*  } else {
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "sku" => $itmeskysplit,
-                        //"product_id" => $item_cart['product_id'],
-                        "requires_shipping" => $reqship,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                            //array("name" => "Discount", "value" => $item_cart['product_id']),
-                            // array("name" => "psku", "value" => $itmeskysplit)
-                        )
-                    );
-                }*/
                 $remaining_price = $remaining_price + $item_cart['rem_p'];
-
-
-                
             } else {
-               //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                if ($item_cart['line_price'] != $item_cart['original_line_price']) {
-
-
-                    $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
-
-                    $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
-                    //$coupencodeprice = ($item_cart['line_level_total_discount'] / $item_cart['qty']);
-                    // $coupencodeprice = round($coupencodeprice);
-
-                    $getcpncodep = $body_data_decode['getcpncode'];
-                    if ($getcpncodep != "") {
-                        $couponname = $getcpncodep;
-                    } else {
-                        $couponname = 'Automatic';
-                    }
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        "applied_discount" => array(
-                            "description" => $couponname,
-                            "title" => $couponname,
-                            "value_type" => "fixed_amount",
-                            "value" => $coupencodeprice,
-                            "amount" => $coupencodeprice,
-                        ),
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => $reqship
-                    );
-                } else {
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => $reqship
-                    );
-                }
+                $line_item = array(
+                    "variant_id" => $item_cart['id'],
+                    "quantity" => $item_cart['qty'],
+                    "price" => $item_cart['price'],
+                    "gift_card" => true,
+                    "sku" => $itmeskysplit,
+                    "grams" => $item_cart['grams'],
+                    // "applied_discount" => array(
+                    //     "description" => "Custom discount",
+                    //     "title" => "Custom discount",
+                    //     "value_type" => "fixed_amount",
+                    //     "value" => "250.00",
+                    //     "amount" => "250.00",
+                    // ),
+                    "properties" => array(
+                        array("name" => "Note", "value" => "Full Payment"),
+                        array("name" => "full_pay", "value" => $item_cart['price'])
+                    ),
+                    "requires_shipping" => true
+                );
             }
 
             //code for add variants name & value to order
