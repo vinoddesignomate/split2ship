@@ -1082,41 +1082,10 @@ $store_name = $shop_name[0];
                         </div>
                 </div>
         </div>
-       <!-- <div class="payxnowandrestondelivery-zip-flex-row">
-                <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-                         <div class="iframeMainDiv">
-                                <h3>Introducing Split2Ship: PayPart | Rest COD | What is Split2Ship? | Split2Ship Shopify App</h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Chb8-5TVE_8?si=QTQ_JIiscES2VaLd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div> 
-                        <div class="iframeMainDiv">
-                                <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div>
-                        <div class="iframeMainDiv">
-                                <h3>How to Integrate Shiprocket with Spli2ship Shopify app | Shiprocket Integration | Spli2ship</h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/-n_jfzlHmv4?si=DFl1lnoGBHwWxrvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div> 
-                      
-                        <div class="iframeMainDiv">
-                                <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div>
-                      
-                        <div class="iframeMainDiv">
-                                <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div>
-                </div>
-        </div>-->
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                         <div class="payxnowandrestondelivery-head-wrapper">
-                                <h2 class="">Checkout button colors</h2>
+                                <h2 class="">Cart page settings</h2>
                         </div>
                         <div class="edit-form-wrapper">
                                 <form method="post">
@@ -1146,15 +1115,30 @@ $store_name = $shop_name[0];
                                                 <label for="">Cart Summary Section text color</label>
                                                 <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
                                         </div>
+                                        <?php if ($shpname == 'desinomatetest.myshopify.com') {
 
-                                        <!--<div class="flex-row">
-                                        <label for="">Checkout button css class name </label>
-                                        <input type="text" name="cg_chkout_btn_class" value="<?php echo (isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : ''); ?>">
-                                </div>
-                                <div class="flex-row">
-                                        <label for="">Cart remove class </label>
-                                        <input type="text" name="cg_cart_remove_class" value="<?php echo (isset($gtbtncolor[0]->cg_cart_remove_class) ? $gtbtncolor[0]->cg_cart_remove_class : ''); ?>">
-                                </div>-->
+                                        ?>
+                                                <div class="flex-row">
+                                                        <label for="">Text 1 </label>
+                                                        <input type="text" name="cg_partial_dep_text" value="<?php echo (isset($gtbtncolor[0]->partial_dep_text) ? $gtbtncolor[0]->partial_dep_text : 'Partial Deposit'); ?>">
+                                                </div>
+                                                <div class="flex-row">
+                                                        <label for="">Text 2 </label>
+                                                        <input type="text" name="cg_remaining_txtcrt" value="<?php echo (isset($gtbtncolor[0]->remaining_txtcrt) ? $gtbtncolor[0]->remaining_txtcrt : 'Remaining Balance'); ?>">
+                                                </div>
+                                                <div class="flex-row">
+                                                        <label for="">Text 3 </label>
+                                                        <input type="text" name="cg_cart_three_txt" value="<?php echo (isset($gtbtncolor[0]->cart_three_txt) ? $gtbtncolor[0]->cart_three_txt : 'You need to pay remaining balance to delivery person'); ?>">
+                                                </div>
+                                                <div class="flex-row">
+                                                        <label for="">Partial payment button text </label>
+                                                        <input type="text" name="cg_partial_btn_text" value="<?php echo (isset($gtbtncolor[0]->cg_partial_btn_text) ? $gtbtncolor[0]->cg_partial_btn_text : 'Partial Payment'); ?>">
+                                                </div>
+                                                <div class="flex-row">
+                                                        <label for="">Full payment button text </label>
+                                                        <input type="text" name="cg_full_btn_text" value="<?php echo (isset($gtbtncolor[0]->cg_full_btn_text) ? $gtbtncolor[0]->cg_full_btn_text : 'Full Payment'); ?>">
+                                                </div>
+                                        <?php } ?>
 
                                         <div class="btn-row">
                                                 <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
@@ -1168,7 +1152,7 @@ $store_name = $shop_name[0];
                 ?>
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col">
                         <div class="payxnowandrestondelivery-head-wrapper">
-                                <h2 class="">Cart button setting</h2>
+                                <h2 class="">Product detail page button setting</h2>
                                 <span style="color: red;font-weight: 700;" id="cart_error"></span>
                         </div>
                         <div class="payxnowandrestondelivery-form-wrap">
