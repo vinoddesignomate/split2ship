@@ -928,6 +928,11 @@ class FrontController extends BaseController
                 "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
                 "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
                 "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
+                "partial_dep_text" => isset($gtbtncolor[0]->partial_dep_text) ? $gtbtncolor[0]->partial_dep_text : 'Partial Deposit',
+                "remaining_txtcrt" => isset($gtbtncolor[0]->remaining_txtcrt) ? $gtbtncolor[0]->remaining_txtcrt : 'Remaining Balance',
+                "cart_three_txt" => isset($gtbtncolor[0]->cart_three_txt) ? $gtbtncolor[0]->cart_three_txt : 'You need to pay remaining balance to delivery person',
+                "cg_partial_btn_text" => isset($gtbtncolor[0]->cg_partial_btn_text) ? $gtbtncolor[0]->cg_partial_btn_text : 'Partial Payment',
+                "cg_full_btn_text" => isset($gtbtncolor[0]->cg_full_btn_text) ? $gtbtncolor[0]->cg_full_btn_text : 'Full Payment',
 
             );
             return json_encode($return_array);
