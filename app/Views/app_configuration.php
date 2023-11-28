@@ -1124,19 +1124,19 @@ $store_name = $shop_name[0];
                                                 </div>
                                                 <div class="flex-row">
                                                         <label for="">Text 2 </label>
-                                                        <input type="text" name="cg_remaining_txtcrt" value="<?php echo (isset($gtbtncolor[0]->remaining_txtcrt) ? $gtbtncolor[0]->remaining_txtcrt : 'Remaining Balance'); ?>">
+                                                        <input type="text" name="cg_remaining_txtcrt" value="<?php echo ((isset($gtbtncolor[0]->remaining_txtcrt) && $gtbtncolor[0]->remaining_txtcrt !="") ? $gtbtncolor[0]->remaining_txtcrt : 'Remaining Balance'); ?>">
                                                 </div>
                                                 <div class="flex-row">
                                                         <label for="">Text 3 </label>
-                                                        <input type="text" name="cg_cart_three_txt" value="<?php echo (isset($gtbtncolor[0]->cart_three_txt) ? $gtbtncolor[0]->cart_three_txt : 'You need to pay remaining balance to delivery person'); ?>">
+                                                        <input type="text" name="cg_cart_three_txt" value="<?php echo ((isset($gtbtncolor[0]->cart_three_txt) && $gtbtncolor[0]->cart_three_txt !="") ? $gtbtncolor[0]->cart_three_txt : 'You need to pay remaining balance to delivery person'); ?>">
                                                 </div>
                                                 <div class="flex-row">
                                                         <label for="">Partial payment button text </label>
-                                                        <input type="text" name="cg_partial_btn_text" value="<?php echo (isset($gtbtncolor[0]->cg_partial_btn_text) ? $gtbtncolor[0]->cg_partial_btn_text : 'Partial Payment'); ?>">
+                                                        <input type="text" name="cg_partial_btn_text" value="<?php echo ((isset($gtbtncolor[0]->cg_partial_btn_text) && $gtbtncolor[0]->cg_partial_btn_text !="") ? $gtbtncolor[0]->cg_partial_btn_text : 'Partial Payment'); ?>">
                                                 </div>
                                                 <div class="flex-row">
                                                         <label for="">Full payment button text </label>
-                                                        <input type="text" name="cg_full_btn_text" value="<?php echo (isset($gtbtncolor[0]->cg_full_btn_text) ? $gtbtncolor[0]->cg_full_btn_text : 'Full Payment'); ?>">
+                                                        <input type="text" name="cg_full_btn_text" value="<?php echo ((isset($gtbtncolor[0]->cg_full_btn_text) && $gtbtncolor[0]->cg_full_btn_text !="") ? $gtbtncolor[0]->cg_full_btn_text : 'Full Payment'); ?>">
                                                 </div>
                                         <?php } ?>
 
