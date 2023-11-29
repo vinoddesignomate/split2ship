@@ -158,6 +158,13 @@ class UserModel extends Model
                         WHERE shop_url=?
                         AND product_id=?";
         $this->db->query($update_query, array($update_data['shop_url'], $proid));
+        if ($update_data['shop_url'] == 'desinomatetest.myshopify.com') {
+            $update_query = "UPDATE app_partial_products 
+                        SET partial_type='" . $update_data['partial_type'] . "'
+                        WHERE shop_url=?
+                        AND product_id=?";
+            $this->db->query($update_query, array($update_data['shop_url'], $proid));
+        }
     }
     public function update_collection_partial_percentage($update_data, $proid)
     {
@@ -810,7 +817,7 @@ class UserModel extends Model
             return $this->db->affectedRows();
         } else {
             $get_details = $this->get_tokens($product_array['shop_url']);
-          
+
             if ($get_details->total_sync_store_products < $product_array['total_pro']) {
                 // echo"<pre>"; print_r($get_details); echo"</pre>";
                 // echo"<pre>"; print_r($product_array); echo"</pre>";
