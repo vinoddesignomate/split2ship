@@ -153,7 +153,8 @@ class UserModel extends Model
     {
         $this->db->table('app_partial_products')->where('shop_url', $update_data['shop_url'])->where('id', $update_data['id'])->update($update_data);
         $update_query = "UPDATE ppp_products_varient 
-                        SET partial_percentage='" . $update_data['partial_percentage'] . "'
+                        SET partial_percentage='" . $update_data['partial_percentage'] . "',
+                        partial_type='" . $update_data['partial_type'] . "'
                         WHERE shop_url=?
                         AND product_id=?";
         $this->db->query($update_query, array($update_data['shop_url'], $proid));
