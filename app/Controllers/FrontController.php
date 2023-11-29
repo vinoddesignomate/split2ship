@@ -89,6 +89,7 @@ class FrontController extends BaseController
                         $return_array = array(
                             "full_price" => $get_resulrs[0]->price,
                             "pro_pack" => $partperctg,
+                            "partial_type" => $get_resulrs[0]->partial_type,
                             "partial_price" => $propartialper,
                             "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
                             "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
