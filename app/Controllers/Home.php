@@ -868,7 +868,7 @@ class Home extends BaseController
 
                 // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                print_r($this->request->getPost());
+                    print_r($this->request->getPost());
                 }
 
                 if ($this->request->getPost('search_text')) {
@@ -1409,13 +1409,26 @@ class Home extends BaseController
             // print_r($this->request->getPost());
             // die();
             if ($this->request->getPost('change_partial') != "") {
-                //echo "if";
-                $update_price = array(
-                    "partial_percentage" => $this->request->getPost('change_partial'),
-                    "id" => $this->request->getPost('update_id'),
-                    "shop_url" => $_REQUEST['shop']
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                     print_r($this->request->getPost());
+            die();
+                    $update_price = array(
+                        "partial_percentage" => $this->request->getPost('change_partial'),
+                        "partial_type" => $this->request->getPost('change_type'),
+                        "id" => $this->request->getPost('update_id'),
+                        "shop_url" => $_REQUEST['shop']
 
-                );
+                    );
+                } else {
+                    $update_price = array(
+                        "partial_percentage" => $this->request->getPost('change_partial'),
+                        "id" => $this->request->getPost('update_id'),
+                        "shop_url" => $_REQUEST['shop']
+
+                    );
+                }
+
+
                 $this->user_model->update_partial_percentage($update_price, $this->request->getPost('proid'));
                 echo $this->request->getPost('change_partial');
                 // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
