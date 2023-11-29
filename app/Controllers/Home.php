@@ -1409,7 +1409,7 @@ class Home extends BaseController
             // print_r($this->request->getPost());
             // die();
             if ($this->request->getPost('change_partial') != "") {
-            //     if ($_REQUEST['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_REQUEST['shop'] == 'desinomatetest.myshopify.com') {
             //          print_r($this->request->getPost());
             // die();
                     $update_price = array(
