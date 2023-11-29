@@ -76,10 +76,11 @@ class FrontController extends BaseController
                 $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
 
                 if (!empty($get_resulrs)) {
+                   
                     if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
-
-                        $propartialper = ($get_resulrs[0]->partial_percentage / 100) * $get_resulrs[0]->price;
-                        $partperctg = $get_resulrs[0]->partial_percentage;
+                        $partial_percentage = str_replace("%","",$get_resulrs[0]->partial_percentage);
+                        $propartialper = ($partial_percentage / 100) * $get_resulrs[0]->price;
+                        $partperctg = $partial_percentage;
                     } else {
                         $propartialper = 0;
                         $partperctg = 0;
