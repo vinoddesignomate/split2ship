@@ -304,10 +304,18 @@ $fstore_name = $shop_name[0];
         var priid = $("#priid_" + this_id_frm).val();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
 
+        var gettpe = "";
+        if (shopname == 'desinomatetest.myshopify.com') {
+            gettpe = "&parttype=" + $("#change_type_" + this_id_frm).val();
+        } else {
+            gettpe = "&parttype=''";
+        }
+
+
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
-            data: 'shop=' + shopname + '&update_per=true&change_partial=' + partial_percentage + '&update_id=' + this_id_frm + '&proid=' + priid,
+            data: 'shop=' + shopname + '&update_per=true&change_partial=' + partial_percentage + '&update_id=' + this_id_frm + '&proid=' + priid+gettpe,
             success: function(response) {
                 $("#show_per_" + this_id_frm).show();
                 $("#show_per_" + this_id_frm).html(response);

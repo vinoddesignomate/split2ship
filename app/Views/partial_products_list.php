@@ -81,7 +81,14 @@ $store_name = $shop_name[0];
                                     <th class="payxnowandrestondelivery-flex-row"><input id="payxnowandrestondelivery_partial_all" class="payxnowandrestondelivery-checkAll" type="checkbox">&nbsp; All</th>
                                     <th>Sr. No</th>
                                     <th>Product Name</th>
-                                    <th>Partial Percentage</th>
+                                    <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+
+                                    ?>
+                                        <th>Partial Type</th>
+                                        <th>Partial value</th>
+                                    <?php } else { ?>
+                                        <th>Partial Percentage</th>
+                                    <?php } ?>
                                     <th>Action</th>
                                 </tr>
 
@@ -99,20 +106,51 @@ $store_name = $shop_name[0];
                                         <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" name="assign_remove_pro[]" value="<?php echo esc($list_product->product_id); ?>"></td>
                                         <td> <?php echo esc($sr + $stsrt); ?></td>
                                         <td> <?php echo esc($list_product->product_title); ?></td>
-                                        <td>
-                                            <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
-                                                <span id="show_per_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_percentage; ?></span>
-                                                <span style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
-                                                    <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="partial_textinput_<?php echo esc($list_product->id); ?>" value="<?php echo $list_product->partial_percentage; ?>">
+                                        <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
 
-                                                    <input type="hidden" id="priid_<?php echo esc($list_product->id); ?>" name="proid" value="<?php echo esc($list_product->product_id); ?>">
+                                            <td>
 
-                                                    <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
-                                                    <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel">
-                                                    <input type="button" class="partial_update_price payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
+                                                <span id="show_per_type_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_type; ?></span>
+                                                <span style="display:none;" id="show_per_select_<?php echo esc($list_product->id); ?>">
+                                                    <!-- <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>"> -->
+                                                    <select name="change_type" id="change_type_<?php echo esc($list_product->id); ?>">
+                                                        <option <?php if($list_product->partial_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
+                                                        <option <?php if($list_product->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
+                                                    </select>
                                                 </span>
-                                            </form>
-                                        </td>
+
+                                            </td>
+                                            <td>
+                                                <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
+                                                    <span id="show_per_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_percentage; ?></span>
+                                                    <span style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
+                                                        <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="partial_textinput_<?php echo esc($list_product->id); ?>" value="<?php echo $list_product->partial_percentage; ?>">
+
+                                                        <input type="hidden" id="priid_<?php echo esc($list_product->id); ?>" name="proid" value="<?php echo esc($list_product->product_id); ?>">
+
+                                                        <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
+                                                        <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel">
+                                                        <input type="button" class="partial_update_price payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
+                                                    </span>
+                                                </form>
+                                            </td>
+
+                                        <?php } else { ?>
+                                            <td>
+                                                <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
+                                                    <span id="show_per_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_percentage; ?></span>
+                                                    <span style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
+                                                        <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="partial_textinput_<?php echo esc($list_product->id); ?>" value="<?php echo $list_product->partial_percentage; ?>">
+
+                                                        <input type="hidden" id="priid_<?php echo esc($list_product->id); ?>" name="proid" value="<?php echo esc($list_product->product_id); ?>">
+
+                                                        <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
+                                                        <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel">
+                                                        <input type="button" class="partial_update_price payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
+                                                    </span>
+                                                </form>
+                                            </td>
+                                        <?php } ?>
                                         <td class="payxnowandrestondelivery-double-col">
                                             <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a onclick="abc2(event);" href="https://admin.shopify.com/store/<?php echo esc($fstore_name2); ?>/apps/pay-x-now-rest-on-delivery/products-remove?id=<?php echo esc($list_product->product_id); ?>"><img src="/public/images/delete-icon.svg" alt="delete-icon"></a></span>
                                         </td>
@@ -210,7 +248,9 @@ $store_name = $shop_name[0];
         $(".payxnowandrestondelivery-edit_per").click(function() {
             var attrid = $(this).attr('id');
             $("#show_per_" + attrid).hide();
+            $("#show_per_type_" + attrid).hide();
             $("#show_per_text_" + attrid).show();
+            $("#show_per_select_" + attrid).show();
         });
 
         $(".payxnowandrestondelivery-cancel_btn").click(function() {
