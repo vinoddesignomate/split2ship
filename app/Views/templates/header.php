@@ -46,8 +46,8 @@
         //console.log('currentURL');
         //console.log(config.shopifyAppBridge.getState().location.currentURL);
     </script>
-    <script src='//in.fw-cdn.com/31326200/628621.js' chat='true'>
-    </script>
+    <!-- <script src='//in.fw-cdn.com/31326200/628621.js' chat='true'>
+    </script> -->
 </head>
 <?php
 
