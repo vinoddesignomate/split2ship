@@ -29,37 +29,7 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
 
         $plan_details = $this->user_model->get_store_plan($shopname);
-
-        //     $get_details = $this->user_model->get_tokens($shopname);
-        //     $products =  $products = $this->common->rest_api('/admin/api/2021-01/products.json', array(), 'GET', $get_details->access_token, $shopname);
-
-        //    // print_r($get_details);
-        //     $response = json_decode($products['body'], true);
-        //     if (array_key_exists('errors', $response)) {
-        //         //echo "token expiry";
-        //     } else {
-        //         //echo "woring toekn";
-        //     }
-        // $api_key = 'a47ead69b3d83a8042703f093f3cadb2';
-        // $secret_key = 'ad3c6cab211965d40f051f41205225c3';
-        // $access_token_endpoint = 'https://' . $shopname . '/admin/oauth/access_token';
-        // $var = array(
-        //     "client_id" => $api_key,
-        //     "client_secret" => $secret_key,
-        //     "code" => $get_details->auth_code
-        // );
-
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, $access_token_endpoint);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_POST, count($var));
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($var));
-        // $new_response = curl_exec($ch);
-        // curl_close($ch);
-
-        // $testrrffresponse = json_decode($new_response, true);
-        // print_r($testrrffresponse);
-        // $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+        
         if (!empty($plan_details)) {
             if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
                 if ($this->request->getPost('pid')) {
@@ -111,6 +81,7 @@ class FrontController extends BaseController
                         $return_array = array(
                             "full_price" => $get_resulrs[0]->price,
                             "pro_pack" => $partperctg,
+                            "partial_type" => $get_resulrs[0]->partial_type,
                             "partial_price" => $propartialper,
                             "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
                             "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
