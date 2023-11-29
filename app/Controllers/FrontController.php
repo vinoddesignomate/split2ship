@@ -704,187 +704,190 @@ class FrontController extends BaseController
 
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
+            if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
+                $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
+                $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
 
-            $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
-            $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
-
-            if ($get_updated_plan[0]->plan_name == 'basic') {
-                $total_pro = 200;
-            } else {
-                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
-            }
-
-            //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
-            if ($get_details->total_sync_store_products < $total_pro) {
-                $cron_limit_set = 50;
-
-                //below block for get products first time from page 1
-                if ($get_lates_colection->cron_page_num == 1) {
-                    $data = array();
-                    $colcturl = "/admin/api/2023-07/products.json";
-                    $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
-
-                    $product_list = json_decode($products['body'], true);
-                    if (!array_key_exists('errors', $product_list)) {
-
-                        if (!empty($product_list)) {
-                            $headers = $products['headers'];
-                            if (isset($headers['link'])) {
-                                $nextPageURL = $this->common->str_btwn($headers['link'], '<', '>');
-                                $nextPageURLparam = parse_url($nextPageURL);
-                                parse_str($nextPageURLparam['query'], $value);
-                                $data['page_info'] = $value['page_info'];
-                            }
-                            $data['headers_list'] = $headers;
-
-                            if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
-                                $partpercentg = $get_lates_colection->partial_percentage;
-                            } else {
-                                $partpercentg = 10;
-                            }
-                            foreach ($product_list as $product) {
-                                foreach ($product as $key => $value) {
-                                    $payxnowrest_product_add = array(
-                                        "product_id" => $value['id'],
-                                        "product_title" => $value['title'],
-                                        "shop_url" => $get_lates_colection->shop_url,
-                                        "partial_percentage" => $partpercentg,
-                                        "add_date" => date('Y-m-d'),
-                                        "collection_id" => $get_lates_colection->collection_id,
-                                        "total_pro" => $total_pro
-                                    );
-                                    //below function is used for add products into partial list & update partial products of store according their plan
-                                    $this->user_model->add_partial_products_collections($payxnowrest_product_add);
-                                    foreach ($value['variants'] as $produc_varaien) {
-                                        $product_array = array(
-                                            "product_id" => $produc_varaien['product_id'],
-                                            "varient_id" => $produc_varaien['id'],
-                                            "title" => $produc_varaien['title'],
-                                            "price" => $produc_varaien['price'],
-                                            "partial_percentage" => $partpercentg,
-                                            "shop_url" => $get_lates_colection->shop_url,
-                                            "collection_id" =>  $get_lates_colection->collection_id
-                                        );
-                                        $this->user_model->add_partial_products_varient($product_array);
-                                    }
-                                }
-                            }
-                        }
-                        if (isset($data['page_info'])) {
-                            $payxnowrest_cron_update = array(
-                                "collection_id" => $get_lates_colection->collection_id,
-                                "shop_url" => $get_lates_colection->shop_url,
-                                "page_info" => $data['page_info'],
-                                "cron_page_num" => $get_lates_colection->cron_page_num + 1,
-                            );
-                            $this->user_model->update_cron_products($payxnowrest_cron_update);
-                        } else {
-                            $payxnowrest_collect_update = array(
-                                "cron_run" => 1,
-                                "cron_page_num" => 0,
-                                "shop_url" => $get_lates_colection->shop_url,
-                                "collection_id" => $get_lates_colection->collection_id,
-                            );
-                            $this->user_model->update_cron_products($payxnowrest_collect_update);
-                        }
-                    }
-                } else if ($get_lates_colection->cron_page_num > 1) {
-                    // block for get products paginated
-                    $page_array = array(
-                        'limit' => $cron_limit_set,
-                        'page_info' => $get_lates_colection->page_info,
-                        'rel' => "next"
-                    );
-
-                    $products = $this->common->rest_api('/admin/api/2022-04/products.json', $page_array, 'GET', $get_details->access_token, $get_lates_colection->shop_url);
-
-
-
-                    $product_list = json_decode($products['body'], true);
-                    if (!array_key_exists('errors', $product_list)) {
-                        if (!empty($product_list)) {
-                            foreach ($product_list as $product) {
-                                foreach ($product as $key => $value) {
-
-                                    $payxnowrest_product_add = array(
-                                        "product_id" => $value['id'],
-                                        "product_title" => $value['title'],
-                                        "shop_url" => $get_lates_colection->shop_url,
-                                        "partial_percentage" => $get_lates_colection->partial_percentage,
-                                        "add_date" => date('Y-m-d'),
-                                        "collection_id" => $get_lates_colection->collection_id,
-                                        "total_pro" => $total_pro
-                                    );
-                                    $this->user_model->add_partial_products_collections($payxnowrest_product_add);
-                                    foreach ($value['variants'] as $produc_varaien) {
-                                        $product_array = array(
-                                            "product_id" => $produc_varaien['product_id'],
-                                            "varient_id" => $produc_varaien['id'],
-                                            "title" => $produc_varaien['title'],
-                                            "price" => $produc_varaien['price'],
-                                            "partial_percentage" => $get_lates_colection->partial_percentage,
-                                            "shop_url" => $get_lates_colection->shop_url,
-                                            "collection_id" =>  $get_lates_colection->collection_id
-                                        );
-                                        $this->user_model->add_partial_products_varient($product_array);
-                                    }
-                                }
-                            }
-                        }
-                        $headers = $products['headers'];
-                        $link_array = array();
-                        if (strpos($headers['link'], ',')  !== false) {
-                            $link_array = explode(',', $headers['link']);
-                        } else {
-                            $link = $headers['link'];
-                        }
-
-
-                        if (sizeof($link_array) > 1) {
-                            $prev_link = $link_array[0];
-                            $prev_link = $this->common->str_btwn($prev_link, '<', '>');
-                            $param = parse_url($prev_link);
-                            parse_str($param['query'], $prev_link);
-                            $prev_link = $prev_link['page_info'];
-                            $next_link = $link_array[1];
-                            $next_link = $this->common->str_btwn($next_link, '<', '>');
-                            $param = parse_url($next_link);
-                            parse_str($param['query'], $next_link);
-                            $next_link = $next_link['page_info'];
-
-                            $payxnowrest_cron_update = array(
-                                "collection_id" => $get_lates_colection->collection_id,
-                                "shop_url" => $get_lates_colection->shop_url,
-                                "page_info" => $next_link,
-                                "cron_page_num" => $get_lates_colection->cron_page_num + 1,
-                            );
-                            $this->user_model->update_cron_products($payxnowrest_cron_update);
-                        } else {
-
-                            $payxnowrest_collect_update = array(
-                                "cron_run" => 1,
-                                "cron_page_num" => 0,
-                                "shop_url" => $get_lates_colection->shop_url,
-                                "collection_id" => $get_lates_colection->collection_id,
-                            );
-                            $this->user_model->update_cron_products($payxnowrest_collect_update);
-                        }
-                    }
+                if ($get_updated_plan[0]->plan_name == 'basic') {
+                    $total_pro = 200;
+                } else {
+                    $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
                 }
+
+                //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
+                if ($get_details->total_sync_store_products < $total_pro) {
+                    $cron_limit_set = 50;
+
+                    //below block for get products first time from page 1
+                    if ($get_lates_colection->cron_page_num == 1) {
+                        $data = array();
+                        $colcturl = "/admin/api/2023-07/products.json";
+                        $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
+
+                        $product_list = json_decode($products['body'], true);
+                        if (!array_key_exists('errors', $product_list)) {
+
+                            if (!empty($product_list)) {
+                                $headers = $products['headers'];
+                                if (isset($headers['link'])) {
+                                    $nextPageURL = $this->common->str_btwn($headers['link'], '<', '>');
+                                    $nextPageURLparam = parse_url($nextPageURL);
+                                    parse_str($nextPageURLparam['query'], $value);
+                                    $data['page_info'] = $value['page_info'];
+                                }
+                                $data['headers_list'] = $headers;
+
+                                if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
+                                    $partpercentg = $get_lates_colection->partial_percentage;
+                                } else {
+                                    $partpercentg = 10;
+                                }
+                                foreach ($product_list as $product) {
+                                    foreach ($product as $key => $value) {
+                                        $payxnowrest_product_add = array(
+                                            "product_id" => $value['id'],
+                                            "product_title" => $value['title'],
+                                            "shop_url" => $get_lates_colection->shop_url,
+                                            "partial_percentage" => $partpercentg,
+                                            "add_date" => date('Y-m-d'),
+                                            "collection_id" => $get_lates_colection->collection_id,
+                                            "total_pro" => $total_pro
+                                        );
+                                        //below function is used for add products into partial list & update partial products of store according their plan
+                                        $this->user_model->add_partial_products_collections($payxnowrest_product_add);
+                                        foreach ($value['variants'] as $produc_varaien) {
+                                            $product_array = array(
+                                                "product_id" => $produc_varaien['product_id'],
+                                                "varient_id" => $produc_varaien['id'],
+                                                "title" => $produc_varaien['title'],
+                                                "price" => $produc_varaien['price'],
+                                                "partial_percentage" => $partpercentg,
+                                                "shop_url" => $get_lates_colection->shop_url,
+                                                "collection_id" =>  $get_lates_colection->collection_id
+                                            );
+                                            $this->user_model->add_partial_products_varient($product_array);
+                                        }
+                                    }
+                                }
+                            }
+                            if (isset($data['page_info'])) {
+                                $payxnowrest_cron_update = array(
+                                    "collection_id" => $get_lates_colection->collection_id,
+                                    "shop_url" => $get_lates_colection->shop_url,
+                                    "page_info" => $data['page_info'],
+                                    "cron_page_num" => $get_lates_colection->cron_page_num + 1,
+                                );
+                                $this->user_model->update_cron_products($payxnowrest_cron_update);
+                            } else {
+                                $payxnowrest_collect_update = array(
+                                    "cron_run" => 1,
+                                    "cron_page_num" => 0,
+                                    "shop_url" => $get_lates_colection->shop_url,
+                                    "collection_id" => $get_lates_colection->collection_id,
+                                );
+                                $this->user_model->update_cron_products($payxnowrest_collect_update);
+                            }
+                        }
+                    } else if ($get_lates_colection->cron_page_num > 1) {
+                        // block for get products paginated
+                        $page_array = array(
+                            'limit' => $cron_limit_set,
+                            'page_info' => $get_lates_colection->page_info,
+                            'rel' => "next"
+                        );
+
+                        $products = $this->common->rest_api('/admin/api/2022-04/products.json', $page_array, 'GET', $get_details->access_token, $get_lates_colection->shop_url);
+
+
+
+                        $product_list = json_decode($products['body'], true);
+                        if (!array_key_exists('errors', $product_list)) {
+                            if (!empty($product_list)) {
+                                foreach ($product_list as $product) {
+                                    foreach ($product as $key => $value) {
+
+                                        $payxnowrest_product_add = array(
+                                            "product_id" => $value['id'],
+                                            "product_title" => $value['title'],
+                                            "shop_url" => $get_lates_colection->shop_url,
+                                            "partial_percentage" => $get_lates_colection->partial_percentage,
+                                            "add_date" => date('Y-m-d'),
+                                            "collection_id" => $get_lates_colection->collection_id,
+                                            "total_pro" => $total_pro
+                                        );
+                                        $this->user_model->add_partial_products_collections($payxnowrest_product_add);
+                                        foreach ($value['variants'] as $produc_varaien) {
+                                            $product_array = array(
+                                                "product_id" => $produc_varaien['product_id'],
+                                                "varient_id" => $produc_varaien['id'],
+                                                "title" => $produc_varaien['title'],
+                                                "price" => $produc_varaien['price'],
+                                                "partial_percentage" => $get_lates_colection->partial_percentage,
+                                                "shop_url" => $get_lates_colection->shop_url,
+                                                "collection_id" =>  $get_lates_colection->collection_id
+                                            );
+                                            $this->user_model->add_partial_products_varient($product_array);
+                                        }
+                                    }
+                                }
+                            }
+                            $headers = $products['headers'];
+                            $link_array = array();
+                            if (strpos($headers['link'], ',')  !== false) {
+                                $link_array = explode(',', $headers['link']);
+                            } else {
+                                $link = $headers['link'];
+                            }
+
+
+                            if (sizeof($link_array) > 1) {
+                                $prev_link = $link_array[0];
+                                $prev_link = $this->common->str_btwn($prev_link, '<', '>');
+                                $param = parse_url($prev_link);
+                                parse_str($param['query'], $prev_link);
+                                $prev_link = $prev_link['page_info'];
+                                $next_link = $link_array[1];
+                                $next_link = $this->common->str_btwn($next_link, '<', '>');
+                                $param = parse_url($next_link);
+                                parse_str($param['query'], $next_link);
+                                $next_link = $next_link['page_info'];
+
+                                $payxnowrest_cron_update = array(
+                                    "collection_id" => $get_lates_colection->collection_id,
+                                    "shop_url" => $get_lates_colection->shop_url,
+                                    "page_info" => $next_link,
+                                    "cron_page_num" => $get_lates_colection->cron_page_num + 1,
+                                );
+                                $this->user_model->update_cron_products($payxnowrest_cron_update);
+                            } else {
+
+                                $payxnowrest_collect_update = array(
+                                    "cron_run" => 1,
+                                    "cron_page_num" => 0,
+                                    "shop_url" => $get_lates_colection->shop_url,
+                                    "collection_id" => $get_lates_colection->collection_id,
+                                );
+                                $this->user_model->update_cron_products($payxnowrest_collect_update);
+                            }
+                        }
+                    }
+                } else {
+                    $payxnowrest_collect_update = array(
+                        "cron_run" => 1,
+                        "cron_page_num" => 0,
+                        "shop_url" => $get_lates_colection->shop_url,
+                        "collection_id" => $get_lates_colection->collection_id,
+                    );
+                    $this->user_model->update_cron_products($payxnowrest_collect_update);
+                    //track upgrade message if merchants owner used all products quota for partial add products               
+                    $this->user_model->update_data($get_lates_colection->shop_url, array(
+                        "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
+                    ));
+                }
+                echo "done";
             } else {
-                $payxnowrest_collect_update = array(
-                    "cron_run" => 1,
-                    "cron_page_num" => 0,
-                    "shop_url" => $get_lates_colection->shop_url,
-                    "collection_id" => $get_lates_colection->collection_id,
-                );
-                $this->user_model->update_cron_products($payxnowrest_collect_update);
-                //track upgrade message if merchants owner used all products quota for partial add products               
-                $this->user_model->update_data($get_lates_colection->shop_url, array(
-                    "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
-                ));
+                echo "not found";
             }
-            echo "done";
         } else {
             echo "not found";
         }
