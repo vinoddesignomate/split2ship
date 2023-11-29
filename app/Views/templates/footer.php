@@ -326,11 +326,16 @@ $fstore_name = $shop_name[0];
         var formdata = $("#sub_form_data_" + this_id_frm).serialize();
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         var priid = $("#priid_" + this_id_frm).val();
-
+        var gettpe="";
+        if (shopname == 'desinomatetest.myshopify.com') {
+            gettpe= "&=".$("#change_type_" + this_id_frm).val();
+        }else{
+            gettpe="";
+        }
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
-            data: 'shop=' + shopname + '&update_per=true&' + formdata,
+            data: 'shop=' + shopname + '&update_per=true&' + formdata+gettpe,
             success: function(response) {
                 $("#show_per_" + this_id_frm).show();
                 $("#show_per_" + this_id_frm).html(response);
