@@ -46,8 +46,23 @@
         //console.log('currentURL');
         //console.log(config.shopifyAppBridge.getState().location.currentURL);
     </script>
-    <!-- <script src='//in.fw-cdn.com/31326200/628621.js' chat='true'>
-    </script> -->
+    
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/656785f9e8301d47ec57f032/1hge66mc8';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
 </head>
 <?php
 
@@ -89,7 +104,7 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'price-plan') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan"><img src="/public/images/pricing.svg" class="payxnowandrestondelivery-hide-hover" alt="pricing-icon"><img src="/public/images/pricing-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="pricing-icon">
                                 Pricing</a></li>
 
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-tutorials') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">        Tutorials</a></li>
+                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-tutorials') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon"> Tutorials</a></li>
 
                         <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-configuration') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration"><img src="/public/images/configuration.svg" alt="configuration-icon" class="payxnowandrestondelivery-hide-hover"><img src="/public/images/configuration-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="configuration-icon">Configuration</a></li>
                     </ul>
