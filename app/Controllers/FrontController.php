@@ -82,8 +82,8 @@ class FrontController extends BaseController
                         $propartialper = ($partial_percentage / 100) * $get_resulrs[0]->price;
                         $partperctg = $partial_percentage;
                     } else {
-                        $propartialper = 0;
-                        $partperctg = 0;
+                        $propartialper = (10 / 100) * $get_resulrs[0]->price;
+                        $partperctg = 10;
                     }
                     if (empty($gtbtncolor)) {
                         $return_array = array(
