@@ -1409,12 +1409,12 @@ class Home extends BaseController
             // print_r($this->request->getPost());
             // die();
             if ($this->request->getPost('change_partial') != "") {
-                if ($_REQUEST['shop'] == 'desinomatetest.myshopify.com') {
-                     print_r($this->request->getPost());
-            die();
+            //     if ($_REQUEST['shop'] == 'desinomatetest.myshopify.com') {
+            //          print_r($this->request->getPost());
+            // die();
                     $update_price = array(
                         "partial_percentage" => $this->request->getPost('change_partial'),
-                        "partial_type" => $this->request->getPost('change_type'),
+                        "partial_type" => $this->request->getPost('parttype'),
                         "id" => $this->request->getPost('update_id'),
                         "shop_url" => $_REQUEST['shop']
 
