@@ -738,7 +738,7 @@ class FrontController extends BaseController
                                 $data['headers_list'] = $headers;
 
                                 if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
-                                    $partpercentg = $get_lates_colection->partial_percentage;
+                                    $partpercentg = str_replace("%","",$get_lates_colection->partial_percentage);
                                 } else {
                                     $partpercentg = 10;
                                 }
@@ -803,6 +803,11 @@ class FrontController extends BaseController
                         $product_list = json_decode($products['body'], true);
                         if (!array_key_exists('errors', $product_list)) {
                             if (!empty($product_list)) {
+                                if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
+                                    $partpercentg = str_replace("%","",$get_lates_colection->partial_percentage);
+                                } else {
+                                    $partpercentg = 10;
+                                }
                                 foreach ($product_list as $product) {
                                     foreach ($product as $key => $value) {
 
@@ -810,7 +815,7 @@ class FrontController extends BaseController
                                             "product_id" => $value['id'],
                                             "product_title" => $value['title'],
                                             "shop_url" => $get_lates_colection->shop_url,
-                                            "partial_percentage" => $get_lates_colection->partial_percentage,
+                                            "partial_percentage" => $partpercentg,
                                             "add_date" => date('Y-m-d'),
                                             "collection_id" => $get_lates_colection->collection_id,
                                             "total_pro" => $total_pro
@@ -822,7 +827,7 @@ class FrontController extends BaseController
                                                 "varient_id" => $produc_varaien['id'],
                                                 "title" => $produc_varaien['title'],
                                                 "price" => $produc_varaien['price'],
-                                                "partial_percentage" => $get_lates_colection->partial_percentage,
+                                                "partial_percentage" => $partpercentg,
                                                 "shop_url" => $get_lates_colection->shop_url,
                                                 "collection_id" =>  $get_lates_colection->collection_id
                                             );
