@@ -328,7 +328,7 @@ $fstore_name = $shop_name[0];
         var priid = $("#priid_" + this_id_frm).val();
         var gettpe="";
         if (shopname == 'desinomatetest.myshopify.com') {
-            gettpe= "&=".$("#change_type_" + this_id_frm).val();
+            gettpe= "&="+$("#change_type_" + this_id_frm).val();
         }else{
             gettpe="";
         }

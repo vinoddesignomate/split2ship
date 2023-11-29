@@ -66,16 +66,16 @@ $store_name = $shop_name[0];
 
                                         </td>
                                         <td>
-
-                                            <span id="show_per_<?php echo esc($list_product->id); ?>"></span>
-                                            <span id="show_per_text_<?php echo esc($list_product->id); ?>">
-                                                <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>">
-                                                <input type="hidden" id="priid_<?php echo esc($list_product->id); ?>" name="proid" value="<?php echo esc($list_product->product_id); ?>">
-                                                <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
-                                                <!-- <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel"> -->
-                                                <input type="button" class="partial_update_price_lates payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
-                                            </span>
-
+                                            <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
+                                                <span id="show_per_<?php echo esc($list_product->id); ?>"></span>
+                                                <span id="show_per_text_<?php echo esc($list_product->id); ?>">
+                                                    <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>">
+                                                    <input type="hidden" id="priid_<?php echo esc($list_product->id); ?>" name="proid" value="<?php echo esc($list_product->product_id); ?>">
+                                                    <input type="hidden" name="update_id" value="<?php echo esc($list_product->id); ?>">
+                                                    <!-- <input type="button" name="cancel_per" class="payxnowandrestondelivery-cancel_btn" canid="<?php echo esc($list_product->id); ?>" value="cancel"> -->
+                                                    <input type="button" class="partial_update_price_lates payxnowandrestondelivery-subbtn" subid="<?php echo esc($list_product->id); ?>" name="update_per" value="Save">
+                                                </span>
+                                            </form>
                                         </td>
 
                                     <?php } else { ?>
@@ -155,7 +155,7 @@ $store_name = $shop_name[0];
             $("#show_per_" + canidid).show();
             $("#show_per_text_" + canidid).hide();
         });
-        
+
 
     });
 </script>
