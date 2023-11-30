@@ -1413,33 +1413,17 @@ class Home extends BaseController
             // print_r($this->request->getPost());
             // die();
             if ($this->request->getPost('change_partial') != "") {
-                if ($_REQUEST['shop'] == 'desinomatetest.myshopify.com') {
-                    //          print_r($this->request->getPost());
-                    // die();
-                    $update_price = array(
-                        "partial_percentage" => $this->request->getPost('change_partial'),
-                        "partial_type" => $this->request->getPost('parttype'),
-                        "id" => $this->request->getPost('update_id'),
-                        "shop_url" => $_REQUEST['shop']
+                $update_price = array(
+                    "partial_percentage" => $this->request->getPost('change_partial'),
+                    "partial_type" => $this->request->getPost('parttype'),
+                    "id" => $this->request->getPost('update_id'),
+                    "shop_url" => $_REQUEST['shop']
 
-                    );
-                } else {
-                    $update_price = array(
-                        "partial_percentage" => $this->request->getPost('change_partial'),
-                        "partial_type" => "",
-                        "id" => $this->request->getPost('update_id'),
-                        "shop_url" => $_REQUEST['shop']
-
-                    );
-                }
-
-
+                );
                 $this->user_model->update_partial_percentage($update_price, $this->request->getPost('proid'));
-                echo $this->request->getPost('change_partial');
-                // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
-                //echo view('templates/apbrdgnew');
+                echo $this->request->getPost('change_partial');                
             } else {
-                // echo "else";
+                //echo "else";
             }
         }
         // echo view('templates/apbrdgnew');

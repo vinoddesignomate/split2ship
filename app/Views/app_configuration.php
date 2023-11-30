@@ -816,8 +816,7 @@ $store_name = $shop_name[0];
                                 </p>
                                 </td>
                                 <td class="subtotal-line__value">      
-                                        {% assign partial_pending_amount2 = partial_pending_amount | append: 0 %}
-                                {% assign partial_pending_amount2 = partial_pending_amount2 | append: 0 %} 
+                                {% assign partial_pending_amount2 = partial_pending_amount | times: 100 %} 
                                 
                                 <strong>{{ total_price | plus: partial_pending_amount2 | money}}</strong>
                                 </td>

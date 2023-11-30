@@ -305,12 +305,8 @@ $fstore_name = $shop_name[0];
         var shopname = '<?php echo esc($_GET['shop']); ?>';
 
         var gettpe = "";
-        if (shopname == 'desinomatetest.myshopify.com') {
-            var selectval = $("#change_type_" + this_id_frm).val();
-            gettpe = "&parttype=" + $("#change_type_" + this_id_frm).val();
-        } else {
-            gettpe = "&parttype=''";
-        }
+        var selectval = $("#change_type_" + this_id_frm).val();
+        gettpe = "&parttype=" + $("#change_type_" + this_id_frm).val();
 
 
         $.ajax({
@@ -321,12 +317,10 @@ $fstore_name = $shop_name[0];
                 $("#show_per_" + this_id_frm).show();
                 $("#show_per_" + this_id_frm).html(response);
                 $("#show_per_text_" + this_id_frm).hide();
-                if (shopname == 'desinomatetest.myshopify.com') {
+                $("#show_per_type_" + this_id_frm).show();
+                $("#show_per_type_" + this_id_frm).html(selectval);
+                $("#show_per_select_" + this_id_frm).hide();
 
-                    $("#show_per_type_" + this_id_frm).show();
-                    $("#show_per_type_" + this_id_frm).html(selectval);
-                    $("#show_per_select_" + this_id_frm).hide();
-                }
             }
 
         });
@@ -342,12 +336,9 @@ $fstore_name = $shop_name[0];
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         var priid = $("#priid_" + this_id_frm).val();
         var gettpe = "";
-        if (shopname == 'desinomatetest.myshopify.com') {
-            var selectval = $("#change_type_" + this_id_frm).val();
-            gettpe = "&parttype=" + $("#change_type_" + this_id_frm).val();
-        } else {
-            gettpe = "&parttype=''";
-        }
+        var selectval = $("#change_type_" + this_id_frm).val();
+        gettpe = "&parttype=" + $("#change_type_" + this_id_frm).val();
+
         $.ajax({
             type: "POST",
             url: "track_partial_percentage?rqtme=" + track_req_time,
@@ -357,11 +348,10 @@ $fstore_name = $shop_name[0];
                 $("#show_per_" + this_id_frm).show();
                 $("#show_per_" + this_id_frm).html(response);
                 $("#show_per_text_" + this_id_frm).hide();
-                if (shopname == 'desinomatetest.myshopify.com') {
-                    $("#show_per_type_" + this_id_frm).show();
-                    $("#show_per_type_" + this_id_frm).html(selectval);
-                    $("#show_per_select_" + this_id_frm).hide();
-                }
+                $("#show_per_type_" + this_id_frm).show();
+                $("#show_per_type_" + this_id_frm).html(selectval);
+                $("#show_per_select_" + this_id_frm).hide();
+
 
 
             }
@@ -376,8 +366,8 @@ $fstore_name = $shop_name[0];
         if (condg == true) {
             const trvd = new Date();
             let track_req_time = trvd.getTime();
-            var this_id_frm = $(this).attr('delid');            
-           
+            var this_id_frm = $(this).attr('delid');
+
             $.ajax({
                 type: "POST",
                 url: "products-remove?id=" + this_id_frm,

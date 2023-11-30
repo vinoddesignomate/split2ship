@@ -673,7 +673,6 @@ class UserModel extends Model
     public function update_plan_products_remove_part($shop_url)
     {
 
-
         $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial+1 WHERE shop_url=?";
         $this->db->query($updatests, array($shop_url));
 
