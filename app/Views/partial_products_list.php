@@ -114,8 +114,8 @@ $store_name = $shop_name[0];
                                                 <span style="display:none;" id="show_per_select_<?php echo esc($list_product->id); ?>">
                                                     <!-- <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>"> -->
                                                     <select name="change_type" id="change_type_<?php echo esc($list_product->id); ?>">
-                                                        <option <?php if($list_product->partial_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
-                                                        <option <?php if($list_product->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
+                                                        <option <?php if ($list_product->partial_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
+                                                        <option <?php if ($list_product->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
                                                     </select>
                                                 </span>
 
@@ -257,6 +257,12 @@ $store_name = $shop_name[0];
             var canidid = $(this).attr('canid');
             $("#show_per_" + canidid).show();
             $("#show_per_text_" + canidid).hide();
+            if (shopname == 'desinomatetest.myshopify.com') {
+                var selectval = $("#change_type_" + this_id_frm).val();
+                $("#show_per_type_" + this_id_frm).show();
+                $("#show_per_type_" + this_id_frm).html(selectval);
+                $("#show_per_select_" + this_id_frm).hide();
+            }
         });
 
 

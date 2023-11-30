@@ -322,8 +322,8 @@ $fstore_name = $shop_name[0];
                 $("#show_per_" + this_id_frm).html(response);
                 $("#show_per_text_" + this_id_frm).hide();
                 if (shopname == 'desinomatetest.myshopify.com') {
-                    console.log('selectval');
-                    console.log(selectval);
+                   
+                    $("#show_per_type_" + this_id_frm).show();
                     $("#show_per_type_" + this_id_frm).html(selectval);
                     $("#show_per_select_" + this_id_frm).hide();
                 }
