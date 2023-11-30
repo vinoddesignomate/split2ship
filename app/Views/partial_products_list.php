@@ -29,6 +29,12 @@ $store_name = $shop_name[0];
         font-size: 15px;
     }
 
+    .cg_splite_partialtype {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+    }
+
     .cg_splite_partialtype .payxnowandrestondelivery-edit-col {
         border-radius: 3px;
         border: 1px solid rgba(0, 0, 0, .3);
