@@ -10,6 +10,11 @@ $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
 
 ?>
+<style>
+    .payxnowandrestondelivery-edit-col{
+        max-width: 71px;
+    }
+</style>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
         <h5> <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Back</a></h5>
