@@ -259,9 +259,9 @@ $store_name = $shop_name[0];
             $("#show_per_" + canidid).show();
             $("#show_per_text_" + canidid).hide();
             if (shopnameprt == 'desinomatetest.myshopify.com') {
-                var selectval = $("#change_type_" + canidid).val();
+               // var selectval = $("#change_type_" + canidid).val();
                 $("#show_per_type_" + canidid).show();
-                $("#show_per_type_" + canidid).html(selectval);
+                //$("#show_per_type_" + canidid).html(selectval);
                 $("#show_per_select_" + canidid).hide();
             }
         });

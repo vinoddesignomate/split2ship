@@ -427,6 +427,7 @@ class Home extends BaseController
                                         "product_title" => $product_details['product']['title'],
                                         "shop_url" => $_GET['shop'],
                                         "partial_percentage" => $col_pergs,
+                                        "partial_type" => 'percentage',
                                         "add_date" => date('Y-m-d')
                                     );
                                     $this->user_model->add_partial_products($product_array);
@@ -437,6 +438,7 @@ class Home extends BaseController
                                             "varient_id" => $produc_varaien['id'],
                                             "title" => $produc_varaien['title'],
                                             "price" => $produc_varaien['price'],
+                                            "partial_type" => 'percentage',
                                             "partial_percentage" => $col_pergs,
                                             "shop_url" => $_GET['shop']
                                         );
