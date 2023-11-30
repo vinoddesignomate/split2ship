@@ -762,6 +762,7 @@ class Home extends BaseController
                                 "product_title" => $product_details['product']['title'],
                                 "shop_url" => $_GET['shop'],
                                 "partial_percentage" => $col_pergs,
+                                "partial_type" => 'percentage',
                                 "add_date" => date('Y-m-d'),
                                 "collection_id" => $collid
                             );
@@ -774,6 +775,7 @@ class Home extends BaseController
                                     "title" => $produc_varaien['title'],
                                     "price" => $produc_varaien['price'],
                                     "partial_percentage" => $col_pergs,
+                                    "partial_type" => 'percentage',
                                     "shop_url" => $_GET['shop'],
                                     "collection_id" => $collid
                                 );
