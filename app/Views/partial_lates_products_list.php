@@ -11,7 +11,7 @@ $store_name = $shop_name[0];
 
 ?>
 <style>
-    .payxnowandrestondelivery-edit-col{
+    .payxnowandrestondelivery-edit-col {
         max-width: 71px;
     }
 </style>
