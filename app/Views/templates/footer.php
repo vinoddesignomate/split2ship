@@ -369,6 +369,30 @@ $fstore_name = $shop_name[0];
         });
         return false;
     });
+
+    $('.paycnoe_del').on('click', function(e) {
+        var condg = confirm('Are you sure want to remove?');
+        //alert(condg);
+        if (condg == true) {
+            const trvd = new Date();
+            let track_req_time = trvd.getTime();
+            var this_id_frm = $(this).attr('delid');            
+           
+            $.ajax({
+                type: "POST",
+                url: "products-remove?id=" + this_id_frm,
+                data: 'shop=' + shopname,
+                success: function(response) {
+                    alert('Product remove successfully');
+                    location.reload();
+                }
+
+            });
+            return false;
+        }
+    });
+
+
     $('#store_user_trk').on('submit', function(e) {
         $("#ermsg").html('');
         var formdata = $("#store_user_trk").serialize();

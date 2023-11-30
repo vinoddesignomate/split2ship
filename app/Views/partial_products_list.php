@@ -102,7 +102,7 @@ $store_name = $shop_name[0];
                                 foreach ($get_list as $list_product) {
 
                                 ?>
-                                    <tr>
+                                    <tr tblid="<?php echo esc($list_product->id); ?>">
                                         <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" name="assign_remove_pro[]" value="<?php echo esc($list_product->product_id); ?>"></td>
                                         <td> <?php echo esc($sr + $stsrt); ?></td>
                                         <td> <?php echo esc($list_product->product_title); ?></td>
@@ -152,7 +152,7 @@ $store_name = $shop_name[0];
                                             </td>
                                         <?php } ?>
                                         <td class="payxnowandrestondelivery-double-col">
-                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a onclick="abc2(event);" href="https://admin.shopify.com/store/<?php echo esc($fstore_name2); ?>/apps/pay-x-now-rest-on-delivery/products-remove?id=<?php echo esc($list_product->product_id); ?>"><img src="/public/images/delete-icon.svg" alt="delete-icon"></a></span>
+                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a class="paycnoe_del" delid="<?php echo esc($list_product->id); ?>"  href="javascript:void(0);"><img src="/public/images/delete-icon.svg" alt="delete-icon"></a></span>
                                         </td>
                                         <!-- <td>
                                 <div class="payxnowandrestondelivery-table-inner-wrapper">
