@@ -116,7 +116,7 @@ $store_name = $shop_name[0];
                                         <td>
                                             <form action="track_partial_percentage" id="sub_form_data_<?php echo esc($list_product->id); ?>" class="payxnowandrestondelivery-partial_percentage" method="POST">
                                                 <span id="show_per_<?php echo esc($list_product->id); ?>"><?php echo $list_product->partial_percentage; ?></span>
-                                                <span style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
+                                                <span class="cg_splite_partialtype" style="display:none;" id="show_per_text_<?php echo esc($list_product->id); ?>">
                                                     <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="partial_textinput_<?php echo esc($list_product->id); ?>" value="<?php echo $list_product->partial_percentage; ?>">
 
                                                     <input type="hidden" id="priid_<?php echo esc($list_product->id); ?>" name="proid" value="<?php echo esc($list_product->product_id); ?>">
