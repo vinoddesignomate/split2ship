@@ -152,7 +152,7 @@ $store_name = $shop_name[0];
                                             </td>
                                         <?php } ?>
                                         <td class="payxnowandrestondelivery-double-col">
-                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a class="paycnoe_del" delid="<?php echo esc($list_product->id); ?>"  href="javascript:void(0);"><img src="/public/images/delete-icon.svg" alt="delete-icon"></a></span>
+                                            <span class="payxnowandrestondelivery-action-text"> <a class="payxnowandrestondelivery-edit_per" id="<?php echo esc($list_product->id); ?>" href="javascript:void(0);"><img src="/public/images/edit-icon.svg" alt="edit-icon"></a> </span> <span class="payxnowandrestondelivery-action-text"><a class="paycnoe_del" delid="<?php echo esc($list_product->product_id); ?>"  href="javascript:void(0);"><img src="/public/images/delete-icon.svg" alt="delete-icon"></a></span>
                                         </td>
                                         <!-- <td>
                                 <div class="payxnowandrestondelivery-table-inner-wrapper">
