@@ -40,7 +40,7 @@ $store_name = $shop_name[0];
         border: 1px solid rgba(0, 0, 0, .3);
         background: #fff;
         box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, .1) inset;
-        max-width: 50px;
+        max-width: 90px;
     }
 </style>
 <div class="payxnowandrestondelivery-container">
