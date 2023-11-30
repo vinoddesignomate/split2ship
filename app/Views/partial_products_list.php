@@ -28,6 +28,14 @@ $store_name = $shop_name[0];
         padding: 10px;
         font-size: 15px;
     }
+
+    .cg_splite_partialtype .payxnowandrestondelivery-edit-col {
+        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, .3);
+        background: #fff;
+        box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, .1) inset;
+        max-width: 50px;
+    }
 </style>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
