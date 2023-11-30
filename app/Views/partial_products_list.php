@@ -223,6 +223,7 @@ $store_name = $shop_name[0];
 
 <script>
     var ship_provder = '';
+    var shopnameprt = '<?php echo $_GET['shop'];?>';
     $(function() {
 
         $(".payxnowandrestondelivery-checkAll").click(function() {
@@ -257,7 +258,7 @@ $store_name = $shop_name[0];
             var canidid = $(this).attr('canid');
             $("#show_per_" + canidid).show();
             $("#show_per_text_" + canidid).hide();
-            if (shopname == 'desinomatetest.myshopify.com') {
+            if (shopnameprt == 'desinomatetest.myshopify.com') {
                 var selectval = $("#change_type_" + canidid).val();
                 $("#show_per_type_" + canidid).show();
                 $("#show_per_type_" + canidid).html(selectval);
