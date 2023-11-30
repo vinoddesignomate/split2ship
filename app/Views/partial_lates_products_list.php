@@ -149,7 +149,7 @@ $store_name = $shop_name[0];
             var attrid = $(this).attr('id');
             $("#show_per_" + attrid).hide();
             $("#show_per_text_" + attrid).show();
-            $("#show_per_text_" + attrid).show();
+            $("#show_per_type_" + attrid).hide();
             $("#show_per_select_" + attrid).show();
         });
 
