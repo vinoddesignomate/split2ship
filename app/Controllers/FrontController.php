@@ -29,7 +29,7 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
 
         $plan_details = $this->user_model->get_store_plan($shopname);
-        
+
         if (!empty($plan_details)) {
             if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
                 if ($this->request->getPost('pid')) {
@@ -54,6 +54,11 @@ class FrontController extends BaseController
                     } else {
                         $propartialper = (10 / 100) * $get_resulrs[0]->price;
                         $partperctg = 10;
+                    }
+                    if ($partperctg > $get_resulrs[0]->price) {
+                        $partperctg = 0;
+                    } else {
+                        $partperctg = $partperctg;
                     }
                     if (empty($gtbtncolor)) {
                         $return_array = array(
@@ -710,7 +715,7 @@ class FrontController extends BaseController
                                 $data['headers_list'] = $headers;
 
                                 if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
-                                    $partpercentg = str_replace("%","",$get_lates_colection->partial_percentage);
+                                    $partpercentg = str_replace("%", "", $get_lates_colection->partial_percentage);
                                 } else {
                                     $partpercentg = 10;
                                 }
@@ -776,7 +781,7 @@ class FrontController extends BaseController
                         if (!array_key_exists('errors', $product_list)) {
                             if (!empty($product_list)) {
                                 if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
-                                    $partpercentg = str_replace("%","",$get_lates_colection->partial_percentage);
+                                    $partpercentg = str_replace("%", "", $get_lates_colection->partial_percentage);
                                 } else {
                                     $partpercentg = 10;
                                 }
