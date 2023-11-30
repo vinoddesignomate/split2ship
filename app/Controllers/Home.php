@@ -2149,7 +2149,10 @@ class Home extends BaseController
         if (isset($_GET['id']) && $_GET['id'] != "") {
             $this->user_model->update_plan_products_remove_part($_GET['shop']);
             $this->user_model->remove_partial_product($_GET['id'], $_GET['shop']);
-            echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-products-list'</script>";
+            if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            } else {
+                echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-products-list'</script>";
+            }
         }
     }
     public function price_plan_page()
