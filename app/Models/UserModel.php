@@ -672,12 +672,25 @@ class UserModel extends Model
 
     public function update_plan_products_remove_part($shop_url)
     {
-        echo $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial+1 WHERE shop_url=?";
-        $this->db->query($updatests, array($shop_url));
+        if ($shop_url == 'desinomatetest.myshopify.com') {
 
-        //update total partial product count in main store db table
-        echo $update_total_par_product_count_remove = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products-1 WHERE shop_url=? AND total_sync_store_products > 0";
-        $this->db->query($update_total_par_product_count_remove, array($shop_url));
+            echo $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial+1 WHERE shop_url=?";
+            $this->db->query($updatests, array($shop_url));
+
+            //update total partial product count in main store db table
+            echo $update_total_par_product_count_remove = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products-1 WHERE shop_url=? AND total_sync_store_products > 0";
+            $this->db->query($update_total_par_product_count_remove, array($shop_url));
+
+        } else {
+
+            $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=updated_products_partial+1 WHERE shop_url=?";
+            $this->db->query($updatests, array($shop_url));
+
+            //update total partial product count in main store db table
+            $update_total_par_product_count_remove = "UPDATE ppa_store_token SET total_sync_store_products=total_sync_store_products-1 WHERE shop_url=? AND total_sync_store_products > 0";
+            $this->db->query($update_total_par_product_count_remove, array($shop_url));
+
+        }
     }
     public function testinsert()
     {
