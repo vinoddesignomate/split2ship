@@ -2147,8 +2147,8 @@ class Home extends BaseController
     {
         //$this->check_subscribe();
         if (isset($_GET['id']) && $_GET['id'] != "") {
-            $this->user_model->update_plan_products_remove_part($_GET['shop']);
-            $this->user_model->remove_partial_product($_GET['id'], $_GET['shop']);
+            $this->user_model->update_plan_products_remove_part($_REQUEST['shop']);
+            $this->user_model->remove_partial_product($_GET['id'], $_REQUEST['shop']);
             echo "done";
             // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
             // } else {
