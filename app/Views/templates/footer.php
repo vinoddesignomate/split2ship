@@ -384,7 +384,7 @@ $fstore_name = $shop_name[0];
                 data: 'shop=' + shopname,
                 success: function(response) {
                     alert('Product remove successfully');
-                    location.reload();
+                    //location.reload();
                 }
 
             });
