@@ -28,15 +28,18 @@
         border-radius: 0px 3px 3px 0px;
         height: 100%;
         width: auto;
-        padding: 0 9px 0px 9px;
+        padding: 0 9px 0px 6px;
         font-size: 12px;
     }
 
     .custom-search input[type=text].srchtctval {
         border: 1px solid #E9F0FF;
         background: #E4EBFD;
-        font-size: 12px;
+        font-size: 12px;padding: 7px 17px;
     }
+    .search-wrapper form {
+    width: 100%;
+}
 
     @media only screen and (max-width: 767px) {
         .payxnowandrestondelivery-zip-flex-row {
