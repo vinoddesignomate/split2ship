@@ -23,6 +23,18 @@
         background-color: #3b3b3b;
     }
 
+    .search-wrapper .custom-search button {
+        background: #4A4DE6;
+        border-radius: 0px 3px 3px 0px;
+        padding-right: 9px;
+        height: 100%;
+    }
+
+    .custom-search input[type=text].srchtctval {
+        border: 1px solid #E9F0FF;
+        background: #E4EBFD;
+    }
+
     @media only screen and (max-width: 767px) {
         .payxnowandrestondelivery-zip-flex-row {
             display: block;
