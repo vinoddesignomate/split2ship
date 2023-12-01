@@ -26,13 +26,16 @@
     .search-wrapper .custom-search button {
         background: #4A4DE6;
         border-radius: 0px 3px 3px 0px;
-        padding-right: 9px;
         height: 100%;
+        width: auto;
+        padding: 0 9px 0px 9px;
+        font-size: 12px;
     }
 
     .custom-search input[type=text].srchtctval {
         border: 1px solid #E9F0FF;
         background: #E4EBFD;
+        font-size: 12px;
     }
 
     @media only screen and (max-width: 767px) {
