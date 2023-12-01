@@ -65,7 +65,7 @@ $store_name = $shop_name[0];
                                                 <td> <?php echo esc($list_collections->collections_name); ?></td>
                                                 <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
                                                     <td>
-                                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
+                                                        <form action="collection_track_partial_percentage" id="sub_form_data_newfrm_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
                                                             <span>
                                                                 <select name="change_type" id="change_type_<?php echo esc($list_collections->collection_id); ?>">
                                                                     <option <?php if ($coll_part_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
