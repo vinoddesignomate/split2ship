@@ -213,7 +213,8 @@ $store_name = $shop_name[0];
         font-weight: 700;
         line-height: 120%;
         letter-spacing: 0.1px;
-        margin-bottom: 25px;
+        max-width: 645px;
+        margin: 0 auto 25px;
     }
 
     .video-wrapper iframe {
@@ -264,7 +265,26 @@ $store_name = $shop_name[0];
             <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
         </div>
     </div>
+    <div class="payxnowandrestondelivery-main-area-row ">
+        <div class=" payxnowandrestondelivery-main-area payxnowandrestondelivery-tutorial-main-area">
 
+            <h5><b class="text-orange">Step 3:</b> Select default product under product drop down.</h5>
+
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+        </div>
+        <div class=" payxnowandrestondelivery-main-area payxnowandrestondelivery-tutorial-main-area">
+
+            <h5><b class="text-orange">Step 4:</b> Click on “App embeds” in left sidebar. Activate App like this.</h5>
+
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+        </div>
+    </div>
+    <div class="payxnowandrestondelivery-single-video-row">
+        <h2>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h2>
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
 </div>
 <div class="payxnowandrestondelivery-zip-flex-row">
     <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
