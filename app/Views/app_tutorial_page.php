@@ -290,7 +290,7 @@ $store_name = $shop_name[0];
             <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's Order Confirmation
                 email template.</h5>
             <div>
-                <textarea rows="20" style="width: 100%">
+                <textarea rows="55" style="width: 100%">
                 {% capture email_title %}
                                 {% if has_pending_payment %}
                                 Thank you for your order!
@@ -1089,7 +1089,7 @@ $store_name = $shop_name[0];
             <h5><b class="text-orange">Step 6:</b>  Edit Order refund template - Add below code above this html 
               tag <h3>Order summary</h3>.</h5>
             <div>
-                <textarea rows="20" style="width: 100%">
+                <textarea rows="7" style="width: 100%">
                 {% if order.tags != blank %}<span>If you had placed a partially paid order then only paid amount will be refunded</span>{% endif %}
             </textarea>
             </div>
@@ -1099,14 +1099,14 @@ $store_name = $shop_name[0];
             <h5><b class="text-orange">Step 7:</b> Edit Order Invoice template - Add below code in Invoice 
               email.</h5>
             <div>
-                <textarea rows="20" style="width: 100%">
+                <textarea rows="7" style="width: 100%">
                 {% if order.tags != blank %}{% else %}
                <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span> {% endif %}
             </textarea>
             </div>
 <p>In the place of this code.</p>
 <div>
-                <textarea rows="20" style="width: 100%">
+                <textarea rows="7" style="width: 100%">
                 <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span>
             </textarea>
         </div>
