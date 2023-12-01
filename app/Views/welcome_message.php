@@ -249,6 +249,17 @@ $store_namecnf = $shop_name[0];
                 var body = document.body;
                 body.classList.add("package_popup_visible");
             </script>
+        <?php }
+
+        if ($show_package_popup == 'yes') {
+        ?>
+
+            <script type="text/javascript">
+                var popup = document.getElementById("package_expire");
+                popup.style.display = "block";
+                var body = document.body;
+                body.classList.add("package_popup_visible");
+            </script>
         <?php } ?>
 
         <!-- main-head -->

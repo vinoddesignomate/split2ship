@@ -77,10 +77,17 @@ class Home extends BaseController
                 // exit();
             } else {
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
+                $data['get_updated_plan'] = $get_updated_plan;
+                $data['show_package_popup'] = 'no';
+                if(!empty($get_updated_plan)){
+                    if($get_updated_plan[0]->plan_status =='active' && $get_updated_plan[0]->updated_sync_orders_count ==0){
+                        $data['show_package_popup'] = 'yes';
+                    }
+                }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.11') {
-                    echo"<pre>"; print_r($get_updated_plan); echo "</pre>";
+                    //echo"<pre>"; print_r($get_updated_plan); echo "</pre>";
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
                     // echo "getprietuleidrec<pre>";
