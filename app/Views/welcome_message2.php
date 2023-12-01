@@ -276,28 +276,29 @@ $store_namecnf = $shop_name[0];
         <!-- main area -->
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
-                <form method="POST">
-                    <div class="payxnowandrestondelivery-inner-wrapper">
-                        <div class="payxnowandrestondelivery-side-bar-col">
-                            <h2>Pick Collection</h2>
-                            <div class="payxnowandrestondelivery-custom-select mobile-center">
-                                <select style="display:block;" class="colidchk" required id="get_coll_home" name="get_coll">
-                                    <option value="0">Select Collection...</option>
-                                    <?php foreach ($get_store_collections as $get_collections) { ?>
 
-                                        <option <?php if (isset($_GET['collectionparms']) && $_GET['collectionparms'] == $get_collections->collection_id) { ?> selected <?php } ?> value="<?php echo esc($get_collections->collection_id); ?>"><?php echo esc($get_collections->collections_name); ?></option>
+                <div class="payxnowandrestondelivery-inner-wrapper">
+                    <div class="payxnowandrestondelivery-side-bar-col">
+                        <h2>Pick Collection</h2>
+                        <div class="payxnowandrestondelivery-custom-select mobile-center">
+                            <select style="display:block;" class="colidchk" required id="get_coll_home" name="get_coll">
+                                <option value="0">Select Collection...</option>
+                                <?php foreach ($get_store_collections as $get_collections) { ?>
 
-                                    <?php } ?>
+                                    <option <?php if (isset($_GET['collectionparms']) && $_GET['collectionparms'] == $get_collections->collection_id) { ?> selected <?php } ?> value="<?php echo esc($get_collections->collection_id); ?>"><?php echo esc($get_collections->collections_name); ?></option>
 
-                                </select>
-                                <div class="search-wrapper">
-                                    <form class="custom-search" action="" method="post">
-                                        <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
-                                        <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
-                                    </form>
-                                </div>
+                                <?php } ?>
+
+                            </select>
+                            <div class="search-wrapper">
+                                <form class="custom-search" action="" method="post">
+                                    <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
+                                    <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
+                                </form>
                             </div>
                         </div>
+                    </div>
+                    <form method="POST">
                         <div class="payxnowandrestondelivery-main-data-col">
                             <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2>Product name</h2>
@@ -380,8 +381,9 @@ $store_namecnf = $shop_name[0];
                                 <?php } ?>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
             </div>
         </div>
         <!-- main area ends-->
