@@ -656,7 +656,10 @@ class UserModel extends Model
             // echo "<pre>";
             // print_r($all_coll_per);
             // echo "</pre>";
-            $final_products[$all_coll_per->collection_id] = array("percentage" => $all_coll_per->partial_percentage);
+            $final_products[$all_coll_per->collection_id] = array(
+                "percentage" => $all_coll_per->partial_percentage,
+                "partial_type" => $all_coll_per->partial_type
+            );
         }
         return $final_products;
     }

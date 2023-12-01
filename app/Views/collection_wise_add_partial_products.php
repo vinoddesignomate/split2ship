@@ -20,7 +20,7 @@ $store_name = $shop_name[0];
                     <div class="inner-wrapper">
                         <div class="main-data-col">
                             <div class="table-heading" style="margin-bottom: 18px;">
-                            <span id="showcoltrckmsg" style="color:green;font-weight:700;"><?php if(!empty($check_bulk_products_status)){ ?> We have started synching all products in background. It will take some time. You can leave this screen.<?php } ?></span>
+                                <span id="showcoltrckmsg" style="color:green;font-weight:700;"><?php if (!empty($check_bulk_products_status)) { ?> We have started synching all products in background. It will take some time. You can leave this screen.<?php } ?></span>
                                 <h2 style="margin-top: 7px;">Set partial percentage by collections</h2>
                                 <span>Add all products into partial products list by collections</span>
                             </div>
@@ -31,7 +31,13 @@ $store_name = $shop_name[0];
                                         <tr>
                                             <th>Sr. No</th>
                                             <th>Collection Name</th>
-                                            <th>Partial Percentage</th>
+                                            <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+                                                <th>Partial Type</th>
+                                                <th>Partial Value</th>
+                                            <?php } else { ?>
+                                                <th>Partial Percentage</th>
+
+                                            <?php } ?>
 
                                         </tr>
 
@@ -43,13 +49,12 @@ $store_name = $shop_name[0];
                                         $stsrt = 1;
                                         // $start_from = ($page-1) * $num_rec_per_page+1; 
                                         foreach ($get_store_collections as $list_collections) {
-                                            // echo "<pre>";
-                                            // print_r($list_collections);
-                                            // echo "</pre>";
 
                                             if (isset($get_stored_percentage[$list_collections->collection_id])) {
                                                 $col_pergs = $get_stored_percentage[$list_collections->collection_id]['percentage'];
+                                                $coll_part_type = $get_stored_percentage[$list_collections->collection_id]['partial_type'];
                                             } else {
+                                                $coll_part_type = "";
                                                 $col_pergs = 0;
                                             }
 
@@ -58,16 +63,42 @@ $store_name = $shop_name[0];
 
                                                 <td> <?php echo esc($stsrt); ?></td>
                                                 <td> <?php echo esc($list_collections->collections_name); ?></td>
-                                                <td>
-                                                    <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
-                                                        <span>
-                                                            <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
-                                                            <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
+                                                <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+                                                    <td>
+                                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
+                                                            <span>
+                                                                <select name="change_type" id="change_type_<?php echo esc($list_product->id); ?>">
+                                                                    <option <?php if ($coll_part_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
+                                                                    <option <?php if ($coll_part_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
+                                                                </select>
 
-                                                            <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
-                                                        </span>
-                                                    </form>
-                                                </td>
+
+                                                            </span>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
+                                                            <span>
+                                                                <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
+                                                                <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
+
+                                                                <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
+                                                            </span>
+                                                        </form>
+                                                    </td>
+
+                                                <?php } else { ?>
+                                                    <td>
+                                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
+                                                            <span>
+                                                                <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
+                                                                <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
+
+                                                                <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
+                                                            </span>
+                                                        </form>
+                                                    </td>
+                                                <?php } ?>
                                             </tr>
                                         <?php
                                             // $sr++;
@@ -104,7 +135,7 @@ $store_name = $shop_name[0];
                 data: 'shop=' + shopname + '&update_per=true&' + formdata,
                 success: function(response) {
                     $("#showcoltrckmsg").html('Please wait, we have started synching all products in background. It will take some time. You can leave this screen');
-                    $("#showcoltrckmsg").css('color','green');
+                    $("#showcoltrckmsg").css('color', 'green');
                     //window.location.reload();
                     // $("#show_per_" + this_id_frm).show();
                     // $("#show_per_" + this_id_frm).html(response);
