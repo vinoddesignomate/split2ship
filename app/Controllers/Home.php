@@ -80,7 +80,7 @@ class Home extends BaseController
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-
+                    echo"<pre>"; print_r($get_updated_plan); echo "</pre>";
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
                     // echo "getprietuleidrec<pre>";
@@ -95,16 +95,16 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5402588840149.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5402588840149.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
+                    // // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
                     // die();
                     /*
                     $paid_price = 0;
