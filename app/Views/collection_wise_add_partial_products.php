@@ -67,7 +67,7 @@ $store_name = $shop_name[0];
                                                     <td>
                                                         <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
                                                             <span>
-                                                                <select name="change_type" id="change_type_<?php echo esc($list_product->id); ?>">
+                                                                <select name="change_type" id="change_type_<?php echo esc($list_collections->collection_id); ?>">
                                                                     <option <?php if ($coll_part_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
                                                                     <option <?php if ($coll_part_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
                                                                 </select>
