@@ -285,29 +285,59 @@ $store_name = $shop_name[0];
             <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
-</div>
-<div class="payxnowandrestondelivery-zip-flex-row">
-    <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-
-        <div class="iframeMainDiv">
-            <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-        </div>
-
-        <div class="iframeMainDiv">
-            <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="payxnowandrestondelivery-main-area-row">
+        <div class="payxnowandrestondelivery-main-area">
+            <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's Order Confirmation
+                email template.</h5>
+            <div>
+                <textarea rows="20" style="width: 100%">
+            </textarea>
+            </div>
 
         </div>
+        <div class="payxnowandrestondelivery-main-area-row1">
+        <div class="payxnowandrestondelivery-main-area">
+            <h5><b class="text-orange">Step 6:</b>  Edit Order refund template - Add below code above this html 
+              tag <h3>Order summary</h3>.</h5>
+            <div>
+                <textarea rows="20" style="width: 100%">
+            </textarea>
+            </div>
 
-        <div class="iframeMainDiv">
-            <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="payxnowandrestondelivery-main-area">
+            <h5><b class="text-orange">Step 7:</b> Edit Order Invoice template - Add below code in Invoice 
+              email.</h5>
+            <div>
+                <textarea rows="20" style="width: 100%">
+            </textarea>
+            </div>
 
+        </div>
         </div>
     </div>
-</div>
+    <div class="payxnowandrestondelivery-zip-flex-row">
+        <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+
+            <div class="iframeMainDiv">
+                <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            </div>
+
+            <div class="iframeMainDiv">
+                <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            </div>
+
+            <div class="iframeMainDiv">
+                <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
