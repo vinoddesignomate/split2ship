@@ -79,8 +79,8 @@ class Home extends BaseController
                 $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);
                 $data['get_updated_plan'] = $get_updated_plan;
                 $data['show_package_popup'] = 'no';
-                if(!empty($get_updated_plan)){
-                    if($get_updated_plan[0]->plan_status =='active' && $get_updated_plan[0]->updated_sync_orders_count ==0){
+                if (!empty($get_updated_plan)) {
+                    if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_sync_orders_count == 0) {
                         $data['show_package_popup'] = 'yes';
                     }
                 }
@@ -644,7 +644,12 @@ class Home extends BaseController
                 ));
 
                 echo view('templates/header');
-                echo view('welcome_message', $data);
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                    echo view('welcome_message2', $data);
+                } else {
+                    echo view('welcome_message', $data);
+                }
+
                 echo view('templates/footer');
             }
             // echo "this main page8";
@@ -1428,7 +1433,7 @@ class Home extends BaseController
 
                 );
                 $this->user_model->update_partial_percentage($update_price, $this->request->getPost('proid'));
-                echo $this->request->getPost('change_partial');                
+                echo $this->request->getPost('change_partial');
             } else {
                 //echo "else";
             }
