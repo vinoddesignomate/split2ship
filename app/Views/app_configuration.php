@@ -237,7 +237,7 @@ $store_name = $shop_name[0];
 
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config6.webp?var=3" /></div>
         </div> -->
-        <div class="payxnowandrestondelivery-main-area-row ">
+       <!-- <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's <b>Order Confirmation</b> email template.</h5>
                         <div><textarea rows="20" style="width: 100%;">{% capture email_title %}
@@ -448,7 +448,7 @@ $store_name = $shop_name[0];
                                         <table class="container">
                                         <tr>
                                         <td>
-                                        <!-- {% if order.tags != blank %}<p>Product price has been split into 2 parts thus price has changed in the order email. Actual Product Price = Product price + Partial pending payment - product name</p>{% endif %} -->
+                                       
                                         <h3>Order summary</h3>
                                         </td>
                                         </tr>
@@ -1031,15 +1031,8 @@ $store_name = $shop_name[0];
                                 </textarea>
                         </div>
                 </div>
-                <!-- <div class=" payxnowandrestondelivery-main-area ">
-                        <h5><b class="text-orange">Step 6:</b> Edit Order confirmation email template - Add below code after this code {{ line_title }}.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% if line.properties.Note == 'Initial Partial Payment'%}<br/><span style="color:red;">Partial Amount={{line.properties.partial_pay}}</span><br/><span style="color:red;">Pending Amount={{line.properties.remaining_amount}}</span><br/>{% endif %}</textarea></div>
-                        <h5>Add below code before {% for line in subtotal_line_items %}.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% assign partial_pending_amount = 0 %}</textarea></div>
-                        <h5>Add below code after {{ line_display }} OR line number 244.</h5>
-                        <div><textarea style="max-width: 624px; height: 84px;width: 100%;">{% assign partial_pending_amount = partial_pending_amount | plus: line.properties.remaining_amount  %}</textarea></div>
-                </div> -->
-        </div>
+             
+        </div>-->
         <!--<div class="payxnowandrestondelivery-main-area-row ">
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5> <b class="text-orange">Step 7: </b>Edit Order confirmation email template - Fine below after.</h5>
@@ -1063,7 +1056,7 @@ $store_name = $shop_name[0];
 
         </div>-->
 
-        <div class="payxnowandrestondelivery-main-area-row ">
+        <!--<div class="payxnowandrestondelivery-main-area-row ">
 
                 <div class=" payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 6:</b> Edit <b>Order refund</b> template - Add below code above this html tag &lt;h3&gt;Order summary&lt;/h3&gt;.</h5>
@@ -1080,7 +1073,7 @@ $store_name = $shop_name[0];
                         <div><textarea style="max-width: 624px; height: 84px;width: 100%;"> <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span></textarea>
                         </div>
                 </div>
-        </div>
+        </div>-->
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
                         <div class="payxnowandrestondelivery-head-wrapper">
