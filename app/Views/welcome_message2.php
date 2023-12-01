@@ -291,7 +291,7 @@ $store_namecnf = $shop_name[0];
 
                             </select>
                             <div class="search-wrapper">
-                                <form class="custom-search" action="" method="post">
+                                <form class="custom-search" id="hmsearch" method="post">
                                     <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
                                     <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
                                 </form>
@@ -730,6 +730,11 @@ $store_namecnf = $shop_name[0];
                     </div>
         </div>
         <script>
+            $('#hmsearch').on('submit', function(e) {
+                alert('sss');               
+                return false;
+            });
+
             var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
             radioButtons.forEach(function(radioButton) {
                 radioButton.addEventListener('change', function(event) {
