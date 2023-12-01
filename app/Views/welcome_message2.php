@@ -730,9 +730,9 @@ $store_namecnf = $shop_name[0];
                     </div>
         </div>
         <script>
-            $('#hmsearch').on('submit', function(e) {
-                alert('sss');               
-                return false;
+            document.getElementById('hmsearch').addEventListener('submit', function(e) {
+                alert('sss');
+                e.preventDefault(); // This prevents the default form submission
             });
 
             var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
