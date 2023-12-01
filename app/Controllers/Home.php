@@ -1438,6 +1438,7 @@ class Home extends BaseController
             // die();
             $update_price = array(
                 "partial_percentage" => $this->request->getPost('colltion_change_partial'),
+                "partial_type" => $this->request->getPost('partiatype'),
                 "collection_id" => $this->request->getPost('colltion_change_partial_id'),
                 "shop_url" => $_REQUEST['shop'],
                 "movements" => date('Y-m-d'),
