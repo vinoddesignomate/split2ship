@@ -743,7 +743,8 @@ $store_namecnf = $shop_name[0];
         </div>
         <script>
             document.getElementById('hmsearch').addEventListener('submit', function(e) {
-                alert('sss');
+                var selectedValue = document.getElementById('get_coll_home').value;
+                console.log(selectedValue);
                 e.preventDefault(); // This prevents the default form submission
             });
 
