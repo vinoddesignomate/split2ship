@@ -256,13 +256,13 @@ $store_name = $shop_name[0];
 
             <h5><b class="text-orange">Step 1:</b> Login to your Shopify store and go to your theme under online .</h5>
 
-            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp" /></div>
         </div>
         <div class=" payxnowandrestondelivery-main-area payxnowandrestondelivery-tutorial-main-area">
 
             <h5><b class="text-orange">Step 2:</b> Click on “Customize” the theme.</h5>
 
-            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config2.webp" /></div>
         </div>
     </div>
     <div class="payxnowandrestondelivery-main-area-row ">
@@ -270,13 +270,13 @@ $store_name = $shop_name[0];
 
             <h5><b class="text-orange">Step 3:</b> Select default product under product drop down.</h5>
 
-            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config3.webp" /></div>
         </div>
         <div class=" payxnowandrestondelivery-main-area payxnowandrestondelivery-tutorial-main-area">
 
             <h5><b class="text-orange">Step 4:</b> Click on “App embeds” in left sidebar. Activate App like this.</h5>
 
-            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+            <div class="payxnowandrestondelivery-imgIns"> <img style="width: 58%;" src="/public/images/instruct/app-embed.webp?var=1" /></div>
         </div>
     </div>
     <div class="payxnowandrestondelivery-single-video-row">
@@ -287,10 +287,10 @@ $store_name = $shop_name[0];
     </div>
     <div class="payxnowandrestondelivery-main-area-row">
         <div class="payxnowandrestondelivery-main-area">
-            <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's Order Confirmation
+            <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's <b>Order Confirmation</b>
                 email template.</h5>
             <div>
-                <textarea rows="55" style="width: 100%">
+                <textarea rows="44" style="width: 100%">
                 {% capture email_title %}
                                 {% if has_pending_payment %}
                                 Thank you for your order!
@@ -1086,7 +1086,7 @@ $store_name = $shop_name[0];
         </div>
         <div class="payxnowandrestondelivery-main-area-row1">
         <div class="payxnowandrestondelivery-main-area">
-            <h5><b class="text-orange">Step 6:</b>  Edit Order refund template - Add below code above this html 
+            <h5><b class="text-orange">Step 6:</b>  Edit <b>Order refund</b> template - Add below code above this html 
               tag <h3>Order summary</h3>.</h5>
             <div>
                 <textarea rows="7" style="width: 100%">
@@ -1096,7 +1096,7 @@ $store_name = $shop_name[0];
 
         </div>
         <div class="payxnowandrestondelivery-main-area">
-            <h5><b class="text-orange">Step 7:</b> Edit Order Invoice template - Add below code in Invoice 
+            <h5><b class="text-orange">Step 7:</b> Edit <b>Order Invoice</b> template - Add below code in Invoice 
               email.</h5>
             <div>
                 <textarea rows="7" style="width: 100%">
