@@ -63,42 +63,31 @@ $store_name = $shop_name[0];
 
                                                 <td> <?php echo esc($stsrt); ?></td>
                                                 <td> <?php echo esc($list_collections->collections_name); ?></td>
-                                                <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                                                    <td>
-                                                        <form action="collection_track_partial_percentage" id="sub_form_data_newfrm_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
-                                                            <span>
-                                                                <select name="change_type" id="change_type_<?php echo esc($list_collections->collection_id); ?>">
-                                                                    <option <?php if ($coll_part_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
-                                                                    <option <?php if ($coll_part_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
-                                                                </select>
+
+                                                <td>
+                                                    <form action="collection_track_partial_percentage" id="sub_form_data_newfrm_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
+                                                        <span>
+                                                            <select name="change_type" id="change_type_<?php echo esc($list_collections->collection_id); ?>">
+                                                                <option <?php if ($coll_part_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
+                                                                <option <?php if ($coll_part_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
+                                                            </select>
 
 
-                                                            </span>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
-                                                            <span>
-                                                                <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
-                                                                <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
+                                                        </span>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
+                                                        <span>
+                                                            <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
+                                                            <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
 
-                                                                <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
-                                                            </span>
-                                                        </form>
-                                                    </td>
+                                                            <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
+                                                        </span>
+                                                    </form>
+                                                </td>
 
-                                                <?php } else { ?>
-                                                    <td>
-                                                        <form action="collection_track_partial_percentage" id="sub_form_data_<?php echo esc($list_collections->collection_id); ?>" class="part_partial_percentage" method="POST">
-                                                            <span>
-                                                                <input type="text" style="width: 32% !important;" class="edit-col_class" name="colltion_change_partial" id="" value="<?php echo $col_pergs; ?>">
-                                                                <input type="hidden" name="colltion_change_partial_id" id="" value="<?php echo esc($list_collections->collection_id); ?>">
 
-                                                                <input type="button" style="width: 32% !important;" class="colbttrack subbtn_coll" subid="<?php echo esc($list_collections->collection_id); ?>" name="update_per" value="Save">
-                                                            </span>
-                                                        </form>
-                                                    </td>
-                                                <?php } ?>
                                             </tr>
                                         <?php
                                             // $sr++;
@@ -129,15 +118,12 @@ $store_name = $shop_name[0];
             var this_id_frm = $(this).attr('subid');
             var formdata = $("#sub_form_data_" + this_id_frm).serialize();
             var shopname = '<?php echo esc($_GET['shop']); ?>';
-            if (shopname == 'desinomatetest.myshopify.com') {
-                var part_type = "&partiatype="+$("#change_type_" + this_id_frm).val();
-            } else {
-                var part_type = "&partiatype=precentage";
-            }
+            var part_type = "&partiatype=" + $("#change_type_" + this_id_frm).val();
+
             $.ajax({
                 type: "POST",
                 url: "collection_track_partial_percentage?vart=" + req_time,
-                data: 'shop=' + shopname + '&update_per=true&' + formdata+part_type,
+                data: 'shop=' + shopname + '&update_per=true&' + formdata + part_type,
                 success: function(response) {
                     $("#showcoltrckmsg").html('Please wait, we have started synching all products in background. It will take some time. You can leave this screen');
                     $("#showcoltrckmsg").css('color', 'green');
