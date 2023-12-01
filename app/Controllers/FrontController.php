@@ -681,6 +681,13 @@ class FrontController extends BaseController
 
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
+
+            if ($get_lates_colection->partial_type == '') {
+                $coll_parttype = 'percentage';
+            } else {
+                $coll_parttype = $get_lates_colection->partial_type;
+            }
+
             if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
                 $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
                 $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
@@ -726,6 +733,7 @@ class FrontController extends BaseController
                                             "product_title" => $value['title'],
                                             "shop_url" => $get_lates_colection->shop_url,
                                             "partial_percentage" => $partpercentg,
+                                            "partial_type" => $coll_parttype,
                                             "add_date" => date('Y-m-d'),
                                             "collection_id" => $get_lates_colection->collection_id,
                                             "total_pro" => $total_pro
@@ -739,6 +747,7 @@ class FrontController extends BaseController
                                                 "title" => $produc_varaien['title'],
                                                 "price" => $produc_varaien['price'],
                                                 "partial_percentage" => $partpercentg,
+                                                "partial_type" => $coll_parttype,
                                                 "shop_url" => $get_lates_colection->shop_url,
                                                 "collection_id" =>  $get_lates_colection->collection_id
                                             );
@@ -793,6 +802,7 @@ class FrontController extends BaseController
                                             "product_title" => $value['title'],
                                             "shop_url" => $get_lates_colection->shop_url,
                                             "partial_percentage" => $partpercentg,
+                                            "partial_type" => $coll_parttype,
                                             "add_date" => date('Y-m-d'),
                                             "collection_id" => $get_lates_colection->collection_id,
                                             "total_pro" => $total_pro
@@ -805,6 +815,7 @@ class FrontController extends BaseController
                                                 "title" => $produc_varaien['title'],
                                                 "price" => $produc_varaien['price'],
                                                 "partial_percentage" => $partpercentg,
+                                                "partial_type" => $coll_parttype,
                                                 "shop_url" => $get_lates_colection->shop_url,
                                                 "collection_id" =>  $get_lates_colection->collection_id
                                             );
