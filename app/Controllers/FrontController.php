@@ -688,7 +688,7 @@ class FrontController extends BaseController
                 $coll_parttype = $get_lates_colection->partial_type;
             }
 
-            if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
+            if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "" && $get_lates_colection->partial_percentage != 0) {
                 $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
                 $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
 
@@ -880,6 +880,13 @@ class FrontController extends BaseController
                 echo "done";
             } else {
                 echo "not found";
+                $payxnowrest_collect_update = array(
+                    "cron_run" => 1,
+                    "cron_page_num" => 0,
+                    "shop_url" => $get_lates_colection->shop_url,
+                    "collection_id" => $get_lates_colection->collection_id,
+                );
+                $this->user_model->update_cron_products($payxnowrest_collect_update);
             }
         } else {
             echo "not found";
