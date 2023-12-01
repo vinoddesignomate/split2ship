@@ -55,7 +55,7 @@ $store_name = $shop_name[0];
                                         <span id="show_per_select_<?php echo esc($list_product->id); ?>">
                                             <!-- <input type="text" name="change_partial" class="payxnowandrestondelivery-edit-col" id="" value="<?php echo $list_product->partial_percentage; ?>"> -->
                                             <select name="change_type" id="change_type_<?php echo esc($list_product->id); ?>">
-                                                <option value="precentage">Percentage</option>
+                                                <option value="percentage">Percentage</option>
                                                 <option value="fixed">Fixed</option>
                                             </select>
                                         </span>

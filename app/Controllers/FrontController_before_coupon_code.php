@@ -625,6 +625,12 @@ class FrontController extends BaseController
         $get_lates_colection = $this->user_model->get_cron_collection(); //get recently updated collection
         if (!empty($get_lates_colection)) { //check data empty or not  
 
+            if ($get_lates_colection->partial_type == '') {
+                $coll_parttype = 'percentage';
+            } else {
+                $coll_parttype = $get_lates_colection->partial_type;
+            }
+
             $get_updated_plan = $this->user_model->get_store_plane($get_lates_colection->shop_url); //get activated store how many products count have
             $get_details = $this->user_model->get_tokens($get_lates_colection->shop_url); //get shop token
 
@@ -1421,7 +1427,6 @@ class FrontController extends BaseController
             echo "<pre>";
             print_r($body_data_decode);
             echo "</pre>";
-        
         }
     }
     public function update_double_create()
