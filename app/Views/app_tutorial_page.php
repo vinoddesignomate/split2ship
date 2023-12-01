@@ -282,7 +282,7 @@ $store_name = $shop_name[0];
     <div class="payxnowandrestondelivery-single-video-row">
         <h2>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h2>
         <div class="video-wrapper">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
     <div class="payxnowandrestondelivery-main-area-row">
@@ -312,32 +312,14 @@ $store_name = $shop_name[0];
                 <textarea rows="20" style="width: 100%">
             </textarea>
             </div>
-
+<p>In the place of this code.</p>
+<div>
+                <textarea rows="20" style="width: 100%">
+            </textarea>
         </div>
         </div>
     </div>
-    <div class="payxnowandrestondelivery-zip-flex-row">
-        <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
-
-            <div class="iframeMainDiv">
-                <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-            </div>
-
-            <div class="iframeMainDiv">
-                <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-            </div>
-
-            <div class="iframeMainDiv">
-                <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-            </div>
-        </div>
-    </div>
+   
 
 </div>
 
