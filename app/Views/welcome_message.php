@@ -187,7 +187,7 @@ $store_namecnf = $shop_name[0];
 <div id="package_expire" class="popup-container config_popup" style="display: none;">
     <div class="popup-content">
         <!-- <h2>Hello, this is a message!</h2> -->
-        <p id="package_expire_config">Your orders sync limit is expire.Please upgrade the plan</p>
+        <p id="package_expire_config">You have reached of your orders limit, Please upgrade your plan.</p>
         <div class="closeButtonCg"><a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/price-plan">Upgrade</a></div>
     </div>
 </div>
