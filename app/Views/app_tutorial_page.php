@@ -5,7 +5,7 @@
 
     .payxnowandrestondelivery-main-area {
         padding: 25px;
-        margin-bottom: 51px;
+        margin-bottom: 26px;
         margin-top: 0px
     }
 
@@ -197,6 +197,25 @@ $store_name = $shop_name[0];
         font-weight: 400;
         line-height: 154%;
     }
+    .payxnowandrestondelivery-single-video-row {
+    text-align: center;
+}
+.payxnowandrestondelivery-single-video-row h2{
+    color: #F05523;
+
+text-align: center;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%;letter-spacing: 0.1px;margin-bottom: 25px;}
+.video-wrapper iframe {
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.03);
+    padding: 13px;
+}
+
 </style>
 <script src="/public/jscolor.js"></script>
 <div class="payxnowandrestondelivery-whiteAreaDiv payxnowandrestondelivery-container">
@@ -207,20 +226,20 @@ $store_name = $shop_name[0];
         <p>Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - <a href="tel:9354200590" class="text-orange">9354200590</a> else send us an email to <a href="mailto: saurabh@cgcolors.com" class="text-orange">saurabh@cgcolors.com</a>. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
     </div>
     <div class="payxnowandrestondelivery-single-video-row">
-        <h2>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h2>
+        <h2 >Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h2>
         <div class="video-wrapper">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="payxnowandrestondelivery-main-area-row ">
             <div class=" payxnowandrestondelivery-main-area ">
 
-                <h5><b class="text-orange">Step 1:</b> Step 1: Login to your Shopify store and go to your theme under online .</h5>
+                <h5><b class="text-orange">Step 1:</b>  Login to your Shopify store and go to your theme under online .</h5>
 
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
             </div>
             <div class=" payxnowandrestondelivery-main-area ">
 
-                <h5><b class="text-orange">Step 1:</b> Step 1: Login to your Shopify store and go to your theme under online .</h5>
+                <h5><b class="text-orange">Step 2:</b>  Click on “Customize” the theme.</h5>
 
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
             </div>
