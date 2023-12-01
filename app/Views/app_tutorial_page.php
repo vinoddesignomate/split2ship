@@ -197,77 +197,97 @@ $store_name = $shop_name[0];
         font-weight: 400;
         line-height: 154%;
     }
+
     .payxnowandrestondelivery-single-video-row {
-    text-align: center;
-}
-.payxnowandrestondelivery-single-video-row h2{
-    color: #F05523;
+        text-align: center;
+        margin: 62px 0px 55px;
+    }
 
-text-align: center;
-font-family: Roboto;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: 120%;letter-spacing: 0.1px;margin-bottom: 25px;}
-.video-wrapper iframe {
-    border-radius: 5px;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.03);
-    padding: 13px;
-}
+    .payxnowandrestondelivery-single-video-row h2 {
+        color: #F05523;
 
+        text-align: center;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        letter-spacing: 0.1px;
+        margin-bottom: 25px;
+    }
+
+    .video-wrapper iframe {
+        border-radius: 5px;
+        background: #FFF;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.03);
+        padding: 13px;
+    }
+
+    .payxnowandrestondelivery-main-area.payxnowandrestondelivery-tutorial-main-area {
+        padding: 25px 12px 12px;
+        text-align: left;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .payxnowandrestondelivery-main-area.payxnowandrestondelivery-maintext {
+        border: 1px dashed var(--ui-base-400, #d6d6d8);
+    }
 </style>
 <script src="/public/jscolor.js"></script>
 <div class="payxnowandrestondelivery-whiteAreaDiv payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
         <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
     </div>
-    <div class="payxnowandrestondelivery-main-area">
+    <div class="payxnowandrestondelivery-main-area text-center payxnowandrestondelivery-maintext">
         <p>Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - <a href="tel:9354200590" class="text-orange">9354200590</a> else send us an email to <a href="mailto: saurabh@cgcolors.com" class="text-orange">saurabh@cgcolors.com</a>. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
     </div>
     <div class="payxnowandrestondelivery-single-video-row">
-        <h2 >Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h2>
+        <h2>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h2>
         <div class="video-wrapper">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div class="payxnowandrestondelivery-main-area-row ">
-            <div class=" payxnowandrestondelivery-main-area ">
-
-                <h5><b class="text-orange">Step 1:</b>  Login to your Shopify store and go to your theme under online .</h5>
-
-                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
-            </div>
-            <div class=" payxnowandrestondelivery-main-area ">
-
-                <h5><b class="text-orange">Step 2:</b>  Click on “Customize” the theme.</h5>
-
-                <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
-            </div>
-        </div>
-
     </div>
-    <div class="payxnowandrestondelivery-zip-flex-row">
-        <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+    <div class="payxnowandrestondelivery-main-area-row ">
+        <div class=" payxnowandrestondelivery-main-area payxnowandrestondelivery-tutorial-main-area">
 
-            <div class="iframeMainDiv">
-                <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <h5><b class="text-orange">Step 1:</b> Login to your Shopify store and go to your theme under online .</h5>
 
-            </div>
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
+        </div>
+        <div class=" payxnowandrestondelivery-main-area payxnowandrestondelivery-tutorial-main-area">
 
-            <div class="iframeMainDiv">
-                <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <h5><b class="text-orange">Step 2:</b> Click on “Customize” the theme.</h5>
 
-            </div>
-
-            <div class="iframeMainDiv">
-                <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-            </div>
+            <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config1.webp"></div>
         </div>
     </div>
+
+</div>
+<div class="payxnowandrestondelivery-zip-flex-row">
+    <div class="configvideotg payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page">
+
+        <div class="iframeMainDiv">
+            <h3>Split2Ship Installation and configuration | How to install Split2Ship app successfully | Spli2ship</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/CH0OAgxvS8I?si=KH-bsxJwCmzokuqJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
+
+        <div class="iframeMainDiv">
+            <h3>How to edit the order confirmation email template, Order refund template and invoice template</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
+
+        <div class="iframeMainDiv">
+            <h3>How the postal codes functionality works | Postal codes | zipcode | Postal code functionality</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/AFZC_jtm1tU?si=RtbaQ3MZfbb3Bka3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
+    </div>
+</div>
 
 </div>
 
