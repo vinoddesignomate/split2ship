@@ -1288,10 +1288,10 @@ $store_name = $shop_name[0];
 
                                                         <div class="btn-end-form-col">
                                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
-                                                                        <label for="cartid">Enable Partial Payment Button</label>
+                                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="partby" onclick="toggleTextBox('partby', 'partialbuy')" name="cart_show_btn[]" value="addtocart">
+                                                                        <label for="partby">Enable Partial Payment Button</label>
                                                                 </div>
-                                                                <div class="partial-text-row">
+                                                                <div id="partialbuy" class="partial-text-row">
                                                                         <label for="">Change Partial Pay Button Text </label>
                                                                         <input type="text" name="cg_partial_btn_text" value="Partial Payment">
                                                                         <div class="form-small-taxt">
