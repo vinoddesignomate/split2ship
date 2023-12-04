@@ -181,7 +181,13 @@
                         margin-bottom: 35px;
                 }
         }
+        @media only screen and (max-width:850px) {
+                .payxnowandrestondelivery-flex-row{flex-direction: column;
+    gap: 20px;}
+    .payxnowandrestondelivery-form-wrap{padding: 27px 15px 34px;}
+    .payxnowandrestondelivery-main-area{padding: 25px 20px;}
 
+        }
         @media only screen and (max-width: 767px) {
                 .payxnowandrestondelivery-zip-flex-row {
                         display: block;
@@ -1212,8 +1218,7 @@ $store_name = $shop_name[0];
                                                         <label for="">Full Buy button text</label>
                                                         <input type="text" name="fullbuybtntext" value="<?php echo (isset($gtbtncolor[0]->full_buy_now_text) ? $gtbtncolor[0]->full_buy_now_text : ''); ?>">
                                                 </div> -->
-<div class="payxnowandrestondelivery-submit-btn">
-                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button></div>
+
                                         </form>
                                 </div>
                                 <div class="payxnowandrestondelivery-flex-col">
@@ -1234,6 +1239,10 @@ $store_name = $shop_name[0];
                                         </form>
 
                                 </div>
+                                <form action="">
+                                <div class="payxnowandrestondelivery-submit-btn">
+                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button></div>
+                                </form>
                         </div>
                         <!-- <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2 class="">Cart button color setting</h2>
@@ -1257,9 +1266,7 @@ $store_name = $shop_name[0];
                                                                 </div>
                                                         </div>
                                                         </div>
-                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
-                                                        </div>
+                                                       
                                                 </form>
                                         </div>
 
@@ -1294,6 +1301,11 @@ $store_name = $shop_name[0];
 
                                                 </form>
                                         </div>
+                                        <form action="">
+                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                        </div>
+                                        </form>
                                 </div>
                         </div>
 
@@ -1305,9 +1317,7 @@ $store_name = $shop_name[0];
                                                                 <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
                                                                 <label for="cartid">Checkout or Buy Now Button</label>
                                                         </div>
-                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
-                                                        </div>
+                                                        
                                                 </form>
                                         </div>
 
@@ -1342,6 +1352,11 @@ $store_name = $shop_name[0];
 
                                                 </form>
                                         </div>
+                                        <form action="">
+                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                        </div>
+                                        </form>
                                 </div>
                         </div>
 
