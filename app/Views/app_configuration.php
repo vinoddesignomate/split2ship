@@ -1291,7 +1291,7 @@ $store_name = $shop_name[0];
                                                                         <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="partby" onclick="toggleTextBox('partby', 'partialbuy')" name="cart_show_btn[]" value="addtocart">
                                                                         <label for="partby">Enable Partial Payment Button</label>
                                                                 </div>
-                                                                <div id="partialbuy" class="partial-text-row">
+                                                                <div id="partialbuy" class="partial-text-row" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
                                                                         <label for="">Change Partial Pay Button Text </label>
                                                                         <input type="text" name="cg_partial_btn_text" value="Partial Payment">
                                                                         <div class="form-small-taxt">
