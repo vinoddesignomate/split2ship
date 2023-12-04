@@ -2422,6 +2422,12 @@ class Home extends BaseController
                 "add_to_cart_text" => '',
                 "partial_buy_now_text" => '',
                 "full_buy_now_text" => '',
+                "add_cart_btn_color" => $this->request->getPost('add_cart_btn_color'),
+                "add_cart_text_color" => $this->request->getPost('add_cart_txt_color'),
+                "partial_buynow_btn_color" => $this->request->getPost('partialbuy_btn_color'),
+                "partial_buynow_text_color" => $this->request->getPost('partialbuy_txt_color'),
+                "full_buy_btn_color" => $this->request->getPost('fullbuy_btn_color'),
+                "full_buy_text_color" => $this->request->getPost('fullbuy_txt_color'),
                 "shop_url" => $_GET['shop']
             );
 
@@ -2453,19 +2459,19 @@ class Home extends BaseController
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
-        if ($this->request->getPost('track_cart_color_code')) {
-            $track_color_array = array(
-                "add_cart_btn_color" => $this->request->getPost('add_cart_btn_color'),
-                "add_cart_text_color" => $this->request->getPost('add_cart_txt_color'),
-                "partial_buynow_btn_color" => $this->request->getPost('partialbuy_btn_color'),
-                "partial_buynow_text_color" => $this->request->getPost('partialbuy_txt_color'),
-                "full_buy_btn_color" => $this->request->getPost('fullbuy_btn_color'),
-                "full_buy_text_color" => $this->request->getPost('fullbuy_txt_color'),
-                "shop_url" => $_GET['shop']
-            );
-            $this->user_model->track_checkout_button_color($track_color_array);
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
-        }
+        // if ($this->request->getPost('track_cart_color_code')) {
+        //     $track_color_array = array(
+        //         "add_cart_btn_color" => $this->request->getPost('add_cart_btn_color'),
+        //         "add_cart_text_color" => $this->request->getPost('add_cart_txt_color'),
+        //         "partial_buynow_btn_color" => $this->request->getPost('partialbuy_btn_color'),
+        //         "partial_buynow_text_color" => $this->request->getPost('partialbuy_txt_color'),
+        //         "full_buy_btn_color" => $this->request->getPost('fullbuy_btn_color'),
+        //         "full_buy_text_color" => $this->request->getPost('fullbuy_txt_color'),
+        //         "shop_url" => $_GET['shop']
+        //     );
+        //     $this->user_model->track_checkout_button_color($track_color_array);
+        //     echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+        // }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];

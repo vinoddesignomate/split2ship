@@ -1390,7 +1390,7 @@ $store_name = $shop_name[0];
                                                         <div class="payxnowandrestondelivery-btn-row">
 
                                                                 <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                                        <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                                        <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                                 </div>
 
                                                         </div>
