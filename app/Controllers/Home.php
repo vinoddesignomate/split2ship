@@ -2455,6 +2455,7 @@ class Home extends BaseController
             // }
             // echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
             if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.83') {
+                echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
             echo "<pre>"; print_r($track_color_array); echo"</pre>";
             }
             $this->user_model->track_checkout_button_color($track_color_array);
