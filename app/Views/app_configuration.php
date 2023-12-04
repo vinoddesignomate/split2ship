@@ -145,7 +145,7 @@
 .payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row > div,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row > div {
     flex: 1;
 }
-.payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row {
+.payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row,.payxnowandrestondelivery-row1 .payxnowandrestondelivery-flex-row {
     gap: 40px;
 }
 .btn-end-form{display: flex;
@@ -154,7 +154,7 @@
     justify-content: space-between;
     width: 100%;
     height: 100%;}
-    .payxnowandrestondelivery-btn-row{width: 100%;margin-top:30px}
+    .payxnowandrestondelivery-btn-row{width: 100%;margin-top:30px;flex: none !important;}
 @media only screen and (max-width:1024px) {
         .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40 ,.payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60{
                 width: 100%;
