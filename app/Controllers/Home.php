@@ -2454,9 +2454,9 @@ class Home extends BaseController
                 $track_color_array["full_buy_now_text"] = $this->request->getPost('fullbuybtntext');
             }
             // echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
-            // echo "<pre>"; print_r($track_color_array); echo"</pre>";
+            echo "<pre>"; print_r($track_color_array); echo"</pre>";
             $this->user_model->track_checkout_button_color($track_color_array);
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+           // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         // if ($this->request->getPost('track_cart_color_code')) {
