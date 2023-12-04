@@ -176,6 +176,7 @@
                 .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60 {
                         width: 100%;
                 }
+                .edit-form-wrapper{max-width: 100%;}
 
 
 

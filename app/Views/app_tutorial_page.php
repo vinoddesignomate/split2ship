@@ -117,6 +117,9 @@
         display: flex;
         margin-bottom: 20px;
     }
+    .video-wrapper iframe{
+        max-width: 560px !important;
+    }
 
     @media only screen and (max-width: 991px) {
         .payxnowandrestondelivery-main-area-row>div {
@@ -282,7 +285,7 @@ $store_name = $shop_name[0];
     <div class="payxnowandrestondelivery-single-video-row">
         <h2>How to edit the order confirmation email template, Order refund template and invoice template.</h2>
         <div class="video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/SP6vDq3Xw50?si=wZ5iCt3A9BmoB5WD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
     <div class="payxnowandrestondelivery-main-area-row">
