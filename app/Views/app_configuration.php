@@ -1256,7 +1256,7 @@ $store_name = $shop_name[0];
                                                                 </div>
                                                                 <div id="partialbuy" class="partial-text-row" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
                                                                         <label for="">Change Partial Pay Button Text </label>
-                                                                        <input type="text" name="partialbuybtntext" value="Partial Payment" value="<?php echo (isset($gtbtncolor[0]->partial_buy_now_text) ? $gtbtncolor[0]->partial_buy_now_text : ''); ?>">
+                                                                        <input type="text" name="partialbuybtntext" value="<?php echo (isset($gtbtncolor[0]->partial_buy_now_text) ? $gtbtncolor[0]->partial_buy_now_text : ''); ?>">
                                                                         <div class="form-small-taxt">
                                                                                 <p>Pay 10% now rest at delivery</p>
                                                                         </div>
