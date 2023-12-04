@@ -214,7 +214,7 @@ $store_name = $shop_name[0];
         line-height: 120%;
         letter-spacing: 0.1px;
         max-width: 645px;
-        margin: 0 auto 25px;
+        margin: 0 auto 12px;
     }
 
     .video-wrapper iframe {
