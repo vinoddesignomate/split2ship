@@ -1266,12 +1266,7 @@ $store_name = $shop_name[0];
 
                                                 </div>
 
-                                                <div class="payxnowandrestondelivery-flex-col">
-
-                                                <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
-                                                        <label for="fullbuysplit">Enable buy now Button</label>
-                                                </div>
+                                                <div class="payxnowandrestondelivery-flex-col">                                                
 
                                                         <div class="flex-row">
                                                                 <label for="">Partial buy now button color</label>
@@ -1290,6 +1285,12 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
                                         <div class="payxnowandrestondelivery-flex-row">
                                                 <div class="payxnowandrestondelivery-flex-col">
+
+                                                <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
+                                                        <label for="fullbuysplit">Enable buy now Button</label>
+                                                </div>
+
                                                         <div class="flex-row">
                                                                 <label for="">Full buy now button color</label>
                                                                 <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_btn_color) ? $gtbtncolor[0]->full_buy_btn_color : ''); ?>">
