@@ -154,6 +154,7 @@
     justify-content: space-between;
     width: 100%;
     height: 100%;}
+    .payxnowandrestondelivery-btn-row{width: 100%;margin-top:30px}
 @media only screen and (max-width:1024px) {
         .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40 ,.payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60{
                 width: 100%;
@@ -1239,10 +1240,12 @@ $store_name = $shop_name[0];
                                         </form>
 
                                 </div>
+                                <div class="payxnowandrestondelivery-btn-row">
                                 <form action="">
                                 <div class="payxnowandrestondelivery-submit-btn">
                                                 <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button></div>
                                 </form>
+                                </div>
                         </div>
                         <!-- <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2 class="">Cart button color setting</h2>
@@ -1301,11 +1304,13 @@ $store_name = $shop_name[0];
 
                                                 </form>
                                         </div>
+                                        <div class="payxnowandrestondelivery-btn-row">
                                         <form action="">
                                         <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
                                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
                                         </form>
+                                        </div>
                                 </div>
                         </div>
 
@@ -1352,11 +1357,13 @@ $store_name = $shop_name[0];
 
                                                 </form>
                                         </div>
+                                        <div class="payxnowandrestondelivery-btn-row">
                                         <form action="">
                                         <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
                                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
                                         </form>
+                                        </div>
                                 </div>
                         </div>
 
