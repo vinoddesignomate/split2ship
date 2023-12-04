@@ -94,6 +94,17 @@ class Auth extends BaseController
 			}
 
 			$countrows = $userModel->checktokens($parameters['shop']);
+
+			//below code for activate add to cart, partial buy, full buy button on install app code start
+			$track_color_array = array(
+                "add_to_cartbtn" => 1,
+                "buy_partial_btn" => 1,
+                "full_pay_buybtn" => 1,
+                "shop_url" => $parameters['shop']
+            );
+			$userModel->track_checkout_button_color($track_color_array);
+			//below code for activate add to cart, partial buy, full buy button on install app code end
+
 			if ($countrows < 1) {
 				$curdate = date('Y-m-d');
 				$userId = $userModel->insert_data(array(

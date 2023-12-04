@@ -2444,37 +2444,14 @@ class Home extends BaseController
                         break;
                 }
             }
-            // if ($this->request->getPost('addcartbtntext') != "") {
-            //     $track_color_array["add_to_cart_text"] = $this->request->getPost('addcartbtntext');
-            // }
+            
             if ($this->request->getPost('partialbuybtntext') != "") {
                 $track_color_array["partial_buy_now_text"] = $this->request->getPost('partialbuybtntext');
             }
-            // if ($this->request->getPost('fullbuybtntext') != "") {
-            //     $track_color_array["full_buy_now_text"] = $this->request->getPost('fullbuybtntext');
-            // }
-            // echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.83') {
-            //     echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
-            // echo "<pre>"; print_r($track_color_array); echo"</pre>";
-            // }
+            
             $this->user_model->track_checkout_button_color($track_color_array);
            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
-        }
-
-        // if ($this->request->getPost('track_cart_color_code')) {
-        //     $track_color_array = array(
-        //         "add_cart_btn_color" => $this->request->getPost('add_cart_btn_color'),
-        //         "add_cart_text_color" => $this->request->getPost('add_cart_txt_color'),
-        //         "partial_buynow_btn_color" => $this->request->getPost('partialbuy_btn_color'),
-        //         "partial_buynow_text_color" => $this->request->getPost('partialbuy_txt_color'),
-        //         "full_buy_btn_color" => $this->request->getPost('fullbuy_btn_color'),
-        //         "full_buy_text_color" => $this->request->getPost('fullbuy_txt_color'),
-        //         "shop_url" => $_GET['shop']
-        //     );
-        //     $this->user_model->track_checkout_button_color($track_color_array);
-        //     echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
-        // }
+        }        
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];
