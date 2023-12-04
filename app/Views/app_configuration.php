@@ -1212,7 +1212,7 @@ $store_name = $shop_name[0];
                                         </div>
                                       </form>
                                       </div>  
-                                </div>
+                              
                                 <div class="payxnowandrestondelivery-flex-col">
                                 <form method="post">
                                         <!-- <div class="flex-row">
@@ -1246,6 +1246,7 @@ $store_name = $shop_name[0];
                                         </div>
                                 </form>
                                 </div>
+                                </div>
                         </div>
 
                         <div class="payxnowandrestondelivery-form-wrap">
@@ -1258,7 +1259,7 @@ $store_name = $shop_name[0];
                                         </div>
                                       </form>
                                       </div>  
-                                </div>
+                                
                                 <div class="payxnowandrestondelivery-flex-col">
                                 <form method="post">
                                         <!-- <div class="flex-row">
@@ -1291,6 +1292,7 @@ $store_name = $shop_name[0];
                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                         </div>
                                 </form>
+                                </div>
                                 </div>
                         </div>
                        
