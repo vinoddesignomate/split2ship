@@ -119,8 +119,9 @@
         }
         .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40{width: calc(40% - 45px);}
         .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60{width: calc(60% - 45px);}
-        .payxnowandrestondelivery-flex-col form .flex-row:last-child {
-    margin-top: 11px;
+        .payxnowandrestondelivery-flex-col form .flex-row:last-child { margin-top: 11px;}
+        .payxnowandrestondelivery-form-wrap.payxnowandrestondelivery-flex-row .payxnowandrestondelivery-flex-col {
+    flex: 1;
 }
 
         @media only screen and (max-width: 991px) {
@@ -1200,6 +1201,7 @@ $store_name = $shop_name[0];
                                 <h2 class="">Cart button color setting</h2>
                                 <span style="color: red;font-weight: 700;" id="cart_error"></span>
                         </div> -->
+                        
                         <div class="payxnowandrestondelivery-form-wrap">
                                 <div class="payxnowandrestondelivery-flex-row">
                                       <div class="payxnowandrestondelivery-flex-col">
@@ -1211,6 +1213,7 @@ $store_name = $shop_name[0];
                                       </form>
                                       </div>  
                                 </div>
+                                <div class="payxnowandrestondelivery-flex-col">
                                 <form method="post">
                                         <!-- <div class="flex-row">
                                                 <label for="">Add to cart button color</label>
@@ -1242,6 +1245,7 @@ $store_name = $shop_name[0];
                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                         </div>
                                 </form>
+                                </div>
                         </div>
 
                         <div class="payxnowandrestondelivery-form-wrap">
@@ -1255,6 +1259,7 @@ $store_name = $shop_name[0];
                                       </form>
                                       </div>  
                                 </div>
+                                <div class="payxnowandrestondelivery-flex-col">
                                 <form method="post">
                                         <!-- <div class="flex-row">
                                                 <label for="">Add to cart button color</label>
@@ -1286,6 +1291,7 @@ $store_name = $shop_name[0];
                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
                                         </div>
                                 </form>
+                                </div>
                         </div>
                        
                 </div>
