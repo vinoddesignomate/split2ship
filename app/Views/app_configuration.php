@@ -119,7 +119,7 @@
         }
 
         .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40 {
-                width: calc(40% - 45px);
+                width: 40%;
         }
 
         .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60 {
@@ -134,13 +134,34 @@
                 flex: 1;
         }
 
-        .form-small-text p {
-                color: #F05523;
-
-                font-family: Roboto;
-                font-size: 15px;
+        .payxnowandrestondelivery-form-wrap  .partial-text-row .form-small-taxt p {
+    color: #F05523;
+    font-family: Roboto;
+    font-size: 15px;
+}
+.payxnowandrestondelivery-form-wrap .partial-text-row label {
+    margin-left: 0;
+}
+.payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row > div,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row > div {
+    flex: 1;
+}
+.payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row {
+    gap: 40px;
+}
+.btn-end-form{display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;}
+@media only screen and (max-width:1024px) {
+        .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40 ,.payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60{
+                width: 100%;
         }
 
+        
+
+}
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
                         flex: auto;
@@ -1150,7 +1171,7 @@ $store_name = $shop_name[0];
 
 
                                         <div class="btn-row">
-                                                <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                                <button type="submit" name="track_color" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                         </div>
 
                                 </form>
@@ -1166,7 +1187,7 @@ $store_name = $shop_name[0];
                         </div>
                         <div class="payxnowandrestondelivery-row1 payxnowandrestondelivery-form-wrap payxnowandrestondelivery-flex-row">
                                 <div class="payxnowandrestondelivery-flex-col">
-                                        <form method="post" onsubmit="return validate_chkcart()">
+                                        <form method="post" onsubmit="return validate_chkcart()" class="btn-end-form">
                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
                                                         <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
                                                         <label for="cartid">Enable Add to Cart Button</label>
@@ -1191,8 +1212,8 @@ $store_name = $shop_name[0];
                                                         <label for="">Full Buy button text</label>
                                                         <input type="text" name="fullbuybtntext" value="<?php echo (isset($gtbtncolor[0]->full_buy_now_text) ? $gtbtncolor[0]->full_buy_now_text : ''); ?>">
                                                 </div> -->
-
-                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+<div class="payxnowandrestondelivery-submit-btn">
+                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button></div>
                                         </form>
                                 </div>
                                 <div class="payxnowandrestondelivery-flex-col">
@@ -1222,20 +1243,22 @@ $store_name = $shop_name[0];
                         <div class="payxnowandrestondelivery-row2 payxnowandrestondelivery-form-wrap">
                                 <div class="payxnowandrestondelivery-flex-row">
                                         <div class="payxnowandrestondelivery-flex-col">
-                                                <form method="post" onsubmit="return validate_chkcart()">
+                                                <form method="post" onsubmit="return validate_chkcart()" class="btn-end-form">
+                                                <div class="btn-end-form-col">
                                                         <div class="payxnowandrestondeliver-checkbox-wrap">
                                                                 <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
                                                                 <label for="cartid">Enable Partial Payment Button</label>
                                                         </div>
-                                                        <div class="flex-row">
+                                                        <div class="partial-text-row">
                                                                 <label for="">Change Partial Pay Button Text </label>
                                                                 <input type="text" name="cg_partial_btn_text" value="Partial Payment">
                                                                 <div class="form-small-taxt">
                                                                         <p>Pay 10% now rest at delivery</p>
                                                                 </div>
                                                         </div>
-                                                        <div class="btn-row" style="margin-top: 10px;">
-                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                                        </div>
+                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
                                                 </form>
                                         </div>
@@ -1277,13 +1300,13 @@ $store_name = $shop_name[0];
                         <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
                                 <div class="payxnowandrestondelivery-flex-row">
                                         <div class="payxnowandrestondelivery-flex-col">
-                                                <form method="post" onsubmit="return validate_chkcart()">
+                                                <form method="post" onsubmit="return validate_chkcart()" class="btn-end-form">
                                                         <div class="payxnowandrestondeliver-checkbox-wrap">
                                                                 <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
                                                                 <label for="cartid">Checkout or Buy Now Button</label>
                                                         </div>
-                                                        <div class="btn-row" style="margin-top: 10px;">
-                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
                                                 </form>
                                         </div>
