@@ -159,7 +159,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                justify-content: space-between;
+                
                 width: 100%;
                 height: 100%;
         }
@@ -422,16 +422,18 @@ $store_name = $shop_name[0];
                                                                 <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_text_color) ? $gtbtncolor[0]->full_buy_text_color : ''); ?>">
                                                         </div>
                                                 </div>
-                                                <div class="payxnowandrestondelivery-btn-row">
+                                                
+
+                                        </div>
+                                </div>
+
+                                <div class="payxnowandrestondelivery-btn-row">
 
                                                         <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
                                                                 <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
 
                                                 </div>
-
-                                        </div>
-                                </div>
                         </form>
                 </div>
 
