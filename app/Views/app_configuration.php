@@ -134,35 +134,53 @@
                 flex: 1;
         }
 
-        .payxnowandrestondelivery-form-wrap  .partial-text-row .form-small-taxt p {
-    color: #F05523;
-    font-family: Roboto;
-    font-size: 15px;
-}
-.payxnowandrestondelivery-form-wrap .partial-text-row label {
-    margin-left: 0;
-}
-.payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row > div,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row > div {
-    flex: 1;
-}
-.payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row,.payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row,.payxnowandrestondelivery-row1 .payxnowandrestondelivery-flex-row {
-    gap: 40px;
-}
-.btn-end-form{display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;}
-    .payxnowandrestondelivery-btn-row{width: 100%;margin-top:30px;flex: none !important;}
-@media only screen and (max-width:1024px) {
-        .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40 ,.payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60{
-                width: 100%;
+        .payxnowandrestondelivery-form-wrap .partial-text-row .form-small-taxt p {
+                color: #F05523;
+                font-family: Roboto;
+                font-size: 15px;
         }
 
-        
+        .payxnowandrestondelivery-form-wrap .partial-text-row label {
+                margin-left: 0;
+        }
 
-}
+        .payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row>div,
+        .payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row>div {
+                flex: 1;
+        }
+
+        .payxnowandrestondelivery-row2 .payxnowandrestondelivery-flex-row,
+        .payxnowandrestondelivery-row3 .payxnowandrestondelivery-flex-row,
+        .payxnowandrestondelivery-row1 .payxnowandrestondelivery-flex-row {
+                gap: 40px;
+        }
+
+        .btn-end-form {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                width: 100%;
+                height: 100%;
+        }
+
+        .payxnowandrestondelivery-btn-row {
+                width: 100%;
+                margin-top: 30px;
+                flex: none !important;
+        }
+
+        @media only screen and (max-width:1024px) {
+
+                .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40,
+                .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60 {
+                        width: 100%;
+                }
+
+
+
+        }
+
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
                         flex: auto;
@@ -182,13 +200,23 @@
                         margin-bottom: 35px;
                 }
         }
+
         @media only screen and (max-width:850px) {
-                .payxnowandrestondelivery-flex-row{flex-direction: column;
-    gap: 20px;}
-    .payxnowandrestondelivery-form-wrap{padding: 27px 15px 34px;}
-    .payxnowandrestondelivery-main-area{padding: 25px 20px;}
+                .payxnowandrestondelivery-flex-row {
+                        flex-direction: column;
+                        gap: 20px;
+                }
+
+                .payxnowandrestondelivery-form-wrap {
+                        padding: 27px 15px 34px;
+                }
+
+                .payxnowandrestondelivery-main-area {
+                        padding: 25px 20px;
+                }
 
         }
+
         @media only screen and (max-width: 767px) {
                 .payxnowandrestondelivery-zip-flex-row {
                         display: block;
@@ -1150,31 +1178,30 @@ $store_name = $shop_name[0];
                                                 <label for="">Cart Summary Section Background color</label>
                                                 <input type="text" data-jscolor="{}" name="cart_summary_back_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
                                         </div>
-                                        <!-- <div class="flex-row">
+                                        <div class="flex-row">
                                                 <label for="">Cart Summary Section text color</label>
                                                 <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
-                                        </div> -->
-
-                                        <!-- <div class="flex-row">
+                                        </div>
+                                        <div class="flex-row">
                                                 <label for="">Text 1 </label>
                                                 <input type="text" name="cg_partial_dep_text" value="<?php echo ((isset($gtbtncolor[0]->partial_dep_text) && $gtbtncolor[0]->partial_dep_text != "") ? $gtbtncolor[0]->partial_dep_text : 'Partial Deposit'); ?>">
-                                        </div> -->
-                                        <!-- <div class="flex-row">
+                                        </div>
+                                        <div class="flex-row">
                                                 <label for="">Text 2 </label>
                                                 <input type="text" name="cg_remaining_txtcrt" value="<?php echo ((isset($gtbtncolor[0]->remaining_txtcrt) && $gtbtncolor[0]->remaining_txtcrt != "") ? $gtbtncolor[0]->remaining_txtcrt : 'Remaining Balance'); ?>">
-                                        </div> -->
-                                        <!-- <div class="flex-row">
+                                        </div>
+                                        <div class="flex-row">
                                                 <label for="">Text 3 </label>
                                                 <input type="text" name="cg_cart_three_txt" value="<?php echo ((isset($gtbtncolor[0]->cart_three_txt) && $gtbtncolor[0]->cart_three_txt != "") ? $gtbtncolor[0]->cart_three_txt : 'You need to pay remaining balance to delivery person'); ?>">
-                                        </div> -->
-                                        <!-- <div class="flex-row">
+                                        </div>
+                                        <div class="flex-row">
                                                 <label for="">Partial payment button text </label>
                                                 <input type="text" name="cg_partial_btn_text" value="<?php echo ((isset($gtbtncolor[0]->cg_partial_btn_text) && $gtbtncolor[0]->cg_partial_btn_text != "") ? $gtbtncolor[0]->cg_partial_btn_text : 'Partial Payment'); ?>">
-                                        </div> -->
-                                        <!-- <div class="flex-row">
+                                        </div>
+                                        <div class="flex-row">
                                                 <label for="">Full payment button text </label>
                                                 <input type="text" name="cg_full_btn_text" value="<?php echo ((isset($gtbtncolor[0]->cg_full_btn_text) && $gtbtncolor[0]->cg_full_btn_text != "") ? $gtbtncolor[0]->cg_full_btn_text : 'Full Payment'); ?>">
-                                        </div> -->
+                                        </div>
 
 
                                         <div class="btn-row">
@@ -1233,19 +1260,19 @@ $store_name = $shop_name[0];
                                                         <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_text_color) ? $gtbtncolor[0]->add_cart_text_color : ''); ?>">
                                                 </div>
 
+                                                <div class="payxnowandrestondelivery-btn-row">
 
+                                                        <div class="payxnowandrestondelivery-submit-btn">
+                                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                        </div>
 
+                                                </div>
 
 
                                         </form>
 
                                 </div>
-                                <div class="payxnowandrestondelivery-btn-row">
-                                <form action="">
-                                <div class="payxnowandrestondelivery-submit-btn">
-                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button></div>
-                                </form>
-                                </div>
+
                         </div>
                         <!-- <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2 class="">Cart button color setting</h2>
@@ -1256,20 +1283,20 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-flex-row">
                                         <div class="payxnowandrestondelivery-flex-col">
                                                 <form method="post" onsubmit="return validate_chkcart()" class="btn-end-form">
-                                                <div class="btn-end-form-col">
-                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
-                                                                <label for="cartid">Enable Partial Payment Button</label>
-                                                        </div>
-                                                        <div class="partial-text-row">
-                                                                <label for="">Change Partial Pay Button Text </label>
-                                                                <input type="text" name="cg_partial_btn_text" value="Partial Payment">
-                                                                <div class="form-small-taxt">
-                                                                        <p>Pay 10% now rest at delivery</p>
+                                                        <div class="btn-end-form-col">
+                                                                <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
+                                                                        <label for="cartid">Enable Partial Payment Button</label>
+                                                                </div>
+                                                                <div class="partial-text-row">
+                                                                        <label for="">Change Partial Pay Button Text </label>
+                                                                        <input type="text" name="cg_partial_btn_text" value="Partial Payment">
+                                                                        <div class="form-small-taxt">
+                                                                                <p>Pay 10% now rest at delivery</p>
+                                                                        </div>
                                                                 </div>
                                                         </div>
-                                                        </div>
-                                                       
+
                                                 </form>
                                         </div>
 
@@ -1305,11 +1332,11 @@ $store_name = $shop_name[0];
                                                 </form>
                                         </div>
                                         <div class="payxnowandrestondelivery-btn-row">
-                                        <form action="">
-                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                <form action="">
+                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
                                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
-                                        </form>
+                                                </form>
                                         </div>
                                 </div>
                         </div>
@@ -1322,7 +1349,7 @@ $store_name = $shop_name[0];
                                                                 <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
                                                                 <label for="cartid">Checkout or Buy Now Button</label>
                                                         </div>
-                                                        
+
                                                 </form>
                                         </div>
 
@@ -1358,11 +1385,11 @@ $store_name = $shop_name[0];
                                                 </form>
                                         </div>
                                         <div class="payxnowandrestondelivery-btn-row">
-                                        <form action="">
-                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                <form action="">
+                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
                                                                 <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                         </div>
-                                        </form>
+                                                </form>
                                         </div>
                                 </div>
                         </div>
