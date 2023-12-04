@@ -105,7 +105,7 @@
         }
 
         .payxnowandrestondelivery-form-wrap {
-               
+
                 width: 100%;
                 margin-top: 25px;
                 border: 1px solid #E6E7E9;
@@ -117,12 +117,29 @@
                 display: flex;
                 margin-bottom: 20px;
         }
-        .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40{width: calc(40% - 45px);}
-        .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60{width: calc(60% - 45px);}
-        .payxnowandrestondelivery-flex-col form .flex-row:last-child { margin-top: 11px;}
+
+        .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-40 {
+                width: calc(40% - 45px);
+        }
+
+        .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60 {
+                width: calc(60% - 45px);
+        }
+
+        .payxnowandrestondelivery-flex-col form .flex-row:last-child {
+                margin-top: 11px;
+        }
+
         .payxnowandrestondelivery-form-wrap.payxnowandrestondelivery-flex-row .payxnowandrestondelivery-flex-col {
-    flex: 1;
-}
+                flex: 1;
+        }
+
+        .form-small-text p {
+                color: #F05523;
+
+                font-family: Roboto;
+                font-size: 15px;
+        }
 
         @media only screen and (max-width: 991px) {
                 .payxnowandrestondelivery-main-area-row>div {
@@ -239,7 +256,7 @@ $store_name = $shop_name[0];
 
                 <div class="payxnowandrestondelivery-imgIns"><img src="/public/images/instruct/config6.webp?var=3" /></div>
         </div> -->
-       <!-- <div class="payxnowandrestondelivery-main-area-row ">
+        <!-- <div class="payxnowandrestondelivery-main-area-row ">
                 <div class="payxnowandrestondelivery-main-area ">
                         <h5><b class="text-orange">Step 5:</b> Replace this code with your theme's <b>Order Confirmation</b> email template.</h5>
                         <div><textarea rows="20" style="width: 100%;">{% capture email_title %}
@@ -1077,7 +1094,7 @@ $store_name = $shop_name[0];
                 </div>
         </div>-->
         <div class="payxnowandrestondelivery-zip-flex-row">
-                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40" >
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
                         <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2 class="">Cart page settings</h2>
                         </div>
@@ -1149,16 +1166,16 @@ $store_name = $shop_name[0];
                         </div>
                         <div class="payxnowandrestondelivery-row1 payxnowandrestondelivery-form-wrap payxnowandrestondelivery-flex-row">
                                 <div class="payxnowandrestondelivery-flex-col">
-                                <form method="post" onsubmit="return validate_chkcart()">
-                                        <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
-                                                <label for="cartid">Enable Add to Cart Button</label>
-                                        </div>
-                                        <!-- <div class="flex-row" id="cartbtnlabel" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
+                                        <form method="post" onsubmit="return validate_chkcart()">
+                                                <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                        <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
+                                                        <label for="cartid">Enable Add to Cart Button</label>
+                                                </div>
+                                                <!-- <div class="flex-row" id="cartbtnlabel" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
                                                         <label for="">add to cart button text</label>
                                                         <input type="text" id="addcartbtntext" name="addcartbtntext" value="<?php echo (isset($gtbtncolor[0]->add_to_cart_text) ? $gtbtncolor[0]->add_to_cart_text : ''); ?>">
                                                 </div> -->
-                                        <!-- <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                <!-- <div class="payxnowandrestondeliver-checkbox-wrap">
                                                 <input type="checkbox" <?php echo (isset($gtbtncolor[0]->buy_partial_btn) && $gtbtncolor[0]->buy_partial_btn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="partby" name="cart_show_btn[]" onclick="toggleTextBox('partby', 'partialbuy')" value="buywithpartial">
                                                 <label for="partby">buy now with partial</label>
                                         </div>
@@ -1166,34 +1183,34 @@ $store_name = $shop_name[0];
                                                 <label for="">Partial Buy button text</label>
                                                 <input type="text" id="partialbuybtntext" name="partialbuybtntext" value="<?php echo (isset($gtbtncolor[0]->partial_buy_now_text) ? $gtbtncolor[0]->partial_buy_now_text : ''); ?>">
                                         </div> -->
-                                        <!-- <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                <!-- <div class="payxnowandrestondeliver-checkbox-wrap">
                                                 <input type="checkbox" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
                                                 <label for="fullbuysplit">buy now</label>
                                         </div> -->
-                                        <!-- <div class="flex-row" id="fullbtnbuy" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
+                                                <!-- <div class="flex-row" id="fullbtnbuy" <?php echo (isset($gtbtncolor[0]->full_pay_buybtn) && $gtbtncolor[0]->full_pay_buybtn == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?>>
                                                         <label for="">Full Buy button text</label>
                                                         <input type="text" name="fullbuybtntext" value="<?php echo (isset($gtbtncolor[0]->full_buy_now_text) ? $gtbtncolor[0]->full_buy_now_text : ''); ?>">
                                                 </div> -->
 
-                                        <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                                </form>
+                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                        </form>
                                 </div>
                                 <div class="payxnowandrestondelivery-flex-col">
-                                <form method="post">
-                                        <div class="flex-row">
-                                                <label for="">Add to cart button color</label>
-                                                <input type="text" data-jscolor="{}" name="add_cart_btn_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_btn_color) ? $gtbtncolor[0]->add_cart_btn_color : ''); ?>">
-                                        </div>
-                                        <div class="flex-row">
-                                                <label for="">Add to cart button text color</label>
-                                                <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_text_color) ? $gtbtncolor[0]->add_cart_text_color : ''); ?>">
-                                        </div>
+                                        <form method="post">
+                                                <div class="flex-row">
+                                                        <label for="">Add to cart button color</label>
+                                                        <input type="text" data-jscolor="{}" name="add_cart_btn_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_btn_color) ? $gtbtncolor[0]->add_cart_btn_color : ''); ?>">
+                                                </div>
+                                                <div class="flex-row">
+                                                        <label for="">Add to cart button text color</label>
+                                                        <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_text_color) ? $gtbtncolor[0]->add_cart_text_color : ''); ?>">
+                                                </div>
 
-                                        
 
-                                        
-                                        
-                                </form>
+
+
+
+                                        </form>
 
                                 </div>
                         </div>
@@ -1201,108 +1218,110 @@ $store_name = $shop_name[0];
                                 <h2 class="">Cart button color setting</h2>
                                 <span style="color: red;font-weight: 700;" id="cart_error"></span>
                         </div> -->
-                        
+
                         <div class="payxnowandrestondelivery-row2 payxnowandrestondelivery-form-wrap">
                                 <div class="payxnowandrestondelivery-flex-row">
-                                      <div class="payxnowandrestondelivery-flex-col">
-                                      <form method="post" onsubmit="return validate_chkcart()">
-                                        <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
-                                                <label for="cartid">Enable Partial Payment Button</label>
+                                        <div class="payxnowandrestondelivery-flex-col">
+                                                <form method="post" onsubmit="return validate_chkcart()">
+                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
+                                                                <label for="cartid">Enable Partial Payment Button</label>
+                                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Change Partial Pay Button Text </label>
+                                                                <input type="text" name="cg_partial_btn_text" value="Partial Payment">
+                                                                <div class="form-small-taxt">
+                                                                        <p>Pay 10% now rest at delivery</p>
+                                                                </div>
+                                                        </div>
+                                                        <div class="btn-row" style="margin-top: 10px;">
+                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                                        </div>
+                                                </form>
                                         </div>
-                                        <div class="flex-row">
-                                                <label for="">Change Partial Pay Button Text </label>
-                                                <input type="text" name="cg_partial_btn_text" value="Partial Payment">
-                                                <div class="form-small-taxt"><p>Pay 10% now rest at delivery</p></div>
-                                        </div>
-                                        <div class="btn-row" style="margin-top: 10px;">
-                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                                        </div>
-                                      </form>
-                                      </div>  
-                              
-                                <div class="payxnowandrestondelivery-flex-col">
-                                <form method="post">
-                                        <!-- <div class="flex-row">
+
+                                        <div class="payxnowandrestondelivery-flex-col">
+                                                <form method="post">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Add to cart button color</label>
                                                 <input type="text" data-jscolor="{}" name="add_cart_btn_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_btn_color) ? $gtbtncolor[0]->add_cart_btn_color : ''); ?>">
                                         </div> -->
-                                        <!-- <div class="flex-row">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Add to cart button text color</label>
                                                 <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_text_color) ? $gtbtncolor[0]->add_cart_text_color : ''); ?>">
                                         </div> -->
 
-                                        <div class="flex-row">
-                                                <label for="">Partial buy now button color</label>
-                                                <input type="text" data-jscolor="{}" name="partialbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_btn_color) ? $gtbtncolor[0]->partial_buynow_btn_color : ''); ?>">
-                                        </div>
-                                        <div class="flex-row">
-                                                <label for="">Partial buy now button text color</label>
-                                                <input type="text" data-jscolor="{}" name="partialbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_text_color) ? $gtbtncolor[0]->partial_buynow_text_color : ''); ?>">
-                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Partial buy now button color</label>
+                                                                <input type="text" data-jscolor="{}" name="partialbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_btn_color) ? $gtbtncolor[0]->partial_buynow_btn_color : ''); ?>">
+                                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Partial buy now button text color</label>
+                                                                <input type="text" data-jscolor="{}" name="partialbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_text_color) ? $gtbtncolor[0]->partial_buynow_text_color : ''); ?>">
+                                                        </div>
 
-                                        <!-- <div class="flex-row">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Full buy now button color</label>
                                                 <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_btn_color) ? $gtbtncolor[0]->full_buy_btn_color : ''); ?>">
                                         </div> -->
-                                        <!-- <div class="flex-row">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Full buy now button text color</label>
                                                 <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_text_color) ? $gtbtncolor[0]->full_buy_text_color : ''); ?>">
                                         </div> -->
-                                        
-                                </form>
-                                </div>
+
+                                                </form>
+                                        </div>
                                 </div>
                         </div>
 
                         <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
                                 <div class="payxnowandrestondelivery-flex-row">
-                                      <div class="payxnowandrestondelivery-flex-col">
-                                      <form method="post" onsubmit="return validate_chkcart()">
-                                        <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
-                                                <label for="cartid">Checkout or Buy Now Button</label>
+                                        <div class="payxnowandrestondelivery-flex-col">
+                                                <form method="post" onsubmit="return validate_chkcart()">
+                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                <input type="checkbox" <?php echo (isset($gtbtncolor[0]->add_to_cartbtn) && $gtbtncolor[0]->add_to_cartbtn == '1') ? 'checked' : ''; ?> class="splite_checkbox" id="cartid" name="cart_show_btn[]" value="addtocart">
+                                                                <label for="cartid">Checkout or Buy Now Button</label>
+                                                        </div>
+                                                        <div class="btn-row" style="margin-top: 10px;">
+                                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                                                        </div>
+                                                </form>
                                         </div>
-                                        <div class="btn-row" style="margin-top: 10px;">
-                                                <button type="submit" name="track_cart_color_code" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
-                                        </div>
-                                      </form>
-                                      </div>  
-                                
-                                <div class="payxnowandrestondelivery-flex-col">
-                                <form method="post">
-                                        <!-- <div class="flex-row">
+
+                                        <div class="payxnowandrestondelivery-flex-col">
+                                                <form method="post">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Add to cart button color</label>
                                                 <input type="text" data-jscolor="{}" name="add_cart_btn_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_btn_color) ? $gtbtncolor[0]->add_cart_btn_color : ''); ?>">
                                         </div> -->
-                                        <!-- <div class="flex-row">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Add to cart button text color</label>
                                                 <input type="text" data-jscolor="{}" name="add_cart_txt_color" value="<?php echo (isset($gtbtncolor[0]->add_cart_text_color) ? $gtbtncolor[0]->add_cart_text_color : ''); ?>">
                                         </div> -->
 
-                                        <!-- <div class="flex-row">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Partial buy now button color</label>
                                                 <input type="text" data-jscolor="{}" name="partialbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_btn_color) ? $gtbtncolor[0]->partial_buynow_btn_color : ''); ?>">
                                         </div> -->
-                                        <!-- <div class="flex-row">
+                                                        <!-- <div class="flex-row">
                                                 <label for="">Partial buy now button text color</label>
                                                 <input type="text" data-jscolor="{}" name="partialbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->partial_buynow_text_color) ? $gtbtncolor[0]->partial_buynow_text_color : ''); ?>">
                                         </div> -->
 
-                                         <div class="flex-row">
-                                                <label for="">Full buy now button color</label>
-                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_btn_color) ? $gtbtncolor[0]->full_buy_btn_color : ''); ?>">
-                                        </div> 
-                                       <div class="flex-row">
-                                                <label for="">Full buy now button text color</label>
-                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_text_color) ? $gtbtncolor[0]->full_buy_text_color : ''); ?>">
-                                        </div> 
-                                        
-                                </form>
-                                </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Full buy now button color</label>
+                                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_btn_color) ? $gtbtncolor[0]->full_buy_btn_color : ''); ?>">
+                                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Full buy now button text color</label>
+                                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_text_color) ? $gtbtncolor[0]->full_buy_text_color : ''); ?>">
+                                                        </div>
+
+                                                </form>
+                                        </div>
                                 </div>
                         </div>
-                       
+
                 </div>
                 <?php //} 
                 ?>
