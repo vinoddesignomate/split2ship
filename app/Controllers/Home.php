@@ -86,7 +86,7 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.11') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.83') {
                     //echo"<pre>"; print_r($get_updated_plan); echo "</pre>";
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
@@ -2454,7 +2454,9 @@ class Home extends BaseController
             //     $track_color_array["full_buy_now_text"] = $this->request->getPost('fullbuybtntext');
             // }
             // echo "<pre>"; print_r($this->request->getPost()); echo"</pre>";
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.83') {
             echo "<pre>"; print_r($track_color_array); echo"</pre>";
+            }
             $this->user_model->track_checkout_button_color($track_color_array);
            // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
