@@ -128,7 +128,7 @@ class FrontController extends BaseController
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
                 "value" => $remaining_price,
-                //"target_selection" => "all",
+                "target_selection" => "all",
                 "customer_selection" => "all",
                 "allocation_method" => "across",
                 "starts_at" => date("Y-m-d H:i:s"),
@@ -150,8 +150,9 @@ class FrontController extends BaseController
 
 
             $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
-            $getprietuleidrec = json_decode($getprietuleid['body'], true);
-            if (array_key_exists('errors', $getprietuleidrec)) {
+            $createcouponrec = json_decode($createcoupon['body'], true);
+            print_r($createcouponrec);
+            if (array_key_exists('errors', $createcouponrec)) {
                 $returndata['errors'] = "invalid";
             } else {
                 $returndata['c_code'] = "PARTIALDISCOUNT";
