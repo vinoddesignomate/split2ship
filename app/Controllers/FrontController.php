@@ -116,16 +116,28 @@ class FrontController extends BaseController
             return 'not_found';
         }
     }
+    function generateRandomString($length)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $randomString;
+    }
     public function create_coupon_discount_order($body_data_decode, $remaining_price)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-        $randnum = rand(1,100);
+       // $randnum = rand(1, 100);
+        $randnum = $this->generateRandomString(4);
         $creatruledata = [
             "price_rule" => [
-                "title" => 'Remaining_Amount('.$randnum.')',
+                "title" => 'Remaining_Amount(' . $randnum . ')',
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
                 "value" => $remaining_price,
@@ -146,7 +158,7 @@ class FrontController extends BaseController
 
             $creatediscode = [
                 "discount_code" => [
-                    "code" => 'Remaining_Amount('.$randnum.')',
+                    "code" => 'Remaining_Amount(' . $randnum . ')',
                 ]
             ];
 
@@ -157,7 +169,7 @@ class FrontController extends BaseController
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                echo 'Remaining_Amount('.$randnum.')';
+                echo 'Remaining_Amount(' . $randnum . ')';
             }
         }
         //print_r($returndata);
