@@ -126,7 +126,7 @@ class FrontController extends BaseController
                 "title" => 'PARTIALDISCOUNT',
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
-                "value" => "-".$remaining_price,
+                "value" => $remaining_price,
                 "customer_selection" => "all",
             ]
         ];
