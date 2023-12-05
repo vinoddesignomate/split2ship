@@ -130,6 +130,7 @@ class FrontController extends BaseController
                 "customer_selection" => "all",
             ]
         ];
+        print_r($creatruledata);
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
