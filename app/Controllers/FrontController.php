@@ -122,9 +122,10 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
+        $randnum = rand();
         $creatruledata = [
             "price_rule" => [
-                "title" => 'PARTIALDISCOUNT',
+                "title" => 'Remaining_Amount('.$randnum.')',
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
                 "value" => $remaining_price,
@@ -138,25 +139,25 @@ class FrontController extends BaseController
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
-        print_r($getprietuleidrec);
+        //print_r($getprietuleidrec);
         if (array_key_exists('errors', $getprietuleidrec)) {
             echo "invalid";
         } else {
 
             $creatediscode = [
                 "discount_code" => [
-                    "code" => 'PARTIALDISCOUNT',
+                    "code" => 'Remaining_Amount('.$randnum.')',
                 ]
             ];
 
 
             $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
             $createcouponrec = json_decode($createcoupon['body'], true);
-            print_r($createcouponrec);
+            //print_r($createcouponrec);
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                echo "PARTIALDISCOUNT";
+                echo 'Remaining_Amount('.$randnum.')';
             }
         }
         //print_r($returndata);
