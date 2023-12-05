@@ -127,7 +127,10 @@ class FrontController extends BaseController
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
                 "value" => $remaining_price,
+                "target_selection" => "all",
                 "customer_selection" => "all",
+                "allocation_method" => "across",
+                "starts_at" => date("Y-m-d H:i:s"),
             ]
         ];
         print_r($creatruledata);
