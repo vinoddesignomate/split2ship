@@ -138,12 +138,12 @@ class Home extends BaseController
 
                         $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                        $getprietuleidrec = json_decode($getprietuleid['body'], true);
-                        $fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
+                        $getprietuleidrecfull = json_decode($getprietuleid['body'], true);
+                        $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
 
 
-                        echo "getprietuleidrec id<pre>";
-                        print_r($getprietuleidrec);
+                        echo "getprietuleidrecfull<pre>";
+                        print_r($getprietuleidrecfull);
                         echo "</pre>";
 
 
