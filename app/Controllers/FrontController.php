@@ -116,6 +116,32 @@ class FrontController extends BaseController
             return 'not_found';
         }
     }
+    public function create_coupon_discount_order($body_data_decode, $remaining_price)
+    {
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+        $get_details = $this->user_model->get_tokens($shopname);
+        $creatruledata = [
+            "price_rule" => [
+                "title" => 'PARTIALDISCOUNT',
+                "target_type" => "line_item",
+                "value_type" => 'fixed_amount',
+                "value" => "-".$remaining_price,
+                "customer_selection" => "all",
+            ]
+        ];
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
+        $getprietuleidrec = json_decode($getprietuleid['body'], true);
+
+        echo "getprietuleid<pre>";
+        print_r($getprietuleid);
+        echo "</pre>";
+
+
+        echo "getprietuleidrec<pre>";
+        print_r($getprietuleidrec);
+        echo "</pre>";
+    }
     public function create_draft_order()
     {
 
@@ -130,6 +156,8 @@ class FrontController extends BaseController
         $cartarray = $body_data_decode['cart_item'];
 
         $get_details = $this->user_model->get_tokens($shopname);
+
+
         if ($get_details->zip_code_enable_disabled == 0) {
             $line_item_arra = array();
             $chekpartial = 0;
@@ -346,19 +374,15 @@ class FrontController extends BaseController
                 $ilosku = $ilosku + 1;
                 $line_item_arra[] = $line_item;
             }
-            //echo $chekpartial;
-            //    print_r($line_item_arra);
-
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //     echo "line_item_arra<pre>";
-            //     print_r($line_item_arra);
-            //     echo "</pre>";
-            // }
             $final_total_price_rem = str_replace("-", "", $remaining_price);
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-            if ($shopname == 'desinomatetest.myshopify.com') {
-                return $this->common->draft_order_creat2($get_details->access_token, $shopname, $final_array);
+
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.35') {
+                $this->create_coupon_discount_order($body_data_decode, $remaining_price);
+                // }
+                //if ($shopname == 'desinomatetest.myshopify.com') {
+                // return $this->common->draft_order_creat2($get_details->access_token, $shopname, $final_array);
             } else {
                 return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
             }
