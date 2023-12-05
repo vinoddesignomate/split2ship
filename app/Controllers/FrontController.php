@@ -118,6 +118,7 @@ class FrontController extends BaseController
     }
     public function create_coupon_discount_order($body_data_decode, $remaining_price)
     {
+        $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
@@ -127,7 +128,7 @@ class FrontController extends BaseController
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
                 "value" => $remaining_price,
-                "target_selection" => "all",
+                //"target_selection" => "all",
                 "customer_selection" => "all",
                 "allocation_method" => "across",
                 "starts_at" => date("Y-m-d H:i:s"),
@@ -135,16 +136,28 @@ class FrontController extends BaseController
         ];
         print_r($creatruledata);
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
+
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
+        if (array_key_exists('errors', $getprietuleidrec)) {
+            $returndata['errors'] = "invalid";
+        } else {
 
-        echo "getprietuleid<pre>";
-        print_r($getprietuleid);
-        echo "</pre>";
+            $creatediscode = [
+                "discount_code" => [
+                    "code" => 'PARTIALDISCOUNT',
+                ]
+            ];
 
 
-        echo "getprietuleidrec<pre>";
-        print_r($getprietuleidrec);
-        echo "</pre>";
+            $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
+            $getprietuleidrec = json_decode($getprietuleid['body'], true);
+            if (array_key_exists('errors', $getprietuleidrec)) {
+                $returndata['errors'] = "invalid";
+            } else {
+                $returndata['c_code'] = "PARTIALDISCOUNT";
+            }
+        }
+        return $returndata;
     }
     public function create_draft_order()
     {
