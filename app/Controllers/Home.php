@@ -86,7 +86,7 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.83') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.35') {
                     //echo"<pre>"; print_r($get_updated_plan); echo "</pre>";
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
