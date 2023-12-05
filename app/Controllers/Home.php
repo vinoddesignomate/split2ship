@@ -112,6 +112,26 @@ class Home extends BaseController
                     echo "getprietuleidrec<pre>";
                     print_r($getprietuleidrec);
                     echo "</pre>";
+
+
+                    $targetCode = 'Remaining_Amount';
+                    $matchingCode = null;
+                    foreach ($getprietuleidrec['discount_codes'] as $discount) {
+                        if (strpos($discount['code'], $targetCode) !== false) {
+                            // Found a discount code containing "Remaining_Amount"
+                            $matchingCode = $discount['code'];
+                            //echo 'Found matching code: ' . $completeCode;
+                            // You can access other details like amount and type using $discount['amount'] and $discount['type']
+                            break; // If you want to stop searching after the first match
+                        }
+                    }
+                    if ($matchingCode !== null) {
+                        // Print the matching code outside the loop
+                        echo 'Found matching code: ' . $matchingCode;
+                    } else {
+                        echo 'No matching code found.';
+                    }
+
                     //die();
                     /*
                     $paid_price = 0;
@@ -2444,14 +2464,14 @@ class Home extends BaseController
                         break;
                 }
             }
-            
+
             if ($this->request->getPost('partialbuybtntext') != "") {
                 $track_color_array["partial_buy_now_text"] = $this->request->getPost('partialbuybtntext');
             }
-            
+
             $this->user_model->track_checkout_button_color($track_color_array);
-           echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
-        }        
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+        }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];
