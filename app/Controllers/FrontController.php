@@ -122,7 +122,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-        $randnum = rand();
+        $randnum = rand(1,100);
         $creatruledata = [
             "price_rule" => [
                 "title" => 'Remaining_Amount('.$randnum.')',
