@@ -157,7 +157,8 @@ class FrontController extends BaseController
                 $returndata['c_code'] = "PARTIALDISCOUNT";
             }
         }
-        return $returndata;
+        print_r($returndata);
+        //return $returndata;
     }
     public function create_draft_order()
     {
