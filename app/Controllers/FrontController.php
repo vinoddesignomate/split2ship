@@ -139,7 +139,7 @@ class FrontController extends BaseController
 
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
         if (array_key_exists('errors', $getprietuleidrec)) {
-            $returndata['errors'] = "invalid";
+            echo "invalid";
         } else {
 
             $creatediscode = [
@@ -153,12 +153,12 @@ class FrontController extends BaseController
             $createcouponrec = json_decode($createcoupon['body'], true);
             print_r($createcouponrec);
             if (array_key_exists('errors', $createcouponrec)) {
-                $returndata['errors'] = "invalid";
+                echo "invalid";
             } else {
-                $returndata['c_code'] = "PARTIALDISCOUNT";
+                echo "PARTIALDISCOUNT";
             }
         }
-        print_r($returndata);
+        //print_r($returndata);
         //return $returndata;
     }
     public function create_draft_order()
