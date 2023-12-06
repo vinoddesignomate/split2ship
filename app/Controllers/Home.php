@@ -109,9 +109,9 @@ class Home extends BaseController
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    // echo "getprietuleidrec<pre>";
-                    // print_r($getprietuleidrec);
-                    // echo "</pre>";
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
 
 
                     $targetCode = 'Remaining_Amount';
@@ -160,11 +160,11 @@ class Home extends BaseController
                         print_r($fulfilarray);
                         echo "</pre>";
 
-                        $getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
+                        // $getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
 
-                        echo "fulfiledorder<pre>";
-                        print_r($getprietuleid);
-                        echo "</pre>";
+                        // echo "fulfiledorder<pre>";
+                        // print_r($getprietuleid);
+                        // echo "</pre>";
 
 
                         $paid_price = 0;
