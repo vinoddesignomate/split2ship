@@ -313,13 +313,13 @@ class Home extends BaseController
                         // Define the order data
 
                         if ($linitemdisount > 0) {
-                            $finaldiscount = $linitemdisount + $getprietuleidrec['order']['current_total_price'];
+                            $finaldiscount = $linitemdisount + $getprietuleidrec['order']['subtotal_price'];
                             $titla_name = "Partial Payment+Applied Discount";
                         } else {
-                            $finaldiscount = $getprietuleidrec['order']['current_total_price'];
+                            $finaldiscount = $getprietuleidrec['order']['subtotal_price'];
                             $titla_name = "Partial Payment";
                         }
-                        $finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
+                        //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
                         if ($getprietuleidrec['order']['taxes_included'] == 1) {
                             $txincude = 1;
                             $finalprice = $taxamounttotal - $order_tax;
