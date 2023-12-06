@@ -118,6 +118,262 @@ class AppwhookController extends BaseController
             return array("headers" => $headers, "body" => $response[1]);
         }
     }
+    function create_double_cod_orders2($jsndata, $get_resulsts, $part_type)
+    {
+        if (!isset($code_has_run)) {
+            $track_double_order = array(
+                "orderid_paid" => $jsndata->id,
+                "order_number_paid" => $jsndata->name,
+                "shop_url" => $_GET['whshp'],
+                "status" => 'pending_cod',
+                "movement" => date("Y-m-d H:i:s"),
+            );
+            $code_has_run = true;
+            //track main order into database
+            $this->user_model->track_double_orders($track_double_order);
+        }
+
+        //get fullfilment id from main order
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $jsndata->id . '/fulfillment_orders.json', array(), 'GET', $get_resulsts->access_token, $_GET['whshp']);
+
+        $getprietuleidrec = json_decode($getprietuleid['body'], true);
+        $fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
+
+        $fulfilarray = array("fulfillment" => array(
+            "line_items_by_fulfillment_order" => array(
+                array(
+                    "fulfillment_order_id" => $fulfilid,
+                )
+            ),
+        ));
+
+        //set main order fulfilment by api
+        $getprietuleid = $this->common->create_fulfilmentorders($get_resulsts->access_token, $_GET['whshp'], $fulfilarray);
+        $paid_price = 0;
+        $linitemdisount = 0;
+        $taxamounttotal = 0;
+        $order_tax = 0;
+        $tax_lines = [];
+        $line_items = [];
+        //get main orders products details 
+
+
+
+        foreach ($jsndata->line_items as $products) {
+            //set condition for get only main products
+            if (!empty($products->properties) && isset($products->properties)) {
+                $chkpropeties = array("proertie" => "get");
+                if ($products->name != "Partial Pending Payment") {
+                    if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
+                        $item_price = $products->properties[2]->value;
+                        $tax_price = $products->properties[3]->value;
+                        $productvarient = $products->properties[1]->value;
+                        if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
+                            $item_discount_item = $products->properties[4]->value;
+                        } else {
+                            $item_discount_item = 0;
+                        }
+                        $paidprice_get = $products->properties[2]->value;
+                    } else {
+                        $item_price = $products->price;
+                        if (isset($products->total_discount) && $products->total_discount != "") {
+                            $item_discount_item = $products->total_discount;
+                        } else {
+                            $item_discount_item = 0;
+                        }
+                        $productvarient = $products->variant_id;
+                        //$tax_price = 0;
+                        $tax_price = $products->discount_allocations[0]->amount;
+                        //$paidprice_get = $products->properties[1]->value;
+                        $paidprice_get = $paidprice_get = $products->price-$products->discount_allocations[0]->amount;
+                    }
+
+                    $linitemdisount = $linitemdisount + $item_discount_item;
+
+                    if (!empty($products->tax_lines)) {
+                        foreach ($products->tax_lines as $tax_items) {
+                            if ($tax_price == 0) {
+                                $taxamount = 0;
+                            } else {
+                                //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                                if ($jsndata->taxes_included == 1) {
+                                    $taxamount = ($tax_items->rate * $tax_price) / (1 + $tax_items->rate);
+                                } else {
+                                    $taxamount = $tax_price * $tax_items->rate;
+                                }
+                                // } else {
+                                //     $taxamount = $tax_price * $tax_items->rate;
+                                // }
+                            }
+
+                            $getitemtx = $tax_price + $taxamount;
+                            $taxamounttotal = $taxamounttotal + $getitemtx;
+
+
+                            $order_tax = $order_tax + $taxamount;
+
+                            $tax_lines[] = [
+                                'title' => $tax_items->title,
+                                'price' => $taxamount,
+                                'rate' => $tax_items->rate,
+                            ];
+                        }
+                    } else {
+                        $taxamounttotal = $taxamounttotal + $tax_price;
+                    }
+
+                    $line_items[] =
+                        [
+                            "variant_id" => $productvarient,
+                            "quantity" => $products->quantity
+                        ];
+
+                    $paid_price = $paid_price + $paidprice_get;
+                }
+            } else {
+                $chkpropeties = array();
+            }
+        }
+        //get user address
+        if (isset($jsndata->shipping_address)) {
+
+            if (isset($jsndata->shipping_address->phone)) {
+                $store_phnum = str_replace(" ", "", $jsndata->shipping_address->phone);
+                $store_phnum = str_replace("(", "", $store_phnum);
+                $store_phnum = str_replace(")", "", $store_phnum);
+                $store_phnum = str_replace("-", "", $store_phnum);
+            } else {
+                $store_phnum = "";
+            }
+
+
+            $first_name = $jsndata->shipping_address->first_name;
+            $las_name = $jsndata->shipping_address->last_name;
+            $address1 = $jsndata->shipping_address->address1;
+            $address2 = (isset($jsndata->shipping_address->address2) ? $jsndata->shipping_address->address2 : '');
+            $phone = $store_phnum;
+            $city = $jsndata->shipping_address->city;
+            $province = $jsndata->shipping_address->province;
+            $zip = $jsndata->shipping_address->zip;
+            $country = $jsndata->shipping_address->country;
+        } else {
+
+            if (isset($jsndata->billing_address->phone)) {
+                $store_phnum = str_replace(" ", "", $jsndata->billing_address->phone);
+                $store_phnum = str_replace("(", "", $store_phnum);
+                $store_phnum = str_replace(")", "", $store_phnum);
+                $store_phnum = str_replace("-", "", $store_phnum);
+            } else {
+                $store_phnum = "";
+            }
+            $first_name = $jsndata->billing_address->first_name;
+            $las_name = $jsndata->billing_address->last_name;
+            $address1 = $jsndata->billing_address->address1;
+            $address2 = (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : '');
+            $phone = $store_phnum;
+            $city = $jsndata->billing_address->city;
+            $province = $jsndata->billing_address->province;
+            $zip = $jsndata->billing_address->zip;
+            $country = $jsndata->billing_address->country;
+        }
+        if ($linitemdisount > 0) {
+            $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
+            $titla_name = "Partial Payment+Applied Discount";
+        } else {
+            $finaldiscount = $jsndata->subtotal_price;
+            $titla_name = "Partial Payment";
+        }
+
+
+        if ($jsndata->taxes_included == 1) {
+            $txincude = 1;
+            $finalprice = $taxamounttotal - $order_tax;
+            //$finalprice = $finalprice - $finaldiscount;
+        } else {
+            $txincude = false;
+            $finalprice = $taxamounttotal;
+        }
+
+        if (!empty($chkpropeties)) {
+            $order_data = [
+                "order" => [
+                    "line_items" => $line_items,
+                    "financial_status" => "pending",
+                    "tax_lines" => $tax_lines,
+                    "total_tax" => $order_tax,
+                    "transactions" => [
+                        [
+                            "kind" => "authorization",
+                            "status" => "success",
+                            "amount" => $finalprice,
+                            "gateway" => "Cash on Delivery"
+                        ]
+                    ],
+                    "shipping_address" => [
+                        "first_name" => $first_name,
+                        "last_name" => $las_name,
+                        "address1" => $address1 . $address2,
+                        "phone" => $phone,
+                        "city" => $city,
+                        "province" => $province,
+                        "country" => $country,
+                        "zip" => $zip
+                    ],
+                    "taxes_included" => $txincude,
+                    "customer" => [
+                        "id" => $jsndata->customer->id
+                    ],
+                    "note_attributes" => [
+                        [
+                            "name" => "Suffix",
+                            "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
+                        ]
+                    ],
+                    "name" => $jsndata->name . '-SplitOrder',
+                    "discount_codes" => [
+                        [
+                            "code" => $titla_name,
+                            "amount" => $finaldiscount,
+                            "type" => "fixed_amount"
+                        ]
+                    ]
+                ]
+            ];
+
+
+            $resposne_array = array("name" => "actual order_data discountwise" . json_encode($order_data));
+            $this->user_model->check_test_response($resposne_array);
+
+            $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
+
+            // $resposne_array = array("name" => "plus order" . $_GET['whshp']);
+            // $this->user_model->check_test_response($resposne_array); 
+
+            $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
+
+            $decode_get_actual_orders = json_decode($get_actual_orders);
+            if (isset($decode_get_actual_orders->order->id)) {
+
+                //update second order which is created by API
+                $track_double_order = array(
+                    "orderid_paid" => $jsndata->id,
+                    "order_id_cod" => $decode_get_actual_orders->order->id,
+                    "order_number_cod" => $jsndata->name . '-SplitOrder',
+                    "shop_url" => $_GET['whshp'],
+                    "status" => 'success',
+                );
+                $this->user_model->track_double_orders_update($track_double_order);
+                $this->user_model->update_double_order_with_old($decode_get_actual_orders->order->id, $jsndata->id, $_GET['whshp']);
+
+
+                $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
+                $this->user_model->check_test_response($resposne_array);                
+                $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+            }
+        }
+        echo "200 ok";
+        exit();
+    }
     function create_double_cod_orders($jsndata, $get_resulsts, $part_type)
     {
         if (!isset($code_has_run)) {
@@ -668,7 +924,20 @@ class AppwhookController extends BaseController
 
                             $subtotal_update = array_sum($reaminming_price);
                             $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
-                            if (isset($part_type) && $part_type == 'partial') {
+
+                            $targetCode = 'Remaining_Amount';
+                            $matchingCode = null;
+                            foreach ($jsndata->discount_codes as $discount) {
+                                if (strpos($discount['code'], $targetCode) !== false) {
+                                    $matchingCode = $discount['code'];
+                                    break;
+                                }
+                            }
+                            if ($matchingCode !== null) {
+
+                                $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
+                                $this->create_double_cod_orders2($jsndata, $get_resulsts, $part_type);
+                            } else if (isset($part_type) && $part_type == 'partial') {
                                 $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
                                 $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
                             } else {
