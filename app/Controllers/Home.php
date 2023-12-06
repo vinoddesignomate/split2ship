@@ -319,7 +319,7 @@ class Home extends BaseController
                             $finaldiscount = $getprietuleidrec['order']['current_total_price'];
                             $titla_name = "Partial Payment";
                         }
-
+                        $finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
                         if ($getprietuleidrec['order']['taxes_included'] == 1) {
                             $txincude = 1;
                             $finalprice = $taxamounttotal - $order_tax;
