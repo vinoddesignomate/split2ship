@@ -321,7 +321,7 @@ class Home extends BaseController
                             $finalprice = $taxamounttotal;
                         }
 
-                        $finaldiscount = $linitemdisount + $paid_price;
+                       // $finaldiscount = $linitemdisount + $paid_price;
                         $order_data = [
                             "order" => [
                                 "line_items" => $line_items,
