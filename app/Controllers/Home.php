@@ -363,7 +363,7 @@ class Home extends BaseController
                                         "value" => $getprietuleidrec['order']['name'] . '-SplitOrder'  # Add your desired suffix here
                                     ]
                                 ],
-                                "name" => $getprietuleidrec['order']['name'] . '-SplitOrder_1',
+                                "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
                             ]
                         ];
                         // echo "final_total_orderval=" . $final_total_orderval;
