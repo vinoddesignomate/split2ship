@@ -330,7 +330,7 @@ class Home extends BaseController
                         }
 
                         // $finaldiscount = $linitemdisount + $paid_price;
-                        $authpay = $finalprice - $finaldiscount;
+                        //$authpay = $finalprice - $finaldiscount;
                         $order_data = [
                             "order" => [
                                 "line_items" => $line_items,
@@ -341,7 +341,7 @@ class Home extends BaseController
                                     [
                                         "kind" => "authorization",
                                         "status" => "success",
-                                        "amount" => $authpay,
+                                        "amount" => $finalprice,
                                         "gateway" => "Cash on Delivery"
                                     ]
                                 ],
