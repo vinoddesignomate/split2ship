@@ -173,7 +173,7 @@ class Home extends BaseController
                         $linitemdisount = 0;
                         $taxamounttotal = 0;
                         $final_total_orderval = 0;
-
+                        $order_tax = 0;
                         $tax_lines = [];
                         foreach ($getprietuleidrec['order']['line_items'] as $products) {
                             if ($products['name'] != "Partial Pending Payment") {
@@ -217,7 +217,7 @@ class Home extends BaseController
 
 
                                 if (!empty($products['tax_lines'])) {
-                                    $order_tax = 0;
+                                   
                                     foreach ($products['tax_lines'] as $tax_items) {
                                         if ($tax_price == 0) {
                                             $taxamount = 0;
