@@ -207,8 +207,9 @@ class Home extends BaseController
                                     }
                                     $productvarient = $products['variant_id'];
                                     //$paidprice_get = $products['properties'][1]['value'];
-                                    $paidprice_get = $products['price'];
-                                    $tax_price = 0;
+                                    $paidprice_get = $products['price']-$products['discount_allocations'][0]['amount'];
+
+                                    $tax_price = $products['discount_allocations'][0]['amount'];
                                     // $item_price_actualval = $products['properties'][1]['value'] + $products['total_discount'];
                                 }
 
@@ -218,13 +219,20 @@ class Home extends BaseController
                                 if (!empty($products['tax_lines'])) {
                                     $order_tax = 0;
                                     foreach ($products['tax_lines'] as $tax_items) {
-                                        if ($paidprice_get == 0) {
+                                        if ($tax_price == 0) {
                                             $taxamount = 0;
                                         } else {
-                                            $taxamount = $paidprice_get * $tax_items['rate'];
+
+                                            if ($getprietuleidrec['order']['taxes_included'] == 1) {
+                                                $taxamount = ($tax_items['rate'] * $tax_price) / (1 + $tax_items['rate']);
+                                            } else {
+                                                $taxamount = $tax_price * $tax_items['rate'];
+                                            }
+
+                                            //$taxamount = $tax_price * $tax_items['rate'];
                                         }
                                         //echo "tax_price=".$tax_price;
-                                        $getitemtx = $paidprice_get + $taxamount;
+                                        $getitemtx = $tax_price + $taxamount;
                                         $taxamounttotal = $taxamounttotal + $getitemtx;
                                         $order_tax = $order_tax + $taxamount;
                                         $tax_lines[] = [
@@ -234,7 +242,7 @@ class Home extends BaseController
                                         ];
                                     }
                                 } else {
-                                    $taxamounttotal = $taxamounttotal + $paidprice_get;
+                                    $taxamounttotal = $taxamounttotal + $tax_price;
                                     $order_tax = 0;
                                 }
 
