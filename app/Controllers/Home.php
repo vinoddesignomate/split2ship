@@ -321,8 +321,8 @@ class Home extends BaseController
                             $finalprice = $taxamounttotal;
                         }
 
-                       // $finaldiscount = $linitemdisount + $paid_price;
-                       $authpay = $finalprice - $finaldiscount;
+                        // $finaldiscount = $linitemdisount + $paid_price;
+                        $authpay = $finalprice - $finaldiscount;
                         $order_data = [
                             "order" => [
                                 "line_items" => $line_items,
@@ -368,19 +368,21 @@ class Home extends BaseController
                             ]
                         ];
                         // echo "final_total_orderval=" . $final_total_orderval;
-                        echo "<pre>";
-                        print_r($orders_products_data);
+                        echo "order_data<pre>";
+                        print_r($order_data);
                         echo "</pre>";
+
+                        //      $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+
+                        // echo "<pre>";
+                        // print_r(json_decode($getorderarry));
+                        // echo "</pre>";
+
+                        // echo $getorderarry;
                     }
 
 
-                 $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    echo "<pre>";
-                    print_r(json_decode($getorderarry));
-                    echo "</pre>";
-
-                    // echo $getorderarry;
 
 
                     // $jsondecod = '{"fulfillment":{"line_items_by_fulfillment_order":[{"fulfillment_order_id":1046000814}],"tracking_info":{"number":"MS1562678","url":"https://www.my-shipping-company.com?tracking_number=MS1562678"}}}';
