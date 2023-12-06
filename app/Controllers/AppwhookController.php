@@ -928,8 +928,8 @@ class AppwhookController extends BaseController
                             $targetCode = 'Remaining_Amount';
                             $matchingCode = null;
                             foreach ($jsndata->discount_codes as $discount) {
-                                if (strpos($discount['code'], $targetCode) !== false) {
-                                    $matchingCode = $discount['code'];
+                                if (strpos($discount->code, $targetCode) !== false) {
+                                    $matchingCode = $discount->code;
                                     break;
                                 }
                             }
