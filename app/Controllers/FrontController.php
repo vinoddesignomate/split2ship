@@ -1580,11 +1580,54 @@ class FrontController extends BaseController
         print_r($this->request->getPost());
         echo "</pre>";
         $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
-        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
 
-        print_r($getprietuleid);
+        $accessToken = 'your-access-token';
+        $store = 'your-shopify-store.myshopify.com';
+        $discountCodeId = 'discount_code_id';
+
+        //$baseUrl = "https://".$this->request->getPost('shopname')."/admin/api/2023-10"; // Replace '2021-04' with the latest API version available
+        $url = 'https://' . $this->request->getPost('shopname') . "/admin/api/2023-10/price_rules/".$this->request->getPost('priceruleid')."/discount_codes/".$this->request->getPost('dis_cod_id').".json";
+        // $endpoint = "/price_rules/$discountCodeId.json";
+
+        // $url = $baseUrl . $endpoint;
+
+        $curl = curl_init($url);
+
+        // Set cURL options
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'X-Shopify-Access-Token: ' . $get_details->access_token
+        ]);
+
+        // Execute cURL session and get the response
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+
+        // Close cURL session
+        curl_close($curl);
+
+        // Check for errors
+        if ($error) {
+            echo "cURL Error: $error";
+        } else {
+            // Decode the JSON response
+            echo $response;
+            $result = json_decode($response, true);
+
+            // Check if the request was successful
+            // if (isset($result['price_rule']) && $result['price_rule']['id'] == $discountCodeId) {
+            //     echo "Discount code deleted successfully!";
+            // } else {
+            //     echo "Failed to delete discount code. Response: " . print_r($result, true);
+            // }
+        }
 
 
+        // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
+
+        //print_r($getprietuleid);
     }
     public function update_double_create()
     {
