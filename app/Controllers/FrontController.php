@@ -1622,7 +1622,8 @@ class FrontController extends BaseController
 
         // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
 
-        // print_r($getprietuleid);
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('dis_cod_id').'/discount_codes/'.$this->request->getPost('priceruleid').'.json', array(), 'GET', $get_details->access_token, $this->request->getPost('shopname'));
+        print_r($getprietuleid);
     }
     public function update_double_create()
     {
