@@ -87,24 +87,24 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $productadd = [
-                        "product" => [
-                            "title" => "Partial payment(for COD)"
-                        ]
-                    ];
+                    // $productadd = [
+                    //     "product" => [
+                    //         "title" => "Partial payment(for COD)"
+                    //     ]
+                    // ];
 
-                    $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
+                    // $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
-                    $products_adshh = json_decode($products_ads['body'], true);
-                    echo "products_adshh<pre>";
-                    print_r($products_adshh);
-                    echo "</pre>";
+                    // $products_adshh = json_decode($products_ads['body'], true);
+                    // echo "products_adshh<pre>";
+                    // print_r($products_adshh);
+                    // echo "</pre>";
 
-                    $this->user_model->insert_data_cod_product(array(
-                        "product_name" => $products_adshh['product']['title'],
-                        "varient_id" => $products_adshh['product']['variants'][0]['id'],
-                        "shop_url" => $_GET['shop']
-                    ));
+                    // $this->user_model->insert_data_cod_product(array(
+                    //     "product_name" => $products_adshh['product']['title'],
+                    //     "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                    //     "shop_url" => $_GET['shop']
+                    // ));
 
 
 
