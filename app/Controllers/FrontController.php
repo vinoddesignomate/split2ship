@@ -166,11 +166,11 @@ class FrontController extends BaseController
 
             $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
             $createcouponrec = json_decode($createcoupon['body'], true);
-            print_r($createcouponrec);
+            //print_r($createcouponrec);
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                echo $coupon_name."spltcg".$getprietuleidrec['price_rule']['id'];
+                echo $coupon_name."spltcg".$getprietuleidrec['price_rule']['id']."spltcg".$createcouponrec['discount_code']['id'];
             }
         }
         //print_r($returndata);
