@@ -1013,4 +1013,9 @@ class UserModel extends Model
         $update_q = 'UPDATE track_order_exchange_app SET new_double_order_id=? WHERE order_id=? AND shop_url=?';
         $this->db->query($update_q, array($doubleorderid, $orderid, $shopurl));
     }
+    public function insert_data_cod_product($data = array())
+    {
+        $this->db->table('split_track_cod_product')->insert($data);
+        return $this->db->insertID();
+    }
 }
