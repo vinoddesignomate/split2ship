@@ -1627,6 +1627,11 @@ class FrontController extends BaseController
 
         print_r($getprietuleid_del);
 
+
+        $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
+
+        print_r($del_pricerule);
+
         
     }
     public function update_double_create()
