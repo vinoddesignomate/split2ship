@@ -89,7 +89,7 @@ class Home extends BaseController
 
                     $productadd = [
                         "product" => [
-                            "title" => "Partial payment(As a Gift Card)"
+                            "title" => "Partial payment(for COD)"
                         ]
                     ];
 
