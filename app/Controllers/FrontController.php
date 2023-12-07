@@ -1576,62 +1576,14 @@ class FrontController extends BaseController
     }
     public function frontend_reset_coupon()
     {
-        echo "body_data_decode<pre>";
-        print_r($this->request->getPost());
-        echo "</pre>";
+        // echo "body_data_decode<pre>";
+        // print_r($this->request->getPost());
+        // echo "</pre>";
         $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
-
-        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes.json', array(), 'GET', $get_details->access_token, $this->request->getPost('shopname'));
-        print_r($getprietuleid);
-
-        /*$accessToken = 'your-access-token';
-        $store = 'your-shopify-store.myshopify.com';
-        $discountCodeId = 'discount_code_id';
-
-        //$baseUrl = "https://".$this->request->getPost('shopname')."/admin/api/2023-10"; // Replace '2021-04' with the latest API version available
-       // $url = 'https://' . $this->request->getPost('shopname') . "/admin/api/2023-10/price_rules/".$this->request->getPost('dis_cod_id')."/discount_codes/".$this->request->getPost('priceruleid').".json";
-        $url = 'https://' . $this->request->getPost('shopname') . "/admin/api/2023-10/price_rules/19906083651888/discount_codes/1409621459248.json";
-        // $endpoint = "/price_rules/$discountCodeId.json";
-
-        // $url = $baseUrl . $endpoint;
-
-        $curl = curl_init($url);
-
-        // Set cURL options
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        curl_setopt($curl, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'X-Shopify-Access-Token: ' . $get_details->access_token
-        ]);
-
-        // Execute cURL session and get the response
-        $response = curl_exec($curl);
-        $error = curl_error($curl);
-
-        // Close cURL session
-        curl_close($curl);
-        echo "response1=".$response;
-        // Check for errors
-        if ($error) {
-            echo "cURL Error: $error";
-        } else {
-            // Decode the JSON response
-            echo "response=".$response;
-            $result = json_decode($response, true);
-
-        }*/
-
-
-        // $getprietuleid_del = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
-
-        // print_r($getprietuleid_del);
-
+        // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes.json', array(), 'GET', $get_details->access_token, $this->request->getPost('shopname'));
+        // print_r($getprietuleid);
 
         $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
-
-        print_r($del_pricerule);
-
         
     }
     public function update_double_create()
