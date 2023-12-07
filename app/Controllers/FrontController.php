@@ -1576,11 +1576,15 @@ class FrontController extends BaseController
     }
     public function frontend_reset_coupon()
     {
-
-        
         echo "body_data_decode<pre>";
         print_r($this->request->getPost());
         echo "</pre>";
+        $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
+
+        print_r($getprietuleid);
+
+
     }
     public function update_double_create()
     {
