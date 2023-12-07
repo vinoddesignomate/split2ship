@@ -1581,6 +1581,9 @@ class FrontController extends BaseController
         echo "</pre>";
         $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
 
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes.json', array(), 'GET', $get_details->access_token, $this->request->getPost('shopname'));
+        print_r($getprietuleid);
+
         $accessToken = 'your-access-token';
         $store = 'your-shopify-store.myshopify.com';
         $discountCodeId = 'discount_code_id';
@@ -1622,8 +1625,7 @@ class FrontController extends BaseController
 
         // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
 
-        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes.json', array(), 'GET', $get_details->access_token, $this->request->getPost('shopname'));
-        print_r($getprietuleid);
+        
     }
     public function update_double_create()
     {
