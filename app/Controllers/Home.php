@@ -87,18 +87,19 @@ class Home extends BaseController
 
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $productadd = [
-                        "product" => [
-                            "title" => "Partial payment(for COD)"
-                        ]
-                    ];
+                    // $productadd = [
+                    //     "product" => [
+                    //         "title" => "Partial payment(for COD)"
+                    //     ]
+                    // ];
 
-                    $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
+                    // $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
-                    $products_adshh = json_decode($products_ads['body'], true);
-                    echo "products_adshh<pre>";
-                    print_r($products_adshh);
-                    echo "</pre>";
+                    // $products_adshh = json_decode($products_ads['body'], true);
+                    // echo "products_adshh<pre>";
+                    // print_r($products_adshh);
+                    // echo "</pre>";
+                    
 
                     //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '202.14.120.131') {
                     //echo"<pre>"; print_r($get_updated_plan); echo "</pre>";
