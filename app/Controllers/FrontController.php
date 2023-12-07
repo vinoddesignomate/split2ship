@@ -133,7 +133,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-       // $randnum = rand(1, 100);
+        // $randnum = rand(1, 100);
         $randnum = $this->generateRandomString(6);
         $coupon_name = 'Remaining_Amount(' . $randnum . ')';
         $creatruledata = [
@@ -170,7 +170,7 @@ class FrontController extends BaseController
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                echo $coupon_name."spltcg".$getprietuleidrec['price_rule']['id']."spltcg".$createcouponrec['discount_code']['id'];
+                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'];
             }
         }
         //print_r($returndata);
@@ -413,7 +413,7 @@ class FrontController extends BaseController
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
             if ($shopname == 'desinomatetest.myshopify.com') {
-            //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.222.28') {
+                //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.222.28') {
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price);
                 // }
                 //if ($shopname == 'desinomatetest.myshopify.com') {
@@ -1573,6 +1573,25 @@ class FrontController extends BaseController
             print_r($body_data_decode);
             echo "</pre>";
         }
+    }
+    public function frontend_reset_coupon()
+    {
+
+        $body_data = file_get_contents('php://input');
+        //echo $body_data;
+        $body_data_decode = json_decode($body_data, TRUE);
+
+        $prdyid = array();
+        foreach ($body_data_decode['carttknval'] as $crtval) {
+            $prdyid[] = $crtval['product_id'];
+        }
+        //$prdyid = array("1256","25968");
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+
+        echo "body_data_decode<pre>";
+        print_r($body_data_decode);
+        echo "</pre>";
     }
     public function update_double_create()
     {
