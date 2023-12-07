@@ -1587,7 +1587,7 @@ class FrontController extends BaseController
 
         //$baseUrl = "https://".$this->request->getPost('shopname')."/admin/api/2023-10"; // Replace '2021-04' with the latest API version available
        // $url = 'https://' . $this->request->getPost('shopname') . "/admin/api/2023-10/price_rules/".$this->request->getPost('dis_cod_id')."/discount_codes/".$this->request->getPost('priceruleid').".json";
-        $url = 'https://' . $this->request->getPost('shopname') . "/admin/api/2023-10/price_rules/19906083651888/discount_codes/1409621459248.json";
+        $url = 'https://' . $this->request->getPost('shopname') . "/admin/api/2023-10/price_rules/1409621459248/discount_codes/19906083651888.json";
         // $endpoint = "/price_rules/$discountCodeId.json";
 
         // $url = $baseUrl . $endpoint;
