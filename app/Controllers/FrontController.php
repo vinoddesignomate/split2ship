@@ -135,9 +135,10 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
        // $randnum = rand(1, 100);
         $randnum = $this->generateRandomString(6);
+        $coupon_name = 'Remaining_Amount(' . $randnum . ')';
         $creatruledata = [
             "price_rule" => [
-                "title" => 'Remaining_Amount(' . $randnum . ')',
+                "title" => $coupon_name,
                 "target_type" => "line_item",
                 "value_type" => 'fixed_amount',
                 "value" => $remaining_price,
@@ -158,18 +159,18 @@ class FrontController extends BaseController
 
             $creatediscode = [
                 "discount_code" => [
-                    "code" => 'Remaining_Amount(' . $randnum . ')',
+                    "code" => $coupon_name,
                 ]
             ];
 
 
             $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
             $createcouponrec = json_decode($createcoupon['body'], true);
-            //print_r($createcouponrec);
+            print_r($createcouponrec);
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                echo 'Remaining_Amount(' . $randnum . ')';
+                echo $coupon_name."spltcg".$getprietuleidrec['price_rule']['id'];
             }
         }
         //print_r($returndata);
