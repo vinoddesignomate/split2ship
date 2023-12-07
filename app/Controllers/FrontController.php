@@ -1623,9 +1623,9 @@ class FrontController extends BaseController
         }*/
 
 
-        $getprietuleid_del = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
+        // $getprietuleid_del = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes/'.$this->request->getPost('dis_cod_id').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
 
-        print_r($getprietuleid_del);
+        // print_r($getprietuleid_del);
 
 
         $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
