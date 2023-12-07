@@ -54,9 +54,9 @@ class Common
             curl_setopt($curl, CURLOPT_POSTFIELDS, $query);
         }
         $response = curl_exec($curl);
-        if($shop_url == 'desinomatetest.myshopify.com'){
-        echo "response=".$response;
-        }
+        // if($shop_url == 'desinomatetest.myshopify.com'){
+        // echo "response=".$response;
+        // }
         $error = curl_errno($curl);
         $error_msg  = curl_error($curl);
         curl_close($curl);
