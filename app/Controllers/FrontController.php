@@ -1577,20 +1577,9 @@ class FrontController extends BaseController
     public function frontend_reset_coupon()
     {
 
-        $body_data = file_get_contents('php://input');
-        //echo $body_data;
-        $body_data_decode = json_decode($body_data, TRUE);
-
-        $prdyid = array();
-        foreach ($body_data_decode['carttknval'] as $crtval) {
-            $prdyid[] = $crtval['product_id'];
-        }
-        //$prdyid = array("1256","25968");
-        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
-        $shopname = str_replace("http://", "", $shopname);
-
+        
         echo "body_data_decode<pre>";
-        print_r($body_data_decode);
+        print_r($this->request->getPost());
         echo "</pre>";
     }
     public function update_double_create()
