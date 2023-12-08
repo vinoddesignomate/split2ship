@@ -127,7 +127,7 @@ class FrontController extends BaseController
 
         return $randomString;
     }
-    public function create_coupon_discount_order($body_data_decode, $remaining_price)
+    public function create_coupon_discount_order($body_data_decode, $remaining_price, $coditem)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
@@ -170,6 +170,10 @@ class FrontController extends BaseController
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
+                if ($coditem != "") {
+                    $codprdct = $this->user_model->get_cod_product($shopname);
+                    print_r($codprdct);
+                }
                 echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'];
             }
         }
@@ -211,6 +215,7 @@ class FrontController extends BaseController
             // }
             $reqship = true;
             $ilosku = 1;
+            $coditem = "";
             foreach ($cartarray as $item_cart) {
 
 
@@ -220,7 +225,9 @@ class FrontController extends BaseController
                     $itmeskysplit =  "PART" . $ilosku . time();
                 }
 
-
+                if ($item_cart['title'] == "Partial payment(for COD)") {
+                    $coditem = "Partial payment(for COD)";
+                }
                 if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                     $size_tems = array();
 
@@ -414,7 +421,7 @@ class FrontController extends BaseController
 
             if ($shopname == 'desinomatetest.myshopify.com') {
                 //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.222.28') {
-                $this->create_coupon_discount_order($body_data_decode, $remaining_price);
+                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
                 // }
                 //if ($shopname == 'desinomatetest.myshopify.com') {
                 // return $this->common->draft_order_creat2($get_details->access_token, $shopname, $final_array);
@@ -1255,9 +1262,9 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $shopname);
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
-         echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+        echo "getprietuleidrec<pre>";
+        print_r($getprietuleidrec);
+        echo "</pre>";
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
             if ($allcoupon['target_type'] != 'shipping_line') {
@@ -1576,15 +1583,9 @@ class FrontController extends BaseController
     }
     public function frontend_reset_coupon()
     {
-        // echo "body_data_decode<pre>";
-        // print_r($this->request->getPost());
-        // echo "</pre>";
-        $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
-        // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'/discount_codes.json', array(), 'GET', $get_details->access_token, $this->request->getPost('shopname'));
-        // print_r($getprietuleid);
 
-        $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/'.$this->request->getPost('priceruleid').'.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
-        
+        $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
+        $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $this->request->getPost('priceruleid') . '.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
     }
     public function update_double_create()
     {

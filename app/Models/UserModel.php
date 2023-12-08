@@ -1018,4 +1018,10 @@ class UserModel extends Model
         $this->db->table('split_track_cod_product')->insert($data);
         return $this->db->insertID();
     }
+    public function get_cod_product($shopurl)
+    {
+        $gtquery = "SELECT * FROM split_track_cod_product WHERE shop_url = ?";
+        $fethdta = $this->db->query($gtquery, array($shopurl));
+        return $fethdta->getResult();
+    }
 }
