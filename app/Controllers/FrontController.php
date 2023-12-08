@@ -170,7 +170,7 @@ class FrontController extends BaseController
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                if ($coditem != "") {
+                if ($coditem == "") {
                     $codprdct = $this->user_model->get_cod_product($shopname);
                     print_r($codprdct);
                 }
