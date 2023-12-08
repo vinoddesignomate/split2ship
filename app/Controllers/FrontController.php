@@ -171,13 +171,13 @@ class FrontController extends BaseController
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                if ($body_data_decode['codcarientid'] == "") {
+                //if ($body_data_decode['codcarientid'] == "") {
                     $codprdct = $this->user_model->get_cod_product($shopname);
                     $varientid = $codprdct[0]->varient_id;
                     ///print_r($codprdct);
-                } else {
-                    $varientid = "";
-                }
+                // } else {
+                //     $varientid = "";
+                // }
                 echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid;
             }
         }
