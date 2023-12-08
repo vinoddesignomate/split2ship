@@ -172,9 +172,12 @@ class FrontController extends BaseController
             } else {
                 if ($coditem == "") {
                     $codprdct = $this->user_model->get_cod_product($shopname);
-                    print_r($codprdct);
+                    $varientid = $codprdct[0]->varient_id;
+                    ///print_r($codprdct);
+                } else {
+                    $varientid = "";
                 }
-                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'];
+                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid;
             }
         }
         //print_r($returndata);
