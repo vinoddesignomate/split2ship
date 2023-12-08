@@ -133,6 +133,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
+        
         // $randnum = rand(1, 100);
         $randnum = $this->generateRandomString(6);
         $coupon_name = 'Remaining_Amount(' . $randnum . ')';
@@ -170,7 +171,7 @@ class FrontController extends BaseController
             if (array_key_exists('errors', $createcouponrec)) {
                 echo "invalid";
             } else {
-                if ($coditem == "") {
+                if ($body_data_decode['codcarientid'] == "") {
                     $codprdct = $this->user_model->get_cod_product($shopname);
                     $varientid = $codprdct[0]->varient_id;
                     ///print_r($codprdct);
