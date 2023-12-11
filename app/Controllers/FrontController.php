@@ -58,6 +58,15 @@ class FrontController extends BaseController
                     if ($partperctg > $get_resulrs[0]->price) {
                         return 'not_found';
                     } else {
+                        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '38.137.25.38') {
+                            $get_details = $this->user_model->get_tokens($shopname);
+                            $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/'.$this->request->getPost('vid').'.json', array(), 'GET', $get_details->access_token, $shopname);
+                            $getvarientsres = json_decode($getvarients['body'], true);
+                            echo "<pre>";
+                            print_r($getvarientsres);
+                            echo "</pre>";
+                        }
+
 
                         if (empty($gtbtncolor)) {
                             $return_array = array(
@@ -133,7 +142,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-        
+
         // $randnum = rand(1, 100);
         $randnum = $this->generateRandomString(6);
         $coupon_name = 'Remaining_Amount(' . $randnum . ')';
@@ -172,9 +181,9 @@ class FrontController extends BaseController
                 echo "invalid";
             } else {
                 //if ($body_data_decode['codcarientid'] == "") {
-                    $codprdct = $this->user_model->get_cod_product($shopname);
-                    $varientid = $codprdct[0]->varient_id;
-                    ///print_r($codprdct);
+                $codprdct = $this->user_model->get_cod_product($shopname);
+                $varientid = $codprdct[0]->varient_id;
+                ///print_r($codprdct);
                 // } else {
                 //     $varientid = "";
                 // }
