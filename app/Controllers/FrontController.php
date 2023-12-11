@@ -58,62 +58,65 @@ class FrontController extends BaseController
                     if ($partperctg > $get_resulrs[0]->price) {
                         return 'not_found';
                     } else {
-                        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '38.137.25.38') {
-                            $get_details = $this->user_model->get_tokens($shopname);
-                            $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/'.$this->request->getPost('vid').'.json', array(), 'GET', $get_details->access_token, $shopname);
-                            $getvarientsres = json_decode($getvarients['body'], true);
-                            echo "<pre>";
-                            print_r($getvarientsres);
-                            echo "</pre>";
-                        }
 
+                        $get_details = $this->user_model->get_tokens($shopname);
+                        $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
+                        $getvarientsres = json_decode($getvarients['body'], true);
+                        // echo "<pre>";
+                        // print_r($getvarientsres['variant']['inventory_quantity']);
+                        // echo "</pre>";
 
-                        if (empty($gtbtncolor)) {
-                            $return_array = array(
-                                "full_price" => $get_resulrs[0]->price,
-                                "pro_pack" => $partperctg,
-                                "partial_type" => $get_resulrs[0]->partial_type,
-                                "partial_price" => $propartialper,
-                                "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
-                                "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                                "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-                                "add_to_cartbtn" => 1,
-                                "buy_partial_btn" => '',
-                                "full_pay_buybtn" => '',
-                                "add_to_cart_text" => '',
-                                "partial_buy_now_text" => '',
-                                "full_buy_now_text" => '',
-                                "add_cart_btn_color" => '',
-                                "add_cart_text_color" => '',
-                                "partial_buynow_btn_color" => '',
-                                "partial_buynow_text_color" => '',
-                                "full_buy_btn_color" => '',
-                                "full_buy_text_color" => '',
-                            );
+                        if (array_key_exists('errors', $getvarientsres)) {
+                            return 'not_found';
                         } else {
-                            $return_array = array(
-                                "full_price" => $get_resulrs[0]->price,
-                                "pro_pack" => $partperctg,
-                                "partial_type" => $get_resulrs[0]->partial_type,
-                                "partial_price" => $propartialper,
-                                "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
-                                "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                                "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-                                "add_to_cartbtn" => isset($gtbtncolor[0]->add_to_cartbtn) ? $gtbtncolor[0]->add_to_cartbtn : 1,
-                                "buy_partial_btn" => $gtbtncolor[0]->buy_partial_btn,
-                                "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn,
-                                "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
-                                "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
-                                "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
-                                "add_cart_btn_color" => $gtbtncolor[0]->add_cart_btn_color,
-                                "add_cart_text_color" => $gtbtncolor[0]->add_cart_text_color,
-                                "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
-                                "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
-                                "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
-                                "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
-                            );
+                            if (empty($gtbtncolor)) {
+                                $return_array = array(
+                                    "full_price" => $get_resulrs[0]->price,
+                                    "pro_pack" => $partperctg,
+                                    "partial_type" => $get_resulrs[0]->partial_type,
+                                    "partial_price" => $propartialper,
+                                    "var_qty" => $getvarientsres['variant']['inventory_quantity'],
+                                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                                    "add_to_cartbtn" => 1,
+                                    "buy_partial_btn" => '',
+                                    "full_pay_buybtn" => '',
+                                    "add_to_cart_text" => '',
+                                    "partial_buy_now_text" => '',
+                                    "full_buy_now_text" => '',
+                                    "add_cart_btn_color" => '',
+                                    "add_cart_text_color" => '',
+                                    "partial_buynow_btn_color" => '',
+                                    "partial_buynow_text_color" => '',
+                                    "full_buy_btn_color" => '',
+                                    "full_buy_text_color" => '',
+                                );
+                            } else {
+                                $return_array = array(
+                                    "full_price" => $get_resulrs[0]->price,
+                                    "pro_pack" => $partperctg,
+                                    "partial_type" => $get_resulrs[0]->partial_type,
+                                    "partial_price" => $propartialper,
+                                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                                    "add_to_cartbtn" => isset($gtbtncolor[0]->add_to_cartbtn) ? $gtbtncolor[0]->add_to_cartbtn : 1,
+                                    "buy_partial_btn" => $gtbtncolor[0]->buy_partial_btn,
+                                    "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn,
+                                    "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
+                                    "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
+                                    "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
+                                    "add_cart_btn_color" => $gtbtncolor[0]->add_cart_btn_color,
+                                    "add_cart_text_color" => $gtbtncolor[0]->add_cart_text_color,
+                                    "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
+                                    "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
+                                    "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
+                                    "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
+                                );
+                            }
+                            return json_encode($return_array);
                         }
-                        return json_encode($return_array);
                     }
                 } else {
                     return 'not_found';
