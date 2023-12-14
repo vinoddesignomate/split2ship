@@ -223,8 +223,8 @@ class AppwhookController extends BaseController
                     }
                     if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
                         
-                        unset($products->properties[2]);
-                        unset($products->properties[3]);
+                        //unset($products->properties[2]);
+                        //unset($products->properties[3]);
                         $line_items[] =
                             [
                                 "variant_id" => $productvarient,
