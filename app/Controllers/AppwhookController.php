@@ -185,7 +185,7 @@ class AppwhookController extends BaseController
                         //$tax_price = 0;
                         $tax_price = $products->discount_allocations[0]->amount;
                         //$paidprice_get = $products->properties[1]->value;
-                        $paidprice_get = $paidprice_get = $products->price-$products->discount_allocations[0]->amount;
+                        $paidprice_get = $paidprice_get = $products->price - $products->discount_allocations[0]->amount;
                     }
 
                     $linitemdisount = $linitemdisount + $item_discount_item;
@@ -221,12 +221,23 @@ class AppwhookController extends BaseController
                     } else {
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
-
-                    $line_items[] =
-                        [
-                            "variant_id" => $productvarient,
-                            "quantity" => $products->quantity
-                        ];
+                    if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                        
+                        unset($products->properties[2]);
+                        unset($products->properties[3]);
+                        $line_items[] =
+                            [
+                                "variant_id" => $productvarient,
+                                "quantity" => $products->quantity,
+                                "properties" => $products->properties
+                            ];
+                    } else {
+                        $line_items[] =
+                            [
+                                "variant_id" => $productvarient,
+                                "quantity" => $products->quantity
+                            ];
+                    }
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
@@ -367,7 +378,7 @@ class AppwhookController extends BaseController
 
 
                 $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
-                $this->user_model->check_test_response($resposne_array);                
+                $this->user_model->check_test_response($resposne_array);
                 $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
             }
         }
