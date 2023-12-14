@@ -2203,6 +2203,7 @@ class AppwhookController extends BaseController
             "onlyneon1.myshopify.com",
             "3d-printing-store-india.myshopify.com",
             "desinomatetest.myshopify.com",
+            "c18560.myshopify.com",
         );
         if (in_array($_GET['cartshop'], $shopenablearray)) {
             $get_addtocartdata = json_decode($getaddtocartdata);
