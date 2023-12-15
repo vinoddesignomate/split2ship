@@ -231,15 +231,15 @@ class AppwhookController extends BaseController
                             "variant_id" => $productvarient,
                             "quantity" => $products->quantity,
                         ];
-                        if (!empty($products['properties'])) {
+                        if (!empty($products->properties)) {
                             $properties = [];
 
                             // Iterate through each property and add it to the properties array
-                            foreach ($products['properties'] as $property) {
-                                if ($property['name'] != "partial_pay" && $property['name'] != "remaining_amount") {
+                            foreach ($products->properties as $gtproperty) {
+                                if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
                                     $properties[] = [
-                                        "name" => $property['name'],
-                                        "value" => $property['value'],
+                                        "name" => $gtproperty->name,
+                                        "value" => $gtproperty->value,
                                     ];
                                 }
                             }
