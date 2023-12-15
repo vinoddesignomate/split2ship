@@ -289,6 +289,10 @@ class Home extends BaseController
                                         "variant_id" => $productvarient,
                                         "quantity" => $products['quantity'],
                                         "properties" => $products['properties'],
+                                        "properties" => array(
+                                            array("name" => $products['properties'], "value" => "Full Payment"),
+                                            array("name" => "full_pay", "value" => $item_cart['price'])
+                                        )
                                         //'tax_lines' => $tax_lines,
                                         // "applied_discount" => [
                                         //     "value_type" => 'fixed_amount',
@@ -296,6 +300,9 @@ class Home extends BaseController
                                         //     "amount" => $item_discount_item
                                         // ]
                                     ];
+                                    foreach($products['properties'] as $allpro){
+                                        $line_items[]['properties'] = array("name" => $allpro['name'], "value" => $allpro['value']);
+                                    }
 
 
                                 $paid_price = $paid_price + $paidprice_get;
