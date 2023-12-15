@@ -191,7 +191,8 @@ class Home extends BaseController
 
                     $paid_price = 0;
                     $total_item_price = 0;
-                    $line_items = []; // Initialize an array to store line items
+                    $line_item = []; // Initialize an array to store line items
+                    $line_items = [];
                     $linitemdisount = 0;
                     $taxamounttotal = 0;
                     $final_total_orderval = 0;
@@ -268,23 +269,11 @@ class Home extends BaseController
                                 $order_tax = 0;
                             }
 
-                            // $orders_products_data[] = array(
-                            //     "order_id" => $getprietuleidrec['order']['id'],
-                            //     "product_id" => $products['id'],
-                            //     "varient_id" => $productvarient,
-                            //     "product_name" => $products['name'],
-                            //     "product_price" => $paidprice_get,
-                            //     "product_qty" => $products['quantity'],
-                            //     "product_sku" => $prosku,
-                            //     "shop_url" => $_GET['shop'],
-                            //     "product_discount" => $item_discount_item,
-                            //     "product_tax" => $order_tax,
-                            // );
 
                             unset($products['properties'][2]);
                             unset($products['properties'][3]);
 
-                            $line_items[] =
+                            $line_item[] =
                                 [
                                     "variant_id" => $productvarient,
                                     "quantity" => $products['quantity'],
@@ -298,28 +287,26 @@ class Home extends BaseController
                                     //         "value" => "Large",
                                     //     ],
                                     // ],
-                                    //"properties" => $products['properties'],
-                                    // "properties" => array(
-                                    //     array("name" => $products['properties'], "value" => "Full Payment"),
-                                    //     array("name" => "full_pay", "value" => $item_cart['price'])
-                                    // )
-                                    //'tax_lines' => $tax_lines,
-                                    // "applied_discount" => [
-                                    //     "value_type" => 'fixed_amount',
-                                    //     "value" => $item_discount_item,
-                                    //     "amount" => $item_discount_item
-                                    // ]
                                 ];
-                            foreach ($products['properties'] as $allpro) {
-                                $line_items['properties'][] = [
-                                    "name" => "Color",
-                                    "value" => "Red",
-                                ];
+                            if (!empty($product['properties'])) {
+                                $properties = [];
+
+                                // Iterate through each property and add it to the properties array
+                                foreach ($products['properties'] as $property) {
+                                    $properties[] = [
+                                        "name" => $property['name'],
+                                        "value" => $property['value'],
+                                    ];
+                                }
+
+                                // Add the properties array to the line item
+                                $line_item['properties'] = $properties;
                             }
 
 
                             $paid_price = $paid_price + $paidprice_get;
                         }
+                        $line_items[] = $line_item;
                     }
                     $discoutnarray = array(
                         "code" => "partialcode",
