@@ -222,47 +222,20 @@ class AppwhookController extends BaseController
                     } else {
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
-                    if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-                        //unset($products->properties[2]);
-                        //unset($products->properties[3]);
-
-                        $line_item = [
+                    $line_items[] =
+                        [
                             "variant_id" => $productvarient,
-                            "quantity" => $products->quantity,
+                            "quantity" => $products->quantity
                         ];
-                        //if (!empty($products->properties)) {
-                        $propertiesarry = [];
 
-                        // Iterate through each property and add it to the properties array
-                        foreach ($products->properties as $gtproperty) {
-                            if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
-                                $propertiesarry[] = [
-                                    "name" => $gtproperty->name,
-                                    "value" => $gtproperty->value,
-                                ];
-                            }
-                        }
-
-                        // Add the properties array to the line item
-                        $line_item['properties'] = $propertiesarry;
-                        //}
-                    } else {
-                        $line_items[] =
-                            [
-                                "variant_id" => $productvarient,
-                                "quantity" => $products->quantity
-                            ];
-                    }
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
             } else {
                 $chkpropeties = array();
             }
-            if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-                $line_items[] = $line_item;
-            }
+           
         }
         //get user address
         if (isset($jsndata->shipping_address)) {
@@ -324,8 +297,7 @@ class AppwhookController extends BaseController
             $finalprice = $taxamounttotal;
         }
 
-        $resposne_array = array("name" => "double order line_items" . json_encode($line_items));
-        $this->user_model->check_test_response($resposne_array);
+        
         if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
@@ -507,17 +479,52 @@ class AppwhookController extends BaseController
                     } else {
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
+                    if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-                    $line_items[] =
-                        [
+                        //unset($products->properties[2]);
+                        //unset($products->properties[3]);
+
+                        $line_item = [
                             "variant_id" => $productvarient,
-                            "quantity" => $products->quantity
+                            "quantity" => $products->quantity,
                         ];
+                        //if (!empty($products->properties)) {
+                        $propertiesarry = [];
+
+                        // Iterate through each property and add it to the properties array
+                        foreach ($products->properties as $gtproperty) {
+                            if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
+                                $propertiesarry[] = [
+                                    "name" => $gtproperty->name,
+                                    "value" => $gtproperty->value,
+                                ];
+                            }
+                        }
+
+                        // Add the properties array to the line item
+                        $line_item['properties'] = $propertiesarry;
+                        //}
+                    } else {
+                        $line_items[] =
+                            [
+                                "variant_id" => $productvarient,
+                                "quantity" => $products->quantity
+                            ];
+                    }
+
+                    // $line_items[] =
+                    //     [
+                    //         "variant_id" => $productvarient,
+                    //         "quantity" => $products->quantity
+                    //     ];
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
             } else {
                 $chkpropeties = array();
+            }
+            if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                $line_items[] = $line_item;
             }
         }
         //get user address
@@ -579,7 +586,9 @@ class AppwhookController extends BaseController
             $txincude = false;
             $finalprice = $taxamounttotal;
         }
-
+        $resposne_array = array("name" => "double order line_items" . json_encode($line_items));
+        $this->user_model->check_test_response($resposne_array);
+        
         if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
