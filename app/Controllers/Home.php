@@ -124,63 +124,63 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5581504872752.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5581504872752.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
 
 
-                    $targetCode = 'Remaining_Amount';
-                    $matchingCode = null;
-                    foreach ($getprietuleidrec['order']['discount_codes'] as $discount) {
-                        if (strpos($discount['code'], $targetCode) !== false) {
-                            // Found a discount code containing "Remaining_Amount"
-                            $matchingCode = $discount['code'];
-                            //echo 'Found matching code: ' . $completeCode;
-                            // You can access other details like amount and type using $discount['amount'] and $discount['type']
-                            break; // If you want to stop searching after the first match
-                        }
-                    }
-                    if ($matchingCode !== null) {
-                        // Print the matching code outside the loop
-                        echo 'Found matching code: ' . $matchingCode;
-                    } else {
-                        echo 'No matching code found.';
-                    }
+                    // $targetCode = 'Remaining_Amount';
+                    // $matchingCode = null;
+                    // foreach ($getprietuleidrec['order']['discount_codes'] as $discount) {
+                    //     if (strpos($discount['code'], $targetCode) !== false) {
+                    //         // Found a discount code containing "Remaining_Amount"
+                    //         $matchingCode = $discount['code'];
+                    //         //echo 'Found matching code: ' . $completeCode;
+                    //         // You can access other details like amount and type using $discount['amount'] and $discount['type']
+                    //         break; // If you want to stop searching after the first match
+                    //     }
+                    // }
+                    // if ($matchingCode !== null) {
+                        
+                    //     echo 'Found matching code: ' . $matchingCode;
+                    // } else {
+                    //     echo 'No matching code found.';
+                    // }
 
                     //die();
-                    if ($matchingCode !== null) {
+                    //if ($matchingCode !== null) {
 
 
-                        $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                        // $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                        $getprietuleidrecfull = json_decode($getprietuleid['body'], true);
-                        $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
-
-
-                        echo "getprietuleidrecfull<pre>";
-                        print_r($getprietuleidrecfull);
-                        echo "</pre>";
+                        // $getprietuleidrecfull = json_decode($getprietuleid['body'], true);
+                        // $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
 
 
+                        // echo "getprietuleidrecfull<pre>";
+                        // print_r($getprietuleidrecfull);
+                        // echo "</pre>";
 
-                        $fulfilarray = array("fulfillment" => array(
-                            "line_items_by_fulfillment_order" => array(
-                                array(
-                                    "fulfillment_order_id" => $fulfilid
-                                )
-                            ),
-                        ));
 
-                        echo "fulfilarray<pre>";
-                        print_r($fulfilarray);
-                        echo "</pre>";
+
+                        // $fulfilarray = array("fulfillment" => array(
+                        //     "line_items_by_fulfillment_order" => array(
+                        //         array(
+                        //             "fulfillment_order_id" => $fulfilid
+                        //         )
+                        //     ),
+                        // ));
+
+                        // echo "fulfilarray<pre>";
+                        // print_r($fulfilarray);
+                        // echo "</pre>";
 
                         // $getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
 
@@ -268,23 +268,27 @@ class Home extends BaseController
                                     $order_tax = 0;
                                 }
 
-                                $orders_products_data[] = array(
-                                    "order_id" => $getprietuleidrec['order']['id'],
-                                    "product_id" => $products['id'],
-                                    "varient_id" => $productvarient,
-                                    "product_name" => $products['name'],
-                                    "product_price" => $paidprice_get,
-                                    "product_qty" => $products['quantity'],
-                                    "product_sku" => $prosku,
-                                    "shop_url" => $_GET['shop'],
-                                    "product_discount" => $item_discount_item,
-                                    "product_tax" => $order_tax,
-                                );
+                                // $orders_products_data[] = array(
+                                //     "order_id" => $getprietuleidrec['order']['id'],
+                                //     "product_id" => $products['id'],
+                                //     "varient_id" => $productvarient,
+                                //     "product_name" => $products['name'],
+                                //     "product_price" => $paidprice_get,
+                                //     "product_qty" => $products['quantity'],
+                                //     "product_sku" => $prosku,
+                                //     "shop_url" => $_GET['shop'],
+                                //     "product_discount" => $item_discount_item,
+                                //     "product_tax" => $order_tax,
+                                // );
+
+                                unset($products['properties'][2]);
+                                unset($products['properties'][3]);
 
                                 $line_items[] =
                                     [
                                         "variant_id" => $productvarient,
                                         "quantity" => $products['quantity'],
+                                        "properties" => $products['properties'],
                                         //'tax_lines' => $tax_lines,
                                         // "applied_discount" => [
                                         //     "value_type" => 'fixed_amount',
@@ -397,10 +401,10 @@ class Home extends BaseController
                                 "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
                             ]
                         ];
-                        // echo "final_total_orderval=" . $final_total_orderval;
-                        // echo "order_data<pre>";
-                        // print_r($order_data);
-                        // echo "</pre>";
+                        echo "final_total_orderval=" . $final_total_orderval;
+                        echo "order_data<pre>";
+                        print_r($order_data);
+                        echo "</pre>";
 
                              $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
@@ -409,7 +413,7 @@ class Home extends BaseController
                         echo "</pre>";
 
                         // echo $getorderarry;
-                    }*/
+                   // }
 
 
 
