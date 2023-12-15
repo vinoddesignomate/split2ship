@@ -292,7 +292,7 @@ class Home extends BaseController
                                 $properties = [];
 
                                 // Iterate through each property and add it to the properties array
-                                foreach ($products['properties'] as $property) {
+                                foreach ($products['properties'] as $property) { 
                                     $properties[] = [
                                         "name" => $property['name'],
                                         "value" => $property['value'],
