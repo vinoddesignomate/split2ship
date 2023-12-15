@@ -288,7 +288,7 @@ class Home extends BaseController
                                     [
                                         "variant_id" => $productvarient,
                                         "quantity" => $products['quantity'],
-                                        "properties" => $products['properties'],
+                                        //"properties" => $products['properties'],
                                         // "properties" => array(
                                         //     array("name" => $products['properties'], "value" => "Full Payment"),
                                         //     array("name" => "full_pay", "value" => $item_cart['price'])
@@ -301,7 +301,7 @@ class Home extends BaseController
                                         // ]
                                     ];
                                     foreach($products['properties'] as $allpro){
-                                        $line_items[]['properties'] = array("name" => $allpro['name'], "value" => $allpro['value']);
+                                        $line_items['properties'][] = array("name" => $allpro['name'], "value" => $allpro['value']);
                                     }
 
 
