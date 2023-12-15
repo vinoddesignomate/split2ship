@@ -306,7 +306,7 @@ class Home extends BaseController
 
                             $paid_price = $paid_price + $paidprice_get;
                         }
-                        $line_items[] = $line_item;
+                        $line_items = $line_item;
                     }
                     $discoutnarray = array(
                         "code" => "partialcode",
