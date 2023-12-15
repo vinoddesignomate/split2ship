@@ -479,10 +479,9 @@ class AppwhookController extends BaseController
                     } else {
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
-                    if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                    //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-                        //unset($products->properties[2]);
-                        //unset($products->properties[3]);
+                       
 
                         $line_item = [
                             "variant_id" => $productvarient,
@@ -504,13 +503,13 @@ class AppwhookController extends BaseController
                         // Add the properties array to the line item
                         $line_item['properties'] = $propertiesarry;
                         //}
-                    } else {
-                        $line_items[] =
-                            [
-                                "variant_id" => $productvarient,
-                                "quantity" => $products->quantity
-                            ];
-                    }
+                    // } else {
+                    //     $line_items[] =
+                    //         [
+                    //             "variant_id" => $productvarient,
+                    //             "quantity" => $products->quantity
+                    //         ];
+                    // }
 
                     // $line_items[] =
                     //     [
@@ -523,9 +522,9 @@ class AppwhookController extends BaseController
             } else {
                 $chkpropeties = array();
             }
-            if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+            //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
                 $line_items[] = $line_item;
-            }
+            //}
         }
         //get user address
         if (isset($jsndata->shipping_address)) {
@@ -588,7 +587,7 @@ class AppwhookController extends BaseController
         }
         $resposne_array = array("name" => "double order line_items" . json_encode($line_items));
         $this->user_model->check_test_response($resposne_array);
-        
+
         if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
