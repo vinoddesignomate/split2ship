@@ -270,8 +270,8 @@ class Home extends BaseController
                             }
 
 
-                            unset($products['properties'][2]);
-                            unset($products['properties'][3]);
+                            // unset($products['properties'][2]);
+                            //unset($products['properties'][3]);
 
                             // $line_item[] =
                             //     [
@@ -296,11 +296,13 @@ class Home extends BaseController
                                 $properties = [];
 
                                 // Iterate through each property and add it to the properties array
-                                foreach ($products['properties'] as $property) { 
-                                    $properties[] = [
-                                        "name" => $property['name'],
-                                        "value" => $property['value'],
-                                    ];
+                                foreach ($products['properties'] as $property) {
+                                    if ($property['name'] != "partial_pay" && $property['name'] != "remaining_amount") {
+                                        $properties[] = [
+                                            "name" => $property['name'],
+                                            "value" => $property['value'],
+                                        ];
+                                    }
                                 }
 
                                 // Add the properties array to the line item
