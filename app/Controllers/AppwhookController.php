@@ -155,6 +155,7 @@ class AppwhookController extends BaseController
         $order_tax = 0;
         $tax_lines = [];
         $line_items = [];
+        $line_item = [];
         //get main orders products details 
 
 
@@ -222,15 +223,31 @@ class AppwhookController extends BaseController
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
                     if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-                        
+
                         //unset($products->properties[2]);
                         //unset($products->properties[3]);
-                        $line_items[] =
-                            [
-                                "variant_id" => $productvarient,
-                                "quantity" => $products->quantity,
-                                "properties" => $products->properties
-                            ];
+
+                        $line_item = [
+                            "variant_id" => $productvarient,
+                            "quantity" => $products->quantity,
+                        ];
+                        if (!empty($products['properties'])) {
+                            $properties = [];
+
+                            // Iterate through each property and add it to the properties array
+                            foreach ($products['properties'] as $property) {
+                                if ($property['name'] != "partial_pay" && $property['name'] != "remaining_amount") {
+                                    $properties[] = [
+                                        "name" => $property['name'],
+                                        "value" => $property['value'],
+                                    ];
+                                }
+                            }
+
+                            // Add the properties array to the line item
+                            $line_item['properties'] = $properties;
+                        }
+                        $line_items[] = $line_item;
                     } else {
                         $line_items[] =
                             [
