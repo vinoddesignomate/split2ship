@@ -292,7 +292,7 @@ class Home extends BaseController
                                 "variant_id" => $productvarient,
                                 "quantity" => $products['quantity'],
                             ];
-                            if (!empty($product['properties'])) {
+                            if (!empty($products['properties'])) {
                                 $properties = [];
 
                                 // Iterate through each property and add it to the properties array
