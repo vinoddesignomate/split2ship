@@ -273,21 +273,25 @@ class Home extends BaseController
                             unset($products['properties'][2]);
                             unset($products['properties'][3]);
 
-                            $line_item[] =
-                                [
-                                    "variant_id" => $productvarient,
-                                    "quantity" => $products['quantity'],
-                                    // "properties" => [
-                                    //     [
-                                    //         "name" => "Color",
-                                    //         "value" => "Red",
-                                    //     ],
-                                    //     [
-                                    //         "name" => "Size",
-                                    //         "value" => "Large",
-                                    //     ],
-                                    // ],
-                                ];
+                            // $line_item[] =
+                            //     [
+                            //         "variant_id" => $productvarient,
+                            //         "quantity" => $products['quantity'],
+                            //         // "properties" => [
+                            //         //     [
+                            //         //         "name" => "Color",
+                            //         //         "value" => "Red",
+                            //         //     ],
+                            //         //     [
+                            //         //         "name" => "Size",
+                            //         //         "value" => "Large",
+                            //         //     ],
+                            //         // ],
+                            //     ];
+                            $line_item = [
+                                "variant_id" => $productvarient,
+                                "quantity" => $products['quantity'],
+                            ];
                             if (!empty($product['properties'])) {
                                 $properties = [];
 
@@ -306,7 +310,7 @@ class Home extends BaseController
 
                             $paid_price = $paid_price + $paidprice_get;
                         }
-                        $line_items = $line_item;
+                        $line_items[] = $line_item;
                     }
                     $discoutnarray = array(
                         "code" => "partialcode",
