@@ -548,7 +548,7 @@ $store_name = $shop_name[0];
                 if (!checkbox.checked && textboxId == "handliongtt") {
                         $.ajax({
                                 type: "POST",
-                                url: "shiprocket-config",
+                                url: "disbale_handling_charge",
                                 data: 'shop=<?php echo $_GET['shop'];?>&disbale_handling_charge=true',
                                 success: function(response) {
                                         
