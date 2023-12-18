@@ -159,7 +159,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                
+
                 width: 100%;
                 height: 100%;
         }
@@ -176,7 +176,10 @@
                 .payxnowandrestondelivery-zip-flex-row .payxnowandrestondelivery-col-60 {
                         width: 100%;
                 }
-                .edit-form-wrapper{max-width: 100%;}
+
+                .edit-form-wrapper {
+                        max-width: 100%;
+                }
 
 
 
@@ -271,6 +274,65 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
+
+        <?php if ($shpname == 'desinomatetest.myshopify.com') { ?>
+
+                <div class="payxnowandrestondelivery-zip-flex-row">
+                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
+                                <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
+                                        <div class="payxnowandrestondelivery-flex-row">
+                                                <div class="payxnowandrestondelivery-flex-col">
+
+                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                <input type="checkbox" checked="" class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
+                                                                <label for="fullbuysplit">Enable buy now Button</label>
+                                                        </div>
+                                                </div>
+                                                <div class="payxnowandrestondelivery-flex-col">
+                                                        <div class="flex-row">
+                                                                <label for="">Full buy now button color</label>
+                                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="#C9FFC6" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#C9FFC6" style="background-image: linear-gradient(to right, rgb(201, 255, 198) 0%, rgb(201, 255, 198) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
+                                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Full buy now button text color</label>
+                                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="#FFFFFF" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#FFFFFF" style="background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
+                                                        </div>
+                                                </div>
+
+
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
+                                <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
+                                        <div class="payxnowandrestondelivery-flex-row">
+                                                <div class="payxnowandrestondelivery-flex-col">
+
+                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                <input type="checkbox" checked="" class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
+                                                                <label for="fullbuysplit">Enable buy now Button</label>
+                                                        </div>
+                                                </div>
+                                                <div class="payxnowandrestondelivery-flex-col">
+                                                        <div class="flex-row">
+                                                                <label for="">Full buy now button color</label>
+                                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="#C9FFC6" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#C9FFC6" style="background-image: linear-gradient(to right, rgb(201, 255, 198) 0%, rgb(201, 255, 198) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
+                                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Full buy now button text color</label>
+                                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="#FFFFFF" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#FFFFFF" style="background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
+                                                        </div>
+                                                </div>
+
+
+                                        </div>
+                                </div>
+                        </div>
+
+                </div>
+
+        <?php } ?>
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
                         <div class="payxnowandrestondelivery-head-wrapper">
@@ -423,18 +485,18 @@ $store_name = $shop_name[0];
                                                                 <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="<?php echo (isset($gtbtncolor[0]->full_buy_text_color) ? $gtbtncolor[0]->full_buy_text_color : ''); ?>">
                                                         </div>
                                                 </div>
-                                                
+
 
                                         </div>
                                 </div>
 
                                 <div class="payxnowandrestondelivery-btn-row">
 
-                                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
-                                                        </div>
+                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                <button type="submit" name="track_cart_config" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                        </div>
 
-                                                </div>
+                                </div>
                         </form>
                 </div>
 
