@@ -313,7 +313,7 @@ $store_name = $shop_name[0];
                                                 <div class="payxnowandrestondelivery-flex-col">
 
                                                         <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                <input type="checkbox" checked="" class="splite_checkbox" id="handling_crg" name="cart_show_btn[]" nclick="toggleTextBox('handling_crg', 'handliongtt')" value="fullbuynow">
+                                                                <input type="checkbox" checked="" class="splite_checkbox" id="handling_crg" name="cart_show_btn[]" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="fullbuynow">
                                                                 <label for="fullbuysplit">Enable buy now Button</label>
                                                         </div>
                                                 </div>
