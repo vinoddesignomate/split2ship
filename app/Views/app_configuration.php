@@ -313,24 +313,32 @@ $store_name = $shop_name[0];
                                                 <div class="payxnowandrestondelivery-flex-col">
 
                                                         <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                <input type="checkbox" checked="" class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
+                                                                <input type="checkbox" checked="" class="splite_checkbox" id="handling_crg" name="cart_show_btn[]" nclick="toggleTextBox('handling_crg', 'handliongtt')" value="fullbuynow">
                                                                 <label for="fullbuysplit">Enable buy now Button</label>
                                                         </div>
                                                 </div>
-                                                <div class="payxnowandrestondelivery-flex-col">
+                                                <div stylw="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
                                                         <div class="flex-row">
-                                                                <label for="">Full buy now button color</label>
-                                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="#C9FFC6" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#C9FFC6" style="background-image: linear-gradient(to right, rgb(201, 255, 198) 0%, rgb(201, 255, 198) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
+                                                                <label for="">Title</label>
+                                                                <input type="text" name="handling_title">
                                                         </div>
                                                         <div class="flex-row">
-                                                                <label for="">Full buy now button text color</label>
-                                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="#FFFFFF" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#FFFFFF" style="background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
+                                                                <label for="">Handling price</label>
+                                                                <input type="text" name="handle_price">
                                                         </div>
                                                 </div>
 
 
                                         </div>
                                 </div>
+                                <div class="payxnowandrestondelivery-btn-row">
+
+                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                <button type="submit" name="enable_handling_submit nn      " class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                        </div>
+
+                                </div>
+
                         </div>
 
                 </div>
