@@ -2592,13 +2592,13 @@ class Home extends BaseController
 
                     $productupdate = [
                         "variant" => [
-                            "id" => $getdata[0]->varient_id,
+                            "id" => $products_adshh['product']['variants'][0]['id'],
                             "option1" => $this->request->getPost('handling_title'),
                             "price" => $this->request->getPost('handle_price')
                         ]
                     ];
 
-                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/'.$getdata[0]->varient_id.'.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/'.$products_adshh['product']['variants'][0]['id'].'.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
 
                     $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
