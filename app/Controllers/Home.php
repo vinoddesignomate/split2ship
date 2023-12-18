@@ -2565,7 +2565,7 @@ class Home extends BaseController
         }
 
         if ($this->request->getPost('enable_handling_submit')) {
-            
+
             if ($this->request->getPost('handling_title') != "" && $this->request->getPost('handle_price')) {
 
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
@@ -2581,7 +2581,7 @@ class Home extends BaseController
 
                     $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
-                    $products_adshh = json_decode($products_ads['body'], true);                  
+                    $products_adshh = json_decode($products_ads['body'], true);
 
                     $productupdate = [
                         "variant" => [
@@ -2594,7 +2594,7 @@ class Home extends BaseController
 
                     $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
-                  
+
 
                     $this->user_model->insert_data_cod_product(array(
                         "handling_charge_enalbe" => 1,
@@ -2636,7 +2636,6 @@ class Home extends BaseController
                         "shop_url" => $_GET['shop']
                     ));
                 }
-               
             }
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
@@ -2648,6 +2647,43 @@ class Home extends BaseController
         echo view('templates/header');
         echo view('app_configuration', $data);
         echo view('templates/footer');
+    }
+    public function disbale_handling_charge()
+    {
+        if ($this->request->getPost('disbale_handling_charge')) {
+
+            $get_details = $this->user_model->get_tokens($_REQUEST['shop']);
+            $getdata = $this->user_model->get_cod_product($_REQUEST['shop']);
+            //update products 
+            $update_hndling_productsdta = [
+                "product" => [
+                    "id" => $getdata[0]->product_id,
+                    "tags" => 'partial_cod_handle',
+                    "product_type" => 'splsp_rapp_cg'
+                ]
+            ];
+
+            $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.json', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_REQUEST['shop']);
+
+            //update varients
+            $update_productupdate = [
+                "variant" => [
+                    "id" => $getdata[0]->varient_id,
+                    "price" => '0'
+                ]
+            ];
+
+            $produtc_updatevrnt =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $getdata[0]->varient_id . '.json', $update_productupdate, 'PUT', $get_details->access_token, $_REQUEST['shop']);
+
+            $getdatavrnts = json_decode($produtc_updatevrnt['body'], true);
+
+            $this->user_model->update_data_cod_product(array(
+                "handling_charge_enalbe" => 0,
+                "product_price" => 0,
+                "shop_url" => $_REQUEST['shop']
+            ));
+            echo"done";
+        }
     }
     public function app_tutorials()
     {

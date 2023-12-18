@@ -288,7 +288,7 @@ $store_name = $shop_name[0];
                                                         <div class="payxnowandrestondelivery-flex-col">
 
                                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" class="splite_checkbox" id="codgate" name="cod_enable_prcess" value="">
+                                                                        <input type="checkbox" class="splite_checkbox" id="codgate" name="cod_enable_prcess" value="codenable">
                                                                         <label for="codgate">Enable hide COD</label>
                                                                 </div>
                                                         </div>
@@ -305,7 +305,7 @@ $store_name = $shop_name[0];
                         </div>
 
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
-                                
+
                                 <form method="post">
                                         <div class="payxnowandrestondelivery-head-wrapper">
                                                 <h2 class="">Handling Charge</h2>
@@ -544,5 +544,17 @@ $store_name = $shop_name[0];
                 var textbox = document.getElementById(textboxId);
 
                 textbox.style.display = checkbox.checked ? 'block' : 'none';
+
+                if (!checkbox.checked && textboxId == "handliongtt") {
+                        $.ajax({
+                                type: "POST",
+                                url: "shiprocket-config",
+                                data: 'shop=<?php echo $_GET['shop'];?>&disbale_handling_charge=true',
+                                success: function(response) {
+                                        
+                                }
+
+                        });
+                }
         }
 </script>
