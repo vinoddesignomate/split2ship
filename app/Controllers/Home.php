@@ -2568,9 +2568,29 @@ class Home extends BaseController
             echo "<pre>";
             print_r($this->request->getPost());
             echo "</pre>";
-            // if($this->request->getPost('handling_title') !="" && $this->request->getPost('handle_price')){
-            //     $this->user_model->track_handling_charge();
-            // }
+            if ($this->request->getPost('handling_title') != "" && $this->request->getPost('handle_price')) {
+
+                // $track_handlingcrge = array(
+                //     "product_name" => 0,
+                //     "varient_id" => 0,
+                //     "product_price" => 0,
+                //     //"add_to_cart_text" => '',
+                //     "partial_buy_now_text" => '',
+                //     //"full_buy_now_text" => '',
+                //     "add_cart_btn_color" => $this->request->getPost('add_cart_btn_color'),
+                //     "add_cart_text_color" => $this->request->getPost('add_cart_txt_color'),
+                //     "partial_buynow_btn_color" => $this->request->getPost('partialbuy_btn_color'),
+                //     "partial_buynow_text_color" => $this->request->getPost('partialbuy_txt_color'),
+                //     "full_buy_btn_color" => $this->request->getPost('fullbuy_btn_color'),
+                //     "full_buy_text_color" => $this->request->getPost('fullbuy_txt_color'),
+                //     "shop_url" => $_GET['shop']
+                // );
+
+                $getdata = $this->user_model->get_cod_product($_GET['shop']);
+                echo "<pre>";
+                print_r($getdata);
+                echo "</pre>";
+            }
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
