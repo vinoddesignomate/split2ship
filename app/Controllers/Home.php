@@ -2565,9 +2565,7 @@ class Home extends BaseController
         }
 
         if ($this->request->getPost('enable_handling_submit')) {
-            echo "<pre>";
-            print_r($this->request->getPost());
-            echo "</pre>";
+            
             if ($this->request->getPost('handling_title') != "" && $this->request->getPost('handle_price')) {
 
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
@@ -2583,11 +2581,7 @@ class Home extends BaseController
 
                     $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
-                    $products_adshh = json_decode($products_ads['body'], true);
-
-                    // echo "products_adshh<pre>";
-                    // print_r($products_adshh);
-                    // echo "</pre>";
+                    $products_adshh = json_decode($products_ads['body'], true);                  
 
                     $productupdate = [
                         "variant" => [
@@ -2600,9 +2594,7 @@ class Home extends BaseController
 
                     $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
-                    // echo "produtc_updatevrnt<pre>";
-                    // print_r($produtc_updatevrnt);
-                    // echo "</pre>";
+                  
 
                     $this->user_model->insert_data_cod_product(array(
                         "handling_charge_enalbe" => 1,
@@ -2625,7 +2617,7 @@ class Home extends BaseController
 
                     $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.json', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_GET['shop']);
 
-
+                    //update varients
                     $update_productupdate = [
                         "variant" => [
                             "id" => $getdata[0]->varient_id,
@@ -2644,10 +2636,9 @@ class Home extends BaseController
                         "shop_url" => $_GET['shop']
                     ));
                 }
-                echo "<pre>";
-                print_r($getdatavrnts);
-                echo "</pre>";
+               
             }
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
