@@ -314,18 +314,18 @@ $store_name = $shop_name[0];
                                                         <div class="payxnowandrestondelivery-flex-col">
 
                                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" class="splite_checkbox" id="handling_crg" name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
+                                                                        <input type="checkbox" class="splite_checkbox" id="handling_crg" <?php echo (isset($get_cod_product[0]->handling_charge_enalbe) && $get_cod_product[0]->handling_charge_enalbe == '1') ? 'checked' : ''; ?> name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
                                                                         <label for="handling_crg">Enable handling charge</label>
                                                                 </div>
                                                         </div>
                                                         <div style="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
                                                                 <div class="flex-row">
                                                                         <label for="">Title</label>
-                                                                        <input type="text" required name="handling_title">
+                                                                        <input type="text" required name="handling_title" value="<?php echo (isset($get_cod_product[0]->product_name) ? $get_cod_product[0]->product_name : ''); ?>">
                                                                 </div>
                                                                 <div class="flex-row">
                                                                         <label for="">Handling price</label>
-                                                                        <input type="number" required name="handle_price">
+                                                                        <input type="number" required name="handle_price" value="<?php echo (isset($get_cod_product[0]->product_price) ? $get_cod_product[0]->product_price : ''); ?>">
                                                                 </div>
                                                         </div>
 
