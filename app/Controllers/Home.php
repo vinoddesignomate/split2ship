@@ -2569,7 +2569,7 @@ class Home extends BaseController
             print_r($this->request->getPost());
             echo "</pre>";
             if ($this->request->getPost('handling_title') != "" && $this->request->getPost('handle_price')) {
-               
+
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
                 $getdata = $this->user_model->get_cod_product($_GET['shop']);
                 if (empty($getdata)) {
@@ -2577,7 +2577,6 @@ class Home extends BaseController
                         "product" => [
                             "title" => $this->request->getPost('handling_title'),
                             "tags" => 'partial_cod_handle',
-                            "price" => $this->request->getPost('handle_price'),
                             "product_type" => 'splsp_rapp_cg'
                         ]
                     ];
@@ -2597,7 +2596,7 @@ class Home extends BaseController
                         ]
                     ];
 
-                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/'.$products_adshh['product']['variants'][0]['id'].'.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $products_adshh['product']['variants'][0]['id'] . '.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
 
                     $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
@@ -2606,37 +2605,47 @@ class Home extends BaseController
                     // echo "</pre>";
 
                     $this->user_model->insert_data_cod_product(array(
-                        "cod_enable" => 1,
+                        "handling_charge_enalbe" => 1,
                         "product_name" => $products_adshh['product']['title'],
                         "product_id" => $products_adshh['product']['id'],
                         "varient_id" => $products_adshh['product']['variants'][0]['id'],
                         "product_price" => $this->request->getPost('handle_price'),
                         "shop_url" => $_GET['shop']
                     ));
-                   
                 } else {
-                    $productupdate = [
+                    //update products 
+                    $update_hndling_productsdta = [
+                        "product" => [
+                            "title" => $this->request->getPost('handling_title'),
+                            "id" => $getdata[0]->product_id,
+                            "tags" => 'partial_cod_handle',
+                            "product_type" => 'splsp_rapp_cg'
+                        ]
+                    ];
+
+                    $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.json', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_GET['shop']);
+
+
+                    $update_productupdate = [
                         "variant" => [
                             "id" => $getdata[0]->varient_id,
-                            "option1" => $this->request->getPost('handling_title'),
                             "price" => $this->request->getPost('handle_price')
                         ]
                     ];
 
-                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/'.$getdata[0]->varient_id.'.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+                    $produtc_updatevrnt =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $getdata[0]->varient_id . '.json', $update_productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
 
-                    //$products_adshh = json_decode($products_ads['body'], true);
+                    $getdatavrnts = json_decode($produtc_updatevrnt['body'], true);
 
                     $this->user_model->update_data_cod_product(array(
-                        "cod_enable" => 1,
+                        "handling_charge_enalbe" => 1,
                         "product_name" => $this->request->getPost('handling_title'),
                         "product_price" => $this->request->getPost('handle_price'),
                         "shop_url" => $_GET['shop']
                     ));
-
                 }
                 echo "<pre>";
-                print_r($getdata);
+                print_r($getdatavrnts);
                 echo "</pre>";
             }
         }
