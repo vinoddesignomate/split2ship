@@ -2586,14 +2586,13 @@ class Home extends BaseController
 
                     $products_adshh = json_decode($products_ads['body'], true);
 
-                    echo "products_adshh<pre>";
-                    print_r($products_adshh);
-                    echo "</pre>";
+                    // echo "products_adshh<pre>";
+                    // print_r($products_adshh);
+                    // echo "</pre>";
 
                     $productupdate = [
                         "variant" => [
                             "id" => $products_adshh['product']['variants'][0]['id'],
-                            "option1" => $this->request->getPost('handling_title'),
                             "price" => $this->request->getPost('handle_price')
                         ]
                     ];
@@ -2602,17 +2601,18 @@ class Home extends BaseController
 
                     $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
-                    echo "produtc_updatevrnt<pre>";
-                    print_r($produtc_updatevrnt);
-                    echo "</pre>";
+                    // echo "produtc_updatevrnt<pre>";
+                    // print_r($produtc_updatevrnt);
+                    // echo "</pre>";
 
-                    // $this->user_model->insert_data_cod_product(array(
-                    //     "cod_enable" => 1,
-                    //     "product_name" => $products_adshh['product']['title'],
-                    //     "varient_id" => $products_adshh['product']['variants'][0]['id'],
-                    //     "product_price" => $this->request->getPost('handle_price'),
-                    //     "shop_url" => $_GET['shop']
-                    // ));
+                    $this->user_model->insert_data_cod_product(array(
+                        "cod_enable" => 1,
+                        "product_name" => $products_adshh['product']['title'],
+                        "product_id" => $products_adshh['product']['id'],
+                        "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                        "product_price" => $this->request->getPost('handle_price'),
+                        "shop_url" => $_GET['shop']
+                    ));
                    
                 } else {
                     $productupdate = [
