@@ -305,6 +305,7 @@ $store_name = $shop_name[0];
                         </div>
 
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
+                                <?php echo"<pre>"; print_r($get_cod_product); echo"</pre>";?>
                                 <form method="post">
                                         <div class="payxnowandrestondelivery-head-wrapper">
                                                 <h2 class="">Handling Charge</h2>
