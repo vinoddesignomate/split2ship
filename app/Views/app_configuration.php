@@ -305,7 +305,7 @@ $store_name = $shop_name[0];
                         </div>
 
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
-                                <?php echo"<pre>"; print_r($get_cod_product); echo"</pre>";?>
+                                
                                 <form method="post">
                                         <div class="payxnowandrestondelivery-head-wrapper">
                                                 <h2 class="">Handling Charge</h2>
@@ -319,7 +319,7 @@ $store_name = $shop_name[0];
                                                                         <label for="handling_crg">Enable handling charge</label>
                                                                 </div>
                                                         </div>
-                                                        <div style="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
+                                                        <div <?php echo (isset($get_cod_product[0]->handling_charge_enalbe) && $get_cod_product[0]->handling_charge_enalbe == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?> class="payxnowandrestondelivery-flex-col" id="handliongtt">
                                                                 <div class="flex-row">
                                                                         <label for="">Title</label>
                                                                         <input type="text" required name="handling_title" value="<?php echo (isset($get_cod_product[0]->product_name) ? $get_cod_product[0]->product_name : ''); ?>">
