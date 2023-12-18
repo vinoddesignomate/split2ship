@@ -305,40 +305,41 @@ $store_name = $shop_name[0];
                         </div>
 
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
-                                <div class="payxnowandrestondelivery-head-wrapper">
-                                        <h2 class="">Handling Charge</h2>
-                                </div>
-                                <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
-                                        <div class="payxnowandrestondelivery-flex-row">
-                                                <div class="payxnowandrestondelivery-flex-col">
+                                <form method="post">
+                                        <div class="payxnowandrestondelivery-head-wrapper">
+                                                <h2 class="">Handling Charge</h2>
+                                        </div>
+                                        <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
+                                                <div class="payxnowandrestondelivery-flex-row">
+                                                        <div class="payxnowandrestondelivery-flex-col">
 
-                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                <input type="checkbox"  class="splite_checkbox" id="handling_crg" name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
-                                                                <label for="handling_crg">Enable handling charge</label>
+                                                                <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                        <input type="checkbox" class="splite_checkbox" id="handling_crg" name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
+                                                                        <label for="handling_crg">Enable handling charge</label>
+                                                                </div>
                                                         </div>
-                                                </div>
-                                                <div style="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
-                                                        <div class="flex-row">
-                                                                <label for="">Title</label>
-                                                                <input type="text" required name="handling_title">
+                                                        <div style="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
+                                                                <div class="flex-row">
+                                                                        <label for="">Title</label>
+                                                                        <input type="text" required name="handling_title">
+                                                                </div>
+                                                                <div class="flex-row">
+                                                                        <label for="">Handling price</label>
+                                                                        <input type="text" required name="handle_price">
+                                                                </div>
                                                         </div>
-                                                        <div class="flex-row">
-                                                                <label for="">Handling price</label>
-                                                                <input type="text" required name="handle_price">
-                                                        </div>
-                                                </div>
 
+
+                                                </div>
+                                        </div>
+                                        <div class="payxnowandrestondelivery-btn-row">
+
+                                                <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                        <button type="submit" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                </div>
 
                                         </div>
-                                </div>
-                                <div class="payxnowandrestondelivery-btn-row">
-
-                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                <button type="submit" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
-                                        </div>
-
-                                </div>
-
+                                </form>
                         </div>
 
                 </div>
