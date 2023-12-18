@@ -279,6 +279,9 @@ $store_name = $shop_name[0];
 
                 <div class="payxnowandrestondelivery-zip-flex-row">
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
+                                <div class="payxnowandrestondelivery-head-wrapper">
+                                        <h2 class="">COD payment gatway</h2>
+                                </div>
                                 <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
                                         <div class="payxnowandrestondelivery-flex-row">
                                                 <div class="payxnowandrestondelivery-flex-col">
@@ -288,23 +291,14 @@ $store_name = $shop_name[0];
                                                                 <label for="fullbuysplit">Enable buy now Button</label>
                                                         </div>
                                                 </div>
-                                                <div class="payxnowandrestondelivery-flex-col">
-                                                        <div class="flex-row">
-                                                                <label for="">Full buy now button color</label>
-                                                                <input type="text" data-jscolor="{}" name="fullbuy_btn_color" value="#C9FFC6" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#C9FFC6" style="background-image: linear-gradient(to right, rgb(201, 255, 198) 0%, rgb(201, 255, 198) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
-                                                        </div>
-                                                        <div class="flex-row">
-                                                                <label for="">Full buy now button text color</label>
-                                                                <input type="text" data-jscolor="{}" name="fullbuy_txt_color" value="#FFFFFF" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-current-color="#FFFFFF" style="background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAFNJREFUSEtjnDlz5n8GPODs2bP4pBmMjY3xyuPSn5KSwrBt27bljKMOGA2B0RAY8BBIS0vDWw6Qm89hhQMu/U5OTgxLly5dzjjqgNEQGA2BgQ4BAPJuqnG97DVRAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;">
-                                                        </div>
-                                                </div>
-
-
                                         </div>
                                 </div>
                         </div>
 
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
+                                <div class="payxnowandrestondelivery-head-wrapper">
+                                        <h2 class="">Handling Charge</h2>
+                                </div>
                                 <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
                                         <div class="payxnowandrestondelivery-flex-row">
                                                 <div class="payxnowandrestondelivery-flex-col">
