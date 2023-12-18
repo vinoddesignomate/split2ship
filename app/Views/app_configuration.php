@@ -288,8 +288,8 @@ $store_name = $shop_name[0];
                                                         <div class="payxnowandrestondelivery-flex-col">
 
                                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" checked="" class="splite_checkbox" id="fullbuysplit" name="cod_enable_prcess" value="">
-                                                                        <label for="fullbuysplit">Enable buy now Button</label>
+                                                                        <input type="checkbox" class="splite_checkbox" id="codgate" name="cod_enable_prcess" value="">
+                                                                        <label for="codgate">Enable hide COD</label>
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -313,18 +313,18 @@ $store_name = $shop_name[0];
                                                 <div class="payxnowandrestondelivery-flex-col">
 
                                                         <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                <input type="checkbox" checked="" class="splite_checkbox" id="handling_crg" name="cart_show_btn[]" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="fullbuynow">
-                                                                <label for="fullbuysplit">Enable buy now Button</label>
+                                                                <input type="checkbox"  class="splite_checkbox" id="handling_crg" name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
+                                                                <label for="handling_crg">Enable handling charge</label>
                                                         </div>
                                                 </div>
                                                 <div style="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
                                                         <div class="flex-row">
                                                                 <label for="">Title</label>
-                                                                <input type="text" name="handling_title">
+                                                                <input type="text" required name="handling_title">
                                                         </div>
                                                         <div class="flex-row">
                                                                 <label for="">Handling price</label>
-                                                                <input type="text" name="handle_price">
+                                                                <input type="text" required name="handle_price">
                                                         </div>
                                                 </div>
 
@@ -334,7 +334,7 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-btn-row">
 
                                         <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                <button type="submit" name="enable_handling_submit nn      " class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                <button type="submit" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                         </div>
 
                                 </div>

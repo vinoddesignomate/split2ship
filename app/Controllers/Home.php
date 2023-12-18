@@ -124,7 +124,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                   /* $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5596577333552.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    /* $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5596577333552.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -2562,6 +2562,15 @@ class Home extends BaseController
 
             $this->user_model->track_checkout_button_color($track_color_array);
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+        }
+
+        if ($this->request->getPost('enable_handling_submit')) {
+            echo "<pre>";
+            print_r($this->request->getPost());
+            echo "</pre>";
+            // if($this->request->getPost('handling_title') !="" && $this->request->getPost('handle_price')){
+            //     $this->user_model->track_handling_charge();
+            // }
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
