@@ -2640,6 +2640,10 @@ class Home extends BaseController
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
+        if ($this->request->getPost('enble_cod_prs')) {
+            echo "<pre>"; print_r($this->request->getPost()); echo "</pre>";
+        }
+
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];
         $data['get_cod_product'] =  $getdata = $this->user_model->get_cod_product($_GET['shop']);
