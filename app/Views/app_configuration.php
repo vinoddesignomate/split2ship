@@ -317,7 +317,7 @@ $store_name = $shop_name[0];
                                                                 <label for="fullbuysplit">Enable buy now Button</label>
                                                         </div>
                                                 </div>
-                                                <div stylw="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
+                                                <div style="display:none;" class="payxnowandrestondelivery-flex-col" id="handliongtt">
                                                         <div class="flex-row">
                                                                 <label for="">Title</label>
                                                                 <input type="text" name="handling_title">
