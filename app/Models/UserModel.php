@@ -1024,4 +1024,8 @@ class UserModel extends Model
         $fethdta = $this->db->query($gtquery, array($shopurl));
         return $fethdta->getResult();
     }
+    public function update_data_cod_product($data = array())
+    {
+        $this->db->table('split_track_cod_product')->where('shop_url', $data['shop_url'])->update($data);
+    }
 }

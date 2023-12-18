@@ -325,7 +325,7 @@ $store_name = $shop_name[0];
                                                                 </div>
                                                                 <div class="flex-row">
                                                                         <label for="">Handling price</label>
-                                                                        <input type="text" required name="handle_price">
+                                                                        <input type="number" required name="handle_price">
                                                                 </div>
                                                         </div>
 

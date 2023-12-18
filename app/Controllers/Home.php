@@ -2569,24 +2569,57 @@ class Home extends BaseController
             print_r($this->request->getPost());
             echo "</pre>";
             if ($this->request->getPost('handling_title') != "" && $this->request->getPost('handle_price')) {
-
-                // $track_handlingcrge = array(
-                //     "product_name" => 0,
-                //     "varient_id" => 0,
-                //     "product_price" => 0,
-                //     //"add_to_cart_text" => '',
-                //     "partial_buy_now_text" => '',
-                //     //"full_buy_now_text" => '',
-                //     "add_cart_btn_color" => $this->request->getPost('add_cart_btn_color'),
-                //     "add_cart_text_color" => $this->request->getPost('add_cart_txt_color'),
-                //     "partial_buynow_btn_color" => $this->request->getPost('partialbuy_btn_color'),
-                //     "partial_buynow_text_color" => $this->request->getPost('partialbuy_txt_color'),
-                //     "full_buy_btn_color" => $this->request->getPost('fullbuy_btn_color'),
-                //     "full_buy_text_color" => $this->request->getPost('fullbuy_txt_color'),
-                //     "shop_url" => $_GET['shop']
-                // );
-
+               
+                $get_details = $this->user_model->get_tokens($_GET['shop']);
                 $getdata = $this->user_model->get_cod_product($_GET['shop']);
+                if (empty($getdata)) {
+                    $productadd = [
+                        "product" => [
+                            "title" => $this->request->getPost('handling_title'),
+                            "tags" => 'partial_cod_handle',
+                            "product_type" => 'splsp_rapp_cg',
+                            "variants"=>[
+                                "title"=>"Default Title",
+                                "price"=>$this->request->getPost('handle_price'),
+                                ]
+                        ]
+                    ];
+
+                    $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
+
+                    $products_adshh = json_decode($products_ads['body'], true);
+
+                    // $this->user_model->insert_data_cod_product(array(
+                    //     "cod_enable" => 1,
+                    //     "product_name" => $products_adshh['product']['title'],
+                    //     "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                    //     "product_price" => $this->request->getPost('handle_price'),
+                    //     "shop_url" => $_GET['shop']
+                    // ));
+                    echo "products_adshh<pre>";
+                    print_r($products_adshh);
+                    echo "</pre>";
+                } else {
+                    $productupdate = [
+                        "variant" => [
+                            "id" => $getdata[0]->varient_id,
+                            "option1" => $this->request->getPost('handling_title'),
+                            "price" => $this->request->getPost('handle_price')
+                        ]
+                    ];
+
+                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/'.$getdata[0]->varient_id.'.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+
+                    //$products_adshh = json_decode($products_ads['body'], true);
+
+                    $this->user_model->update_data_cod_product(array(
+                        "cod_enable" => 1,
+                        "product_name" => $this->request->getPost('handling_title'),
+                        "product_price" => $this->request->getPost('handle_price'),
+                        "shop_url" => $_GET['shop']
+                    ));
+
+                }
                 echo "<pre>";
                 print_r($getdata);
                 echo "</pre>";
