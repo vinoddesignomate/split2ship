@@ -282,17 +282,26 @@ $store_name = $shop_name[0];
                                 <div class="payxnowandrestondelivery-head-wrapper">
                                         <h2 class="">COD payment gatway</h2>
                                 </div>
-                                <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
-                                        <div class="payxnowandrestondelivery-flex-row">
-                                                <div class="payxnowandrestondelivery-flex-col">
+                                <form method="post">
+                                        <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
+                                                <div class="payxnowandrestondelivery-flex-row">
+                                                        <div class="payxnowandrestondelivery-flex-col">
 
-                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                <input type="checkbox" checked="" class="splite_checkbox" id="fullbuysplit" name="cart_show_btn[]" value="fullbuynow">
-                                                                <label for="fullbuysplit">Enable buy now Button</label>
+                                                                <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                        <input type="checkbox" checked="" class="splite_checkbox" id="fullbuysplit" name="cod_enable_prcess" value="">
+                                                                        <label for="fullbuysplit">Enable buy now Button</label>
+                                                                </div>
                                                         </div>
                                                 </div>
                                         </div>
-                                </div>
+                                        <div class="payxnowandrestondelivery-btn-row">
+
+                                                <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                        <button type="submit" name="enble_cod_prs" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                </div>
+
+                                        </div>
+                                </form>
                         </div>
 
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
