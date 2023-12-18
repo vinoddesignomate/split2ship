@@ -2577,17 +2577,34 @@ class Home extends BaseController
                         "product" => [
                             "title" => $this->request->getPost('handling_title'),
                             "tags" => 'partial_cod_handle',
-                            "product_type" => 'splsp_rapp_cg',
-                            "variants"=>[
-                                "title"=>"Default Title",
-                                "price"=>$this->request->getPost('handle_price'),
-                                ]
+                            "price" => $this->request->getPost('handle_price'),
+                            "product_type" => 'splsp_rapp_cg'
                         ]
                     ];
 
                     $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
                     $products_adshh = json_decode($products_ads['body'], true);
+
+                    echo "products_adshh<pre>";
+                    print_r($products_adshh);
+                    echo "</pre>";
+
+                    $productupdate = [
+                        "variant" => [
+                            "id" => $getdata[0]->varient_id,
+                            "option1" => $this->request->getPost('handling_title'),
+                            "price" => $this->request->getPost('handle_price')
+                        ]
+                    ];
+
+                    $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/'.$getdata[0]->varient_id.'.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+
+                    $produtc_updatevrnt = json_decode($produtc_update['body'], true);
+
+                    echo "produtc_updatevrnt<pre>";
+                    print_r($produtc_updatevrnt);
+                    echo "</pre>";
 
                     // $this->user_model->insert_data_cod_product(array(
                     //     "cod_enable" => 1,
@@ -2596,9 +2613,7 @@ class Home extends BaseController
                     //     "product_price" => $this->request->getPost('handle_price'),
                     //     "shop_url" => $_GET['shop']
                     // ));
-                    echo "products_adshh<pre>";
-                    print_r($products_adshh);
-                    echo "</pre>";
+                   
                 } else {
                     $productupdate = [
                         "variant" => [
