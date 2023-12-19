@@ -2575,6 +2575,93 @@ class Home extends BaseController
                 $get_details = $this->user_model->get_tokens($_GET['shop']);
                 $getdata = $this->user_model->get_cod_product($_GET['shop']);
                 if (empty($getdata)) {
+
+                    $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
+                
+                    if (empty($smart_collectionsget)) {
+                        $collection_data = [
+                            'smart_collection' => [
+                                'title' => 'all',
+                                'rules' => [
+                                    [
+                                        'column' => 'type',
+                                        'relation' => 'not_contains',
+                                        'condition' => 'partial_cod_handle',
+                                    ],
+                                ],
+                            ],
+                        ];
+    
+                        $curl = curl_init();
+    
+                        curl_setopt_array($curl, array(
+                            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => '',
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 0,
+                            CURLOPT_FOLLOWLOCATION => true,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => 'POST',
+                            CURLOPT_POSTFIELDS => json_encode($collection_data),
+                            CURLOPT_HTTPHEADER => array(
+                                'Content-Type: application/json'
+                            ),
+                        ));
+    
+                        $response = curl_exec($curl);
+    
+                        curl_close($curl);
+                        $return_array = json_decode($response);
+                        $collecid = $return_array->smart_collection->id;
+    
+                        $smart_coll_array = array(
+                            "collection_id" => $return_array->smart_collection->id,
+                            "collections_name" => $return_array->smart_collection->title,
+                            "collections_handle" => $return_array->smart_collection->handle,
+                            "shop_url" => $_GET['shop']
+    
+                        );
+    
+                        $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
+                    } else {
+                        $collecid = $smart_collectionsget[0]->collection_id;
+                        $update_collection_data = [
+                            'smart_collection' => [
+                                'id' => $smart_collectionsget[0]->collection_id,
+                                'rules' => [
+                                    [
+                                        'column' => 'type',
+                                        'relation' => 'not_contains',
+                                        'condition' => 'partial_cod_handle',
+                                    ],
+                                ],
+                            ],
+                        ];
+    
+                        $curl = curl_init();
+    
+                        curl_setopt_array($curl, array(
+                            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/' . $smart_collectionsget[0]->collection_id . '.json',
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => '',
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 0,
+                            CURLOPT_FOLLOWLOCATION => true,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => 'PUT',
+                            CURLOPT_POSTFIELDS => json_encode($update_collection_data),
+                            CURLOPT_HTTPHEADER => array(
+                                'Content-Type: application/json'
+                            ),
+                        ));
+    
+                        $response = curl_exec($curl);
+    
+                        curl_close($curl);
+                        $return_array = json_decode($response);
+                    }
+                    
                     $productadd = [
                         "product" => [
                             "title" => $this->request->getPost('handling_title'),
@@ -2645,9 +2732,7 @@ class Home extends BaseController
         }
 
         if ($this->request->getPost('enble_cod_prs')) {
-            // echo "<pre>";
-            // print_r($this->request->getPost());
-            // echo "</pre>";
+            
             if ($this->request->getPost('cod_enable_prcess')) {
                 $codenbl = 1;
             } else {
@@ -2658,9 +2743,7 @@ class Home extends BaseController
             if (empty($getdata)) {
 
                 $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-                // echo "<pre>";
-                // print_r($smart_collectionsget);
-                // echo "</pre>";
+                
                 if (empty($smart_collectionsget)) {
                     $collection_data = [
                         'smart_collection' => [
