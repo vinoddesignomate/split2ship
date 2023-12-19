@@ -2725,7 +2725,7 @@ class Home extends BaseController
             //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
         if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $smart_collectionsget = $this->user_model->get_collections($_GET['shop']);
+            $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
             // $get_details = $this->user_model->get_tokens($_GET['shop']);
             // $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);                      7h7g4hg74hg7hg7777g7g7g
 

@@ -1028,4 +1028,14 @@ class UserModel extends Model
     {
         $this->db->table('split_track_cod_product')->where('shop_url', $data['shop_url'])->update($data);
     }
+    public function get_smrtcollections($shopurl)
+    {
+
+        $qbuilds = $this->db->table('ppa_store_collections');
+        $qbuilds->select('collection_id,collections_name');
+        $qbuilds->where(["shop_url" => $shopurl]);
+        $qbuilds->where(["collections_handle" => 'all']);
+        $getquery = $qbuilds->get();
+        return $getquery->getResult();
+    }
 }
