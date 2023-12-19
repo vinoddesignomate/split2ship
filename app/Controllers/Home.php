@@ -2575,7 +2575,7 @@ class Home extends BaseController
                         "product" => [
                             "title" => $this->request->getPost('handling_title'),
                             "tags" => 'partial_cod_handle',
-                            "product_type" => 'splsp_rapp_cg'
+                            "product_type" => 'partial_cod_handle'
                         ]
                     ];
 
@@ -2611,7 +2611,7 @@ class Home extends BaseController
                             "title" => $this->request->getPost('handling_title'),
                             "id" => $getdata[0]->product_id,
                             "tags" => 'partial_cod_handle',
-                            "product_type" => 'splsp_rapp_cg'
+                            "product_type" => 'partial_cod_handle'
                         ]
                     ];
 
@@ -2641,7 +2641,58 @@ class Home extends BaseController
         }
 
         if ($this->request->getPost('enble_cod_prs')) {
-            echo "<pre>"; print_r($this->request->getPost()); echo "</pre>";
+            echo "<pre>";
+            print_r($this->request->getPost());
+            echo "</pre>";
+            if ($this->request->getPost('cod_enable_prcess')) {
+                $codenbl = 1;
+            } else {
+                $codenbl = 0;
+            }
+
+            $getdata = $this->user_model->get_cod_product($_GET['shop']);
+            if (empty($getdata)) {
+                $productadd = [
+                    "product" => [
+                        "title" => 'Partial COD',
+                        "tags" => 'partial_cod_handle',
+                        "product_type" => 'partial_cod_handle'
+                    ]
+                ];
+
+                $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
+
+                $products_adshh = json_decode($products_ads['body'], true);
+
+                $productupdate = [
+                    "variant" => [
+                        "id" => $products_adshh['product']['variants'][0]['id'],
+                        "price" => 0
+                    ]
+                ];
+
+                $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $products_adshh['product']['variants'][0]['id'] . '.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+
+                $produtc_updatevrnt = json_decode($produtc_update['body'], true);
+
+
+
+                $this->user_model->insert_data_cod_product(array(
+                    "cod_enable" => $codenbl,
+                    "product_name" => $products_adshh['product']['title'],
+                    "product_id" => $products_adshh['product']['id'],
+                    "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                    "product_price" => 0,
+                    "shop_url" => $_GET['shop']
+                ));
+            } else {
+
+                $this->user_model->update_data_cod_product(array(
+                    "cod_enable" => $codenbl,
+                    "shop_url" => $_GET['shop']
+                ));
+            }
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
@@ -2686,7 +2737,7 @@ class Home extends BaseController
                 "product_price" => 0,
                 "shop_url" => $_REQUEST['shop']
             ));
-            echo"done";
+            echo "done";
         }
     }
     public function app_tutorials()
