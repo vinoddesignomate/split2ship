@@ -2615,7 +2615,7 @@ class Home extends BaseController
                         ]
                     ];
 
-                    $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.json', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_GET['shop']);
+                    $products_ads = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.json', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_GET['shop']);
 
                     //update varients
                     $update_productupdate = [
@@ -2652,6 +2652,23 @@ class Home extends BaseController
 
             $getdata = $this->user_model->get_cod_product($_GET['shop']);
             if (empty($getdata)) {
+
+                $smartcolladd = [
+                    "smart_collection" => [
+                        "title" => 'all',
+                        "rules" => [
+                                "column"=> "type",
+                                "relation"=> "not_equals ",
+                                "condition"=> "partial_cod_handle ",
+                        ],
+                    ]
+                ];
+
+                $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $smartcolladd, 'POST', $get_details->access_token, $_GET['shop']);
+
+                $collgetdt = json_decode($smart_coll_ads['body'], true);
+                echo"<pre>"; print_r($collgetdt); echo "</pre>";
+
                 $productadd = [
                     "product" => [
                         "title" => 'Partial COD',
@@ -2692,7 +2709,7 @@ class Home extends BaseController
                     "shop_url" => $_GET['shop']
                 ));
             }
-            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+            //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
