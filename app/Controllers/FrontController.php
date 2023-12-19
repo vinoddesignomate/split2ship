@@ -184,9 +184,14 @@ class FrontController extends BaseController
                 echo "invalid";
             } else {
                 if ($body_data_decode['codcarientid'] == "") {
-                $codprdct = $this->user_model->get_cod_product($shopname);
-                $varientid = $codprdct[0]->varient_id;
-                ///print_r($codprdct);
+                    $codprdct = $this->user_model->get_cod_product($shopname);
+                    if ($codprdct[0]->cod_enable != 1 && $codprdct[0]->handling_charge_enalbe != 1) {
+                        $varientid = "";
+                    } else {
+                        $varientid = $codprdct[0]->varient_id;
+                    }
+
+                    ///print_r($codprdct);
                 } else {
                     $varientid = "";
                 }
@@ -436,10 +441,10 @@ class FrontController extends BaseController
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
             if ($shopname == 'desinomatetest.myshopify.com') {
-                
+
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
                 //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-                
+
             } else {
                 return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
             }
