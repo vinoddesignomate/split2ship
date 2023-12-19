@@ -2671,39 +2671,39 @@ class Home extends BaseController
                 $collgetdt = json_decode($smart_coll_ads['body'], true);
                 echo"<pre>"; print_r($collgetdt); echo "</pre>";
 
-                $productadd = [
-                    "product" => [
-                        "title" => 'Partial COD',
-                        "tags" => 'partial_cod_handle',
-                        "product_type" => 'partial_cod_handle'
-                    ]
-                ];
+                // $productadd = [
+                //     "product" => [
+                //         "title" => 'Partial COD',
+                //         "tags" => 'partial_cod_handle',
+                //         "product_type" => 'partial_cod_handle'
+                //     ]
+                // ];
 
-                $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
+                // $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
-                $products_adshh = json_decode($products_ads['body'], true);
+                // $products_adshh = json_decode($products_ads['body'], true);
 
-                $productupdate = [
-                    "variant" => [
-                        "id" => $products_adshh['product']['variants'][0]['id'],
-                        "price" => 0
-                    ]
-                ];
+                // $productupdate = [
+                //     "variant" => [
+                //         "id" => $products_adshh['product']['variants'][0]['id'],
+                //         "price" => 0
+                //     ]
+                // ];
 
-                $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $products_adshh['product']['variants'][0]['id'] . '.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+                // $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $products_adshh['product']['variants'][0]['id'] . '.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
 
-                $produtc_updatevrnt = json_decode($produtc_update['body'], true);
+                // $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
 
 
-                $this->user_model->insert_data_cod_product(array(
-                    "cod_enable" => $codenbl,
-                    "product_name" => $products_adshh['product']['title'],
-                    "product_id" => $products_adshh['product']['id'],
-                    "varient_id" => $products_adshh['product']['variants'][0]['id'],
-                    "product_price" => 0,
-                    "shop_url" => $_GET['shop']
-                ));
+                // $this->user_model->insert_data_cod_product(array(
+                //     "cod_enable" => $codenbl,
+                //     "product_name" => $products_adshh['product']['title'],
+                //     "product_id" => $products_adshh['product']['id'],
+                //     "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                //     "product_price" => 0,
+                //     "shop_url" => $_GET['shop']
+                // ));
             } else {
 
                 $this->user_model->update_data_cod_product(array(
