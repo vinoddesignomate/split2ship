@@ -2653,20 +2653,33 @@ class Home extends BaseController
             $getdata = $this->user_model->get_cod_product($_GET['shop']);
             if (empty($getdata)) {
 
-                $smartcolladd = [
-                    "smart_collection" => [
-                        "title" => 'all',
-                        "rules" => [
+                // $smartcolladd = [
+                //     "smart_collection" => [
+                //         "title" => 'all',
+                //         "rules" => [
+                //             [
+                //                 "column"=> "type",
+                //                 "relation"=> "not_equals",
+                //                 "condition"=> "partial_cod_handle",
+                //             ],
+                //         ],
+                //     ]
+                // ];
+
+                $collection_data = [
+                    'smart_collection' => [
+                        'title' => 'all',
+                        'rules' => [
                             [
-                                "column"=> "type",
-                                "relation"=> "not_equals ",
-                                "condition"=> "partial_cod_handle",
+                                'column' => 'type',
+                                'relation' => 'not_equals',
+                                'condition' => 'partial_cod_handle',
                             ],
                         ],
-                    ]
+                    ],
                 ];
 
-                $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $smartcolladd, 'POST', $get_details->access_token, $_GET['shop']);
+                $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $collection_data, 'POST', $get_details->access_token, $_GET['shop']);
 
                 $collgetdt = json_decode($smart_coll_ads['body'], true);
                 echo"<pre>"; print_r($collgetdt); echo "</pre>";
