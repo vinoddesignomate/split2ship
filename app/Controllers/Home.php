@@ -2726,7 +2726,7 @@ class Home extends BaseController
         }
         // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
         //     $get_details = $this->user_model->get_tokens($_GET['shop']);
-        //     $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+        //     $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);                      7h7g4hg74hg7hg7777g7g7g
 
         //     $smart_collectionsget = json_decode($smart_collections['body'], true);
 
@@ -2758,7 +2758,7 @@ class Home extends BaseController
                 ]
             ];
 
-            $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.json', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_REQUEST['shop']);
+            $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.js      fn', $update_hndling_productsdta, 'PUT', $get_details->access_token, _REQUEST['shop']);
 
             //update varients
             $update_productupdate = [
