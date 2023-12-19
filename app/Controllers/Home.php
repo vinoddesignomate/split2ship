@@ -2658,7 +2658,9 @@ class Home extends BaseController
             if (empty($getdata)) {
 
                 $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-
+                echo "<pre>";
+                print_r($smart_collectionsget);
+                echo "</pre>";
                 if (empty($smart_collectionsget)) {                    
                     $collection_data = [
                         'smart_collection' => [
@@ -2709,11 +2711,13 @@ class Home extends BaseController
                             ],
                         ],
                     ];
-
+                    echo "update_collection_data<pre>";
+                    print_r($update_collection_data);
+                    echo "</pre>";
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
+                        CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/'.$smart_collectionsget[0]->collection_id.'.json',
                         CURLOPT_RETURNTRANSFER => true,
                         CURLOPT_ENCODING => '',
                         CURLOPT_MAXREDIRS => 10,
