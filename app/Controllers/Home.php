@@ -2661,7 +2661,7 @@ class Home extends BaseController
                         curl_close($curl);
                         $return_array = json_decode($response);
                     }
-                    
+
                     $productadd = [
                         "product" => [
                             "title" => $this->request->getPost('handling_title'),
@@ -2895,11 +2895,11 @@ class Home extends BaseController
                 "product" => [
                     "id" => $getdata[0]->product_id,
                     "tags" => 'partial_cod_handle',
-                    "product_type" => 'splsp_rapp_cg'
+                    "product_type" => 'partial_cod_handle'
                 ]
             ];
 
-            $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.js      fn', $update_hndling_productsdta, 'PUT', $get_details->access_token, _REQUEST['shop']);
+            $products_ads =  $products = $this->common->rest_api('/admin/api/2023-07/products/' . $getdata[0]->product_id . '.js', $update_hndling_productsdta, 'PUT', $get_details->access_token, $_REQUEST['shop']);
 
             //update varients
             $update_productupdate = [
