@@ -2677,7 +2677,7 @@ class Home extends BaseController
     
                     $smart_coll_ads = $this->common->create_samrt_collection($collection_data, $get_details->access_token, $_GET['shop']);    
                     $ceatecollgetdt = json_decode($smart_coll_ads, true);
-                    
+
                     echo "<pre>";
                     print_r($ceatecollgetdt);
                     echo "</pre>";
@@ -2751,14 +2751,14 @@ class Home extends BaseController
         }
         if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
             //$smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-            $get_details = $this->user_model->get_tokens($_GET['shop']);
-            $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+            // $get_details = $this->user_model->get_tokens($_GET['shop']);
+            // $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-            $smart_collectionsget = json_decode($smart_collections['body'], true);
+            // $smart_collectionsget = json_decode($smart_collections['body'], true);
 
-            echo "<pre>";
-            print_r($smart_collectionsget);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($smart_collectionsget);
+            // echo "</pre>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
