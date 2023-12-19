@@ -2649,7 +2649,7 @@ class Home extends BaseController
             } else {
                 $codenbl = 0;
             }
-
+            $get_details = $this->user_model->get_tokens($_GET['shop']);
             $getdata = $this->user_model->get_cod_product($_GET['shop']);
             if (empty($getdata)) {
 
