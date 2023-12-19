@@ -2658,10 +2658,10 @@ class Home extends BaseController
             if (empty($getdata)) {
 
                 $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-                echo "<pre>";
-                print_r($smart_collectionsget);
-                echo "</pre>";
-                if (empty($smart_collectionsget)) {                    
+                // echo "<pre>";
+                // print_r($smart_collectionsget);
+                // echo "</pre>";
+                if (empty($smart_collectionsget)) {
                     $collection_data = [
                         'smart_collection' => [
                             'title' => 'all',
@@ -2692,12 +2692,21 @@ class Home extends BaseController
                         ),
                     ));
 
-                    $response = curl_exec($curl);                  
+                    $response = curl_exec($curl);
 
                     curl_close($curl);
                     $return_array = json_decode($response);
                     $collecid = $return_array->smart_collection->id;
-                   
+
+                    $smart_coll_array = array(
+                        "collection_id" => $return_array->smart_collection->id,
+                        "collections_name" => $return_array->smart_collection->title,
+                        "collections_handle" => $return_array->smart_collection->handle,
+                        "shop_url" => $_GET['shop']
+
+                    );
+
+                    $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
                 } else {
                     $update_collection_data = [
                         'smart_collection' => [
@@ -2711,13 +2720,11 @@ class Home extends BaseController
                             ],
                         ],
                     ];
-                    echo "update_collection_data<pre>";
-                    print_r($update_collection_data);
-                    echo "</pre>";
+
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/'.$smart_collectionsget[0]->collection_id.'.json',
+                        CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/' . $smart_collectionsget[0]->collection_id . '.json',
                         CURLOPT_RETURNTRANSFER => true,
                         CURLOPT_ENCODING => '',
                         CURLOPT_MAXREDIRS => 10,
@@ -2731,52 +2738,48 @@ class Home extends BaseController
                         ),
                     ));
 
-                    $response = curl_exec($curl);                  
+                    $response = curl_exec($curl);
 
                     curl_close($curl);
                     $return_array = json_decode($response);
-
-                    echo "<pre>";
-                    print_r($return_array);
-                    echo "</pre>";
                 }
 
 
 
 
-                // $productadd = [
-                //     "product" => [
-                //         "title" => 'Partial COD',
-                //         "tags" => 'partial_cod_handle',
-                //         "product_type" => 'partial_cod_handle'
-                //     ]
-                // ];
+                $productadd = [
+                    "product" => [
+                        "title" => 'Partial COD',
+                        "tags" => 'partial_cod_handle',
+                        "product_type" => 'partial_cod_handle'
+                    ]
+                ];
 
-                // $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
+                $products_ads =  $products = $this->common->rest_api('/admin/api/2023-10/products.json', $productadd, 'POST', $get_details->access_token, $_GET['shop']);
 
-                // $products_adshh = json_decode($products_ads['body'], true);
+                $products_adshh = json_decode($products_ads['body'], true);
 
-                // $productupdate = [
-                //     "variant" => [
-                //         "id" => $products_adshh['product']['variants'][0]['id'],
-                //         "price" => 0
-                //     ]
-                // ];
+                $productupdate = [
+                    "variant" => [
+                        "id" => $products_adshh['product']['variants'][0]['id'],
+                        "price" => 0
+                    ]
+                ];
 
-                // $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $products_adshh['product']['variants'][0]['id'] . '.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
+                $produtc_update =  $products = $this->common->rest_api('/admin/api/2023-07/variants/' . $products_adshh['product']['variants'][0]['id'] . '.json', $productupdate, 'PUT', $get_details->access_token, $_GET['shop']);
 
-                // $produtc_updatevrnt = json_decode($produtc_update['body'], true);
+                $produtc_updatevrnt = json_decode($produtc_update['body'], true);
 
 
 
-                // $this->user_model->insert_data_cod_product(array(
-                //     "cod_enable" => $codenbl,
-                //     "product_name" => $products_adshh['product']['title'],
-                //     "product_id" => $products_adshh['product']['id'],
-                //     "varient_id" => $products_adshh['product']['variants'][0]['id'],
-                //     "product_price" => 0,
-                //     "shop_url" => $_GET['shop']
-                // ));
+                $this->user_model->insert_data_cod_product(array(
+                    "cod_enable" => $codenbl,
+                    "product_name" => $products_adshh['product']['title'],
+                    "product_id" => $products_adshh['product']['id'],
+                    "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                    "product_price" => 0,
+                    "shop_url" => $_GET['shop']
+                ));
             } else {
 
                 $this->user_model->update_data_cod_product(array(
@@ -2784,19 +2787,9 @@ class Home extends BaseController
                     "shop_url" => $_GET['shop']
                 ));
             }
-            //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+            echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            //$smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-            // $get_details = $this->user_model->get_tokens($_GET['shop']);
-            // $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-
-            // $smart_collectionsget = json_decode($smart_collections['body'], true);
-
-            // echo "<pre>";
-            // print_r($smart_collectionsget);
-            // echo "</pre>";
-        }
+        
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];
