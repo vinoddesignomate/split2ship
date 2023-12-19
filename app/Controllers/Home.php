@@ -2657,9 +2657,11 @@ class Home extends BaseController
                     "smart_collection" => [
                         "title" => 'all',
                         "rules" => [
+                            [
                                 "column"=> "type",
                                 "relation"=> "not_equals ",
                                 "condition"=> "partial_cod_handle ",
+                            ],
                         ],
                     ]
                 ];
