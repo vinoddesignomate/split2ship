@@ -2657,29 +2657,54 @@ class Home extends BaseController
             $getdata = $this->user_model->get_cod_product($_GET['shop']);
             if (empty($getdata)) {
 
+                $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
 
-
-                $collection_data = [
-                    'smart_collection' => [
-                        'title' => 'all',
-                        'rules' => [
-                            [
-                                'column' => 'type',
-                                'relation' => 'not_contains',
-                                'condition' => 'partial_cod_handle',
+                if (empty($smart_collectionsget)) {
+                    $collection_data = [
+                        'smart_collection' => [
+                            'title' => 'all',
+                            'rules' => [
+                                [
+                                    'column' => 'type',
+                                    'relation' => 'not_contains',
+                                    'condition' => 'partial_cod_handle',
+                                ],
                             ],
                         ],
-                    ],
-                ];
+                    ];
+    
+                    // echo json_encode($collection_data);
+    
+                    $smart_coll_ads = $this->common->create_samrt_collection($collection_data, $get_details->access_token, $_GET['shop']);    
+                    $ceatecollgetdt = json_decode($smart_coll_ads, true);
+                    
+                    echo "<pre>";
+                    print_r($ceatecollgetdt);
+                    echo "</pre>";
+                }else{
+                    $update_collection_data = [
+                        'smart_collection' => [
+                            'id' => $smart_collectionsget[0]->collection_id,
+                            'rules' => [
+                                [
+                                    'column' => 'type',
+                                    'relation' => 'not_contains',
+                                    'condition' => 'partial_cod_handle',
+                                ],
+                            ],
+                        ],
+                    ];
 
-                // echo json_encode($collection_data);
+                    $updtsmart_coll_ads = $this->common->create_samrt_collection($smart_collectionsget[0]->collection_id,$update_collection_data, $get_details->access_token, $_GET['shop']);    
+                    $pdcollgetdt = json_decode($updtsmart_coll_ads, true);
 
-                $smart_coll_ads = $this->common->create_samrt_collection($collection_data, $get_details->access_token, $_GET['shop']);
+                    echo "<pre>";
+                    print_r($pdcollgetdt);
+                    echo "</pre>";
 
-                // $collgetdt = json_decode($smart_coll_ads['body'], true);
-                echo "<pre>";
-                print_r($smart_coll_ads);
-                echo "</pre>";
+                }
+
+                
 
 
                 // $productadd = [
@@ -2725,11 +2750,11 @@ class Home extends BaseController
             //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
         if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-            // $get_details = $this->user_model->get_tokens($_GET['shop']);
-            // $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);                      7h7g4hg74hg7hg7777g7g7g
+            //$smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
+            $get_details = $this->user_model->get_tokens($_GET['shop']);
+            $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-            // $smart_collectionsget = json_decode($smart_collections['body'], true);
+            $smart_collectionsget = json_decode($smart_collections['body'], true);
 
             echo "<pre>";
             print_r($smart_collectionsget);

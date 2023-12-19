@@ -590,10 +590,32 @@ class Common
 
         curl_close($curl);
         return $response;
-       // $return_array = json_decode($response);
+       
+    }
+    public function update_samrt_collection($colldataid,$colldata,$token,$shopname)
+    {
+        $curl = curl_init();
 
-        // echo "<pre>";
-        // print_r($return_array);
-        // echo "</pre>";
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/'.$colldataid.'.json',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($colldata),
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        //echo $response;
+
+        curl_close($curl);
+        return $response;
+       
     }
 }
