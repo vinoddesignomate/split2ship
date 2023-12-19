@@ -2690,15 +2690,12 @@ class Home extends BaseController
                         ),
                     ));
 
-                    $response = curl_exec($curl);
-                    //echo $response;
+                    $response = curl_exec($curl);                  
 
                     curl_close($curl);
                     $return_array = json_decode($response);
-
-                    echo "<pre>";
-                    print_r($return_array);
-                    echo "</pre>";
+                    $collecid = $return_array->smart_collection->id;
+                   
                 } else {
                     $update_collection_data = [
                         'smart_collection' => [
@@ -2713,11 +2710,30 @@ class Home extends BaseController
                         ],
                     ];
 
-                    $updtsmart_coll_ads = $this->common->create_samrt_collection($smart_collectionsget[0]->collection_id, $update_collection_data, $get_details->access_token, $_GET['shop']);
-                    $pdcollgetdt = json_decode($updtsmart_coll_ads, true);
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => '',
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 0,
+                        CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => 'PUT',
+                        CURLOPT_POSTFIELDS => json_encode($update_collection_data),
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type: application/json'
+                        ),
+                    ));
+
+                    $response = curl_exec($curl);                  
+
+                    curl_close($curl);
+                    $return_array = json_decode($response);
 
                     echo "<pre>";
-                    print_r($pdcollgetdt);
+                    print_r($return_array);
                     echo "</pre>";
                 }
 
