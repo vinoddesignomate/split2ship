@@ -2660,7 +2660,7 @@ class Home extends BaseController
                             [
                                 "column"=> "type",
                                 "relation"=> "not_equals ",
-                                "condition"=> "partial_cod_handle ",
+                                "condition"=> "partial_cod_handle",
                             ],
                         ],
                     ]
