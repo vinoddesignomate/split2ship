@@ -2666,41 +2666,63 @@ class Home extends BaseController
                 //     ]
                 // ];
 
-                // $collection_data = [
-                //     'smart_collection' => [
-                //         'title' => 'all',
-                //         'rules' => [
-                //             [
-                //                 'column' => 'type',
-                //                 'relation' => 'not_equals',
-                //                 'condition' => 'partial_cod_handle',
-                //             ],
-                //         ],
-                //     ],
-                // ];
-
-                $collection_data = array(
-                    'smart_collection' => array(
+                $collection_data = [
+                    'smart_collection' => [
                         'title' => 'all',
-                        'rules' => array(
-                            array(
+                        'rules' => [
+                            [
                                 'column' => 'type',
                                 'relation' => 'not_equals',
                                 'condition' => 'partial_cod_handle',
-                            ),
-                        ),
+                            ],
+                        ],
+                    ],
+                ];
+
+                // $collection_data = array(
+                //     'smart_collection' => array(
+                //         'title' => 'all',
+                //         'rules' => array(
+                //             array(
+                //                 'column' => 'type',
+                //                 'relation' => 'not_equals',
+                //                 'condition' => 'partial_cod_handle',
+                //             ),
+                //         ),
+                //     ),
+                // );
+
+                // echo json_encode($collection_data);
+
+                // $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $collection_data, 'POST', $get_details->access_token, $_GET['shop']);
+
+                // $collgetdt = json_decode($smart_coll_ads['body'], true);
+                // echo"<pre>"; print_r($collgetdt); echo "</pre>";
+
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => json_encode($collection_data),
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type: application/json'
                     ),
-                );
-                // $collection_data = array("smart_collection"=>
-                //                                     array("title"=>"all", "rules"=>array())
-                //                                 );
-                echo json_encode($collection_data);
+                ));
 
-                $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', array($collection_data), 'POST', $get_details->access_token, $_GET['shop']);
+                $response = curl_exec($curl);
+                //echo $response;
 
-                $collgetdt = json_decode($smart_coll_ads['body'], true);
-                echo"<pre>"; print_r($collgetdt); echo "</pre>";
+                curl_close($curl);
+                $return_array = json_decode($response);
 
+                echo"<pre>"; print_r($return_array); echo "</pre>";
                 // $productadd = [
                 //     "product" => [
                 //         "title" => 'Partial COD',
