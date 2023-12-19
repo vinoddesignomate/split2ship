@@ -288,7 +288,7 @@ $store_name = $shop_name[0];
                                                         <div class="payxnowandrestondelivery-flex-col">
 
                                                                 <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" class="splite_checkbox" id="codgate" name="cod_enable_prcess">
+                                                                        <input type="checkbox" class="splite_checkbox" id="codgate" <?php echo (isset($get_cod_product[0]->cod_enable) && $get_cod_product[0]->cod_enable == '1') ? 'checked' : ''; ?> name="cod_enable_prcess">
                                                                         <label for="codgate">Enable hide COD</label>
                                                                 </div>
                                                         </div>
