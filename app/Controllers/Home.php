@@ -612,6 +612,7 @@ class Home extends BaseController
                         $smart_coll_array = array(
                             "collection_id" => $collection_list['id'],
                             "collections_name" => $collection_list['title'],
+                            "collections_handle" => $collection_list['handle'],
                             "shop_url" => $_GET['shop']
 
                         );
@@ -973,6 +974,7 @@ class Home extends BaseController
                     $smart_coll_array = array(
                         "collection_id" => $collection_list['id'],
                         "collections_name" => $collection_list['title'],
+                        "collections_handle" => $collection_list['handle'],
                         "shop_url" => $_GET['shop']
 
                     );
@@ -1152,6 +1154,7 @@ class Home extends BaseController
                 $smart_coll_array = array(
                     "collection_id" => $collection_list['id'],
                     "collections_name" => $collection_list['title'],
+                    "collections_handle" => $collection_list['handle'],
                     "shop_url" => $_GET['shop']
 
                 );
@@ -1218,6 +1221,7 @@ class Home extends BaseController
                 $smart_coll_array = array(
                     "collection_id" => $collection_list['id'],
                     "collections_name" => $collection_list['title'],
+                    "collections_handle" => $collection_list['handle'],
                     "shop_url" => $_GET['shop']
 
                 );
@@ -2661,7 +2665,7 @@ class Home extends BaseController
                         'rules' => [
                             [
                                 'column' => 'type',
-                                'relation' => 'not_equals',
+                                'relation' => 'not_contains',
                                 'condition' => 'partial_cod_handle',
                             ],
                         ],
@@ -2720,16 +2724,16 @@ class Home extends BaseController
             }
             //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $get_details = $this->user_model->get_tokens($_GET['shop']);
-            $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $get_details = $this->user_model->get_tokens($_GET['shop']);
+        //     $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-            $smart_collectionsget = json_decode($smart_collections['body'], true);
+        //     $smart_collectionsget = json_decode($smart_collections['body'], true);
 
-            echo "<pre>";
-            print_r($smart_collectionsget);
-            echo "</pre>";
-        }
+        //     echo "<pre>";
+        //     print_r($smart_collectionsget);
+        //     echo "</pre>";
+        // }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];
