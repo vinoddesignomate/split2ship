@@ -2696,7 +2696,7 @@ class Home extends BaseController
                 //                                 );
                 echo json_encode($collection_data);
 
-                $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $collection_data, 'POST', $get_details->access_token, $_GET['shop']);
+                $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', array($collection_data), 'POST', $get_details->access_token, $_GET['shop']);
 
                 $collgetdt = json_decode($smart_coll_ads['body'], true);
                 echo"<pre>"; print_r($collgetdt); echo "</pre>";
