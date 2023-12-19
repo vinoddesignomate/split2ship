@@ -2653,18 +2653,7 @@ class Home extends BaseController
             $getdata = $this->user_model->get_cod_product($_GET['shop']);
             if (empty($getdata)) {
 
-                // $smartcolladd = [
-                //     "smart_collection" => [
-                //         "title" => 'all',
-                //         "rules" => [
-                //             [
-                //                 "column"=> "type",
-                //                 "relation"=> "not_equals",
-                //                 "condition"=> "partial_cod_handle",
-                //             ],
-                //         ],
-                //     ]
-                // ];
+
 
                 $collection_data = [
                     'smart_collection' => [
@@ -2679,50 +2668,16 @@ class Home extends BaseController
                     ],
                 ];
 
-                // $collection_data = array(
-                //     'smart_collection' => array(
-                //         'title' => 'all',
-                //         'rules' => array(
-                //             array(
-                //                 'column' => 'type',
-                //                 'relation' => 'not_equals',
-                //                 'condition' => 'partial_cod_handle',
-                //             ),
-                //         ),
-                //     ),
-                // );
-
                 // echo json_encode($collection_data);
 
-                // $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $collection_data, 'POST', $get_details->access_token, $_GET['shop']);
+                $smart_coll_ads = $this->common->create_samrt_collection($collection_data, $get_details->access_token, $_GET['shop']);
 
                 // $collgetdt = json_decode($smart_coll_ads['body'], true);
-                // echo"<pre>"; print_r($collgetdt); echo "</pre>";
+                echo "<pre>";
+                print_r($smart_coll_ads);
+                echo "</pre>";
 
-                $curl = curl_init();
 
-                curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => json_encode($collection_data),
-                    CURLOPT_HTTPHEADER => array(
-                        'Content-Type: application/json'
-                    ),
-                ));
-
-                $response = curl_exec($curl);
-                //echo $response;
-
-                curl_close($curl);
-                $return_array = json_decode($response);
-
-                echo"<pre>"; print_r($return_array); echo "</pre>";
                 // $productadd = [
                 //     "product" => [
                 //         "title" => 'Partial COD',
@@ -2764,6 +2719,16 @@ class Home extends BaseController
                 ));
             }
             //echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
+        }
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            $get_details = $this->user_model->get_tokens($_GET['shop']);
+            $smart_collections = $this->common->rest_api('/admin/api/2022-10/smart_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+            $smart_collectionsget = json_decode($smart_collections['body'], true);
+
+            echo "<pre>";
+            print_r($smart_collectionsget);
+            echo "</pre>";
         }
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);

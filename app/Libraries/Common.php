@@ -44,7 +44,7 @@ class Common
         $headers[] = "";
         //if (!is_null($access_token)) {
         $headers[] = "X-Shopify-Access-Token: " . $access_token;
-        
+
         // $headers[] = "X-Shopify-Access-Token: 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";
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         //}
@@ -293,7 +293,7 @@ class Common
         //echo $response;
 
         curl_close($curl);
-       // echo $response;
+        // echo $response;
         $return_array = json_decode($response);
         // print_r($return_array);
         return $return_array->draft_order->invoice_url;
@@ -478,7 +478,7 @@ class Common
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email='.trim($email).'&password='.trim($password),
+            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login?email=' . trim($email) . '&password=' . trim($password),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -533,7 +533,7 @@ class Common
 
         curl_close($curl);
         return json_decode($response);
-       // $return_array = json_decode($response);
+        // $return_array = json_decode($response);
         // print_r($return_array);
         //return $return_array->draft_order->invoice_url;
     }
@@ -565,5 +565,35 @@ class Common
         return $response;
         // print_r($return_array);
         //return $return_array->draft_order->invoice_url;
+    }
+    public function create_samrt_collection($colldata,$token,$shopname)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($colldata),
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        //echo $response;
+
+        curl_close($curl);
+        return $response;
+       // $return_array = json_decode($response);
+
+        // echo "<pre>";
+        // print_r($return_array);
+        // echo "</pre>";
     }
 }
