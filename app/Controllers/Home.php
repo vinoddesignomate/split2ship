@@ -2708,6 +2708,7 @@ class Home extends BaseController
 
                     $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
                 } else {
+                    $collecid = $smart_collectionsget[0]->collection_id;
                     $update_collection_data = [
                         'smart_collection' => [
                             'id' => $smart_collectionsget[0]->collection_id,
@@ -2777,6 +2778,7 @@ class Home extends BaseController
                     "product_name" => $products_adshh['product']['title'],
                     "product_id" => $products_adshh['product']['id'],
                     "varient_id" => $products_adshh['product']['variants'][0]['id'],
+                    "smart_collection_id" => $collecid,
                     "product_price" => 0,
                     "shop_url" => $_GET['shop']
                 ));
