@@ -2641,9 +2641,9 @@ class Home extends BaseController
         }
 
         if ($this->request->getPost('enble_cod_prs')) {
-            echo "<pre>";
-            print_r($this->request->getPost());
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($this->request->getPost());
+            // echo "</pre>";
             if ($this->request->getPost('cod_enable_prcess')) {
                 $codenbl = 1;
             } else {
