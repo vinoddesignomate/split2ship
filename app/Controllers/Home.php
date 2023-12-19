@@ -2666,18 +2666,34 @@ class Home extends BaseController
                 //     ]
                 // ];
 
-                $collection_data = [
-                    'smart_collection' => [
+                // $collection_data = [
+                //     'smart_collection' => [
+                //         'title' => 'all',
+                //         'rules' => [
+                //             [
+                //                 'column' => 'type',
+                //                 'relation' => 'not_equals',
+                //                 'condition' => 'partial_cod_handle',
+                //             ],
+                //         ],
+                //     ],
+                // ];
+
+                $collection_data = array(
+                    'smart_collection' => array(
                         'title' => 'all',
-                        'rules' => [
-                            [
+                        'rules' => array(
+                            array(
                                 'column' => 'type',
                                 'relation' => 'not_equals',
                                 'condition' => 'partial_cod_handle',
-                            ],
-                        ],
-                    ],
-                ];
+                            ),
+                        ),
+                    ),
+                );
+                // $collection_data = array("smart_collection"=>
+                //                                     array("title"=>"all", "rules"=>array())
+                //                                 );
                 echo json_encode($collection_data);
 
                 $smart_coll_ads = $this->common->rest_api('/admin/api/2023-10/smart_collections.json', $collection_data, 'POST', $get_details->access_token, $_GET['shop']);
