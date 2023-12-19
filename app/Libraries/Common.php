@@ -571,7 +571,7 @@ class Common
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
+            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $shopname . '/admin/api/2023-10/smart_collections.json',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -597,7 +597,7 @@ class Common
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/'.$colldataid.'.json',
+            CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $token . '@' . $shopname . '/admin/api/2023-10/smart_collections/'.$colldataid.'.json',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
