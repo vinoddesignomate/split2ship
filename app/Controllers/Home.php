@@ -124,7 +124,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5606846464304.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    /* $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5605828559152.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -421,9 +421,9 @@ class Home extends BaseController
 
                     $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    echo "getorderarry<pre>";
+                    echo "<pre>";
                     print_r(json_decode($getorderarry));
-                    echo "</pre>";
+                    echo "</pre>";*/
 
                     // echo $getorderarry;
                     // }
