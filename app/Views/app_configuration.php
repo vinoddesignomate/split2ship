@@ -337,7 +337,7 @@ $store_name = $shop_name[0];
                                         <div class="payxnowandrestondelivery-btn-row">
 
                                                 <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                        <button type="submit" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                                        <button type="submit" id="handling_dis" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                                 </div>
 
                                         </div>
@@ -547,15 +547,18 @@ $store_name = $shop_name[0];
                 textbox.style.display = checkbox.checked ? 'block' : 'none';
 
                 if (!checkbox.checked && textboxId == "handliongtt") {
+                        $("#handling_dis").hide();
                         $.ajax({
                                 type: "POST",
                                 url: "disbale_handling_charge",
-                                data: 'shop=<?php echo $_GET['shop'];?>&disbale_handling_charge=true',
+                                data: 'shop=<?php echo $_GET['shop']; ?>&disbale_handling_charge=true',
                                 success: function(response) {
                                         $("#hndlid").html("Handling charge disabled successfully");
                                 }
 
                         });
+                } else if (checkbox.checked && textboxId == "handliongtt") {
+                        $("#handling_dis").show();
                 }
         }
 </script>
