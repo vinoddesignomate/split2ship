@@ -183,7 +183,7 @@ class AppwhookController extends BaseController
                             $item_discount_item = 0;
                         }
                         $productvarient = $products->variant_id;
-                        $tax_price = 0;
+                        $tax_price = $products->discount_allocations[0]->amount;
                         $paidprice_get = $products->price - $products->discount_allocations[0]->amount;
                     }
 
@@ -229,7 +229,7 @@ class AppwhookController extends BaseController
                             "quantity" => $products->quantity,
                         ];
                         //if (!empty($products->properties)) {
-                        $propertiesarry = [];
+                        $propertiesarry = []; 
 
                         // Iterate through each property and add it to the properties array
                         foreach ($products->properties as $gtproperty) {
