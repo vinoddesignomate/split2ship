@@ -325,7 +325,7 @@ class AppwhookController extends BaseController
             $txincude = false;
             $finalprice = $taxamounttotal;
         }
-        $resposne_array = array("name" => "double order line_items" . json_encode($line_items));
+        $resposne_array = array("name" => "double order line_items" . json_encode($order_line_items));
         $this->user_model->check_test_response($resposne_array);
 
         //if (!empty($chkpropeties)) {
