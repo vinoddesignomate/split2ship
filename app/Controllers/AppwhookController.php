@@ -162,7 +162,7 @@ class AppwhookController extends BaseController
 
         foreach ($jsndata->line_items as $products) {
             //set condition for get only main products
-            if (!empty($products->properties) && isset($products->properties)) {
+           // if (!empty($products->properties) && isset($products->properties)) {
                 $chkpropeties = array("proertie" => "get");
                 if ($products->name != "Partial Pending Payment") {
                     if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
@@ -260,9 +260,9 @@ class AppwhookController extends BaseController
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
-            } else {
-                $chkpropeties = array();
-            }            
+            // } else {
+            //     $chkpropeties = array();
+            // }            
             $order_line_items[] = $ordline_item;
             
         }
@@ -328,7 +328,7 @@ class AppwhookController extends BaseController
         $resposne_array = array("name" => "double order line_items" . json_encode($line_items));
         $this->user_model->check_test_response($resposne_array);
 
-        if (!empty($chkpropeties)) {
+        //if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
                     "line_items" => $order_line_items,
@@ -425,7 +425,7 @@ class AppwhookController extends BaseController
                 // $this->user_model->check_test_response($resposne_array);
                 $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
             }
-        }
+        //}
         echo "200 ok";
         exit();
     }
