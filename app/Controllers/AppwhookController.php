@@ -155,7 +155,7 @@ class AppwhookController extends BaseController
         $order_tax = 0;
         $tax_lines = [];
         $line_items = [];
-        $line_item = [];
+
         //get main orders products details 
 
 
@@ -223,19 +223,32 @@ class AppwhookController extends BaseController
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
 
-                    $line_items[] =
-                        [
-                            "variant_id" => $productvarient,
-                            "quantity" => $products->quantity
-                        ];
+                    $line_item = [
+                        "variant_id" => $productvarient,
+                        "quantity" => $products->quantity,
+                    ];
 
+                    $propertiesarry = [];
+
+                    // Iterate through each property and add it to the properties array
+                    foreach ($products->properties as $gtproperty) {
+                        if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
+                            $propertiesarry[] = [
+                                "name" => $gtproperty->name,
+                                "value" => $gtproperty->value,
+                            ];
+                        }
+                    }
+
+                    // Add the properties array to the line item
+                    $line_item['properties'] = $propertiesarry;
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
             } else {
                 $chkpropeties = array();
             }
-           
+            $line_items[] = $line_item;
         }
         //get user address
         if (isset($jsndata->shipping_address)) {
@@ -297,7 +310,7 @@ class AppwhookController extends BaseController
             $finalprice = $taxamounttotal;
         }
 
-        
+
         if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
@@ -481,28 +494,28 @@ class AppwhookController extends BaseController
                     }
                     //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-                       
 
-                        $line_item = [
-                            "variant_id" => $productvarient,
-                            "quantity" => $products->quantity,
-                        ];
-                        //if (!empty($products->properties)) {
-                        $propertiesarry = [];
 
-                        // Iterate through each property and add it to the properties array
-                        foreach ($products->properties as $gtproperty) {
-                            if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
-                                $propertiesarry[] = [
-                                    "name" => $gtproperty->name,
-                                    "value" => $gtproperty->value,
-                                ];
-                            }
+                    $line_item = [
+                        "variant_id" => $productvarient,
+                        "quantity" => $products->quantity,
+                    ];
+                    //if (!empty($products->properties)) {
+                    $propertiesarry = [];
+
+                    // Iterate through each property and add it to the properties array
+                    foreach ($products->properties as $gtproperty) {
+                        if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
+                            $propertiesarry[] = [
+                                "name" => $gtproperty->name,
+                                "value" => $gtproperty->value,
+                            ];
                         }
+                    }
 
-                        // Add the properties array to the line item
-                        $line_item['properties'] = $propertiesarry;
-                        //}
+                    // Add the properties array to the line item
+                    $line_item['properties'] = $propertiesarry;
+                    //}
                     // } else {
                     //     $line_items[] =
                     //         [
@@ -523,7 +536,7 @@ class AppwhookController extends BaseController
                 $chkpropeties = array();
             }
             //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-                $line_items[] = $line_item;
+            $line_items[] = $line_item;
             //}
         }
         //get user address
