@@ -154,8 +154,8 @@ class AppwhookController extends BaseController
         $taxamounttotal = 0;
         $order_tax = 0;
         $tax_lines = [];
-        $line_items = [];
-        $line_item = [];
+        $order_line_items = [];
+        $ordline_item = [];
         //get main orders products details 
 
 
@@ -224,7 +224,7 @@ class AppwhookController extends BaseController
 
 
 
-                    $line_item = [
+                    $ordline_item = [
                         "variant_id" => $productvarient,
                         "quantity" => $products->quantity,
                     ];
@@ -242,7 +242,7 @@ class AppwhookController extends BaseController
                         }
 
                         // Add the properties array to the line item
-                        $line_item['properties'] = $propertiesarry;
+                        $ordline_item['properties'] = $propertiesarry;
                     }
                     // } else {
                     //     $line_items[] =
@@ -263,7 +263,7 @@ class AppwhookController extends BaseController
             } else {
                 $chkpropeties = array();
             }            
-            $line_items[] = $line_item;
+            $order_line_items[] = $ordline_item;
             
         }
         //get user address
@@ -331,7 +331,7 @@ class AppwhookController extends BaseController
         if (!empty($chkpropeties)) {
             $order_data = [
                 "order" => [
-                    "line_items" => $line_items,
+                    "line_items" => $order_line_items,
                     "financial_status" => "pending",
                     "tax_lines" => $tax_lines,
                     "total_tax" => $order_tax,
