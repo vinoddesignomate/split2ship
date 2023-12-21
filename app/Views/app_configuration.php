@@ -309,6 +309,7 @@ $store_name = $shop_name[0];
                                 <form method="post">
                                         <div class="payxnowandrestondelivery-head-wrapper">
                                                 <h2 class="">Handling Charge</h2>
+                                                <span id="hndlid"></span>
                                         </div>
                                         <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
                                                 <div class="payxnowandrestondelivery-flex-row">
@@ -551,7 +552,7 @@ $store_name = $shop_name[0];
                                 url: "disbale_handling_charge",
                                 data: 'shop=<?php echo $_GET['shop'];?>&disbale_handling_charge=true',
                                 success: function(response) {
-                                        
+                                        $("#hndlid").html("Handling charge disabled successfully");
                                 }
 
                         });
