@@ -310,10 +310,10 @@ class AppwhookController extends BaseController
             $country = $jsndata->billing_address->country;
         }
         if ($linitemdisount > 0) {
-            $finaldiscount = $linitemdisount + $paid_price;
+            $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
             $titla_name = "Partial Payment+Applied Discount";
         } else {
-            $finaldiscount = $paid_price;
+            $finaldiscount = $jsndata->subtotal_price;
             $titla_name = "Partial Payment";
         }
 
