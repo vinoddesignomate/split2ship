@@ -155,8 +155,6 @@ class AppwhookController extends BaseController
         $order_tax = 0;
         $tax_lines = [];
         $line_items = [];
-        $line_item = [];
-
         //get main orders products details 
 
 
@@ -184,10 +182,8 @@ class AppwhookController extends BaseController
                             $item_discount_item = 0;
                         }
                         $productvarient = $products->variant_id;
-                        //$tax_price = 0;
-                        $tax_price = $products->discount_allocations[0]->amount;
-                        //$paidprice_get = $products->properties[1]->value;
-                        $paidprice_get = $paidprice_get = $products->price - $products->discount_allocations[0]->amount;
+                        $tax_price = 0;
+                        $paidprice_get = $products->properties[1]->value;
                     }
 
                     $linitemdisount = $linitemdisount + $item_discount_item;
@@ -223,33 +219,52 @@ class AppwhookController extends BaseController
                     } else {
                         $taxamounttotal = $taxamounttotal + $tax_price;
                     }
+                    //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-                    $line_item = [
-                        "variant_id" => $productvarient,
-                        "quantity" => $products->quantity,
-                    ];
+                       
 
-                    $propertiesarry = [];
+                        $line_item = [
+                            "variant_id" => $productvarient,
+                            "quantity" => $products->quantity,
+                        ];
+                        //if (!empty($products->properties)) {
+                        $propertiesarry = [];
 
-                    // Iterate through each property and add it to the properties array
-                    foreach ($products->properties as $gtproperty) {
-                        if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
-                            $propertiesarry[] = [
-                                "name" => $gtproperty->name,
-                                "value" => $gtproperty->value,
-                            ];
+                        // Iterate through each property and add it to the properties array
+                        foreach ($products->properties as $gtproperty) {
+                            if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
+                                $propertiesarry[] = [
+                                    "name" => $gtproperty->name,
+                                    "value" => $gtproperty->value,
+                                ];
+                            }
                         }
-                    }
 
-                    // Add the properties array to the line item
-                    $line_item['properties'] = $propertiesarry;
+                        // Add the properties array to the line item
+                        $line_item['properties'] = $propertiesarry;
+                        //}
+                    // } else {
+                    //     $line_items[] =
+                    //         [
+                    //             "variant_id" => $productvarient,
+                    //             "quantity" => $products->quantity
+                    //         ];
+                    // }
+
+                    // $line_items[] =
+                    //     [
+                    //         "variant_id" => $productvarient,
+                    //         "quantity" => $products->quantity
+                    //     ];
 
                     $paid_price = $paid_price + $paidprice_get;
                 }
             } else {
                 $chkpropeties = array();
             }
-            $line_items[] = $line_item;
+            //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                $line_items[] = $line_item;
+            //}
         }
         //get user address
         if (isset($jsndata->shipping_address)) {
@@ -294,10 +309,10 @@ class AppwhookController extends BaseController
             $country = $jsndata->billing_address->country;
         }
         if ($linitemdisount > 0) {
-            $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
+            $finaldiscount = $linitemdisount + $paid_price;
             $titla_name = "Partial Payment+Applied Discount";
         } else {
-            $finaldiscount = $jsndata->subtotal_price;
+            $finaldiscount = $paid_price;
             $titla_name = "Partial Payment";
         }
 
@@ -310,7 +325,8 @@ class AppwhookController extends BaseController
             $txincude = false;
             $finalprice = $taxamounttotal;
         }
-
+        $resposne_array = array("name" => "double order line_items" . json_encode($line_items));
+        $this->user_model->check_test_response($resposne_array);
 
         if (!empty($chkpropeties)) {
             $order_data = [
@@ -359,7 +375,7 @@ class AppwhookController extends BaseController
             ];
 
 
-            $resposne_array = array("name" => "actual order_data discountwise" . json_encode($order_data));
+            $resposne_array = array("name" => "actual order_data discount" . json_encode($order_data));
             $this->user_model->check_test_response($resposne_array);
 
             $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
@@ -386,6 +402,27 @@ class AppwhookController extends BaseController
 
                 $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
                 $this->user_model->check_test_response($resposne_array);
+
+
+                /* $send_invoice_email = 'mutation {
+            orderInvoiceSend(
+              id: "gid://shopify/Order/' . $decode_get_actual_orders->order->id . '"
+              email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
+            ) {
+              order {
+                id
+              }
+              userErrors {
+                field
+                message
+              }
+            }
+          }';
+
+                $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);*/
+
+                // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
+                // $this->user_model->check_test_response($resposne_array);
                 $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
             }
         }
