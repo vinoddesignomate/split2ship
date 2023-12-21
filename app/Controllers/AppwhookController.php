@@ -184,7 +184,7 @@ class AppwhookController extends BaseController
                         }
                         $productvarient = $products->variant_id;
                         $tax_price = 0;
-                        $paidprice_get = $products->properties[1]->value;
+                        $paidprice_get = $products->price - $products->discount_allocations[0]->amount;
                     }
 
                     $linitemdisount = $linitemdisount + $item_discount_item;
