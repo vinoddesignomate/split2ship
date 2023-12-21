@@ -155,6 +155,7 @@ class AppwhookController extends BaseController
         $order_tax = 0;
         $tax_lines = [];
         $line_items = [];
+        $line_item = [];
 
         //get main orders products details 
 
