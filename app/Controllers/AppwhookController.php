@@ -222,14 +222,14 @@ class AppwhookController extends BaseController
                     }
                     //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-                       
 
-                        $line_item = [
-                            "variant_id" => $productvarient,
-                            "quantity" => $products->quantity,
-                        ];
-                        //if (!empty($products->properties)) {
-                        $propertiesarry = []; 
+
+                    $line_item = [
+                        "variant_id" => $productvarient,
+                        "quantity" => $products->quantity,
+                    ];
+                    if (!empty($products->properties)) {
+                        $propertiesarry = [];
 
                         // Iterate through each property and add it to the properties array
                         foreach ($products->properties as $gtproperty) {
@@ -243,7 +243,7 @@ class AppwhookController extends BaseController
 
                         // Add the properties array to the line item
                         $line_item['properties'] = $propertiesarry;
-                        //}
+                    }
                     // } else {
                     //     $line_items[] =
                     //         [
@@ -262,10 +262,9 @@ class AppwhookController extends BaseController
                 }
             } else {
                 $chkpropeties = array();
-            }
-            //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-                $line_items[] = $line_item;
-            //}
+            }            
+            $line_items[] = $line_item;
+            
         }
         //get user address
         if (isset($jsndata->shipping_address)) {
@@ -943,7 +942,7 @@ class AppwhookController extends BaseController
                                     //     $order_tax1 = 0;
                                     // }
 
-                                   
+
 
                                     // $orders_products_data = array(
                                     //     "order_id" => $jsndata->id,
@@ -959,9 +958,9 @@ class AppwhookController extends BaseController
                                     //     "movement" => date("Y-m-d H:i:s")
                                     // );
 
-                                   
+
                                     // $this->user_model->track_orders_products_forexchange($orders_products_data);
-                                    
+
 
                                     //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
 
