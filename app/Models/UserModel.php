@@ -1038,4 +1038,28 @@ class UserModel extends Model
         $getquery = $qbuilds->get();
         return $getquery->getResult();
     }
+    public function track_partial_coupon_code($data_array){
+
+        $qbuilder_insert = $this->db->table('track_coupon_code');
+        $qbuilder_insert->where('coupon_code_name', $data_array['coupon_code_name']);
+        $qbuilder_insert->where('shop_url', $data_array['shop_url']);
+        $qgetordpro = $qbuilder_insert->get();
+        $qbuilder_insert->countAllResults();
+        if (!empty($qgetordpro->getResult())) {
+            $this->db->table('track_coupon_code')->where('coupon_code_name', $data_array['coupon_code_name'])->update($data_array);
+        } else {
+            $this->db->table('track_coupon_code')->insert($data_array);
+        }
+    }
+    public function remove_coupon_code($data_array){
+        $del_query = "DELETE FROM track_coupon_code WHERE shop_url=? AND price_rule_id=?";
+        $this->db->query($del_query, array($data_array['shop_url'],$data_array['price_rule_id']));
+    }
+    public function get_partial_coupon_cde($data_array){
+        $qbuilder_insert = $this->db->table('track_coupon_code');
+        $qbuilder_insert->where('coupon_code_name', $data_array['coupon_code_name']);
+        $qbuilder_insert->where('shop_url', $data_array['shop_url']);
+        $qgetordpro = $qbuilder_insert->get();
+        return $qgetordpro->getResult();
+    }
 }

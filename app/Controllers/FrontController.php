@@ -196,6 +196,15 @@ class FrontController extends BaseController
                     $varientid = "";
                 }
                 echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid;
+
+                //track coupon for partial payment for remove when order is place
+                $track_coupon_code = array(
+                    "coupon_code_name" => $coupon_name,
+                    "price_rule_id" => $getprietuleidrec['price_rule']['id'],
+                    "coupon_code_id" => $createcouponrec['discount_code']['id'],
+                    "shop_url" => $shopname,
+                );
+                $this->user_model->track_partial_coupon_code($track_coupon_code);
             }
         }
         //print_r($returndata);
@@ -440,7 +449,7 @@ class FrontController extends BaseController
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-            if ($shopname == 'desinomatetest.myshopify.com' || $shopname =='partialtestapp.myshopify.com') {
+            if ($shopname == 'desinomatetest.myshopify.com' || $shopname == 'partialtestapp.myshopify.com') {
 
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
                 //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
@@ -1606,6 +1615,11 @@ class FrontController extends BaseController
 
         $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
         $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $this->request->getPost('priceruleid') . '.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
+        $remove_coupon_code = array(
+            "price_rule_id" => $this->request->getPost('priceruleid'),
+            "shop_url" => $this->request->getPost('shopname'),
+        );
+        $this->user_model->remove_coupon_code($remove_coupon_code);
     }
     public function update_double_create()
     {
