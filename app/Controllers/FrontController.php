@@ -440,7 +440,7 @@ class FrontController extends BaseController
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-            if ($shopname == 'desinomatetest.myshopify.com') {
+            if ($shopname == 'desinomatetest.myshopify.com' || $shopname =='partialtestapp.myshopify.com') {
 
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
                 //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
