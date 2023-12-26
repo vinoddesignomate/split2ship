@@ -124,17 +124,17 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    /* $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5605828559152.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5611644453168.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    // echo "getprietuleidrec<pre>";
-                    // print_r($getprietuleidrec);
-                    // echo "</pre>";
-
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
+                        die();
 
                     // $targetCode = 'Remaining_Amount';
                     // $matchingCode = null;
@@ -419,11 +419,11 @@ class Home extends BaseController
                     print_r($order_data);
                     echo "</pre>";
 
-                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    echo "<pre>";
-                    print_r(json_decode($getorderarry));
-                    echo "</pre>";*/
+                    // echo "<pre>";
+                    // print_r(json_decode($getorderarry));
+                    // echo "</pre>";
 
                     // echo $getorderarry;
                     // }
