@@ -86,7 +86,7 @@ class Home extends BaseController
                 }
 
                // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '38.137.25.14') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.105.245.251') {
 
                     // $productadd = [
                     //     "product" => [
