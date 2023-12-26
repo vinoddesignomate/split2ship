@@ -275,7 +275,7 @@ $store_name = $shop_name[0];
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
 
-        <?php if ($shpname == 'desinomatetest.myshopify.com') { ?>
+        <?php if ($shpname == 'desinomatetest.myshopify.com' || $shpname == 'partialtestapp.myshopify.com') { ?>
 
                 <div class="payxnowandrestondelivery-zip-flex-row">
                         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
