@@ -135,12 +135,12 @@ class Home extends BaseController
                         "shop_url" => $_GET['shop'],
                     );
 
-                    $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
+                    // $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getcopndata);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getcopndata);
+                    // echo "</pre>";
                        // die();
 
                     // $targetCode = 'Remaining_Amount';

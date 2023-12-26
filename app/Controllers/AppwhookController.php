@@ -1016,6 +1016,22 @@ class AppwhookController extends BaseController
                                 }
                             }
                             if ($matchingCode !== null) {
+                                //code for remove disconr coupon code after order
+                                $get_coupon_code = array(
+                                    "coupon_code_name" => $matchingCode,
+                                    "shop_url" => $_GET['whshp'],
+                                );
+            
+                                $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
+                                
+                                $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getcopndata[0]->price_rule_id . '.json', array(), 'DELETE', $get_resulsts->access_token, $_GET['whshp']);
+
+                                $remove_coupon_code = array(
+                                    "price_rule_id" => $getcopndata[0]->price_rule_id,
+                                    "shop_url" => $_GET['whshp'],
+                                );
+                                $this->user_model->remove_coupon_code($remove_coupon_code);
+                                //code for remove disconr coupon code after order
 
                                 $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
                                 $this->create_double_cod_orders2($jsndata, $get_resulsts, $part_type);
