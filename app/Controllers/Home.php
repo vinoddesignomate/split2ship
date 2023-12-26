@@ -125,15 +125,21 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5611694522672.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    //  $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5611694522672.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
+                    $get_coupon_code = array(
+                        "coupon_code_name" => 'Remaining_Amount(RJmHGl)',
+                        "shop_url" => $_GET['shop'],
+                    );
+
+                    $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
                     echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
+                    print_r($getcopndata);
                     echo "</pre>";
                        // die();
 
