@@ -162,109 +162,113 @@ class AppwhookController extends BaseController
 
         foreach ($jsndata->line_items as $products) {
             //set condition for get only main products
-           // if (!empty($products->properties) && isset($products->properties)) {
-                $chkpropeties = array("proertie" => "get");
-                if ($products->name != "Partial Pending Payment") {
-                    if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
-                        $item_price = $products->properties[2]->value;
-                        $tax_price = $products->properties[3]->value;
-                        $productvarient = $products->properties[1]->value;
-                        if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
-                            $item_discount_item = $products->properties[4]->value;
-                        } else {
-                            $item_discount_item = 0;
-                        }
-                        $paidprice_get = $products->properties[2]->value;
+            // if (!empty($products->properties) && isset($products->properties)) {
+            $chkpropeties = array("proertie" => "get");
+            if ($products->name != "Partial Pending Payment") {
+                if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
+                    $item_price = $products->properties[2]->value;
+                    $tax_price = $products->properties[3]->value;
+                    $productvarient = $products->properties[1]->value;
+                    if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
+                        $item_discount_item = $products->properties[4]->value;
                     } else {
-                        $item_price = $products->price;
-                        if (isset($products->total_discount) && $products->total_discount != "") {
-                            $item_discount_item = $products->total_discount;
-                        } else {
-                            $item_discount_item = 0;
-                        }
-                        $productvarient = $products->variant_id;
+                        $item_discount_item = 0;
+                    }
+                    $paidprice_get = $products->properties[2]->value;
+                } else {
+                    $item_price = $products->price;
+                    if (isset($products->total_discount) && $products->total_discount != "") {
+                        $item_discount_item = $products->total_discount;
+                    } else {
+                        $item_discount_item = 0;
+                    }
+                    $productvarient = $products->variant_id;
+                    if (isset($products->discount_allocations[0]->amount)) {
                         $tax_price = $products->discount_allocations[0]->amount;
                         $paidprice_get = $products->price - $products->discount_allocations[0]->amount;
+                    } else {
+                        $tax_price = 0;
+                        $paidprice_get = 0;
                     }
+                }
 
-                    $linitemdisount = $linitemdisount + $item_discount_item;
+                $linitemdisount = $linitemdisount + $item_discount_item;
 
-                    if (!empty($products->tax_lines)) {
-                        foreach ($products->tax_lines as $tax_items) {
-                            if ($tax_price == 0) {
-                                $taxamount = 0;
+                if (!empty($products->tax_lines)) {
+                    foreach ($products->tax_lines as $tax_items) {
+                        if ($tax_price == 0) {
+                            $taxamount = 0;
+                        } else {
+                            //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                            if ($jsndata->taxes_included == 1) {
+                                $taxamount = ($tax_items->rate * $tax_price) / (1 + $tax_items->rate);
                             } else {
-                                //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-                                if ($jsndata->taxes_included == 1) {
-                                    $taxamount = ($tax_items->rate * $tax_price) / (1 + $tax_items->rate);
-                                } else {
-                                    $taxamount = $tax_price * $tax_items->rate;
-                                }
-                                // } else {
-                                //     $taxamount = $tax_price * $tax_items->rate;
-                                // }
+                                $taxamount = $tax_price * $tax_items->rate;
                             }
+                            // } else {
+                            //     $taxamount = $tax_price * $tax_items->rate;
+                            // }
+                        }
 
-                            $getitemtx = $tax_price + $taxamount;
-                            $taxamounttotal = $taxamounttotal + $getitemtx;
+                        $getitemtx = $tax_price + $taxamount;
+                        $taxamounttotal = $taxamounttotal + $getitemtx;
 
 
-                            $order_tax = $order_tax + $taxamount;
+                        $order_tax = $order_tax + $taxamount;
 
-                            $tax_lines[] = [
-                                'title' => $tax_items->title,
-                                'price' => $taxamount,
-                                'rate' => $tax_items->rate,
+                        $tax_lines[] = [
+                            'title' => $tax_items->title,
+                            'price' => $taxamount,
+                            'rate' => $tax_items->rate,
+                        ];
+                    }
+                } else {
+                    $taxamounttotal = $taxamounttotal + $tax_price;
+                }
+                //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+
+
+
+                $ordline_item = [
+                    "variant_id" => $productvarient,
+                    "quantity" => $products->quantity,
+                ];
+                if (!empty($products->properties)) {
+                    $propertiesarry = [];
+
+                    // Iterate through each property and add it to the properties array
+                    foreach ($products->properties as $gtproperty) {
+                        if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
+                            $propertiesarry[] = [
+                                "name" => $gtproperty->name,
+                                "value" => $gtproperty->value,
                             ];
                         }
-                    } else {
-                        $taxamounttotal = $taxamounttotal + $tax_price;
                     }
-                    //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
 
-
-
-                    $ordline_item = [
-                        "variant_id" => $productvarient,
-                        "quantity" => $products->quantity,
-                    ];
-                    if (!empty($products->properties)) {
-                        $propertiesarry = [];
-
-                        // Iterate through each property and add it to the properties array
-                        foreach ($products->properties as $gtproperty) {
-                            if ($gtproperty->name != "partial_pay" && $gtproperty->name != "remaining_amount") {
-                                $propertiesarry[] = [
-                                    "name" => $gtproperty->name,
-                                    "value" => $gtproperty->value,
-                                ];
-                            }
-                        }
-
-                        // Add the properties array to the line item
-                        $ordline_item['properties'] = $propertiesarry;
-                    }
-                    // } else {
-                    //     $line_items[] =
-                    //         [
-                    //             "variant_id" => $productvarient,
-                    //             "quantity" => $products->quantity
-                    //         ];
-                    // }
-
-                    // $line_items[] =
-                    //     [
-                    //         "variant_id" => $productvarient,
-                    //         "quantity" => $products->quantity
-                    //     ];
-
-                    $paid_price = $paid_price + $paidprice_get;
+                    // Add the properties array to the line item
+                    $ordline_item['properties'] = $propertiesarry;
                 }
+                // } else {
+                //     $line_items[] =
+                //         [
+                //             "variant_id" => $productvarient,
+                //             "quantity" => $products->quantity
+                //         ];
+                // }
+
+                // $line_items[] =
+                //     [
+                //         "variant_id" => $productvarient,
+                //         "quantity" => $products->quantity
+                //     ];
+
+                $paid_price = $paid_price + $paidprice_get;
+            }
             // } else {
             //     $chkpropeties = array();
             // }            
             $order_line_items[] = $ordline_item;
-            
         }
         //get user address
         if (isset($jsndata->shipping_address)) {
@@ -329,82 +333,82 @@ class AppwhookController extends BaseController
         $this->user_model->check_test_response($resposne_array);
 
         //if (!empty($chkpropeties)) {
-            $order_data = [
-                "order" => [
-                    "line_items" => $order_line_items,
-                    "financial_status" => "pending",
-                    "tax_lines" => $tax_lines,
-                    "total_tax" => $order_tax,
-                    "transactions" => [
-                        [
-                            "kind" => "authorization",
-                            "status" => "success",
-                            "amount" => $finalprice,
-                            "gateway" => "Cash on Delivery"
-                        ]
-                    ],
-                    "shipping_address" => [
-                        "first_name" => $first_name,
-                        "last_name" => $las_name,
-                        "address1" => $address1 . $address2,
-                        "phone" => $phone,
-                        "city" => $city,
-                        "province" => $province,
-                        "country" => $country,
-                        "zip" => $zip
-                    ],
-                    "taxes_included" => $txincude,
-                    "customer" => [
-                        "id" => $jsndata->customer->id
-                    ],
-                    "note_attributes" => [
-                        [
-                            "name" => "Suffix",
-                            "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
-                        ]
-                    ],
-                    "name" => $jsndata->name . '-SplitOrder',
-                    "discount_codes" => [
-                        [
-                            "code" => $titla_name,
-                            "amount" => $finaldiscount,
-                            "type" => "fixed_amount"
-                        ]
+        $order_data = [
+            "order" => [
+                "line_items" => $order_line_items,
+                "financial_status" => "pending",
+                "tax_lines" => $tax_lines,
+                "total_tax" => $order_tax,
+                "transactions" => [
+                    [
+                        "kind" => "authorization",
+                        "status" => "success",
+                        "amount" => $finalprice,
+                        "gateway" => "Cash on Delivery"
+                    ]
+                ],
+                "shipping_address" => [
+                    "first_name" => $first_name,
+                    "last_name" => $las_name,
+                    "address1" => $address1 . $address2,
+                    "phone" => $phone,
+                    "city" => $city,
+                    "province" => $province,
+                    "country" => $country,
+                    "zip" => $zip
+                ],
+                "taxes_included" => $txincude,
+                "customer" => [
+                    "id" => $jsndata->customer->id
+                ],
+                "note_attributes" => [
+                    [
+                        "name" => "Suffix",
+                        "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
+                    ]
+                ],
+                "name" => $jsndata->name . '-SplitOrder',
+                "discount_codes" => [
+                    [
+                        "code" => $titla_name,
+                        "amount" => $finaldiscount,
+                        "type" => "fixed_amount"
                     ]
                 ]
-            ];
+            ]
+        ];
 
 
-            $resposne_array = array("name" => "actual order_data discount" . json_encode($order_data));
+        $resposne_array = array("name" => "actual order_data discount" . json_encode($order_data));
+        $this->user_model->check_test_response($resposne_array);
+
+        $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
+
+        // $resposne_array = array("name" => "plus order" . $_GET['whshp']);
+        // $this->user_model->check_test_response($resposne_array); 
+
+        $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
+
+        $decode_get_actual_orders = json_decode($get_actual_orders);
+        if (isset($decode_get_actual_orders->order->id)) {
+
+            //update second order which is created by API
+            $track_double_order = array(
+                "orderid_paid" => $jsndata->id,
+                "order_id_cod" => $decode_get_actual_orders->order->id,
+                "order_number_cod" => $jsndata->name . '-SplitOrder',
+                "shop_url" => $_GET['whshp'],
+                "status" => 'success',
+            );
+            $this->user_model->track_double_orders_update($track_double_order);
+            $this->user_model->update_double_order_with_old($decode_get_actual_orders->order->id, $jsndata->id, $_GET['whshp']);
+
+
+            $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
             $this->user_model->check_test_response($resposne_array);
 
-            $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
-            // $resposne_array = array("name" => "plus order" . $_GET['whshp']);
-            // $this->user_model->check_test_response($resposne_array); 
-
-            $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
-
-            $decode_get_actual_orders = json_decode($get_actual_orders);
-            if (isset($decode_get_actual_orders->order->id)) {
-
-                //update second order which is created by API
-                $track_double_order = array(
-                    "orderid_paid" => $jsndata->id,
-                    "order_id_cod" => $decode_get_actual_orders->order->id,
-                    "order_number_cod" => $jsndata->name . '-SplitOrder',
-                    "shop_url" => $_GET['whshp'],
-                    "status" => 'success',
-                );
-                $this->user_model->track_double_orders_update($track_double_order);
-                $this->user_model->update_double_order_with_old($decode_get_actual_orders->order->id, $jsndata->id, $_GET['whshp']);
-
-
-                $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
-                $this->user_model->check_test_response($resposne_array);
-
-
-                /* $send_invoice_email = 'mutation {
+            /* $send_invoice_email = 'mutation {
             orderInvoiceSend(
               id: "gid://shopify/Order/' . $decode_get_actual_orders->order->id . '"
               email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
@@ -421,10 +425,10 @@ class AppwhookController extends BaseController
 
                 $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);*/
 
-                // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
-                // $this->user_model->check_test_response($resposne_array);
-                $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
-            }
+            // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
+            // $this->user_model->check_test_response($resposne_array);
+            $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+        }
         //}
         echo "200 ok";
         exit();
