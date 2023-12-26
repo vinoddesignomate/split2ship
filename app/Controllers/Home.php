@@ -85,7 +85,8 @@ class Home extends BaseController
                     }
                 }
 
-                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+               // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '38.137.25.14') {
 
                     // $productadd = [
                     //     "product" => [
@@ -124,17 +125,17 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    /* $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5611644453168.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5611694522672.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
 
 
-                    // echo "getprietuleidrec<pre>";
-                    // print_r($getprietuleidrec);
-                    // echo "</pre>";
-                    //     die();
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
+                       // die();
 
                     // $targetCode = 'Remaining_Amount';
                     // $matchingCode = null;
@@ -189,7 +190,7 @@ class Home extends BaseController
                     // echo "</pre>";
 
 
-                    $paid_price = 0;
+                    /*$paid_price = 0;
                     $total_item_price = 0;
                     $line_item = []; // Initialize an array to store line items
                     $line_items = [];
