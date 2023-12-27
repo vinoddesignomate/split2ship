@@ -30,6 +30,10 @@ class FrontController extends BaseController
 
         $plan_details = $this->user_model->get_store_plan($shopname);
         $get_details = $this->user_model->get_tokens($shopname);
+        if ($shopname == "desinomatetest.myshopify.com") {
+            $get_customize_store_list = $this->user_model->get_customize_store_list();
+            echo"<pre>"; print_r($get_customize_store_list); echo "</pre>";
+        }
         if ($get_details->force_update == 1) {
             if (!empty($plan_details)) {
                 if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {

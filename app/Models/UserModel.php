@@ -1038,7 +1038,8 @@ class UserModel extends Model
         $getquery = $qbuilds->get();
         return $getquery->getResult();
     }
-    public function track_partial_coupon_code($data_array){
+    public function track_partial_coupon_code($data_array)
+    {
 
         $qbuilder_insert = $this->db->table('track_coupon_code');
         $qbuilder_insert->where('coupon_code_name', $data_array['coupon_code_name']);
@@ -1051,15 +1052,23 @@ class UserModel extends Model
             $this->db->table('track_coupon_code')->insert($data_array);
         }
     }
-    public function remove_coupon_code($data_array){
+    public function remove_coupon_code($data_array)
+    {
         $del_query = "DELETE FROM track_coupon_code WHERE shop_url=? AND price_rule_id=?";
-        $this->db->query($del_query, array($data_array['shop_url'],$data_array['price_rule_id']));
+        $this->db->query($del_query, array($data_array['shop_url'], $data_array['price_rule_id']));
     }
-    public function get_partial_coupon_cde($data_array){
+    public function get_partial_coupon_cde($data_array)
+    {
         $qbuilder_insert = $this->db->table('track_coupon_code');
         $qbuilder_insert->where('coupon_code_name', $data_array['coupon_code_name']);
         $qbuilder_insert->where('shop_url', $data_array['shop_url']);
         $qgetordpro = $qbuilder_insert->get();
         return $qgetordpro->getResult();
+    }
+    public function get_customize_store_list()
+    {
+        $get_customize_pro_query = $this->db->table('cg_split_customization_product_store');
+        $resutl_custo = $get_customize_pro_query->get();
+        return $resutl_custo->getResult();
     }
 }
