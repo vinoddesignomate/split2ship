@@ -22,6 +22,7 @@ class FrontController extends BaseController
         $this->user_model = new UserModel();
         $this->exchange_model = new ExchangeappModel();
     }
+
     public function get_product_details()
     {
 
@@ -31,7 +32,7 @@ class FrontController extends BaseController
         $plan_details = $this->user_model->get_store_plan($shopname);
         $get_details = $this->user_model->get_tokens($shopname);
 
-        $get_customize_store_list = $this->user_model->get_customize_store_list();
+
 
 
         if ($get_details->force_update == 1) {
@@ -94,8 +95,7 @@ class FrontController extends BaseController
                                         "partial_buynow_btn_color" => '',
                                         "partial_buynow_text_color" => '',
                                         "full_buy_btn_color" => '',
-                                        "full_buy_text_color" => '',
-                                        "get_customize_store_list" => json_encode($get_customize_store_list)
+                                        "full_buy_text_color" => ''
                                     );
                                 } else {
                                     $return_array = array(
@@ -118,8 +118,7 @@ class FrontController extends BaseController
                                         "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
                                         "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
                                         "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
-                                        "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
-                                        "get_customize_store_list" => json_encode($get_customize_store_list)
+                                        "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color
                                     );
                                 }
                                 return json_encode($return_array);
@@ -1645,6 +1644,11 @@ class FrontController extends BaseController
             "shop_url" => $this->request->getPost('shopname'),
         );
         $this->user_model->remove_coupon_code($remove_coupon_code);
+    }
+    public function frontend_getcuststorelist()
+    {
+        $get_customize_store_list = $this->user_model->get_customize_store_list();
+        return json_encode($get_customize_store_list);
     }
     public function update_double_create()
     {
