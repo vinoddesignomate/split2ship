@@ -57,10 +57,10 @@ class Home extends BaseController
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
             //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            if ($get_details->force_update == 0) {
-                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                exit();
-            }
+            // if ($get_details->update_app == 0) {
+            //     echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+            //     exit();
+            // }
             //}
             $data['get_details'] = $get_details;
             $products =  $products = $this->common->rest_api('/admin/api/2022-10/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
