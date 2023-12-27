@@ -1069,6 +1069,10 @@ class UserModel extends Model
     {
         $get_customize_pro_query = $this->db->table('cg_split_customization_product_store');
         $resutl_custo = $get_customize_pro_query->get();
-        return $resutl_custo->getResult();
+        $returnArray = array();
+        foreach ($resutl_custo->getResult() as $shoplost) {
+            $returnArray[] = $shoplost->shop_url;
+        }
+        return $returnArray;
     }
 }
