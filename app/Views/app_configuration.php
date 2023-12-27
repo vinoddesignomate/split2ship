@@ -275,78 +275,78 @@ $store_name = $shop_name[0];
                 <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
         </div>
 
-        <?php if ($shpname == 'desinomatetest.myshopify.com' || $shpname == 'partialtestapp.myshopify.com') { ?>
 
-                <div class="payxnowandrestondelivery-zip-flex-row">
-                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
-                                <div class="payxnowandrestondelivery-head-wrapper">
-                                        <h2 class="">COD payment gatway</h2>
+
+        <div class="payxnowandrestondelivery-zip-flex-row">
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
+                        <div class="payxnowandrestondelivery-head-wrapper">
+                                <h2 class="">COD payment gatway</h2>
+                        </div>
+                        <form method="post">
+                                <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
+                                        <div class="payxnowandrestondelivery-flex-row">
+                                                <div class="payxnowandrestondelivery-flex-col">
+
+                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                <input type="checkbox" class="splite_checkbox" id="codgate" <?php echo (isset($get_cod_product[0]->cod_enable) && $get_cod_product[0]->cod_enable == '1') ? 'checked' : ''; ?> name="cod_enable_prcess">
+                                                                <label for="codgate">Enable hide COD</label>
+                                                        </div>
+                                                </div>
+                                        </div>
                                 </div>
-                                <form method="post">
-                                        <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
-                                                <div class="payxnowandrestondelivery-flex-row">
-                                                        <div class="payxnowandrestondelivery-flex-col">
+                                <div class="payxnowandrestondelivery-btn-row">
 
-                                                                <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" class="splite_checkbox" id="codgate" <?php echo (isset($get_cod_product[0]->cod_enable) && $get_cod_product[0]->cod_enable == '1') ? 'checked' : ''; ?> name="cod_enable_prcess">
-                                                                        <label for="codgate">Enable hide COD</label>
-                                                                </div>
-                                                        </div>
-                                                </div>
+                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                <button type="submit" name="enble_cod_prs" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
                                         </div>
-                                        <div class="payxnowandrestondelivery-btn-row">
 
-                                                <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                        <button type="submit" name="enble_cod_prs" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
-                                                </div>
-
-                                        </div>
-                                </form>
-                        </div>
-
-                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
-
-                                <form method="post">
-                                        <div class="payxnowandrestondelivery-head-wrapper">
-                                                <h2 class="">Handling Charge</h2>
-                                                <span style="color: green;font-weight: 700;" id="hndlid"></span>
-                                        </div>
-                                        <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
-                                                <div class="payxnowandrestondelivery-flex-row">
-                                                        <div class="payxnowandrestondelivery-flex-col">
-
-                                                                <div class="payxnowandrestondeliver-checkbox-wrap">
-                                                                        <input type="checkbox" class="splite_checkbox" id="handling_crg" <?php echo (isset($get_cod_product[0]->handling_charge_enalbe) && $get_cod_product[0]->handling_charge_enalbe == '1') ? 'checked' : ''; ?> name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
-                                                                        <label for="handling_crg">Enable handling charge</label>
-                                                                </div>
-                                                        </div>
-                                                        <div <?php echo (isset($get_cod_product[0]->handling_charge_enalbe) && $get_cod_product[0]->handling_charge_enalbe == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?> class="payxnowandrestondelivery-flex-col" id="handliongtt">
-                                                                <div class="flex-row">
-                                                                        <label for="">Title</label>
-                                                                        <input type="text" required name="handling_title" value="<?php echo (isset($get_cod_product[0]->product_name) ? $get_cod_product[0]->product_name : ''); ?>">
-                                                                </div>
-                                                                <div class="flex-row">
-                                                                        <label for="">Handling price</label>
-                                                                        <input type="number" required name="handle_price" value="<?php echo (isset($get_cod_product[0]->product_price) ? $get_cod_product[0]->product_price : ''); ?>">
-                                                                </div>
-                                                        </div>
-
-
-                                                </div>
-                                        </div>
-                                        <div class="payxnowandrestondelivery-btn-row">
-
-                                                <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
-                                                        <button type="submit" id="handling_dis" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
-                                                </div>
-
-                                        </div>
-                                </form>
-                        </div>
-
+                                </div>
+                        </form>
                 </div>
 
-        <?php } ?>
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-flex-col payxnowandrestondelivery-col-60">
+
+                        <form method="post">
+                                <div class="payxnowandrestondelivery-head-wrapper">
+                                        <h2 class="">Handling Charge</h2>
+                                        <span style="color: green;font-weight: 700;" id="hndlid"></span>
+                                </div>
+                                <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
+                                        <div class="payxnowandrestondelivery-flex-row">
+                                                <div class="payxnowandrestondelivery-flex-col">
+
+                                                        <div class="payxnowandrestondeliver-checkbox-wrap">
+                                                                <input type="checkbox" class="splite_checkbox" id="handling_crg" <?php echo (isset($get_cod_product[0]->handling_charge_enalbe) && $get_cod_product[0]->handling_charge_enalbe == '1') ? 'checked' : ''; ?> name="eblehandlingr" onclick="toggleTextBox('handling_crg', 'handliongtt')" value="handlingchgebl">
+                                                                <label for="handling_crg">Enable handling charge</label>
+                                                        </div>
+                                                </div>
+                                                <div <?php echo (isset($get_cod_product[0]->handling_charge_enalbe) && $get_cod_product[0]->handling_charge_enalbe == '1') ? 'style="display: block;"' : 'style="display: none;"'; ?> class="payxnowandrestondelivery-flex-col" id="handliongtt">
+                                                        <div class="flex-row">
+                                                                <label for="">Title</label>
+                                                                <input type="text" required name="handling_title" value="<?php echo (isset($get_cod_product[0]->product_name) ? $get_cod_product[0]->product_name : ''); ?>">
+                                                        </div>
+                                                        <div class="flex-row">
+                                                                <label for="">Handling price</label>
+                                                                <input type="number" required name="handle_price" value="<?php echo (isset($get_cod_product[0]->product_price) ? $get_cod_product[0]->product_price : ''); ?>">
+                                                        </div>
+                                                </div>
+
+
+                                        </div>
+                                </div>
+                                <div class="payxnowandrestondelivery-btn-row">
+
+                                        <div class="btn-row payxnowandrestondelivery-submit-btn" style="margin-top: 10px;">
+                                                <button type="submit" id="handling_dis" name="enable_handling_submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta payxnowandrestondelivery-btn-end" value="submit">Submit</button>
+                                        </div>
+
+                                </div>
+                        </form>
+                </div>
+
+        </div>
+
+
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
                         <div class="payxnowandrestondelivery-head-wrapper">

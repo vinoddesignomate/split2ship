@@ -57,10 +57,10 @@ class Home extends BaseController
 
             $get_details = $this->user_model->get_tokens($_GET['shop']);
             //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            // if ($get_details->update_app == 0) {
-            //     echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-            //     exit();
-            // }
+            if ($get_details->force_update == 0) {
+                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                exit();
+            }
             //}
             $data['get_details'] = $get_details;
             $products =  $products = $this->common->rest_api('/admin/api/2022-10/products.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
@@ -130,10 +130,10 @@ class Home extends BaseController
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
-                    $get_coupon_code = array(
-                        "coupon_code_name" => 'Remaining_Amount(RJmHGl)',
-                        "shop_url" => $_GET['shop'],
-                    );
+                    // $get_coupon_code = array(
+                    //     "coupon_code_name" => 'Remaining_Amount(RJmHGl)',
+                    //     "shop_url" => $_GET['shop'],
+                    // );
 
                     // $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
@@ -764,7 +764,7 @@ class Home extends BaseController
 
                 echo view('templates/header');
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                    echo view('welcome_message2', $data);
+                    echo view('welcome_message', $data);
                 } else {
                     echo view('welcome_message', $data);
                 }

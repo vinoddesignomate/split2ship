@@ -767,289 +767,290 @@ class AppwhookController extends BaseController
 
         if (isset($_GET['whshp']) && $_GET['whshp'] != "") {
             $get_resulsts = $this->user_model->get_tokens($_GET['whshp']);
+            if ($get_resulsts->force_update == 1) {
+                $plan_details = $this->user_model->get_store_plan($_GET['whshp']); //get store price plane
 
-            $plan_details = $this->user_model->get_store_plan($_GET['whshp']); //get store price plane
+                //check store order count accoring to paid plane 
+                if (!empty($plan_details)) {
+                    if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+                        $resposne_arrayshop = array("name" => "Shop Order Start=" . json_encode($jsndata));
+                        $this->user_model->check_test_response($resposne_arrayshop);
+                        $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
+                        if (empty($get_orders_details)) {
+                            //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+                            if ($get_resulsts->update_app == 1) {
+                                $remaing_proice = 0;
 
-            //check store order count accoring to paid plane 
-            if (!empty($plan_details)) {
-                if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-                    $resposne_arrayshop = array("name" => "Shop Order Start=" . json_encode($jsndata));
-                    $this->user_model->check_test_response($resposne_arrayshop);
-                    $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
-                    if (empty($get_orders_details)) {
-                        //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-                        if ($get_resulsts->update_app == 1) {
-                            $remaing_proice = 0;
-
-                            if ($jsndata->tags != '') {
-                                $orders_sts = 'pending';
-                                $pendingamntnnn = explode("_", $jsndata->tags);
-                                $remaing_proice = (isset($pendingamntnnn[1]) ? $pendingamntnnn[1] : '0');
-                                $part_type = $pendingamntnnn[0];
-                                $order_pay_sts = "partial";
-                            } else {
-                                if ($jsndata->financial_status == "pending") {
-                                    $orders_sts = 'cod';
-                                    $remaing_proice = $jsndata->total_price;
-                                    $order_pay_sts = "cod";
+                                if ($jsndata->tags != '') {
+                                    $orders_sts = 'pending';
+                                    $pendingamntnnn = explode("_", $jsndata->tags);
+                                    $remaing_proice = (isset($pendingamntnnn[1]) ? $pendingamntnnn[1] : '0');
+                                    $part_type = $pendingamntnnn[0];
+                                    $order_pay_sts = "partial";
                                 } else {
-                                    $orders_sts = $jsndata->financial_status;
-                                    $remaing_proice = 0;
-                                    $part_type = 'fullpaid';
-                                    $order_pay_sts = "paid";
-                                }
-                            }
-                            if (empty($jsndata->fulfillments)) {
-                                $fullmenststs = "Unfulfilled";
-                            } else {
-                                $fullmenststs = "fulfilled";
-                            }
-                            if ($jsndata->contact_email == null) {
-                                $uemailset = "";
-                            } else {
-                                $uemailset = $this->common->payxnow_encodedata($jsndata->contact_email);
-                            }
-                            $order_price = floatval($jsndata->current_subtotal_price);
-                            $remaining_price = floatval($remaing_proice);
-                            $orders_data = array(
-                                "order_id" => $jsndata->id,
-                                "order_number" => str_replace("#", "", $jsndata->name),
-                                "order_status" => $orders_sts,
-                                "order_ccy" => $jsndata->currency,
-                                "order_date" => $jsndata->created_at,
-                                "order_price" => $jsndata->current_subtotal_price,
-                                "email" => $uemailset,
-                                "total_price" => $order_price + $remaining_price,
-                                "pending_amount" => $remaing_proice,
-                                "shop_url" => $_GET['whshp'],
-                                "fullfilment_status" => $fullmenststs,
-                                "order_weight" => $jsndata->total_weight
-                            );
-                            if (isset($jsndata->shipping_address)) {
-
-                                if (isset($jsndata->shipping_address->phone)) {
-                                    $store_phnum = str_replace(" ", "", $jsndata->shipping_address->phone);
-                                    $store_phnum = str_replace("(", "", $store_phnum);
-                                    $store_phnum = str_replace(")", "", $store_phnum);
-                                    $store_phnum = str_replace("-", "", $store_phnum);
-                                } else {
-                                    $store_phnum = "";
-                                }
-
-
-                                $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->shipping_address->address1);
-
-                                $orders_data['shipping_address2'] = (isset($jsndata->shipping_address->address2) ? $this->common->payxnow_encodedata($jsndata->shipping_address->address2) : '');
-
-                                $orders_data['city'] = (isset($jsndata->shipping_address->city) ? $this->common->payxnow_encodedata($jsndata->shipping_address->city) : '');
-                                $orders_data['state'] = (isset($jsndata->shipping_address->province) ? $this->common->payxnow_encodedata($jsndata->shipping_address->province) : '');
-                                $orders_data['zip'] = (isset($jsndata->shipping_address->zip) ? $jsndata->shipping_address->zip : '');
-                                $orders_data['phone'] = $this->common->payxnow_encodedata($store_phnum);
-                                $orders_data['f_name'] = (isset($jsndata->shipping_address->first_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->first_name) : '');
-                                $orders_data['l_name'] = (isset($jsndata->shipping_address->last_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->last_name) : '');
-                                //$orders_data['email'] = (isset($jsndata->shipping_address['email']) ? $jsndata->shipping_address['email'] :'' );
-                                // $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $jsndata->shipping_address->country : '');
-                                $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $this->common->payxnow_encodedata($jsndata->shipping_address->country) : '');
-                            } else  if (isset($jsndata->billing_address)) {
-
-                                if (isset($jsndata->billing_address->phone)) {
-                                    $store_phnum2 = str_replace(" ", "", $jsndata->billing_address->phone);
-                                    $store_phnum2 = str_replace("(", "", $store_phnum2);
-                                    $store_phnum2 = str_replace(")", "", $store_phnum2);
-                                    $store_phnum2 = str_replace("-", "", $store_phnum2);
-                                } else {
-                                    $store_phnum2 = "";
-                                }
-
-                                $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->billing_address->address1);
-
-                                $orders_data['shipping_address2'] = (isset($jsndata->billing_address->address2) ? $this->common->payxnow_encodedata($jsndata->billing_address->address2) : '');
-
-                                $orders_data['city'] = (isset($jsndata->billing_address->city) ? $this->common->payxnow_encodedata($jsndata->billing_address->city) : '');
-                                $orders_data['state'] = (isset($jsndata->billing_address->province) ? $this->common->payxnow_encodedata($jsndata->billing_address->province) : '');
-                                $orders_data['zip'] = (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '');
-                                $orders_data['phone'] = $this->common->payxnow_encodedata($store_phnum2);
-                                $orders_data['f_name'] = (isset($jsndata->billing_address->first_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->first_name) : '');
-                                $orders_data['l_name'] = (isset($jsndata->billing_address->last_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->last_name) : '');
-                                //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
-                                $orders_data['country'] = (isset($jsndata->billing_address->country) ? $this->common->payxnow_encodedata($jsndata->billing_address->country) : '');
-                            }
-                            /// echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
-
-                            // $resposne_array = array("name" => "new_orderdata" . json_encode($orders_data));
-                            // $this->user_model->check_test_response($resposne_array);
-
-                            $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
-                            $reaminming_price = array();
-
-                            $resposne_array245 = array("name" => "actual line resposne_array245" . $_GET['whshp'] . '==' . json_encode($jsndata->line_items));
-                            $this->user_model->check_test_response($resposne_array245);
-
-                            foreach ($jsndata->line_items as $products) {
-                                if ($products->name != "Partial Pending Payment") {
-                                    if ($products->sku == "") {
-
-                                        if (isset($products->properties[3]->value)) {
-                                            $reaminming_price[] = $products->properties[3]->value;
-                                            $prodycprice =  $products->properties[3]->value;
-                                        } else {
-                                            $reaminming_price[] = 0;
-                                            $prodycprice =  0;
-                                        }
-                                        // if (isset($products->properties[4]->value)) {
-                                        //     $prosku = $products->properties[4]->value;
-                                        // } else {
-                                        //     $prosku = 'PRTTESTSKY';
-                                        // }
-                                        $prosku = 'PRTTESTSKY' . time();
+                                    if ($jsndata->financial_status == "pending") {
+                                        $orders_sts = 'cod';
+                                        $remaing_proice = $jsndata->total_price;
+                                        $order_pay_sts = "cod";
                                     } else {
-                                        $prosku = $products->sku;
-                                        $prodycprice =  $products->price;
+                                        $orders_sts = $jsndata->financial_status;
+                                        $remaing_proice = 0;
+                                        $part_type = 'fullpaid';
+                                        $order_pay_sts = "paid";
                                     }
-                                    //for pricse
-                                    // if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
-                                    //     $paidprice_get1 = $products->properties[2]->value + $products->properties[3]->value;
-                                    //     $productvarient = $products->properties[1]->value;
+                                }
+                                if (empty($jsndata->fulfillments)) {
+                                    $fullmenststs = "Unfulfilled";
+                                } else {
+                                    $fullmenststs = "fulfilled";
+                                }
+                                if ($jsndata->contact_email == null) {
+                                    $uemailset = "";
+                                } else {
+                                    $uemailset = $this->common->payxnow_encodedata($jsndata->contact_email);
+                                }
+                                $order_price = floatval($jsndata->current_subtotal_price);
+                                $remaining_price = floatval($remaing_proice);
+                                $orders_data = array(
+                                    "order_id" => $jsndata->id,
+                                    "order_number" => str_replace("#", "", $jsndata->name),
+                                    "order_status" => $orders_sts,
+                                    "order_ccy" => $jsndata->currency,
+                                    "order_date" => $jsndata->created_at,
+                                    "order_price" => $jsndata->current_subtotal_price,
+                                    "email" => $uemailset,
+                                    "total_price" => $order_price + $remaining_price,
+                                    "pending_amount" => $remaing_proice,
+                                    "shop_url" => $_GET['whshp'],
+                                    "fullfilment_status" => $fullmenststs,
+                                    "order_weight" => $jsndata->total_weight
+                                );
+                                if (isset($jsndata->shipping_address)) {
 
-                                    //     if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
-                                    //         $item_discount_item2 = $products->properties[4]->value;
-                                    //     } else {
-                                    //         $item_discount_item2 = 0;
-                                    //     }
-                                    // } else {
-                                    //     $productvarient = $products->variant_id;
-
-                                    //     if (isset($products->total_discount) && $products->total_discount != "") {
-                                    //         $item_discount_item2 = $products->total_discount;
-                                    //     } else {
-                                    //         $item_discount_item2 = 0;
-                                    //     }
-                                    //     if (isset($products->properties[1]->value) && $products->properties[1]->name == 'full_pay') {
-                                    //         $paidprice_get1 = $products->properties[1]->value;
-                                    //     } else {
-                                    //         $paidprice_get1 = $products->price;
-                                    //     }
-                                    // }
-
-                                    // if (!empty($products->tax_lines)) {
-                                    //     $order_tax1 = 0;
-                                    //     foreach ($products->tax_lines as $tax_items) {
-                                    //         if ($paidprice_get1 == 0) {
-                                    //             $taxamount = 0;
-                                    //         } else {
-                                    //             $taxamount = $paidprice_get1 * $tax_items->rate;
-                                    //         }
-
-                                    //         $order_tax1 = $order_tax1 + $taxamount;
-                                    //     }
-                                    // } else {
-                                    //     $order_tax1 = 0;
-                                    // }
+                                    if (isset($jsndata->shipping_address->phone)) {
+                                        $store_phnum = str_replace(" ", "", $jsndata->shipping_address->phone);
+                                        $store_phnum = str_replace("(", "", $store_phnum);
+                                        $store_phnum = str_replace(")", "", $store_phnum);
+                                        $store_phnum = str_replace("-", "", $store_phnum);
+                                    } else {
+                                        $store_phnum = "";
+                                    }
 
 
+                                    $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->shipping_address->address1);
 
-                                    // $orders_products_data = array(
-                                    //     "order_id" => $jsndata->id,
-                                    //     "product_id" => $products->id,
-                                    //     "varient_id" => $productvarient,
-                                    //     "product_name" => $products->name,
-                                    //     "product_price" => $paidprice_get1,
-                                    //     "product_qty" => $products->quantity,
-                                    //     "product_sku" => $prosku,
-                                    //     "product_discount" => $item_discount_item2,
-                                    //     "product_tax" => $order_tax1,
-                                    //     "shop_url" => $_GET['whshp'],
-                                    //     "movement" => date("Y-m-d H:i:s")
-                                    // );
+                                    $orders_data['shipping_address2'] = (isset($jsndata->shipping_address->address2) ? $this->common->payxnow_encodedata($jsndata->shipping_address->address2) : '');
+
+                                    $orders_data['city'] = (isset($jsndata->shipping_address->city) ? $this->common->payxnow_encodedata($jsndata->shipping_address->city) : '');
+                                    $orders_data['state'] = (isset($jsndata->shipping_address->province) ? $this->common->payxnow_encodedata($jsndata->shipping_address->province) : '');
+                                    $orders_data['zip'] = (isset($jsndata->shipping_address->zip) ? $jsndata->shipping_address->zip : '');
+                                    $orders_data['phone'] = $this->common->payxnow_encodedata($store_phnum);
+                                    $orders_data['f_name'] = (isset($jsndata->shipping_address->first_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->first_name) : '');
+                                    $orders_data['l_name'] = (isset($jsndata->shipping_address->last_name) ? $this->common->payxnow_encodedata($jsndata->shipping_address->last_name) : '');
+                                    //$orders_data['email'] = (isset($jsndata->shipping_address['email']) ? $jsndata->shipping_address['email'] :'' );
+                                    // $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $jsndata->shipping_address->country : '');
+                                    $orders_data['country'] = (isset($jsndata->shipping_address->country) ? $this->common->payxnow_encodedata($jsndata->shipping_address->country) : '');
+                                } else  if (isset($jsndata->billing_address)) {
+
+                                    if (isset($jsndata->billing_address->phone)) {
+                                        $store_phnum2 = str_replace(" ", "", $jsndata->billing_address->phone);
+                                        $store_phnum2 = str_replace("(", "", $store_phnum2);
+                                        $store_phnum2 = str_replace(")", "", $store_phnum2);
+                                        $store_phnum2 = str_replace("-", "", $store_phnum2);
+                                    } else {
+                                        $store_phnum2 = "";
+                                    }
+
+                                    $orders_data['shipping_address'] = $this->common->payxnow_encodedata($jsndata->billing_address->address1);
+
+                                    $orders_data['shipping_address2'] = (isset($jsndata->billing_address->address2) ? $this->common->payxnow_encodedata($jsndata->billing_address->address2) : '');
+
+                                    $orders_data['city'] = (isset($jsndata->billing_address->city) ? $this->common->payxnow_encodedata($jsndata->billing_address->city) : '');
+                                    $orders_data['state'] = (isset($jsndata->billing_address->province) ? $this->common->payxnow_encodedata($jsndata->billing_address->province) : '');
+                                    $orders_data['zip'] = (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '');
+                                    $orders_data['phone'] = $this->common->payxnow_encodedata($store_phnum2);
+                                    $orders_data['f_name'] = (isset($jsndata->billing_address->first_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->first_name) : '');
+                                    $orders_data['l_name'] = (isset($jsndata->billing_address->last_name) ? $this->common->payxnow_encodedata($jsndata->billing_address->last_name) : '');
+                                    //$orders_data['email'] = (isset($value['shipping_address']['email']) ? $value['shipping_address']['email'] :'' );
+                                    $orders_data['country'] = (isset($jsndata->billing_address->country) ? $this->common->payxnow_encodedata($jsndata->billing_address->country) : '');
+                                }
+                                /// echo"orders_data<pre>"; print_r($orders_data); echo"</pre>";
+
+                                // $resposne_array = array("name" => "new_orderdata" . json_encode($orders_data));
+                                // $this->user_model->check_test_response($resposne_array);
+
+                                $incid = $this->user_model->track_orders($orders_data, $_GET['whshp']);
+                                $reaminming_price = array();
+
+                                $resposne_array245 = array("name" => "actual line resposne_array245" . $_GET['whshp'] . '==' . json_encode($jsndata->line_items));
+                                $this->user_model->check_test_response($resposne_array245);
+
+                                foreach ($jsndata->line_items as $products) {
+                                    if ($products->name != "Partial Pending Payment") {
+                                        if ($products->sku == "") {
+
+                                            if (isset($products->properties[3]->value)) {
+                                                $reaminming_price[] = $products->properties[3]->value;
+                                                $prodycprice =  $products->properties[3]->value;
+                                            } else {
+                                                $reaminming_price[] = 0;
+                                                $prodycprice =  0;
+                                            }
+                                            // if (isset($products->properties[4]->value)) {
+                                            //     $prosku = $products->properties[4]->value;
+                                            // } else {
+                                            //     $prosku = 'PRTTESTSKY';
+                                            // }
+                                            $prosku = 'PRTTESTSKY' . time();
+                                        } else {
+                                            $prosku = $products->sku;
+                                            $prodycprice =  $products->price;
+                                        }
+                                        //for pricse
+                                        // if (isset($products->properties[0]->value) && $products->properties[0]->value == 'Initial Partial Payment') {
+                                        //     $paidprice_get1 = $products->properties[2]->value + $products->properties[3]->value;
+                                        //     $productvarient = $products->properties[1]->value;
+
+                                        //     if (isset($products->properties[4]->value) && $products->properties[4]->name == 'Discount') {
+                                        //         $item_discount_item2 = $products->properties[4]->value;
+                                        //     } else {
+                                        //         $item_discount_item2 = 0;
+                                        //     }
+                                        // } else {
+                                        //     $productvarient = $products->variant_id;
+
+                                        //     if (isset($products->total_discount) && $products->total_discount != "") {
+                                        //         $item_discount_item2 = $products->total_discount;
+                                        //     } else {
+                                        //         $item_discount_item2 = 0;
+                                        //     }
+                                        //     if (isset($products->properties[1]->value) && $products->properties[1]->name == 'full_pay') {
+                                        //         $paidprice_get1 = $products->properties[1]->value;
+                                        //     } else {
+                                        //         $paidprice_get1 = $products->price;
+                                        //     }
+                                        // }
+
+                                        // if (!empty($products->tax_lines)) {
+                                        //     $order_tax1 = 0;
+                                        //     foreach ($products->tax_lines as $tax_items) {
+                                        //         if ($paidprice_get1 == 0) {
+                                        //             $taxamount = 0;
+                                        //         } else {
+                                        //             $taxamount = $paidprice_get1 * $tax_items->rate;
+                                        //         }
+
+                                        //         $order_tax1 = $order_tax1 + $taxamount;
+                                        //     }
+                                        // } else {
+                                        //     $order_tax1 = 0;
+                                        // }
 
 
-                                    // $this->user_model->track_orders_products_forexchange($orders_products_data);
+
+                                        // $orders_products_data = array(
+                                        //     "order_id" => $jsndata->id,
+                                        //     "product_id" => $products->id,
+                                        //     "varient_id" => $productvarient,
+                                        //     "product_name" => $products->name,
+                                        //     "product_price" => $paidprice_get1,
+                                        //     "product_qty" => $products->quantity,
+                                        //     "product_sku" => $prosku,
+                                        //     "product_discount" => $item_discount_item2,
+                                        //     "product_tax" => $order_tax1,
+                                        //     "shop_url" => $_GET['whshp'],
+                                        //     "movement" => date("Y-m-d H:i:s")
+                                        // );
 
 
-                                    //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
+                                        // $this->user_model->track_orders_products_forexchange($orders_products_data);
 
-                                    if (isset($products->properties[1]->value)) {
-                                        if ($products->properties[1]->name == 'variant_code') {
-                                            $cuvarid = $products->properties[1]->value;
+
+                                        //below code for remove data from add to cart table which is used for update/cart webhook for show partial product section on cart page 
+
+                                        if (isset($products->properties[1]->value)) {
+                                            if ($products->properties[1]->name == 'variant_code') {
+                                                $cuvarid = $products->properties[1]->value;
+                                            } else {
+                                                $cuvarid = $products->variant_id;
+                                            }
                                         } else {
                                             $cuvarid = $products->variant_id;
                                         }
-                                    } else {
-                                        $cuvarid = $products->variant_id;
+                                        $removeArray = array(
+                                            "variant_id" => $cuvarid,
+                                            "shop_url" => $_REQUEST['whshp']
+                                        );
+                                        $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
+
+
+
+                                        if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
+                                            //below code for remove custom product from partial list only onlyneon store
+                                            // $this->user_model->update_plan_products_remove_part($_REQUEST['whshp']);
+                                            $this->user_model->remove_custom_product_partial($removeArray);
+                                            $resposne_array = array("name" => "remove cart partial product" . json_encode($removeArray));
+                                            $this->user_model->check_test_response($resposne_array);
+                                        }
+
+                                        // echo "orders_products_data<pre>";
+                                        // print_r($orders_products_data);
+                                        // echo "</pre>";
+
+                                        // $resposne_array = array("name" => "orders_products_data" . json_encode($orders_products_data));
+                                        // $this->user_model->check_test_response($resposne_array);
+
+
                                     }
-                                    $removeArray = array(
-                                        "variant_id" => $cuvarid,
-                                        "shop_url" => $_REQUEST['whshp']
+                                }
+
+                                $subtotal_update = array_sum($reaminming_price);
+                                $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
+
+                                $targetCode = 'Remaining_Amount';
+                                $matchingCode = null;
+                                foreach ($jsndata->discount_codes as $discount) {
+                                    if (strpos($discount->code, $targetCode) !== false) {
+                                        $matchingCode = $discount->code;
+                                        break;
+                                    }
+                                }
+                                if ($matchingCode !== null) {
+                                    //code for remove disconr coupon code after order
+                                    $get_coupon_code = array(
+                                        "coupon_code_name" => $matchingCode,
+                                        "shop_url" => $_GET['whshp'],
                                     );
-                                    $this->user_model->remove_add_cart_data($removeArray); //remove add to cart data from database table
 
+                                    $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
+                                    $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getcopndata[0]->price_rule_id . '.json', array(), 'DELETE', $get_resulsts->access_token, $_GET['whshp']);
 
-                                    if ($_REQUEST['whshp'] == 'onlyneon1.myshopify.com') {
-                                        //below code for remove custom product from partial list only onlyneon store
-                                        // $this->user_model->update_plan_products_remove_part($_REQUEST['whshp']);
-                                        $this->user_model->remove_custom_product_partial($removeArray);
-                                        $resposne_array = array("name" => "remove cart partial product" . json_encode($removeArray));
-                                        $this->user_model->check_test_response($resposne_array);
-                                    }
+                                    $remove_coupon_code = array(
+                                        "price_rule_id" => $getcopndata[0]->price_rule_id,
+                                        "shop_url" => $_GET['whshp'],
+                                    );
+                                    $this->user_model->remove_coupon_code($remove_coupon_code);
+                                    //code for remove disconr coupon code after order
 
-                                    // echo "orders_products_data<pre>";
-                                    // print_r($orders_products_data);
-                                    // echo "</pre>";
+                                    $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
+                                    $this->create_double_cod_orders2($jsndata, $get_resulsts, $part_type);
+                                } else if (isset($part_type) && $part_type == 'partial') {
+                                    $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
+                                    $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
+                                } else {
 
-                                    // $resposne_array = array("name" => "orders_products_data" . json_encode($orders_products_data));
-                                    // $this->user_model->check_test_response($resposne_array);
+                                    // $resposne_array_lst = array("name" => "update_plan_orders2=" . $_GET['whshp']);
+                                    // $this->user_model->check_test_response($resposne_array_lst);
 
-
+                                    $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
                                 }
-                            }
-
-                            $subtotal_update = array_sum($reaminming_price);
-                            $this->user_model->update_order_subtotal($jsndata->id, $subtotal_update, $_GET['whshp']);
-
-                            $targetCode = 'Remaining_Amount';
-                            $matchingCode = null;
-                            foreach ($jsndata->discount_codes as $discount) {
-                                if (strpos($discount->code, $targetCode) !== false) {
-                                    $matchingCode = $discount->code;
-                                    break;
-                                }
-                            }
-                            if ($matchingCode !== null) {
-                                //code for remove disconr coupon code after order
-                                $get_coupon_code = array(
-                                    "coupon_code_name" => $matchingCode,
-                                    "shop_url" => $_GET['whshp'],
-                                );
-            
-                                $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
-                                
-                                $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getcopndata[0]->price_rule_id . '.json', array(), 'DELETE', $get_resulsts->access_token, $_GET['whshp']);
-
-                                $remove_coupon_code = array(
-                                    "price_rule_id" => $getcopndata[0]->price_rule_id,
-                                    "shop_url" => $_GET['whshp'],
-                                );
-                                $this->user_model->remove_coupon_code($remove_coupon_code);
-                                //code for remove disconr coupon code after order
-
-                                $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
-                                $this->create_double_cod_orders2($jsndata, $get_resulsts, $part_type);
-                            } else if (isset($part_type) && $part_type == 'partial') {
-                                $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
-                                $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
                             } else {
-
-                                // $resposne_array_lst = array("name" => "update_plan_orders2=" . $_GET['whshp']);
-                                // $this->user_model->check_test_response($resposne_array_lst);
-
-                                $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+                                $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
+                                $this->user_model->check_test_response($resposne_array_lst);
+                                $this->create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti);
+                                echo "200 ok";
                             }
-                        } else {
-                            $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
-                            $this->user_model->check_test_response($resposne_array_lst);
-                            $this->create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti);
-                            echo "200 ok";
                         }
                     }
                 }

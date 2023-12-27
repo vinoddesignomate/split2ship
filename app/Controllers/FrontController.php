@@ -29,94 +29,98 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
 
         $plan_details = $this->user_model->get_store_plan($shopname);
-
-        if (!empty($plan_details)) {
-            if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-                if ($this->request->getPost('pid')) {
-                    $condtion_array = array(
-                        "product_id" => $this->request->getPost('pid'),
-                        "varient_id" => $this->request->getPost('vid')
-                    );
-                } else {
-                    $condtion_array = array(
-                        "varient_id" => $this->request->getPost('vid')
-                    );
-                }
-                $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
-                $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-
-                if (!empty($get_resulrs)) {
-
-                    if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
-                        $partial_percentage = str_replace("%", "", $get_resulrs[0]->partial_percentage);
-                        $propartialper = ($partial_percentage / 100) * $get_resulrs[0]->price;
-                        $partperctg = $partial_percentage;
+        $get_details = $this->user_model->get_tokens($shopname);
+        if ($get_details->force_update == 1) {
+            if (!empty($plan_details)) {
+                if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+                    if ($this->request->getPost('pid')) {
+                        $condtion_array = array(
+                            "product_id" => $this->request->getPost('pid'),
+                            "varient_id" => $this->request->getPost('vid')
+                        );
                     } else {
-                        $propartialper = (10 / 100) * $get_resulrs[0]->price;
-                        $partperctg = 10;
+                        $condtion_array = array(
+                            "varient_id" => $this->request->getPost('vid')
+                        );
                     }
-                    if ($partperctg > $get_resulrs[0]->price) {
-                        return 'not_found';
-                    } else {
+                    $get_resulrs = $this->user_model->get_store_product($shopname, $condtion_array);
+                    $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
 
-                        $get_details = $this->user_model->get_tokens($shopname);
-                        $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
-                        $getvarientsres = json_decode($getvarients['body'], true);
-                        // echo "<pre>";
-                        // print_r($getvarientsres['variant']['inventory_quantity']);
-                        // echo "</pre>";
+                    if (!empty($get_resulrs)) {
 
-                        if (array_key_exists('errors', $getvarientsres)) {
+                        if (isset($get_resulrs[0]->partial_percentage) && $get_resulrs[0]->partial_percentage != "") {
+                            $partial_percentage = str_replace("%", "", $get_resulrs[0]->partial_percentage);
+                            $propartialper = ($partial_percentage / 100) * $get_resulrs[0]->price;
+                            $partperctg = $partial_percentage;
+                        } else {
+                            $propartialper = (10 / 100) * $get_resulrs[0]->price;
+                            $partperctg = 10;
+                        }
+                        if ($partperctg > $get_resulrs[0]->price) {
                             return 'not_found';
                         } else {
-                            if (empty($gtbtncolor)) {
-                                $return_array = array(
-                                    "full_price" => $get_resulrs[0]->price,
-                                    "pro_pack" => $partperctg,
-                                    "partial_type" => $get_resulrs[0]->partial_type,
-                                    "partial_price" => $propartialper,
-                                    "var_qty" => $getvarientsres['variant']['inventory_quantity'],
-                                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-                                    "add_to_cartbtn" => 1,
-                                    "buy_partial_btn" => '',
-                                    "full_pay_buybtn" => '',
-                                    "add_to_cart_text" => '',
-                                    "partial_buy_now_text" => '',
-                                    "full_buy_now_text" => '',
-                                    "add_cart_btn_color" => '',
-                                    "add_cart_text_color" => '',
-                                    "partial_buynow_btn_color" => '',
-                                    "partial_buynow_text_color" => '',
-                                    "full_buy_btn_color" => '',
-                                    "full_buy_text_color" => '',
-                                );
+
+
+                            $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
+                            $getvarientsres = json_decode($getvarients['body'], true);
+                            // echo "<pre>";
+                            // print_r($getvarientsres['variant']['inventory_quantity']);
+                            // echo "</pre>";
+
+                            if (array_key_exists('errors', $getvarientsres)) {
+                                return 'not_found';
                             } else {
-                                $return_array = array(
-                                    "full_price" => $get_resulrs[0]->price,
-                                    "pro_pack" => $partperctg,
-                                    "partial_type" => $get_resulrs[0]->partial_type,
-                                    "partial_price" => $propartialper,
-                                    "var_qty" => $getvarientsres['variant']['inventory_quantity'],
-                                    "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
-                                    "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
-                                    "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
-                                    "add_to_cartbtn" => isset($gtbtncolor[0]->add_to_cartbtn) ? $gtbtncolor[0]->add_to_cartbtn : 1,
-                                    "buy_partial_btn" => $gtbtncolor[0]->buy_partial_btn,
-                                    "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn,
-                                    "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
-                                    "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
-                                    "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
-                                    "add_cart_btn_color" => $gtbtncolor[0]->add_cart_btn_color,
-                                    "add_cart_text_color" => $gtbtncolor[0]->add_cart_text_color,
-                                    "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
-                                    "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
-                                    "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
-                                    "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
-                                );
+                                if (empty($gtbtncolor)) {
+                                    $return_array = array(
+                                        "full_price" => $get_resulrs[0]->price,
+                                        "pro_pack" => $partperctg,
+                                        "partial_type" => $get_resulrs[0]->partial_type,
+                                        "partial_price" => $propartialper,
+                                        "var_qty" => $getvarientsres['variant']['inventory_quantity'],
+                                        "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                                        "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                                        "add_to_cartbtn" => 1,
+                                        "buy_partial_btn" => '',
+                                        "full_pay_buybtn" => '',
+                                        "add_to_cart_text" => '',
+                                        "partial_buy_now_text" => '',
+                                        "full_buy_now_text" => '',
+                                        "add_cart_btn_color" => '',
+                                        "add_cart_text_color" => '',
+                                        "partial_buynow_btn_color" => '',
+                                        "partial_buynow_text_color" => '',
+                                        "full_buy_btn_color" => '',
+                                        "full_buy_text_color" => '',
+                                    );
+                                } else {
+                                    $return_array = array(
+                                        "full_price" => $get_resulrs[0]->price,
+                                        "pro_pack" => $partperctg,
+                                        "partial_type" => $get_resulrs[0]->partial_type,
+                                        "partial_price" => $propartialper,
+                                        "var_qty" => $getvarientsres['variant']['inventory_quantity'],
+                                        "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
+                                        "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
+                                        "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
+                                        "add_to_cartbtn" => isset($gtbtncolor[0]->add_to_cartbtn) ? $gtbtncolor[0]->add_to_cartbtn : 1,
+                                        "buy_partial_btn" => $gtbtncolor[0]->buy_partial_btn,
+                                        "full_pay_buybtn" => $gtbtncolor[0]->full_pay_buybtn,
+                                        "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
+                                        "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
+                                        "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
+                                        "add_cart_btn_color" => $gtbtncolor[0]->add_cart_btn_color,
+                                        "add_cart_text_color" => $gtbtncolor[0]->add_cart_text_color,
+                                        "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
+                                        "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
+                                        "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
+                                        "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
+                                    );
+                                }
+                                return json_encode($return_array);
                             }
-                            return json_encode($return_array);
                         }
+                    } else {
+                        return 'not_found';
                     }
                 } else {
                     return 'not_found';
@@ -225,8 +229,265 @@ class FrontController extends BaseController
 
         $get_details = $this->user_model->get_tokens($shopname);
 
+        if ($get_details->force_update == 1) {
+            if ($get_details->zip_code_enable_disabled == 0) {
+                $line_item_arra = array();
+                $chekpartial = 0;
+                $remaining_price = 0;
+                $illp = 0;
+                // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                //     echo "<pre>";
+                //     print_r($cartarray);
+                //     echo "</pre>";
+                //     //die();
+                // }
 
-        if ($get_details->zip_code_enable_disabled == 0) {
+                // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                //     $reqship = false;
+                // }else{
+                //     $reqship = true;
+                // }
+                $reqship = true;
+                $ilosku = 1;
+                $coditem = "";
+                foreach ($cartarray as $item_cart) {
+
+
+                    if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
+                        $itmeskysplit =  $item_cart['psku'];
+                    } else {
+                        $itmeskysplit =  "PART" . $ilosku . time();
+                    }
+
+                    if ($item_cart['title'] == "Partial payment(for COD)") {
+                        $coditem = "Partial payment(for COD)";
+                    }
+                    if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
+                        $size_tems = array();
+
+                        foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                            if ($split_varient_options['name'] != "Title") {
+                                $size_tems[] = $split_varient_options['value'];
+                                // $line_item['properties'][] = array(
+                                //     "name" => $split_varient_options['name'],
+                                //     "value" => $split_varient_options['value']
+                                // );
+                            }
+                        }
+
+                        if (!empty($size_tems)) {
+                            $size_order_name = implode("/", $size_tems);
+                            $size_order_namenn = " - " . $size_order_name;
+                            // $order_name_count = count($create_customqty);
+                        } else {
+                            $size_order_namenn = "";
+                        }
+
+                        $chekpartial = 1;
+                        $final_price = $item_cart['price'] / $item_cart['qty'];
+
+                        //calculating partial product discount amount start code
+
+
+                        $remamoun = str_replace("-", "", $item_cart['rem_p']);
+                        $payprice = $item_cart['price'];
+                        $total_price = $payprice + $remamoun;
+                        //calculating partial product discount amount end code
+                        //if ($shopname == 'desinomatetest.myshopify.com') {
+                        if ($total_price != $item_cart['item_original_price']) {
+
+                            $itmorgprice = $item_cart['original_line_price'];
+                            $dicountcodepay = $itmorgprice - $total_price;
+                            //if ($dicountcodepay > 0) {
+                            //$adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
+                            //$discounfroundedValue = round($dicountcodepay, 2);
+                            //$formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
+                            //$formattedValuediscount = sprintf("%.2f", $dicountcodepay);
+
+
+                            //$roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
+                            $formattedValuediscount = number_format($dicountcodepay, 2, '.', '');
+
+
+                            $line_item  = array(
+                                "title" => $item_cart['title'] . $size_order_namenn,
+                                "price" => $final_price,
+                                "quantity" => $item_cart['qty'],
+                                "sku" => $itmeskysplit,
+                                //"product_id" => $item_cart['product_id'],
+                                "requires_shipping" => $reqship,
+                                "grams" => $item_cart['grams'],
+                                "gift_card" => true,
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Initial Partial Payment"),
+                                    array("name" => "variant_code", "value" => $item_cart['id']),
+                                    array("name" => "partial_pay", "value" => number_format($item_cart['price'], 2, '.', '')),
+                                    array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
+                                    array("name" => "Discount", "value" => $formattedValuediscount)
+                                    //array("name" => "Discount", "value" => number_format($dicountcodepay, 2, '.', ''))
+                                    //array("name" => "Discount", "value" => $item_cart['product_id']),
+                                    // array("name" => "psku", "value" => $itmeskysplit)
+                                )
+                            );
+                        } else {
+                            $line_item  = array(
+                                "title" => $item_cart['title'] . $size_order_namenn,
+                                "price" => $final_price,
+                                "quantity" => $item_cart['qty'],
+                                "sku" => $itmeskysplit,
+                                //"product_id" => $item_cart['product_id'],
+                                "requires_shipping" => $reqship,
+                                "grams" => $item_cart['grams'],
+                                "gift_card" => true,
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Initial Partial Payment"),
+                                    array("name" => "variant_code", "value" => $item_cart['id']),
+                                    array("name" => "partial_pay", "value" => $item_cart['price']),
+                                    array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
+                                )
+                            );
+                        }
+                        /* } else {
+                        $line_item  = array(
+                            "title" => $item_cart['title'] . $size_order_namenn,
+                            "price" => $final_price,
+                            "quantity" => $item_cart['qty'],
+                            "sku" => $itmeskysplit,
+                            //"product_id" => $item_cart['product_id'],
+                            "requires_shipping" => $reqship,
+                            "grams" => $item_cart['grams'],
+                            "gift_card" => true,
+                            "properties" => array(
+                                array("name" => "Note", "value" => "Initial Partial Payment"),
+                                array("name" => "variant_code", "value" => $item_cart['id']),
+                                array("name" => "partial_pay", "value" => $item_cart['price']),
+                                array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
+                                //array("name" => "Discount", "value" => $item_cart['product_id']),
+                                // array("name" => "psku", "value" => $itmeskysplit)
+                            )
+                        );
+                    }*/
+                        $remaining_price = $remaining_price + $item_cart['rem_p'];
+                    } else {
+
+                        //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                        if ($item_cart['line_price'] != $item_cart['original_line_price']) {
+
+
+                            $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
+
+                            $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
+                            //$coupencodeprice = ($item_cart['line_level_total_discount'] / $item_cart['qty']);
+                            // $coupencodeprice = round($coupencodeprice);
+
+                            $getcpncodep = $body_data_decode['getcpncode'];
+                            if ($getcpncodep != "") {
+                                $couponname = $getcpncodep;
+                            } else {
+                                $couponname = 'Automatic';
+                            }
+                            $line_item = array(
+                                "variant_id" => $item_cart['id'],
+                                "quantity" => $item_cart['qty'],
+                                "gift_card" => true,
+                                "sku" => $itmeskysplit,
+                                "grams" => $item_cart['grams'],
+                                "applied_discount" => array(
+                                    "description" => $couponname,
+                                    "title" => $couponname,
+                                    "value_type" => "fixed_amount",
+                                    "value" => $coupencodeprice,
+                                    "amount" => $coupencodeprice,
+                                ),
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Full Payment"),
+                                    array("name" => "full_pay", "value" => $item_cart['price'])
+                                ),
+                                "requires_shipping" => $reqship
+                            );
+                        } else {
+                            $line_item = array(
+                                "variant_id" => $item_cart['id'],
+                                "quantity" => $item_cart['qty'],
+                                "gift_card" => true,
+                                "sku" => $itmeskysplit,
+                                "grams" => $item_cart['grams'],
+                                "properties" => array(
+                                    array("name" => "Note", "value" => "Full Payment"),
+                                    array("name" => "full_pay", "value" => $item_cart['price'])
+                                ),
+                                "requires_shipping" => $reqship
+                            );
+                        }
+                    }
+
+                    //code for add variants name & value to order
+                    foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                        if ($split_varient_options['name'] != "Title") {
+                            $line_item['properties'][] = array(
+                                "name" => $split_varient_options['name'],
+                                "value" => $split_varient_options['value']
+                            );
+                        }
+                    }
+
+                    // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                    //code for add variants name & value to order
+                    if (isset($item_cart['allproperties'])) {
+                        foreach ($item_cart['allproperties'] as $keypropty => $proval) {
+                            if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
+                                $line_item['properties'][] = array(
+                                    "name" => $keypropty,
+                                    "value" => $proval
+                                );
+                            }
+                        }
+                    }
+                    //}
+
+                    $illp = $illp + 1;
+                    $ilosku = $ilosku + 1;
+                    $line_item_arra[] = $line_item;
+                }
+                $final_total_price_rem = str_replace("-", "", $remaining_price);
+
+                $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
+
+                // if ($shopname == 'desinomatetest.myshopify.com' || $shopname == 'partialtestapp.myshopify.com') {
+
+                //     $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+
+
+                // } else {
+                //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+                // }
+                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+            } else {
+                echo "zip_enabled";
+            }
+        } else {
+            echo "not_found";
+        }
+
+        //return $return_array->draft_order->invoice_url;
+    }
+
+    public function create_draft_order_zip()
+    {
+
+        $body_data = file_get_contents('php://input');
+        //echo $body_data;
+        $body_data_decode = json_decode($body_data, TRUE);
+        //print_r($body_data_decode);
+
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+        $cartarray = $body_data_decode['cart_item'];
+
+        $get_details = $this->user_model->get_tokens($shopname);
+
+
+        if ($get_details->force_update == 1) {
             $line_item_arra = array();
             $chekpartial = 0;
             $remaining_price = 0;
@@ -235,16 +496,10 @@ class FrontController extends BaseController
             //     echo "<pre>";
             //     print_r($cartarray);
             //     echo "</pre>";
-            //     //die();
+            //     die();
             // }
-
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //     $reqship = false;
-            // }else{
-            //     $reqship = true;
-            // }
-            $reqship = true;
             $ilosku = 1;
+            $reqship = true;
             $coditem = "";
             foreach ($cartarray as $item_cart) {
 
@@ -258,6 +513,7 @@ class FrontController extends BaseController
                 if ($item_cart['title'] == "Partial payment(for COD)") {
                     $coditem = "Partial payment(for COD)";
                 }
+
                 if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                     $size_tems = array();
 
@@ -281,10 +537,6 @@ class FrontController extends BaseController
 
                     $chekpartial = 1;
                     $final_price = $item_cart['price'] / $item_cart['qty'];
-
-                    //calculating partial product discount amount start code
-
-
                     $remamoun = str_replace("-", "", $item_cart['rem_p']);
                     $payprice = $item_cart['price'];
                     $total_price = $payprice + $remamoun;
@@ -343,29 +595,28 @@ class FrontController extends BaseController
                             )
                         );
                     }
-                    /* } else {
-                        $line_item  = array(
-                            "title" => $item_cart['title'] . $size_order_namenn,
-                            "price" => $final_price,
-                            "quantity" => $item_cart['qty'],
-                            "sku" => $itmeskysplit,
-                            //"product_id" => $item_cart['product_id'],
-                            "requires_shipping" => $reqship,
-                            "grams" => $item_cart['grams'],
-                            "gift_card" => true,
-                            "properties" => array(
-                                array("name" => "Note", "value" => "Initial Partial Payment"),
-                                array("name" => "variant_code", "value" => $item_cart['id']),
-                                array("name" => "partial_pay", "value" => $item_cart['price']),
-                                array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                                //array("name" => "Discount", "value" => $item_cart['product_id']),
-                                // array("name" => "psku", "value" => $itmeskysplit)
-                            )
-                        );
-                    }*/
+                    /*  } else {
+                    $line_item  = array(
+                        "title" => $item_cart['title'] . $size_order_namenn,
+                        "price" => $final_price,
+                        "quantity" => $item_cart['qty'],
+                        "sku" => $itmeskysplit,
+                        //"product_id" => $item_cart['product_id'],
+                        "requires_shipping" => $reqship,
+                        "grams" => $item_cart['grams'],
+                        "gift_card" => true,
+                        "properties" => array(
+                            array("name" => "Note", "value" => "Initial Partial Payment"),
+                            array("name" => "variant_code", "value" => $item_cart['id']),
+                            array("name" => "partial_pay", "value" => $item_cart['price']),
+                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
+                            //array("name" => "Discount", "value" => $item_cart['product_id']),
+                            // array("name" => "psku", "value" => $itmeskysplit)
+                        )
+                    );
+                }*/
                     $remaining_price = $remaining_price + $item_cart['rem_p'];
                 } else {
-
                     //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                     if ($item_cart['line_price'] != $item_cart['original_line_price']) {
 
@@ -445,262 +696,27 @@ class FrontController extends BaseController
                 $ilosku = $ilosku + 1;
                 $line_item_arra[] = $line_item;
             }
+            //echo $chekpartial;
+            //    print_r($line_item_arra);
+
+            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //     echo "line_item_arra<pre>";
+            //     print_r($line_item_arra);
+            //     echo "</pre>";
+            //     die();
+            // }
+
             $final_total_price_rem = str_replace("-", "", $remaining_price);
+
+            //$final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem, "applied_discount" => array("code" => "Y293PCH4G53W")));
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-            if ($shopname == 'desinomatetest.myshopify.com' || $shopname == 'partialtestapp.myshopify.com') {
-
-                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
-                //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-
-            } else {
-                return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-            }
+            $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+            //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
         } else {
-            echo "zip_enabled";
+            echo "not_found";
         }
-
-        //return $return_array->draft_order->invoice_url;
-    }
-
-    public function create_draft_order_zip()
-    {
-
-        $body_data = file_get_contents('php://input');
-        //echo $body_data;
-        $body_data_decode = json_decode($body_data, TRUE);
-        //print_r($body_data_decode);
-
-        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
-        $shopname = str_replace("http://", "", $shopname);
-        $cartarray = $body_data_decode['cart_item'];
-
-        $get_details = $this->user_model->get_tokens($shopname);
-
-        $line_item_arra = array();
-        $chekpartial = 0;
-        $remaining_price = 0;
-        $illp = 0;
-        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-        //     echo "<pre>";
-        //     print_r($cartarray);
-        //     echo "</pre>";
-        //     die();
-        // }
-        $ilosku = 1;
-        $reqship = true;
-        foreach ($cartarray as $item_cart) {
-
-
-            if (isset($item_cart['psku']) && $item_cart['psku'] != "") {
-                $itmeskysplit =  $item_cart['psku'];
-            } else {
-                $itmeskysplit =  "PART" . $ilosku . time();
-            }
-
-
-            if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
-                $size_tems = array();
-
-                foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
-                    if ($split_varient_options['name'] != "Title") {
-                        $size_tems[] = $split_varient_options['value'];
-                        // $line_item['properties'][] = array(
-                        //     "name" => $split_varient_options['name'],
-                        //     "value" => $split_varient_options['value']
-                        // );
-                    }
-                }
-
-                if (!empty($size_tems)) {
-                    $size_order_name = implode("/", $size_tems);
-                    $size_order_namenn = " - " . $size_order_name;
-                    // $order_name_count = count($create_customqty);
-                } else {
-                    $size_order_namenn = "";
-                }
-
-                $chekpartial = 1;
-                $final_price = $item_cart['price'] / $item_cart['qty'];
-                $remamoun = str_replace("-", "", $item_cart['rem_p']);
-                $payprice = $item_cart['price'];
-                $total_price = $payprice + $remamoun;
-                //calculating partial product discount amount end code
-                //if ($shopname == 'desinomatetest.myshopify.com') {
-                if ($total_price != $item_cart['item_original_price']) {
-
-                    $itmorgprice = $item_cart['original_line_price'];
-                    $dicountcodepay = $itmorgprice - $total_price;
-                    //if ($dicountcodepay > 0) {
-                    //$adddsicount = array("name" => "Discount", "value" => $dicountcodepay);
-                    //$discounfroundedValue = round($dicountcodepay, 2);
-                    //$formattedValuediscount = number_format($discounfroundedValue, 2, '.', '');
-                    //$formattedValuediscount = sprintf("%.2f", $dicountcodepay);
-
-
-                    //$roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
-                    $formattedValuediscount = number_format($dicountcodepay, 2, '.', '');
-
-
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "sku" => $itmeskysplit,
-                        //"product_id" => $item_cart['product_id'],
-                        "requires_shipping" => $reqship,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => number_format($item_cart['price'], 2, '.', '')),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])),
-                            array("name" => "Discount", "value" => $formattedValuediscount)
-                            //array("name" => "Discount", "value" => number_format($dicountcodepay, 2, '.', ''))
-                            //array("name" => "Discount", "value" => $item_cart['product_id']),
-                            // array("name" => "psku", "value" => $itmeskysplit)
-                        )
-                    );
-                } else {
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "sku" => $itmeskysplit,
-                        //"product_id" => $item_cart['product_id'],
-                        "requires_shipping" => $reqship,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                        )
-                    );
-                }
-                /*  } else {
-                    $line_item  = array(
-                        "title" => $item_cart['title'] . $size_order_namenn,
-                        "price" => $final_price,
-                        "quantity" => $item_cart['qty'],
-                        "sku" => $itmeskysplit,
-                        //"product_id" => $item_cart['product_id'],
-                        "requires_shipping" => $reqship,
-                        "grams" => $item_cart['grams'],
-                        "gift_card" => true,
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Initial Partial Payment"),
-                            array("name" => "variant_code", "value" => $item_cart['id']),
-                            array("name" => "partial_pay", "value" => $item_cart['price']),
-                            array("name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p']))
-                            //array("name" => "Discount", "value" => $item_cart['product_id']),
-                            // array("name" => "psku", "value" => $itmeskysplit)
-                        )
-                    );
-                }*/
-                $remaining_price = $remaining_price + $item_cart['rem_p'];
-            } else {
-                //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                if ($item_cart['line_price'] != $item_cart['original_line_price']) {
-
-
-                    $coupencodeprice = $item_cart['original_line_price']  - $item_cart['line_price'];
-
-                    $coupencodeprice = ($coupencodeprice / $item_cart['qty']);
-                    //$coupencodeprice = ($item_cart['line_level_total_discount'] / $item_cart['qty']);
-                    // $coupencodeprice = round($coupencodeprice);
-
-                    $getcpncodep = $body_data_decode['getcpncode'];
-                    if ($getcpncodep != "") {
-                        $couponname = $getcpncodep;
-                    } else {
-                        $couponname = 'Automatic';
-                    }
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        "applied_discount" => array(
-                            "description" => $couponname,
-                            "title" => $couponname,
-                            "value_type" => "fixed_amount",
-                            "value" => $coupencodeprice,
-                            "amount" => $coupencodeprice,
-                        ),
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => $reqship
-                    );
-                } else {
-                    $line_item = array(
-                        "variant_id" => $item_cart['id'],
-                        "quantity" => $item_cart['qty'],
-                        "gift_card" => true,
-                        "sku" => $itmeskysplit,
-                        "grams" => $item_cart['grams'],
-                        "properties" => array(
-                            array("name" => "Note", "value" => "Full Payment"),
-                            array("name" => "full_pay", "value" => $item_cart['price'])
-                        ),
-                        "requires_shipping" => $reqship
-                    );
-                }
-            }
-
-            //code for add variants name & value to order
-            foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
-                if ($split_varient_options['name'] != "Title") {
-                    $line_item['properties'][] = array(
-                        "name" => $split_varient_options['name'],
-                        "value" => $split_varient_options['value']
-                    );
-                }
-            }
-
-            // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-            //code for add variants name & value to order
-            if (isset($item_cart['allproperties'])) {
-                foreach ($item_cart['allproperties'] as $keypropty => $proval) {
-                    if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
-                        $line_item['properties'][] = array(
-                            "name" => $keypropty,
-                            "value" => $proval
-                        );
-                    }
-                }
-            }
-            //}
-
-            $illp = $illp + 1;
-            $ilosku = $ilosku + 1;
-            $line_item_arra[] = $line_item;
-        }
-        //echo $chekpartial;
-        //    print_r($line_item_arra);
-
-        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-        //     echo "line_item_arra<pre>";
-        //     print_r($line_item_arra);
-        //     echo "</pre>";
-        //     die();
-        // }
-
-        $final_total_price_rem = str_replace("-", "", $remaining_price);
-
-        //$final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem, "applied_discount" => array("code" => "Y293PCH4G53W")));
-
-        $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-
-
-        return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-
 
         //return $return_array->draft_order->invoice_url;
     }
@@ -1047,50 +1063,53 @@ class FrontController extends BaseController
         // $shopname = str_replace("http://", "", $shopname);
         $returnarray = array();
         $plan_details = $this->user_model->get_store_plan($this->request->getPost('shopname'));
-        if (!empty($plan_details)) {
-            if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
-                $setaray = array(
-                    "cart_id" => $this->request->getPost('tokenid'),
-                    "shop_url" => $this->request->getPost('shopname')
-                );
-                $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
-                if (!empty($get_products)) {
+        $get_detailslrt = $this->user_model->get_tokens($this->request->getPost('shopname'));
+        if ($get_detailslrt->force_update == 1) {
+            if (!empty($plan_details)) {
+                if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
+                    $setaray = array(
+                        "cart_id" => $this->request->getPost('tokenid'),
+                        "shop_url" => $this->request->getPost('shopname')
+                    );
+                    $get_products = $this->user_model->get_cart_itme_based_on_token($setaray);
+                    if (!empty($get_products)) {
 
-                    foreach ($get_products as $itmeprod) {
-                        if ($itmeprod->product_properties != "") {
-                            $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
+                        foreach ($get_products as $itmeprod) {
+                            if ($itmeprod->product_properties != "") {
+                                $protiesdstrrrat = json_decode($itmeprod->product_properties, true); // Convert to an associative array
 
-                            $proety_size_tems = array();
-                            foreach ($protiesdstrrrat as $key => $getprt) {
-                                //if ($key != "parma") {
-                                $proety_size_tems[$key] = $getprt;
-                                //}
-                                unset($proety_size_tems['PARTIAL_PAYMENT']);
-                            }
-                            $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
-
-                            $returnarray[] = array(
-                                "varient_id" => $itmeprod->variant_id,
-                                "product_id" => $itmeprod->product_id,
-                                "product_type" => $itmeprod->product_type,
-                                "partial_percentage" => $itmeprod->partial_percentage,
-                                "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
-                            );
-                        } else {
-                            $proety_size_tems = array();
-                            if ($itmeprod->product_type == "partial") {
+                                $proety_size_tems = array();
+                                foreach ($protiesdstrrrat as $key => $getprt) {
+                                    //if ($key != "parma") {
+                                    $proety_size_tems[$key] = $getprt;
+                                    //}
+                                    unset($proety_size_tems['PARTIAL_PAYMENT']);
+                                }
                                 $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
+
+                                $returnarray[] = array(
+                                    "varient_id" => $itmeprod->variant_id,
+                                    "product_id" => $itmeprod->product_id,
+                                    "product_type" => $itmeprod->product_type,
+                                    "partial_percentage" => $itmeprod->partial_percentage,
+                                    "product_properties" => $proety_size_tems, // Set $proety_size_tems as product_properties
+                                );
                             } else {
-                                $proety_size_tems = "";
+                                $proety_size_tems = array();
+                                if ($itmeprod->product_type == "partial") {
+                                    $proety_size_tems["PARTIAL_PAYMENT"] = "Available";
+                                } else {
+                                    $proety_size_tems = "";
+                                }
+                                $returnarray[] = array(
+                                    "varient_id" => $itmeprod->variant_id,
+                                    "product_id" => $itmeprod->product_id,
+                                    "partial_percentage" => $itmeprod->partial_percentage,
+                                    "product_type" => $itmeprod->product_type,
+                                    "product_properties" => $proety_size_tems, // If product_properties is empty
+                                    //"product_properties" => '', // If product_properties is empty
+                                );
                             }
-                            $returnarray[] = array(
-                                "varient_id" => $itmeprod->variant_id,
-                                "product_id" => $itmeprod->product_id,
-                                "partial_percentage" => $itmeprod->partial_percentage,
-                                "product_type" => $itmeprod->product_type,
-                                "product_properties" => $proety_size_tems, // If product_properties is empty
-                                //"product_properties" => '', // If product_properties is empty
-                            );
                         }
                     }
                 }
