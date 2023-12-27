@@ -2298,13 +2298,14 @@ class AppwhookController extends BaseController
         }
 
         fclose($webhookpd);
-        $shopenablearray = array(
-            "onlyneon1.myshopify.com",
-            "3d-printing-store-india.myshopify.com",
-            "desinomatetest.myshopify.com",
-            "c18560.myshopify.com",
-        );
-        if (in_array($_GET['cartshop'], $shopenablearray)) {
+        $get_customize_store_list = $this->user_model->get_customize_store_list();
+        // $shopenablearray = array(
+        //     "onlyneon1.myshopify.com",
+        //     "3d-printing-store-india.myshopify.com",
+        //     "desinomatetest.myshopify.com",
+        //     "c18560.myshopify.com",
+        // );
+        if (in_array($_GET['cartshop'], $get_customize_store_list)) {
             $get_addtocartdata = json_decode($getaddtocartdata);
             $updateprorespo = array("name" => "cart creat webhook=" . $getaddtocartdata);
             $this->user_model->check_test_response($updateprorespo);
@@ -2346,13 +2347,14 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_addtocartdata = json_decode($getaddtocartdata);
-        $shopenablearray = array(
-            "onlyneon1.myshopify.com",
-            "3d-printing-store-india.myshopify.com",
-            "desinomatetest.myshopify.com",
-            "c18560.myshopify.com",
-        );
-        if (in_array($_GET['cshop'], $shopenablearray)) {
+        $get_customize_store_list = $this->user_model->get_customize_store_list();
+        // $shopenablearray = array(
+        //     "onlyneon1.myshopify.com",
+        //     "3d-printing-store-india.myshopify.com",
+        //     "desinomatetest.myshopify.com",
+        //     "c18560.myshopify.com",
+        // );
+        if (in_array($_GET['cshop'], $get_customize_store_list)) {
             // $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
             // $this->user_model->check_test_response($updateprorespo);
 
