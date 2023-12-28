@@ -1071,9 +1071,9 @@ class UserModel extends Model
         $get_customize_pro_query->where('shop_url', $shopurl);
         $resutl_custo = $get_customize_pro_query->get();
         if (!empty($resutl_custo->getResult())) {
-            return 1;
+            return '1';
         }else{
-            return 0;
+            return '0';
         }
         //$returnArray = array();
         // foreach ($resutl_custo->getResult() as $shoplost) {
