@@ -1081,4 +1081,14 @@ class UserModel extends Model
         // }
         // return $returnArray;
     }
+    public function get_customize_store_list_new()
+    {
+        $get_customize_pro_query = $this->db->table('cg_split_customization_product_store');
+        $resutl_custo = $get_customize_pro_query->get();        
+        $returnArray = array();
+        foreach ($resutl_custo->getResult() as $shoplost) {
+            $returnArray[] = $shoplost->shop_url;
+        }
+        return $returnArray;
+    }
 }

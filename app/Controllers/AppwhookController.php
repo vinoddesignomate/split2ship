@@ -2298,7 +2298,7 @@ class AppwhookController extends BaseController
         }
 
         fclose($webhookpd);
-        $get_customize_store_list = $this->user_model->get_customize_store_list();
+        $get_customize_store_list = $this->user_model->get_customize_store_list_new();
         // $shopenablearray = array(
         //     "onlyneon1.myshopify.com",
         //     "3d-printing-store-india.myshopify.com",
@@ -2347,7 +2347,7 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_addtocartdata = json_decode($getaddtocartdata);
-        $get_customize_store_list = $this->user_model->get_customize_store_list();
+        $get_customize_store_list = $this->user_model->get_customize_store_list_new();
         // $shopenablearray = array(
         //     "onlyneon1.myshopify.com",
         //     "3d-printing-store-india.myshopify.com",
