@@ -1652,7 +1652,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
 
-        return $this->user_model->get_customize_store_list($shopname);
+        echo $this->user_model->get_customize_store_list($shopname);
         //return json_encode($get_customize_store_list);
     }
     public function update_double_create()
