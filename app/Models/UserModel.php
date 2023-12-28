@@ -1065,14 +1065,20 @@ class UserModel extends Model
         $qgetordpro = $qbuilder_insert->get();
         return $qgetordpro->getResult();
     }
-    public function get_customize_store_list()
+    public function get_customize_store_list($shopurl)
     {
         $get_customize_pro_query = $this->db->table('cg_split_customization_product_store');
+        $get_customize_pro_query->where('shop_url', $shopurl);
         $resutl_custo = $get_customize_pro_query->get();
-        $returnArray = array();
-        foreach ($resutl_custo->getResult() as $shoplost) {
-            $returnArray[] = $shoplost->shop_url;
+        if (!empty($resutl_custo->getResult())) {
+            return 1;
+        }else{
+            return 0;
         }
-        return $returnArray;
+        //$returnArray = array();
+        // foreach ($resutl_custo->getResult() as $shoplost) {
+        //     $returnArray[] = $shoplost->shop_url;
+        // }
+        // return $returnArray;
     }
 }

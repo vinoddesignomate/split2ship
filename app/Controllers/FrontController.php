@@ -34,7 +34,7 @@ class FrontController extends BaseController
 
 
 
-
+        $getcustpro = $this->user_model->get_customize_store_list($shopname);
         if ($get_details->force_update == 1) {
             if (!empty($plan_details)) {
                 if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
@@ -95,7 +95,8 @@ class FrontController extends BaseController
                                         "partial_buynow_btn_color" => '',
                                         "partial_buynow_text_color" => '',
                                         "full_buy_btn_color" => '',
-                                        "full_buy_text_color" => ''
+                                        "full_buy_text_color" => '',
+                                        "getcustpro" => $getcustpro
                                     );
                                 } else {
                                     $return_array = array(
@@ -118,7 +119,8 @@ class FrontController extends BaseController
                                         "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
                                         "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
                                         "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
-                                        "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color
+                                        "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
+                                        "getcustpro" => $getcustpro
                                     );
                                 }
                                 return json_encode($return_array);
@@ -1647,8 +1649,11 @@ class FrontController extends BaseController
     }
     public function frontend_getcuststorelist()
     {
-        $get_customize_store_list = $this->user_model->get_customize_store_list();
-        return json_encode($get_customize_store_list);
+        $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
+        $shopname = str_replace("http://", "", $shopname);
+
+        return $this->user_model->get_customize_store_list($shopname);
+        //return json_encode($get_customize_store_list);
     }
     public function update_double_create()
     {
