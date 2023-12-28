@@ -196,7 +196,9 @@ class FrontController extends BaseController
             } else {
                 if ($body_data_decode['codcarientid'] == "") {
                     $codprdct = $this->user_model->get_cod_product($shopname);
-                    if ($codprdct[0]->cod_enable != 1 && $codprdct[0]->handling_charge_enalbe != 1) {
+                    if (empty($codprdct)) {
+                        $varientid = "";
+                    } else if ((isset($codprdct[0]->cod_enable) && $codprdct[0]->cod_enable) != 1 && (isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe != 1)) {
                         $varientid = "";
                     } else {
                         $varientid = $codprdct[0]->varient_id;
