@@ -229,7 +229,8 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-        //echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
+        echo "coupon_discount".$coupon_discount;
+        echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
 
         // $randnum = rand(1, 100);
         $randnum = $this->generateRandomString(6);
