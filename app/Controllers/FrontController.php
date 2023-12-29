@@ -229,11 +229,11 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-        echo "coupon_discount".$coupon_discount;
-        echo "remaining_price".$remaining_price;
-        echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
+       
 
         // $randnum = rand(1, 100);
+        echo "up coupon_discount".$coupon_discount;
+        echo "up remaining_price".$remaining_price;
         $randnum = $this->generateRandomString(6);
         if ($coupon_discount > 0) {
             $getcpncodep = $body_data_decode['getcpncode'];
@@ -242,12 +242,19 @@ class FrontController extends BaseController
             } else {
                 $couponname = 'Automatic';
             }
+            if (substr($remaining_price, 0, 1) === '-') {
+                $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
+            }
             $coupon_name = 'Remaining_Amount(Dis-' . $couponname . ')';
             $remaining_price = $remaining_price+$coupon_discount;
+            $remaining_price = "-".$remaining_price;
         } else {
             $coupon_name = 'Remaining_Amount(' . $randnum . ')';
             $remaining_price = $remaining_price;
         }
+        echo "coupon_discount".$coupon_discount;
+        echo "remaining_price".$remaining_price;
+        echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
         $creatruledata = [
             "price_rule" => [
                 "title" => $coupon_name,
