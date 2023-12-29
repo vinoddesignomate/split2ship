@@ -223,6 +223,79 @@ class FrontController extends BaseController
         //print_r($returndata);
         //return $returndata;
     }
+    public function create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem)
+    {
+        $returndata = array();
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+        $get_details = $this->user_model->get_tokens($shopname);
+
+        // $randnum = rand(1, 100);
+        $randnum = $this->generateRandomString(6);
+        $coupon_name = 'Remaining_Amount(' . $randnum . ')';
+        $creatruledata = [
+            "price_rule" => [
+                "title" => $coupon_name,
+                "target_type" => "line_item",
+                "value_type" => 'fixed_amount',
+                "value" => $remaining_price,
+                "target_selection" => "all",
+                "customer_selection" => "all",
+                "allocation_method" => "across",
+                "starts_at" => date("Y-m-d H:i:s"),
+            ]
+        ];
+        //print_r($creatruledata);
+        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
+
+        $getprietuleidrec = json_decode($getprietuleid['body'], true);
+        //print_r($getprietuleidrec);
+        if (array_key_exists('errors', $getprietuleidrec)) {
+            echo "invalid";
+        } else {
+
+            $creatediscode = [
+                "discount_code" => [
+                    "code" => $coupon_name,
+                ]
+            ];
+
+
+            $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
+            $createcouponrec = json_decode($createcoupon['body'], true);
+            //print_r($createcouponrec);
+            if (array_key_exists('errors', $createcouponrec)) {
+                echo "invalid";
+            } else {
+                if ($body_data_decode['codcarientid'] == "") {
+                    $codprdct = $this->user_model->get_cod_product($shopname);
+                    if (empty($codprdct)) {
+                        $varientid = "";
+                    } else if ((isset($codprdct[0]->cod_enable) && $codprdct[0]->cod_enable) != 1 && (isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe != 1)) {
+                        $varientid = "";
+                    } else {
+                        $varientid = $codprdct[0]->varient_id;
+                    }
+
+                    ///print_r($codprdct);
+                } else {
+                    $varientid = "";
+                }
+                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid;
+
+                //track coupon for partial payment for remove when order is place
+                $track_coupon_code = array(
+                    "coupon_code_name" => $coupon_name,
+                    "price_rule_id" => $getprietuleidrec['price_rule']['id'],
+                    "coupon_code_id" => $createcouponrec['discount_code']['id'],
+                    "shop_url" => $shopname,
+                );
+                $this->user_model->track_partial_coupon_code($track_coupon_code);
+            }
+        }
+        //print_r($returndata);
+        //return $returndata;
+    }
     public function create_draft_order()
     {
 
@@ -462,15 +535,14 @@ class FrontController extends BaseController
 
                 $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-                // if ($shopname == 'desinomatetest.myshopify.com' || $shopname == 'partialtestapp.myshopify.com') {
+                if ($shopname == 'desinomatetest.myshopify.com') {
 
-                //     $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
-
-
-                // } else {
-                //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-                // }
-                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+                    $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem);
+                } else {
+                    //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+                    // }
+                    $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+                }
             } else {
                 echo "zip_enabled";
             }
