@@ -223,12 +223,13 @@ class FrontController extends BaseController
         //print_r($returndata);
         //return $returndata;
     }
-    public function create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem)
+    public function create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem,$coupon_discount)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
+        echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
 
         // $randnum = rand(1, 100);
         $randnum = $this->generateRandomString(6);
@@ -316,6 +317,7 @@ class FrontController extends BaseController
                 $line_item_arra = array();
                 $chekpartial = 0;
                 $remaining_price = 0;
+                $coupon_discount = 0;
                 $illp = 0;
                 // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                 //     echo "<pre>";
@@ -389,6 +391,7 @@ class FrontController extends BaseController
 
                             //$roundedValue = bcadd($dicountcodepay, '0.005', 2); // Add 0.005 to round up
                             $formattedValuediscount = number_format($dicountcodepay, 2, '.', '');
+                            $coupon_discount = $coupon_discount+$formattedValuediscount;
 
 
                             $line_item  = array(
@@ -537,7 +540,7 @@ class FrontController extends BaseController
 
                 if ($shopname == 'desinomatetest.myshopify.com') {
 
-                    $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem);
+                    $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem,$coupon_discount);
                 } else {
                     //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
                     // }
