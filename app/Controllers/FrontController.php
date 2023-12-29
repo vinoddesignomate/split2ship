@@ -232,8 +232,7 @@ class FrontController extends BaseController
        
 
         // $randnum = rand(1, 100);
-        echo "up coupon_discount".$coupon_discount;
-        echo "up remaining_price".$remaining_price;
+        
         $randnum = $this->generateRandomString(6);
         if ($coupon_discount > 0) {
             $getcpncodep = $body_data_decode['getcpncode'];
@@ -252,9 +251,9 @@ class FrontController extends BaseController
             $coupon_name = 'Remaining_Amount(' . $randnum . ')';
             $remaining_price = $remaining_price;
         }
-        echo "coupon_discount".$coupon_discount;
-        echo "remaining_price".$remaining_price;
-        echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
+        // echo "coupon_discount".$coupon_discount;
+        // echo "remaining_price".$remaining_price;
+        // echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
         $creatruledata = [
             "price_rule" => [
                 "title" => $coupon_name,
