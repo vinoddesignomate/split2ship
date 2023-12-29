@@ -230,6 +230,7 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
         echo "coupon_discount".$coupon_discount;
+        echo "remaining_price".$remaining_price;
         echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
 
         // $randnum = rand(1, 100);
