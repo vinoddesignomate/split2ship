@@ -312,12 +312,47 @@ class AppwhookController extends BaseController
             $zip = $jsndata->billing_address->zip;
             $country = $jsndata->billing_address->country;
         }
-        if ($linitemdisount > 0) {
-            $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
-            $titla_name = "Partial Payment+Applied Discount";
+        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+            if (isset($jsndata->discount_codes[0]->code)) {
+                $cpode_string = $jsndata->discount_codes[0]->code;
+                // Find the position of 'cgsplit'
+                $startPosition = strpos($cpode_string, 'cgsplit');
+
+                // Check if 'cgsplit' exists in the string
+                if ($startPosition !== false) {
+                    // Extract the substring after 'cgsplit'
+                    $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
+
+                    // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                    $value = trim($substring, ')'); // Remove ')' from the end if needed
+
+                    // Output the extracted value
+                    $dicocideline = $value;
+                } else {
+                    $dicocideline = 0;
+                    // echo "Substring 'cgsplit' not found." . PHP_EOL;
+                }
+            } else {
+                $dicocideline = 0;
+            }
+
+            //if ($linitemdisount > 0) {
+            if ($dicocideline > 0) {
+                // $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
+                $finaldiscount = $jsndata->subtotal_price - $dicocideline;
+                $titla_name = "Partial Payment+Applied Discount";
+            } else {
+                $finaldiscount = $jsndata->subtotal_price;
+                $titla_name = "Partial Payment";
+            }
         } else {
-            $finaldiscount = $jsndata->subtotal_price;
-            $titla_name = "Partial Payment";
+            if ($linitemdisount > 0) {
+                $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
+                $titla_name = "Partial Payment+Applied Discount";
+            } else {
+                $finaldiscount = $jsndata->subtotal_price;
+                $titla_name = "Partial Payment";
+            }
         }
 
 
