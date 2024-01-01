@@ -339,7 +339,7 @@ class AppwhookController extends BaseController
             //if ($linitemdisount > 0) {
             if ($dicocideline > 0) {
                 // $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
-                $finaldiscount = $jsndata->subtotal_price - $dicocideline;
+                $finaldiscount = $jsndata->subtotal_price + $dicocideline;
                 $titla_name = "Partial Payment+Applied Discount";
             } else {
                 $finaldiscount = $jsndata->subtotal_price;
