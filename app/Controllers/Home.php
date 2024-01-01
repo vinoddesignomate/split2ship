@@ -607,12 +607,12 @@ class Home extends BaseController
                         "shop_url" => $_GET['shop']
 
                     );
-                    if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.212.33') {
+                    // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.212.33') {
 
-                        echo "coll_array<pre>";
-                        print_r($coll_array);
-                        echo "</pre>";
-                    }
+                    //     echo "coll_array<pre>";
+                    //     print_r($coll_array);
+                    //     echo "</pre>";
+                    // }
                     $this->user_model->track_collections($coll_array, $_GET['shop']);
                 }
 

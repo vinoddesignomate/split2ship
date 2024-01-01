@@ -68,10 +68,15 @@ class FrontController extends BaseController
 
                             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
                             $getvarientsres = json_decode($getvarients['body'], true);
-                            if ($shopname == 'desinomatetest.myshopify.com') {
-                                echo "<pre>";
-                                print_r($getvarientsres);
-                                echo "</pre>";
+                            // if ($shopname == 'desinomatetest.myshopify.com') {
+                            //     echo "<pre>";
+                            //     print_r($getvarientsres);
+                            //     echo "</pre>";
+                            // }
+                            if($getvarientsres['variant']['inventory_management'] == ""){
+                                $getinvtry = 1;
+                            }else{
+                                $getinvtry  = $getvarientsres['variant']['inventory_quantity'];
                             }
 
                             if (array_key_exists('errors', $getvarientsres)) {
@@ -83,7 +88,7 @@ class FrontController extends BaseController
                                         "pro_pack" => $partperctg,
                                         "partial_type" => $get_resulrs[0]->partial_type,
                                         "partial_price" => $propartialper,
-                                        "var_qty" => $getvarientsres['variant']['inventory_quantity'],
+                                        "var_qty" => $getinvtry,
                                         "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
                                         "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
                                         "add_to_cartbtn" => 1,
@@ -106,7 +111,7 @@ class FrontController extends BaseController
                                         "pro_pack" => $partperctg,
                                         "partial_type" => $get_resulrs[0]->partial_type,
                                         "partial_price" => $propartialper,
-                                        "var_qty" => $getvarientsres['variant']['inventory_quantity'],
+                                        "var_qty" => $getinvtry,
                                         "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
                                         "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
                                         "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
