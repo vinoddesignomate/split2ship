@@ -68,9 +68,11 @@ class FrontController extends BaseController
 
                             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
                             $getvarientsres = json_decode($getvarients['body'], true);
-                            // echo "<pre>";
-                            // print_r($getvarientsres['variant']['inventory_quantity']);
-                            // echo "</pre>";
+                            if ($shopname == 'desinomatetest.myshopify.com') {
+                                echo "<pre>";
+                                print_r($getvarientsres);
+                                echo "</pre>";
+                            }
 
                             if (array_key_exists('errors', $getvarientsres)) {
                                 return 'not_found';
@@ -229,10 +231,10 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
-       
+
 
         // $randnum = rand(1, 100);
-        
+
         $randnum = $this->generateRandomString(6);
         if ($coupon_discount > 0) {
             $getcpncodep = $body_data_decode['getcpncode'];
@@ -245,8 +247,8 @@ class FrontController extends BaseController
                 $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
             }
             $coupon_name = 'Remaining_Amount(Dis-' . $couponname . ')';
-            $remaining_price = $remaining_price+$coupon_discount;
-            $remaining_price = "-".$remaining_price;
+            $remaining_price = $remaining_price + $coupon_discount;
+            $remaining_price = "-" . $remaining_price;
         } else {
             $coupon_name = 'Remaining_Amount(' . $randnum . ')';
             $remaining_price = $remaining_price;
