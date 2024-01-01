@@ -138,7 +138,7 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                   
+
 
 
                     // Given string
@@ -146,9 +146,6 @@ class Home extends BaseController
                     $string = $getprietuleidrec['order']['discount_codes'][0]['code'];
 
 
-
-                    // Given string
-                    //$string = "Remaining_Amount(Dis-0TVDBNGKT4XDcgsplit250)";
 
                     // Find the position of 'Dis-'
                     $startPosition = strpos($string, 'Dis-');
@@ -158,10 +155,10 @@ class Home extends BaseController
                         // Extract the substring after 'Dis-'
                         $substring = substr($string, $startPosition + strlen('Dis-'));
 
-                        // Find the next occurrence of ')'
-                        $endPosition = strpos($substring, ')');
+                        // Find the next occurrence of 'cgsplit'
+                        $endPosition = strpos($substring, 'cgsplit');
 
-                        // Extract the value after 'Dis-' and before ')'
+                        // Extract the value after 'Dis-' and before 'cgsplit'
                         $value = substr($substring, 0, $endPosition);
 
                         // Output the extracted value
