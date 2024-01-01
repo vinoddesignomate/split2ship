@@ -85,8 +85,8 @@ class Home extends BaseController
                     }
                 }
 
-               if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.105.245.251') {
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                    //if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.105.245.251') {
 
                     // $productadd = [
                     //     "product" => [
@@ -125,7 +125,7 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5619987743024.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5619987743024.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -138,10 +138,42 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
+                   
+
+
+                    // Given string
+                    // $string = "Remaining_Amount(Dis-0TVDBNGKT4XDcgsplit250)";
+                    $string = $getprietuleidrec['order']['discount_codes'][0]['code'];
+
+
+
+                    // Given string
+                    //$string = "Remaining_Amount(Dis-0TVDBNGKT4XDcgsplit250)";
+
+                    // Find the position of 'Dis-'
+                    $startPosition = strpos($string, 'Dis-');
+
+                    // Check if 'Dis-' exists in the string
+                    if ($startPosition !== false) {
+                        // Extract the substring after 'Dis-'
+                        $substring = substr($string, $startPosition + strlen('Dis-'));
+
+                        // Find the next occurrence of ')'
+                        $endPosition = strpos($substring, ')');
+
+                        // Extract the value after 'Dis-' and before ')'
+                        $value = substr($substring, 0, $endPosition);
+
+                        // Output the extracted value
+                        echo "Extracted Value: " . $value . PHP_EOL;
+                    } else {
+                        echo "Substring 'Dis-' not found." . PHP_EOL;
+                    }
+
                     echo "getprietuleidrec<pre>";
                     print_r($getprietuleidrec);
                     echo "</pre>";
-                       // die();
+                    // die();
 
                     // $targetCode = 'Remaining_Amount';
                     // $matchingCode = null;
@@ -598,7 +630,7 @@ class Home extends BaseController
                 $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $collections = json_decode($collections['body'], true);
 
-               
+
                 $coll_array = array();
                 foreach ($collections['custom_collections'] as $collection_list) {
                     $coll_array = array(
@@ -2598,7 +2630,7 @@ class Home extends BaseController
                 if (empty($getdata)) {
 
                     $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-                
+
                     if (empty($smart_collectionsget)) {
                         $collection_data = [
                             'smart_collection' => [
@@ -2612,9 +2644,9 @@ class Home extends BaseController
                                 ],
                             ],
                         ];
-    
+
                         $curl = curl_init();
-    
+
                         curl_setopt_array($curl, array(
                             CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections.json',
                             CURLOPT_RETURNTRANSFER => true,
@@ -2629,21 +2661,21 @@ class Home extends BaseController
                                 'Content-Type: application/json'
                             ),
                         ));
-    
+
                         $response = curl_exec($curl);
-    
+
                         curl_close($curl);
                         $return_array = json_decode($response);
                         $collecid = $return_array->smart_collection->id;
-    
+
                         $smart_coll_array = array(
                             "collection_id" => $return_array->smart_collection->id,
                             "collections_name" => $return_array->smart_collection->title,
                             "collections_handle" => $return_array->smart_collection->handle,
                             "shop_url" => $_GET['shop']
-    
+
                         );
-    
+
                         $this->user_model->track_collections($smart_coll_array, $_GET['shop']);
                     } else {
                         $collecid = $smart_collectionsget[0]->collection_id;
@@ -2659,9 +2691,9 @@ class Home extends BaseController
                                 ],
                             ],
                         ];
-    
+
                         $curl = curl_init();
-    
+
                         curl_setopt_array($curl, array(
                             CURLOPT_URL => 'https://a47ead69b3d83a8042703f093f3cadb2:' . $get_details->access_token . '@' . $_GET['shop'] . '/admin/api/2023-10/smart_collections/' . $smart_collectionsget[0]->collection_id . '.json',
                             CURLOPT_RETURNTRANSFER => true,
@@ -2676,9 +2708,9 @@ class Home extends BaseController
                                 'Content-Type: application/json'
                             ),
                         ));
-    
+
                         $response = curl_exec($curl);
-    
+
                         curl_close($curl);
                         $return_array = json_decode($response);
                     }
@@ -2753,7 +2785,7 @@ class Home extends BaseController
         }
 
         if ($this->request->getPost('enble_cod_prs')) {
-            
+
             if ($this->request->getPost('cod_enable_prcess')) {
                 $codenbl = 1;
             } else {
@@ -2764,7 +2796,7 @@ class Home extends BaseController
             if (empty($getdata)) {
 
                 $smart_collectionsget = $this->user_model->get_smrtcollections($_GET['shop']);
-                
+
                 if (empty($smart_collectionsget)) {
                     $collection_data = [
                         'smart_collection' => [
@@ -2895,7 +2927,7 @@ class Home extends BaseController
             }
             echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/app-configuration'</script>";
         }
-        
+
 
         $data['gtbtncolor'] = $this->user_model->get_checkout_button_color($_GET['shop']);
         $data['shpname'] = $_GET['shop'];
