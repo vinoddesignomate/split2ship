@@ -364,6 +364,11 @@ class AppwhookController extends BaseController
             $txincude = false;
             $finalprice = $taxamounttotal;
         }
+        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+            if ($dicocideline > 0) {
+                $finalprice = $taxamounttotal - $dicocideline;
+            }
+        }
         $resposne_array = array("name" => "double order line_items" . json_encode($order_line_items));
         $this->user_model->check_test_response($resposne_array);
 
