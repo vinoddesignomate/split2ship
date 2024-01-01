@@ -421,10 +421,10 @@ class Home extends BaseController
                             "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
                         ]
                     ];
-                    echo "final_total_orderval=" . $final_total_orderval;
-                    echo "order_data<pre>";
-                    print_r($order_data);
-                    echo "</pre>";
+                    // echo "final_total_orderval=" . $final_total_orderval;
+                    // echo "order_data<pre>";
+                    // print_r($order_data);
+                    // echo "</pre>";
 
                     // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
@@ -597,6 +597,13 @@ class Home extends BaseController
                 }
                 $collections = $this->common->rest_api('/admin/api/2022-04/custom_collections.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $collections = json_decode($collections['body'], true);
+
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.212.33') {
+
+                    echo "<pre>";
+                    print_r($collections);
+                    echo "</pre>";
+                }
                 $coll_array = array();
                 foreach ($collections['custom_collections'] as $collection_list) {
                     $coll_array = array(
@@ -613,6 +620,12 @@ class Home extends BaseController
                 $smart_collectionsget = json_decode($smart_collections['body'], true);
                 $smart_coll_array = array();
 
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '42.109.212.33') {
+
+                    echo "smart_collectionsget<pre>";
+                    print_r($smart_collectionsget);
+                    echo "</pre>";
+                }
                 //track smart collection
                 if (isset($smart_collectionsget['smart_collections']) && !empty($smart_collectionsget['smart_collections'])) {
                     foreach ($smart_collectionsget['smart_collections'] as $collection_list) {
