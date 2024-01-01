@@ -147,24 +147,21 @@ class Home extends BaseController
 
 
 
-                    // Find the position of 'Dis-'
-                    $startPosition = strpos($string, 'Dis-');
+                    // Find the position of 'cgsplit'
+                    $startPosition = strpos($string, 'cgsplit');
 
-                    // Check if 'Dis-' exists in the string
+                    // Check if 'cgsplit' exists in the string
                     if ($startPosition !== false) {
-                        // Extract the substring after 'Dis-'
-                        $substring = substr($string, $startPosition + strlen('Dis-'));
+                        // Extract the substring after 'cgsplit'
+                        $substring = substr($string, $startPosition + strlen('cgsplit'));
 
-                        // Find the next occurrence of 'cgsplit'
-                        $endPosition = strpos($substring, 'cgsplit');
-
-                        // Extract the value after 'Dis-' and before 'cgsplit'
-                        $value = substr($substring, 0, $endPosition);
+                        // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                        $value = trim($substring, ')'); // Remove ')' from the end if needed
 
                         // Output the extracted value
                         echo "Extracted Value: " . $value . PHP_EOL;
                     } else {
-                        echo "Substring 'Dis-' not found." . PHP_EOL;
+                        echo "Substring 'cgsplit' not found." . PHP_EOL;
                     }
 
                     echo "getprietuleidrec<pre>";
