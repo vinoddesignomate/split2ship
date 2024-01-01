@@ -69,10 +69,11 @@ class UserModel extends Model
         $q = $qbuilder->get();
         $qbuilder->countAllResults();
         if (!empty($q->getResult())) {
+            $this->db->query("SET character_set_results=utf8mb4");
             $this->db->table('ppa_store_collections')->where('shop_url', $shopurl)->where('collection_id', $collection_array['collection_id'])->update($collection_array);
             return $this->db->affectedRows();
         } else {
-
+            $this->db->query("SET character_set_results=utf8mb4");
             return  $qbuilder->insert($collection_array);
         }
     }
