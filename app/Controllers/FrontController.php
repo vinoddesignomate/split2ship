@@ -251,7 +251,7 @@ class FrontController extends BaseController
             if (substr($remaining_price, 0, 1) === '-') {
                 $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
             }
-            $coupon_name = 'Remaining_Amount(Dis-' . $couponname . ')';
+            $coupon_name = 'Remaining_Amount(Dis-' . $couponname . '-' . $coupon_discount . ')';
             $remaining_price = $remaining_price + $coupon_discount;
             $remaining_price = "-" . $remaining_price;
         } else {
@@ -309,7 +309,7 @@ class FrontController extends BaseController
                 } else {
                     $varientid = "";
                 }
-                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid;
+                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid."spltcg" . $coupon_discount;
 
                 //track coupon for partial payment for remove when order is place
                 $track_coupon_code = array(
