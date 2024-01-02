@@ -1445,18 +1445,20 @@ class FrontController extends BaseController
                 } else {
                     $greater_equal = "";
                 }
-                $return_array[] = array(
-                    'coupon_name' => $allcoupon['title'],
-                    'coupon_type' => $allcoupon['value_type'],
-                    'coupon_value' => str_replace("-","",$allcoupon['value']),
-                    'target_type' => $allcoupon['target_type'],
-                    'usage_limit' => $allcoupon['usage_limit'],
-                    'once_per_customer' => $allcoupon['once_per_customer'],
-                    'starts_at' => $allcoupon['starts_at'],
-                    'ends_at' => $allcoupon['ends_at'],
-                    'greater_equal' => $greater_equal,
-                    'disbaleval' => $disbaleval
-                );
+                if ($disbaleval == 0) {
+                    $return_array[] = array(
+                        'coupon_name' => $allcoupon['title'],
+                        'coupon_type' => $allcoupon['value_type'],
+                        'coupon_value' => str_replace("-", "", $allcoupon['value']),
+                        'target_type' => $allcoupon['target_type'],
+                        'usage_limit' => $allcoupon['usage_limit'],
+                        'once_per_customer' => $allcoupon['once_per_customer'],
+                        'starts_at' => $allcoupon['starts_at'],
+                        'ends_at' => $allcoupon['ends_at'],
+                        'greater_equal' => $greater_equal,
+                        'disbaleval' => $disbaleval
+                    );
+                }
             }
         }
         // echo "getprietuleidrec<pre>";
