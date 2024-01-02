@@ -1448,7 +1448,7 @@ class FrontController extends BaseController
                 $return_array[] = array(
                     'coupon_name' => $allcoupon['title'],
                     'coupon_type' => $allcoupon['value_type'],
-                    'coupon_value' => $allcoupon['value'],
+                    'coupon_value' => str_replace("-","",$allcoupon['value']),
                     'target_type' => $allcoupon['target_type'],
                     'usage_limit' => $allcoupon['usage_limit'],
                     'once_per_customer' => $allcoupon['once_per_customer'],
