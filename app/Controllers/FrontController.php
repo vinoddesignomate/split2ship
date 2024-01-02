@@ -73,9 +73,9 @@ class FrontController extends BaseController
                             //     print_r($getvarientsres);
                             //     echo "</pre>";
                             // }
-                            if($getvarientsres['variant']['inventory_management'] == ""){
+                            if ($getvarientsres['variant']['inventory_management'] == "") {
                                 $getinvtry = 1;
-                            }else{
+                            } else {
                                 $getinvtry  = $getvarientsres['variant']['inventory_quantity'];
                             }
 
@@ -309,7 +309,7 @@ class FrontController extends BaseController
                 } else {
                     $varientid = "";
                 }
-                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid."spltcg" . $coupon_discount;
+                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid . "spltcg" . $coupon_discount;
 
                 //track coupon for partial payment for remove when order is place
                 $track_coupon_code = array(
@@ -1421,12 +1421,12 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $shopname);
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
-        echo "getprietuleidrec<pre>";
-        print_r($getprietuleidrec);
-        echo "</pre>";
+        // echo "getprietuleidrec<pre>";
+        // print_r($getprietuleidrec);
+        // echo "</pre>";
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
-            if ($allcoupon['target_type'] != 'shipping_line') {
+            if ($allcoupon['target_type'] != 'shipping_line' && $allcoupon['customer_selection'] == "all") {
                 if (!empty($allcoupon['entitled_product_ids'])) {
                     $getvalues = array_intersect($prdyid, $allcoupon['entitled_product_ids']);
                     // echo "getvalues<pre>";
@@ -1440,10 +1440,21 @@ class FrontController extends BaseController
                 } else {
                     $disbaleval = 0;
                 }
+                if (isset($allcoupon['prerequisite_subtotal_range']['greater_than_or_equal_to'])) {
+                    $greater_equal = $allcoupon['prerequisite_subtotal_range']['greater_than_or_equal_to'];
+                } else {
+                    $greater_equal = "";
+                }
                 $return_array[] = array(
                     'coupon_name' => $allcoupon['title'],
                     'coupon_type' => $allcoupon['value_type'],
                     'coupon_value' => $allcoupon['value'],
+                    'target_type' => $allcoupon['target_type'],
+                    'usage_limit' => $allcoupon['usage_limit'],
+                    'once_per_customer' => $allcoupon['once_per_customer'],
+                    'starts_at' => $allcoupon['starts_at'],
+                    'ends_at' => $allcoupon['ends_at'],
+                    'greater_equal' => $greater_equal,
                     'disbaleval' => $disbaleval
                 );
             }
