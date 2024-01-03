@@ -555,7 +555,7 @@ class Home extends BaseController
                             if ($get_updated_plan[0]->plan_name == 'basic') {
                                 $total_pro = 200;
                             } else {
-                                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
+                                $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
                             }
                             if ($get_details->total_sync_store_products < $total_pro) {
                                 foreach ($this->request->getPost('assign_pro') as $prokey => $product_id) {
