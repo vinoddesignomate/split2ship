@@ -908,7 +908,7 @@ class Home extends BaseController
                     if ($get_updated_plan[0]->plan_name == 'basic') {
                         $total_pro = 200;
                     } else {
-                        $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['order_sunc'];
+                        $total_pro = $this->plane_details[$get_updated_plan[0]->plan_name]['partial_product'];
                     }
 
                     //if ($get_updated_plan[0]->updated_products_partial >= $total_synproduct) {
@@ -962,14 +962,14 @@ class Home extends BaseController
                         $this->user_model->update_plan_products($total_synproduct, $_GET['shop']);
                         echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-latest-products-list'</script>";
                     } else {
-                        echo "<script>alert('Please upgrade the plan1'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+                        echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
 
                         // $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
                         // echo view('templates/apbrdgnew', $data);
 
                     }
                 } else {
-                    echo "<script>alert('Please upgrade the plan2'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
+                    echo "<script>alert('Please upgrade the plan'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan'</script>";
 
                     // $data['pricurl'] = "https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/price-plan";
                     // echo view('templates/apbrdgnew', $data);
