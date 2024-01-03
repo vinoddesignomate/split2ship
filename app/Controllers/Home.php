@@ -1044,7 +1044,7 @@ class Home extends BaseController
 
                 // $products = $this->common->rest_api($colcturl, array("collection_id" => $_GET['collectionparms'], "limit" => 10), 'GET', $get_details->access_token, $_GET['shop']);
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                    print_r($this->request->getPost());
+                    //print_r($this->request->getPost());
                 }
 
                 if ($this->request->getPost('search_text')) {
