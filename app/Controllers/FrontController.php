@@ -1426,7 +1426,7 @@ class FrontController extends BaseController
         echo "</pre>";
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
-            if ($allcoupon['target_type'] != 'shipping_line' && $allcoupon['customer_selection'] == "all") {
+            if ($allcoupon['target_type'] != 'shipping_line') {
                 if (!empty($allcoupon['entitled_product_ids'])) {
                     $getvalues = array_intersect($prdyid, $allcoupon['entitled_product_ids']);
                     // echo "getvalues<pre>";
