@@ -1073,7 +1073,7 @@ class UserModel extends Model
         $resutl_custo = $get_customize_pro_query->get();
         if (!empty($resutl_custo->getResult())) {
             return '1';
-        }else{
+        } else {
             return '0';
         }
         //$returnArray = array();
@@ -1085,11 +1085,18 @@ class UserModel extends Model
     public function get_customize_store_list_new()
     {
         $get_customize_pro_query = $this->db->table('cg_split_customization_product_store');
-        $resutl_custo = $get_customize_pro_query->get();        
+        $resutl_custo = $get_customize_pro_query->get();
         $returnArray = array();
         foreach ($resutl_custo->getResult() as $shoplost) {
             $returnArray[] = $shoplost->shop_url;
         }
         return $returnArray;
+    }
+    public function get_older_partial_coupon_to_remove()
+    {
+        $getquer = $this->db->query("SELECT  NOW(),track_coupon_code.* 
+        FROM track_coupon_code
+        WHERE movement < DATE_SUB(NOW(), INTERVAL 6 HOUR)");
+        return $getquer->getResult();
     }
 }

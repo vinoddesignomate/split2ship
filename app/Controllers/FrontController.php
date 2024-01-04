@@ -1445,6 +1445,12 @@ class FrontController extends BaseController
                 } else {
                     $greater_equal = "";
                 }
+                if (isset($allcoupon['prerequisite_quantity_range']['greater_than_or_equal_to'])) {
+                    $qtyrelchk = $allcoupon['prerequisite_quantity_range']['greater_than_or_equal_to'];
+                } else {
+                    $qtyrelchk = "";
+                }
+                
                 if ($disbaleval == 0) {
                     $return_array[] = array(
                         'coupon_name' => $allcoupon['title'],
@@ -1456,6 +1462,7 @@ class FrontController extends BaseController
                         'starts_at' => $allcoupon['starts_at'],
                         'ends_at' => $allcoupon['ends_at'],
                         'greater_equal' => $greater_equal,
+                        'qtyrelchk' => $qtyrelchk,
                         'disbaleval' => $disbaleval
                     );
                 }
@@ -1771,6 +1778,49 @@ class FrontController extends BaseController
 
         echo $this->user_model->get_customize_store_list($shopname);
         //return json_encode($get_customize_store_list);
+    }
+    public function remove_partial_coupon()
+    {
+        $get_older_partial_coupon = $this->user_model->get_older_partial_coupon_to_remove();
+
+        echo"<pre>"; print_r($get_older_partial_coupon); echo"<pre>";
+        // foreach ($all_expiray_plnane as $allshpal) {
+        //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
+        //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+
+
+
+        //     if (isset($get_register_webhookset['recurring_application_charge']['status']) && $get_register_webhookset['recurring_application_charge']['status'] == 'active') {
+
+        //         $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$allshpal->plan_name]['validity'] . ' days'));
+
+        //         if ($allshpal->total_sync_store_products != "") {
+        //             $update_order_count = $this->plane_details[$allshpal->plan_name]['partial_product'] - $allshpal->total_sync_store_products;
+        //         } else {
+        //             $update_order_count = $this->plane_details[$allshpal->plan_name]['partial_product'];
+        //         }
+
+
+        //         $update_data = array(
+        //             "shop_url" => $allshpal->shop_url,
+        //             "charged_id" => $get_register_webhookset['recurring_application_charge']['id'],
+        //             "plan_status" => $get_register_webhookset['recurring_application_charge']['status'],
+        //             "activate_date" => date('Y-m-d'),
+        //             "sync_orders_count" => $this->plane_details[$allshpal->plan_name]['order_sunc'],
+        //             "updated_sync_orders_count" => $this->plane_details[$allshpal->plan_name]['order_sunc'],
+        //             "total_products_partial" => $this->plane_details[$allshpal->plan_name]['partial_product'],
+        //             "updated_products_partial" => $update_order_count,
+        //             "plan_validity" => $get_register_webhookset['recurring_application_charge']['billing_on']
+        //         );
+        //         $this->user_model->track_store_subscribe($update_data);
+        //     }
+        // }
+        // $updateprorespo = array(
+        //     "name" => "run update package job=",
+        //     "movement" => date('Y-m-d H:i')
+        // );
+        // $this->user_model->check_cron_ruinning_stst($updateprorespo);
+        // echo "done";
     }
     public function update_double_create()
     {
