@@ -1456,8 +1456,10 @@ class FrontController extends BaseController
 
                     if (in_array($body_data_decode['split2_customerId'], $custarry)) {
                         $disbaleval = 0;
+                        echo "in if";
                     } else {
                         $disbaleval = 1;
+                        echo "in else";
                     }
                 } else {
                     $custarry = array();
