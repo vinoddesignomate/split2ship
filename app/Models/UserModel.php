@@ -1094,7 +1094,7 @@ class UserModel extends Model
     }
     public function get_older_partial_coupon_to_remove()
     {
-        $getquer = $this->db->query("SELECT  NOW(),track_coupon_code.* 
+        $getquer = $this->db->query("SELECT  track_coupon_code.* 
         FROM track_coupon_code
         WHERE movement < DATE_SUB(NOW(), INTERVAL 6 HOUR)");
         return $getquer->getResult();
