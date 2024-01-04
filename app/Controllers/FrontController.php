@@ -1453,7 +1453,7 @@ class FrontController extends BaseController
 
                 if (!empty($allcoupon['prerequisite_customer_ids'])) {
                     $custarry = $allcoupon['prerequisite_customer_ids'];
-
+                    echo "in main if";
                     if (in_array($body_data_decode['split2_customerId'], $custarry)) {
                         $disbaleval = 0;
                         echo "in if";
@@ -1462,6 +1462,7 @@ class FrontController extends BaseController
                         echo "in else";
                     }
                 } else {
+                    echo "in main else";
                     $custarry = array();
                     $disbaleval = 0;
                 }
