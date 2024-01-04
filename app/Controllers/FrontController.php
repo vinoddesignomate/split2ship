@@ -1783,21 +1783,23 @@ class FrontController extends BaseController
     {
         $get_older_partial_coupon = $this->user_model->get_older_partial_coupon_to_remove();
 
-        echo "<pre>";
-        print_r($get_older_partial_coupon);
-        echo "<pre>";
-        foreach ($get_older_partial_coupon as $allshpal) {
+        // echo "<pre>";
+        // print_r($get_older_partial_coupon);
+        // echo "<pre>";
+        if (!empty($get_older_partial_coupon)) {
+            foreach ($get_older_partial_coupon as $allshpal) {
 
-            $get_details = $this->user_model->get_tokens($allshpal->shop_url);
+                $get_details = $this->user_model->get_tokens($allshpal->shop_url);
 
-            $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $allshpal->price_rule_id . '.json', array(), 'DELETE', $get_details->access_token, $allshpal->shop_url);
+                $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $allshpal->price_rule_id . '.json', array(), 'DELETE', $get_details->access_token, $allshpal->shop_url);
 
-            $remove_coupon_code = array(
-                "price_rule_id" => $allshpal->price_rule_id ,
-                "shop_url" => $allshpal->shop_url,
-            );
+                $remove_coupon_code = array(
+                    "price_rule_id" => $allshpal->price_rule_id,
+                    "shop_url" => $allshpal->shop_url,
+                );
 
-            $this->user_model->remove_coupon_code($remove_coupon_code);
+                $this->user_model->remove_coupon_code($remove_coupon_code);
+            }
         }
         $updateprorespo = array(
             "name" => "run remove coupon code cron",
