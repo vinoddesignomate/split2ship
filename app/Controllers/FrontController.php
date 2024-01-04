@@ -1421,9 +1421,9 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', array(), 'GET', $get_details->access_token, $shopname);
         $getprietuleidrec = json_decode($getprietuleid['body'], true);
-        echo "getprietuleidrec<pre>";
-        print_r($getprietuleidrec);
-        echo "</pre>";
+        // echo "getprietuleidrec<pre>";
+        // print_r($getprietuleidrec);
+        // echo "</pre>";
         $return_array = array();
         foreach ($getprietuleidrec['price_rules'] as $allcoupon) {
             if ($allcoupon['target_type'] != 'shipping_line' && $allcoupon['customer_selection'] == "all") {
@@ -1449,6 +1449,18 @@ class FrontController extends BaseController
                     $qtyrelchk = $allcoupon['prerequisite_quantity_range']['greater_than_or_equal_to'];
                 } else {
                     $qtyrelchk = "";
+                }
+
+                if (!empty($allcoupon['prerequisite_customer_ids'])) {
+                    $custarry = $allcoupon['prerequisite_customer_ids'];
+
+                    if (in_array($body_data_decode['split2_customerId'], $custarry)) {
+                        $disbaleval = 0;
+                    } else {
+                        $disbaleval = 1;
+                    }
+                } else {
+                    $custarry = array();
                 }
 
                 if ($disbaleval == 0) {
