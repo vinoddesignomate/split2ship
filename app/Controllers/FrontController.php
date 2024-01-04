@@ -1461,6 +1461,7 @@ class FrontController extends BaseController
                     }
                 } else {
                     $custarry = array();
+                    $disbaleval = 0;
                 }
                 echo $disbaleval;
                 if ($disbaleval == 0) {
