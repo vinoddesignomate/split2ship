@@ -1450,7 +1450,7 @@ class FrontController extends BaseController
                 } else {
                     $qtyrelchk = "";
                 }
-                
+
                 if ($disbaleval == 0) {
                     $return_array[] = array(
                         'coupon_name' => $allcoupon['title'],
@@ -1783,44 +1783,28 @@ class FrontController extends BaseController
     {
         $get_older_partial_coupon = $this->user_model->get_older_partial_coupon_to_remove();
 
-        echo"<pre>"; print_r($get_older_partial_coupon); echo"<pre>";
-        // foreach ($all_expiray_plnane as $allshpal) {
-        //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-07/recurring_application_charges/' . $allshpal->charged_id . '.json', array(), 'GET', $allshpal->access_token, $allshpal->shop_url);
-        //     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
+        echo "<pre>";
+        print_r($get_older_partial_coupon);
+        echo "<pre>";
+        foreach ($get_older_partial_coupon as $allshpal) {
 
+            $get_details = $this->user_model->get_tokens($allshpal->shop_url);
 
+            $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $allshpal->price_rule_id . '.json', array(), 'DELETE', $get_details->access_token, $allshpal->shop_url);
 
-        //     if (isset($get_register_webhookset['recurring_application_charge']['status']) && $get_register_webhookset['recurring_application_charge']['status'] == 'active') {
+            $remove_coupon_code = array(
+                "price_rule_id" => $allshpal->price_rule_id ,
+                "shop_url" => $allshpal->shop_url,
+            );
 
-        //         $plane_start_endate = date('Y-m-d', strtotime('+' . $this->plane_details[$allshpal->plan_name]['validity'] . ' days'));
-
-        //         if ($allshpal->total_sync_store_products != "") {
-        //             $update_order_count = $this->plane_details[$allshpal->plan_name]['partial_product'] - $allshpal->total_sync_store_products;
-        //         } else {
-        //             $update_order_count = $this->plane_details[$allshpal->plan_name]['partial_product'];
-        //         }
-
-
-        //         $update_data = array(
-        //             "shop_url" => $allshpal->shop_url,
-        //             "charged_id" => $get_register_webhookset['recurring_application_charge']['id'],
-        //             "plan_status" => $get_register_webhookset['recurring_application_charge']['status'],
-        //             "activate_date" => date('Y-m-d'),
-        //             "sync_orders_count" => $this->plane_details[$allshpal->plan_name]['order_sunc'],
-        //             "updated_sync_orders_count" => $this->plane_details[$allshpal->plan_name]['order_sunc'],
-        //             "total_products_partial" => $this->plane_details[$allshpal->plan_name]['partial_product'],
-        //             "updated_products_partial" => $update_order_count,
-        //             "plan_validity" => $get_register_webhookset['recurring_application_charge']['billing_on']
-        //         );
-        //         $this->user_model->track_store_subscribe($update_data);
-        //     }
-        // }
-        // $updateprorespo = array(
-        //     "name" => "run update package job=",
-        //     "movement" => date('Y-m-d H:i')
-        // );
-        // $this->user_model->check_cron_ruinning_stst($updateprorespo);
-        // echo "done";
+            $this->user_model->remove_coupon_code($remove_coupon_code);
+        }
+        $updateprorespo = array(
+            "name" => "run remove coupon code cron",
+            "movement" => date('Y-m-d H:i')
+        );
+        $this->user_model->check_cron_ruinning_stst($updateprorespo);
+        echo "done";
     }
     public function update_double_create()
     {
