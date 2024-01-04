@@ -1463,7 +1463,7 @@ class FrontController extends BaseController
                     $custarry = array();
                     $disbaleval = 0;
                 }
-                echo $disbaleval;
+               
                 if ($disbaleval == 0) {
                     $return_array[] = array(
                         'coupon_name' => $allcoupon['title'],
