@@ -91,7 +91,7 @@ class Home extends BaseController
                     $get_register_webhookset = json_decode($get_register_webhook['body'], true);
                      echo "products_adshh<pre>";
                     print_r($get_register_webhookset);
-                    echo "</pre>";
+                    echo "</pre>"; die();
                     // $productadd = [
                     //     "product" => [
                     //         "title" => "Partial payment(for COD)"
