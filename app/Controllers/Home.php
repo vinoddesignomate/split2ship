@@ -389,17 +389,30 @@ class Home extends BaseController
                             "country" => $getprietuleidrec['order']['shipping_address']['country'],
                         );
 
-                        $shipping_address = [
+                        // $shipping_address = [
+                        //     "shipping_address" => [
+                        //         "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                        //         "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                        //         "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                        //         "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                        //         "phone" => $store_phnum,
+                        //         "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                        //         "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                        //         "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                        //         "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                        //     ]
+                        // ];
+
+                        $shipping_addressss = [
                             "shipping_address" => [
-                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                                "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                                "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                                "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                                "phone" => $store_phnum,
-                                "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                                "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                                "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                                "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                                "first_name" => "Daminee",
+                                "last_name" => "Daminee",
+                                "address1" => "",
+                                "phone" => "09131160832",
+                                "city" => "Bhopal",
+                                "province" => "Madhya Pradesh",
+                                "zip" => "462030",
+                                "country" => "India"
                             ]
                         ];
                     }
@@ -433,9 +446,9 @@ class Home extends BaseController
                         ];
                     }
                     // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
-                    // // echo "<pre>";
-                    // // print_r($final_array);
-                    // // echo "</pre>";
+                    echo "shipping_addressss<pre>";
+                    print_r($shipping_addressss);
+                    echo "</pre>";
 
                     // Define the order data
 
@@ -473,7 +486,7 @@ class Home extends BaseController
                                 ]
                             ],
                             "taxes_included" => $txincude,
-                            $shipping_address,
+                            $shipping_addressss,
                             $billing_address,
                             // "shipping_address" => [
                             //     "first_name" => "John",
