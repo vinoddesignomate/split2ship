@@ -133,9 +133,9 @@ class Home extends BaseController
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    //    echo "getprietuleidrec<pre>";
-                    //  print_r($getprietuleidrec);
-                    //  echo "</pre>";
+                       echo "getprietuleidrec<pre>";
+                     print_r($getprietuleidrec);
+                     echo "</pre>";
                     //  die();
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
