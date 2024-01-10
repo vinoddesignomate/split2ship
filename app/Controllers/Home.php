@@ -505,14 +505,15 @@ class Home extends BaseController
                             //"shipping_address"=>$shipping_address,
                             //"billing_address"=>$billing_address,                            
                             "shipping_address" => [
-                                "first_name" => "John",
-                                "last_name" => "Doe",
-                                "address1" => "123 Main St",
-                                "phone" => "555-555-5555",
-                                "city" => "City",
-                                "province" => "State",
-                                "country" => "Country",
-                                "zip" => "12345"
+                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                                "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                                "phone" => $store_phnum,
+                                "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                                "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                                "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                                "country" => $getprietuleidrec['order']['shipping_address']['country'],
                             ],
                             "discount_codes" => [
                                 [
