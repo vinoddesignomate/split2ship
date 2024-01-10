@@ -389,32 +389,32 @@ class Home extends BaseController
                             "country" => $getprietuleidrec['order']['shipping_address']['country'],
                         );
 
-                        // $shipping_address = [
-                        //     "shipping_address" => [
-                        //         "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                        //         "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                        //         "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                        //         "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                        //         "phone" => $store_phnum,
-                        //         "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                        //         "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                        //         "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                        //         "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                        //     ]
-                        // ];
-
-                        $shipping_addressss = [
+                        $shipping_address = [
                             "shipping_address" => [
-                                "first_name" => "Daminee",
-                                "last_name" => "Daminee",
-                                "address1" => "",
-                                "phone" => "09131160832",
-                                "city" => "Bhopal",
-                                "province" => "Madhya Pradesh",
-                                "zip" => "462030",
-                                "country" => "India"
+                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                                "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                                "phone" => $store_phnum,
+                                "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                                "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                                "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                                "country" => $getprietuleidrec['order']['shipping_address']['country'],
                             ]
                         ];
+
+                        // $shipping_addressss = [
+                        //     "shipping_address" => [
+                        //         "first_name" => "Daminee",
+                        //         "last_name" => "Daminee",
+                        //         "address1" => "",
+                        //         "phone" => "09131160832",
+                        //         "city" => "Bhopal",
+                        //         "province" => "Madhya Pradesh",
+                        //         "zip" => "462030",
+                        //         "country" => "India"
+                        //     ]
+                        // ];
                     }
                     //$actl_shipping_addrss = array();
 
@@ -486,8 +486,8 @@ class Home extends BaseController
                                 ]
                             ],
                             "taxes_included" => $txincude,
-                            $shipping_addressss,
-                            $billing_address,
+                            $shipping_addressss[0],
+                            $billing_address[0],
                             // "shipping_address" => [
                             //     "first_name" => "John",
                             //     "last_name" => "Doe",
