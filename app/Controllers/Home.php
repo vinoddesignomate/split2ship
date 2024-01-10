@@ -86,7 +86,7 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                    if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                     //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/28153151710.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $get_register_webhookset = json_decode($get_register_webhook['body'], true);
                     //  echo "products_adshh<pre>";
@@ -272,9 +272,14 @@ class Home extends BaseController
                                 }
                                 $productvarient = $products['variant_id'];
                                 //$paidprice_get = $products['properties'][1]['value'];
-                                $paidprice_get = $products['price'] - $products['discount_allocations'][0]['amount'];
+                                if (isset($products['discount_allocations'][0]['amount'])) {
+                                    $paidprice_get = $products['price'] - $products['discount_allocations'][0]['amount'];
 
-                                $tax_price = $products['discount_allocations'][0]['amount'];
+                                    $tax_price = $products['discount_allocations'][0]['amount'];
+                                } else {
+                                    $tax_price = 0;
+                                    $paidprice_get = 0;
+                                }
                                 // $item_price_actualval = $products['properties'][1]['value'] + $products['total_discount'];
                             }
 
@@ -384,7 +389,7 @@ class Home extends BaseController
                             "country" => $getprietuleidrec['order']['shipping_address']['country'],
                         );
 
-                        $shipping_address = [ 
+                        $shipping_address = [
                             "shipping_address" => [
                                 "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
@@ -395,14 +400,11 @@ class Home extends BaseController
                                 "province" => $getprietuleidrec['order']['shipping_address']['province'],
                                 "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
                                 "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                                ]
-                            ];
+                            ]
+                        ];
+                    }
+                    //$actl_shipping_addrss = array();
 
-                       
-
-                    } 
-                        //$actl_shipping_addrss = array();
-                    
 
                     if (isset($getprietuleidrec['order']['billing_address'])) {
 
@@ -416,7 +418,7 @@ class Home extends BaseController
                             $store_phnum2 = "";
                         }
 
-                        $billing_address = [ 
+                        $billing_address = [
                             "billing_address" => [
                                 "first_name" => $getprietuleidrec['order']['billing_address']['first_name'],
                                 "last_name" => $getprietuleidrec['order']['billing_address']['first_name'],
@@ -427,8 +429,8 @@ class Home extends BaseController
                                 "province" => $getprietuleidrec['order']['billing_address']['province'],
                                 "zip" => $getprietuleidrec['order']['billing_address']['zip'],
                                 "country" => $getprietuleidrec['order']['billing_address']['country'],
-                                ]
-                            ];
+                            ]
+                        ];
                     }
                     // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     // // echo "<pre>";
