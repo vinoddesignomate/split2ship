@@ -129,14 +129,14 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5464255889634.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5628937142576.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                       echo "getprietuleidrec<pre>";
-                     print_r($getprietuleidrec);
-                     echo "</pre>";
-                     die();
+                    //    echo "getprietuleidrec<pre>";
+                    //  print_r($getprietuleidrec);
+                    //  echo "</pre>";
+                    //  die();
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
                     // $get_coupon_code = array(
@@ -173,9 +173,9 @@ class Home extends BaseController
                         echo "Substring 'cgsplit' not found." . PHP_EOL;
                     }
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
                     // die();
 
                     // $targetCode = 'Remaining_Amount';
@@ -383,8 +383,52 @@ class Home extends BaseController
                             "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
                             "country" => $getprietuleidrec['order']['shipping_address']['country'],
                         );
-                    } else {
-                        $actl_shipping_addrss = array();
+
+                        $shipping_address = [ 
+                            "shipping_address" => [
+                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                                "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                                "phone" => $store_phnum,
+                                "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                                "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                                "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                                "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                                ]
+                            ];
+
+                       
+
+                    } 
+                        //$actl_shipping_addrss = array();
+                    
+
+                    if (isset($getprietuleidrec['order']['billing_address'])) {
+
+
+                        if (isset($getprietuleidrec['order']['billing_address']['phone'])) {
+                            $store_phnum2 = str_replace(" ", "", $getprietuleidrec['order']['billing_address']['phone']);
+                            $store_phnum2 = str_replace("(", "", $store_phnum2);
+                            $store_phnum2 = str_replace(")", "", $store_phnum2);
+                            $store_phnum2 = str_replace("-", "", $store_phnum2);
+                        } else {
+                            $store_phnum2 = "";
+                        }
+
+                        $billing_address = [ 
+                            "billing_address" => [
+                                "first_name" => $getprietuleidrec['order']['billing_address']['first_name'],
+                                "last_name" => $getprietuleidrec['order']['billing_address']['first_name'],
+                                "address1" => $getprietuleidrec['order']['billing_address']['address1'],
+                                "address1" => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
+                                "phone" => $store_phnum2,
+                                "city" => $getprietuleidrec['order']['billing_address']['city'],
+                                "province" => $getprietuleidrec['order']['billing_address']['province'],
+                                "zip" => $getprietuleidrec['order']['billing_address']['zip'],
+                                "country" => $getprietuleidrec['order']['billing_address']['country'],
+                                ]
+                            ];
                     }
                     // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     // // echo "<pre>";
@@ -457,9 +501,9 @@ class Home extends BaseController
                         ]
                     ];
                     // echo "final_total_orderval=" . $final_total_orderval;
-                    // echo "order_data<pre>";
-                    // print_r($order_data);
-                    // echo "</pre>";
+                    echo "order_data<pre>";
+                    print_r($order_data);
+                    echo "</pre>";
 
                     // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
