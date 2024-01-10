@@ -447,7 +447,7 @@ class Home extends BaseController
                     }
                     // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     echo "shipping_addressss<pre>";
-                    print_r($shipping_address[0]);
+                    print_r($shipping_address);
                     echo "</pre>";
 
                     // Define the order data
