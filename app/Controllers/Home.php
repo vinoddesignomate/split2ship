@@ -447,7 +447,7 @@ class Home extends BaseController
                     }
                     // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
                     echo "shipping_addressss<pre>";
-                    print_r($shipping_addressss);
+                    print_r($shipping_address[0]);
                     echo "</pre>";
 
                     // Define the order data
@@ -486,7 +486,7 @@ class Home extends BaseController
                                 ]
                             ],
                             "taxes_included" => $txincude,
-                            $shipping_addressss[0],
+                            $shipping_address[0],
                             $billing_address[0],
                             // "shipping_address" => [
                             //     "first_name" => "John",
