@@ -404,7 +404,7 @@ class Home extends BaseController
                         // ];
 
                         $shipping_address = [
-                            "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
                                 "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
