@@ -274,6 +274,7 @@ class FrontController extends BaseController
                     "target_selection" => "all",
                     "customer_selection" => "all",
                     "allocation_method" => "across",
+                    "usage_limit" => 1,
                     "starts_at" => date("Y-m-d H:i:s"),
                 ]
             ];
