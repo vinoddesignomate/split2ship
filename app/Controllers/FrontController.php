@@ -183,7 +183,7 @@ class FrontController extends BaseController
                     "allocation_method" => "across",
                     "starts_at" => date("Y-m-d H:i:s"),
                 ]
-            ];
+            ]; 
             //print_r($creatruledata);
             $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
