@@ -312,6 +312,14 @@ class AppwhookController extends BaseController
             $zip = $jsndata->billing_address->zip;
             $country = $jsndata->billing_address->country;
         }
+        if (isset($jsndata->billing_address->phone)) {
+            $store_phnum2 = str_replace(" ", "", $jsndata->billing_address->phone);
+            $store_phnum2 = str_replace("(", "", $store_phnum2);
+            $store_phnum2 = str_replace(")", "", $store_phnum2);
+            $store_phnum2 = str_replace("-", "", $store_phnum2);
+        } else {
+            $store_phnum2 = "";
+        }
         if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
             if (isset($jsndata->discount_codes[0]->code)) {
                 $cpode_string = $jsndata->discount_codes[0]->code;
@@ -396,6 +404,16 @@ class AppwhookController extends BaseController
                     "province" => $province,
                     "country" => $country,
                     "zip" => $zip
+                ],
+                "billing_address" => [
+                    "first_name" => (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : ''),
+                    "last_name" => (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : ''),
+                    "address1" => (isset($jsndata->billing_address->address1) ? $jsndata->billing_address->address1 : '') . (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : ''),
+                    "phone" => $store_phnum2,
+                    "city" => (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : ''),
+                    "province" => (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : ''),
+                    "country" => (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : ''),
+                    "zip" => (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '')
                 ],
                 "taxes_included" => $txincude,
                 "customer" => [
@@ -664,6 +682,19 @@ class AppwhookController extends BaseController
             $province = $jsndata->billing_address->province;
             $zip = $jsndata->billing_address->zip;
             $country = $jsndata->billing_address->country;
+
+            $billing_address = [ 
+                    "billing_address" => [
+                        "first_name" => $first_name,
+                        "last_name" => $las_name,
+                        "address1" => $address1 . $address2,
+                        "phone" => $phone,
+                        "city" => $city,
+                        "province" => $province,
+                        "country" => $country,
+                        "zip" => $zip
+                        ]
+                    ];
         }
         if ($linitemdisount > 0) {
             $finaldiscount = $linitemdisount + $paid_price;
