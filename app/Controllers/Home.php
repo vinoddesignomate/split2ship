@@ -502,18 +502,18 @@ class Home extends BaseController
                                 ]
                             ],
                             "taxes_included" => $txincude,
-                            "shipping_address"=>$shipping_address,
-                            "billing_address"=>$billing_address,                            
-                            // "shipping_address" => [
-                            //     "first_name" => "John",
-                            //     "last_name" => "Doe",
-                            //     "address1" => "123 Main St",
-                            //     "phone" => "555-555-5555",
-                            //     "city" => "City",
-                            //     "province" => "State",
-                            //     "country" => "Country",
-                            //     "zip" => "12345"
-                            // ],
+                            //"shipping_address"=>$shipping_address,
+                            //"billing_address"=>$billing_address,                            
+                            "shipping_address" => [
+                                "first_name" => "John",
+                                "last_name" => "Doe",
+                                "address1" => "123 Main St",
+                                "phone" => "555-555-5555",
+                                "city" => "City",
+                                "province" => "State",
+                                "country" => "Country",
+                                "zip" => "12345"
+                            ],
                             "discount_codes" => [
                                 [
                                     "code" => $titla_name,
