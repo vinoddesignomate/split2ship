@@ -129,9 +129,14 @@ class Home extends BaseController
                     //  echo "</pre>";
 
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5619987743024.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5464255889634.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
+
+                       echo "getprietuleidrec<pre>";
+                     print_r($getprietuleidrec);
+                     echo "</pre>";
+                     die();
 
                     // $etisus = '[{"code":"FAKE30","amount":"9.00","type":"percentage"}]';
                     // $get_coupon_code = array(
@@ -450,7 +455,7 @@ class Home extends BaseController
                             ],
                             "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
                         ]
-                    ];*/
+                    ];
                     // echo "final_total_orderval=" . $final_total_orderval;
                     // echo "order_data<pre>";
                     // print_r($order_data);
