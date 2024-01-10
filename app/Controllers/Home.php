@@ -537,11 +537,11 @@ class Home extends BaseController
                     print_r($order_data);
                     echo "</pre>";
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
+                    echo "<pre>";
+                    print_r(json_decode($getorderarry));
+                    echo "</pre>";
 
                     // echo $getorderarry;
                     // }
