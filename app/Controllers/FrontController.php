@@ -179,6 +179,7 @@ class FrontController extends BaseController
                     "value" => $remaining_price,
                     "target_selection" => "all",
                     "customer_selection" => "all",
+                    "usage_limit" => 1,
                     "allocation_method" => "across",
                     "starts_at" => date("Y-m-d H:i:s"),
                 ]
@@ -242,7 +243,7 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
 
-        echo "not_valid_coupon"; die();
+        //echo "not_valid_coupon"; die();
 
         $checking_remaing = substr($remaining_price, 1); // Removes the negative sign from the first element
 
