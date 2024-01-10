@@ -230,7 +230,7 @@ class FrontController extends BaseController
         //print_r($returndata);
         //return $returndata;
     }
-    public function create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discount,$spite_grandtotal)
+    public function create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discount, $spite_grandtotal)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
@@ -238,87 +238,91 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
 
 
-        // $randnum = rand(1, 100);
-        echo "spite_grandtotal=".$spite_grandtotal;
-        $randnum = $this->generateRandomString(6);
-        if ($coupon_discount > 0) {
-            $getcpncodep = $body_data_decode['getcpncode'];
-            if ($getcpncodep != "") {
-                $couponname = $getcpncodep;
+        $checking_remaing = substr($remaining_price, 1); // Removes the negative sign from the first element
+
+        if ($spite_grandtotal == $checking_remaing) {
+            echo "not_valid_coupon";
+        } else {
+            $randnum = $this->generateRandomString(6);
+            if ($coupon_discount > 0) {
+                $getcpncodep = $body_data_decode['getcpncode'];
+                if ($getcpncodep != "") {
+                    $couponname = $getcpncodep;
+                } else {
+                    $couponname = 'Automatic';
+                }
+                if (substr($remaining_price, 0, 1) === '-') {
+                    $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
+                }
+                $coupon_name = 'Remaining_Amount(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
+                $remaining_price = $remaining_price + $coupon_discount;
+                $remaining_price = "-" . $remaining_price;
             } else {
-                $couponname = 'Automatic';
+                $coupon_name = 'Remaining_Amount(' . $randnum . ')';
+                $remaining_price = $remaining_price;
             }
-            if (substr($remaining_price, 0, 1) === '-') {
-                $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
-            }
-            $coupon_name = 'Remaining_Amount(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
-            $remaining_price = $remaining_price + $coupon_discount;
-            $remaining_price = "-" . $remaining_price;
-        } else {
-            $coupon_name = 'Remaining_Amount(' . $randnum . ')';
-            $remaining_price = $remaining_price;
-        }
-        // echo "coupon_discount".$coupon_discount;
-        // echo "remaining_price".$remaining_price;
-        // echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
-        $creatruledata = [
-            "price_rule" => [
-                "title" => $coupon_name,
-                "target_type" => "line_item",
-                "value_type" => 'fixed_amount',
-                "value" => $remaining_price,
-                "target_selection" => "all",
-                "customer_selection" => "all",
-                "allocation_method" => "across",
-                "starts_at" => date("Y-m-d H:i:s"),
-            ]
-        ];
-        //print_r($creatruledata);
-        $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
-
-        $getprietuleidrec = json_decode($getprietuleid['body'], true);
-        //print_r($getprietuleidrec);
-        if (array_key_exists('errors', $getprietuleidrec)) {
-            echo "invalid";
-        } else {
-
-            $creatediscode = [
-                "discount_code" => [
-                    "code" => $coupon_name,
+            // echo "coupon_discount".$coupon_discount;
+            // echo "remaining_price".$remaining_price;
+            // echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
+            $creatruledata = [
+                "price_rule" => [
+                    "title" => $coupon_name,
+                    "target_type" => "line_item",
+                    "value_type" => 'fixed_amount',
+                    "value" => $remaining_price,
+                    "target_selection" => "all",
+                    "customer_selection" => "all",
+                    "allocation_method" => "across",
+                    "starts_at" => date("Y-m-d H:i:s"),
                 ]
             ];
+            //print_r($creatruledata);
+            $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
-
-            $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
-            $createcouponrec = json_decode($createcoupon['body'], true);
-            //print_r($createcouponrec);
-            if (array_key_exists('errors', $createcouponrec)) {
+            $getprietuleidrec = json_decode($getprietuleid['body'], true);
+            //print_r($getprietuleidrec);
+            if (array_key_exists('errors', $getprietuleidrec)) {
                 echo "invalid";
             } else {
-                if ($body_data_decode['codcarientid'] == "") {
-                    $codprdct = $this->user_model->get_cod_product($shopname);
-                    if (empty($codprdct)) {
-                        $varientid = "";
-                    } else if ((isset($codprdct[0]->cod_enable) && $codprdct[0]->cod_enable) != 1 && (isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe != 1)) {
-                        $varientid = "";
-                    } else {
-                        $varientid = $codprdct[0]->varient_id;
-                    }
 
-                    ///print_r($codprdct);
+                $creatediscode = [
+                    "discount_code" => [
+                        "code" => $coupon_name,
+                    ]
+                ];
+
+
+                $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
+                $createcouponrec = json_decode($createcoupon['body'], true);
+                //print_r($createcouponrec);
+                if (array_key_exists('errors', $createcouponrec)) {
+                    echo "invalid";
                 } else {
-                    $varientid = "";
-                }
-                echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid . "spltcg" . $coupon_discount;
+                    if ($body_data_decode['codcarientid'] == "") {
+                        $codprdct = $this->user_model->get_cod_product($shopname);
+                        if (empty($codprdct)) {
+                            $varientid = "";
+                        } else if ((isset($codprdct[0]->cod_enable) && $codprdct[0]->cod_enable) != 1 && (isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe != 1)) {
+                            $varientid = "";
+                        } else {
+                            $varientid = $codprdct[0]->varient_id;
+                        }
 
-                //track coupon for partial payment for remove when order is place
-                $track_coupon_code = array(
-                    "coupon_code_name" => $coupon_name,
-                    "price_rule_id" => $getprietuleidrec['price_rule']['id'],
-                    "coupon_code_id" => $createcouponrec['discount_code']['id'],
-                    "shop_url" => $shopname,
-                );
-                $this->user_model->track_partial_coupon_code($track_coupon_code);
+                        ///print_r($codprdct);
+                    } else {
+                        $varientid = "";
+                    }
+                    echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid . "spltcg" . $coupon_discount;
+
+                    //track coupon for partial payment for remove when order is place
+                    $track_coupon_code = array(
+                        "coupon_code_name" => $coupon_name,
+                        "price_rule_id" => $getprietuleidrec['price_rule']['id'],
+                        "coupon_code_id" => $createcouponrec['discount_code']['id'],
+                        "shop_url" => $shopname,
+                    );
+                    $this->user_model->track_partial_coupon_code($track_coupon_code);
+                }
             }
         }
         //print_r($returndata);
@@ -374,7 +378,7 @@ class FrontController extends BaseController
                     if ($item_cart['title'] == "Partial payment(for COD)") {
                         $coditem = "Partial payment(for COD)";
                     }
-                    $spite_grandtotal = $spite_grandtotal+$item_cart['line_price'];
+                    $spite_grandtotal = $spite_grandtotal + $item_cart['line_price'];
                     $coupon_discountline = $coupon_discountline + $item_cart['line_level_total_discount'];
                     if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                         $size_tems = array();
@@ -569,11 +573,11 @@ class FrontController extends BaseController
 
                 if ($shopname == 'desinomatetest.myshopify.com') {
 
-                    $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline,$spite_grandtotal);
+                    $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline, $spite_grandtotal);
                 } else {
                     //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
                     // }
-                    $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+                    $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem,$spite_grandtotal);
                 }
             } else {
                 echo "zip_enabled";
@@ -614,6 +618,7 @@ class FrontController extends BaseController
             $ilosku = 1;
             $reqship = true;
             $coditem = "";
+            $spite_grandtotal = 0;
             foreach ($cartarray as $item_cart) {
 
 
@@ -626,7 +631,7 @@ class FrontController extends BaseController
                 if ($item_cart['title'] == "Partial payment(for COD)") {
                     $coditem = "Partial payment(for COD)";
                 }
-
+                $spite_grandtotal = $spite_grandtotal + $item_cart['line_price'];
                 if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                     $size_tems = array();
 
@@ -825,7 +830,7 @@ class FrontController extends BaseController
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-            $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem);
+            $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem,$spite_grandtotal);
             //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
         } else {
             echo "not_found";
@@ -1455,20 +1460,18 @@ class FrontController extends BaseController
 
                 if (!empty($allcoupon['prerequisite_customer_ids'])) {
                     $custarry = $allcoupon['prerequisite_customer_ids'];
-                   
+
                     if (in_array($body_data_decode['split2_customerId'], $custarry)) {
                         $disbaleval = 0;
-                       
                     } else {
                         $disbaleval = 1;
-                        
                     }
                 } else {
-                   
+
                     $custarry = array();
                     $disbaleval = 0;
                 }
-               
+
                 if ($disbaleval == 0) {
                     $return_array[] = array(
                         'coupon_name' => $allcoupon['title'],
