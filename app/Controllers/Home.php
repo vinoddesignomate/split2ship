@@ -458,13 +458,13 @@ class Home extends BaseController
 
                     }
                     // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
-                    echo "shipping_address<pre>";
-                    print_r($shipping_address);
-                    echo "</pre>";
+                    // echo "shipping_address<pre>";
+                    // print_r($shipping_address);
+                    // echo "</pre>";
 
-                    echo "shipping_address<pre>";
-                    print_r($billing_address);
-                    echo "</pre>";
+                    // echo "shipping_address<pre>";
+                    // print_r($billing_address);
+                    // echo "</pre>";
 
                     // Define the order data
 
@@ -538,11 +538,11 @@ class Home extends BaseController
                     print_r($order_data);
                     echo "</pre>";
 
-                    // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
+                    echo "<pre>";
+                    print_r(json_decode($getorderarry));
+                    echo "</pre>";
 
                     // echo $getorderarry;
                     // }
