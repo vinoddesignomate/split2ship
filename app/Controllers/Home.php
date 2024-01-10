@@ -430,19 +430,17 @@ class Home extends BaseController
                             $store_phnum2 = "";
                         }
 
-                        // $billing_address = [
-                        //     "billing_address" => [
-                        //         "first_name" => $getprietuleidrec['order']['billing_address']['first_name'],
-                        //         "last_name" => $getprietuleidrec['order']['billing_address']['first_name'],
-                        //         "address1" => $getprietuleidrec['order']['billing_address']['address1'],
-                        //         "address1" => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
-                        //         "phone" => $store_phnum2,
-                        //         "city" => $getprietuleidrec['order']['billing_address']['city'],
-                        //         "province" => $getprietuleidrec['order']['billing_address']['province'],
-                        //         "zip" => $getprietuleidrec['order']['billing_address']['zip'],
-                        //         "country" => $getprietuleidrec['order']['billing_address']['country'],
-                        //     ]
-                        // ];
+                        
+                                // $first_name_b = $getprietuleidrec['order']['billing_address']['first_name'];
+                                // $last_name_b = $getprietuleidrec['order']['billing_address']['first_name'],
+                                // $address1 = $getprietuleidrec['order']['billing_address']['address1'],
+                                // $address2 => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
+                                // "phone" => $store_phnum2,
+                                // "city" => $getprietuleidrec['order']['billing_address']['city'],
+                                // "province" => $getprietuleidrec['order']['billing_address']['province'],
+                                // "zip" => $getprietuleidrec['order']['billing_address']['zip'],
+                                // "country" => $getprietuleidrec['order']['billing_address']['country'],
+                        
 
                         $billing_address = [
                             "first_name" => $getprietuleidrec['order']['billing_address']['first_name'],
@@ -508,7 +506,7 @@ class Home extends BaseController
                                 "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                                "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                                "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
                                 "phone" => $store_phnum,
                                 "city" => $getprietuleidrec['order']['shipping_address']['city'],
                                 "province" => $getprietuleidrec['order']['shipping_address']['province'],
