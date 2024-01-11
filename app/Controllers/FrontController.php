@@ -128,7 +128,7 @@ class FrontController extends BaseController
                                         "partial_buynow_btn_color" => isset($gtbtncolor[0]->partial_buynow_btn_color) && $gtbtncolor[0]->partial_buynow_btn_color != "" ? $gtbtncolor[0]->partial_buynow_btn_color : '#000',
                                         "partial_buynow_text_color" => isset($gtbtncolor[0]->partial_buynow_text_color) && $gtbtncolor[0]->partial_buynow_text_color != "" ? $gtbtncolor[0]->partial_buynow_text_color : '#fff',
                                         "full_buy_btn_color" => isset($gtbtncolor[0]->full_buy_btn_color) && $gtbtncolor[0]->full_buy_btn_color != "" ? $gtbtncolor[0]->full_buy_btn_color : '#000',
-                                        "full_buy_text_color" => isset($gtbtncolor[0]->full_buy_text_color) && $gtbtncolor[0]->full_buy_text_color != "" ? $gtbtncolor[0]->full_buy_text_color : '#000',
+                                        "full_buy_text_color" => isset($gtbtncolor[0]->full_buy_text_color) && $gtbtncolor[0]->full_buy_text_color != "" ? $gtbtncolor[0]->full_buy_text_color : '#fff',
                                         "getcustpro" => $getcustpro
                                     );
                                 }
