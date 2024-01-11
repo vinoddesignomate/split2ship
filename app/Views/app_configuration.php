@@ -501,7 +501,7 @@ $store_name = $shop_name[0];
                                                 </div>
 
 
-                                        </div>
+                                        </div> 
                                 </div>
 
                                 <div class="payxnowandrestondelivery-btn-row">
