@@ -357,7 +357,7 @@ $store_name = $shop_name[0];
 
                                         <div class="flex-row">
                                                 <label for="">Partial payment color code :</label>
-                                                <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '000000'); ?>">
+                                                <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo ((isset($gtbtncolor[0]->partial_btn_color) && $gtbtncolor[0]->partial_btn_color != "") ? $gtbtncolor[0]->partial_btn_color : '#000000'); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Partial payment button text color code :</label>
