@@ -1150,10 +1150,10 @@ class FrontController extends BaseController
 
         if (!empty($gtbtncolor)) {
             $return_array = array(
-                "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '',
-                "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '',
-                "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) ? $gtbtncolor[0]->chk_btn_color : '',
-                "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) ? $gtbtncolor[0]->full_chk_btn_color : '',
+                "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) && $gtbtncolor[0]->partial_btn_color != "" ? $gtbtncolor[0]->partial_btn_color : '#000',
+                "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) && $gtbtncolor[0]->full_btn_color !="" ? $gtbtncolor[0]->full_btn_color : '#000',
+                "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) && $gtbtncolor[0]->chk_btn_color !="" ? $gtbtncolor[0]->chk_btn_color : '#fff',
+                "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) && $gtbtncolor[0]->full_chk_btn_color !="" ? $gtbtncolor[0]->full_chk_btn_color : '#fff',
                 "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
                 "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
                 "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
