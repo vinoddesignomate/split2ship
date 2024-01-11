@@ -245,7 +245,7 @@ class FrontController extends BaseController
         $shopname = str_replace("http://", "", $shopname);
         $get_details = $this->user_model->get_tokens($shopname);
 
-        //echo "not_valid_coupon"; die();
+        echo "not_valid_coupon"; die();
 
         $checking_remaing = substr($remaining_price, 1); // Removes the negative sign from the first element
 
