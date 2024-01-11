@@ -357,7 +357,7 @@ $store_name = $shop_name[0];
 
                                         <div class="flex-row">
                                                 <label for="">Partial payment color code :</label>
-                                                <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '006FCF'); ?>">
+                                                <input type="text" name="partbtn_color" data-jscolor="{}" value="<?php echo (isset($gtbtncolor[0]->partial_btn_color) ? $gtbtncolor[0]->partial_btn_color : '000000'); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Partial payment button text color code :</label>
@@ -365,7 +365,7 @@ $store_name = $shop_name[0];
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Full payment color code :</label>
-                                                <input type="text" data-jscolor="{}" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '2F3030'); ?>">
+                                                <input type="text" data-jscolor="{}" name="fullbtn_color" value="<?php echo (isset($gtbtncolor[0]->full_btn_color) ? $gtbtncolor[0]->full_btn_color : '000000'); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Full payment button text color code :</label>
@@ -374,11 +374,11 @@ $store_name = $shop_name[0];
 
                                         <div class="flex-row">
                                                 <label for="">Cart Summary Section Background color</label>
-                                                <input type="text" data-jscolor="{}" name="cart_summary_back_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="cart_summary_back_color" value="<?php echo (isset($gtbtncolor[0]->cart_summary_back_color) ? $gtbtncolor[0]->cart_summary_back_color : 'ffffff'); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Cart Summary Section text color</label>
-                                                <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : ''); ?>">
+                                                <input type="text" data-jscolor="{}" name="cart_summart_textc" value="<?php echo (isset($gtbtncolor[0]->cart_summart_textc) ? $gtbtncolor[0]->cart_summart_textc : '000000'); ?>">
                                         </div>
                                         <div class="flex-row">
                                                 <label for="">Text 1 </label>
