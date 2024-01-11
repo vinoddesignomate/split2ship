@@ -106,6 +106,8 @@ class FrontController extends BaseController
                                         "getcustpro" => $getcustpro
                                     );
                                 } else {
+                                   
+
                                     $return_array = array(
                                         "full_price" => $get_resulrs[0]->price,
                                         "pro_pack" => $partperctg,
@@ -121,8 +123,8 @@ class FrontController extends BaseController
                                         "add_to_cart_text" => $gtbtncolor[0]->add_to_cart_text,
                                         "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
                                         "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
-                                        "add_cart_btn_color" => $gtbtncolor[0]->add_cart_btn_color,
-                                        "add_cart_text_color" => $gtbtncolor[0]->add_cart_text_color,
+                                        "add_cart_btn_color" => isset($gtbtncolor[0]->add_cart_btn_color) && $gtbtncolor[0]->add_cart_btn_color != "" ? $gtbtncolor[0]->add_cart_btn_color : '#000',
+                                        "add_cart_text_color" => isset($gtbtncolor[0]->add_cart_btn_color) && $gtbtncolor[0]->add_cart_text_color != "" ? $gtbtncolor[0]->add_cart_text_color : '#fff',
                                         "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
                                         "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
                                         "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
