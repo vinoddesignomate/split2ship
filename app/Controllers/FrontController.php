@@ -99,10 +99,10 @@ class FrontController extends BaseController
                                         "full_buy_now_text" => '',
                                         "add_cart_btn_color" => '#000',
                                         "add_cart_text_color" => '#fff',
-                                        "partial_buynow_btn_color" => '',
-                                        "partial_buynow_text_color" => '',
-                                        "full_buy_btn_color" => '',
-                                        "full_buy_text_color" => '',
+                                        "partial_buynow_btn_color" => '#000',
+                                        "partial_buynow_text_color" => '#fff',
+                                        "full_buy_btn_color" => '#000',
+                                        "full_buy_text_color" => '#fff',
                                         "getcustpro" => $getcustpro
                                     );
                                 } else {
@@ -124,11 +124,11 @@ class FrontController extends BaseController
                                         "partial_buy_now_text" => $gtbtncolor[0]->partial_buy_now_text,
                                         "full_buy_now_text" => $gtbtncolor[0]->full_buy_now_text,
                                         "add_cart_btn_color" => isset($gtbtncolor[0]->add_cart_btn_color) && $gtbtncolor[0]->add_cart_btn_color != "" ? $gtbtncolor[0]->add_cart_btn_color : '#000',
-                                        "add_cart_text_color" => isset($gtbtncolor[0]->add_cart_btn_color) && $gtbtncolor[0]->add_cart_text_color != "" ? $gtbtncolor[0]->add_cart_text_color : '#fff',
-                                        "partial_buynow_btn_color" => $gtbtncolor[0]->partial_buynow_btn_color,
-                                        "partial_buynow_text_color" => $gtbtncolor[0]->partial_buynow_text_color,
-                                        "full_buy_btn_color" => $gtbtncolor[0]->full_buy_btn_color,
-                                        "full_buy_text_color" => $gtbtncolor[0]->full_buy_text_color,
+                                        "add_cart_text_color" => isset($gtbtncolor[0]->add_cart_text_color) && $gtbtncolor[0]->add_cart_text_color != "" ? $gtbtncolor[0]->add_cart_text_color : '#fff',
+                                        "partial_buynow_btn_color" => isset($gtbtncolor[0]->partial_buynow_btn_color) && $gtbtncolor[0]->partial_buynow_btn_color != "" ? $gtbtncolor[0]->partial_buynow_btn_color : '#000',
+                                        "partial_buynow_text_color" => isset($gtbtncolor[0]->partial_buynow_text_color) && $gtbtncolor[0]->partial_buynow_text_color != "" ? $gtbtncolor[0]->partial_buynow_text_color : '#fff',
+                                        "full_buy_btn_color" => isset($gtbtncolor[0]->full_buy_btn_color) && $gtbtncolor[0]->full_buy_btn_color != "" ? $gtbtncolor[0]->full_buy_btn_color : '#000',
+                                        "full_buy_text_color" => isset($gtbtncolor[0]->full_buy_text_color) && $gtbtncolor[0]->full_buy_text_color != "" ? $gtbtncolor[0]->full_buy_text_color : '#000',
                                         "getcustpro" => $getcustpro
                                     );
                                 }
