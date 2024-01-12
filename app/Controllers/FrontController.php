@@ -581,7 +581,7 @@ class FrontController extends BaseController
 
                 $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $shopname == 'finesilverjewels.myshopify.com') {
+                if ($shopname == 'desinomatetest.myshopify.com') {
 
                     $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline, $spite_grandtotal);
                 } else {
