@@ -2267,12 +2267,7 @@ $store_name = $shop_name[0];
 
                                                                                         </textarea>
                                 </div>
-                                <p>In the place of this code.</p>
-                                <div>
-                                        <textarea rows="7" style="width: 100%">
-                <span><td class="button__cell"><a href="{{ checkout_payment_collection_url }}" class="button__text">Pay now</a></td></span>
-            </textarea>
-                                </div>
+                               
                         </div>
                 </div>
 
