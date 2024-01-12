@@ -487,7 +487,7 @@ class Home extends BaseController
                         $dicocideline = 0;
                     }
 
-
+                    echo "dicocideline=".$dicocideline;
                     if ($dicocideline > 0) {
                         $finaldiscount = $dicocideline + $getprietuleidrec['order']['subtotal_price'];
                         $titla_name = "Partial Payment+Applied Discount";
