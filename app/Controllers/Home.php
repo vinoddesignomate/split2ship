@@ -152,26 +152,7 @@ class Home extends BaseController
 
                     // Given string
                     // $string = "Remaining_Amount(Dis-0TVDBNGKT4XDcgsplit250)";
-                    $string = $getprietuleidrec['order']['discount_codes'][0]['code'];
-
-
-
-                    // Find the position of 'cgsplit'
-                    $startPosition = strpos($string, 'cgsplit');
-
-                    // Check if 'cgsplit' exists in the string
-                    if ($startPosition !== false) {
-                        // Extract the substring after 'cgsplit'
-                        $substring = substr($string, $startPosition + strlen('cgsplit'));
-
-                        // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
-                        $value = trim($substring, ')'); // Remove ')' from the end if needed
-
-                        // Output the extracted value
-                        echo "Extracted Value: " . $value . PHP_EOL;
-                    } else {
-                        echo "Substring 'cgsplit' not found." . PHP_EOL;
-                    }
+                   
 
                     // echo "getprietuleidrec<pre>";
                     // print_r($getprietuleidrec);
@@ -466,8 +447,49 @@ class Home extends BaseController
 
                     // Define the order data
 
-                    if ($linitemdisount > 0) {
-                        $finaldiscount = $linitemdisount + $getprietuleidrec['order']['subtotal_price'];
+                    // $string = $getprietuleidrec['order']['discount_codes'][0]['code'];
+                    // // Find the position of 'cgsplit'
+                    // $startPosition = strpos($string, 'cgsplit');
+
+                    // Check if 'cgsplit' exists in the string
+                    // if ($startPosition !== false) {
+                    //     // Extract the substring after 'cgsplit'
+                    //     $substring = substr($string, $startPosition + strlen('cgsplit'));
+
+                    //     // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                    //     $value = trim($substring, ')'); // Remove ')' from the end if needed
+
+                    //     // Output the extracted value
+                    //     echo "Extracted Value: " . $value . PHP_EOL;
+                    // } else {
+                    //     echo "Substring 'cgsplit' not found." . PHP_EOL;
+                    // }
+
+                    if (isset($getprietuleidrec['order']['discount_codes'][0]['code'])) {
+                        $cpode_string = $getprietuleidrec['order']['discount_codes'][0]['code'];
+                        // Find the position of 'cgsplit'
+                        $startPosition = strpos($cpode_string, 'cgsplit');
+        
+                        // Check if 'cgsplit' exists in the string
+                        if ($startPosition !== false) {
+                            // Extract the substring after 'cgsplit'
+                            $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));        
+                            // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                            $value = trim($substring, ')'); // Remove ')' from the end if needed
+        
+                            // Output the extracted value
+                            $dicocideline = $value;
+                        } else {
+                            $dicocideline = 0;
+                            // echo "Substring 'cgsplit' not found." . PHP_EOL;
+                        }
+                    } else {
+                        $dicocideline = 0;
+                    }
+
+
+                    if ($dicocideline > 0) {
+                        $finaldiscount = $dicocideline + $getprietuleidrec['order']['subtotal_price'];
                         $titla_name = "Partial Payment+Applied Discount";
                     } else {
                         $finaldiscount = $getprietuleidrec['order']['subtotal_price'];
