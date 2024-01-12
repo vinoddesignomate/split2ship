@@ -580,8 +580,10 @@ class FrontController extends BaseController
                 $final_total_price_rem = str_replace("-", "", $remaining_price);
 
                 $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-
-                if ($shopname == 'desinomatetest.myshopify.com') {
+                //"finesilverjewels.myshopify.com";
+                //if ($shopname == 'desinomatetest.myshopify.com') {
+                $allowedShopNames = ['desinomatetest.myshopify.com', "finesilverjewels.myshopify.com"];
+                if (in_array($shopname, $allowedShopNames)) {
 
                     $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline, $spite_grandtotal);
                 } else {
