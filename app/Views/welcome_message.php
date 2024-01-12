@@ -216,13 +216,16 @@ $store_namecnf = $shop_name[0];
             </div>
         </div>-->
 
-        <div class="payxnowandrestondelivery-container">
+        <!-- <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading">
                     <p class="payxnowandrestondelivery-alert">Since you have split2ship app installed, we recommend not to enable COD app</p>
                 </div>
 
             </div>
+        </div> -->
+        <div class="payxnowandrestondelivery-main-area text-center payxnowandrestondelivery-maintext">
+            <p>Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - <a href="tel:9354200590" class="text-orange">9354200590</a> else send us an email to <a href="mailto: saurabh@cgcolors.com" class="text-orange">saurabh@cgcolors.com</a>. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>
         </div>
         <?php if ($get_details_store->show_config_popup == '0') {
         ?>
@@ -262,10 +265,10 @@ $store_namecnf = $shop_name[0];
                 body.classList.add("package_popup_visible");
             </script>
 
-          <?php  }
+        <?php  }
 
-            if ($show_package_popup == 'yes') {
-            ?>
+        if ($show_package_popup == 'yes') {
+        ?>
 
             <script type="text/javascript">
                 var popup = document.getElementById("package_expire");

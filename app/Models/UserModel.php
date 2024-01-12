@@ -936,9 +936,9 @@ class UserModel extends Model
     {
         $get_all_shops = $this->db->query("SELECT * FROM ppa_store_token LIMIT 80,20");
         foreach ($get_all_shops->getResult() as $allshop) {
-            echo "<pre>";
-            print_r($allshop);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($allshop);
+            // echo "</pre>";
             $get_allsyncproducts = $this->db->query("SELECT count(*) as totalpro FROM `app_partial_products` WHERE `shop_url`='" . $allshop->shop_url . "'");
 
             $gettotl = $get_allsyncproducts->getResult();
