@@ -339,12 +339,7 @@ class FrontController extends BaseController
         //return $returndata;
     }
     public function get_handlincrg(){
-        $body_data = file_get_contents('php://input');
-        //echo $body_data;
-        $body_data_decode = json_decode($body_data, TRUE);
-        //print_r($body_data_decode);
-
-        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
         $codprdct = $this->user_model->get_cod_product($shopname);
 
