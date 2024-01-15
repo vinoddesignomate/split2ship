@@ -127,12 +127,7 @@ class Home extends BaseController
                     //  echo "getrestshop<pre>";
                     //  print_r($getrestshop);
                     //  echo "</pre>";
-
-
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5652193050846.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
-
+                    
                     //    echo "getprietuleidrec<pre>";
                     //  print_r($getprietuleidrec);
                     //  echo "</pre>";
@@ -147,38 +142,9 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
+                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5652193050846.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-
-
-                    // Given string
-                    // $string = "Remaining_Amount(Dis-0TVDBNGKT4XDcgsplit250)";
-                   
-
-                    // echo "getprietuleidrec<pre>";
-                    // print_r($getprietuleidrec);
-                    // echo "</pre>";
-                    // die();
-
-                    // $targetCode = 'Remaining_Amount';
-                    // $matchingCode = null;
-                    // foreach ($getprietuleidrec['order']['discount_codes'] as $discount) {
-                    //     if (strpos($discount['code'], $targetCode) !== false) {
-                    //         // Found a discount code containing "Remaining_Amount"
-                    //         $matchingCode = $discount['code'];
-                    //         //echo 'Found matching code: ' . $completeCode;
-                    //         // You can access other details like amount and type using $discount['amount'] and $discount['type']
-                    //         break; // If you want to stop searching after the first match
-                    //     }
-                    // }
-                    // if ($matchingCode !== null) {
-
-                    //     echo 'Found matching code: ' . $matchingCode;
-                    // } else {
-                    //     echo 'No matching code found.';
-                    // }
-
-                    //die();
-                    //if ($matchingCode !== null) {
+                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
 
                     $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
@@ -298,24 +264,6 @@ class Home extends BaseController
                             }
 
 
-                            // unset($products['properties'][2]);
-                            //unset($products['properties'][3]);
-
-                            // $line_item[] =
-                            //     [
-                            //         "variant_id" => $productvarient,
-                            //         "quantity" => $products['quantity'],
-                            //         // "properties" => [
-                            //         //     [
-                            //         //         "name" => "Color",
-                            //         //         "value" => "Red",
-                            //         //     ],
-                            //         //     [
-                            //         //         "name" => "Size",
-                            //         //         "value" => "Large",
-                            //         //     ],
-                            //         // ],
-                            //     ];
                             $line_item = [
                                 "variant_id" => $productvarient,
                                 "quantity" => $products['quantity'],
@@ -370,19 +318,7 @@ class Home extends BaseController
                             "country" => $getprietuleidrec['order']['shipping_address']['country'],
                         );
 
-                        // $shipping_address = [
-                        //     "shipping_address" => [
-                        //         "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                        //         "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                        //         "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                        //         "address1" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                        //         "phone" => $store_phnum,
-                        //         "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                        //         "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                        //         "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                        //         "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                        //     ]
-                        // ];
+                        
 
                         $shipping_address = [
                                 "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
@@ -412,15 +348,7 @@ class Home extends BaseController
                         }
 
                         
-                                // $first_name_b = $getprietuleidrec['order']['billing_address']['first_name'];
-                                // $last_name_b = $getprietuleidrec['order']['billing_address']['first_name'],
-                                // $address1 = $getprietuleidrec['order']['billing_address']['address1'],
-                                // $address2 => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
-                                // "phone" => $store_phnum2,
-                                // "city" => $getprietuleidrec['order']['billing_address']['city'],
-                                // "province" => $getprietuleidrec['order']['billing_address']['province'],
-                                // "zip" => $getprietuleidrec['order']['billing_address']['zip'],
-                                // "country" => $getprietuleidrec['order']['billing_address']['country'],
+                              
                         
 
                         $billing_address = [
@@ -436,34 +364,7 @@ class Home extends BaseController
                         ];
 
                     }
-                    // // $final_array = array("order" => array("line_items" => $line_item, "email" => $getprietuleidrec['order']['email'], "shipping_address" => $actl_shipping_addrss, "discount_codes" => array($discoutnarray)));
-                    // echo "shipping_address<pre>";
-                    // print_r($shipping_address);
-                    // echo "</pre>";
-
-                    // echo "shipping_address<pre>";
-                    // print_r($billing_address);
-                    // echo "</pre>";
-
-                    // Define the order data
-
-                    // $string = $getprietuleidrec['order']['discount_codes'][0]['code'];
-                    // // Find the position of 'cgsplit'
-                    // $startPosition = strpos($string, 'cgsplit');
-
-                    // Check if 'cgsplit' exists in the string
-                    // if ($startPosition !== false) {
-                    //     // Extract the substring after 'cgsplit'
-                    //     $substring = substr($string, $startPosition + strlen('cgsplit'));
-
-                    //     // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
-                    //     $value = trim($substring, ')'); // Remove ')' from the end if needed
-
-                    //     // Output the extracted value
-                    //     echo "Extracted Value: " . $value . PHP_EOL;
-                    // } else {
-                    //     echo "Substring 'cgsplit' not found." . PHP_EOL;
-                    // }
+                    
 
                     if (isset($getprietuleidrec['order']['discount_codes'][0]['code'])) {
                         $cpode_string = $getprietuleidrec['order']['discount_codes'][0]['code'];
@@ -574,7 +475,7 @@ class Home extends BaseController
 
                     echo "<pre>";
                     print_r(json_decode($getorderarry));
-                    echo "</pre>";
+                    echo "</pre>";*/
 
                     // echo $getorderarry;
                     // }

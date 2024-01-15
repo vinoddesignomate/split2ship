@@ -106,7 +106,7 @@ class FrontController extends BaseController
                                         "getcustpro" => $getcustpro
                                     );
                                 } else {
-                                   
+
 
                                     $return_array = array(
                                         "full_price" => $get_resulrs[0]->price,
@@ -185,7 +185,7 @@ class FrontController extends BaseController
                     "allocation_method" => "across",
                     "starts_at" => date("Y-m-d H:i:s"),
                 ]
-            ]; 
+            ];
             //print_r($creatruledata);
             $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
@@ -581,16 +581,17 @@ class FrontController extends BaseController
 
                 $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
                 //"finesilverjewels.myshopify.com";
+                //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
+                // }
                 //if ($shopname == 'desinomatetest.myshopify.com') {
                 $allowedShopNames = ['desinomatetest.myshopify.com', "finesilverjewels.myshopify.com"];
-                if (in_array($shopname, $allowedShopNames)) {
-
-                    $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline, $spite_grandtotal);
-                } else {
-                    //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
-                    // }
-                    $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem, $spite_grandtotal);
-                }
+                //if (in_array($shopname, $allowedShopNames)) {
+                
+                //below function for autodiscount coupon
+                $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline, $spite_grandtotal);
+                // } else {                    
+                //     $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem, $spite_grandtotal);
+                // }
             } else {
                 echo "zip_enabled";
             }
@@ -1153,9 +1154,9 @@ class FrontController extends BaseController
         if (!empty($gtbtncolor)) {
             $return_array = array(
                 "partial_btn_color" => isset($gtbtncolor[0]->partial_btn_color) && $gtbtncolor[0]->partial_btn_color != "" ? $gtbtncolor[0]->partial_btn_color : '#000',
-                "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) && $gtbtncolor[0]->full_btn_color !="" ? $gtbtncolor[0]->full_btn_color : '#000',
-                "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) && $gtbtncolor[0]->chk_btn_color !="" ? $gtbtncolor[0]->chk_btn_color : '#fff',
-                "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) && $gtbtncolor[0]->full_chk_btn_color !="" ? $gtbtncolor[0]->full_chk_btn_color : '#fff',
+                "full_part_btn_color" => isset($gtbtncolor[0]->full_btn_color) && $gtbtncolor[0]->full_btn_color != "" ? $gtbtncolor[0]->full_btn_color : '#000',
+                "chk_btn_color" => isset($gtbtncolor[0]->chk_btn_color) && $gtbtncolor[0]->chk_btn_color != "" ? $gtbtncolor[0]->chk_btn_color : '#fff',
+                "full_chk_btn_color" => isset($gtbtncolor[0]->full_chk_btn_color) && $gtbtncolor[0]->full_chk_btn_color != "" ? $gtbtncolor[0]->full_chk_btn_color : '#fff',
                 "cart_form_class" => isset($gtbtncolor[0]->cart_form_class) ? $gtbtncolor[0]->cart_form_class : 'shopify-product-form',
                 "cart_button_id" => isset($gtbtncolor[0]->addcartbtn_cg) ? $gtbtncolor[0]->addcartbtn_cg : 'product-add-to-cart',
                 "cg_chkout_btn_class" => isset($gtbtncolor[0]->cg_chkout_btn_class) ? $gtbtncolor[0]->cg_chkout_btn_class : 'btn-checkout',
