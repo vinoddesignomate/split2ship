@@ -347,7 +347,7 @@ class FrontController extends BaseController
             $get_details = $this->user_model->get_tokens($shopname);
             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $codprdct[0]->varient_id . '.json', array(), 'GET', $get_details->access_token, $shopname);
             $getvarientsres = json_decode($getvarients['body'], true);
-            print_r($getvarientsres);
+            //print_r($getvarientsres);
         }
     }
     public function create_draft_order()
