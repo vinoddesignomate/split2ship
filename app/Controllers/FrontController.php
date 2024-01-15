@@ -342,7 +342,7 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
         $codprdct = $this->user_model->get_cod_product($shopname);
-
+        print_r($codprdct);
         if (empty($codprdct) && isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe == 1) {
             $get_details = $this->user_model->get_tokens($shopname);
             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $codprdct[0]->varient_id . '.json', array(), 'GET', $get_details->access_token, $shopname);
