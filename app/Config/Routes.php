@@ -94,6 +94,7 @@ $routes->match(['get', 'post'],'/trackcsvdata', 'FrontController::trackcsvdata')
 $routes->match(['get', 'post'],'/frontend-handler-pre-coupon', 'FrontController::getstorecouponcodes');
 $routes->match(['get', 'post'],'/frontend-reset-coupon', 'FrontController::frontend_reset_coupon'); 
 $routes->match(['get', 'post'],'/frontend-getcuststorelist', 'FrontController::frontend_getcuststorelist'); 
+$routes->match(['get', 'post'],'/frontend-get-handlingch', 'FrontController::get_handlincrg'); 
 
 //webhook urls
 $routes->match(['get', 'post'],'/order-sync', 'Home::order_sync');

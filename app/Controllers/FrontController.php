@@ -159,7 +159,7 @@ class FrontController extends BaseController
 
         return $randomString;
     }
-    public function create_coupon_discount_order($body_data_decode, $remaining_price, $coditem, $spite_grandtotal)
+    public function create_coupon_discount_order_old($body_data_decode, $remaining_price, $coditem, $spite_grandtotal)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
@@ -238,7 +238,7 @@ class FrontController extends BaseController
         //print_r($returndata);
         //return $returndata;
     }
-    public function create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discount, $spite_grandtotal)
+    public function create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discount, $spite_grandtotal)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
@@ -337,6 +337,23 @@ class FrontController extends BaseController
         }
         //print_r($returndata);
         //return $returndata;
+    }
+    public function get_handlincrg(){
+        $body_data = file_get_contents('php://input');
+        //echo $body_data;
+        $body_data_decode = json_decode($body_data, TRUE);
+        //print_r($body_data_decode);
+
+        $shopname = str_replace("https://", "", $body_data_decode['shopname']);
+        $shopname = str_replace("http://", "", $shopname);
+        $codprdct = $this->user_model->get_cod_product($shopname);
+
+        if (empty($codprdct) && isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe == 1) {
+            $get_details = $this->user_model->get_tokens($shopname);
+            $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $codprdct[0]->varient_id . '.json', array(), 'GET', $get_details->access_token, $shopname);
+            $getvarientsres = json_decode($getvarients['body'], true);
+            print_r($getvarientsres);
+        }
     }
     public function create_draft_order()
     {
@@ -588,9 +605,9 @@ class FrontController extends BaseController
                 //if (in_array($shopname, $allowedShopNames)) {
                 
                 //below function for autodiscount coupon
-                $this->create_coupon_discount_ordershoptest($body_data_decode, $remaining_price, $coditem, $coupon_discountline, $spite_grandtotal);
+                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
                 // } else {                    
-                //     $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem, $spite_grandtotal);
+                //     $this->create_coupon_discount_order_old($body_data_decode, $remaining_price, $coditem, $spite_grandtotal);
                 // }
             } else {
                 echo "zip_enabled";
@@ -632,6 +649,7 @@ class FrontController extends BaseController
             $reqship = true;
             $coditem = "";
             $spite_grandtotal = 0;
+            $coupon_discountline = 0;
             foreach ($cartarray as $item_cart) {
 
 
@@ -645,6 +663,7 @@ class FrontController extends BaseController
                     $coditem = "Partial payment(for COD)";
                 }
                 $spite_grandtotal = $spite_grandtotal + $item_cart['line_price'];
+                $coupon_discountline = $coupon_discountline + $item_cart['line_level_total_discount'];
                 if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
                     $size_tems = array();
 
@@ -843,7 +862,7 @@ class FrontController extends BaseController
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
 
-            $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coditem, $spite_grandtotal);
+            $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
             //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
         } else {
             echo "not_found";
