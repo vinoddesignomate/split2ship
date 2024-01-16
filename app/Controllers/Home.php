@@ -86,7 +86,17 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'dfe0eb-2.myshopify.com') {
+
+
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5656769495262/cancel.json', array(), 'POST', $get_details->access_token, $_GET['shop']);
+
+                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
+
                     //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/28153151710.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $get_register_webhookset = json_decode($get_register_webhook['body'], true);
                     //  echo "products_adshh<pre>";
@@ -142,7 +152,7 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5652193050846.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5652193050846.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -475,7 +485,7 @@ class Home extends BaseController
 
                     echo "<pre>";
                     print_r(json_decode($getorderarry));
-                    echo "</pre>";
+                    echo "</pre>";*/
 
                     // echo $getorderarry;
                     // }
