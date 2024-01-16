@@ -450,10 +450,13 @@
 
 <script>
     $("#showPopUpCG").fadeIn();
+    $('body').addClass('popupCgTransparancy');
+    
     /*$("#popupCGclick").click(function() {
         $("#showPopUpCG").fadeIn();
     });*/
     $("#deletePopupCG").click(function() {
+        $('body').removeClass('popupCgTransparancy');
         $("#showPopUpCG").fadeOut();
     });
 
