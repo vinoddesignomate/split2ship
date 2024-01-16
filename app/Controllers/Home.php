@@ -90,6 +90,9 @@ class Home extends BaseController
 
 
                     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5635826876720.json', array(), 'DEL', $get_details->access_token, $_GET['shop']);
+                    echo "getprietuleid<pre>";
+                    print_r($getprietuleid);
+                    echo "</pre>";
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
