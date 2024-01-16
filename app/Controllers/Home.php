@@ -831,7 +831,7 @@ class Home extends BaseController
                 $this->user_model->update_data($_GET['shop'], array(
                     "show_config_popup" => 1
                 ));
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                     $this->install_config_stpes();
                 }
                 echo view('templates/header');
