@@ -294,7 +294,7 @@
         display: flex;
         overflow-x: hidden;
         overflow-y: scroll;
-        height: 460px;
+        height: 400px;
     }
 
     .hideCGthis {
