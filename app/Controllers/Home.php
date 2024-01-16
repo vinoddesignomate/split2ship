@@ -10,7 +10,7 @@ class Home extends BaseController
 
     function __construct()
     {
-        
+
         if (isset($_REQUEST['shop'])) {
 
             header("Content-Security-Policy: frame-ancestors https://" . $_REQUEST['shop'] . " https://admin.shopify.com;");
@@ -138,7 +138,7 @@ class Home extends BaseController
                     //  echo "getrestshop<pre>";
                     //  print_r($getrestshop);
                     //  echo "</pre>";
-                    
+
                     //    echo "getprietuleidrec<pre>";
                     //  print_r($getprietuleidrec);
                     //  echo "</pre>";
@@ -831,7 +831,9 @@ class Home extends BaseController
                 $this->user_model->update_data($_GET['shop'], array(
                     "show_config_popup" => 1
                 ));
-
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
+                    $this->install_config_stpes();
+                }
                 echo view('templates/header');
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                     echo view('welcome_message', $data);
@@ -845,7 +847,11 @@ class Home extends BaseController
         }
     }
 
-
+    public function install_config_stpes()
+    {
+        $data = array();
+        echo view('install_config_stp', $data);
+    }
     public function check_subscribe()
     {
 
