@@ -442,32 +442,33 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script>
+<script>
+    $("#showPopUpCG").fadeIn();
+    /*$("#popupCGclick").click(function() {
         $("#showPopUpCG").fadeIn();
-        /*$("#popupCGclick").click(function() {
-            $("#showPopUpCG").fadeIn();
-        });*/
-        $("#deletePopupCG").click(function() {
-            $("#showPopUpCG").fadeOut();
-        });
+    });*/
+    $("#deletePopupCG").click(function() {
+        $("#showPopUpCG").fadeOut();
+    });
 
 
-        $("#nextCgScreen1").click(function() {
-            $("#enableCGapp").addClass("hideCGthis");
-            $("#addCGproducts").addClass("addCGproductsCls");
-        });
+    $("#nextCgScreen1").click(function() {
+        $("#enableCGapp").addClass("hideCGthis");
+        $("#addCGproducts").addClass("addCGproductsCls");
+    });
 
-        $("#nextCgScreen2").click(function() {
-            $("#addCGproducts").addClass("hideCGthis");
-            $("#configureCGapp").addClass("addCGproductsCls");
-        });
+    $("#nextCgScreen2").click(function() {
+        $("#addCGproducts").addClass("hideCGthis");
+        $("#configureCGapp").addClass("addCGproductsCls");
+    });
 
-        $("#nextCgScreen3").click(function() {
-            $("#configureCGapp").addClass("hideCGthis");
-            $("#emailCGtemplates").addClass("addCGproductsCls");
-        });
-    </script>
+    $("#nextCgScreen3").click(function() {
+        $("#configureCGapp").addClass("hideCGthis");
+        $("#emailCGtemplates").addClass("addCGproductsCls");
+    });
+</script>
