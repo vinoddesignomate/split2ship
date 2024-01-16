@@ -312,7 +312,7 @@
 </style>
 
 
-<div id="popupCGclick">Click Me</div>
+<!-- <div id="popupCGclick">Click Me</div> -->
 <div id="showPopUpCG">
     <div class="mainBoxCoupon">
         <div class="mainBoxCouponInside">
