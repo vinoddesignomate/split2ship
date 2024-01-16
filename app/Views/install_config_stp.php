@@ -450,7 +450,7 @@
 
 <script>
     $("#showPopUpCG").fadeIn();
-    //$('body').addClass('popupCgTransparancy');
+    $('body').addClass('popupCgTransparancy');
     
     /*$("#popupCGclick").click(function() {
         $("#showPopUpCG").fadeIn();
