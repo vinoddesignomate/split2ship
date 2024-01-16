@@ -1,14 +1,23 @@
 <style>
-    #showPopUpCG {
-        display: none;
+    .popupCgTransparancy {
+        position: relative;
+    }
+
+    .popupCgTransparancy:before {
         width: 100%;
         background: rgba(0, 0, 0, 0.5);
         float: left;
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        min-height: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+
+    #showPopUpCG {
+        display: none;
+        position: relative;
         z-index: 99999;
     }
 
@@ -256,6 +265,8 @@
         gap: 15px;
     }
 
+    .inlineButtonsCg ul li {}
+
     .inlineButtonsCg ul li a {
         min-width: 120px;
         max-width: 200px;
@@ -302,8 +313,8 @@
         width: 0 !important;
         transition: all .1s ease-in-out !important;
         visibility: hidden;
+        display: none;
     }
-
 
     @media screen and (max-width:479px) {
         .inlineButtonsCgTabs ul li {
@@ -451,7 +462,7 @@
 <script>
     $("#showPopUpCG").fadeIn();
     $('body').addClass('popupCgTransparancy');
-    
+
     /*$("#popupCGclick").click(function() {
         $("#showPopUpCG").fadeIn();
     });*/
