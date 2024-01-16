@@ -4,11 +4,12 @@
         width: 100%;
         background: rgba(0, 0, 0, 0.5);
         float: left;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         min-height: 100%;
+        z-index: 99999;
     }
 
     .mainBoxCoupon {
