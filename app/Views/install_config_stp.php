@@ -277,11 +277,6 @@
         background: #3783e1;
     }
 
-    .mainDivCGRelative {
-        position: relative;
-        width: 100%;
-    }
-
     .mainDivCGRelative .screenTopCgSlide {
         transition: aal .2s ease-in-out;
         left: 0;
@@ -294,6 +289,8 @@
     }
 
     .mainDivCGRelative {
+        position: relative;
+        width: 100%;
         display: flex;
         overflow-x: hidden;
         overflow-y: scroll;
