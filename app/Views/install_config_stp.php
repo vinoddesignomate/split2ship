@@ -296,6 +296,8 @@
     .mainDivCGRelative {
         display: flex;
         overflow-x: hidden;
+        overflow-y: scroll;
+        height: 460px;
     }
 
     .hideCGthis {
@@ -451,7 +453,7 @@
 <script>
     $("#showPopUpCG").fadeIn();
     $('body').addClass('popupCgTransparancy');
-    
+
     /*$("#popupCGclick").click(function() {
         $("#showPopUpCG").fadeIn();
     });*/
