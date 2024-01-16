@@ -10,9 +10,7 @@ class Home extends BaseController
 
     function __construct()
     {
-        // ob_start();
-        // session_start();
-        // echo "inconstruxc"; die();
+        
         if (isset($_REQUEST['shop'])) {
 
             header("Content-Security-Policy: frame-ancestors https://" . $_REQUEST['shop'] . " https://admin.shopify.com;");
@@ -89,16 +87,16 @@ class Home extends BaseController
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5656769495262.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
-                    echo "getprietuleid<pre>";
-                    print_r($getprietuleid);
-                    echo "</pre>";
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5656769495262.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+                    // echo "getprietuleid<pre>";
+                    // print_r($getprietuleid);
+                    // echo "</pre>";
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
+                    // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
-                    echo "del<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "del<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
 
                     //     $get_register_webhook = $this->common->rest_api('/admin/api/2023-04/recurring_application_charges/28153151710.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                     // $get_register_webhookset = json_decode($get_register_webhook['body'], true);
