@@ -856,11 +856,11 @@ class Home extends BaseController
             $getsteps = $this->user_model->getinstall_steps($_GET['shop']);
             if (empty($getsteps)) {
                 $data['step_active'] = 1;
-            } else if (isset($getsteps->step1) && $getsteps->step1 != "" && $getsteps->step2=0 ) {
+            } else if (isset($getsteps->step1) && $getsteps->step1 != "" && $getsteps->step2==0 ) {
                 $data['step_active'] = 2;
-            } else if (isset($getsteps->step2) && $getsteps->step2 != "" && $getsteps->step3=0 ) {
+            } else if (isset($getsteps->step2) && $getsteps->step2 != "" && $getsteps->step3==0 ) {
                 $data['step_active'] = 3;
-            } else if (isset($getsteps->step3) && $getsteps->step3 != "" && $getsteps->step4=0 ) {
+            } else if (isset($getsteps->step3) && $getsteps->step3 != "" && $getsteps->step4==0 ) {
                 $data['step_active'] = 4;
             }
             // echo "<pre>";
