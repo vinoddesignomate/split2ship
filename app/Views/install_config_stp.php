@@ -473,10 +473,13 @@
     }else if (stepactive == 3) {
         $("#showPopUpCG").fadeIn();
         $("#addCGproducts").addClass("hideCGthis");
+        $("#enableCGapp").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
     }else if (stepactive == 4) {
         $("#showPopUpCG").fadeIn();
+        $("#enableCGapp").addClass("hideCGthis");
+        $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
