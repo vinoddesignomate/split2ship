@@ -60,6 +60,9 @@
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
+        function openTawkChat() {
+            Tawk_API.toggle();
+        }
     </script>
     <!--End of Tawk.to Script-->
 

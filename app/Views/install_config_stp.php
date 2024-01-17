@@ -347,7 +347,7 @@
                     <div class="inlineButtonsCg">
                         <ul>
                             <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
-                            <li><a href="javascript:void(0)" id="nextCgScreen1">Done</a></li>
+                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="nextCgScreen1">Done</a></li>
                         </ul>
                     </div>
 
