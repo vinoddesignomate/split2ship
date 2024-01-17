@@ -316,7 +316,7 @@
 <div id="showPopUpCG">
     <div class="mainBoxCoupon">
         <div class="mainBoxCouponInside">
-            <span id="deletePopupCG">X</span>
+            <!-- <span id="deletePopupCG">X</span> -->
             <div class="inlineButtonsCgTabs">
                 <ul>
                     <li>Enable App </li>
