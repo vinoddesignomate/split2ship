@@ -448,13 +448,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
-    function track_steps_ajax(steps) {
+    function track_steps_ajax(stepsname,stepvlue) {
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         console.log(steps);
         $.ajax({
             type: "POST",
             url: "track_config_steps",
-            data: 'shop=' + shopname + '&getstpes=' + steps,
+            data: 'shop=' + shopname + '&'+stepsname+'=' + stepvlue,
             success: function(response) {}
 
         });
@@ -474,18 +474,18 @@
     $("#nextCgScreen1").click(function() {
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
-        track_steps_ajax('step1');
+        track_steps_ajax('step1',1);
     });
 
     $("#nextCgScreen2").click(function() {
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
-        track_steps_ajax('step2');
+        track_steps_ajax('step2',1);
     });
 
     $("#nextCgScreen3").click(function() {
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
-        track_steps_ajax('step3');
+        track_steps_ajax('step3',1);
     });
 </script>
