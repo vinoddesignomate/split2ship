@@ -375,7 +375,7 @@
                         <ul>
                             <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen2">Done</a></li>
-                            <li><a href="javascript:void(0)" id="">Previous Step</a></li>
+                            <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
                         </ul>
                     </div>
 
@@ -403,7 +403,7 @@
                         <ul>
                             <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen3">Done</a></li>
-                            <li><a href="javascript:void(0)" id="">Previous Step</a></li>
+                            <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
                         </ul>
                     </div>
 
@@ -430,8 +430,8 @@
                     <div class="inlineButtonsCg">
                         <ul>
                             <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
-                            <li><a href="javascript:void(0)" id="">Done</a></li>
-                            <li><a href="javascript:void(0)" id="">Previous Step</a></li>
+                            <li><a href="javascript:void(0)" id="nextCgScreen4">Done</a></li>
+                            <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
                         </ul>
                     </div>
 
@@ -488,5 +488,10 @@
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         track_steps_ajax('step3',1);
+    });
+    $("#nextCgScreen3").click(function() {
+        $('body').removeClass('popupCgTransparancy');
+        $("#showPopUpCG").fadeOut();
+        track_steps_ajax('step4',1);
     });
 </script>
