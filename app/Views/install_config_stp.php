@@ -449,7 +449,7 @@
 
 <script>
     var stepactive = '<?php echo $step_active; ?>';
-
+    console.log(stepactive);
     function track_steps_ajax(stepsname, stepvlue) {
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         console.log(stepsname);
@@ -466,14 +466,17 @@
         $("#showPopUpCG").fadeIn();
         $('body').addClass('popupCgTransparancy');
     }else if (stepactive == 2) {
+        $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
     }else if (stepactive == 3) {
+        $("#showPopUpCG").fadeIn();
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
     }else if (stepactive == 4) {
+        $("#showPopUpCG").fadeIn();
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
