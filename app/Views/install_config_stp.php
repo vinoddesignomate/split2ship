@@ -337,10 +337,10 @@
                     </div>
                     <div class="wdSetcg">
                         <ol>
-                            <li>Click on online store </li>
-                            <li>Click on customize button from right side <br /><img src="/public/images/img1.jpg" /></li>
-                            <li>Click on third button from the left â€“ App Embed <br /><img src="/public/images/img1.jpg" /> </li>
-                            <li>Click on Split2Ship app and enable it <br /><img src="/public/images/img1.jpg" /> </li>
+                            <li>Click on online store <br /><img src="/public/images/stp1.png" /></li>
+                            <li>Click on customize button from right side <br /><img src="/public/images/stp2.png" /></li>
+                            <li>Click on third button from the left â€“ App Embed <br /><img src="/public/images/stp3.png" /> </li>
+                            <li>Click on Split2Ship app and enable it <br /><img src="/public/images/stp4.png" /> </li>
                         </ol>
                     </div>
 
