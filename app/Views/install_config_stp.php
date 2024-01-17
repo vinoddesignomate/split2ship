@@ -448,20 +448,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
-    function track_steps_ajax(stepsname,stepvlue) {
+    var stepactive = '<?php echo $step_active; ?>';
+
+    function track_steps_ajax(stepsname, stepvlue) {
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         console.log(stepsname);
         console.log(stepvlue);
         $.ajax({
             type: "POST",
             url: "track_config_steps",
-            data: 'shop=' + shopname + '&stepkey='+stepsname+'&stepvalue=' + stepvlue,
+            data: 'shop=' + shopname + '&stepkey=' + stepsname + '&stepvalue=' + stepvlue,
             success: function(response) {}
 
         });
     }
-    $("#showPopUpCG").fadeIn();
-    $('body').addClass('popupCgTransparancy');
+    if (stepactive == 1) {
+        $("#showPopUpCG").fadeIn();
+        $('body').addClass('popupCgTransparancy');
+    }else if (stepactive == 2) {
+        $("#enableCGapp").addClass("hideCGthis");
+        $("#addCGproducts").addClass("addCGproductsCls");
+        $('body').addClass('popupCgTransparancy');
+    }else if (stepactive == 3) {
+        $("#addCGproducts").addClass("hideCGthis");
+        $("#configureCGapp").addClass("addCGproductsCls");
+        $('body').addClass('popupCgTransparancy');
+    }else if (stepactive == 4) {
+        $("#configureCGapp").addClass("hideCGthis");
+        $("#emailCGtemplates").addClass("addCGproductsCls");
+        $('body').addClass('popupCgTransparancy');
+    }
 
     /*$("#popupCGclick").click(function() {
         $("#showPopUpCG").fadeIn();
@@ -475,23 +491,23 @@
     $("#nextCgScreen1").click(function() {
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
-        track_steps_ajax('step1',1);
+        track_steps_ajax('step1', 1);
     });
 
     $("#nextCgScreen2").click(function() {
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
-        track_steps_ajax('step2',1);
+        track_steps_ajax('step2', 1);
     });
 
     $("#nextCgScreen3").click(function() {
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
-        track_steps_ajax('step3',1);
+        track_steps_ajax('step3', 1);
     });
-    $("#nextCgScreen3").click(function() {
+    $("#nextCgScreen4").click(function() {
         $('body').removeClass('popupCgTransparancy');
         $("#showPopUpCG").fadeOut();
-        track_steps_ajax('step4',1);
+        track_steps_ajax('step4', 1);
     });
 </script>

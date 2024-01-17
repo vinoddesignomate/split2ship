@@ -854,20 +854,32 @@ class Home extends BaseController
         $data['get_details_store'] = $get_details_store;
         if ($get_details_store->config_steps == 0) {
             $getsteps = $this->user_model->getinstall_steps($_GET['shop']);
-            echo"<pre>"; print_r($getsteps); echo"</pre>";
+            if (empty($getsteps)) {
+                $data['step_active'] = 1;
+            } else if (isset($getsteps->step1) && $getsteps->step1 != "") {
+                $data['step_active'] = 2;
+            } else if (isset($getsteps->step2) && $getsteps->step2 != "") {
+                $data['step_active'] = 3;
+            } else if (isset($getsteps->step3) && $getsteps->step3 != "") {
+                $data['step_active'] = 4;
+            }
+            // echo "<pre>";
+            // print_r($getsteps);
+            // echo "</pre>";
             echo view('install_config_stp', $data);
         }
     }
-    public function track_config_steps(){
+    public function track_config_steps()
+    {
 
         $insert_array = array(
-            "shop_url"=>$this->request->getPost('shop'),
-            $this->request->getPost('stepkey')=>$this->request->getPost('stepvalue')
+            "shop_url" => $this->request->getPost('shop'),
+            $this->request->getPost('stepkey') => $this->request->getPost('stepvalue')
         );
-        echo"<pre>"; print_r($insert_array); echo "</pre>";
+        echo "<pre>";
+        print_r($insert_array);
+        echo "</pre>";
         $this->user_model->track_config_steps($insert_array);
-        
-        
     }
     public function check_subscribe()
     {
