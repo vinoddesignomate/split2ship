@@ -450,7 +450,8 @@
 <script>
     function track_steps_ajax(stepsname,stepvlue) {
         var shopname = '<?php echo esc($_GET['shop']); ?>';
-        console.log(steps);
+        console.log(stepsname);
+        console.log(stepvlue);
         $.ajax({
             type: "POST",
             url: "track_config_steps",
