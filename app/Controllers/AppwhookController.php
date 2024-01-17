@@ -2392,8 +2392,12 @@ class AppwhookController extends BaseController
                 $get_resulrs = $this->user_model->get_store_product($_GET['cartshop'], $condtion_array);
                 if (!empty($get_resulrs)) {
                     $partialtype = "partial";
+                    $partial_percentage = $get_resulrs[0]->partial_percentage;
+                    $partial_type = $get_resulrs[0]->partial_type;
                 } else {
                     $partialtype = "fullpay";
+                    $partial_percentage = '';
+                    $partial_type = '';
                 }
                 $add_to_cart_line_item = array(
                     "cart_id" => $get_addtocartdata->id,
@@ -2401,6 +2405,8 @@ class AppwhookController extends BaseController
                     "variant_id" => $cart_item->variant_id,
                     "shop_url" => $_GET['cartshop'],
                     "product_type" => $partialtype,
+                    "partial_percentage" => $partial_percentage,
+                    "partial_type" => $partial_type,
                 );
                 $this->user_model->track_cart_itme_data($add_to_cart_line_item);
             }
@@ -2449,9 +2455,11 @@ class AppwhookController extends BaseController
                 if (!empty($get_resulrs)) {
                     $partialtype = "partial";
                     $partial_percentage = $get_resulrs[0]->partial_percentage;
+                    $partial_type = $get_resulrs[0]->partial_type;
                 } else {
                     $partialtype = "fullpay";
                     $partial_percentage = '';
+                    $partial_type = '';
                 }
 
                 if (isset($cart_item->properties)) {
@@ -2467,6 +2475,7 @@ class AppwhookController extends BaseController
                     "product_type" => $partialtype,
                     "product_properties" => $cart_proer,
                     "partial_percentage" => $partial_percentage,
+                    "partial_type" => $partial_type,
                 );
 
                 // $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
