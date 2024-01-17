@@ -1109,7 +1109,7 @@ class UserModel extends Model
         if (!empty($qgetordpro->getResult())) {
             $this->db->table('cg_config_steps')->where('shop_url', $steparray['shop_url'])->update($steparray);
         } else {
-            $this->db->table('track_coupon_code')->insert($steparray);
+            $this->db->table('cg_config_steps')->insert($steparray);
         }
         if (isset($steparray['step3'])) {
             $updaqu = "UPDATE ppa_store_token SET config_steps=1 WHERE shop_url=?";
