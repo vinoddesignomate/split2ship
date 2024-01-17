@@ -455,7 +455,7 @@
         $.ajax({
             type: "POST",
             url: "track_config_steps",
-            data: 'shop=' + shopname + '&'+stepsname+'=' + stepvlue,
+            data: 'shop=' + shopname + '&stepkey='+stepsname+'&stepvalue=' + stepvlue,
             success: function(response) {}
 
         });

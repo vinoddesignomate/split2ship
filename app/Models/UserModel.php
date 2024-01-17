@@ -1099,8 +1099,9 @@ class UserModel extends Model
         WHERE movement < DATE_SUB(NOW(), INTERVAL 6 HOUR)");
         return $getquer->getResult();
     }
-    public function track_config_steps($steparray){
-        
+    public function track_config_steps($steparray)
+    {
+
         $qbuilder_insert = $this->db->table('cg_config_steps');
         $qbuilder_insert->where('shop_url', $steparray['shop_url']);
         $qgetordpro = $qbuilder_insert->get();
@@ -1109,6 +1110,10 @@ class UserModel extends Model
             $this->db->table('cg_config_steps')->where('shop_url', $steparray['shop_url'])->update($steparray);
         } else {
             $this->db->table('track_coupon_code')->insert($steparray);
+        }
+        if (isset($steparray['step3'])) {
+            $updaqu = "UPDATE ppa_store_token SET config_steps=1 WHERE shop_url=?";
+            $this->db->query($updaqu, array($steparray['shop_url']));
         }
     }
 }

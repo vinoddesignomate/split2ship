@@ -857,8 +857,13 @@ class Home extends BaseController
         }
     }
     public function track_config_steps(){
-        //$this->user_model->track_config_steps();
-        echo"<pre>"; print_r($this->request->getPost()); echo "</pre>";
+
+        $insert_array = array(
+            "shop_url"=>$this->request->getPost('shop'),
+            $this->request->getPost('stepkey')=>$this->request->getPost('stepvalue')
+        );
+        $this->user_model->track_config_steps($insert_array);
+        //echo"<pre>"; print_r($this->request->getPost()); echo "</pre>";
     }
     public function check_subscribe()
     {
