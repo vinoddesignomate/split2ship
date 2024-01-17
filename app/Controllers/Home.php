@@ -850,6 +850,8 @@ class Home extends BaseController
     public function install_config_stpes()
     {
         $data = array();
+        $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
+        echo"<pre>"; print_r($data['get_details_store']); echo "</pre>";
         echo view('install_config_stp', $data);
     }
     public function check_subscribe()
