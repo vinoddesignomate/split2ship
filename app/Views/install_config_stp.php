@@ -346,8 +346,8 @@
 
                     <div class="inlineButtonsCg">
                         <ul>
-                            <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
-                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="nextCgScreen1">Done</a></li>
+                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
+                            <li><a href="javascript:void(0)" id="nextCgScreen1">Done</a></li>
                         </ul>
                     </div>
 
@@ -373,7 +373,7 @@
 
                     <div class="inlineButtonsCg">
                         <ul>
-                            <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
+                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen2">Done</a></li>
                             <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
                         </ul>
@@ -401,7 +401,7 @@
 
                     <div class="inlineButtonsCg">
                         <ul>
-                            <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
+                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen3">Done</a></li>
                             <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
                         </ul>
@@ -429,7 +429,7 @@
 
                     <div class="inlineButtonsCg">
                         <ul>
-                            <li><a href="javascript:void(0)" id="">Having Trouble? Call Us or Chat with Us</a></li>
+                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen4">Done</a></li>
                             <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
                         </ul>
