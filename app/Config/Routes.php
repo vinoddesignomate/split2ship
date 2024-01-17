@@ -60,6 +60,7 @@ $routes->match(['get', 'post'],'/track_userinf', 'Home::track_userinfo');
 $routes->match(['get', 'post'],'/collection-wise-partial-products', 'Home::collection_wise_partial_products');
 $routes->match(['get', 'post'],'/enablezipprocess', 'Home::zipcode_enabledis');
 $routes->match(['get', 'post'],'/disbale_handling_charge', 'Home::disbale_handling_charge');
+$routes->match(['get', 'post'],'/track_config_steps', 'Home::track_config_steps');
 
 
 //exchange & return routes

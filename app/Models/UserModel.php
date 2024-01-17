@@ -1099,4 +1099,16 @@ class UserModel extends Model
         WHERE movement < DATE_SUB(NOW(), INTERVAL 6 HOUR)");
         return $getquer->getResult();
     }
+    public function track_config_steps($steparray){
+        
+        $qbuilder_insert = $this->db->table('cg_config_steps');
+        $qbuilder_insert->where('shop_url', $steparray['shop_url']);
+        $qgetordpro = $qbuilder_insert->get();
+        $qbuilder_insert->countAllResults();
+        if (!empty($qgetordpro->getResult())) {
+            $this->db->table('cg_config_steps')->where('shop_url', $steparray['shop_url'])->update($steparray);
+        } else {
+            $this->db->table('track_coupon_code')->insert($steparray);
+        }
+    }
 }

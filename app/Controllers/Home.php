@@ -850,9 +850,15 @@ class Home extends BaseController
     public function install_config_stpes()
     {
         $data = array();
-        $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
-        echo"<pre>"; print_r($data['get_details_store']); echo "</pre>";
-        echo view('install_config_stp', $data);
+        $get_details_store = $this->user_model->get_tokens($_GET['shop']);
+        $data['get_details_store'] = $get_details_store;
+        if ($get_details_store->config_steps == 0) {
+            echo view('install_config_stp', $data);
+        }
+    }
+    public function track_config_steps(){
+        //$this->user_model->track_config_steps();
+        echo"<pre>"; print_r($this->request->getPost()); echo "</pre>";
     }
     public function check_subscribe()
     {

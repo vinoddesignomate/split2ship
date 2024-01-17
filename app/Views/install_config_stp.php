@@ -463,15 +463,30 @@
     $("#nextCgScreen1").click(function() {
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
+        track_steps_ajax('stpe1');
     });
 
     $("#nextCgScreen2").click(function() {
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
+        track_steps_ajax('stpe2');
     });
 
     $("#nextCgScreen3").click(function() {
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
+        track_steps_ajax('stpe3');
     });
+
+    function track_steps_ajax(stpes) {
+        var shopname = '<?php echo esc($_GET['shop']); ?>';
+        $.ajax({
+            type: "POST",
+            url: "track_config_steps",
+            data: 'shop=' + shopname + '&stpes' + stpes,
+            success: function(response) {
+            }
+
+        });
+    }
 </script>
