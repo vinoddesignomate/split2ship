@@ -862,8 +862,9 @@ class Home extends BaseController
             "shop_url"=>$this->request->getPost('shop'),
             $this->request->getPost('stepkey')=>$this->request->getPost('stepvalue')
         );
+        echo"<pre>"; print_r($insert_array); echo "</pre>";
         $this->user_model->track_config_steps($insert_array);
-        //echo"<pre>"; print_r($this->request->getPost()); echo "</pre>";
+        
     }
     public function check_subscribe()
     {
