@@ -853,6 +853,8 @@ class Home extends BaseController
         $get_details_store = $this->user_model->get_tokens($_GET['shop']);
         $data['get_details_store'] = $get_details_store;
         if ($get_details_store->config_steps == 0) {
+            $getsteps = $this->user_model->getinstall_steps($_GET['shop']);
+            echo"<pre>"; print_r($getsteps); echo"</pre>";
             echo view('install_config_stp', $data);
         }
     }
@@ -864,6 +866,7 @@ class Home extends BaseController
         );
         echo"<pre>"; print_r($insert_array); echo "</pre>";
         $this->user_model->track_config_steps($insert_array);
+        
         
     }
     public function check_subscribe()

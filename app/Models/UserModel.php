@@ -1116,4 +1116,9 @@ class UserModel extends Model
             $this->db->query($updaqu, array($steparray['shop_url']));
         }
     }
+    public function getinstall_steps($shopurl)
+    {
+        $query = $this->db->query('SELECT * FROM cg_config_steps WHERE shop_url="' . $shopurl . '" LIMIT 1');
+        return $query->getRow();
+    }
 }
