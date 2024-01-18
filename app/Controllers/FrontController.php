@@ -315,7 +315,7 @@ class FrontController extends BaseController
                     print_r($createcoupon);
                     print_r($createcouponrec);
                     //die();
-                }
+                } 
 
                 if (array_key_exists('errors', $createcouponrec)) {
                     echo "invalid";
