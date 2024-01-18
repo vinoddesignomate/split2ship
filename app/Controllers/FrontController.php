@@ -159,7 +159,7 @@ class FrontController extends BaseController
 
         return $randomString;
     }
-    public function create_coupon_discount_order_old($body_data_decode, $remaining_price, $coditem, $spite_grandtotal)
+    public function create_coupon_discount_order_old($body_data_decode, $remaining_price, $spite_grandtotal)
     {
         $returndata = array();
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
@@ -290,7 +290,7 @@ class FrontController extends BaseController
             $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
             $getprietuleidrec = json_decode($getprietuleid['body'], true);
-            
+
             //print_r($getprietuleidrec);
             if (array_key_exists('errors', $getprietuleidrec)) {
                 echo "invalid";
@@ -633,7 +633,11 @@ class FrontController extends BaseController
                 //     die();
                 // }
                 //below function for autodiscount coupon
-                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+                if ($shopname == 'ceo-diamondlady.myshopify.com') {
+                    $this->create_coupon_discount_order_old($body_data_decode, $remaining_price, $spite_grandtotal);
+                } else {
+                    $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+                }
                 // } else {                    
                 //     $this->create_coupon_discount_order_old($body_data_decode, $remaining_price, $coditem, $spite_grandtotal);
                 // }
@@ -896,13 +900,16 @@ class FrontController extends BaseController
             //$final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem, "applied_discount" => array("code" => "Y293PCH4G53W")));
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
-            if ($shopname == 'desinomatetest.myshopify.com') {
+            if ($shopname == 'tajbridalindia.myshopify.com') {
                 if ($coupon_discountline == 0) {
                     $coupon_discountline = $splite_order_discount;
                 }
             }
-
-            $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+            if ($shopname == 'ceo-diamondlady.myshopify.com') {
+                $this->create_coupon_discount_order_old($body_data_decode, $remaining_price, $spite_grandtotal);
+            } else {
+                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+            }
             //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
         } else {
             echo "not_found";
