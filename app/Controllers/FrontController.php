@@ -379,6 +379,13 @@ class FrontController extends BaseController
                 $splite_order_discount = $spl_cg_total_disc[0]->split_total_disc;
             }
         }
+        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                    echo "<pre>";
+                    print_r($spl_cg_total_disc);
+                    echo "</pre>";
+                    echo $spl_cg_total_disc[0]->split_total_disc;
+                    die();
+        }
         $get_details = $this->user_model->get_tokens($shopname);
 
         if ($get_details->force_update == 1) {
