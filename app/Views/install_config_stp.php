@@ -413,8 +413,8 @@
                             <li>Navigate to the settings of your store, scroll down, and click on the "Notifications" tab <br /><img src="/public/images/step4_3.png" /></li>
                             <li>Select the "customer notification" option. <br /><img src="/public/images/step4_4.png" /></li>
                             <li>Within the Order Processing section, click on "Order Confirmation". <br /><img src="/public/images/step4_5.png" /></li>
-                            <li>Click the "Edit code" button. <br /><img src="/public/images/step4_6.png" /></li>
-                            <li>Select and delete the entire old code. <br /><img src="/public/images/step4_7.png" /></li>
+                            <li>Click the "Edit code" button. <br /><img src="/public/images/step_4_6.png" /></li>
+                            <li>Select and delete the entire old code. <br /><img src="/public/images/step_4_7.png" /></li>
                             <li>Paste the new code that you copied from the app's tutorial page. <br /><img src="/public/images/step4_8.png" /></li>
                         </ol>
                     </div>
