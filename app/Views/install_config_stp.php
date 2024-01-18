@@ -360,8 +360,8 @@
                     <div class="wdSetcg">
                         <ol type="1" start="5">
                             <li>Click on collection <br /><img src="/public/images/stp2_1.png" /></li>
-                            <li>Click on pencil icon and define how much advance you want to take upfront<br /><img src="/public/images/stp2_2.png" /></li>
-                            <li>You can define it by percentage or by fixed amount<br /><img src="/public/images/stp2_3.png" /></li>
+                            <li>Click on pencil icon and define how much advance you want to take upfront<br /><img src="/public/images/step2_2.png" /></li>
+                            <li>You can define it by percentage or by fixed amount<br /><img src="/public/images/step2_3.png" /></li>
                         </ol>
                     </div>
 
