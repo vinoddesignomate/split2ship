@@ -393,8 +393,8 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
-                            <li>Enable the button on cart page and product page</li>
-                            <li>Make sure you pick the right color for the background of the button and text color on the button</li>
+                            <li>Enable the button on cart page and product page <br /><img src="/public/images/step3_1.png" /></li>
+                            <li>Make sure you pick the right color for the background of the button and text color on the button <br /><img src="/public/images/step3_2.png" /></li>
                             <li>We recommend against taking Partial COD charges instead advertise that you will waive of COD charges if they go for Partial COD</li>
                         </ol>
                     </div>
@@ -422,8 +422,14 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
-                            <li>Lorem Ipsum</li>
-                            <li>Lorem Ipsum is dummy text</li>
+                            <li>Go to the "Tutorial" page of the app <br /><img src="/public/images/step4_1.png" /></li>
+                            <li>Scroll down to step number 5 and copy the entire code <br /><img src="/public/images/step4_2.png" /></li>
+                            <li>Navigate to the settings of your store, scroll down, and click on the "Notifications" tab <br /><img src="/public/images/step4_3.png" /></li>
+                            <li>Select the "customer notification" option. <br /><img src="/public/images/step4_4.png" /></li>
+                            <li>Within the Order Processing section, click on "Order Confirmation". <br /><img src="/public/images/step4_5.png" /></li>
+                            <li>Click the "Edit code" button. <br /><img src="/public/images/step4_6.png" /></li>
+                            <li>Select and delete the entire old code. <br /><img src="/public/images/step4_7.png" /></li>
+                            <li>Paste the new code that you copied from the app's tutorial page. <br /><img src="/public/images/step4_8.png" /></li>
                         </ol>
                     </div>
 
