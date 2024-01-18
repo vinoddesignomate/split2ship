@@ -338,7 +338,8 @@ class FrontController extends BaseController
         //print_r($returndata);
         //return $returndata;
     }
-    public function get_handlincrg(){
+    public function get_handlincrg()
+    {
         $shopname = str_replace("https://", "", $this->request->getPost('shopname'));
         $shopname = str_replace("http://", "", $shopname);
         $codprdct = $this->user_model->get_cod_product($shopname);
@@ -349,7 +350,7 @@ class FrontController extends BaseController
             $getvarientsres = json_decode($getvarients['body'], true);
             //print_r($getvarientsres);
             echo $getvarientsres['variant']['price'];
-        }else{
+        } else {
             echo 0;
         }
     }
@@ -365,12 +366,18 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $cartarray = $body_data_decode['cart_item'];
-        $spl_cg_total_disc = $body_data_decode['spl_cg_total_disc'];
-        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                    echo "<pre>";
-                    print_r($spl_cg_total_disc);
-                    echo "</pre>";
-                    die();
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //             echo "<pre>";
+        //             print_r($spl_cg_total_disc);
+        //             echo "</pre>";
+        //             die();
+        // }
+        $splite_order_discount = 0;
+        if (isset($body_data_decode['spl_cg_total_disc'])) {
+            $spl_cg_total_disc = $body_data_decode['spl_cg_total_disc'];
+            if (isset($spl_cg_total_disc[0]->split_total_disc)) {
+                $splite_order_discount = $spl_cg_total_disc[0]->split_total_disc;
+            }
         }
         $get_details = $this->user_model->get_tokens($shopname);
 
@@ -604,10 +611,16 @@ class FrontController extends BaseController
                 //"finesilverjewels.myshopify.com";
                 //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
                 // }
+                if ($shopname == 'desinomatetest.myshopify.com') {
+                    if ($coupon_discountline == 0) {
+                        $coupon_discountline = $splite_order_discount;
+                    }
+                }
+                //if($splite_order_discount)
                 //if ($shopname == 'desinomatetest.myshopify.com') {
                 $allowedShopNames = ['desinomatetest.myshopify.com', "finesilverjewels.myshopify.com"];
                 //if (in_array($shopname, $allowedShopNames)) {
-                
+
                 //below function for autodiscount coupon
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
                 // } else {                    
@@ -634,6 +647,13 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $cartarray = $body_data_decode['cart_item'];
+        $splite_order_discount = 0;
+        if (isset($body_data_decode['spl_cg_total_disc'])) {
+            $spl_cg_total_disc = $body_data_decode['spl_cg_total_disc'];
+            if (isset($spl_cg_total_disc[0]->split_total_disc)) {
+                $splite_order_discount = $spl_cg_total_disc[0]->split_total_disc;
+            }
+        }
 
         $get_details = $this->user_model->get_tokens($shopname);
 
@@ -865,6 +885,11 @@ class FrontController extends BaseController
             //$final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem, "applied_discount" => array("code" => "Y293PCH4G53W")));
 
             $final_array = array("draft_order" => array("line_items" => $line_item_arra, "tags" => "partial_" . $final_total_price_rem));
+            if ($shopname == 'desinomatetest.myshopify.com') {
+                if ($coupon_discountline == 0) {
+                    $coupon_discountline = $splite_order_discount;
+                }
+            }
 
             $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
             //return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
