@@ -233,10 +233,10 @@ $store_namecnf = $shop_name[0];
             <script type="text/javascript">
                 //show_popup_config();
 
-                var popup = document.getElementById("popup_config");
-                popup.style.display = "block";
-                var body = document.body;
-                body.classList.add("package_popup_visible");
+                // var popup = document.getElementById("popup_config");
+                // popup.style.display = "block";
+                // var body = document.body;
+                // body.classList.add("package_popup_visible");
             </script>
         <?php }
 
