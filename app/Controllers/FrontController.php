@@ -375,17 +375,17 @@ class FrontController extends BaseController
         $splite_order_discount = 0;
         if (isset($body_data_decode['spl_cg_total_disc'])) {
             $spl_cg_total_disc = $body_data_decode['spl_cg_total_disc'];
-            if (isset($spl_cg_total_disc[0]->split_total_disc)) {
-                $splite_order_discount = $spl_cg_total_disc[0]->split_total_disc;
+            if (isset($spl_cg_total_disc[0]['split_total_disc'])) {
+                $splite_order_discount = $spl_cg_total_disc[0]['split_total_disc'];
             }
         }
-        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                    echo "<pre>";
-                    print_r($spl_cg_total_disc);
-                    echo "</pre>";
-                    echo $spl_cg_total_disc[0]->split_total_disc;
-                    die();
-        }
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //             echo "<pre>";
+        //             print_r($spl_cg_total_disc);
+        //             echo "</pre>";
+        //             echo $spl_cg_total_disc[0]->split_total_disc;
+        //             die();
+        // }
         $get_details = $this->user_model->get_tokens($shopname);
 
         if ($get_details->force_update == 1) {
@@ -627,10 +627,10 @@ class FrontController extends BaseController
                 //if ($shopname == 'desinomatetest.myshopify.com') {
                 $allowedShopNames = ['desinomatetest.myshopify.com', "finesilverjewels.myshopify.com"];
                 //if (in_array($shopname, $allowedShopNames)) {
-                if ($shopname == 'desinomatetest.myshopify.com') {
-                    echo $coupon_discountline;
-                    die();
-                }
+                // if ($shopname == 'desinomatetest.myshopify.com') {
+                //     echo $coupon_discountline;
+                //     die();
+                // }
                 //below function for autodiscount coupon
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
                 // } else {                    
@@ -660,8 +660,8 @@ class FrontController extends BaseController
         $splite_order_discount = 0;
         if (isset($body_data_decode['spl_cg_total_disc'])) {
             $spl_cg_total_disc = $body_data_decode['spl_cg_total_disc'];
-            if (isset($spl_cg_total_disc[0]->split_total_disc)) {
-                $splite_order_discount = $spl_cg_total_disc[0]->split_total_disc;
+            if (isset($spl_cg_total_disc[0]['split_total_disc'])) {
+                $splite_order_discount = $spl_cg_total_disc[0]['split_total_disc'];
             }
         }
 
