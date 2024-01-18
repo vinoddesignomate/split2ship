@@ -293,7 +293,7 @@ class FrontController extends BaseController
             if ($shopname == 'ceo-diamondlady.myshopify.com' && $_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
                 print_r($getprietuleid);
                 print_r($getprietuleidrec);
-                die();
+                //die();
             }
             //print_r($getprietuleidrec);
             if (array_key_exists('errors', $getprietuleidrec)) {
@@ -310,6 +310,13 @@ class FrontController extends BaseController
                 $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
                 $createcouponrec = json_decode($createcoupon['body'], true);
                 //print_r($createcouponrec);
+
+                if ($shopname == 'ceo-diamondlady.myshopify.com' && $_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                    print_r($createcoupon);
+                    print_r($createcouponrec);
+                    //die();
+                }
+
                 if (array_key_exists('errors', $createcouponrec)) {
                     echo "invalid";
                 } else {
