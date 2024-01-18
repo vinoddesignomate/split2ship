@@ -290,11 +290,11 @@ class FrontController extends BaseController
             $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
             $getprietuleidrec = json_decode($getprietuleid['body'], true);
-            if ($shopname == 'ceo-diamondlady.myshopify.com' && $_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                print_r($getprietuleid);
-                print_r($getprietuleidrec);
-                //die();
-            }
+            // if ($shopname == 'ceo-diamondlady.myshopify.com' && $_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+            //     print_r($getprietuleid);
+            //     print_r($getprietuleidrec);
+               
+            // }
             //print_r($getprietuleidrec);
             if (array_key_exists('errors', $getprietuleidrec)) {
                 echo "invalid";
@@ -311,11 +311,11 @@ class FrontController extends BaseController
                 $createcouponrec = json_decode($createcoupon['body'], true);
                 //print_r($createcouponrec);
 
-                if ($shopname == 'ceo-diamondlady.myshopify.com' && $_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
-                    print_r($createcoupon);
-                    print_r($createcouponrec);
-                    //die();
-                } 
+                // if ($shopname == 'ceo-diamondlady.myshopify.com' && $_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                //     print_r($createcoupon);
+                //     print_r($createcouponrec);
+                    
+                // } 
 
                 if (array_key_exists('errors', $createcouponrec)) {
                     echo "invalid";
