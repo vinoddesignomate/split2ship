@@ -290,6 +290,10 @@ class FrontController extends BaseController
             $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
             $getprietuleidrec = json_decode($getprietuleid['body'], true);
+            if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                print_r($getprietuleid);
+                print_r($getprietuleidrec);
+            }
             //print_r($getprietuleidrec);
             if (array_key_exists('errors', $getprietuleidrec)) {
                 echo "invalid";
