@@ -365,7 +365,13 @@ class FrontController extends BaseController
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
         $shopname = str_replace("http://", "", $shopname);
         $cartarray = $body_data_decode['cart_item'];
-
+        $spl_cg_total_disc = $body_data_decode['spl_cg_total_disc'];
+        if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+                    echo "<pre>";
+                    print_r($spl_cg_total_disc);
+                    echo "</pre>";
+                    die();
+        }
         $get_details = $this->user_model->get_tokens($shopname);
 
         if ($get_details->force_update == 1) {
