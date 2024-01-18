@@ -94,10 +94,10 @@ class UserModel extends Model
         $q = $qbuilder->get();
         $qbuilder->countAllResults();
         if (!empty($q->getResult())) {
+            unset($product_array['add_date']);
             $this->db->table('app_partial_products')->where('shop_url', $product_array['shop_url'])->where('product_id', $product_array['product_id'])->update($product_array);
             return $this->db->affectedRows();
-        } else {
-
+        } else {            
             return  $qbuilder->insert($product_array);
         }
     }
