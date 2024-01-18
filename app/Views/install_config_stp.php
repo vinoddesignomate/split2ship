@@ -329,11 +329,9 @@
                 <!---Start Screen 1---->
                 <div id="enableCGapp" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <video controls>
-                            <source src="mov_bbb.mp4" type="video/mp4">
-                            <source src="mov_bbb.ogg" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ASkCOT-IfRw?si=c8M-AfV2q1NbZgoU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
                     </div>
                     <div class="wdSetcg">
                         <ol>
@@ -357,11 +355,7 @@
                 <!---Start Screen 2---->
                 <div id="addCGproducts" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <video controls>
-                            <source src="mov_bbb.mp4" type="video/mp4">
-                            <source src="mov_bbb.ogg" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3Q8tRv2L6tE?si=HDFDEQgXg68V_OKd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="5">
@@ -385,11 +379,7 @@
                 <!---Start Screen 3---->
                 <div id="configureCGapp" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <video controls>
-                            <source src="mov_bbb.mp4" type="video/mp4">
-                            <source src="mov_bbb.ogg" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Whgbr6yXZPI?si=xspexgoC-XR9w3Mi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
@@ -414,11 +404,7 @@
                 <!---Start Screen 4---->
                 <div id="emailCGtemplates" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <video controls>
-                            <source src="mov_bbb.mp4" type="video/mp4">
-                            <source src="mov_bbb.ogg" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8apDMrtAdXc?si=trvtixNqb6rcTd-7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
@@ -456,6 +442,7 @@
 <script>
     var stepactive = '<?php echo $step_active; ?>';
     console.log(stepactive);
+
     function track_steps_ajax(stepsname, stepvlue) {
         var shopname = '<?php echo esc($_GET['shop']); ?>';
         console.log(stepsname);
@@ -471,18 +458,18 @@
     if (stepactive == 1) {
         $("#showPopUpCG").fadeIn();
         $('body').addClass('popupCgTransparancy');
-    }else if (stepactive == 2) {
+    } else if (stepactive == 2) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
-    }else if (stepactive == 3) {
+    } else if (stepactive == 3) {
         $("#showPopUpCG").fadeIn();
         $("#addCGproducts").addClass("hideCGthis");
         $("#enableCGapp").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
-    }else if (stepactive == 4) {
+    } else if (stepactive == 4) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("hideCGthis");
