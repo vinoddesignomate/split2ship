@@ -153,36 +153,36 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5652193050846.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5639078510896.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                     $getprietuleidrecfull = json_decode($getprietuleid['body'], true);
-                     $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
+                    //  $getprietuleidrecfull = json_decode($getprietuleid['body'], true);
+                    //  $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
 
 
-                    echo "getprietuleidrecfull<pre>";
-                    print_r($getprietuleidrecfull);
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
                     echo "</pre>";
 
 
 
-                    $fulfilarray = array("fulfillment" => array(
-                        "line_items_by_fulfillment_order" => array(
-                            array(
-                                "fulfillment_order_id" => $fulfilid
-                            )
-                        ),
-                    ));
+                    // $fulfilarray = array("fulfillment" => array(
+                    //     "line_items_by_fulfillment_order" => array(
+                    //         array(
+                    //             "fulfillment_order_id" => $fulfilid
+                    //         )
+                    //     ),
+                    // ));
 
                     // echo "fulfilarray<pre>";
                     // print_r($fulfilarray);
                     // echo "</pre>";
 
-                     $getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
+                     //$getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
 
                     // echo "fulfiledorder<pre>";
                     // print_r($getprietuleid);
@@ -482,11 +482,11 @@ class Home extends BaseController
                     print_r($order_data);
                     echo "</pre>";
 
-                     $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                    //  $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                    echo "<pre>";
-                    print_r(json_decode($getorderarry));
-                    echo "</pre>";*/
+                    // echo "<pre>";
+                    // print_r(json_decode($getorderarry));
+                    // echo "</pre>";
 
                     // echo $getorderarry;
                     // }
