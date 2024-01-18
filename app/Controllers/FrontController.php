@@ -620,7 +620,10 @@ class FrontController extends BaseController
                 //if ($shopname == 'desinomatetest.myshopify.com') {
                 $allowedShopNames = ['desinomatetest.myshopify.com', "finesilverjewels.myshopify.com"];
                 //if (in_array($shopname, $allowedShopNames)) {
-
+                if ($shopname == 'desinomatetest.myshopify.com') {
+                    echo $coupon_discountline;
+                    die();
+                }
                 //below function for autodiscount coupon
                 $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
                 // } else {                    
