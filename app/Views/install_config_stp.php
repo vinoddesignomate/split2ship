@@ -3,20 +3,27 @@
         display: none;
         width: 100%;
         background: rgba(0, 0, 0, 0.5);
-        float: left;
         position: fixed;
-        top: 0;
+        height: 100%;
+        top: 0px;
         left: 0;
-        width: 100%;
-        min-height: 100%;
-        z-index: 99999;
+        z-index: 9999;
+        float: left;
     }
 
     .mainBoxCoupon {
-        width: 650px;
-        max-width: 100%;
-        margin: 30px auto;
+        width: 600px;
+        max-width: 94%;
+        margin: 0px auto;
         background: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 88%;
+        max-height: 800px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        transform: translate(-50%, -50%);
     }
 
     .mainBoxCouponInside {
@@ -243,6 +250,8 @@
         clear: both;
         float: left;
         margin: 25px 0 20px 0;
+        margin-bottom: 0;
+        padding-bottom: 25px;
     }
 
     .inlineButtonsCg ul {
@@ -317,6 +326,34 @@
         border: 8px solid #3783e13b;
     }
 
+    :root {
+        --code-color: darkred;
+        --code-bg-color: #F6F6F6;
+        --code-font-size: 14px;
+        --code-line-height: 1.4;
+        --scroll-bar-color: #C5C5C5;
+        --scroll-bar-bg-color: #F6F6F6;
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
+    }
+
+    *::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: var(--scroll-bar-bg-color);
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: var(--scroll-bar-color);
+        border-radius: 20px;
+        border: 3px solid var(--scroll-bar-bg-color);
+    }
+
     @media screen and (max-width:479px) {
         .inlineButtonsCgTabs ul li {
             max-width: 120px;
@@ -348,10 +385,14 @@
                     </div>
                     <div class="wdSetcg">
                         <ol>
-                            <li>Click on online store <div class="centerCGImg03"><img src="/public/images/stp1.png" /></div></li>
-                            <li>Click on customize button from right side <div class="centerCGImg03"><img src="/public/images/stp2.png" /></div></li>
-                            <li>Click on third button from the left â€“ App Embed <div class="centerCGImg03"><img src="/public/images/step3.png" /></div></li>
-                            <li>Click on Split2Ship app and enable it <div class="centerCGImg03"><img src="/public/images/stp4.png" /></div></li>
+                            <li>Click on online store <div class="centerCGImg03"><img src="/public/images/stp1.png" /></div>
+                            </li>
+                            <li>Click on customize button from right side <div class="centerCGImg03"><img src="/public/images/stp2.png" /></div>
+                            </li>
+                            <li>Click on third button from the left â€“ App Embed <div class="centerCGImg03"><img src="/public/images/step3.png" /></div>
+                            </li>
+                            <li>Click on Split2Ship app and enable it <div class="centerCGImg03"><img src="/public/images/stp4.png" /></div>
+                            </li>
                         </ol>
                     </div>
 
@@ -372,9 +413,12 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="5">
-                            <li>Click on collection <div class="centerCGImg03"><img src="/public/images/stp2_1.png" /></div></li>
-                            <li>Click on pencil icon and define how much advance you want to take upfront<div class="centerCGImg03"><img src="/public/images/step2_2.png" /></div></li>
-                            <li>You can define it by percentage or by fixed amount<div class="centerCGImg03"><img src="/public/images/step2_3.png" /></div></li>
+                            <li>Click on collection <div class="centerCGImg03"><img src="/public/images/stp2_1.png" /></div>
+                            </li>
+                            <li>Click on pencil icon and define how much advance you want to take upfront<div class="centerCGImg03"><img src="/public/images/step2_2.png" /></div>
+                            </li>
+                            <li>You can define it by percentage or by fixed amount<div class="centerCGImg03"><img src="/public/images/step2_3.png" /></div>
+                            </li>
                         </ol>
                     </div>
 
@@ -396,8 +440,10 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
-                            <li>Enable the button on cart page and product page <div class="centerCGImg03"><img src="/public/images/step3_1.png" /></div></li>
-                            <li>Make sure you pick the right color for the background of the button and text color on the button <div class="centerCGImg03"><img src="/public/images/step3_2.png" /></div></li>
+                            <li>Enable the button on cart page and product page <div class="centerCGImg03"><img src="/public/images/step3_1.png" /></div>
+                            </li>
+                            <li>Make sure you pick the right color for the background of the button and text color on the button <div class="centerCGImg03"><img src="/public/images/step3_2.png" /></div>
+                            </li>
                             <li>We recommend against taking Partial COD charges instead advertise that you will waive of COD charges if they go for Partial COD</li>
                         </ol>
                     </div>
@@ -421,14 +467,22 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
-                            <li>Go to the "Tutorial" page of the app <div class="centerCGImg03"><img src="/public/images/step4_1.png" /></div></li>
-                            <li>Scroll down to step number 5 and copy the entire code <div class="centerCGImg03"><img src="/public/images/step4_2.png" /></div></li>
-                            <li>Navigate to the settings of your store, scroll down, and click on the "Notifications" tab <div class="centerCGImg03"><img src="/public/images/step4_3.png" /></div></li>
-                            <li>Select the "customer notification" option. <div class="centerCGImg03"><img src="/public/images/step4_4.png" /></div></li>
-                            <li>Within the Order Processing section, click on "Order Confirmation". <div class="centerCGImg03"><img src="/public/images/step4_5.png" /></div></li>
-                            <li>Click the "Edit code" button. <div class="centerCGImg03"><img src="/public/images/step_4_6.png" /></div></li>
-                            <li>Select and delete the entire old code. <div class="centerCGImg03"><img src="/public/images/step_4_7.png" /></div></li>
-                            <li>Paste the new code that you copied from the app's tutorial page. <div class="centerCGImg03"><img src="/public/images/step4_8.png" /></div></li>
+                            <li>Go to the "Tutorial" page of the app <div class="centerCGImg03"><img src="/public/images/step4_1.png" /></div>
+                            </li>
+                            <li>Scroll down to step number 5 and copy the entire code <div class="centerCGImg03"><img src="/public/images/step4_2.png" /></div>
+                            </li>
+                            <li>Navigate to the settings of your store, scroll down, and click on the "Notifications" tab <div class="centerCGImg03"><img src="/public/images/step4_3.png" /></div>
+                            </li>
+                            <li>Select the "customer notification" option. <div class="centerCGImg03"><img src="/public/images/step4_4.png" /></div>
+                            </li>
+                            <li>Within the Order Processing section, click on "Order Confirmation". <div class="centerCGImg03"><img src="/public/images/step4_5.png" /></div>
+                            </li>
+                            <li>Click the "Edit code" button. <div class="centerCGImg03"><img src="/public/images/step_4_6.png" /></div>
+                            </li>
+                            <li>Select and delete the entire old code. <div class="centerCGImg03"><img src="/public/images/step_4_7.png" /></div>
+                            </li>
+                            <li>Paste the new code that you copied from the app's tutorial page. <div class="centerCGImg03"><img src="/public/images/step4_8.png" /></div>
+                            </li>
                         </ol>
                     </div>
 
