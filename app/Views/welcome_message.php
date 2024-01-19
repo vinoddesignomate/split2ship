@@ -587,13 +587,13 @@ $store_namecnf = $shop_name[0];
                     ?>
                     <!-- main area -->
                     <div class="payxnowandrestondelivery-container">
-                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-pricing-sec">
+                        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-pricing-sec activatedBoxCg06">
                             <div class="payxnowandrestondelivery-head-wrapper">
                                 <h2>Pricing</h2>
 
                             </div>
                             <div class="payxnowandrestondelivery-inner-wrapper payxnowandrestondelivery-pricing-row">
-                                <div class="payxnowandrestondelivery-pricing-col">
+                                <div class="payxnowandrestondelivery-pricing-col <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'basic' && $plan_details[0]->plan_status == 'active')) { ?> transFormCg56colors <?php } ?>">
                                     <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
 
                                         <h4 class="payxnowandrestondelivery-pink-bg">Basic</h4>
@@ -628,7 +628,7 @@ $store_namecnf = $shop_name[0];
                                         <?php  } ?>
                                     </div>
                                 </div>
-                                <div class="payxnowandrestondelivery-pricing-col">
+                                <div class="payxnowandrestondelivery-pricing-col <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'advanced' && $plan_details[0]->plan_status == 'active')) { ?> transFormCg56colors <?php } ?>">
                                     <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
 
                                         <h4 class="payxnowandrestondelivery-blue-bg">Advanced</h4>
@@ -667,7 +667,7 @@ $store_namecnf = $shop_name[0];
 
                                     </div>
                                 </div>
-                                <div class="payxnowandrestondelivery-pricing-col">
+                                <div class="payxnowandrestondelivery-pricing-col <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'pro' && $plan_details[0]->plan_status == 'active')) { ?> transFormCg56colors <?php } ?>">
                                     <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
 
                                         <h4 class="payxnowandrestondelivery-green-bg">Pro</h4>
@@ -704,7 +704,7 @@ $store_namecnf = $shop_name[0];
                                         <?php  } ?>
                                     </div>
                                 </div>
-                                <div class="payxnowandrestondelivery-pricing-col">
+                                <div class="payxnowandrestondelivery-pricing-col <?php if (isset($plan_details[0]->plan_name) && ($plan_details[0]->plan_name == 'ultimate' && $plan_details[0]->plan_status == 'active')) { ?> transFormCg56colors <?php } ?>">
                                     <ul class="payxnowandrestondelivery-pricing-inner-wrapper">
 
                                         <h4 class="payxnowandrestondelivery-yellow-bg">Ultimate</h4>
