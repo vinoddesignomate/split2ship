@@ -1,891 +1,907 @@
 /* variables */
 :root {
-    --primary_color: #0D8BFF;
-    --btn_bg: #3855B3;
-    --btn_text: #fff;
-    --btn_hover_bg: #3B3B3B;
-    --bg-light: #F2F6FF;
-    --red: #E0001A;
-    --green: #26AF48;
-    --text_color: #333333;
-    --heading_color: #3B3B3B;
-    --light_blue: #C3E2FF;
-    --menu_text: rgba(255, 255, 255, 0.7);
-    --grey: #797979;
-    --text_violet: #4A4DE6;
-    --indigoBg: #4A4DE6;
-
+  --primary_color: #0d8bff;
+  --btn_bg: #3855b3;
+  --btn_text: #fff;
+  --btn_hover_bg: #3b3b3b;
+  --bg-light: #f2f6ff;
+  --red: #e0001a;
+  --green: #26af48;
+  --text_color: #333333;
+  --heading_color: #3b3b3b;
+  --light_blue: #c3e2ff;
+  --menu_text: rgba(255, 255, 255, 0.7);
+  --grey: #797979;
+  --text_violet: #4a4de6;
+  --indigoBg: #4a4de6;
 }
 
 /*********fonts***********/
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Bold.eot');
-    src: url('fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Bold.woff2') format('woff2'),
-        url('fonts/Roboto-Bold.woff') format('woff'),
-        url('fonts/Roboto-Bold.ttf') format('truetype'),
-        url('fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Bold.eot");
+  src: url("fonts/Roboto-Bold.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Bold.woff2") format("woff2"),
+    url("fonts/Roboto-Bold.woff") format("woff"),
+    url("fonts/Roboto-Bold.ttf") format("truetype"),
+    url("fonts/Roboto-Bold.svg#Roboto-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-BlackItalic.eot');
-    src: url('fonts/Roboto-BlackItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-BlackItalic.woff2') format('woff2'),
-        url('fonts/Roboto-BlackItalic.woff') format('woff'),
-        url('fonts/Roboto-BlackItalic.ttf') format('truetype'),
-        url('fonts/Roboto-BlackItalic.svg#Roboto-BlackItalic') format('svg');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-BlackItalic.eot");
+  src: url("fonts/Roboto-BlackItalic.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-BlackItalic.woff2") format("woff2"),
+    url("fonts/Roboto-BlackItalic.woff") format("woff"),
+    url("fonts/Roboto-BlackItalic.ttf") format("truetype"),
+    url("fonts/Roboto-BlackItalic.svg#Roboto-BlackItalic") format("svg");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Black.eot');
-    src: url('fonts/Roboto-Black.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Black.woff2') format('woff2'),
-        url('fonts/Roboto-Black.woff') format('woff'),
-        url('fonts/Roboto-Black.ttf') format('truetype'),
-        url('fonts/Roboto-Black.svg#Roboto-Black') format('svg');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Black.eot");
+  src: url("fonts/Roboto-Black.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Black.woff2") format("woff2"),
+    url("fonts/Roboto-Black.woff") format("woff"),
+    url("fonts/Roboto-Black.ttf") format("truetype"),
+    url("fonts/Roboto-Black.svg#Roboto-Black") format("svg");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-BoldItalic.eot');
-    src: url('fonts/Roboto-BoldItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-BoldItalic.woff2') format('woff2'),
-        url('fonts/Roboto-BoldItalic.woff') format('woff'),
-        url('fonts/Roboto-BoldItalic.ttf') format('truetype'),
-        url('fonts/Roboto-BoldItalic.svg#Roboto-BoldItalic') format('svg');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-BoldItalic.eot");
+  src: url("fonts/Roboto-BoldItalic.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-BoldItalic.woff2") format("woff2"),
+    url("fonts/Roboto-BoldItalic.woff") format("woff"),
+    url("fonts/Roboto-BoldItalic.ttf") format("truetype"),
+    url("fonts/Roboto-BoldItalic.svg#Roboto-BoldItalic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Italic.eot');
-    src: url('fonts/Roboto-Italic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Italic.woff2') format('woff2'),
-        url('fonts/Roboto-Italic.woff') format('woff'),
-        url('fonts/Roboto-Italic.ttf') format('truetype'),
-        url('fonts/Roboto-Italic.svg#Roboto-Italic') format('svg');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Italic.eot");
+  src: url("fonts/Roboto-Italic.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Italic.woff2") format("woff2"),
+    url("fonts/Roboto-Italic.woff") format("woff"),
+    url("fonts/Roboto-Italic.ttf") format("truetype"),
+    url("fonts/Roboto-Italic.svg#Roboto-Italic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-LightItalic.eot');
-    src: url('fonts/Roboto-LightItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-LightItalic.woff2') format('woff2'),
-        url('fonts/Roboto-LightItalic.woff') format('woff'),
-        url('fonts/Roboto-LightItalic.ttf') format('truetype'),
-        url('fonts/Roboto-LightItalic.svg#Roboto-LightItalic') format('svg');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-LightItalic.eot");
+  src: url("fonts/Roboto-LightItalic.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-LightItalic.woff2") format("woff2"),
+    url("fonts/Roboto-LightItalic.woff") format("woff"),
+    url("fonts/Roboto-LightItalic.ttf") format("truetype"),
+    url("fonts/Roboto-LightItalic.svg#Roboto-LightItalic") format("svg");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Light.eot');
-    src: url('fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Light.woff2') format('woff2'),
-        url('fonts/Roboto-Light.woff') format('woff'),
-        url('fonts/Roboto-Light.ttf') format('truetype'),
-        url('fonts/Roboto-Light.svg#Roboto-Light') format('svg');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Light.eot");
+  src: url("fonts/Roboto-Light.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Light.woff2") format("woff2"),
+    url("fonts/Roboto-Light.woff") format("woff"),
+    url("fonts/Roboto-Light.ttf") format("truetype"),
+    url("fonts/Roboto-Light.svg#Roboto-Light") format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Regular.eot');
-    src: url('fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Regular.woff2') format('woff2'),
-        url('fonts/Roboto-Regular.woff') format('woff'),
-        url('fonts/Roboto-Regular.ttf') format('truetype'),
-        url('fonts/Roboto-Regular.svg#Roboto-Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.eot");
+  src: url("fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Regular.woff2") format("woff2"),
+    url("fonts/Roboto-Regular.woff") format("woff"),
+    url("fonts/Roboto-Regular.ttf") format("truetype"),
+    url("fonts/Roboto-Regular.svg#Roboto-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Medium.eot');
-    src: url('fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Medium.woff2') format('woff2'),
-        url('fonts/Roboto-Medium.woff') format('woff'),
-        url('fonts/Roboto-Medium.ttf') format('truetype'),
-        url('fonts/Roboto-Medium.svg#Roboto-Medium') format('svg');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Medium.eot");
+  src: url("fonts/Roboto-Medium.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Medium.woff2") format("woff2"),
+    url("fonts/Roboto-Medium.woff") format("woff"),
+    url("fonts/Roboto-Medium.ttf") format("truetype"),
+    url("fonts/Roboto-Medium.svg#Roboto-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-MediumItalic.eot');
-    src: url('fonts/Roboto-MediumItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-MediumItalic.woff2') format('woff2'),
-        url('fonts/Roboto-MediumItalic.woff') format('woff'),
-        url('fonts/Roboto-MediumItalic.ttf') format('truetype'),
-        url('fonts/Roboto-MediumItalic.svg#Roboto-MediumItalic') format('svg');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-MediumItalic.eot");
+  src: url("fonts/Roboto-MediumItalic.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-MediumItalic.woff2") format("woff2"),
+    url("fonts/Roboto-MediumItalic.woff") format("woff"),
+    url("fonts/Roboto-MediumItalic.ttf") format("truetype"),
+    url("fonts/Roboto-MediumItalic.svg#Roboto-MediumItalic") format("svg");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-Thin.eot');
-    src: url('fonts/Roboto-Thin.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-Thin.woff2') format('woff2'),
-        url('fonts/Roboto-Thin.woff') format('woff'),
-        url('fonts/Roboto-Thin.ttf') format('truetype'),
-        url('fonts/Roboto-Thin.svg#Roboto-Thin') format('svg');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Thin.eot");
+  src: url("fonts/Roboto-Thin.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Thin.woff2") format("woff2"),
+    url("fonts/Roboto-Thin.woff") format("woff"),
+    url("fonts/Roboto-Thin.ttf") format("truetype"),
+    url("fonts/Roboto-Thin.svg#Roboto-Thin") format("svg");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('fonts/Roboto-ThinItalic.eot');
-    src: url('fonts/Roboto-ThinItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Roboto-ThinItalic.woff2') format('woff2'),
-        url('fonts/Roboto-ThinItalic.woff') format('woff'),
-        url('fonts/Roboto-ThinItalic.ttf') format('truetype'),
-        url('fonts/Roboto-ThinItalic.svg#Roboto-ThinItalic') format('svg');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("fonts/Roboto-ThinItalic.eot");
+  src: url("fonts/Roboto-ThinItalic.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-ThinItalic.woff2") format("woff2"),
+    url("fonts/Roboto-ThinItalic.woff") format("woff"),
+    url("fonts/Roboto-ThinItalic.ttf") format("truetype"),
+    url("fonts/Roboto-ThinItalic.svg#Roboto-ThinItalic") format("svg");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
 }
-
-
 
 /******/
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    color: var(--text_color);
-    background-color: var(--bg-light);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: var(--text_color);
+  background-color: var(--bg-light);
 }
 
 body.payxnowandrestondelivery-detail-page {
-    padding-bottom: 65px;
+  padding-bottom: 65px;
 }
 
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .payxnowandrestondelivery-container {
-    max-width: 1390px;
-    padding: 0px 15px;
-    margin: 0 auto;
+  max-width: 1390px;
+  padding: 0px 15px;
+  margin: 0 auto;
 }
 
 a {
-    text-decoration: none;
-    display: inline-block;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .payxnowandrestondelivery-text-green {
-    color: var(--green);
+  color: var(--green);
 }
 
 .payxnowandrestondelivery-text-red {
-    color: var(--red);
+  color: var(--red);
 }
 
 .payxnowandrestondelivery-blue-bg {
-    background-color: #D7F3FF;
+  background-color: #d7f3ff;
 }
 
 .payxnowandrestondelivery-yellow-bg {
-    background-color: #FDF9A1;
+  background-color: #fdf9a1;
 }
 
 .payxnowandrestondelivery-green-bg {
-    background-color: #C3F1C7;
+  background-color: #c3f1c7;
 }
 
 .payxnowandrestondelivery-pink-bg {
-    background-color: #FFE7DF;
+  background-color: #ffe7df;
 }
 
 .payxnowandrestondelivery-text-violet {
-    color: var(--text_violet);
+  color: var(--text_violet);
 }
 
 .payxnowandrestondelivery-font-bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .payxnowandrestondelivery-text-orange {
-    color: #F05523;
+  color: #f05523;
 }
 
 .payxnowandrestondelivery-justify-end {
-    justify-content: end;
+  justify-content: end;
 }
 
 /* typography */
 h2 {
-    font-size: 20px;
-    line-height: 120%;
-    font-weight: 600;
-    color: var(--heading_color);
-    text-transform: capitalize;
-    margin: 0px 0px 10px;
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--heading_color);
+  text-transform: capitalize;
+  margin: 0px 0px 10px;
 }
 
 h3 {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 h4 {
-    font-size: 20px;
-    margin: 0px;
+  font-size: 20px;
+  margin: 0px;
 }
 
 p {
-    margin: 10px 0px;
+  margin: 10px 0px;
 }
 
 /********buttons************/
 .payxnowandrestondelivery-button {
-    border-radius: 4px;
-    background-color: var(--btn_bg);
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--btn_text);
-    padding: 12px 24px;
-    text-align: center;
-    letter-spacing: 0.005em;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
+  border-radius: 4px;
+  background-color: var(--btn_bg);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--btn_text);
+  padding: 12px 24px;
+  text-align: center;
+  letter-spacing: 0.005em;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
 }
 
 .payxnowandrestondelivery-button:hover {
-    background-color: var(--btn_hover_bg);
+  background-color: var(--btn_hover_bg);
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 table a {
-    color: var(--text_color);
+  color: var(--text_color);
 }
 
-.payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper button {
-    text-transform: capitalize;
+.payxnowandrestondelivery-main-data-col
+  .payxnowandrestondelivery-head-wrapper
+  button {
+  text-transform: capitalize;
 }
 
 .payxnowandrestondelivery-btn-col a {
-    max-width: 169px;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
+  max-width: 169px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .payxnowandrestondelivery-button.payxnowandrestondelivery-main-cta {
-    background-color: var(--indigoBg);
+  background-color: var(--indigoBg);
 }
 
 .payxnowandrestondelivery-button.payxnowandrestondelivery-main-cta:hover {
-    background-color: var(--btn_hover_bg);
+  background-color: var(--btn_hover_bg);
 }
 
 input.payxnowandrestondelivery-cancel_btn {
-    border-radius: 3px;
-    background-color: #3b3b3b;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    max-width: 77px;
+  border-radius: 3px;
+  background-color: #3b3b3b;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  max-width: 77px;
 }
 
 input.payxnowandrestondelivery-subbtn,
 .payxnowandrestondelivery-subbtn_coll,
 .partial_update_price {
-    border-radius: 3px;
-    background-color: #4A4DE6;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    max-width: 77px;
+  border-radius: 3px;
+  background-color: #4a4de6;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  max-width: 77px;
 }
 
-.payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper.payxnowandrestondelivery-justify-end {
-    justify-content: end;
+.payxnowandrestondelivery-main-data-col
+  .payxnowandrestondelivery-head-wrapper.payxnowandrestondelivery-justify-end {
+  justify-content: end;
 }
 
 button#remove_load_page i {
-    padding-right: 7px;
+  padding-right: 7px;
 }
 
 /************buttons ends************/
 /*  Pagination */
 ul.payxnowandrestondelivery-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 ul.payxnowandrestondelivery-pagination li {
-    margin: 0 24px
+  margin: 0 24px;
 }
 
 .payxnowandrestondelivery-listButtonNext {
-    padding-top: 40px;
-    text-align: center;
+  padding-top: 40px;
+  text-align: center;
 }
 
 button.payxnowandrestondelivery-pag_btn {
-    font-weight: 400;
-    font-size: 12px;
-    border: 1px solid #a8a8b0;
-    border-radius: 4px;
-    background-color: #fff;
-    padding: 12px 24px;
-    margin: 0px 12px;
-    color: #333333;
+  font-weight: 400;
+  font-size: 12px;
+  border: 1px solid #a8a8b0;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 12px 24px;
+  margin: 0px 12px;
+  color: #333333;
 }
 
 button.payxnowandrestondelivery-pag_btn:hover {
-    background: var(--btn_bg);
-    color: #fff;
-    border-color: var(--btn_bg);
+  background: var(--btn_bg);
+  color: #fff;
+  border-color: var(--btn_bg);
 }
 
 button.payxnowandrestondelivery-pag_btn_home {
-    font-weight: 400;
-    font-size: 12px;
-    border: 1px solid #f2f6ff;
-    border-radius: 4px;
-    background-color: #fff;
-    padding: 12px 24px;
-    margin: 0px 12px;
-    color: #333333;
+  font-weight: 400;
+  font-size: 12px;
+  border: 1px solid #f2f6ff;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 12px 24px;
+  margin: 0px 12px;
+  color: #333333;
 }
 
 button.payxnowandrestondelivery-pag_btn_home:hover {
-    background: var(--btn_bg);
-    color: #fff;
-    border-color: var(--btn_bg);
+  background: var(--btn_bg);
+  color: #fff;
+  border-color: var(--btn_bg);
 }
 
-
 ul.payxnowandrestondelivery-pagination .payxnowandrestondelivery-button {
-    font-weight: 400;
-    font-size: 14px;
-    border: 1px solid #A8A8B0;
-    border-radius: 4px;
-    background-color: #fff;
-    padding: 12px 24px;
-    margin: 0px 12px;
-    color: #333333;
+  font-weight: 400;
+  font-size: 14px;
+  border: 1px solid #a8a8b0;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 12px 24px;
+  margin: 0px 12px;
+  color: #333333;
 }
 
 ul.payxnowandrestondelivery-pagination .payxnowandrestondelivery-button:hover {
-    background: var(--btn_bg);
-    color: #fff;
-    border-color: var(--btn_bg);
+  background: var(--btn_bg);
+  color: #fff;
+  border-color: var(--btn_bg);
 }
 
 ul.payxnowandrestondelivery-pagination a {
-    color: #3b3b3b;
-    font-size: 12px
+  color: #3b3b3b;
+  font-size: 12px;
 }
 
 /* Pagination ends */
 
 /*******tables******/
 .payxnowandrestondelivery-single-page {
-    padding: 33px 26px !important;
+  padding: 33px 26px !important;
 }
 
 .payxnowandrestondelivery-single-page .payxnowandrestondelivery-table-heading {
-    padding: 0px 0px 26px;
+  padding: 0px 0px 26px;
 }
 
 table {
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-    min-width: max-content;
-    background-color: #fff;
-    border: 1px solid #E6E7E9;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  min-width: max-content;
+  background-color: #fff;
+  border: 1px solid #e6e7e9;
 }
 
 th {
-    border-bottom: 2px solid rgba(230, 231, 233, 1);
-    font-size: 16px;
-    font-weight: 500;
-    padding: 18px 10px 18px;
-    background-color: #F8F8FA;
-    line-height: 24px;
-    color: #333333;
-    text-transform: capitalize;
+  border-bottom: 2px solid rgba(230, 231, 233, 1);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 18px 10px 18px;
+  background-color: #f8f8fa;
+  line-height: 24px;
+  color: #333333;
+  text-transform: capitalize;
 }
 
 tr:hover {
-    background-color: rgba(56, 85, 179, 0.04);
+  background-color: rgba(56, 85, 179, 0.04);
 }
 
 td {
-    text-transform: capitalize;
-    font-size: 14px;
-    line-height: 24px;
-    color: rgba(24, 24, 25, 0.9);
-    padding: 17px 10px;
-    border-bottom: 1px solid rgba(230, 231, 233, 1);
-    font-weight: 400;
+  text-transform: capitalize;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(24, 24, 25, 0.9);
+  padding: 17px 10px;
+  border-bottom: 1px solid rgba(230, 231, 233, 1);
+  font-weight: 400;
 }
 
 .payxnowandrestondelivery-table-inner-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
-.payxnowandrestondelivery-partial-product .payxnowandrestondelivery-table-inner-wrapper {
-    gap: 50px;
+.payxnowandrestondelivery-partial-product
+  .payxnowandrestondelivery-table-inner-wrapper {
+  gap: 50px;
 }
 
 .payxnowandrestondelivery-view-col {
-    border-radius: 15px;
-    background: #f1f5ff;
-    padding: 1px 8px;
-    font-size: 7px;
-    margin-top: 12px;
+  border-radius: 15px;
+  background: #f1f5ff;
+  padding: 1px 8px;
+  font-size: 7px;
+  margin-top: 12px;
 }
 
 .payxnowandrestondelivery-view-col a {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .payxnowandrestondelivery-view-col span {
-    margin-left: 7px;
+  margin-left: 7px;
 }
 
 table .payxnowandrestondelivery-flex-row input[type="checkbox"] {
-    width: auto;
+  width: auto;
 }
 
 .payxnowandrestondelivery-status-text {
-    display: block;
-    font-size: 7px;
-    line-height: 13px
+  display: block;
+  font-size: 7px;
+  line-height: 13px;
 }
 
 .payxnowandrestondelivery-table-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 79px
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 79px;
 }
 
 .payxnowandrestondelivery-table-outer-wrapper {
-    overflow: auto;
+  overflow: auto;
 }
 
 .payxnowandrestondelivery-action-text a {
-    font-weight: 400;
-    font-size: 14px;
-    text-decoration: underline
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: underline;
 }
 
 .payxnowandrestondelivery-edit_per {
-    text-decoration: none !important;
-    text-transform: capitalize;
-    font-weight: 400;
-    font-size: 14px !important;
+  text-decoration: none !important;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 14px !important;
 }
 
 td.payxnowandrestondelivery-double-col {
-    gap: 35px;
-    justify-content: center;
-    align-items: center
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
 }
 
 td.payxnowandrestondelivery-double-col .payxnowandrestondelivery-action-text {
-    margin: 0px 15px;
+  margin: 0px 15px;
 }
 
 td.payxnowandrestondelivery-amount-bg span {
-    background-color: rgba(86, 87, 88, 0.12);
-    padding: 5px 26px;
-    border-radius: 100px;
+  background-color: rgba(86, 87, 88, 0.12);
+  padding: 5px 26px;
+  border-radius: 100px;
 }
 
 td.payxnowandrestondelivery-text-green span {
-    background-color: #e8f5e9;
-    padding: 5px 21px;
-    border-radius: 50px
+  background-color: #e8f5e9;
+  padding: 5px 21px;
+  border-radius: 50px;
 }
 
 td.payxnowandrestondelivery-text-red span {
-    background-color: #FFE7DF;
-    padding: 5px 21px;
-    border-radius: 50px
+  background-color: #ffe7df;
+  padding: 5px 21px;
+  border-radius: 50px;
 }
 
 .payxnowandrestondelivery-partial_percentage span {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .payxnowandrestondelivery-partial_percentage span input,
 .payxnowandrestondelivery-part_partial_percentage span input {
-    display: inline-block;
-    width: 100%;
-    text-transform: capitalize;
+  display: inline-block;
+  width: 100%;
+  text-transform: capitalize;
 }
 
 .payxnowandrestondelivery-partial_percentage .payxnowandrestondelivery-edit-col,
-.payxnowandrestondelivery-part_partial_percentage .payxnowandrestondelivery-edit-col {
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, .3);
-    background: #fff;
-    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, .1) inset;
-    max-width: 50px;
+.payxnowandrestondelivery-part_partial_percentage
+  .payxnowandrestondelivery-edit-col {
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: #fff;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1) inset;
+  max-width: 50px;
 }
 
 td.payxnowandrestondelivery-fullfilment-text span {
-    background-color: #e1f5fd;
-    color: #568ba0;
-    padding: 6px 17px;
-    border-radius: 50px;
-    font-weight: 500
+  background-color: #e1f5fd;
+  color: #568ba0;
+  padding: 6px 17px;
+  border-radius: 50px;
+  font-weight: 500;
 }
 
 .payxnowandrestondelivery-table-heading h2 {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 /*******tables ends******/
 
 /****forms****/
 input {
-    border: 1px solid #E9F0FF;
-    background-color: #E4EBFD;
-    border-radius: 3px;
-    width: 100%;
-    font-size: 12px;
-    line-height: 204%;
-    padding: 7px 17px;
+  border: 1px solid #e9f0ff;
+  background-color: #e4ebfd;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 204%;
+  padding: 7px 17px;
 }
 
 form label {
-    display: block;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    margin: 22px 0px 6px;
-    color: rgba(24, 24, 25, 0.9);
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 22px 0px 6px;
+  color: rgba(24, 24, 25, 0.9);
 }
 
 .payxnowandrestondelivery-password-row label {
-    display: flex;
-    justify-content: space-between
+  display: flex;
+  justify-content: space-between;
 }
 
 .payxnowandrestondelivery-password-row label span a {
-    color: #2666FA;
-    font-size: 10px;
+  color: #2666fa;
+  font-size: 10px;
 }
 
 input:focus {
-    outline-color: var(--primary_color);
+  outline-color: var(--primary_color);
 }
 
 input::placeholder {
-    color: #BDBDBD;
+  color: #bdbdbd;
 }
 
 /****forms ends****/
 
 /* toggle switch */
 .payxnowandrestondelivery-switch {
-    position: relative;
-    display: inline-block;
-    width: 46px;
-    height: 24px
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
 }
 
 .payxnowandrestondelivery-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .payxnowandrestondelivery-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--red);
-    -webkit-transition: .4s;
-    transition: .4s
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--red);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .payxnowandrestondelivery-slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: #fff;
-    -webkit-transition: .4s;
-    transition: .4s
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.payxnowandrestondelivery-slider {
-    background-color: var(--green)
+input:checked + .payxnowandrestondelivery-slider {
+  background-color: var(--green);
 }
 
-input:focus+.payxnowandrestondelivery-slider {
-    box-shadow: 0 0 1px var(--green);
+input:focus + .payxnowandrestondelivery-slider {
+  box-shadow: 0 0 1px var(--green);
 }
 
-input:checked+.payxnowandrestondelivery-slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px)
+input:checked + .payxnowandrestondelivery-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 .payxnowandrestondelivery-slider.payxnowandrestondelivery-round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .payxnowandrestondelivery-slider.payxnowandrestondelivery-round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 /* toggle switch ends */
 
 /*******header***********/
 header a {
-    color: var(--menu_text);
+  color: var(--menu_text);
 }
 
 header {
-    background-color: #10277C;
-    padding: 14px 0;
-    border-bottom: 1px solid #858585;
+  background-color: #10277c;
+  padding: 14px 0;
+  border-bottom: 1px solid #858585;
 }
 
 header nav ul {
-    display: flex;
-    display: -moz-box;
-    display: -webkit-flex;
-    align-items: center;
-    padding: 0;
-    margin: 0
+  display: flex;
+  display: -moz-box;
+  display: -webkit-flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 header nav ul li {
-    padding: 0px 4px;
+  padding: 0px 4px;
 }
 
 header nav ul li a {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 19px;
-    text-transform: capitalize;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 header nav ul li a:hover,
 header nav ul li a.payxnowandrestondelivery-active {
-    color: #F6EE26;
+  color: #f6ee26;
 }
 
 header nav ul li a:hover svg path,
 header nav ul li a.payxnowandrestondelivery-active svg path {
-    stroke: #F6EE26;
+  stroke: #f6ee26;
 }
 
 header nav ul li a:hover svg g,
 header nav ul li a.payxnowandrestondelivery-active svg path {
-    opacity: 1;
+  opacity: 1;
 }
 
 header nav ul li a:hover .payxnowandrestondelivery-hide-hover,
-header nav ul li a.payxnowandrestondelivery-active .payxnowandrestondelivery-hide-hover {
-    display: none;
+header
+  nav
+  ul
+  li
+  a.payxnowandrestondelivery-active
+  .payxnowandrestondelivery-hide-hover {
+  display: none;
 }
 
 .payxnowandrestondelivery-on-hover {
-    display: none;
+  display: none;
 }
 
 header nav ul li a:hover .payxnowandrestondelivery-on-hover,
-header nav ul li a.payxnowandrestondelivery-active .payxnowandrestondelivery-on-hover {
-    display: block;
+header
+  nav
+  ul
+  li
+  a.payxnowandrestondelivery-active
+  .payxnowandrestondelivery-on-hover {
+  display: block;
 }
 
 header .payxnowandrestondelivery-header-wrapper {
-    display: flex;
-    display: -moz-box;
-    display: -webkit-flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  display: -moz-box;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 header a.payxnowandrestondelivery-icon {
-    display: none
+  display: none;
 }
 
 .payxnowandrestondelivery-logo-col img {
-    width: 100%;
-    max-width: 148px
+  width: 100%;
+  max-width: 148px;
 }
 
 /*******header ends*******/
 
 .payxnowandrestondelivery-body-wrapper {
-    padding-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 section.payxnowandrestondelivery-sec-space {
-    margin: 0px 0px 80px;
+  margin: 0px 0px 80px;
 }
 
 section.payxnowandrestondelivery-sec-space:last-child {
-    margin: 0
+  margin: 0;
 }
 
 /*****main dropdown*******/
 .payxnowandrestondelivery-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    overflow: auto;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
-    z-index: 1;
-    width: 100%;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  overflow: auto;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
 }
 
 .payxnowandrestondelivery-dropdown-content a {
-    color: #000;
-    padding: 12px 40px;
-    text-decoration: none;
-    display: block
+  color: #000;
+  padding: 12px 40px;
+  text-decoration: none;
+  display: block;
 }
 
 .payxnowandrestondelivery-dropdown a:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 .payxnowandrestondelivery-show {
-    display: block;
+  display: block;
 }
 
 .payxnowandrestondelivery-main-head {
-    background-color: #fff;
-    margin-top: 48px;
-    position: relative;
-    border-radius: 5px;
+  background-color: #fff;
+  margin-top: 48px;
+  position: relative;
+  border-radius: 5px;
 }
 
 .payxnowandrestondelivery-main-heading h1 {
-    font-size: 24px;
-    margin: 0;
-    font-weight: 600;
-    color: #10277C;
-    text-transform: capitalize;
-    line-height: 120%;
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+  color: #10277c;
+  text-transform: capitalize;
+  line-height: 120%;
 }
 
 .payxnowandrestondelivery-main-heading {
-    width: 100%;
-    text-align: left;
-    background-color: #fff;
-    border: 0;
-    padding: 24px 25px;
-    font-weight: 500;
-    font-size: 24px;
-    color: var(--heading_color);
-    text-transform: capitalize;
-    border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border: 0;
+  padding: 24px 25px;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--heading_color);
+  text-transform: capitalize;
+  border-radius: 5px;
 }
 
 .payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading {
-    background-color: transparent;
-    padding: 43px 10px 7px 0px;
+  background-color: transparent;
+  padding: 43px 10px 7px 0px;
 }
 
-.payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading h5 a {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    color: rgba(24, 24, 25, 0.9);
-    position: relative;
-    padding-left: 28px;
+.payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading
+  h5
+  a {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: rgba(24, 24, 25, 0.9);
+  position: relative;
+  padding-left: 28px;
 }
 
-.payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading h5 {
-    margin: 0;
-    display: inline-block;
-    background-color: #fff;
-    padding: 12px;
-    border-radius: 3px;
-    border: 1px dashed var(--ui-base-400, #d6d6d8)
+.payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading
+  h5 {
+  margin: 0;
+  display: inline-block;
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 3px;
+  border: 1px dashed var(--ui-base-400, #d6d6d8);
 }
 
-.payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading h5 a::after {
-    position: absolute;
-    content: '';
-    background-image: url(./images/arrow-back.svg);
-    width: 15px;
-    height: 15px;
-    left: 0;
-    background-repeat: no-repeat;
-    top: 3px;
-    filter: brightness(0.5);
+.payxnowandrestondelivery-main-heading.payxnowandrestondelivery-back-heading
+  h5
+  a::after {
+  position: absolute;
+  content: "";
+  background-image: url(./images/arrow-back.svg);
+  width: 15px;
+  height: 15px;
+  left: 0;
+  background-repeat: no-repeat;
+  top: 3px;
+  filter: brightness(0.5);
 }
 
 /* .payxnowandrestondelivery-main-dropdown button::after{position: absolute;content: '';background-image: url(./images/down-arrow.svg);background-repeat: no-repeat;background-position: center;width: 23px;height: 13px;right: 40px;} */
@@ -893,638 +909,723 @@ section.payxnowandrestondelivery-sec-space:last-child {
 /********main dropdown ends*******/
 /*************main area**************/
 
-
-.payxnowandrestondelivery-shiprocket-config .payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper {
-    flex-wrap: wrap;
-    justify-content: center;
+.payxnowandrestondelivery-shiprocket-config
+  .payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-inner-wrapper {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.payxnowandrestondelivery-shiprocket-config .payxnowandrestondelivery-main-area .payxnowandrestondelivery-main-data-col {
-    max-width: 371px;
-    width: 100%;
+.payxnowandrestondelivery-shiprocket-config
+  .payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-main-data-col {
+  max-width: 371px;
+  width: 100%;
 }
 
-.payxnowandrestondelivery-shiprocket-config .payxnowandrestondelivery-main-area {
-    padding: 68px 15px;
+.payxnowandrestondelivery-shiprocket-config
+  .payxnowandrestondelivery-main-area {
+  padding: 68px 15px;
 }
 
 .payxnowandrestondelivery-show-orders .payxnowandrestondelivery-main-area {
-    padding: 53px 40px 59px;
+  padding: 53px 40px 59px;
 }
 
-.payxnowandrestondelivery-partial-products-list .payxnowandrestondelivery-main-area {
-    padding: 40px 40px 49px;
+.payxnowandrestondelivery-partial-products-list
+  .payxnowandrestondelivery-main-area {
+  padding: 40px 40px 49px;
 }
 
 .payxnowandrestondelivery-shiprocket-config .payxnowandrestondelivery-main-area,
 .payxnowandrestondelivery-price-plan .payxnowandrestondelivery-main-area,
 .payxnowandrestondelivery-show-orders .payxnowandrestondelivery-main-area,
-.payxnowandrestondelivery-partial-products-list .payxnowandrestondelivery-main-area {
-    margin-bottom: 46px;
-    padding-top: 33px;
+.payxnowandrestondelivery-partial-products-list
+  .payxnowandrestondelivery-main-area {
+  margin-bottom: 46px;
+  padding-top: 33px;
 }
 
-.payxnowandrestondelivery-partial-products-list .payxnowandrestondelivery-main-area .payxnowandrestondelivery-main-data-col {
-    margin-top: 0px;
+.payxnowandrestondelivery-partial-products-list
+  .payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-main-data-col {
+  margin-top: 0px;
 }
 
-.payxnowandrestondelivery-shiprocket-config .payxnowandrestondelivery-main-area {
-    margin-top: 48px;
+.payxnowandrestondelivery-shiprocket-config
+  .payxnowandrestondelivery-main-area {
+  margin-top: 48px;
 }
 
 .payxnowandrestondelivery-main-area {
-    background: #FFFFFF;
-    border-radius: 5px;
-    padding: 32px 25px 34px;
-    margin-top: 19px;
-    margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 32px 25px 34px;
+  margin-top: 19px;
+  margin-bottom: 20px;
 }
 
 .payxnowandrestondelivery-main-area.payxnowandrestondelivery-detail-page {
-    margin-top: 51px;
-    margin-bottom: 49px;
+  margin-top: 51px;
+  margin-bottom: 49px;
 }
 
-.payxnowandrestondelivery-main-area.payxnowandrestondelivery-no-sidebar .payxnowandrestondelivery-inner-wrapper {
-    display: block;
+.payxnowandrestondelivery-main-area.payxnowandrestondelivery-no-sidebar
+  .payxnowandrestondelivery-inner-wrapper {
+  display: block;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper {
-    display: flex;
+  display: flex;
 }
 
 .payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
 }
 
-.payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper h2 {
-    margin-bottom: 0px;
+.payxnowandrestondelivery-main-data-col
+  .payxnowandrestondelivery-head-wrapper
+  h2 {
+  margin-bottom: 0px;
 }
 
-.payxnowandrestondelivery-partial-products-list .payxnowandrestondelivery-main-data-col {
-    margin-top: 0px !important;
+.payxnowandrestondelivery-partial-products-list
+  .payxnowandrestondelivery-main-data-col {
+  margin-top: 0px !important;
 }
 
-.payxnowandrestondelivery-partial-products-list .payxnowandrestondelivery-single-page .payxnowandrestondelivery-table-heading {
-    padding: 0 0px 26px 0
+.payxnowandrestondelivery-partial-products-list
+  .payxnowandrestondelivery-single-page
+  .payxnowandrestondelivery-table-heading {
+  padding: 0 0px 26px 0;
 }
 
-.payxnowandrestondelivery-partial-products-list .payxnowandrestondelivery-table-heading h2 {
-    margin-bottom: 0px;
+.payxnowandrestondelivery-partial-products-list
+  .payxnowandrestondelivery-table-heading
+  h2 {
+  margin-bottom: 0px;
 }
 
 .payxnowandrestondelivery-single-page .payxnowandrestondelivery-main-data-col {
-    margin-top: 0px !important;
+  margin-top: 0px !important;
 }
 
 /*side-bar-col*/
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-side-bar-col {
-    width: 45%;
+  width: 45%;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-custom-select {
-    width: 100%;
-    position: relative;
-    margin: 20px 0
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-selected-item {
-    background: #fff;
-    padding: 11px 20px 11px 31px;
-    color: #808081;
-    cursor: pointer;
-    z-index: 99;
-    border: 2px solid var(--primary_color);
-    border-radius: 4px;
+  background: #fff;
+  padding: 11px 20px 11px 31px;
+  color: #808081;
+  cursor: pointer;
+  z-index: 99;
+  border: 2px solid var(--primary_color);
+  border-radius: 4px;
 }
 
-.payxnowandrestondelivery-main-area .payxnowandrestondelivery-selected-item:after {
-    content: " ";
-    position: absolute;
-    right: 25px;
-    transition: .5s;
-    background-image: url(./images/select-arrow.svg);
-    width: 17px;
-    height: 10px;
-    background-repeat: no-repeat;
-    top: 19px;
+.payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-selected-item:after {
+  content: " ";
+  position: absolute;
+  right: 25px;
+  transition: 0.5s;
+  background-image: url(./images/select-arrow.svg);
+  width: 17px;
+  height: 10px;
+  background-repeat: no-repeat;
+  top: 19px;
 }
 
-.payxnowandrestondelivery-main-area .payxnowandrestondelivery-arrowanim.payxnowandrestondelivery-selected-item:after {
-    transform: rotate(180deg)
+.payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-arrowanim.payxnowandrestondelivery-selected-item:after {
+  transform: rotate(180deg);
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-item {
-    background: var(--bg-light);
-    padding: 12px 10px 12px 31px;
-    color: #808081;
-    border-top: 1px solid var(--bg-light);
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 193%;
-    text-transform: capitalize;
+  background: var(--bg-light);
+  padding: 12px 10px 12px 31px;
+  color: #808081;
+  border-top: 1px solid var(--bg-light);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 193%;
+  text-transform: capitalize;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-item:hover {
-    background: #fff;
+  background: #fff;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-all-items {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding-top: 15px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding-top: 15px;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-all-items-hide {
-    display: none;
+  display: none;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-item:last-child {
-    border-radius: 0px 0px 8px 8px;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .payxnowandrestondelivery-main-area select {
-    background-color: #e4ebfd;
-    border: 0;
-    padding: 11px 12px;
-    max-width: 310px !important;
-    width: 100%;
-    font-size: 14px;
-    font-weight: 500;
-    color: #333333;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    appearance: none;
-    background-image: url(./images/select-arrow.svg);
-    background-repeat: no-repeat;
-    background-position: 95% center;
+  background-color: #e4ebfd;
+  border: 0;
+  padding: 11px 12px;
+  max-width: 310px !important;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  appearance: none;
+  background-image: url(./images/select-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: 95% center;
 }
 
 select:focus-visible {
-    outline: none !important;
+  outline: none !important;
 }
 
 .payxnowandrestondelivery-flex-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .payxnowandrestondelivery-flex-row.payxnowandrestondelivery-image-row {
-    gap: 13px;
-    margin-top: 32px;
-    justify-content: start;
+  gap: 13px;
+  margin-top: 32px;
+  justify-content: start;
 }
 
 .payxnowandrestondelivery-flex-row img {
-    display: block
+  display: block;
 }
 
-form.custom-search input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1
+form.custom-search input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
 }
 
 form.custom-search button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #2196f3;
-    color: #fff;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
 }
 
-.products-list .payxnowandrestondelivery-main-area .payxnowandrestondelivery-custom-select,
-.payxhomecls .payxnowandrestondelivery-main-area .payxnowandrestondelivery-custom-select {
-    display: flex;
-    gap: 20px;
+.products-list
+  .payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-custom-select,
+.payxhomecls
+  .payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-custom-select {
+  display: flex;
+  gap: 20px;
 }
 
 .search-wrapper {
-    display: flex;
-    width: 100%;
-    max-width: 400px;
+  display: flex;
+  width: 100%;
+  max-width: 400px;
 }
 
 .search-wrapper button {
-    background-color: #4a4de6;
-    border-radius: 0px 3px 3px 0px;
-    padding-right: 9px;
+  background-color: #4a4de6;
+  border-radius: 0px 3px 3px 0px;
+  padding-right: 9px;
 }
 
 .search-wrapper input[type="text"] {
-    border-radius: 3px 0px 0px 3px;
+  border-radius: 3px 0px 0px 3px;
 }
 
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-side-bar-col {
-    width: 53%;
+  width: 53%;
 }
 
 .search-wrapper i {
-    color: #fff
+  color: #fff;
 }
 
 /***main-data-col***/
 .payxnowandrestondelivery-main-area .payxnowandrestondelivery-main-data-col {
-    width: 55%;
-    padding-left: 15px;
+  width: 55%;
+  padding-left: 15px;
 }
 
-.payxnowandrestondelivery-main-area.payxnowandrestondelivery-no-sidebar .payxnowandrestondelivery-main-data-col {
-    width: 100%;
-    padding-left: 0px;
-    margin-top: 34px;
+.payxnowandrestondelivery-main-area.payxnowandrestondelivery-no-sidebar
+  .payxnowandrestondelivery-main-data-col {
+  width: 100%;
+  padding-left: 0px;
+  margin-top: 34px;
 }
 
 .payxnowandrestondelivery-btn-col {
-    text-align: center;
-    margin-top: 40px
+  text-align: center;
+  margin-top: 40px;
 }
 
 .payxnowandrestondelivery-form-wrapper {
-    width: 100%;
-    max-width: 375px
+  width: 100%;
+  max-width: 375px;
 }
 
 .payxnowandrestondelivery-form-border {
-    border: 1px solid #e6e7e9;
-    padding: 27px 24px 34px;
-    border-radius: 3px;
+  border: 1px solid #e6e7e9;
+  padding: 27px 24px 34px;
+  border-radius: 3px;
 }
 
 .payxnowandrestondelivery-form-btn {
-    padding-top: 24px;
+  padding-top: 24px;
 }
 
 .payxnowandrestondelivery-form-btn button {
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 /************main area ends*************/
 /* princing sec */
 .payxnowandrestondelivery-pricing-col {
-    width: 33.33%;
-    box-shadow: 0 2px 24px rgba(0, 0, 0, .1);
-    border-radius: 4px;
-    text-align: center
+  width: 33.33%;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  text-align: center;
 }
 
 .payxnowandrestondelivery-pricing-col h4 {
-    padding: 14px 10px;
-    border-radius: 4px 4px 0px 0px;
-    font-weight: 600;
-    color: var(--heading_color);
+  padding: 14px 10px;
+  border-radius: 4px 4px 0px 0px;
+  font-weight: 600;
+  color: var(--heading_color);
 }
 
 ul.payxnowandrestondelivery-pricing-inner-wrapper li {
-    border-bottom: 0.86px solid #dadeff;
-    padding: 8px;
+  border-bottom: 0.86px solid #dadeff;
+  padding: 8px;
 }
 
 .payxnowandrestondelivery-pricing-btn {
-    padding: 24px 24px 37px;
+  padding: 24px 24px 37px;
 }
 
 .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button {
-    display: block;
-    background-color: #fff;
-    border: 1px solid #333333;
-    color: #333333;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #333333;
+  color: #333333;
 }
 
 .payxnowandrestondelivery-pricing-btn a.payxnowandrestondelivery-button:hover {
-    background-color: #4A4DE6;
-    color: #fff;
+  background-color: #4a4de6;
+  color: #fff;
 }
 
-.payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
-    gap: 23px;
+.payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
+  gap: 23px;
 }
 
 ul.payxnowandrestondelivery-pricing-inner-wrapper h3 {
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 153%;
-    margin: 8px 0px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 153%;
+  margin: 8px 0px;
 }
 
-ul.payxnowandrestondelivery-pricing-inner-wrapper h3 span.payxnowandrestondelivery-text-small {
-    font-size: 12px;
+ul.payxnowandrestondelivery-pricing-inner-wrapper
+  h3
+  span.payxnowandrestondelivery-text-small {
+  font-size: 12px;
 }
 
 .payxnowandrestondelivery-pricing-col p {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .payxnowandrestondelivery-price-plan .payxnowandrestondelivery-head-wrapper {
-    margin-bottom: 41px;
+  margin-bottom: 41px;
 }
 
 /* princing sec ends */
 /* shipping-configuration */
-.payxnowandrestondelivery-shipping-configuration .payxnowandrestondelivery-form-wrapper {
-    margin: 0 auto;
+.payxnowandrestondelivery-shipping-configuration
+  .payxnowandrestondelivery-form-wrapper {
+  margin: 0 auto;
 }
 
-.payxnowandrestondelivery-shipping-configuration .payxnowandrestondelivery-main-area .payxnowandrestondelivery-main-data-col {
-    width: 100%;
-    padding-left: 0;
-    max-width: 375px;
-    margin: 0 auto;
+.payxnowandrestondelivery-shipping-configuration
+  .payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-main-data-col {
+  width: 100%;
+  padding-left: 0;
+  max-width: 375px;
+  margin: 0 auto;
 }
 
-.payxnowandrestondelivery-shipping-configuration .payxnowandrestondelivery-main-area {
-    padding-bottom: 68px;
+.payxnowandrestondelivery-shipping-configuration
+  .payxnowandrestondelivery-main-area {
+  padding-bottom: 68px;
 }
 
 /* shipping-configuration ends */
 .payxnowandrestondelivery-listButtonNext .active {
-    background: var(--btn_bg);
-    color: #fff;
-    border-color: var(--btn_bg);
+  background: var(--btn_bg);
+  color: #fff;
+  border-color: var(--btn_bg);
 }
 
 .edit-form-wrapper {
-    max-width: 500px;
-    width: 100%;
-    margin-top: 25px;
-    border: 1px solid #E6E7E9;
-    padding: 27px 24px 34px;
-    border-radius: 3px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 25px;
+  border: 1px solid #e6e7e9;
+  padding: 27px 24px 34px;
+  border-radius: 3px;
 }
 
 .edit-form-wrapper .flex-row {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-
 p.payxnowandrestondelivery-alert {
-    text-transform: none;
-    font-size: 15px;
-    color: #10277C;
+  text-transform: none;
+  font-size: 15px;
+  color: #10277c;
 }
 
 .alert-wrapper {
-    width: 100%;
-    text-align: left;
-    background-color: #10277c42;
-    padding: 2px 25px;
-    font-weight: 500;
-    border-radius: 5px;
-    border: 1px solid #10277C;
+  width: 100%;
+  text-align: left;
+  background-color: #10277c42;
+  padding: 2px 25px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid #10277c;
 }
 
 .edit-col_class {
-    border: 1px solid #999;
-    background-color: #fff;
+  border: 1px solid #999;
+  background-color: #fff;
 }
 
 .colbttrack {
-    background: #4A4DE6;
-    color: #fff;
+  background: #4a4de6;
+  color: #fff;
 }
 
 .cg_cpliteship_disabled-link {
-    pointer-events: none;
-    /* Prevents the link from being clickable */
-    color: gray;
-    /* Change the text color to indicate it's disabled */
-    text-decoration: none;
-    /* Remove underlines or other decorations */
-    cursor: not-allowed;
-    /* Show a "not-allowed" cursor to indicate it's disabled */
+  pointer-events: none;
+  /* Prevents the link from being clickable */
+  color: gray;
+  /* Change the text color to indicate it's disabled */
+  text-decoration: none;
+  /* Remove underlines or other decorations */
+  cursor: not-allowed;
+  /* Show a "not-allowed" cursor to indicate it's disabled */
 }
 
 .list_search {
-    gap: 20px;
+  gap: 20px;
 }
 
 .list_search .flex-wrapper {
-    display: flex;
-    gap: 20px;
-    max-width: 513px;
-    width: 100%;
+  display: flex;
+  gap: 20px;
+  max-width: 513px;
+  width: 100%;
 }
 
-.list_search .flex-wrapper .payxnowandrestondelivery-button.payxnowandrestondelivery-main-cta {
-    max-width: 120px;
-    width: 100%;
+.list_search
+  .flex-wrapper
+  .payxnowandrestondelivery-button.payxnowandrestondelivery-main-cta {
+  max-width: 120px;
+  width: 100%;
 }
 
 .partial-products-list #remove_load_page {
-    margin: 5px 0px 20px;
+  margin: 5px 0px 20px;
 }
 
 .payxnowandrestondelivery-not-found-msg {
-    text-align: center;
-    padding: 20px 0px;
+  text-align: center;
+  padding: 20px 0px;
 }
 
 .payxnowandrestondelivery-not-found-msg h2 {
-    font-size: 25px;
+  font-size: 25px;
 }
 
-
 .configvideotg {
-    display: block;
-    text-align: left;
+  display: block;
+  text-align: left;
 }
 
 .configvideotg .iframeMainDiv {
-    width: 48%;
-    margin: .5%;
-    margin-bottom: 25px;
-    display: inline-block;
+  width: 48%;
+  margin: 0.5%;
+  margin-bottom: 25px;
+  display: inline-block;
 }
 
 .configvideotg .iframeMainDiv h3 {
-    font-size: 19px;
-    color: #000;
-    font-weight: normal;
-    margin: 12px 0;
-    padding: 0;
+  font-size: 19px;
+  color: #000;
+  font-weight: normal;
+  margin: 12px 0;
+  padding: 0;
 }
 
 .configvideotg .iframeMainDiv iframe {
-    width: 100%;
+  width: 100%;
 }
-
-@media screen and (max-width:991px) {
-    .configvideotg iframe {
-        width: 100%;
-        margin: 15px 0;
-    }
+/** new pricing css start **/
+.payxnowandrestondelivery-pricing-col h4 {
+  font-weight: 500;
+  color: #000;
+}
+.payxnowandrestondelivery-pricing-col p {
+  color: #000;
+}
+.payxnowandrestondelivery-pricing-btn {
+  padding: 24px 24px 15px;
+}
+.payxnowandrestondelivery-main-area
+  .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
+  gap: 45px;
+}
+.activatedBoxCg06 .payxnowandrestondelivery-head-wrapper h2 {
+  font-size: 25px;
+  color: #000;
+  margin-bottom: 40px;
+}
+.activatedBoxCg06
+  .payxnowandrestondelivery-pricing-col.transFormCg56colors
+  .payxnowandrestondelivery-pricing-btn
+  a.payxnowandrestondelivery-button {
+  background: #f6ee26;
+  border-color: #c5be19;
+  font-style: italic;
+  color: #000;
+  text-transform: uppercase;
+}
+.activatedBoxCg06 .payxnowandrestondelivery-pricing-col.transFormCg56colors {
+  transform: scale(1.1);
+}
+.activatedBoxCg06 .payxnowandrestondelivery-pricing-col.transFormCg56colors h4 {
+  border-radius: 0px 0px 4px 4px;
+}
+/*---accordingBG---*/
+.activatedBoxCg06
+  .payxnowandrestondelivery-pricing-col.transFormCg56colors
+  ul.payxnowandrestondelivery-pricing-inner-wrapper {
+  background: #d7f3ff8a;
+}
+.activatedBoxCg06
+  .payxnowandrestondelivery-pricing-col.transFormCg56colors
+  ul.payxnowandrestondelivery-pricing-inner-wrapper
+  li {
+  border-color: #cae8f5;
+}
+/** new pricing css end **/
+@media screen and (max-width: 991px) {
+  .configvideotg iframe {
+    width: 100%;
+    margin: 15px 0;
+  }
 }
 
 /*************Responsive***********/
 
-
 @media only screen and (max-width: 1232px) {
-    header .payxnowandrestondelivery-header-nav-links ul {
-        background-color: #10277c;
-    }
+  header .payxnowandrestondelivery-header-nav-links ul {
+    background-color: #10277c;
+  }
 
-    .payxnowandrestondelivery-show .payxnowandrestondelivery-bar-icon {
-        display: none;
-    }
+  .payxnowandrestondelivery-show .payxnowandrestondelivery-bar-icon {
+    display: none;
+  }
 
-    .payxnowandrestondelivery-show .payxnowandrestondelivery-cross {
-        display: block;
-    }
+  .payxnowandrestondelivery-show .payxnowandrestondelivery-cross {
+    display: block;
+  }
 
-    header {
-        position: relative;
-    }
+  header {
+    position: relative;
+  }
 
-    header .payxnowandrestondelivery-header-nav-links ul {
-        top: 49px;
-    }
+  header .payxnowandrestondelivery-header-nav-links ul {
+    top: 49px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
-    .payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
-        flex-wrap: wrap;
-    }
+  .payxnowandrestondelivery-main-area
+    .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
+    flex-wrap: wrap;
+  }
 
-    .payxnowandrestondelivery-pricing-col {
-        width: calc(50% - 23px);
-    }
-
+  .payxnowandrestondelivery-pricing-col {
+    width: calc(50% - 23px);
+  }
 }
 
 @media only screen and (max-width: 992px) {
-    header a.payxnowandrestondelivery-icon {
-        display: block;
-    }
+  header a.payxnowandrestondelivery-icon {
+    display: block;
+  }
 
-    header .payxnowandrestondelivery-header-nav-links,
-    .payxnowandrestondelivery-cross,
-    a.payxnowandrestondelivery-icon.payxnowandrestondelivery-animated .payxnowandrestondelivery-bar-icon,
-    header .payxnowandrestondelivery-header-btn {
-        display: none;
-    }
+  header .payxnowandrestondelivery-header-nav-links,
+  .payxnowandrestondelivery-cross,
+  a.payxnowandrestondelivery-icon.payxnowandrestondelivery-animated
+    .payxnowandrestondelivery-bar-icon,
+  header .payxnowandrestondelivery-header-btn {
+    display: none;
+  }
 
-    header .payxnowandrestondelivery-header-nav-links.payxnowandrestondelivery-show {
-        display: block;
-    }
+  header
+    .payxnowandrestondelivery-header-nav-links.payxnowandrestondelivery-show {
+    display: block;
+  }
 
-    a.payxnowandrestondelivery-icon.payxnowandrestondelivery-animated .payxnowandrestondelivery-cross {
-        display: block;
-    }
+  a.payxnowandrestondelivery-icon.payxnowandrestondelivery-animated
+    .payxnowandrestondelivery-cross {
+    display: block;
+  }
 
-    header .payxnowandrestondelivery-header-nav-links ul {
-        display: flex;
-        position: absolute;
-        flex-direction: column;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        padding: 10px 20px;
-        border-radius: 4px;
-        width: 96%;
-        right: 3%;
-        align-items: flex-start;
-        z-index: 9;
-    }
+  header .payxnowandrestondelivery-header-nav-links ul {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    width: 96%;
+    right: 3%;
+    align-items: flex-start;
+    z-index: 9;
+  }
 }
 
-@media only screen and (max-width:991px) {
-    .payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper {
-        flex-wrap: wrap;
-    }
+@media only screen and (max-width: 991px) {
+  .payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper {
+    flex-wrap: wrap;
+  }
 
-    .payxnowandrestondelivery-main-area .payxnowandrestondelivery-side-bar-col {
-        padding-right: 0;
-        width: 100%;
-        border: 0;
-        margin-bottom: 20px;
-        text-align: center;
-    }
+  .payxnowandrestondelivery-main-area .payxnowandrestondelivery-side-bar-col {
+    padding-right: 0;
+    width: 100%;
+    border: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-    .payxnowandrestondelivery-main-area .payxnowandrestondelivery-main-data-col {
-        width: 100%;
-        padding-left: 0;
-    }
+  .payxnowandrestondelivery-main-area .payxnowandrestondelivery-main-data-col {
+    width: 100%;
+    padding-left: 0;
+  }
 
-    .payxnowandrestondelivery-form-wrapper {
-        margin: 0px auto;
-    }
+  .payxnowandrestondelivery-form-wrapper {
+    margin: 0px auto;
+  }
 
-    .payxnowandrestondelivery-mobile-center {
-        text-align: center;
-        width: 100%;
-    }
+  .payxnowandrestondelivery-mobile-center {
+    text-align: center;
+    width: 100%;
+  }
 
-    .payxnowandrestondelivery-flex-row.payxnowandrestondelivery-image-row {
-        justify-content: center;
-    }
+  .payxnowandrestondelivery-flex-row.payxnowandrestondelivery-image-row {
+    justify-content: center;
+  }
 
-    .mobile-center select {
-        margin: 0 auto;
-    }
+  .mobile-center select {
+    margin: 0 auto;
+  }
 
-    button.payxnowandrestondelivery-pag_btn {
-        margin-bottom: 20px;
-    }
-
+  button.payxnowandrestondelivery-pag_btn {
+    margin-bottom: 20px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
+  .payxnowandrestondelivery-table-heading {
+    flex-direction: column;
+  }
 
-    .payxnowandrestondelivery-table-heading {
-        flex-direction: column;
-    }
+  .payxnowandrestondelivery-table-heading h2 {
+    margin-bottom: 20px;
+  }
 
-    .payxnowandrestondelivery-table-heading h2 {
-        margin-bottom: 20px;
-    }
+  .payxnowandrestondelivery-main-data-col
+    .payxnowandrestondelivery-head-wrapper {
+    flex-direction: column;
+  }
 
-    .payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper {
-        flex-direction: column;
-    }
+  .payxnowandrestondelivery-main-data-col
+    .payxnowandrestondelivery-head-wrapper
+    h2 {
+    margin-bottom: 20px;
+  }
 
-    .payxnowandrestondelivery-main-data-col .payxnowandrestondelivery-head-wrapper h2 {
-        margin-bottom: 20px;
-    }
+  /* pricing tables */
+  .payxnowandrestondelivery-main-area
+    .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
+    flex-wrap: wrap;
+  }
 
-    /* pricing tables */
-    .payxnowandrestondelivery-main-area .payxnowandrestondelivery-inner-wrapper.payxnowandrestondelivery-pricing-row {
-        flex-wrap: wrap;
-    }
+  .payxnowandrestondelivery-pricing-col {
+    width: 100%;
+  }
 
-    .payxnowandrestondelivery-pricing-col {
-        width: 100%;
-    }
-
-    .products-list .payxnowandrestondelivery-main-area .payxnowandrestondelivery-custom-select,
-    .payxhomecls .payxnowandrestondelivery-main-area .payxnowandrestondelivery-custom-select {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-
+  .products-list
+    .payxnowandrestondelivery-main-area
+    .payxnowandrestondelivery-custom-select,
+  .payxhomecls
+    .payxnowandrestondelivery-main-area
+    .payxnowandrestondelivery-custom-select {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 470px) {
-    .list_search .flex-wrapper {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  .list_search .flex-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    form#removform {
-        text-align: center;
-    }
+  form#removform {
+    text-align: center;
+  }
 }
