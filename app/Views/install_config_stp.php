@@ -393,7 +393,7 @@ $store_name = $shop_name[0];
                             </li>
                             <li>Click on customize button from right side <div class="centerCGImg03"><img src="/public/images/stp2.webp" /></div>
                             </li>
-                            <li>Click on third button from the left â€“ App Embed <div class="centerCGImg03"><img src="/public/images/step3.webp" /></div>
+                            <li>Click on third button from the left App Embed <div class="centerCGImg03"><img src="/public/images/step3.webp" /></div>
                             </li>
                             <li>Click on Split2Ship app and enable it <div class="centerCGImg03"><img src="/public/images/stp4.webp" /></div>
                             </li>
