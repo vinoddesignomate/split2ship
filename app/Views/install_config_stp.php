@@ -186,8 +186,8 @@
     }
 
     .inlineButtonsCgTabs ul li {
-        min-width: 120px;
-        max-width: 161px;
+        min-width: 146px;
+        max-width: 146px;
         width: -webkit-fill-available;
         background: #3783e1;
         min-height: 56px;
@@ -197,7 +197,7 @@
         text-decoration: none;
         color: #fff;
         padding: 10px 10px;
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
         letter-spacing: .5px;
         justify-content: center;
