@@ -952,9 +952,9 @@ class Home extends BaseController
 
         $this->check_subscribe();
         $data = array();
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->install_config_stpes();
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
         $get_details = $this->user_model->get_tokens($_GET['shop']);
 
         // $getvareint_id = $this->common->rest_api('/admin/api/2023-01/products/8324807622954/variants.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
@@ -1212,9 +1212,9 @@ class Home extends BaseController
             $page_number = $_GET['part_page'];
         }
 
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->install_config_stpes();
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
         if (!empty($this->request->getPost('assign_remove_pro'))) {
             foreach ($this->request->getPost('assign_remove_pro') as $prokey => $product_id) {
                 $this->user_model->update_plan_products_remove_part($_GET['shop']);
@@ -1307,9 +1307,9 @@ class Home extends BaseController
     {
         $this->check_subscribe();
         $data = array();
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->install_config_stpes();
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
         $get_details = $this->user_model->get_tokens($_GET['shop']);
 
 
@@ -2393,9 +2393,9 @@ class Home extends BaseController
     {
 
         $data = array();
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->install_config_stpes();
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
         $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
         $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
         //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
@@ -2632,9 +2632,9 @@ class Home extends BaseController
     {
         $data = array();
         //echo phpinfo();
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->install_config_stpes();
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
         if ($this->request->getPost('track_color')) {
             $track_color_array = array(
                 "partial_btn_color" => $this->request->getPost('partbtn_color'),
@@ -3049,9 +3049,9 @@ class Home extends BaseController
     public function app_tutorials()
     {
         $data = array();
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-            $this->install_config_stpes();
-        }
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
         echo view('templates/header');
         echo view('app_tutorial_page', $data);
         echo view('templates/footer');
