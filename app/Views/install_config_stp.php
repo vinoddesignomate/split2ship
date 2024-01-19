@@ -1,3 +1,7 @@
+<?php
+$shop_name = explode(".", $_GET['shop']);
+$store_name = $shop_name[0];
+?>
 <style>
     #showPopUpCG {
         display: none;
@@ -413,7 +417,7 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="5">
-                            <li>Click on collection <div class="centerCGImg03"><img src="/public/images/stp2_1.webp" /></div>
+                            <li>Click on collection <a onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Click here</a><div class="centerCGImg03"><img src="/public/images/stp2_1.webp" /></div>
                             </li>
                             <li>Click on pencil icon and define how much advance you want to take upfront<div class="centerCGImg03"><img src="/public/images/step2_2.webp" /></div>
                             </li>
@@ -440,7 +444,7 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
-                            <li>Enable the button on cart page and product page <div class="centerCGImg03"><img src="/public/images/step3_1.webp" /></div>
+                            <li>Enable the button on cart page and product page <a onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Click here</a><div class="centerCGImg03"><img src="/public/images/step3_1.webp" /></div>
                             </li>
                             <li>Make sure you pick the right color for the background of the button and text color on the button <div class="centerCGImg03"><img src="/public/images/step3_2.webp" /></div>
                             </li>
@@ -467,7 +471,7 @@
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
-                            <li>Go to the "Tutorial" page of the app <div class="centerCGImg03"><img src="/public/images/step4_1.webp" /></div>
+                            <li>Go to the "Tutorial" page of the app <a onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials">Click here</a><div class="centerCGImg03"><img src="/public/images/step4_1.webp" /></div>
                             </li>
                             <li>Scroll down to step number 5 and copy the entire code <div class="centerCGImg03"><img src="/public/images/step4_2.webp" /></div>
                             </li>
@@ -575,4 +579,9 @@
         $("#showPopUpCG").fadeOut();
         track_steps_ajax('step4', 1);
     });
+    function popupclick(event) {
+        event.preventDefault();
+        var href = event.currentTarget.getAttribute('href')
+        window.open(href, '_blank');
+    }
 </script>
