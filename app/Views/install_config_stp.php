@@ -241,6 +241,7 @@
     .inlineButtonsCg {
         width: 100%;
         clear: both;
+        float: left;
         margin: 25px 0 20px 0;
     }
 
