@@ -204,7 +204,7 @@
 
     .videoInsideCg {
         text-align: center;
-        width: 450px;
+        width: 100%;
         max-width: 90%;
         max-height: 100%;
         margin: 0 auto;
