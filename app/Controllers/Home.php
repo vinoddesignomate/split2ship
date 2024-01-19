@@ -3195,12 +3195,12 @@ class Home extends BaseController
     {
         if ($this->request->getGet('shop')) {
             $get_details = $this->user_model->get_tokens($this->request->getGet('shop'));
-            $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+            $shop_info = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
             $register_shop_info = json_decode($shop_info['body'], true);
             print_r( $register_shop_info);
 
             if ($get_details->email == "") {
-                $shop_info = $this->common->rest_api('/admin/api/2022-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                $shop_info = $this->common->rest_api('/admin/api/2023-07/shop.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
                 $register_shop_info = json_decode($shop_info['body'], true);
                 if (isset($register_shop_info['shop']['customer_email']) && $register_shop_info['shop']['customer_email'] != "") {
                     $custemail = $register_shop_info['shop']['customer_email'];
