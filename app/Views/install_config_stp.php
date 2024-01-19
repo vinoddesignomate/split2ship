@@ -315,6 +315,7 @@
     .videoInsideCg iframe {
         max-width: 100% !important;
         width: 100% !important;
+        border: 8px solid #3783e13b;
     }
 
     @media screen and (max-width:479px) {
