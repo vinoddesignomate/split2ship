@@ -309,7 +309,7 @@
     }
 
     .centerCGImg03 img {
-        margin: 3px auto;
+        margin: 15px auto;
     }
 
     .videoInsideCg iframe {
