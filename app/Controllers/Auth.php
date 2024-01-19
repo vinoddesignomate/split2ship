@@ -123,8 +123,7 @@ class Auth extends BaseController
 					"created" => $curdate,
 					"store_status" => 1,
 					"update_app" => 1,
-					"force_update" => 1,
-					"track_responseddd" => json_encode($response)
+					"force_update" => 1
 					//"total_sync_store_products" => 0
 				));
 
@@ -151,8 +150,7 @@ class Auth extends BaseController
 					"associated_user_scope" => $response['associated_user_scope'],
 					"store_status" => 1,
 					"update_app" => 1,
-					"force_update" => 1,
-					"track_responseddd" => json_encode($response)
+					"force_update" => 1
 					//"total_sync_store_products" => 0
 				));
 			}
