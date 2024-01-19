@@ -234,8 +234,6 @@
     }
 
     .mainBoxCouponInside ol li img {
-        margin: 0;
-        margin-top: 8px;
         width: auto;
         max-width: 100%;
     }
