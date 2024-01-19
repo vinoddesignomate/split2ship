@@ -561,14 +561,16 @@ $store_name = $shop_name[0];
 
 
     $("#nextCgScreen1").click(function() {
+        event.preventDefault();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
         track_steps_ajax('step1', 1);
         // Scroll to the "addCGproducts" div
-        var targetDiv = $("#addCGproducts");
+       // Scroll to the "addCGproducts" div
+       var targetDiv = $("#addCGproducts");
         $('html, body').animate({
             scrollTop: targetDiv.offset().top
-        }, 500); // Adjust the duration as needed
+        }, 200); // Adjust the duration as needed
     });
 
     $("#nextCgScreen2").click(function() {
