@@ -606,14 +606,15 @@ $store_name = $shop_name[0];
 
     $("#nextCgScreen2").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
-        $("#addCGproducts").addClass("hideCGthis");
-        $("#configureCGapp").addClass("addCGproductsCls");
-        $("#configureCGapp").addClass("activeArecG");
-        $("#confitbcg").addClass("activetabcg");
         var targetDiv = $(".videoInsideCg");
         $('html, body').animate({
             scrollTop: targetDiv.offset().top
         }, 200); // Adjust the duration as needed
+        $("#addCGproducts").addClass("hideCGthis");
+        $("#configureCGapp").addClass("addCGproductsCls");
+        $("#configureCGapp").addClass("activeArecG");
+        $("#confitbcg").addClass("activetabcg");
+       
         track_steps_ajax('step2', 1);
     });
 
