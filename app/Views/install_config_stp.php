@@ -609,6 +609,7 @@ $store_name = $shop_name[0];
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $("#configureCGapp").addClass("activeArecG");
+        $("#confitbcg").addClass("activetabcg");
         var targetDiv = $(".videoInsideCg");
         $('html, body').animate({
             scrollTop: targetDiv.offset().top
@@ -621,7 +622,7 @@ $store_name = $shop_name[0];
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         $("#emailCGtemplates").addClass("activeArecG");
-        $("#confitbcg").addClass("activetabcg");
+        $("#emptplcg").addClass("activetabcg");
         var targetDiv = $(".videoInsideCg");
         $('html, body').animate({
             scrollTop: targetDiv.offset().top
@@ -631,7 +632,7 @@ $store_name = $shop_name[0];
     $("#nextCgScreen4").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
         $('body').removeClass('popupCgTransparancy');
-        $("#emptplcg").addClass("activetabcg");
+       
         $("#showPopUpCG").fadeOut();
         track_steps_ajax('step4', 1);
     });
