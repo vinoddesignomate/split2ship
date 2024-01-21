@@ -596,6 +596,10 @@ $store_name = $shop_name[0];
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $("#configureCGapp").addClass("activeArecG");
+        var targetDiv = $("#configureCGapp");
+        $('html, body').animate({
+            scrollTop: targetDiv.offset().top
+        }, 200); // Adjust the duration as needed
         track_steps_ajax('step2', 1);
     });
 
@@ -603,6 +607,11 @@ $store_name = $shop_name[0];
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         $("#emailCGtemplates").addClass("activeArecG");
+        var targetDiv = $("#emailCGtemplates");
+        $('html, body').animate({
+            scrollTop: targetDiv.offset().top
+        }, 200); // Adjust the duration as needed
+        track_steps_ajax('step2', 1);
         track_steps_ajax('step3', 1);
     });
     $("#nextCgScreen4").click(function() {
