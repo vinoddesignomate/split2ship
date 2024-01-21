@@ -385,10 +385,10 @@ $store_name = $shop_name[0];
             <!-- <span id="deletePopupCG">X</span> -->
             <div class="inlineButtonsCgTabs">
                 <ul>
-                    <li>Enable App </li>
-                    <li>Add products </li>
-                    <li>Configure the App </li>
-                    <li>Email Templates </li>
+                    <li id="enblp" class="tbcls_cg">Enable App </li>
+                    <li id="adprdtcg" class="tbcls_cg">Add products </li>
+                    <li id="confitbcg" class="tbcls_cg">Configure the App </li>
+                    <li id="emptplcg" class="tbcls_cg">Email Templates </li>
                 </ul>
             </div>
             <div class="mainDivCGRelative">
@@ -545,12 +545,14 @@ $store_name = $shop_name[0];
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("addCGproductsCls");
         $("#enableCGapp").addClass("activeArecG");
+        $("#enblp").addClass("activetabcg");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 2) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
         $("#addCGproducts").addClass("activeArecG");
+        $("#adprdtcg").addClass("activetabcg");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 3) {
         $("#showPopUpCG").fadeIn();
@@ -558,6 +560,7 @@ $store_name = $shop_name[0];
         $("#enableCGapp").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $("#configureCGapp").addClass("activeArecG");
+        $("#confitbcg").addClass("activetabcg");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 4) {
         $("#showPopUpCG").fadeIn();
@@ -566,6 +569,7 @@ $store_name = $shop_name[0];
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         $("#emailCGtemplates").addClass("activeArecG");
+        $("#emptplcg").addClass("activetabcg");
         $('body').addClass('popupCgTransparancy');
     }
 
@@ -580,9 +584,12 @@ $store_name = $shop_name[0];
 
     $("#nextCgScreen1").click(function() {
         event.preventDefault();
+        $(".tbcls_cg").removeClass("activetabcg");
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
         $("#addCGproducts").addClass("activeArecG");
+        $("#adprdtcg").addClass("activetabcg");
+        
         track_steps_ajax('step1', 1);
         // Scroll to the "addCGproducts" div
         // Scroll to the "addCGproducts" div
@@ -593,6 +600,7 @@ $store_name = $shop_name[0];
     });
 
     $("#nextCgScreen2").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
         $("#configureCGapp").addClass("activeArecG");
@@ -604,9 +612,11 @@ $store_name = $shop_name[0];
     });
 
     $("#nextCgScreen3").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
         $("#emailCGtemplates").addClass("activeArecG");
+        $("#confitbcg").addClass("activetabcg");
         var targetDiv = $(".videoInsideCg");
         $('html, body').animate({
             scrollTop: targetDiv.offset().top
@@ -614,7 +624,9 @@ $store_name = $shop_name[0];
         track_steps_ajax('step3', 1);
     });
     $("#nextCgScreen4").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
         $('body').removeClass('popupCgTransparancy');
+        $("#emptplcg").addClass("activetabcg");
         $("#showPopUpCG").fadeOut();
         track_steps_ajax('step4', 1);
     });
