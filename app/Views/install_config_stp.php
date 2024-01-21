@@ -296,7 +296,7 @@ $store_name = $shop_name[0];
         left: 100%;
         bottom: 0;
         width: 100%;
-    }
+    } 
 
     .mainDivCGRelative .screenTopCgSlide.activeArecG {
         position: relative;
@@ -316,12 +316,8 @@ $store_name = $shop_name[0];
     }
 
     .mainDivCGRelative {
-        position: relative;
-        width: 100%;
         display: block;
         overflow-x: hidden;
-        overflow-y: scroll;
-        height: 400px;
     }
 
     .hideCGthis {
