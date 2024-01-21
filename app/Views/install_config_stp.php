@@ -193,7 +193,7 @@ $store_name = $shop_name[0];
         min-width: 146px;
         max-width: 146px;
         width: -webkit-fill-available;
-        background: #3783e1;
+        background: #6a6a6a;
         min-height: 56px;
         border-radius: 0px;
         align-items: center;
@@ -208,6 +208,11 @@ $store_name = $shop_name[0];
         border: none;
         border-right: 1px solid #fff;
     }
+
+    .inlineButtonsCgTabs ul li.activetabcg {
+        background: #000;
+    }
+
 
     .inlineButtonsCgTabs ul li:first-child {
         border-left: 1px solid #fff;
@@ -296,7 +301,7 @@ $store_name = $shop_name[0];
         left: 100%;
         bottom: 0;
         width: 100%;
-    } 
+    }
 
     .mainDivCGRelative .screenTopCgSlide.activeArecG {
         position: relative;
@@ -589,7 +594,7 @@ $store_name = $shop_name[0];
         $("#addCGproducts").addClass("addCGproductsCls");
         $("#addCGproducts").addClass("activeArecG");
         $("#adprdtcg").addClass("activetabcg");
-        
+
         track_steps_ajax('step1', 1);
         // Scroll to the "addCGproducts" div
         // Scroll to the "addCGproducts" div
