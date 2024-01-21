@@ -547,6 +547,7 @@ $store_name = $shop_name[0];
     console.log(stepactive);
     if (stepactive == 1) {
         $("#showPopUpCG").fadeIn();
+        $("#enableCGapp").addClass("addCGproductsCls");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 2) {
         $("#showPopUpCG").fadeIn();
