@@ -548,17 +548,20 @@ $store_name = $shop_name[0];
     if (stepactive == 1) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("addCGproductsCls");
+        $("#enableCGapp").addClass("activeArecG");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 2) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
+        $("#addCGproducts").addClass("activeArecG");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 3) {
         $("#showPopUpCG").fadeIn();
         $("#addCGproducts").addClass("hideCGthis");
         $("#enableCGapp").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
+        $("#configureCGapp").addClass("activeArecG");
         $('body').addClass('popupCgTransparancy');
     } else if (stepactive == 4) {
         $("#showPopUpCG").fadeIn();
@@ -566,6 +569,7 @@ $store_name = $shop_name[0];
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
+        $("#emailCGtemplates").addClass("activeArecG");
         $('body').addClass('popupCgTransparancy');
     }
 
