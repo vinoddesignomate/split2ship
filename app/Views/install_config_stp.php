@@ -290,10 +290,25 @@ $store_name = $shop_name[0];
     }
 
     .mainDivCGRelative .screenTopCgSlide {
-        transition: aal .2s ease-in-out;
-        left: 0;
-        top: 0;
+        transition: all .25s ease-in-out;
+        background: #fff;
+        position: absolute;
+        left: 100%;
+        bottom: 0;
         width: 100%;
+    }
+
+    .mainDivCGRelative .screenTopCgSlide.activeArecG {
+        position: relative;
+        left: 0;
+        transition: all .25s ease-in-out !important;
+    }
+
+    .mainDivCGRelative .screenTopCgSlide.activeArecG.hideCGthis {
+        position: absolute;
+        transition: all .25s ease-in-out;
+        left: 0;
+        display: none;
     }
 
     .mainDivCGRelative .addCGproductsCls {
@@ -303,7 +318,7 @@ $store_name = $shop_name[0];
     .mainDivCGRelative {
         position: relative;
         width: 100%;
-        display: flex;
+        display: block;
         overflow-x: hidden;
         overflow-y: scroll;
         height: 400px;
@@ -311,8 +326,9 @@ $store_name = $shop_name[0];
 
     .hideCGthis {
         width: 0 !important;
-        transition: all .1s ease-in-out !important;
+        transition: all .5s ease-in-out !important;
         visibility: hidden;
+        opacity: 0;
     }
 
     .centerCGImg03 {
@@ -564,10 +580,11 @@ $store_name = $shop_name[0];
         event.preventDefault();
         $("#enableCGapp").addClass("hideCGthis");
         $("#addCGproducts").addClass("addCGproductsCls");
+        $("#addCGproducts").addClass("activeArecG");
         track_steps_ajax('step1', 1);
         // Scroll to the "addCGproducts" div
-       // Scroll to the "addCGproducts" div
-       var targetDiv = $("#addCGproducts");
+        // Scroll to the "addCGproducts" div
+        var targetDiv = $("#addCGproducts");
         $('html, body').animate({
             scrollTop: targetDiv.offset().top
         }, 200); // Adjust the duration as needed
@@ -576,12 +593,14 @@ $store_name = $shop_name[0];
     $("#nextCgScreen2").click(function() {
         $("#addCGproducts").addClass("hideCGthis");
         $("#configureCGapp").addClass("addCGproductsCls");
+        $("#configureCGapp").addClass("activeArecG");
         track_steps_ajax('step2', 1);
     });
 
     $("#nextCgScreen3").click(function() {
         $("#configureCGapp").addClass("hideCGthis");
         $("#emailCGtemplates").addClass("addCGproductsCls");
+        $("#emailCGtemplates").addClass("activeArecG");
         track_steps_ajax('step3', 1);
     });
     $("#nextCgScreen4").click(function() {
