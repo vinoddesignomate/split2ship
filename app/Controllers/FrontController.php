@@ -627,7 +627,9 @@ class FrontController extends BaseController
                 //"finesilverjewels.myshopify.com";
                 //     return $this->common->draft_order_creat($get_details->access_token, $shopname, $final_array);
                 // }
-                if ($shopname == 'tajbridalindia.myshopify.com') {
+                $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "tajbridalindia.myshopify.com"];
+                //if ($shopname == 'tajbridalindia.myshopify.com') {
+                if (in_array($shopname, $allowedShopNamesdisc)) {
                     if ($coupon_discountline == 0) {
                         $coupon_discountline = $splite_order_discount;
                     }
