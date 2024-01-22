@@ -263,11 +263,11 @@ class FrontController extends BaseController
                 if (substr($remaining_price, 0, 1) === '-') {
                     $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
                 }
-                if ($shopname == 'desinomatetest.myshopify.com') {
+                //if ($shopname == 'desinomatetest.myshopify.com') {
                     $coupon_name = 'Remaining_Amount_' . $randnum . '(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
-                } else {
-                    $coupon_name = 'Remaining_Amount(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
-                }
+                // } else {
+                //     $coupon_name = 'Remaining_Amount(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
+                // }
                 $remaining_price = $remaining_price + $coupon_discount;
                 $remaining_price = "-" . $remaining_price;
             } else {
