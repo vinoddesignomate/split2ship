@@ -290,8 +290,9 @@ class FrontController extends BaseController
             $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
             $getprietuleidrec = json_decode($getprietuleid['body'], true);
-
-            //print_r($getprietuleidrec);
+            if ($shopname == 'tajbridalindia.myshopify.com') {
+                print_r($getprietuleidrec);
+            }
             if (array_key_exists('errors', $getprietuleidrec)) {
                 echo "invalid";
             } else {
@@ -305,7 +306,10 @@ class FrontController extends BaseController
 
                 $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
                 $createcouponrec = json_decode($createcoupon['body'], true);
-                //print_r($createcouponrec);
+                if ($shopname == 'tajbridalindia.myshopify.com') {
+                    echo"createcouponrec";
+                    print_r($createcouponrec);
+                }
                 if (array_key_exists('errors', $createcouponrec)) {
                     echo "invalid";
                 } else {
