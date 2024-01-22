@@ -263,7 +263,11 @@ class FrontController extends BaseController
                 if (substr($remaining_price, 0, 1) === '-') {
                     $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
                 }
-                $coupon_name = 'Remaining_Amount_' . $randnum . '(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
+                if ($shopname == 'desinomatetest.myshopify.com') {
+                    $coupon_name = 'Remaining_Amount_' . $randnum . '(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
+                } else {
+                    $coupon_name = 'Remaining_Amount(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
+                }
                 $remaining_price = $remaining_price + $coupon_discount;
                 $remaining_price = "-" . $remaining_price;
             } else {
@@ -307,7 +311,7 @@ class FrontController extends BaseController
                 $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
                 $createcouponrec = json_decode($createcoupon['body'], true);
                 if ($shopname == 'tajbridalindia.myshopify.com') {
-                    echo"createcouponrec";
+                    echo "createcouponrec";
                     print_r($createcouponrec);
                 }
                 if (array_key_exists('errors', $createcouponrec)) {
