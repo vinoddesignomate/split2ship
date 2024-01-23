@@ -401,7 +401,7 @@ $store_name = $shop_name[0];
                 <div id="enableCGapp" class="screenTopCgSlide">
                     <div class="videoInsideCg">
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ASkCOT-IfRw?si=c8M-AfV2q1NbZgoU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="560" height="280" src="https://www.youtube.com/embed/ASkCOT-IfRw?si=c8M-AfV2q1NbZgoU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                     </div>
                     <div class="wdSetcg">
@@ -430,7 +430,7 @@ $store_name = $shop_name[0];
                 <!---Start Screen 2---->
                 <div id="addCGproducts" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3Q8tRv2L6tE?si=HDFDEQgXg68V_OKd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="560" height="280" src="https://www.youtube.com/embed/3Q8tRv2L6tE?si=HDFDEQgXg68V_OKd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="5">
@@ -458,7 +458,7 @@ $store_name = $shop_name[0];
                 <!---Start Screen 3---->
                 <div id="configureCGapp" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Whgbr6yXZPI?si=xspexgoC-XR9w3Mi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="560" height="280" src="https://www.youtube.com/embed/Whgbr6yXZPI?si=xspexgoC-XR9w3Mi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
@@ -486,7 +486,7 @@ $store_name = $shop_name[0];
                 <!---Start Screen 4---->
                 <div id="emailCGtemplates" class="screenTopCgSlide">
                     <div class="videoInsideCg">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8apDMrtAdXc?si=trvtixNqb6rcTd-7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="560" height="280" src="https://www.youtube.com/embed/8apDMrtAdXc?si=trvtixNqb6rcTd-7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
