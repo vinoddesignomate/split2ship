@@ -589,6 +589,8 @@ $store_name = $shop_name[0];
     //code for go to previous page one
     $("#prevstp").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
+        $(".screenTopCgSlide").removeClass("activeArecG");
+        $(".screenTopCgSlide").removeClass("addCGproductsCls");
         $("#enableCGapp").addClass("addCGproductsCls");
         $("#enableCGapp").addClass("activeArecG");
         $("#enblp").addClass("activetabcg");
