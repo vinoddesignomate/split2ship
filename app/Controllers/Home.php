@@ -831,9 +831,9 @@ class Home extends BaseController
                 $this->user_model->update_data($_GET['shop'], array(
                     "show_config_popup" => 1
                 ));
-                if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+                //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                     $this->install_config_stpes();
-                }
+               // }
                 echo view('templates/header');
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                     echo view('welcome_message', $data);
