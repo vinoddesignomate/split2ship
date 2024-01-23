@@ -448,7 +448,7 @@ $store_name = $shop_name[0];
                         <ul>
                             <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen2">Done</a></li>
-                            <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
+                            <li><a href="javascript:void(0)" id="prevstp">Previous Step</a></li>
                         </ul>
                     </div>
 
@@ -586,7 +586,13 @@ $store_name = $shop_name[0];
         $("#showPopUpCG").fadeOut();
     });
 
-
+    //code for go to previous page one
+    $("#prevstp").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
+        $("#enableCGapp").addClass("addCGproductsCls");
+        $("#enableCGapp").addClass("activeArecG");
+        $("#enblp").addClass("activetabcg");
+    });
     $("#nextCgScreen1").click(function() {
         event.preventDefault();
         $(".tbcls_cg").removeClass("activetabcg");
