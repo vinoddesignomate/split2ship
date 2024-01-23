@@ -232,7 +232,7 @@ $store_name = $shop_name[0];
     }
 
     .wdSetcg {
-        width: 650px;
+        width: 100%;
         max-width: 100%;
         padding: 0 30px;
         margin: 0 auto;
