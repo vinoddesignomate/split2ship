@@ -591,6 +591,7 @@ $store_name = $shop_name[0];
         $(".tbcls_cg").removeClass("activetabcg");
         $(".screenTopCgSlide").removeClass("activeArecG");
         $(".screenTopCgSlide").removeClass("addCGproductsCls");
+        $("#enableCGapp").removeClass("hideCGthis");
         $("#enableCGapp").addClass("addCGproductsCls");
         $("#enableCGapp").addClass("activeArecG");
         $("#enblp").addClass("activetabcg");
