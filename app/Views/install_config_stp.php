@@ -475,7 +475,7 @@ $store_name = $shop_name[0];
                         <ul>
                             <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen3">Done</a></li>
-                            <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
+                            <li><a href="javascript:void(0)" id="previstp2">Previous Step</a></li>
                         </ul>
                     </div>
 
@@ -514,7 +514,7 @@ $store_name = $shop_name[0];
                         <ul>
                             <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
                             <li><a href="javascript:void(0)" id="nextCgScreen4">Done</a></li>
-                            <!-- <li><a href="javascript:void(0)" id="">Previous Step</a></li> -->
+                            <li><a href="javascript:void(0)" id="prevstp3">Previous Step</a></li>
                         </ul>
                     </div>
 
@@ -545,7 +545,7 @@ $store_name = $shop_name[0];
 
         });
     }
-    console.log(stepactive);
+    
     if (stepactive == 1) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("addCGproductsCls");
@@ -595,6 +595,26 @@ $store_name = $shop_name[0];
         $("#enableCGapp").addClass("addCGproductsCls");
         $("#enableCGapp").addClass("activeArecG");
         $("#enblp").addClass("activetabcg");
+    });
+    
+    $("#previstp2").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
+        $(".screenTopCgSlide").removeClass("activeArecG");
+        $(".screenTopCgSlide").removeClass("addCGproductsCls");
+        $("#addCGproducts").removeClass("hideCGthis");
+        $("#addCGproducts").addClass("addCGproductsCls");
+        $("#addCGproducts").addClass("activeArecG");
+        $("#adprdtcg").addClass("activetabcg");
+    });
+    
+    $("#prevstp3").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
+        $(".screenTopCgSlide").removeClass("activeArecG");
+        $(".screenTopCgSlide").removeClass("addCGproductsCls");
+        $("#configureCGapp").removeClass("hideCGthis");
+        $("#configureCGapp").addClass("addCGproductsCls");
+        $("#configureCGapp").addClass("activeArecG");
+        $("#confitbcg").addClass("activetabcg");
     });
     $("#nextCgScreen1").click(function() {
         event.preventDefault();
