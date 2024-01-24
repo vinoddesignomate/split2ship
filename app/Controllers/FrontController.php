@@ -62,7 +62,7 @@ class FrontController extends BaseController
                             $partperctg = 10;
                         }
                         if ($partperctg > $get_resulrs[0]->price) {
-                            return 'not_found';
+                            return 'not_found1';
                         } else {
 
 
@@ -80,7 +80,7 @@ class FrontController extends BaseController
                             }
 
                             if (array_key_exists('errors', $getvarientsres)) {
-                                return 'not_found';
+                                return 'not_found2';
                             } else {
                                 if (empty($gtbtncolor)) {
                                     $return_array = array(
@@ -136,16 +136,16 @@ class FrontController extends BaseController
                             }
                         }
                     } else {
-                        return 'not_found';
+                        return 'not_found3';
                     }
                 } else {
-                    return 'not_found';
+                    return 'not_found4';
                 }
             } else {
-                return 'not_found';
+                return 'not_found5';
             }
         } else {
-            return 'not_found';
+            return 'not_found6';
         }
     }
     function generateRandomString($length)
