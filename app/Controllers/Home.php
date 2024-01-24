@@ -87,10 +87,10 @@ class Home extends BaseController
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'e6de84.myshopify.com') {
 
 
-                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5656769495262.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
-                    // echo "getprietuleid<pre>";
-                    // print_r($getprietuleid);
-                    // echo "</pre>";
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686553542932.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+                    echo "getprietuleid<pre>";
+                    print_r($getprietuleid);
+                    echo "</pre>";
 
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -153,7 +153,7 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686551609620.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686551609620.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -486,7 +486,7 @@ class Home extends BaseController
 
                     echo "<pre>";
                     print_r(json_decode($getorderarry));
-                    echo "</pre>";
+                    echo "</pre>";*/
 
                     // echo $getorderarry;
                     // }
