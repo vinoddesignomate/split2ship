@@ -61,9 +61,9 @@ class FrontController extends BaseController
                             $propartialper = (10 / 100) * $get_resulrs[0]->price;
                             $partperctg = 10;
                         }
-                        // if ($partperctg > $get_resulrs[0]->price) {
-                        //     return 'not_found';
-                        // } else {
+                        if ($partperctg > $get_resulrs[0]->price) {
+                            return 'not_found';
+                        } else {
 
 
                             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
@@ -134,7 +134,7 @@ class FrontController extends BaseController
                                 }
                                 return json_encode($return_array);
                             }
-                        //}
+                        }
                     } else {
                         return 'not_found';
                     }
