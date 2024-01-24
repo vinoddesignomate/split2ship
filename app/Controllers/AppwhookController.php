@@ -348,7 +348,7 @@ class AppwhookController extends BaseController
             if ($dicocideline > 0) {
                 // $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
                 $finaldiscount = $jsndata->subtotal_price + $dicocideline;
-                $titla_name = "Partial Payment(".$jsndata->subtotal_price.")+Applied Discount(".$dicocideline.")";
+                $titla_name = "Partial Payment(" . $jsndata->subtotal_price . ")+Applied Discount(" . $dicocideline . ")";
             } else {
                 $finaldiscount = $jsndata->subtotal_price;
                 $titla_name = "Partial Payment";
@@ -381,60 +381,121 @@ class AppwhookController extends BaseController
         $this->user_model->check_test_response($resposne_array);
 
         //if (!empty($chkpropeties)) {
-        $order_data = [
-            "order" => [
-                "line_items" => $order_line_items,
-                "financial_status" => "pending",
-                "tax_lines" => $tax_lines,
-                "total_tax" => $order_tax,
-                "transactions" => [
-                    [
-                        "kind" => "authorization",
-                        "status" => "success",
-                        "amount" => $finalprice,
-                        "gateway" => "Cash on Delivery"
-                    ]
-                ],
-                "shipping_address" => [
-                    "first_name" => $first_name,
-                    "last_name" => $las_name,
-                    "address1" => $address1 . $address2,
-                    "phone" => $phone,
-                    "city" => $city,
-                    "province" => $province,
-                    "country" => $country,
-                    "zip" => $zip
-                ],
-                "billing_address" => [
-                    "first_name" => (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : ''),
-                    "last_name" => (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : ''),
-                    "address1" => (isset($jsndata->billing_address->address1) ? $jsndata->billing_address->address1 : '') . (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : ''),
-                    "phone" => $store_phnum2,
-                    "city" => (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : ''),
-                    "province" => (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : ''),
-                    "country" => (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : ''),
-                    "zip" => (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '')
-                ],
-                "taxes_included" => $txincude,
-                "customer" => [
-                    "id" => $jsndata->customer->id
-                ],
-                "note_attributes" => [
-                    [
-                        "name" => "Suffix",
-                        "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
-                    ]
-                ],
-                "name" => $jsndata->name . '-SplitOrder',
-                "discount_codes" => [
-                    [
-                        "code" => $titla_name,
-                        "amount" => $finaldiscount,
-                        "type" => "fixed_amount"
+
+        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+            $order_data = [
+                "order" => [
+                    "line_items" => $order_line_items,
+                    "financial_status" => "pending",
+                    "tax_lines" => $tax_lines,
+                    "total_tax" => $order_tax,
+                    "payment_gateway" => "cod",
+                    // "transactions" => [
+                    //     [
+                    //         "kind" => "authorization",
+                    //         "status" => "success",
+                    //         "amount" => $finalprice,
+                    //         "gateway" => "Cash on Delivery"
+                    //     ]
+                    // ],
+                    "shipping_address" => [
+                        "first_name" => $first_name,
+                        "last_name" => $las_name,
+                        "address1" => $address1 . $address2,
+                        "phone" => $phone,
+                        "city" => $city,
+                        "province" => $province,
+                        "country" => $country,
+                        "zip" => $zip
+                    ],
+                    "billing_address" => [
+                        "first_name" => (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : ''),
+                        "last_name" => (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : ''),
+                        "address1" => (isset($jsndata->billing_address->address1) ? $jsndata->billing_address->address1 : '') . (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : ''),
+                        "phone" => $store_phnum2,
+                        "city" => (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : ''),
+                        "province" => (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : ''),
+                        "country" => (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : ''),
+                        "zip" => (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '')
+                    ],
+                    "taxes_included" => $txincude,
+                    "customer" => [
+                        "id" => $jsndata->customer->id
+                    ],
+                    "note_attributes" => [
+                        [
+                            "name" => "Suffix",
+                            "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
+                        ]
+                    ],
+                    "name" => $jsndata->name . '-SplitOrder',
+                    "discount_codes" => [
+                        [
+                            "code" => $titla_name,
+                            "amount" => $finaldiscount,
+                            "type" => "fixed_amount"
+                        ]
                     ]
                 ]
-            ]
-        ];
+            ];
+        } else {
+            $order_data = [
+                "order" => [
+                    "line_items" => $order_line_items,
+                    "financial_status" => "pending",
+                    "tax_lines" => $tax_lines,
+                    "total_tax" => $order_tax,
+                    "transactions" => [
+                        [
+                            "kind" => "authorization",
+                            "status" => "success",
+                            "amount" => $finalprice,
+                            "gateway" => "Cash on Delivery"
+                        ]
+                    ],
+                    "shipping_address" => [
+                        "first_name" => $first_name,
+                        "last_name" => $las_name,
+                        "address1" => $address1 . $address2,
+                        "phone" => $phone,
+                        "city" => $city,
+                        "province" => $province,
+                        "country" => $country,
+                        "zip" => $zip
+                    ],
+                    "billing_address" => [
+                        "first_name" => (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : ''),
+                        "last_name" => (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : ''),
+                        "address1" => (isset($jsndata->billing_address->address1) ? $jsndata->billing_address->address1 : '') . (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : ''),
+                        "phone" => $store_phnum2,
+                        "city" => (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : ''),
+                        "province" => (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : ''),
+                        "country" => (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : ''),
+                        "zip" => (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '')
+                    ],
+                    "taxes_included" => $txincude,
+                    "customer" => [
+                        "id" => $jsndata->customer->id
+                    ],
+                    "note_attributes" => [
+                        [
+                            "name" => "Suffix",
+                            "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
+                        ]
+                    ],
+                    "name" => $jsndata->name . '-SplitOrder',
+                    "discount_codes" => [
+                        [
+                            "code" => $titla_name,
+                            "amount" => $finaldiscount,
+                            "type" => "fixed_amount"
+                        ]
+                    ]
+                ]
+            ];
+        }
+
+
 
 
         $resposne_array = array("name" => "actual order_data discount" . json_encode($order_data));
@@ -683,18 +744,18 @@ class AppwhookController extends BaseController
             $zip = $jsndata->billing_address->zip;
             $country = $jsndata->billing_address->country;
 
-            $billing_address = [ 
-                    "billing_address" => [
-                        "first_name" => $first_name,
-                        "last_name" => $las_name,
-                        "address1" => $address1 . $address2,
-                        "phone" => $phone,
-                        "city" => $city,
-                        "province" => $province,
-                        "country" => $country,
-                        "zip" => $zip
-                        ]
-                    ];
+            $billing_address = [
+                "billing_address" => [
+                    "first_name" => $first_name,
+                    "last_name" => $las_name,
+                    "address1" => $address1 . $address2,
+                    "phone" => $phone,
+                    "city" => $city,
+                    "province" => $province,
+                    "country" => $country,
+                    "zip" => $zip
+                ]
+            ];
         }
         if ($linitemdisount > 0) {
             $finaldiscount = $linitemdisount + $paid_price;
