@@ -419,11 +419,15 @@ class Home extends BaseController
                         //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
                         if ($getprietuleidrec['order']['taxes_included'] == 1) {
                             $txincude = 1;
-                            $finalprice = $taxamounttotal - $order_tax;
+                            echo "finalprice1".$finalprice = $taxamounttotal - $order_tax;
                             //$finalprice = $finalprice - $finaldiscount;
                         } else {
                             $txincude = false;
-                            $finalprice = $taxamounttotal;
+                            echo "finalprice2".$finalprice = $taxamounttotal;
+                        }
+
+                        if ($dicocideline > 0) {
+                            echo "finalprice3".$finalprice = $taxamounttotal - $dicocideline;
                         }
 
                         // $finaldiscount = $linitemdisount + $paid_price;
