@@ -164,9 +164,9 @@ class Home extends BaseController
                     //  $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
 
 
-                    // echo "getprietuleidrec<pre>";
-                    // print_r($getprietuleidrec);
-                    // echo "</pre>";
+                    echo "getprietuleidrec<pre>";
+                    print_r($getprietuleidrec);
+                    echo "</pre>";
 
 
 
@@ -416,6 +416,7 @@ class Home extends BaseController
                             $finaldiscount = $getprietuleidrec['order']['subtotal_price'];
                             $titla_name = "Partial Payment";
                         }
+                        
                         //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
                         if ($getprietuleidrec['order']['taxes_included'] == 1) {
                             $txincude = 1;
@@ -496,11 +497,11 @@ class Home extends BaseController
                         print_r($order_data);
                         echo "</pre>";
 
-                        $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                        // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                        echo "<pre>";
-                        print_r(json_decode($getorderarry));
-                        echo "</pre>";
+                        // echo "<pre>";
+                        // print_r(json_decode($getorderarry));
+                        // echo "</pre>";
                     }
 
                     // echo $getorderarry;
