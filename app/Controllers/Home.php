@@ -434,15 +434,16 @@ class Home extends BaseController
                                 "financial_status" => "pending",
                                 "tax_lines" => $tax_lines,
                                 "total_tax" => $order_tax,
-                                "transactions" => [
-                                    [
-                                        "kind" => "sale",
-                                        "status" => "success",
-                                        "amount" => $finalprice,
-                                        "gateway" => "Cash on Delivery (COD)",
-                                        "processing_method" => "manual"
-                                    ]
-                                ],
+                                "payment_gateway" => "cod",
+                                // "transactions" => [
+                                //     [
+                                //         "kind" => "sale",
+                                //         "status" => "success",
+                                //         "amount" => $finalprice,
+                                //         "gateway" => "Cash on Delivery (COD)",
+                                //         "processing_method" => "manual"
+                                //     ]
+                                // ],
                                 "taxes_included" => $txincude,
                                 //"shipping_address"=>$shipping_address,
                                 //"billing_address"=>$billing_address,                            
