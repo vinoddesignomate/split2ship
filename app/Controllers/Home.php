@@ -84,13 +84,13 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'e6de84.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686561997076.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
-                    echo "getprietuleid<pre>";
-                    print_r($getprietuleid);
-                    echo "</pre>";
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686561997076.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+                    // echo "getprietuleid<pre>";
+                    // print_r($getprietuleid);
+                    // echo "</pre>";
 
                     // $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -153,7 +153,7 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5639078510896.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5644639994160.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
@@ -164,9 +164,9 @@ class Home extends BaseController
                     //  $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                    // echo "getprietuleidrec<pre>";
+                    // print_r($getprietuleidrec);
+                    // echo "</pre>";
 
 
 
@@ -182,156 +182,166 @@ class Home extends BaseController
                     // print_r($fulfilarray);
                     // echo "</pre>";
 
-                     //$getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
+                    //$getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
 
                     // echo "fulfiledorder<pre>";
                     // print_r($getprietuleid);
                     // echo "</pre>";
 
+                    $targetCode = 'Remaining_Amount';
+                    $matchingCode = null;
+                    foreach ($getprietuleidrec['order'] as $discount) {
+                        if (strpos($discount->code, $targetCode) !== false) {
+                            $matchingCode = $discount->code;
+                            break;
+                        }
+                    }
+                    if ($matchingCode !== null) {
 
-                    $paid_price = 0;
-                    $total_item_price = 0;
-                    $line_item = []; // Initialize an array to store line items
-                    $line_items = [];
-                    $linitemdisount = 0;
-                    $taxamounttotal = 0;
-                    $final_total_orderval = 0;
-                    $order_tax = 0;
-                    $tax_lines = [];
-                    foreach ($getprietuleidrec['order']['line_items'] as $products) {
-                        if ($products['name'] != "Partial Pending Payment") {
-                            if ($products['sku'] == "") {
 
-                                $prosku = 'PRTTESTSKY' . time();
-                            } else {
-                                $prosku = $products['sku'];
-                                $prodycprice =  $products['price'];
-                            }
+                        $paid_price = 0;
+                        $total_item_price = 0;
+                        $line_item = []; // Initialize an array to store line items
+                        $line_items = [];
+                        $linitemdisount = 0;
+                        $taxamounttotal = 0;
+                        $final_total_orderval = 0;
+                        $order_tax = 0;
+                        $tax_lines = [];
+                        foreach ($getprietuleidrec['order']['line_items'] as $products) {
+                            if ($products['name'] != "Partial Pending Payment") {
+                                if ($products['sku'] == "") {
 
-                            if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
-                                $item_price_actualval = $products['properties'][2]['value'] + $products['properties'][3]['value'];
-                                // if (isset($products['properties'][4]['value'])) {
-                                //     $item_price_actualval = $item_price_actualval + $products['properties'][4]['value'];
-                                // }
-                                $productvarient = $products['properties'][1]['value'];
-                                $paidprice_get = $products['properties'][2]['value'] + $products['properties'][3]['value'];
-                                if (isset($products['properties'][4]['value']) && $products['properties'][4]['name'] == 'Discount') {
-                                    $item_discount_item = $products['properties'][4]['value'];
+                                    $prosku = 'PRTTESTSKY' . time();
                                 } else {
-                                    $item_discount_item = 0;
+                                    $prosku = $products['sku'];
+                                    $prodycprice =  $products['price'];
                                 }
-                                $tax_price = $products['properties'][3]['value'];
-                            } else {
-                                $item_price = $products['price'];
-                                if (isset($products['total_discount']) && $products['total_discount'] != "") {
-                                    $item_discount_item = $products['total_discount'];
-                                } else {
-                                    $item_discount_item = 0;
-                                }
-                                $productvarient = $products['variant_id'];
-                                //$paidprice_get = $products['properties'][1]['value'];
-                                if (isset($products['discount_allocations'][0]['amount'])) {
-                                    $paidprice_get = $products['price'] - $products['discount_allocations'][0]['amount'];
 
-                                    $tax_price = $products['discount_allocations'][0]['amount'];
-                                } else {
-                                    $tax_price = 0;
-                                    $paidprice_get = 0;
-                                }
-                                // $item_price_actualval = $products['properties'][1]['value'] + $products['total_discount'];
-                            }
-
-                            $linitemdisount = $linitemdisount + $item_discount_item;
-
-
-                            if (!empty($products['tax_lines'])) {
-
-                                foreach ($products['tax_lines'] as $tax_items) {
-                                    if ($tax_price == 0) {
-                                        $taxamount = 0;
+                                if (isset($products['properties'][0]['value']) && $products['properties'][0]['value'] == 'Initial Partial Payment') {
+                                    $item_price_actualval = $products['properties'][2]['value'] + $products['properties'][3]['value'];
+                                    // if (isset($products['properties'][4]['value'])) {
+                                    //     $item_price_actualval = $item_price_actualval + $products['properties'][4]['value'];
+                                    // }
+                                    $productvarient = $products['properties'][1]['value'];
+                                    $paidprice_get = $products['properties'][2]['value'] + $products['properties'][3]['value'];
+                                    if (isset($products['properties'][4]['value']) && $products['properties'][4]['name'] == 'Discount') {
+                                        $item_discount_item = $products['properties'][4]['value'];
                                     } else {
-
-                                        if ($getprietuleidrec['order']['taxes_included'] == 1) {
-                                            $taxamount = ($tax_items['rate'] * $tax_price) / (1 + $tax_items['rate']);
-                                        } else {
-                                            $taxamount = $tax_price * $tax_items['rate'];
-                                        }
-
-                                        //$taxamount = $tax_price * $tax_items['rate'];
+                                        $item_discount_item = 0;
                                     }
-                                    //echo "tax_price=".$tax_price;
-                                    $getitemtx = $tax_price + $taxamount;
-                                    $taxamounttotal = $taxamounttotal + $getitemtx;
-                                    $order_tax = $order_tax + $taxamount;
-                                    $tax_lines[] = [
-                                        'title' => $tax_items['title'],
-                                        'price' => $taxamount,
-                                        'rate' => $tax_items['rate'],
-                                    ];
+                                    $tax_price = $products['properties'][3]['value'];
+                                } else {
+                                    $item_price = $products['price'];
+                                    if (isset($products['total_discount']) && $products['total_discount'] != "") {
+                                        $item_discount_item = $products['total_discount'];
+                                    } else {
+                                        $item_discount_item = 0;
+                                    }
+                                    $productvarient = $products['variant_id'];
+                                    //$paidprice_get = $products['properties'][1]['value'];
+                                    if (isset($products['discount_allocations'][0]['amount'])) {
+                                        $paidprice_get = $products['price'] - $products['discount_allocations'][0]['amount'];
+
+                                        $tax_price = $products['discount_allocations'][0]['amount'];
+                                    } else {
+                                        $tax_price = 0;
+                                        $paidprice_get = 0;
+                                    }
+                                    // $item_price_actualval = $products['properties'][1]['value'] + $products['total_discount'];
                                 }
-                            } else {
-                                $taxamounttotal = $taxamounttotal + $tax_price;
-                                $order_tax = 0;
-                            }
+
+                                $linitemdisount = $linitemdisount + $item_discount_item;
 
 
-                            $line_item = [
-                                "variant_id" => $productvarient,
-                                "quantity" => $products['quantity'],
-                            ];
-                            if (!empty($products['properties'])) {
-                                $properties = [];
+                                if (!empty($products['tax_lines'])) {
 
-                                // Iterate through each property and add it to the properties array
-                                foreach ($products['properties'] as $property) {
-                                    if ($property['name'] != "partial_pay" && $property['name'] != "remaining_amount") {
-                                        $properties[] = [
-                                            "name" => $property['name'],
-                                            "value" => $property['value'],
+                                    foreach ($products['tax_lines'] as $tax_items) {
+                                        if ($tax_price == 0) {
+                                            $taxamount = 0;
+                                        } else {
+
+                                            if ($getprietuleidrec['order']['taxes_included'] == 1) {
+                                                $taxamount = ($tax_items['rate'] * $tax_price) / (1 + $tax_items['rate']);
+                                            } else {
+                                                $taxamount = $tax_price * $tax_items['rate'];
+                                            }
+
+                                            //$taxamount = $tax_price * $tax_items['rate'];
+                                        }
+                                        //echo "tax_price=".$tax_price;
+                                        $getitemtx = $tax_price + $taxamount;
+                                        $taxamounttotal = $taxamounttotal + $getitemtx;
+                                        $order_tax = $order_tax + $taxamount;
+                                        $tax_lines[] = [
+                                            'title' => $tax_items['title'],
+                                            'price' => $taxamount,
+                                            'rate' => $tax_items['rate'],
                                         ];
                                     }
+                                } else {
+                                    $taxamounttotal = $taxamounttotal + $tax_price;
+                                    $order_tax = 0;
                                 }
 
-                                // Add the properties array to the line item
-                                $line_item['properties'] = $properties;
+
+                                $line_item = [
+                                    "variant_id" => $productvarient,
+                                    "quantity" => $products['quantity'],
+                                ];
+                                if (!empty($products['properties'])) {
+                                    $properties = [];
+
+                                    // Iterate through each property and add it to the properties array
+                                    foreach ($products['properties'] as $property) {
+                                        if ($property['name'] != "partial_pay" && $property['name'] != "remaining_amount") {
+                                            $properties[] = [
+                                                "name" => $property['name'],
+                                                "value" => $property['value'],
+                                            ];
+                                        }
+                                    }
+
+                                    // Add the properties array to the line item
+                                    $line_item['properties'] = $properties;
+                                }
+
+
+                                $paid_price = $paid_price + $paidprice_get;
+                            }
+                            $line_items[] = $line_item;
+                        }
+                        $discoutnarray = array(
+                            "code" => "partialcode",
+                            "amount" => $paid_price,
+                            "type" => "fixed_amount",
+                        );
+                        if (isset($getprietuleidrec['order']['shipping_address'])) {
+
+                            if (isset($getprietuleidrec['order']['shipping_address']['phone'])) {
+                                $store_phnum = str_replace(" ", "", $getprietuleidrec['order']['shipping_address']['phone']);
+                                $store_phnum = str_replace("(", "", $store_phnum);
+                                $store_phnum = str_replace(")", "", $store_phnum);
+                                $store_phnum = str_replace("-", "", $store_phnum);
+                            } else {
+                                $store_phnum = "";
                             }
 
+                            $actl_shipping_addrss = array(
+                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
+                                "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                                "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                                "phone" => $store_phnum,
+                                "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                                "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                                "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                                "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                            );
 
-                            $paid_price = $paid_price + $paidprice_get;
-                        }
-                        $line_items[] = $line_item;
-                    }
-                    $discoutnarray = array(
-                        "code" => "partialcode",
-                        "amount" => $paid_price,
-                        "type" => "fixed_amount",
-                    );
-                    if (isset($getprietuleidrec['order']['shipping_address'])) {
 
-                        if (isset($getprietuleidrec['order']['shipping_address']['phone'])) {
-                            $store_phnum = str_replace(" ", "", $getprietuleidrec['order']['shipping_address']['phone']);
-                            $store_phnum = str_replace("(", "", $store_phnum);
-                            $store_phnum = str_replace(")", "", $store_phnum);
-                            $store_phnum = str_replace("-", "", $store_phnum);
-                        } else {
-                            $store_phnum = "";
-                        }
 
-                        $actl_shipping_addrss = array(
-                            "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                            "first_name" => $getprietuleidrec['order']['shipping_address']['last_name'],
-                            "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                            "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                            "phone" => $store_phnum,
-                            "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                            "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                            "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                            "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                        );
-
-                        
-
-                        $shipping_address = [
+                            $shipping_address = [
                                 "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
                                 "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
@@ -341,29 +351,29 @@ class Home extends BaseController
                                 "province" => $getprietuleidrec['order']['shipping_address']['province'],
                                 "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
                                 "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                        ];
-                    }
-                    //$actl_shipping_addrss = array();
-
-
-                    if (isset($getprietuleidrec['order']['billing_address'])) {
-
-
-                        if (isset($getprietuleidrec['order']['billing_address']['phone'])) {
-                            $store_phnum2 = str_replace(" ", "", $getprietuleidrec['order']['billing_address']['phone']);
-                            $store_phnum2 = str_replace("(", "", $store_phnum2);
-                            $store_phnum2 = str_replace(")", "", $store_phnum2);
-                            $store_phnum2 = str_replace("-", "", $store_phnum2);
-                        } else {
-                            $store_phnum2 = "";
+                            ];
                         }
+                        //$actl_shipping_addrss = array();
 
-                        
-                              
-                        
 
-                        $billing_address = [
-                            "first_name" => $getprietuleidrec['order']['billing_address']['first_name'],
+                        if (isset($getprietuleidrec['order']['billing_address'])) {
+
+
+                            if (isset($getprietuleidrec['order']['billing_address']['phone'])) {
+                                $store_phnum2 = str_replace(" ", "", $getprietuleidrec['order']['billing_address']['phone']);
+                                $store_phnum2 = str_replace("(", "", $store_phnum2);
+                                $store_phnum2 = str_replace(")", "", $store_phnum2);
+                                $store_phnum2 = str_replace("-", "", $store_phnum2);
+                            } else {
+                                $store_phnum2 = "";
+                            }
+
+
+
+
+
+                            $billing_address = [
+                                "first_name" => $getprietuleidrec['order']['billing_address']['first_name'],
                                 "last_name" => $getprietuleidrec['order']['billing_address']['first_name'],
                                 "address1" => $getprietuleidrec['order']['billing_address']['address1'],
                                 "address1" => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
@@ -372,121 +382,121 @@ class Home extends BaseController
                                 "province" => $getprietuleidrec['order']['billing_address']['province'],
                                 "zip" => $getprietuleidrec['order']['billing_address']['zip'],
                                 "country" => $getprietuleidrec['order']['billing_address']['country'],
-                        ];
+                            ];
+                        }
 
-                    }
-                    
 
-                    if (isset($getprietuleidrec['order']['discount_codes'][0]['code'])) {
-                        $cpode_string = $getprietuleidrec['order']['discount_codes'][0]['code'];
-                        // Find the position of 'cgsplit'
-                        $startPosition = strpos($cpode_string, 'cgsplit');
-        
-                        // Check if 'cgsplit' exists in the string
-                        if ($startPosition !== false) {
-                            // Extract the substring after 'cgsplit'
-                            $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));        
-                            // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
-                            $value = trim($substring, ')'); // Remove ')' from the end if needed
-        
-                            // Output the extracted value
-                            $dicocideline = $value;
+                        if (isset($getprietuleidrec['order']['discount_codes'][0]['code'])) {
+                            $cpode_string = $getprietuleidrec['order']['discount_codes'][0]['code'];
+                            // Find the position of 'cgsplit'
+                            $startPosition = strpos($cpode_string, 'cgsplit');
+
+                            // Check if 'cgsplit' exists in the string
+                            if ($startPosition !== false) {
+                                // Extract the substring after 'cgsplit'
+                                $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
+                                // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                                $value = trim($substring, ')'); // Remove ')' from the end if needed
+
+                                // Output the extracted value
+                                $dicocideline = $value;
+                            } else {
+                                $dicocideline = 0;
+                                // echo "Substring 'cgsplit' not found." . PHP_EOL;
+                            }
                         } else {
                             $dicocideline = 0;
-                            // echo "Substring 'cgsplit' not found." . PHP_EOL;
                         }
-                    } else {
-                        $dicocideline = 0;
+
+                        // echo "dicocideline=".$dicocideline;
+                        if ($dicocideline > 0) {
+                            $finaldiscount = $dicocideline + $getprietuleidrec['order']['subtotal_price'];
+                            $titla_name = "Partial Payment(" . $getprietuleidrec['order']['subtotal_price'] . ")+Applied Discount(" . $dicocideline . ")";
+                        } else {
+                            $finaldiscount = $getprietuleidrec['order']['subtotal_price'];
+                            $titla_name = "Partial Payment";
+                        }
+                        //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
+                        if ($getprietuleidrec['order']['taxes_included'] == 1) {
+                            $txincude = 1;
+                            $finalprice = $taxamounttotal - $order_tax;
+                            //$finalprice = $finalprice - $finaldiscount;
+                        } else {
+                            $txincude = false;
+                            $finalprice = $taxamounttotal;
+                        }
+
+                        // $finaldiscount = $linitemdisount + $paid_price;
+                        //$authpay = $finalprice - $finaldiscount;
+                        $order_data = [
+                            "order" => [
+                                "line_items" => $line_items,
+                                "financial_status" => "pending",
+                                "tax_lines" => $tax_lines,
+                                "total_tax" => $order_tax,
+                                "transactions" => [
+                                    [
+                                        "kind" => "authorization",
+                                        "status" => "success",
+                                        "amount" => $finalprice,
+                                        "gateway" => "Cash on Delivery"
+                                    ]
+                                ],
+                                "taxes_included" => $txincude,
+                                //"shipping_address"=>$shipping_address,
+                                //"billing_address"=>$billing_address,                            
+                                "shipping_address" => [
+                                    "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                    "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
+                                    "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
+                                    "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
+                                    "phone" => $store_phnum,
+                                    "city" => $getprietuleidrec['order']['shipping_address']['city'],
+                                    "province" => $getprietuleidrec['order']['shipping_address']['province'],
+                                    "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
+                                    "country" => $getprietuleidrec['order']['shipping_address']['country'],
+                                ],
+                                "billing_address" => [
+                                    "first_name" => (isset($getprietuleidrec['order']['billing_address']['first_name']) ? $getprietuleidrec['order']['billing_address']['first_name'] : ''),
+                                    "last_name" => (isset($getprietuleidrec['order']['billing_address']['first_name']) ? $getprietuleidrec['order']['billing_address']['first_name'] : ''),
+                                    "address1" => (isset($getprietuleidrec['order']['billing_address']['address1']) ? $getprietuleidrec['order']['billing_address']['address1'] : ''),
+                                    "address2" => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
+                                    "phone" => $store_phnum,
+                                    "city" => $getprietuleidrec['order']['billing_address']['city'],
+                                    "province" => $getprietuleidrec['order']['billing_address']['province'],
+                                    "zip" => $getprietuleidrec['order']['billing_address']['zip'],
+                                    "country" => $getprietuleidrec['order']['billing_address']['country'],
+                                ],
+                                "discount_codes" => [
+                                    [
+                                        "code" => $titla_name,
+                                        "amount" => $finaldiscount,
+                                        "type" => "fixed_amount"
+                                    ]
+                                ],
+                                "customer" => [
+                                    "id" => $getprietuleidrec['order']['customer']['id']
+                                ],
+                                "note_attributes" => [
+                                    [
+                                        "name" => "Suffix",
+                                        "value" => $getprietuleidrec['order']['name'] . '-SplitOrder'  # Add your desired suffix here
+                                    ]
+                                ],
+                                "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
+                            ]
+                        ];
+                        // echo "final_total_orderval=" . $final_total_orderval;
+                        echo "order_data<pre>";
+                        print_r($order_data);
+                        echo "</pre>";
+
+                        $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+
+                        echo "<pre>";
+                        print_r(json_decode($getorderarry));
+                        echo "</pre>";
                     }
-
-                   // echo "dicocideline=".$dicocideline;
-                    if ($dicocideline > 0) {
-                        $finaldiscount = $dicocideline + $getprietuleidrec['order']['subtotal_price'];
-                        $titla_name = "Partial Payment(".$getprietuleidrec['order']['subtotal_price'].")+Applied Discount(".$dicocideline.")";
-                    } else {
-                        $finaldiscount = $getprietuleidrec['order']['subtotal_price'];
-                        $titla_name = "Partial Payment";
-                    }
-                    //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
-                    if ($getprietuleidrec['order']['taxes_included'] == 1) {
-                        $txincude = 1;
-                        $finalprice = $taxamounttotal - $order_tax;
-                        //$finalprice = $finalprice - $finaldiscount;
-                    } else {
-                        $txincude = false;
-                        $finalprice = $taxamounttotal;
-                    }
-
-                    // $finaldiscount = $linitemdisount + $paid_price;
-                    //$authpay = $finalprice - $finaldiscount;
-                    $order_data = [
-                        "order" => [
-                            "line_items" => $line_items,
-                            "financial_status" => "pending",
-                            "tax_lines" => $tax_lines,
-                            "total_tax" => $order_tax,
-                            "transactions" => [
-                                [
-                                    "kind" => "authorization",
-                                    "status" => "success",
-                                    "amount" => $finalprice,
-                                    "gateway" => "Cash on Delivery"
-                                ]
-                            ],
-                            "taxes_included" => $txincude,
-                            //"shipping_address"=>$shipping_address,
-                            //"billing_address"=>$billing_address,                            
-                            "shipping_address" => [
-                                "first_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                                "last_name" => $getprietuleidrec['order']['shipping_address']['first_name'],
-                                "address1" => $getprietuleidrec['order']['shipping_address']['address1'],
-                                "address2" => (isset($getprietuleidrec['order']['shipping_address']['address2']) ? $getprietuleidrec['order']['shipping_address']['address2'] : ''),
-                                "phone" => $store_phnum,
-                                "city" => $getprietuleidrec['order']['shipping_address']['city'],
-                                "province" => $getprietuleidrec['order']['shipping_address']['province'],
-                                "zip" => $getprietuleidrec['order']['shipping_address']['zip'],
-                                "country" => $getprietuleidrec['order']['shipping_address']['country'],
-                            ],
-                            "billing_address" => [
-                                "first_name" => (isset($getprietuleidrec['order']['billing_address']['first_name']) ? $getprietuleidrec['order']['billing_address']['first_name'] : ''),
-                                "last_name" => (isset($getprietuleidrec['order']['billing_address']['first_name']) ? $getprietuleidrec['order']['billing_address']['first_name'] : ''),
-                                "address1" => (isset($getprietuleidrec['order']['billing_address']['address1']) ? $getprietuleidrec['order']['billing_address']['address1'] : ''),
-                                "address2" => (isset($getprietuleidrec['order']['billing_address']['address2']) ? $getprietuleidrec['order']['billing_address']['address2'] : ''),
-                                "phone" => $store_phnum,
-                                "city" => $getprietuleidrec['order']['billing_address']['city'],
-                                "province" => $getprietuleidrec['order']['billing_address']['province'],
-                                "zip" => $getprietuleidrec['order']['billing_address']['zip'],
-                                "country" => $getprietuleidrec['order']['billing_address']['country'],
-                            ],
-                            "discount_codes" => [
-                                [
-                                    "code" => $titla_name,
-                                    "amount" => $finaldiscount,
-                                    "type" => "fixed_amount"
-                                ]
-                            ],
-                            "customer" => [
-                                "id" => $getprietuleidrec['order']['customer']['id']
-                            ],
-                            "note_attributes" => [
-                                [
-                                    "name" => "Suffix",
-                                    "value" => $getprietuleidrec['order']['name'] . '-SplitOrder'  # Add your desired suffix here
-                                ]
-                            ],
-                            "name" => $getprietuleidrec['order']['name'] . '-SplitOrder',
-                        ]
-                    ];
-                    // echo "final_total_orderval=" . $final_total_orderval;
-                    echo "order_data<pre>";
-                    print_r($order_data);
-                    echo "</pre>";*/
-
-                    //  $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
-
-                    // echo "<pre>";
-                    // print_r(json_decode($getorderarry));
-                    // echo "</pre>";
 
                     // echo $getorderarry;
                     // }
@@ -832,8 +842,8 @@ class Home extends BaseController
                     "show_config_popup" => 1
                 ));
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                    $this->install_config_stpes();
-               // }
+                $this->install_config_stpes();
+                // }
                 echo view('templates/header');
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                     echo view('welcome_message', $data);
@@ -856,11 +866,11 @@ class Home extends BaseController
             $getsteps = $this->user_model->getinstall_steps($_GET['shop']);
             if (empty($getsteps)) {
                 $data['step_active'] = 1;
-            } else if (isset($getsteps->step1) && $getsteps->step1 != "" && $getsteps->step2==0 ) {
+            } else if (isset($getsteps->step1) && $getsteps->step1 != "" && $getsteps->step2 == 0) {
                 $data['step_active'] = 2;
-            } else if (isset($getsteps->step2) && $getsteps->step2 != "" && $getsteps->step3==0 ) {
+            } else if (isset($getsteps->step2) && $getsteps->step2 != "" && $getsteps->step3 == 0) {
                 $data['step_active'] = 3;
-            } else if (isset($getsteps->step3) && $getsteps->step3 != "" && $getsteps->step4==0 ) {
+            } else if (isset($getsteps->step3) && $getsteps->step3 != "" && $getsteps->step4 == 0) {
                 $data['step_active'] = 4;
             }
             // echo "<pre>";
