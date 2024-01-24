@@ -61,18 +61,18 @@ class FrontController extends BaseController
                             $propartialper = (10 / 100) * $get_resulrs[0]->price;
                             $partperctg = 10;
                         }
-                        if ($partperctg > $get_resulrs[0]->price) {
-                            return 'not_found1';
-                        } else {
+                        // if ($partperctg > $get_resulrs[0]->price) {
+                        //     return 'not_found';
+                        // } else {
 
 
                             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
                             $getvarientsres = json_decode($getvarients['body'], true);
-                            if ($shopname == 'e6de84.myshopify.com') {
-                                echo "<pre>";
-                                print_r($getvarientsres);
-                                echo "</pre>";
-                            }
+                            // if ($shopname == 'e6de84.myshopify.com') {
+                            //     echo "<pre>";
+                            //     print_r($getvarientsres);
+                            //     echo "</pre>";
+                            // }
                             if ($getvarientsres['variant']['inventory_management'] == "") {
                                 $getinvtry = 1;
                             } else {
@@ -80,7 +80,7 @@ class FrontController extends BaseController
                             }
 
                             if (array_key_exists('errors', $getvarientsres)) {
-                                return 'not_found2';
+                                return 'not_found';
                             } else {
                                 if (empty($gtbtncolor)) {
                                     $return_array = array(
@@ -134,18 +134,18 @@ class FrontController extends BaseController
                                 }
                                 return json_encode($return_array);
                             }
-                        }
+                        //}
                     } else {
-                        return 'not_found3';
+                        return 'not_found';
                     }
                 } else {
-                    return 'not_found4';
+                    return 'not_found';
                 }
             } else {
-                return 'not_found5';
+                return 'not_found';
             }
         } else {
-            return 'not_found6';
+            return 'not_found';
         }
     }
     function generateRandomString($length)
