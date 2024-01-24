@@ -84,7 +84,7 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'e6de84.myshopify.com') {
 
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686561997076.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
@@ -153,7 +153,7 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5644639994160.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686551609620.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
