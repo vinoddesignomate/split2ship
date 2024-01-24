@@ -158,7 +158,8 @@ class AppwhookController extends BaseController
         $ordline_item = [];
         $new_dicocideline = 0;
         //get main orders products details 
-        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+        $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             if (isset($jsndata->discount_codes[0]->code)) {
                 $cpode_string = $jsndata->discount_codes[0]->code;
                 // Find the position of 'cgsplit'
@@ -209,7 +210,7 @@ class AppwhookController extends BaseController
                     $productvarient = $products->variant_id;
                     if (isset($products->discount_allocations[0]->amount)) {
                         if ($products->discount_allocations[0]->amount > $new_dicocideline && $minsfla == 0) {
-                            $tax_price = $products->discount_allocations[0]->amount-$new_dicocideline;
+                            $tax_price = $products->discount_allocations[0]->amount - $new_dicocideline;
                             $minsfla = 1;
                         } else {
                             $tax_price = $products->discount_allocations[0]->amount;
@@ -350,7 +351,8 @@ class AppwhookController extends BaseController
         } else {
             $store_phnum2 = "";
         }
-        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+        $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             if (isset($jsndata->discount_codes[0]->code)) {
                 $cpode_string = $jsndata->discount_codes[0]->code;
                 // Find the position of 'cgsplit'
@@ -402,7 +404,8 @@ class AppwhookController extends BaseController
             $txincude = false;
             $finalprice = $taxamounttotal;
         }
-        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+        $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             if ($dicocideline > 0) {
                 $finalprice = $taxamounttotal - $dicocideline;
             }
@@ -412,7 +415,9 @@ class AppwhookController extends BaseController
 
         //if (!empty($chkpropeties)) {
 
-        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+        $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+        //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             $order_data = [
                 "order" => [
                     "line_items" => $order_line_items,
