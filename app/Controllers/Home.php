@@ -190,7 +190,7 @@ class Home extends BaseController
 
                     $targetCode = 'Remaining_Amount';
                     $matchingCode = null;
-                    foreach ($getprietuleidrec['order'] as $discount) {
+                    foreach ($getprietuleidrec['order']['discount_codes'] as $discount) {
                         if (strpos($discount->code, $targetCode) !== false) {
                             $matchingCode = $discount->code;
                             break;
