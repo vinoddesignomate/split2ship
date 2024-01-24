@@ -156,10 +156,34 @@ class AppwhookController extends BaseController
         $tax_lines = [];
         $order_line_items = [];
         $ordline_item = [];
+        $new_dicocideline = 0;
         //get main orders products details 
+        if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
+            if (isset($jsndata->discount_codes[0]->code)) {
+                $cpode_string = $jsndata->discount_codes[0]->code;
+                // Find the position of 'cgsplit'
+                $startPosition = strpos($cpode_string, 'cgsplit');
 
+                // Check if 'cgsplit' exists in the string
+                if ($startPosition !== false) {
+                    // Extract the substring after 'cgsplit'
+                    $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
 
+                    // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                    $value = trim($substring, ')'); // Remove ')' from the end if needed
 
+                    // Output the extracted value
+                    $new_dicocideline = $value;
+                } else {
+                    $new_dicocideline = 0;
+                    // echo "Substring 'cgsplit' not found." . PHP_EOL;
+                }
+            } else {
+                $new_dicocideline = 0;
+            }
+        }
+
+        $minsfla = 0;
         foreach ($jsndata->line_items as $products) {
             //set condition for get only main products
             // if (!empty($products->properties) && isset($products->properties)) {
@@ -184,7 +208,13 @@ class AppwhookController extends BaseController
                     }
                     $productvarient = $products->variant_id;
                     if (isset($products->discount_allocations[0]->amount)) {
-                        $tax_price = $products->discount_allocations[0]->amount;
+                        if ($products->discount_allocations[0]->amount > $new_dicocideline && $minsfla == 0) {
+                            $tax_price = $products->discount_allocations[0]->amount-$new_dicocideline;
+                            $minsfla = 1;
+                        } else {
+                            $tax_price = $products->discount_allocations[0]->amount;
+                        }
+
                         $paidprice_get = $products->price - $products->discount_allocations[0]->amount;
                     } else {
                         $tax_price = 0;
