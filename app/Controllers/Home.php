@@ -208,7 +208,32 @@ class Home extends BaseController
                         $final_total_orderval = 0;
                         $order_tax = 0;
                         $tax_lines = [];
+                        $minsfla = 0;
+
+                        if (isset($getprietuleidrec['order']['discount_codes'][0]['code'])) {
+                            $cpode_string = $getprietuleidrec['order']['discount_codes'][0]['code'];
+                            // Find the position of 'cgsplit'
+                            $startPosition = strpos($cpode_string, 'cgsplit');
+
+                            // Check if 'cgsplit' exists in the string
+                            if ($startPosition !== false) {
+                                // Extract the substring after 'cgsplit'
+                                $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
+                                // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                                $value = trim($substring, ')'); // Remove ')' from the end if needed
+
+                                // Output the extracted value
+                                $dicocideline = $value;
+                            } else {
+                                $dicocideline = 0;
+                                // echo "Substring 'cgsplit' not found." . PHP_EOL;
+                            }
+                        } else {
+                            $dicocideline = 0;
+                        }
+
                         foreach ($getprietuleidrec['order']['line_items'] as $products) {
+
                             if ($products['name'] != "Partial Pending Payment") {
                                 if ($products['sku'] == "") {
 
@@ -242,8 +267,12 @@ class Home extends BaseController
                                     //$paidprice_get = $products['properties'][1]['value'];
                                     if (isset($products['discount_allocations'][0]['amount'])) {
                                         $paidprice_get = $products['price'] - $products['discount_allocations'][0]['amount'];
-
-                                        $tax_price = $products['discount_allocations'][0]['amount'];
+                                        if ($products['discount_allocations'][0]['amount'] > $dicocideline && $minsfla == 0) {
+                                            $tax_price = $products['discount_allocations'][0]['amount'] - $dicocideline;
+                                            $minsfla = 1;
+                                        } else {
+                                            $tax_price = $products['discount_allocations'][0]['amount'];
+                                        }
                                     } else {
                                         $tax_price = 0;
                                         $paidprice_get = 0;
@@ -253,7 +282,7 @@ class Home extends BaseController
 
                                 $linitemdisount = $linitemdisount + $item_discount_item;
 
-
+                                echo "tax_price=".$tax_price."==";
                                 if (!empty($products['tax_lines'])) {
 
                                     foreach ($products['tax_lines'] as $tax_items) {
@@ -386,27 +415,7 @@ class Home extends BaseController
                         }
 
 
-                        if (isset($getprietuleidrec['order']['discount_codes'][0]['code'])) {
-                            $cpode_string = $getprietuleidrec['order']['discount_codes'][0]['code'];
-                            // Find the position of 'cgsplit'
-                            $startPosition = strpos($cpode_string, 'cgsplit');
 
-                            // Check if 'cgsplit' exists in the string
-                            if ($startPosition !== false) {
-                                // Extract the substring after 'cgsplit'
-                                $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
-                                // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
-                                $value = trim($substring, ')'); // Remove ')' from the end if needed
-
-                                // Output the extracted value
-                                $dicocideline = $value;
-                            } else {
-                                $dicocideline = 0;
-                                // echo "Substring 'cgsplit' not found." . PHP_EOL;
-                            }
-                        } else {
-                            $dicocideline = 0;
-                        }
 
                         // echo "dicocideline=".$dicocideline;
                         if ($dicocideline > 0) {
@@ -416,7 +425,7 @@ class Home extends BaseController
                             $finaldiscount = $getprietuleidrec['order']['subtotal_price'];
                             $titla_name = "Partial Payment";
                         }
-                        
+
                         //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
                         if ($getprietuleidrec['order']['taxes_included'] == 1) {
                             $txincude = 1;
