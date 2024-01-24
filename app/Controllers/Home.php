@@ -419,15 +419,15 @@ class Home extends BaseController
                         //$finaldiscount = $finaldiscount-$getprietuleidrec['order']['current_total_tax'];
                         if ($getprietuleidrec['order']['taxes_included'] == 1) {
                             $txincude = 1;
-                            echo "finalprice1".$finalprice = $taxamounttotal - $order_tax;
+                            echo "finalprice1" . $finalprice = $taxamounttotal - $order_tax;
                             //$finalprice = $finalprice - $finaldiscount;
                         } else {
                             $txincude = false;
-                            echo "finalprice2=".$finalprice = $taxamounttotal;
+                            echo "finalprice2=" . $finalprice = $taxamounttotal;
                         }
 
                         if ($dicocideline > 0) {
-                            echo "finalprice3=".$finalprice = $taxamounttotal - $dicocideline;
+                            echo "finalprice3=" . $finalprice = $taxamounttotal - $dicocideline;
                         }
 
                         // $finaldiscount = $linitemdisount + $paid_price;
@@ -438,16 +438,15 @@ class Home extends BaseController
                                 "financial_status" => "pending",
                                 "tax_lines" => $tax_lines,
                                 "total_tax" => $order_tax,
-                                "payment_gateway" => "cod",
-                                // "transactions" => [
-                                //     [
-                                //         "kind" => "sale",
-                                //         "status" => "success",
-                                //         "amount" => $finalprice,
-                                //         "gateway" => "Cash on Delivery (COD)",
-                                //         "processing_method" => "manual"
-                                //     ]
-                                // ],
+                                //"payment_gateway" => "cod",
+                                "transactions" => [
+                                    [
+                                        "kind" => "authorization",
+                                        "status" => "success",
+                                        "amount" => $finalprice,
+                                        "gateway" => "Cash on Delivery"
+                                    ]
+                                ],
                                 "taxes_included" => $txincude,
                                 //"shipping_address"=>$shipping_address,
                                 //"billing_address"=>$billing_address,                            
