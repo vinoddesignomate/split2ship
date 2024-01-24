@@ -68,11 +68,11 @@ class FrontController extends BaseController
 
                             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
                             $getvarientsres = json_decode($getvarients['body'], true);
-                            // if ($shopname == 'desinomatetest.myshopify.com') {
-                            //     echo "<pre>";
-                            //     print_r($getvarientsres);
-                            //     echo "</pre>";
-                            // }
+                            if ($shopname == 'e6de84.myshopify.com') {
+                                echo "<pre>";
+                                print_r($getvarientsres);
+                                echo "</pre>";
+                            }
                             if ($getvarientsres['variant']['inventory_management'] == "") {
                                 $getinvtry = 1;
                             } else {
