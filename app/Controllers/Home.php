@@ -497,9 +497,9 @@ class Home extends BaseController
 
                         echo "<pre>";
                         print_r(json_decode($getorderarry));
-                        echo "</pre>";*/
+                        echo "</pre>";
                     }
-
+*/
                     // echo $getorderarry;
                     // }
 
