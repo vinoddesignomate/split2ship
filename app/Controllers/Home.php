@@ -282,7 +282,7 @@ class Home extends BaseController
 
                                 $linitemdisount = $linitemdisount + $item_discount_item;
 
-                                echo "tax_price=".$tax_price."==";
+                               // echo "tax_price=".$tax_price."==";
                                 if (!empty($products['tax_lines'])) {
 
                                     foreach ($products['tax_lines'] as $tax_items) {
@@ -448,15 +448,15 @@ class Home extends BaseController
                                 "financial_status" => "pending",
                                 "tax_lines" => $tax_lines,
                                 "total_tax" => $order_tax,
-                                //"payment_gateway" => "cod",
-                                "transactions" => [
-                                    [
-                                        "kind" => "authorization",
-                                        "status" => "success",
-                                        "amount" => $finalprice,
-                                        "gateway" => "Cash on Delivery"
-                                    ]
-                                ],
+                                "payment_gateway" => "cod",
+                                // "transactions" => [
+                                //     [
+                                //         "kind" => "authorization",
+                                //         "status" => "success",
+                                //         "amount" => $finalprice,
+                                //         "gateway" => "Cash on Delivery"
+                                //     ]
+                                // ],
                                 "taxes_included" => $txincude,
                                 //"shipping_address"=>$shipping_address,
                                 //"billing_address"=>$billing_address,                            
@@ -506,11 +506,11 @@ class Home extends BaseController
                         print_r($order_data);
                         echo "</pre>";
 
-                        // $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
+                        $getorderarry = $this->common->create_actual_order($get_details->access_token, $_GET['shop'], $order_data);
 
-                        // echo "<pre>";
-                        // print_r(json_decode($getorderarry));
-                        // echo "</pre>";
+                        echo "<pre>";
+                        print_r(json_decode($getorderarry));
+                        echo "</pre>";
                     }
 
                     // echo $getorderarry;
