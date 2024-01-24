@@ -423,11 +423,11 @@ class Home extends BaseController
                             //$finalprice = $finalprice - $finaldiscount;
                         } else {
                             $txincude = false;
-                            echo "finalprice2".$finalprice = $taxamounttotal;
+                            echo "finalprice2=".$finalprice = $taxamounttotal;
                         }
 
                         if ($dicocideline > 0) {
-                            echo "finalprice3".$finalprice = $taxamounttotal - $dicocideline;
+                            echo "finalprice3=".$finalprice = $taxamounttotal - $dicocideline;
                         }
 
                         // $finaldiscount = $linitemdisount + $paid_price;
