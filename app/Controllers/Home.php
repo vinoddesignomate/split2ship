@@ -436,10 +436,11 @@ class Home extends BaseController
                                 "total_tax" => $order_tax,
                                 "transactions" => [
                                     [
-                                        "kind" => "authorization",
+                                        "kind" => "sale",
                                         "status" => "success",
                                         "amount" => $finalprice,
-                                        "gateway" => "Cash on Delivery"
+                                        "gateway" => "Cash on Delivery (COD)",
+                                        "processing_method" => "manual"
                                     ]
                                 ],
                                 "taxes_included" => $txincude,
