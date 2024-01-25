@@ -351,8 +351,8 @@ class AppwhookController extends BaseController
         } else {
             $store_phnum2 = "";
         }
-        $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
-        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
+       // $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+       // if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             if (isset($jsndata->discount_codes[0]->code)) {
                 $cpode_string = $jsndata->discount_codes[0]->code;
                 // Find the position of 'cgsplit'
@@ -385,15 +385,15 @@ class AppwhookController extends BaseController
                 $finaldiscount = $jsndata->subtotal_price;
                 $titla_name = "Partial Payment";
             }
-        } else {
-            if ($linitemdisount > 0) {
-                $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
-                $titla_name = "Partial Payment+Applied Discount";
-            } else {
-                $finaldiscount = $jsndata->subtotal_price;
-                $titla_name = "Partial Payment";
-            }
-        }
+        // } else {
+        //     if ($linitemdisount > 0) {
+        //         $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
+        //         $titla_name = "Partial Payment+Applied Discount";
+        //     } else {
+        //         $finaldiscount = $jsndata->subtotal_price;
+        //         $titla_name = "Partial Payment";
+        //     }
+        // }
 
 
         if ($jsndata->taxes_included == 1) {
@@ -415,9 +415,9 @@ class AppwhookController extends BaseController
 
         //if (!empty($chkpropeties)) {
 
-        $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+       // $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
         //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
-        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
+        //if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             $order_data = [
                 "order" => [
                     "line_items" => $order_line_items,
@@ -473,7 +473,7 @@ class AppwhookController extends BaseController
                     ]
                 ]
             ];
-        } else {
+        /*} else {
             $order_data = [
                 "order" => [
                     "line_items" => $order_line_items,
@@ -528,7 +528,7 @@ class AppwhookController extends BaseController
                     ]
                 ]
             ];
-        }
+        }*/
 
 
 
