@@ -87,27 +87,27 @@ class Home extends BaseController
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    $creatruledata = [
-                        "price_rule" => [
-                            "title" => 'test',
-                            "target_type" => "line_item",
-                            "value_type" => 'fixed_amount',
-                            "value" => '-0',
-                            "target_selection" => "all",
-                            "customer_selection" => "all",
-                            "allocation_method" => "across",
-                            "usage_limit" => 1,
-                            "starts_at" => date("Y-m-d H:i:s"),
-                        ]
-                    ];
-                    //print_r($creatruledata);
-                    $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $_GET['shop']);
+                    // $creatruledata = [
+                    //     "price_rule" => [
+                    //         "title" => 'test',
+                    //         "target_type" => "line_item",
+                    //         "value_type" => 'fixed_amount',
+                    //         "value" => '-0',
+                    //         "target_selection" => "all",
+                    //         "customer_selection" => "all",
+                    //         "allocation_method" => "across",
+                    //         "usage_limit" => 1,
+                    //         "starts_at" => date("Y-m-d H:i:s"),
+                    //     ]
+                    // ];
+                    // //print_r($creatruledata);
+                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $_GET['shop']);
         
-                    $getcupoin = json_decode($getprietuleid['body'], true);
+                    // $getcupoin = json_decode($getprietuleid['body'], true);
 
-                     echo "getcupoin<pre>";
-                    print_r($getcupoin);
-                    echo "</pre>";
+                    //  echo "getcupoin<pre>";
+                    // print_r($getcupoin);
+                    // echo "</pre>";
                     //echo "sss";
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686672785684.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
