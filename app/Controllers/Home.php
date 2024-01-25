@@ -85,7 +85,7 @@ class Home extends BaseController
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
-
+                    echo "sss";
 
                     // $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5686672785684.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
                     // echo "getprietuleid<pre>";
