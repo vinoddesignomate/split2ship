@@ -84,15 +84,15 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'ceo-diamondlady.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-                    $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getdggyh = json_decode($getwebhok['body'], true);
+                    // $getdggyh = json_decode($getwebhok['body'], true);
 
-                     echo "getdggyh<pre>";
-                    print_r($getdggyh);
-                    echo "</pre>";
+                    //  echo "getdggyh<pre>";
+                    // print_r($getdggyh);
+                    // echo "</pre>";
                     // $remove_webhklist = array("1131614470237", "1131614503005", "1131614535773", "1131614568541", "1131614601309");
                     // foreach ($remove_webhklist as $key => $valueid) {
                     //     echo "valueid=".$valueid;
