@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://phpstack-1205348-4263295.cloudwaysapps.com/public/';
+    public $baseURL = 'https://app.payxnowandrestondelivery.com/public/';
 
     /**
      * --------------------------------------------------------------------------

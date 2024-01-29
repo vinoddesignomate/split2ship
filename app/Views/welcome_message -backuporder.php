@@ -327,10 +327,10 @@
                             <div class="flex-row">
                                 <label for="">Upload Non serviceable postal codes</label>
                                 <?php if (!empty($get_allzip)) { ?>
-                                    <a id="clickfile" onclick='abc(event);' href="https://phpstack-1205348-4263295.cloudwaysapps.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
+                                    <a id="clickfile" onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
                                 <?php } ?>
                                 <span id="export_id" style="display: none;"></span>
-                                <a onclick='abc(event);' href="https://phpstack-1205348-4263295.cloudwaysapps.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
+                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
                                 <input type="file" required name="zip_code" accept=".csv">
                             </div>
                             <div class="btn-row">

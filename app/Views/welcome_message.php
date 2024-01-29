@@ -197,7 +197,7 @@ $store_namecnf = $shop_name[0];
     <div class="popup-content">
         <!-- <h2>Hello, this is a message!</h2> -->
         <p id="plmsg_config">Please update app for new feature</p>
-        <div class="closeButtonCg"><a onclick="abc(event);" href="https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=<?php echo esc($_GET['shop']); ?>">Update Now</a></div>
+        <div class="closeButtonCg"><a onclick="abc(event);" href="https://app.payxnowandrestondelivery.com/public/install?shop=<?php echo esc($_GET['shop']); ?>">Update Now</a></div>
         <!-- <button class="payxnowandrestondelivery-close-popup-btn" onclick="config_hidePopup()">X</button> -->
     </div>
 </div>
@@ -547,10 +547,10 @@ $store_namecnf = $shop_name[0];
                             <div class="flex-row">
                                 <label for="">Upload Non serviceable postal codes</label>
                                 <?php if (!empty($get_allzip)) { ?>
-                                    <a id="clickfile" onclick='abc(event);' href="https://phpstack-1205348-4263295.cloudwaysapps.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
+                                    <a id="clickfile" onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/exporcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Export All</a>
                                 <?php } ?>
                                 <span id="export_id" style="display: none;"></span>
-                                <a onclick='abc(event);' href="https://phpstack-1205348-4263295.cloudwaysapps.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
+                                <a onclick='abc(event);' href="https://app.payxnowandrestondelivery.com/samplfcsv?shop=<?php echo $_GET['shop']; ?>" class="postal-btn">Sample CSV</a>
                                 <input type="file" required name="zip_code" accept=".csv">
                             </div>
                             <div class="btn-row">
