@@ -24,7 +24,7 @@ class Auth extends BaseController
 
 		$oauth_url = 'https://' . $shop . '/admin/oauth/authorize?client_id=' . $_API_KEY . '&scope=' . $scopes . '&redirect_uri=' . urlencode($redirect_uri) . '&state=' . $nonce . '&grant_options[]=' . $access_mode;
 
-		$oauth_url="https://payxnowandrestondelivery.com/";
+		//$oauth_url="https://payxnowandrestondelivery.com/";
 		// die();
 		//header("Location: " . $oauth_url);
 
@@ -34,8 +34,8 @@ class Auth extends BaseController
 	public function token()
 	{
 
-		echo "<script>top.window.location='https://payxnowandrestondelivery.com/'</script>";
-		exit();
+		// echo "<script>top.window.location='https://payxnowandrestondelivery.com/'</script>";
+		// exit();
 		$userModel = new UserModel();
 		//$api_key = '3bd84db3e14a8028efd6afb20789f1a9';
 		$api_key = 'a47ead69b3d83a8042703f093f3cadb2';
@@ -165,7 +165,7 @@ class Auth extends BaseController
 
 
 			//update cart webhook
-			$this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 			// $webhookarray = array(
 			// 	"webhook_name" => 'cart_update',
@@ -176,19 +176,19 @@ class Auth extends BaseController
 
 
 			//order create webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/create", "address" => 'https://app.payxnowandrestondelivery.com/syncallorders?whshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/create", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/syncallorders?whshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			//Product Update webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			//order paid webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/paidordernotify?shpname=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/paidordernotify?shpname=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			// app uninstalled webhook 
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "app/uninstalled", "address" => 'https://app.payxnowandrestondelivery.com/cleanup_app?cleanshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "app/uninstalled", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/cleanup_app?cleanshop=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 			//$register_webhookset = json_decode($register_webhook['body'], true);
 

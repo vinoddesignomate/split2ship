@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         emailf: emailf,
       });
 
-      fetch("https://app.payxnowandrestondelivery.com/fetch-order", {
+      fetch("https://phpstack-1205348-4263295.cloudwaysapps.com/fetch-order", {
         method: "POST",
         body: send_data,
       })
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productid: hiddenInputValues,
         orderid: orderid,
       });
-      fetch("https://app.payxnowandrestondelivery.com/fetch-track-return", {
+      fetch("https://phpstack-1205348-4263295.cloudwaysapps.com/fetch-track-return", {
         method: "POST",
         body: send_data,
       })
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         orderid: orderid,
         getreturn: "info",
       });
-      fetch("https://app.payxnowandrestondelivery.com/fetch-return-process", {
+      fetch("https://phpstack-1205348-4263295.cloudwaysapps.com/fetch-return-process", {
         method: "POST",
         body: send_data,
       })
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
         orderid: orderid,
         getreturn: "track_return",
       });
-      fetch("https://app.payxnowandrestondelivery.com/fetch-return-process", {
+      fetch("https://phpstack-1205348-4263295.cloudwaysapps.com/fetch-return-process", {
         method: "POST",
         body: send_data,
       })
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
         orderid: orderid,
       });
 
-      fetch("https://app.payxnowandrestondelivery.com/fetch-order-info", {
+      fetch("https://phpstack-1205348-4263295.cloudwaysapps.com/fetch-order-info", {
         method: "POST",
         body: send_data,
       })

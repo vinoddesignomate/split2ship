@@ -47,10 +47,10 @@ class Home extends BaseController
         if (isset($_GET['shop'])) {
             $countrows = $this->user_model->checktokens($_GET['shop']);
             if ($countrows < 1) {
-                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                echo "<script>top.window.location='https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'] . "'</script>";
                 echo "count daatched";
 
-                // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                // $data['pricurl'] = "https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
             }
 
@@ -63,8 +63,8 @@ class Home extends BaseController
             // echo"<pre>"; print_r($response_home); echo "</pre>"; die();
             if (array_key_exists('errors', $response_home)) {
                 // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
-                echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-                // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+                echo "<script>top.window.location='https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+                // $data['pricurl'] = "https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'];
                 // echo view('templates/apbrdgnew', $data);
 
                 // exit();
@@ -86,10 +86,10 @@ class Home extends BaseController
                 //     print_r($webhookdata);
                 //     echo "</pre>";
                 /*if (empty($webhookdata)) {
-                    $this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
+                    $this->common->rest_api('/admin/api/2023-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
 
 
-                    // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/create", "address" => 'https://app.payxnowandrestondelivery.com/pro_create_evnt?cpwshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);    
+                    // $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/create", "address" => 'https://phpstack-1205348-4263295.cloudwaysapps.com/pro_create_evnt?cpwshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);    
 
                     $webhookarray = array(
                         "webhook_name" => 'cart_update',
@@ -634,8 +634,8 @@ class Home extends BaseController
 
         if (array_key_exists('errors', $collections)) {
             // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
-            echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-            // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+            echo "<script>top.window.location='https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+            // $data['pricurl'] = "https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'];
             // echo view('templates/apbrdgnew', $data);
 
             // exit();
@@ -1268,8 +1268,8 @@ class Home extends BaseController
         $get_all_oders = json_decode($all_orders['body'], true);
         if (array_key_exists('errors', $get_all_oders)) {
             // echo esc("sorry but  i think there is an error. error is" . $response_home['errors']);
-            echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
-            // $data['pricurl'] = "https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'];
+            echo "<script>top.window.location='https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'] . "'</script>";
+            // $data['pricurl'] = "https://phpstack-1205348-4263295.cloudwaysapps.com/public/install?shop=" . $_GET['shop'];
             // echo view('templates/apbrdgnew', $data);
 
             // exit();
