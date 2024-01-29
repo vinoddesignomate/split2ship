@@ -253,7 +253,7 @@ $store_namecnf = $shop_name[0];
                 body.classList.add("package_popup_visible");
             </script>
         <?php }
-        if ($get_details_store->force_update == '0') {
+        if (isset($get_details_store->force_update) && $get_details_store->force_update == '0') {
         ?>
 
             <script type="text/javascript">
