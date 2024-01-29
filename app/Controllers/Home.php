@@ -86,24 +86,25 @@ class Home extends BaseController
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'finesilverjewels.myshopify.com') {
 
-                    $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getdggyh = json_decode($getwebhok['body'], true);
+                    // $getdggyh = json_decode($getwebhok['body'], true);
 
-                     echo "getdggyh<pre>";
-                    print_r($getdggyh);
-                    echo "</pre>";
-                    // $remove_webhklist = array("1131614470237", "1131614503005", "1131614535773", "1131614568541", "1131614601309");
-                    // foreach ($remove_webhklist as $key => $valueid) {
-                    //     echo "valueid=".$valueid;
-                    //     $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+                    //  echo "getdggyh<pre>";
+                    // print_r($getdggyh);
+                    // echo "</pre>";
 
-                    //     $defggetdggyh = json_decode($delweb['body'], true);
+                    $remove_webhklist = array("1458263720246", "1458263753014", "1458263785782", "1458263818550", "1458263851318");
+                    foreach ($remove_webhklist as $key => $valueid) {
+                        echo "valueid=".$valueid;
+                        $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
 
-                    //     echo "defggetdggyh<pre>";
-                    //     print_r($defggetdggyh);
-                    //     echo "</pre>";
-                    // }
+                        $defggetdggyh = json_decode($delweb['body'], true);
+
+                        echo "defggetdggyh<pre>";
+                        print_r($defggetdggyh);
+                        echo "</pre>";
+                    }
 
 
 
