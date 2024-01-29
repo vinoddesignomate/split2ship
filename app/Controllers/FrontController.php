@@ -1898,9 +1898,10 @@ class FrontController extends BaseController
     {
         $get_older_partial_coupon = $this->user_model->get_older_partial_coupon_to_remove();
 
-        // echo "<pre>";
-        // print_r($get_older_partial_coupon);
-        // echo "<pre>";
+        echo "<pre>";
+        print_r($get_older_partial_coupon);
+        echo "<pre>";
+        die();
         if (!empty($get_older_partial_coupon)) {
             foreach ($get_older_partial_coupon as $allshpal) {
 
