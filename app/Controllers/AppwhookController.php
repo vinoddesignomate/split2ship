@@ -351,40 +351,40 @@ class AppwhookController extends BaseController
         } else {
             $store_phnum2 = "";
         }
-       // $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
-       // if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
-            if (isset($jsndata->discount_codes[0]->code)) {
-                $cpode_string = $jsndata->discount_codes[0]->code;
-                // Find the position of 'cgsplit'
-                $startPosition = strpos($cpode_string, 'cgsplit');
+        // $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+        // if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
+        if (isset($jsndata->discount_codes[0]->code)) {
+            $cpode_string = $jsndata->discount_codes[0]->code;
+            // Find the position of 'cgsplit'
+            $startPosition = strpos($cpode_string, 'cgsplit');
 
-                // Check if 'cgsplit' exists in the string
-                if ($startPosition !== false) {
-                    // Extract the substring after 'cgsplit'
-                    $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
+            // Check if 'cgsplit' exists in the string
+            if ($startPosition !== false) {
+                // Extract the substring after 'cgsplit'
+                $substring = substr($cpode_string, $startPosition + strlen('cgsplit'));
 
-                    // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
-                    $value = trim($substring, ')'); // Remove ')' from the end if needed
+                // Extract the value after 'cgsplit' and remove any leading/trailing characters if needed
+                $value = trim($substring, ')'); // Remove ')' from the end if needed
 
-                    // Output the extracted value
-                    $dicocideline = $value;
-                } else {
-                    $dicocideline = 0;
-                    // echo "Substring 'cgsplit' not found." . PHP_EOL;
-                }
+                // Output the extracted value
+                $dicocideline = $value;
             } else {
                 $dicocideline = 0;
+                // echo "Substring 'cgsplit' not found." . PHP_EOL;
             }
+        } else {
+            $dicocideline = 0;
+        }
 
-            //if ($linitemdisount > 0) {
-            if ($dicocideline > 0) {
-                // $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
-                $finaldiscount = $jsndata->subtotal_price + $dicocideline;
-                $titla_name = "Partial Payment(" . $jsndata->subtotal_price . ")+Applied Discount(" . $dicocideline . ")";
-            } else {
-                $finaldiscount = $jsndata->subtotal_price;
-                $titla_name = "Partial Payment";
-            }
+        //if ($linitemdisount > 0) {
+        if ($dicocideline > 0) {
+            // $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
+            $finaldiscount = $jsndata->subtotal_price + $dicocideline;
+            $titla_name = "Partial Payment(" . $jsndata->subtotal_price . ")+Applied Discount(" . $dicocideline . ")";
+        } else {
+            $finaldiscount = $jsndata->subtotal_price;
+            $titla_name = "Partial Payment";
+        }
         // } else {
         //     if ($linitemdisount > 0) {
         //         $finaldiscount = $linitemdisount + $jsndata->subtotal_price;
@@ -415,64 +415,64 @@ class AppwhookController extends BaseController
 
         //if (!empty($chkpropeties)) {
 
-       // $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
+        // $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
         //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
         //if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
-            $order_data = [
-                "order" => [
-                    "line_items" => $order_line_items,
-                    "financial_status" => "pending",
-                    "tax_lines" => $tax_lines,
-                    "total_tax" => $order_tax,
-                    "payment_gateway" => "cod",
-                    // "transactions" => [
-                    //     [
-                    //         "kind" => "authorization",
-                    //         "status" => "success",
-                    //         "amount" => $finalprice,
-                    //         "gateway" => "Cash on Delivery"
-                    //     ]
-                    // ],
-                    "shipping_address" => [
-                        "first_name" => $first_name,
-                        "last_name" => $las_name,
-                        "address1" => $address1 . $address2,
-                        "phone" => $phone,
-                        "city" => $city,
-                        "province" => $province,
-                        "country" => $country,
-                        "zip" => $zip
-                    ],
-                    "billing_address" => [
-                        "first_name" => (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : ''),
-                        "last_name" => (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : ''),
-                        "address1" => (isset($jsndata->billing_address->address1) ? $jsndata->billing_address->address1 : '') . (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : ''),
-                        "phone" => $store_phnum2,
-                        "city" => (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : ''),
-                        "province" => (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : ''),
-                        "country" => (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : ''),
-                        "zip" => (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '')
-                    ],
-                    "taxes_included" => $txincude,
-                    "customer" => [
-                        "id" => $jsndata->customer->id
-                    ],
-                    "note_attributes" => [
-                        [
-                            "name" => "Suffix",
-                            "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
-                        ]
-                    ],
-                    "name" => $jsndata->name . '-SplitOrder',
-                    "discount_codes" => [
-                        [
-                            "code" => $titla_name,
-                            "amount" => $finaldiscount,
-                            "type" => "fixed_amount"
-                        ]
+        $order_data = [
+            "order" => [
+                "line_items" => $order_line_items,
+                "financial_status" => "pending",
+                "tax_lines" => $tax_lines,
+                "total_tax" => $order_tax,
+                "payment_gateway" => "cod",
+                // "transactions" => [
+                //     [
+                //         "kind" => "authorization",
+                //         "status" => "success",
+                //         "amount" => $finalprice,
+                //         "gateway" => "Cash on Delivery"
+                //     ]
+                // ],
+                "shipping_address" => [
+                    "first_name" => $first_name,
+                    "last_name" => $las_name,
+                    "address1" => $address1 . $address2,
+                    "phone" => $phone,
+                    "city" => $city,
+                    "province" => $province,
+                    "country" => $country,
+                    "zip" => $zip
+                ],
+                "billing_address" => [
+                    "first_name" => (isset($jsndata->billing_address->first_name) ? $jsndata->billing_address->first_name : ''),
+                    "last_name" => (isset($jsndata->billing_address->last_name) ? $jsndata->billing_address->last_name : ''),
+                    "address1" => (isset($jsndata->billing_address->address1) ? $jsndata->billing_address->address1 : '') . (isset($jsndata->billing_address->address2) ? $jsndata->billing_address->address2 : ''),
+                    "phone" => $store_phnum2,
+                    "city" => (isset($jsndata->billing_address->city) ? $jsndata->billing_address->city : ''),
+                    "province" => (isset($jsndata->billing_address->province) ? $jsndata->billing_address->province : ''),
+                    "country" => (isset($jsndata->billing_address->country) ? $jsndata->billing_address->country : ''),
+                    "zip" => (isset($jsndata->billing_address->zip) ? $jsndata->billing_address->zip : '')
+                ],
+                "taxes_included" => $txincude,
+                "customer" => [
+                    "id" => $jsndata->customer->id
+                ],
+                "note_attributes" => [
+                    [
+                        "name" => "Suffix",
+                        "value" => $jsndata->name . '-SplitOrder'  # Add your desired suffix here
+                    ]
+                ],
+                "name" => $jsndata->name . '-SplitOrder',
+                "discount_codes" => [
+                    [
+                        "code" => $titla_name,
+                        "amount" => $finaldiscount,
+                        "type" => "fixed_amount"
                     ]
                 ]
-            ];
+            ]
+        ];
         /*} else {
             $order_data = [
                 "order" => [
@@ -2393,38 +2393,39 @@ class AppwhookController extends BaseController
         fclose($webhookpd);
 
         $get_productsup = json_decode($update_product_content);
-
-        $array_get_perc = array(
-            "product_id" => $get_productsup->id,
-            "shop_url" => $_GET['pxupprshp']
-        );
-        // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
-        // $this->user_model->check_test_response($updateprorespo);
-
-        $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
-        // echo "<pre>";
-        // print_r($get_partpecentage);
-        // echo "</pre>";
-
-        if (!empty($get_partpecentage)) {
-            $product_array = array(
+        if (!empty($get_productsup)) {
+            $array_get_perc = array(
                 "product_id" => $get_productsup->id,
-                "product_title" => $get_productsup->title,
-                "shop_url" => $_GET['pxupprshp'],
-                "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                "shop_url" => $_GET['pxupprshp']
             );
-            $this->user_model->add_partial_products($product_array);
+            // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
+            // $this->user_model->check_test_response($updateprorespo);
 
-            foreach ($get_productsup->variants as $produc_varaien) {
+            $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
+            // echo "<pre>";
+            // print_r($get_partpecentage);
+            // echo "</pre>";
+
+            if (!empty($get_partpecentage)) {
                 $product_array = array(
                     "product_id" => $get_productsup->id,
-                    "varient_id" => $produc_varaien->id,
-                    "title" => $produc_varaien->title,
-                    "price" => $produc_varaien->price,
+                    "product_title" => $get_productsup->title,
                     "shop_url" => $_GET['pxupprshp'],
                     "partial_percentage" => $get_partpecentage[0]->partial_percentage
                 );
-                $this->user_model->add_partial_products_varient($product_array);
+                $this->user_model->add_partial_products($product_array);
+
+                foreach ($get_productsup->variants as $produc_varaien) {
+                    $product_array = array(
+                        "product_id" => $get_productsup->id,
+                        "varient_id" => $produc_varaien->id,
+                        "title" => $produc_varaien->title,
+                        "price" => $produc_varaien->price,
+                        "shop_url" => $_GET['pxupprshp'],
+                        "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                    );
+                    $this->user_model->add_partial_products_varient($product_array);
+                }
             }
         }
 
