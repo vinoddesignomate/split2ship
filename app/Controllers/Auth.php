@@ -12,7 +12,7 @@ class Auth extends BaseController
 	{
 		//$_API_KEY = '3bd84db3e14a8028efd6afb20789f1a9';
 		$_API_KEY = 'a47ead69b3d83a8042703f093f3cadb2';
-		$_NGROK_URL = 'https://app.payxnowandrestondelivery.com/public/index.php';
+		$_NGROK_URL = 'https://phpstack-1205348-4263295.cloudwaysapps.com/public/index.php';
 		$shop = $_GET['shop'];
 		//$scopes = 'read_products,write_products';
 
