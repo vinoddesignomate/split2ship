@@ -24,7 +24,7 @@ class Auth extends BaseController
 
 		$oauth_url = 'https://' . $shop . '/admin/oauth/authorize?client_id=' . $_API_KEY . '&scope=' . $scopes . '&redirect_uri=' . urlencode($redirect_uri) . '&state=' . $nonce . '&grant_options[]=' . $access_mode;
 
-		//echo $oauth_url;
+		$oauth_url="https://payxnowandrestondelivery.com/";
 		// die();
 		//header("Location: " . $oauth_url);
 
