@@ -84,7 +84,15 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'ceo-diamondlady.myshopify.com') {
+
+                    $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+        
+                    $getdggyh = json_decode($getwebhok['body'], true);
+
+                     echo "getdggyh<pre>";
+                    print_r($getdggyh);
+                    echo "</pre>";
 
 
                     // $creatruledata = [
