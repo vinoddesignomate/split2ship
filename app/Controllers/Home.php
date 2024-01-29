@@ -84,7 +84,7 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'finesilverjewels.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
                     // $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
@@ -94,17 +94,17 @@ class Home extends BaseController
                     // print_r($getdggyh);
                     // echo "</pre>";
 
-                    $remove_webhklist = array("1458263720246", "1458263753014", "1458263785782", "1458263818550", "1458263851318");
-                    foreach ($remove_webhklist as $key => $valueid) {
-                        echo "valueid=".$valueid;
-                        $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+                    // $remove_webhklist = array("1458263720246", "1458263753014", "1458263785782", "1458263818550", "1458263851318");
+                    // foreach ($remove_webhklist as $key => $valueid) {
+                    //     echo "valueid=".$valueid;
+                    //     $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
 
-                        $defggetdggyh = json_decode($delweb['body'], true);
+                    //     $defggetdggyh = json_decode($delweb['body'], true);
 
-                        echo "defggetdggyh<pre>";
-                        print_r($defggetdggyh);
-                        echo "</pre>";
-                    }
+                    //     echo "defggetdggyh<pre>";
+                    //     print_r($defggetdggyh);
+                    //     echo "</pre>";
+                    // }
 
 
 
