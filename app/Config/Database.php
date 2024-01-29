@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'partial_payx',
-        'password' => 'i!>ygUhS<5M*rest',
-        'database' => 'payxnowrestondelivery_app',
+        'username' => 'jazmkhctgd',
+        'password' => 'g2wx7W27jq',
+        'database' => 'jazmkhctgd',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
