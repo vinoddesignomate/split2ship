@@ -73,15 +73,16 @@ class FrontController extends BaseController
                             //     print_r($getvarientsres);
                             //     echo "</pre>";
                             // }
-                            if ($getvarientsres['variant']['inventory_management'] == "") {
-                                $getinvtry = 1;
-                            } else {
-                                $getinvtry  = $getvarientsres['variant']['inventory_quantity'];
-                            }
+
 
                             if (array_key_exists('errors', $getvarientsres)) {
                                 return 'not_found';
                             } else {
+                                if ($getvarientsres['variant']['inventory_management'] == "") {
+                                    $getinvtry = 1;
+                                } else {
+                                    $getinvtry  = $getvarientsres['variant']['inventory_quantity'];
+                                }
                                 if (empty($gtbtncolor)) {
                                     $return_array = array(
                                         "full_price" => $get_resulrs[0]->price,
