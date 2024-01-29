@@ -95,6 +95,7 @@ class Home extends BaseController
                     // echo "</pre>";
                     $remove_webhklist = array("1131614470237", "1131614503005", "1131614535773", "1131614568541", "1131614601309");
                     foreach ($remove_webhklist as $key => $valueid) {
+                        echo "valueid=".$valueid;
                         $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
 
                         $defggetdggyh = json_decode($delweb['body'], true);
