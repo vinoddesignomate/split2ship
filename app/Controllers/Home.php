@@ -87,30 +87,14 @@ class Home extends BaseController
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
-                    // Set the API version
-                    $apiVersion = '2023-07';
 
-                    // Construct the API endpoint URL
-                    $themesUrl = "/admin/api/{$apiVersion}/themes.json";
+                    $getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    // Make the API request
-                    $themes = $this->common->rest_api($themesUrl, array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    $neftegetthems = json_decode($getthems['body'], true);
 
-                    // Extract the ID of the active theme
-                    $themeId="";
-                    if (isset($themes['themes'])) {
-                        foreach ($themes['themes'] as $theme) {
-                            if ($theme['role'] == 'main') {
-                                $themeId = $theme['id'];
-                                //echo "The active theme ID is: " . $themeId;
-                                break;
-                            }
-                        }
-                        echo "The active theme ID is: " . $themeId;
-
-                    } else {
-                        echo "Unable to retrieve themes from Shopify API";
-                    }
+                    echo "neftegetthems<pre>";
+                    print_r($neftegetthems);
+                    echo "</pre>";
 
                     // $cron_limit_set = 50;
 
