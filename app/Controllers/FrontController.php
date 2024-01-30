@@ -1936,20 +1936,20 @@ class FrontController extends BaseController
         $getdggyh = json_decode($getwebhok['body'], true);
 
         echo "getdggyh<pre>";
-        print_r($getdggyh);
+        print_r($_GET['rem_del']);
         echo "</pre>";
 
-        // $remove_webhklist = array("1458263720246", "1458263753014", "1458263785782", "1458263818550", "1458263851318");
-        // foreach ($remove_webhklist as $key => $valueid) {
-        //     echo "valueid=".$valueid;
-        //     $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+        $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
+        foreach ($remove_webhklist as $key => $valueid) {
+            echo "valueid=".$valueid;
+            $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
 
-        //     $defggetdggyh = json_decode($delweb['body'], true);
+            $defggetdggyh = json_decode($delweb['body'], true);
 
-        //     echo "defggetdggyh<pre>";
-        //     print_r($defggetdggyh);
-        //     echo "</pre>";
-        // }
+            echo "defggetdggyh<pre>";
+            print_r($defggetdggyh);
+            echo "</pre>";
+        }
     }
     public function update_double_create()
     {
