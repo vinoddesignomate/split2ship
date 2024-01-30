@@ -89,7 +89,7 @@ class Home extends BaseController
                     $cron_limit_set = 50;
 
                     $colcturl = "/admin/api/2023-07/products.json";
-                    $products = $this->common->rest_api($colcturl, array("collection_id" => 434528452912, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $_GET['shop']->shop_url);
+                    $products = $this->common->rest_api($colcturl, array("collection_id" => 434528452912, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $_GET['shop']); 
 
                     $product_list = json_decode($products['body'], true);
                     echo "product_list<pre>";
