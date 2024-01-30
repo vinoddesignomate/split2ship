@@ -221,7 +221,7 @@ $store_name = $shop_name[0];
     .videoInsideCg {
         text-align: center;
         width: 100%;
-        max-width:500px;
+        max-width: 500px;
         max-height: 100%;
         margin: 0 auto;
         margin-bottom: 30px;
@@ -347,6 +347,17 @@ $store_name = $shop_name[0];
         border: 8px solid #3783e13b;
     }
 
+    .anchorCGclick {
+        border: 1px solid #303A26;
+        color: #000;
+        padding: 2px 7px;
+        font-size: 13px;
+        background: #E1FA03;
+        font-weight: 500;
+        margin: 0px 0 0 0;
+        display: inline-block;
+    }
+
     :root {
         --code-color: darkred;
         --code-bg-color: #F6F6F6;
@@ -434,7 +445,7 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="5">
-                            <li>Click on collection <a onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Click here</a>
+                            <li>Click on collection <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Click here</a>
                                 <div class="centerCGImg03"><img src="/public/images/stp2_1.webp" /></div>
                             </li>
                             <li>Click on pencil icon and define how much advance you want to take upfront<div class="centerCGImg03"><img src="/public/images/step2_2.webp" /></div>
@@ -462,7 +473,7 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
-                            <li>Enable the button on cart page and product page <a onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Click here</a>
+                            <li>Enable the button on cart page and product page <a onclick='popupclick(event);' class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Click here</a>
                                 <div class="centerCGImg03"><img src="/public/images/step3_1.webp" /></div>
                             </li>
                             <li>Make sure you pick the right color for the background of the button and text color on the button <div class="centerCGImg03"><img src="/public/images/step3_2.webp" /></div>
@@ -490,7 +501,7 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
-                            <li>Go to the "Tutorial" page of the app <a onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials">Click here</a>
+                            <li>Go to the "Tutorial" page of the app <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials">Click here</a>
                                 <div class="centerCGImg03"><img src="/public/images/step4_1.webp" /></div>
                             </li>
                             <li>Scroll down to step number 5 and copy the entire code <div class="centerCGImg03"><img src="/public/images/step4_2.webp" /></div>
@@ -545,7 +556,7 @@ $store_name = $shop_name[0];
 
         });
     }
-    
+
     if (stepactive == 1) {
         $("#showPopUpCG").fadeIn();
         $("#enableCGapp").addClass("addCGproductsCls");
@@ -596,7 +607,7 @@ $store_name = $shop_name[0];
         $("#enableCGapp").addClass("activeArecG");
         $("#enblp").addClass("activetabcg");
     });
-    
+
     $("#previstp2").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
         $(".screenTopCgSlide").removeClass("activeArecG");
@@ -606,7 +617,7 @@ $store_name = $shop_name[0];
         $("#addCGproducts").addClass("activeArecG");
         $("#adprdtcg").addClass("activetabcg");
     });
-    
+
     $("#prevstp3").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
         $(".screenTopCgSlide").removeClass("activeArecG");
@@ -643,7 +654,7 @@ $store_name = $shop_name[0];
         $("#configureCGapp").addClass("addCGproductsCls");
         $("#configureCGapp").addClass("activeArecG");
         $("#confitbcg").addClass("activetabcg");
-       
+
         track_steps_ajax('step2', 1);
     });
 
@@ -662,7 +673,7 @@ $store_name = $shop_name[0];
     $("#nextCgScreen4").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
         $('body').removeClass('popupCgTransparancy');
-       
+
         $("#showPopUpCG").fadeOut();
         track_steps_ajax('step4', 1);
     });
