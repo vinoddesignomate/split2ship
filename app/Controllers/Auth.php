@@ -99,13 +99,33 @@ class Auth extends BaseController
 
 			//below code for activate add to cart, partial buy, full buy button on install app code start
 			$track_color_array = array(
-                "add_to_cartbtn" => 1,
-                "buy_partial_btn" => 1,
-                "full_pay_buybtn" => 1,
-                "shop_url" => $parameters['shop']
-            );
+				"add_to_cartbtn" => 1,
+				"buy_partial_btn" => 1,
+				"full_pay_buybtn" => 1,
+				"shop_url" => $parameters['shop']
+			);
 			$userModel->track_checkout_button_color($track_color_array);
 			//below code for activate add to cart, partial buy, full buy button on install app code end
+
+			$getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $response['access_token'], $_GET['shop']);
+
+			$neftegetthems = json_decode($getthems['body'], true);
+
+			$themeId = "";
+			if (isset($neftegetthems['themes'])) {
+				foreach ($neftegetthems['themes'] as $theme) {
+					if ($theme['role'] == 'main') {
+						$themeId = $theme['id'];
+						//echo "The active theme ID is: " . $themeId;
+						break;
+					}
+				}
+			} else {
+				$themeId = "";
+				//echo "Unable to retrieve themes from Shopify API";
+			}
+			
+
 
 			if ($countrows < 1) {
 				$curdate = date('Y-m-d');
@@ -113,6 +133,7 @@ class Auth extends BaseController
 					"shop_url" => $parameters['shop'],
 					"access_token" => $response['access_token'],
 					"scope" => $response['scope'],
+					"store_theme_id" => $themeId,
 					//"expires_in" => $response['expires_in'],
 					//"associated_user_scope" => $response['associated_user_scope'],
 					//"associated_user_id" => $response['associated_user']['id'],
@@ -147,6 +168,7 @@ class Auth extends BaseController
 				$userId = $userModel->update_data($parameters['shop'], array(
 					"access_token" => $response['access_token'],
 					"scope" => $response['scope'],
+					"store_theme_id" => $themeId,
 					"expires_in" => $response['expires_in'],
 					"auth_code" => $parameters['code'],
 					"associated_user_scope" => $response['associated_user_scope'],
