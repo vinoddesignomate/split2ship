@@ -1930,25 +1930,28 @@ class FrontController extends BaseController
     }
     public function removewebhookold()
     {
-        $get_details = $this->user_model->get_tokens($_GET['shop']);
-        $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+        if (!isset($_GET['rem_del'])) {
+            $get_details = $this->user_model->get_tokens($_GET['shop']);
+            $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-        $getdggyh = json_decode($getwebhok['body'], true);
+            $getdggyh = json_decode($getwebhok['body'], true);
 
-        echo "getdggyh<pre>";
-        print_r($_GET['rem_del']);
-        echo "</pre>";
-
-        $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
-        foreach ($remove_webhklist as $key => $valueid) {
-            echo "valueid=".$valueid;
-            $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
-
-            $defggetdggyh = json_decode($delweb['body'], true);
-
-            echo "defggetdggyh<pre>";
-            print_r($defggetdggyh);
+            echo "getdggyh<pre>";
+            print_r($getdggyh);
             echo "</pre>";
+        }
+        if (isset($_GET['rem_del'])) {
+            // $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
+            foreach ($_GET['rem_del'] as $key => $valueid) {
+                echo "valueid=" . $valueid;
+                $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/' . $valueid . '.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+
+                $defggetdggyh = json_decode($delweb['body'], true);
+
+                echo "defggetdggyh<pre>";
+                print_r($defggetdggyh);
+                echo "</pre>";
+            }
         }
     }
     public function update_double_create()
