@@ -1928,6 +1928,29 @@ class FrontController extends BaseController
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
         echo "done";
     }
+    public function removewebhookold()
+    {
+        $get_details = $this->user_model->get_tokens($_GET['shop']);
+        $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+        $getdggyh = json_decode($getwebhok['body'], true);
+
+        echo "getdggyh<pre>";
+        print_r($getdggyh);
+        echo "</pre>";
+
+        // $remove_webhklist = array("1458263720246", "1458263753014", "1458263785782", "1458263818550", "1458263851318");
+        // foreach ($remove_webhklist as $key => $valueid) {
+        //     echo "valueid=".$valueid;
+        //     $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/'.$valueid.'.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+
+        //     $defggetdggyh = json_decode($delweb['body'], true);
+
+        //     echo "defggetdggyh<pre>";
+        //     print_r($defggetdggyh);
+        //     echo "</pre>";
+        // }
+    }
     public function update_double_create()
     {
         // $resposne_array = array("name" => "insertion from AWS");
