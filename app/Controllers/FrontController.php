@@ -1031,7 +1031,7 @@ class FrontController extends BaseController
                     if ($get_lates_colection->cron_page_num == 1) {
                         $data = array();
                         $colcturl = "/admin/api/2023-07/products.json";
-                        $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
+                        $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set,"status"=>"active"), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
 
                         $product_list = json_decode($products['body'], true);
                         if (!array_key_exists('errors', $product_list)) {
@@ -1104,7 +1104,8 @@ class FrontController extends BaseController
                         $page_array = array(
                             'limit' => $cron_limit_set,
                             'page_info' => $get_lates_colection->page_info,
-                            'rel' => "next"
+                            'rel' => "next",
+                            "status"=>"active"
                         );
 
                         $products = $this->common->rest_api('/admin/api/2022-04/products.json', $page_array, 'GET', $get_details->access_token, $get_lates_colection->shop_url);
