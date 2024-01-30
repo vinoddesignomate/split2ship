@@ -86,6 +86,16 @@ class Home extends BaseController
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
+                    $cron_limit_set = 50;
+
+                    $colcturl = "/admin/api/2023-07/products.json";
+                    $products = $this->common->rest_api($colcturl, array("collection_id" => 434528452912, "limit" => $cron_limit_set), 'GET', $get_details->access_token, $_GET['shop']->shop_url);
+
+                    $product_list = json_decode($products['body'], true);
+                    echo "product_list<pre>";
+                    print_r($product_list);
+                    echo "</pre>";
+
                     // $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
                     // $getdggyh = json_decode($getwebhok['body'], true);

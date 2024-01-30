@@ -713,7 +713,7 @@ class UserModel extends Model
     {
 
         $collection_q = $this->db->table('collections_percentage');
-        $collection_q->where('movements', date('Y-m-d'));
+        //$collection_q->where('movements', date('Y-m-d'));
         $collection_q->where('cron_run', 0);
         $collection_q->limit(1);
         $get_collection_data = $collection_q->get();
