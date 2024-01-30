@@ -1930,8 +1930,9 @@ class FrontController extends BaseController
     }
     public function removewebhookold()
     {
+        $get_details = $this->user_model->get_tokens($_GET['shop']);
         if (!isset($_GET['rem_del'])) {
-            $get_details = $this->user_model->get_tokens($_GET['shop']);
+            
             $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
             $getdggyh = json_decode($getwebhok['body'], true);
