@@ -95,6 +95,19 @@ class Home extends BaseController
                     echo "neftegetthems<pre>";
                     print_r($neftegetthems);
                     echo "</pre>";
+                    $themeId="";
+                    if(isset($neftegetthems['themes'])) {
+                        foreach ($neftegetthems['themes'] as $theme) {
+                            if ($theme['role'] == 'main') {
+                                $themeId = $theme['id'];
+                                //echo "The active theme ID is: " . $themeId;
+                                break;
+                            }
+                        }
+                    } else {
+                        echo "Unable to retrieve themes from Shopify API";
+                    }
+                    echo $themeId;
 
                     // $cron_limit_set = 50;
 
