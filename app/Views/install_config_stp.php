@@ -417,7 +417,7 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol>
-                            <li>Click on online store <div class="centerCGImg03"><img src="/public/images//stp1.webp" /></div>
+                            <li>Click on online store <?php if($get_details_store->store_theme_id !=""){ ?><a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/themes/<?php echo $get_details_store->store_theme_id; ?>/editor">Click here</a><?php } ?><div class="centerCGImg03"><img src="/public/images//stp1.webp" /></div>
                             </li>
                             <li>Click on customize button from right side <div class="centerCGImg03"><img src="/public/images/stp2.webp" /></div>
                             </li>

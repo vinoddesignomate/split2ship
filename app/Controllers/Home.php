@@ -88,26 +88,26 @@ class Home extends BaseController
 
 
 
-                    $getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    // $getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $neftegetthems = json_decode($getthems['body'], true);
+                    // $neftegetthems = json_decode($getthems['body'], true);
 
-                    echo "neftegetthems<pre>";
-                    print_r($neftegetthems);
-                    echo "</pre>";
-                    $themeId="";
-                    if(isset($neftegetthems['themes'])) {
-                        foreach ($neftegetthems['themes'] as $theme) {
-                            if ($theme['role'] == 'main') {
-                                $themeId = $theme['id'];
-                                //echo "The active theme ID is: " . $themeId;
-                                break;
-                            }
-                        }
-                    } else {
-                        echo "Unable to retrieve themes from Shopify API";
-                    }
-                    echo $themeId;
+                    // echo "neftegetthems<pre>";
+                    // print_r($neftegetthems);
+                    // echo "</pre>";
+                    // $themeId = "";
+                    // if (isset($neftegetthems['themes'])) {
+                    //     foreach ($neftegetthems['themes'] as $theme) {
+                    //         if ($theme['role'] == 'main') {
+                    //             $themeId = $theme['id'];
+                    //             //echo "The active theme ID is: " . $themeId;
+                    //             break;
+                    //         }
+                    //     }
+                    // } else {
+                    //     echo "Unable to retrieve themes from Shopify API";
+                    // }
+                    // echo $themeId;
 
                     // $cron_limit_set = 50;
 
@@ -3311,6 +3311,29 @@ class Home extends BaseController
                     //"total_sync_store_products" => 0
                 ));
             }
+
+            //if ($get_details->store_theme_id == "") {
+            $getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+            $neftegetthems = json_decode($getthems['body'], true);
+
+            $themeId = "";
+            if (isset($neftegetthems['themes'])) {
+                foreach ($neftegetthems['themes'] as $theme) {
+                    if ($theme['role'] == 'main') {
+                        $themeId = $theme['id'];
+                        //echo "The active theme ID is: " . $themeId;
+                        break;
+                    }
+                }
+            } else {
+                $themeId = "";
+                //echo "Unable to retrieve themes from Shopify API";
+            }
+            $this->user_model->update_data($get_details->shop_url, array(
+                "store_theme_id" => $themeId,
+            ));
+            //}
             $visitr_ipaddreess =  $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['REMOTE_ADDR'];
             if ($get_details->first_name != "") {
                 $track_user_log = array(
