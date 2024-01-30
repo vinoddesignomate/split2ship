@@ -86,6 +86,32 @@ class Home extends BaseController
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
+
+                    // Set the API version
+                    $apiVersion = '2023-07';
+
+                    // Construct the API endpoint URL
+                    $themesUrl = "/admin/api/{$apiVersion}/themes.json";
+
+                    // Make the API request
+                    $themes = $this->common->rest_api($themesUrl, array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+                    // Extract the ID of the active theme
+                    $themeId="";
+                    if (isset($themes['themes'])) {
+                        foreach ($themes['themes'] as $theme) {
+                            if ($theme['role'] == 'main') {
+                                $themeId = $theme['id'];
+                                //echo "The active theme ID is: " . $themeId;
+                                break;
+                            }
+                        }
+                        echo "The active theme ID is: " . $themeId;
+
+                    } else {
+                        echo "Unable to retrieve themes from Shopify API";
+                    }
+
                     // $cron_limit_set = 50;
 
                     // $colcturl = "/admin/api/2023-07/products.json";
