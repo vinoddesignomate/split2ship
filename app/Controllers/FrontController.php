@@ -1031,7 +1031,7 @@ class FrontController extends BaseController
                     if ($get_lates_colection->cron_page_num == 1) {
                         $data = array();
                         $colcturl = "/admin/api/2023-07/products.json";
-                        $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set,"status"=>"active"), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
+                        $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set, "status" => "active"), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
 
                         $product_list = json_decode($products['body'], true);
                         if (!array_key_exists('errors', $product_list)) {
@@ -1105,7 +1105,7 @@ class FrontController extends BaseController
                             'limit' => $cron_limit_set,
                             'page_info' => $get_lates_colection->page_info,
                             'rel' => "next",
-                            "status"=>"active"
+                            "status" => "active"
                         );
 
                         $products = $this->common->rest_api('/admin/api/2022-04/products.json', $page_array, 'GET', $get_details->access_token, $get_lates_colection->shop_url);
@@ -1933,7 +1933,7 @@ class FrontController extends BaseController
     {
         $get_details = $this->user_model->get_tokens($_GET['shop']);
         if (!isset($_GET['rem_del'])) {
-            
+
             $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
             $getdggyh = json_decode($getwebhok['body'], true);
@@ -1941,6 +1941,11 @@ class FrontController extends BaseController
             echo "getdggyh<pre>";
             print_r($getdggyh);
             echo "</pre>";
+        }
+        if (isset($_GET['create_web'])) {
+
+            $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
+            
         }
         if (isset($_GET['rem_del'])) {
             // $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
