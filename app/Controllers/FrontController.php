@@ -83,6 +83,11 @@ class FrontController extends BaseController
                                 } else {
                                     $getinvtry  = $getvarientsres['variant']['inventory_quantity'];
                                 }
+                                if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
+                                    $cg_split_plan = "basic";
+                                } else {
+                                    $cg_split_plan = "other";
+                                }
                                 if (empty($gtbtncolor)) {
                                     $return_array = array(
                                         "full_price" => $get_resulrs[0]->price,
@@ -104,7 +109,8 @@ class FrontController extends BaseController
                                         "partial_buynow_text_color" => '#fff',
                                         "full_buy_btn_color" => '#000',
                                         "full_buy_text_color" => '#fff',
-                                        "getcustpro" => $getcustpro
+                                        "getcustpro" => $getcustpro,
+                                        "cg_split_plan" => $cg_split_plan
                                     );
                                 } else {
 
@@ -130,7 +136,8 @@ class FrontController extends BaseController
                                         "partial_buynow_text_color" => isset($gtbtncolor[0]->partial_buynow_text_color) && $gtbtncolor[0]->partial_buynow_text_color != "" ? $gtbtncolor[0]->partial_buynow_text_color : '#fff',
                                         "full_buy_btn_color" => isset($gtbtncolor[0]->full_buy_btn_color) && $gtbtncolor[0]->full_buy_btn_color != "" ? $gtbtncolor[0]->full_buy_btn_color : '#000',
                                         "full_buy_text_color" => isset($gtbtncolor[0]->full_buy_text_color) && $gtbtncolor[0]->full_buy_text_color != "" ? $gtbtncolor[0]->full_buy_text_color : '#fff',
-                                        "getcustpro" => $getcustpro
+                                        "getcustpro" => $getcustpro,
+                                        "cg_split_plan" => $cg_split_plan
                                     );
                                 }
                                 return json_encode($return_array);
@@ -1945,7 +1952,6 @@ class FrontController extends BaseController
         if (isset($_GET['create_web'])) {
 
             $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
-            
         }
         if (isset($_GET['rem_del'])) {
             // $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
