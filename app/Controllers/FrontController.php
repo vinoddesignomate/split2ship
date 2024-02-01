@@ -385,7 +385,7 @@ class FrontController extends BaseController
                 echo "0cgsplt".$plane_name;
             }
         } else {
-            echo 0;
+            echo "0cgsplt".$plane_name;
         }
     }
     public function create_draft_order()
