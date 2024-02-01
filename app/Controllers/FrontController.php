@@ -372,7 +372,7 @@ class FrontController extends BaseController
                 $cg_split_plan = "other";
             }
         }else{
-            $plane_name = "basic";
+            $cg_split_plan = "basic";
         }
         
         if (!empty($codprdct) && isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe == 1) {
@@ -380,12 +380,12 @@ class FrontController extends BaseController
             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $codprdct[0]->varient_id . '.json', array(), 'GET', $get_details->access_token, $shopname);
             $getvarientsres = json_decode($getvarients['body'], true);
             if (isset($getvarientsres['variant']['price'])) {
-                echo $getvarientsres['variant']['price']."cgsplt".$plane_name;
+                echo $getvarientsres['variant']['price']."cgsplt".$cg_split_plan;
             } else {
-                echo "0cgsplt".$plane_name;
+                echo "0cgsplt".$cg_split_plan;
             }
         } else {
-            echo "0cgsplt".$plane_name;
+            echo "0cgsplt".$cg_split_plan;
         }
     }
     public function create_draft_order()
