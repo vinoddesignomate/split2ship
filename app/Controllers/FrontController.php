@@ -1039,6 +1039,20 @@ class FrontController extends BaseController
                 }
 
                 //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
+
+                    $updateprorespo = array(
+                        "name" => "start collectioncrn job in 1 page=" . json_encode($get_details),
+                        "movement" => date('Y-m-d H:i')
+                    );
+                    $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
+                    $updateprorespo = array(
+                        "name" => "start total_pro =" . $total_pro,
+                        "movement" => date('Y-m-d H:i')
+                    );
+                    $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
+
                 if ($get_details->total_sync_store_products < $total_pro) {
                     $cron_limit_set = 100;
 
@@ -1241,9 +1255,21 @@ class FrontController extends BaseController
                     "collection_id" => $get_lates_colection->collection_id,
                 );
                 $this->user_model->update_cron_products($payxnowrest_collect_update);
+
+                $updateprorespo = array(
+                    "name" => "not found1",
+                    "movement" => date('Y-m-d H:i')
+                );
+                $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
             }
         } else {
             echo "not found";
+            $updateprorespo = array(
+                "name" => "not found2",
+                "movement" => date('Y-m-d H:i')
+            );
+            $this->user_model->check_cron_ruinning_stst($updateprorespo);
         }
         $updateprorespo = array(
             "name" => "run collectioncrn job=" . json_encode($get_lates_colection),
