@@ -1134,6 +1134,7 @@ class FrontController extends BaseController
                                     }
                                 }
                             }
+                            echo"page_info<pre>"; print_r($data['page_info']); echo"</pre>";
                             if (isset($data['page_info'])) {
                                 $payxnowrest_cron_update = array(
                                     "collection_id" => $get_lates_colection->collection_id,
