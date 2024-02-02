@@ -1040,7 +1040,7 @@ class FrontController extends BaseController
 
                 //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
                 if ($get_details->total_sync_store_products < $total_pro) {
-                    $cron_limit_set = 200;
+                    $cron_limit_set = 100;
 
                     //below block for get products first time from page 1
                     if ($get_lates_colection->cron_page_num == 1) {
@@ -1050,6 +1050,12 @@ class FrontController extends BaseController
 
                         $product_list = json_decode($products['body'], true);
                         if (!array_key_exists('errors', $product_list)) {
+
+                            $updateprorespo = array(
+                                "name" => "run collectioncrn job in 1 page=" . json_encode($product_list),
+                                "movement" => date('Y-m-d H:i')
+                            );
+                            $this->user_model->check_cron_ruinning_stst($updateprorespo);
 
                             if (!empty($product_list)) {
                                 $headers = $products['headers'];
@@ -1130,6 +1136,13 @@ class FrontController extends BaseController
                         $product_list = json_decode($products['body'], true);
                         if (!array_key_exists('errors', $product_list)) {
                             if (!empty($product_list)) {
+
+                                $updateprorespo = array(
+                                    "name" => "run collectioncrn job in paging page=" . json_encode($product_list),
+                                    "movement" => date('Y-m-d H:i')
+                                );
+                                $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
                                 if (isset($get_lates_colection->partial_percentage) && $get_lates_colection->partial_percentage != "") {
                                     $partpercentg = str_replace("%", "", $get_lates_colection->partial_percentage);
                                 } else {
