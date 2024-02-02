@@ -829,6 +829,7 @@ class UserModel extends Model
                 // echo"<pre>"; print_r($product_array); echo"</pre>";
                 $this->update_plan_products(1, $product_array['shop_url']);
                 unset($product_array['total_pro']);
+                $product_array['updated_on'] = date('Y-m-d H:i:s');
                 return  $qbuilder->insert($product_array);
             }
         }
