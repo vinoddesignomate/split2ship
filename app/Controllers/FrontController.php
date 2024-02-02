@@ -1076,12 +1076,12 @@ class FrontController extends BaseController
 
                         $product_list = json_decode($products['body'], true);
 
-                        //echo"product_list<pre>"; print_r($product_list); echo"</pre>";
-                        // $updateprorespo = array(
-                        //     "name" => "check prduct =" . json_encode($product_list),
-                        //     "movement" => date('Y-m-d H:i')
-                        // );
-                        // $this->user_model->check_cron_ruinning_stst($updateprorespo);
+                        // echo"product_list<pre>"; print_r($product_list); echo"</pre>";
+                        $updateprorespo = array(
+                            "name" => "check prduct =" . json_encode($product_list),
+                            "movement" => date('Y-m-d H:i')
+                        );
+                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
 
                         if (!array_key_exists('errors', $product_list)) {
 
