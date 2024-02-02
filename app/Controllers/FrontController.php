@@ -1040,34 +1040,46 @@ class FrontController extends BaseController
 
                 //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
 
-                    $updateprorespo = array(
-                        "name" => "start collectioncrn job in 1 page=" . json_encode($get_details),
-                        "movement" => date('Y-m-d H:i')
-                    );
-                    $this->user_model->check_cron_ruinning_stst($updateprorespo);
+                    // $updateprorespo = array(
+                    //     "name" => "start collectioncrn job in 1 page=" . json_encode($get_details),
+                    //     "movement" => date('Y-m-d H:i')
+                    // );
+                    // $this->user_model->check_cron_ruinning_stst($updateprorespo);
 
-                    $updateprorespo = array(
-                        "name" => "start total_pro =" . $total_pro,
-                        "movement" => date('Y-m-d H:i')
-                    );
-                    $this->user_model->check_cron_ruinning_stst($updateprorespo);
+                    // $updateprorespo = array(
+                    //     "name" => "start total_pro =" . $total_pro,
+                    //     "movement" => date('Y-m-d H:i')
+                    // );
+                    // $this->user_model->check_cron_ruinning_stst($updateprorespo);
 
-
+                    echo"get_details<pre>"; print_r($get_details); echo"</pre>";
                 if ($get_details->total_sync_store_products < $total_pro) {
                     $cron_limit_set = 100;
 
+
+                    // $gsdtyh = array(
+                    //     "name" => "get_lates_colection =" . json_encode($get_lates_colection),
+                    //     "movement" => date('Y-m-d H:i')
+                    // );
+                    // $this->user_model->check_cron_ruinning_stst($gsdtyh);
+                    echo"get_details inner<pre>"; print_r($get_details); echo"</pre>";
+
                     //below block for get products first time from page 1
                     if ($get_lates_colection->cron_page_num == 1) {
+
+                        echo"get_lates_colection inner<pre>"; print_r($get_lates_colection); echo"</pre>";
                         $data = array();
                         $colcturl = "/admin/api/2023-07/products.json";
                         $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set, "status" => "active"), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
 
                         $product_list = json_decode($products['body'], true);
-                        $updateprorespo = array(
-                            "name" => "check prduct =" . json_encode($product_list),
-                            "movement" => date('Y-m-d H:i')
-                        );
-                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
+                        echo"product_list<pre>"; print_r($product_list); echo"</pre>";
+                        // $updateprorespo = array(
+                        //     "name" => "check prduct =" . json_encode($product_list),
+                        //     "movement" => date('Y-m-d H:i')
+                        // );
+                        // $this->user_model->check_cron_ruinning_stst($updateprorespo);
 
                         if (!array_key_exists('errors', $product_list)) {
 
@@ -1141,6 +1153,8 @@ class FrontController extends BaseController
                             }
                         }
                     } else if ($get_lates_colection->cron_page_num > 1) {
+
+                        echo"greater page<pre>"; print_r($get_lates_colection); echo"</pre>";
                         // block for get products paginated
                         $page_array = array(
                             'limit' => $cron_limit_set,
@@ -1154,11 +1168,14 @@ class FrontController extends BaseController
 
 
                         $product_list = json_decode($products['body'], true);
-                        $updateprorespo = array(
-                            "name" => "check prduct new page =" . json_encode($product_list),
-                            "movement" => date('Y-m-d H:i')
-                        );
-                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
+                        echo"greater product_list<pre>"; print_r($product_list); echo"</pre>";
+
+                        // $updateprorespo = array(
+                        //     "name" => "check prduct new page =" . json_encode($product_list),
+                        //     "movement" => date('Y-m-d H:i')
+                        // );
+                        // $this->user_model->check_cron_ruinning_stst($updateprorespo);
                         if (!array_key_exists('errors', $product_list)) {
                             if (!empty($product_list)) {
 
@@ -1255,6 +1272,8 @@ class FrontController extends BaseController
                     $this->user_model->update_data($get_lates_colection->shop_url, array(
                         "package_upgrade_message" => 'You are out of products limit, please upgrade your plan and add more products.',
                     ));
+                    echo"payxnowrest_collect_update<pre>"; print_r($payxnowrest_collect_update); echo"</pre>";
+                    
                 }
                 echo "done";
             } else {
