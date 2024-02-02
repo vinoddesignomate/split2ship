@@ -1040,7 +1040,7 @@ class FrontController extends BaseController
 
                 //if ($get_updated_plan[0]->plan_status == 'active' && $get_updated_plan[0]->updated_products_partial > 0) {
                 if ($get_details->total_sync_store_products < $total_pro) {
-                    $cron_limit_set = 50;
+                    $cron_limit_set = 200;
 
                     //below block for get products first time from page 1
                     if ($get_lates_colection->cron_page_num == 1) {
