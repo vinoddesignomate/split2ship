@@ -33,14 +33,8 @@ $store_name = $shop_name[0];
                                             <tr>
                                                 <th>Sr. No</th>
                                                 <th>Collection Name</th>
-                                                <?php if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-                                                    <th>Partial Type</th>
-                                                    <th>Partial Value</th>
-                                                <?php } else { ?>
-                                                    <th>Partial Percentage</th>
-
-                                                <?php } ?>
-
+                                                <th>Partial Type</th>
+                                                <th>Partial Value</th>
                                             </tr>
 
                                             <?php
