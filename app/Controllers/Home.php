@@ -1463,7 +1463,7 @@ class Home extends BaseController
             } else {
                 $cg_split_plan_sts = "show";
             }
-        }else{
+        } else {
             $cg_split_plan_sts = "hide";
         }
         $data['cg_split_plan_sts'] = $cg_split_plan_sts;
@@ -1795,18 +1795,30 @@ class Home extends BaseController
         if ($this->request->getPost('update_per')) {
             // print_r($this->request->getPost());
             // die();
-            $update_price = array(
-                "partial_percentage" => $this->request->getPost('colltion_change_partial'),
-                "partial_type" => $this->request->getPost('partiatype'),
+
+            $check_already_run = array(
                 "collection_id" => $this->request->getPost('colltion_change_partial_id'),
-                "shop_url" => $_REQUEST['shop'],
-                "movements" => date('Y-m-d'),
-                "cron_run" => 0,
-                "cron_page_num" => 1,
+                "shop_url" => $_REQUEST['shop']
 
             );
-            $this->user_model->update_collection_partial_percentage($update_price, $this->request->getPost('proid'));
-            echo $this->request->getPost('colltion_change_partial_id');
+            $chkalrearun = $this->user_model->get_already_run_cron($check_already_run);
+
+            if ($chkalrearun == "newstart") {
+                $update_price = array(
+                    "partial_percentage" => $this->request->getPost('colltion_change_partial'),
+                    "partial_type" => $this->request->getPost('partiatype'),
+                    "collection_id" => $this->request->getPost('colltion_change_partial_id'),
+                    "shop_url" => $_REQUEST['shop'],
+                    "movements" => date('Y-m-d'),
+                    "cron_run" => 0,
+                    "cron_page_num" => 1,
+
+                );
+                $this->user_model->update_collection_partial_percentage($update_price, $this->request->getPost('proid'));
+                echo $this->request->getPost('colltion_change_partial_id');
+            } else {
+                echo "already_runing";
+            }
             // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
             //echo view('templates/apbrdgnew');
         }

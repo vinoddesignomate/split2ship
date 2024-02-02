@@ -124,12 +124,14 @@ $store_name = $shop_name[0];
             var formdata = $("#sub_form_data_" + this_id_frm).serialize();
             var shopname = '<?php echo esc($_GET['shop']); ?>';
             var part_type = "&partiatype=" + $("#change_type_" + this_id_frm).val();
-
+            $(".colbttrack").hide();
+            $("#showcoltrckmsg").html('');
             $.ajax({
                 type: "POST",
                 url: "collection_track_partial_percentage?vart=" + req_time,
                 data: 'shop=' + shopname + '&update_per=true&' + formdata + part_type,
                 success: function(response) {
+                    $(".colbttrack").show();
                     $("#showcoltrckmsg").html('Please wait, we have started synching all products in background. It will take some time. You can leave this screen');
                     $("#showcoltrckmsg").css('color', 'green');
                     //window.location.reload();

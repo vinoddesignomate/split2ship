@@ -97,7 +97,7 @@ class UserModel extends Model
             unset($product_array['add_date']);
             $this->db->table('app_partial_products')->where('shop_url', $product_array['shop_url'])->where('product_id', $product_array['product_id'])->update($product_array);
             return $this->db->affectedRows();
-        } else {            
+        } else {
             return  $qbuilder->insert($product_array);
         }
     }
@@ -1125,5 +1125,18 @@ class UserModel extends Model
     {
         $delete_bulk_prodtc_webhook = "DELETE FROM collections_percentage WHERE shop_url=?";
         $this->db->query($delete_bulk_prodtc_webhook, array($shopiurl));
+    }
+    public function get_already_run_cron($update_data)
+    {
+        $qbuilder_insert = $this->db->table('collections_percentage');
+        $qbuilder_insert->where('shop_url', $update_data['shop_url']);
+        $qbuilder_insert->where('collection_id', $update_data['collection_id']);
+        $qbuilder_insert->where('cron_run', 0);
+        $qgetordpro = $qbuilder_insert->get();
+        if (!empty($qgetordpro->getResult())) {
+            return 'running';
+        } else {
+            return 'newstart';
+        }
     }
 }
