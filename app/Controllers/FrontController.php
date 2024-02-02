@@ -282,74 +282,81 @@ class FrontController extends BaseController
                     $coupon_name = 'Remaining_Amount(' . $randnum . ')';
                     $remaining_price = $remaining_price;
                 }
+                if (substr($remaining_price, 0, 1) === '-') {
+                    $getchkprice = substr($remaining_price, 1); // Removes the negative sign from the first element
+                }
                 // echo "coupon_discount".$coupon_discount;
                 // echo "remaining_price".$remaining_price;
                 // echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
-                $creatruledata = [
-                    "price_rule" => [
-                        "title" => $coupon_name,
-                        "target_type" => "line_item",
-                        "value_type" => 'fixed_amount',
-                        "value" => $remaining_price,
-                        "target_selection" => "all",
-                        "customer_selection" => "all",
-                        "allocation_method" => "across",
-                        "usage_limit" => 1,
-                        "starts_at" => date("Y-m-d H:i:s"),
-                    ]
-                ];
-                //print_r($creatruledata);
-                $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
-
-                $getprietuleidrec = json_decode($getprietuleid['body'], true);
-                // if ($shopname == 'tajbridalindia.myshopify.com') {
-                //     print_r($getprietuleidrec);
-                // }
-                if (array_key_exists('errors', $getprietuleidrec)) {
-                    echo "invalid";
-                } else {
-
-                    $creatediscode = [
-                        "discount_code" => [
-                            "code" => $coupon_name,
+                if ($getchkprice > 0) {
+                    $creatruledata = [
+                        "price_rule" => [
+                            "title" => $coupon_name,
+                            "target_type" => "line_item",
+                            "value_type" => 'fixed_amount',
+                            "value" => $remaining_price,
+                            "target_selection" => "all",
+                            "customer_selection" => "all",
+                            "allocation_method" => "across",
+                            "usage_limit" => 1,
+                            "starts_at" => date("Y-m-d H:i:s"),
                         ]
                     ];
+                    //print_r($creatruledata);
+                    $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
-
-                    $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
-                    $createcouponrec = json_decode($createcoupon['body'], true);
+                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
                     // if ($shopname == 'tajbridalindia.myshopify.com') {
-                    //     echo "createcouponrec";
-                    //     print_r($createcouponrec);
+                    //     print_r($getprietuleidrec);
                     // }
-                    if (array_key_exists('errors', $createcouponrec)) {
+                    if (array_key_exists('errors', $getprietuleidrec)) {
                         echo "invalid";
                     } else {
-                        if ($body_data_decode['codcarientid'] == "") {
-                            $codprdct = $this->user_model->get_cod_product($shopname);
-                            if (empty($codprdct)) {
-                                $varientid = "";
-                            } else if ((isset($codprdct[0]->cod_enable) && $codprdct[0]->cod_enable) != 1 && (isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe != 1)) {
-                                $varientid = "";
-                            } else {
-                                $varientid = $codprdct[0]->varient_id;
-                            }
 
-                            ///print_r($codprdct);
+                        $creatediscode = [
+                            "discount_code" => [
+                                "code" => $coupon_name,
+                            ]
+                        ];
+
+
+                        $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
+                        $createcouponrec = json_decode($createcoupon['body'], true);
+                        // if ($shopname == 'tajbridalindia.myshopify.com') {
+                        //     echo "createcouponrec";
+                        //     print_r($createcouponrec);
+                        // }
+                        if (array_key_exists('errors', $createcouponrec)) {
+                            echo "invalid";
                         } else {
-                            $varientid = "";
-                        }
-                        echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid . "spltcg" . $coupon_discount;
+                            if ($body_data_decode['codcarientid'] == "") {
+                                $codprdct = $this->user_model->get_cod_product($shopname);
+                                if (empty($codprdct)) {
+                                    $varientid = "";
+                                } else if ((isset($codprdct[0]->cod_enable) && $codprdct[0]->cod_enable) != 1 && (isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe != 1)) {
+                                    $varientid = "";
+                                } else {
+                                    $varientid = $codprdct[0]->varient_id;
+                                }
 
-                        //track coupon for partial payment for remove when order is place
-                        $track_coupon_code = array(
-                            "coupon_code_name" => $coupon_name,
-                            "price_rule_id" => $getprietuleidrec['price_rule']['id'],
-                            "coupon_code_id" => $createcouponrec['discount_code']['id'],
-                            "shop_url" => $shopname,
-                        );
-                        $this->user_model->track_partial_coupon_code($track_coupon_code);
+                                ///print_r($codprdct);
+                            } else {
+                                $varientid = "";
+                            }
+                            echo $coupon_name . "spltcg" . $getprietuleidrec['price_rule']['id'] . "spltcg" . $createcouponrec['discount_code']['id'] . "spltcg" . $varientid . "spltcg" . $coupon_discount;
+
+                            //track coupon for partial payment for remove when order is place
+                            $track_coupon_code = array(
+                                "coupon_code_name" => $coupon_name,
+                                "price_rule_id" => $getprietuleidrec['price_rule']['id'],
+                                "coupon_code_id" => $createcouponrec['discount_code']['id'],
+                                "shop_url" => $shopname,
+                            );
+                            $this->user_model->track_partial_coupon_code($track_coupon_code);
+                        }
                     }
+                } else {
+                    echo "not_valid_coupon";
                 }
             }
         } else {
@@ -371,21 +378,21 @@ class FrontController extends BaseController
             } else {
                 $cg_split_plan = "other";
             }
-        }else{
+        } else {
             $cg_split_plan = "basic";
         }
-        
+
         if (!empty($codprdct) && isset($codprdct[0]->handling_charge_enalbe) && $codprdct[0]->handling_charge_enalbe == 1) {
             $get_details = $this->user_model->get_tokens($shopname);
             $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $codprdct[0]->varient_id . '.json', array(), 'GET', $get_details->access_token, $shopname);
             $getvarientsres = json_decode($getvarients['body'], true);
             if (isset($getvarientsres['variant']['price'])) {
-                echo $getvarientsres['variant']['price']."cgsplt".$cg_split_plan;
+                echo $getvarientsres['variant']['price'] . "cgsplt" . $cg_split_plan;
             } else {
-                echo "0cgsplt".$cg_split_plan;
+                echo "0cgsplt" . $cg_split_plan;
             }
         } else {
-            echo "0cgsplt".$cg_split_plan;
+            echo "0cgsplt" . $cg_split_plan;
         }
     }
     public function create_draft_order()
