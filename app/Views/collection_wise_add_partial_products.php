@@ -26,7 +26,7 @@ $store_name = $shop_name[0];
                             </div>
 
                             <?php
-                            if ($cg_split_plan_sts == 'show') {
+                            //if ($cg_split_plan_sts == 'show') {
                                 if (!empty($get_store_collections)) { ?>
                                     <div class="table-outer-wrapper">
                                         <table>
@@ -94,7 +94,7 @@ $store_name = $shop_name[0];
                                     </div>
 
                             <?php }
-                            } ?>
+                            //} ?>
                         </div>
                     </div>
                 </div>
