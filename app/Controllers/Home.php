@@ -1456,6 +1456,17 @@ class Home extends BaseController
         $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
         $data['check_bulk_products_status'] = $this->user_model->check_bulk_products_status($_GET['shop']);
         $data['get_details'] = $this->user_model->get_tokens($_GET['shop']);
+        $plan_details = $this->user_model->get_store_plan($_GET['shop']);
+        if (!empty($plan_details)) {
+            if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
+                $cg_split_plan_sts = "hide";
+            } else {
+                $cg_split_plan_sts = "show";
+            }
+        }else{
+            $cg_split_plan_sts = "hide";
+        }
+        $data['cg_split_plan_sts'] = $cg_split_plan_sts;
         $data['shopname'] = $_GET['shop'];
         echo view('templates/header');
         echo view('collection_wise_add_partial_products', $data);
