@@ -1164,7 +1164,7 @@ class FrontController extends BaseController
                             'limit' => $cron_limit_set,
                             'page_info' => $get_lates_colection->page_info,
                             'rel' => "next",
-                            "status" => "active"
+                            //"status" => "active"
                         );
 
 
