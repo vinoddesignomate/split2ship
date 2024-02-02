@@ -86,7 +86,7 @@ class Common
         //collection(id: "gid://shopify/Collection/443446100266") {
         //}
         $newpageing = "";
-        $search_query = "";
+        $search_query = ""; 
         if (isset($params_array['nextpage_getpage'])) {
             $newpageing = 'first: ' . $params_array['limit'] . ',after:"' . $params_array['nextpage_getpage'] . '"';
             $startCursor = "startCursor";
