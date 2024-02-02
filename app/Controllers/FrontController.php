@@ -1063,6 +1063,12 @@ class FrontController extends BaseController
                         $products = $this->common->rest_api($colcturl, array("collection_id" => $get_lates_colection->collection_id, "limit" => $cron_limit_set, "status" => "active"), 'GET', $get_details->access_token, $get_lates_colection->shop_url);
 
                         $product_list = json_decode($products['body'], true);
+                        $updateprorespo = array(
+                            "name" => "check prduct =" . json_encode($product_list),
+                            "movement" => date('Y-m-d H:i')
+                        );
+                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
                         if (!array_key_exists('errors', $product_list)) {
 
                             $updateprorespo = array(
@@ -1148,6 +1154,11 @@ class FrontController extends BaseController
 
 
                         $product_list = json_decode($products['body'], true);
+                        $updateprorespo = array(
+                            "name" => "check prduct new page =" . json_encode($product_list),
+                            "movement" => date('Y-m-d H:i')
+                        );
+                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
                         if (!array_key_exists('errors', $product_list)) {
                             if (!empty($product_list)) {
 
