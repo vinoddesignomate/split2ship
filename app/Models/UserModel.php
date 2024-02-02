@@ -818,6 +818,7 @@ class UserModel extends Model
         $qbuilder->countAllResults();
         if (!empty($q->getResult())) {
             unset($product_array['total_pro']);
+            $product_array['updated_on'] = date('Y-m-d H:i:s');
             $this->db->table('app_partial_products')->where('shop_url', $product_array['shop_url'])->where('product_id', $product_array['product_id'])->update($product_array);
             return $this->db->affectedRows();
         } else {
