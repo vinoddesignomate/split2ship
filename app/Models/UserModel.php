@@ -1141,4 +1141,11 @@ class UserModel extends Model
             return 'newstart';
         }
     }
+    public function get_count_total_partialproducts($shopurl){
+        $query = $this->db->query('SELECT * 
+        FROM `app_partial_products`
+        WHERE shop_url="' . $shopurl . '"');
+        //return $query->getResult();
+        return count($query->getResult());
+    }
 }

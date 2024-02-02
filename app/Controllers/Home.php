@@ -1384,6 +1384,10 @@ class Home extends BaseController
 
         $data['get_store_collections'] = $this->user_model->get_collections($_GET['shop']);
         $data['get_stored_percentage'] = $this->user_model->get_collection_percentage($_GET['shop']);
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            $data['count_total_partial'] = $this->user_model->get_count_total_partialproducts($_GET['shop']);
+            print_r($data['count_total_partial']);
+        }
         $data['shopname'] = $_GET['shop'];
 
         $get_updated_plan = $this->user_model->get_store_plane($_GET['shop']);

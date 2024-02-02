@@ -70,7 +70,7 @@ $store_name = $shop_name[0];
                     </div>
                     <?php
 
-
+                    //echo $count_total_partial;
                     if ($total_add_products >= $get_updated_plan) {
                     ?>
                         <div class="additionalCGtextred">Your product limit exhausted <?php echo $total_add_products; ?>/<?php echo $get_updated_plan; ?></div>
