@@ -271,11 +271,9 @@ class FrontController extends BaseController
                     if (substr($remaining_price, 0, 1) === '-') {
                         $remaining_price = substr($remaining_price, 1); // Removes the negative sign from the first element
                     }
-                    //if ($shopname == 'desinomatetest.myshopify.com') {
+                   
                     $coupon_name = 'Remaining_Amount_' . $randnum . '(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
-                    // } else {
-                    //     $coupon_name = 'Remaining_Amount(Dis-' . $couponname . 'cgsplit' . $coupon_discount . ')';
-                    // }
+                    
                     $remaining_price = $remaining_price + $coupon_discount;
                     $remaining_price = "-" . $remaining_price;
                 } else {
@@ -285,9 +283,7 @@ class FrontController extends BaseController
                 if (substr($remaining_price, 0, 1) === '-') {
                     $getchkprice = substr($remaining_price, 1); // Removes the negative sign from the first element
                 }
-                // echo "coupon_discount".$coupon_discount;
-                // echo "remaining_price".$remaining_price;
-                // echo"<pre>"; print_r($body_data_decode['cart_item']); echo "</pre>"; die();
+                
                 if ($getchkprice > 0) {
                     $creatruledata = [
                         "price_rule" => [
@@ -302,13 +298,11 @@ class FrontController extends BaseController
                             "starts_at" => date("Y-m-d H:i:s"),
                         ]
                     ];
-                    //print_r($creatruledata);
+                   
                     $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
                     $getprietuleidrec = json_decode($getprietuleid['body'], true);
-                    // if ($shopname == 'tajbridalindia.myshopify.com') {
-                    //     print_r($getprietuleidrec);
-                    // }
+                    
                     if (array_key_exists('errors', $getprietuleidrec)) {
                         echo "invalid";
                     } else {
@@ -322,10 +316,7 @@ class FrontController extends BaseController
 
                         $createcoupon = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getprietuleidrec['price_rule']['id'] . '/discount_codes.json', $creatediscode, 'POST', $get_details->access_token, $shopname);
                         $createcouponrec = json_decode($createcoupon['body'], true);
-                        // if ($shopname == 'tajbridalindia.myshopify.com') {
-                        //     echo "createcouponrec";
-                        //     print_r($createcouponrec);
-                        // }
+                        
                         if (array_key_exists('errors', $createcouponrec)) {
                             echo "invalid";
                         } else {
@@ -339,7 +330,7 @@ class FrontController extends BaseController
                                     $varientid = $codprdct[0]->varient_id;
                                 }
 
-                                ///print_r($codprdct);
+                                
                             } else {
                                 $varientid = "";
                             }
@@ -362,8 +353,7 @@ class FrontController extends BaseController
         } else {
             echo "invalid";
         }
-        //print_r($returndata);
-        //return $returndata;
+        
     }
     public function get_handlincrg()
     {
