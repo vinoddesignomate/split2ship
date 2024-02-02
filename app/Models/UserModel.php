@@ -1121,4 +1121,9 @@ class UserModel extends Model
         $query = $this->db->query('SELECT * FROM cg_config_steps WHERE shop_url="' . $shopurl . '" LIMIT 1');
         return $query->getRow();
     }
+    public function remove_bulk_update($shopiurl)
+    {
+        $delete_bulk_prodtc_webhook = "DELETE FROM collections_percentage WHERE shop_url=?";
+        $this->db->query($delete_bulk_prodtc_webhook, array($shopiurl));
+    }
 }
