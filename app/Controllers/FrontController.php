@@ -1167,6 +1167,13 @@ class FrontController extends BaseController
                             "status" => "active"
                         );
 
+
+                        $updateprorespo = array(
+                            "name" => "run collectioncrn page_array" . json_encode($page_array),
+                            "movement" => date('Y-m-d H:i')
+                        );
+                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
+
                         $products = $this->common->rest_api('/admin/api/2022-04/products.json', $page_array, 'GET', $get_details->access_token, $get_lates_colection->shop_url);
 
 
@@ -1175,11 +1182,11 @@ class FrontController extends BaseController
 
                         //echo"greater product_list<pre>"; print_r($product_list); echo"</pre>";
 
-                        // $updateprorespo = array(
-                        //     "name" => "check prduct new page =" . json_encode($product_list),
-                        //     "movement" => date('Y-m-d H:i')
-                        // );
-                        // $this->user_model->check_cron_ruinning_stst($updateprorespo);
+                        $updateprorespo = array(
+                            "name" => "check prduct new page =" . json_encode($product_list),
+                            "movement" => date('Y-m-d H:i')
+                        );
+                        $this->user_model->check_cron_ruinning_stst($updateprorespo);
                         if (!array_key_exists('errors', $product_list)) {
                             if (!empty($product_list)) {
 

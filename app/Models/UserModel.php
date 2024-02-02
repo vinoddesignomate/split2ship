@@ -1128,7 +1128,7 @@ class UserModel extends Model
         $this->db->query($delete_bulk_prodtc_webhook, array($shopiurl));
     }
     public function get_already_run_cron($update_data)
-    {
+    { 
         $qbuilder_insert = $this->db->table('collections_percentage');
         $qbuilder_insert->where('shop_url', $update_data['shop_url']);
         $qbuilder_insert->where('collection_id', $update_data['collection_id']);
