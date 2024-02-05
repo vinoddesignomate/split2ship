@@ -1145,7 +1145,10 @@ class UserModel extends Model
         $query = $this->db->query('SELECT * 
         FROM `app_partial_products`
         WHERE shop_url="' . $shopurl . '"');
-        //return $query->getResult();
+       $gettotalcount = count($query->getResult());
+        //update total partial product count in main store db table
+        $update_total_par_product_count = "UPDATE ppa_store_token SET total_sync_store_products=" . $gettotalcount . " WHERE shop_url=?";
+        $this->db->query($update_total_par_product_count, array($shopurl));
         return count($query->getResult());
     }
 }

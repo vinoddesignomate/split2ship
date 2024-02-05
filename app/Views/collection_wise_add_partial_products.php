@@ -28,7 +28,7 @@ $store_name = $shop_name[0];
                                 <?php } else { ?>
                                     <h2 style="margin-top: 7px;">Set partial percentage by collections</h2>
 
-                                    <span>This feature us for paid user. Please upgrade your plane <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan">Upgrade here</a></span>
+                                    <span>This feature is for paid users. Please upgrade your plan <a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan">Upgrade here</a></span>
 
                                 <?php } ?>
                             </div>
