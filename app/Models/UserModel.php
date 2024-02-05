@@ -1163,7 +1163,8 @@ class UserModel extends Model
         $this->db->query($update_total_par_product_count, array($shopurl));
         return count($query->getResult());
     }
-    function track_partial_paid_order_for_remorder($steparray){
+    function track_partial_paid_order_for_remorder($steparray)
+    {
 
         $qbuilder_insert = $this->db->table('cg_split_track_partial_order');
         $qbuilder_insert->where('shop_url', $steparray['shop_url']);
@@ -1176,8 +1177,15 @@ class UserModel extends Model
             $this->db->table('cg_split_track_partial_order')->insert($steparray);
         }
     }
-    function remove_rack_partial_paid_order_for_remorder($steparray){
+    function remove_rack_partial_paid_order_for_remorder($steparray)
+    {
         $del_query = "DELETE FROM cg_split_track_partial_order WHERE order_id=? AND shop_url=?";
         $this->db->query($del_query, array($steparray['order_id'], $steparray['shop_url']));
+    }
+    public function remove_all_coupon_on_uninstall($shop_url)
+    {
+
+        $del_query = "DELETE FROM track_coupon_code WHERE shop_url=?";
+        $this->db->query($del_query, array($shop_url));
     }
 }
