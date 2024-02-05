@@ -119,7 +119,7 @@ class AppwhookController extends BaseController
             return array("headers" => $headers, "body" => $response[1]);
         }
     }
-    function create_double_cod_orders2($jsndata, $get_resulsts, $part_type)
+    function create_double_cod_orders2($jsndata, $get_resulsts)
     {
         if (!isset($code_has_run)) {
             $track_double_order = array(
@@ -1204,7 +1204,7 @@ class AppwhookController extends BaseController
                                     //code for remove disconr coupon code after order
 
                                     $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
-                                    $this->create_double_cod_orders2($jsndata, $get_resulsts, $part_type);
+                                    $this->create_double_cod_orders2($jsndata, $get_resulsts);
                                 } else if (isset($part_type) && $part_type == 'partial') {
                                     $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
                                     $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
