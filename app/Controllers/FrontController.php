@@ -1374,7 +1374,7 @@ class FrontController extends BaseController
         $returnarray = array();
         $plan_details = $this->user_model->get_store_plan($this->request->getPost('shopname'));
         $get_detailslrt = $this->user_model->get_tokens($this->request->getPost('shopname'));
-        if ($get_detailslrt->force_update == 1) {
+        if (isset($get_detailslrt->force_update) && $get_detailslrt->force_update == 1) {
             if (!empty($plan_details)) {
                 if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
                     $setaray = array(
