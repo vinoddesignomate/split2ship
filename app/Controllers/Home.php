@@ -3319,6 +3319,11 @@ class Home extends BaseController
             echo json_encode($return_array);
         }
     }
+    public function track_store_productadded(){
+        if ($this->request->getGet('shop')) {
+            echo $get_partialproduc = $this->user_model->get_count_total_partialproducts($this->request->getGet('shop'));
+        }
+    }
     public function track_userinfo()
     {
         if ($this->request->getGet('shop')) {

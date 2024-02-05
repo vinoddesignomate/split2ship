@@ -1,3 +1,13 @@
+<script>
+    var shopname = '<?php echo esc($_GET['shop']); ?>';
+    $.ajax({
+        type: "GET",
+        url: "track_countall",
+        data: 'shop=' + shopname,
+        success: function(response) {}
+
+    });
+</script>
 <?php
 
 $link = $_SERVER['PHP_SELF'];
