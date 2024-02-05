@@ -945,13 +945,13 @@ class AppwhookController extends BaseController
                     if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
                         $resposne_arrayshop = array("name" => "Shop Order Start=" . json_encode($jsndata));
                         $this->user_model->check_test_response($resposne_arrayshop);
-                        $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
-                        if (empty($get_orders_details)) {
+                        // $get_orders_details = $this->user_model->get_order_detail($jsndata->id);
+                        // if (empty($get_orders_details)) {
                             //if ($_GET['whshp'] == 'desinomatetest.myshopify.com') {
                             if ($get_resulsts->update_app == 1) {
                                 $remaing_proice = 0;
 
-                                if ($jsndata->tags != '') {
+                                if (isset($jsndata->tags) && $jsndata->tags != '') {
                                     $orders_sts = 'pending';
                                     $pendingamntnnn = explode("_", $jsndata->tags);
                                     $remaing_proice = (isset($pendingamntnnn[1]) ? $pendingamntnnn[1] : '0');
@@ -1221,7 +1221,7 @@ class AppwhookController extends BaseController
                                 $this->create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti);
                                 echo "200 ok";
                             }
-                        }
+                        //}
                     }
                 }
             }
