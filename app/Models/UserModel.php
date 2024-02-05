@@ -1188,4 +1188,8 @@ class UserModel extends Model
         $del_query = "DELETE FROM track_coupon_code WHERE shop_url=?";
         $this->db->query($del_query, array($shop_url));
     }
+    public function get_partially_paid_orders(){
+        $getorderq = $this->db->query("SELECT * FROM cg_split_track_partial_order");
+        return $getorderq->getResult();
+    }
 }

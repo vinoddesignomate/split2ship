@@ -126,8 +126,9 @@ $routes->match(['get', 'post'],'/check-ordercreate', 'FrontController::order_cre
 //cron job routes
 $routes->match(['get', 'post'],'/collection_partial_add', 'FrontController::add_collection_partial_cron'); 
 $routes->match(['get', 'post'],'/update-store-plan', 'FrontController::update_store_package_cron'); // function for update expiray plan for auto active via api via cron job
-$routes->match(['get', 'post'],'/create_double_orders', 'FrontController::update_double_create');//create double order if webhook failed
-$routes->match(['get', 'post'],'/remove_older_coupon', 'FrontController::remove_partial_coupon');//create double order if webhook failed
+//$routes->match(['get', 'post'],'/create_double_orders', 'FrontController::update_double_create');//create double order if webhook failed
+$routes->match(['get', 'post'],'/remove_older_coupon', 'FrontController::remove_partial_coupon'); //remove partially created coupon
+$routes->match(['get', 'post'],'/creat_rem_partial_order', 'FrontController::create_double_order_cron');//create double order if webhook failed
 
 
 /*
