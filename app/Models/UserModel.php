@@ -1151,7 +1151,7 @@ class UserModel extends Model
         if (!empty($olplane)) {
             $total_part = $olplane[0]->total_products_partial - $gettotalcount;
             if ($total_part > 0) {
-                $updatests = "UPDATE ppa_subscribe_store SET updated_sync_orders_count=" . $total_part . " WHERE shop_url=?";
+                $updatests = "UPDATE ppa_subscribe_store SET updated_products_partial=" . $total_part . " WHERE shop_url=?";
                 $this->db->query($updatests, array($shopurl));
             }
         } else {
