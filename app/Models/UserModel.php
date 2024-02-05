@@ -1164,7 +1164,7 @@ class UserModel extends Model
         return count($query->getResult());
     }
     function track_partial_paid_order_for_remorder($steparray){
-        
+
         $qbuilder_insert = $this->db->table('cg_split_track_partial_order');
         $qbuilder_insert->where('shop_url', $steparray['shop_url']);
         $qbuilder_insert->where('order_id', $steparray['order_id']);
@@ -1175,5 +1175,9 @@ class UserModel extends Model
         } else {
             $this->db->table('cg_split_track_partial_order')->insert($steparray);
         }
+    }
+    function remove_rack_partial_paid_order_for_remorder($steparray){
+        $del_query = "DELETE FROM cg_split_track_partial_order WHERE order_id=? AND shop_url=?";
+        $this->db->query($del_query, array($steparray['order_id'], $steparray['shop_url']));
     }
 }

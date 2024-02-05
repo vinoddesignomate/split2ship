@@ -549,6 +549,13 @@ class AppwhookController extends BaseController
         $this->user_model->check_test_response($resposne_arrayjjk);
         if (isset($decode_get_actual_orders->order->id)) {
 
+            //reomve partial order if remaining COD order is create
+            $orders_data = array(
+                "order_id" => $jsndata->id,
+                "shop_url" => $_GET['whshp']
+            );
+            $this->user_model->remove_rack_partial_paid_order_for_remorder($orders_data);
+
             //update second order which is created by API
             $track_double_order = array(
                 "orderid_paid" => $jsndata->id,
