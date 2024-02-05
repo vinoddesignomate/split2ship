@@ -1163,4 +1163,17 @@ class UserModel extends Model
         $this->db->query($update_total_par_product_count, array($shopurl));
         return count($query->getResult());
     }
+    function track_partial_paid_order_for_remorder($steparray){
+        
+        $qbuilder_insert = $this->db->table('cg_split_track_partial_order');
+        $qbuilder_insert->where('shop_url', $steparray['shop_url']);
+        $qbuilder_insert->where('order_id', $steparray['order_id']);
+        $qgetordpro = $qbuilder_insert->get();
+        $qbuilder_insert->countAllResults();
+        if (!empty($qgetordpro->getResult())) {
+            $this->db->table('cg_split_track_partial_order')->where('shop_url', $steparray['shop_url'])->update($steparray);
+        } else {
+            $this->db->table('cg_split_track_partial_order')->insert($steparray);
+        }
+    }
 }
