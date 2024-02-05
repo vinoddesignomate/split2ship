@@ -1129,7 +1129,7 @@ class UserModel extends Model
         $this->db->query($delete_bulk_prodtc_webhook, array($shopiurl));
     }
     public function get_already_run_cron($update_data)
-    { 
+    {
         $qbuilder_insert = $this->db->table('collections_percentage');
         $qbuilder_insert->where('shop_url', $update_data['shop_url']);
         $qbuilder_insert->where('collection_id', $update_data['collection_id']);
@@ -1141,11 +1141,23 @@ class UserModel extends Model
             return 'newstart';
         }
     }
-    public function get_count_total_partialproducts($shopurl){
+    public function get_count_total_partialproducts($shopurl)
+    {
         $query = $this->db->query('SELECT * 
         FROM `app_partial_products`
         WHERE shop_url="' . $shopurl . '"');
-       $gettotalcount = count($query->getResult());
+        $gettotalcount = count($query->getResult());
+        $olplane = $this->get_store_plane($shopurl);
+        if (!empty($olplane)) {
+            $total_part = $olplane[0]->total_products_partial - $gettotalcount;
+            if ($total_part > 0) {
+                $updatests = "UPDATE ppa_subscribe_store SET updated_sync_orders_count=" . $total_part . " WHERE shop_url=?";
+                $this->db->query($updatests, array($shopurl));
+            }
+        } else {
+            $total_part = 0;
+        }
+
         //update total partial product count in main store db table
         $update_total_par_product_count = "UPDATE ppa_store_token SET total_sync_store_products=" . $gettotalcount . " WHERE shop_url=?";
         $this->db->query($update_total_par_product_count, array($shopurl));
