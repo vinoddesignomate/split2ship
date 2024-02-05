@@ -2067,10 +2067,10 @@ class FrontController extends BaseController
 
 
             //get fullfilment id from main order
-            $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $getnewords->shop_url);
+            $order_fullfill = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $getnewords->shop_url);
 
-            $getprietuleidrec = json_decode($getprietuleid['body'], true);
-            $fulfilid = $getprietuleidrec['fulfillment_orders'][0]['id'];
+            $getfullorder = json_decode($order_fullfill['body'], true);
+            $fulfilid = $getfullorder['fulfillment_orders'][0]['id'];
 
             $fulfilarray = array("fulfillment" => array(
                 "line_items_by_fulfillment_order" => array(
