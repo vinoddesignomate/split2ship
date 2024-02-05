@@ -160,7 +160,7 @@ class AppwhookController extends BaseController
         $new_dicocideline = 0;
         //get main orders products details 
         $allowedShopNamesdisc = ['desinomatetest.myshopify.com', "e6de84.myshopify.com"];
-        if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
+        //if (in_array($_GET['whshp'], $allowedShopNamesdisc)) {
             if (isset($jsndata->discount_codes[0]->code)) {
                 $cpode_string = $jsndata->discount_codes[0]->code;
                 // Find the position of 'cgsplit'
@@ -183,7 +183,7 @@ class AppwhookController extends BaseController
             } else {
                 $new_dicocideline = 0;
             }
-        }
+        //}
 
         $minsfla = 0;
         foreach ($jsndata->line_items as $products) {
