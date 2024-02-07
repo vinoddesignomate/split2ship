@@ -535,46 +535,50 @@ class AppwhookController extends BaseController
 
 
 
-
-        $resposne_array = array("name" => "actual order_data discount" . json_encode($order_data));
-        $this->user_model->check_test_response($resposne_array);
-
-        $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
-
-
-
-        $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
-
-        $decode_get_actual_orders = json_decode($get_actual_orders);
-
-        $resposne_arrayjjk = array("name" => "get_actual_orders" . $get_actual_orders);
-        $this->user_model->check_test_response($resposne_arrayjjk);
-        if (isset($decode_get_actual_orders->order->id)) {
-
-            //reomve partial order if remaining COD order is create
-            $orders_data = array(
-                "order_id" => $jsndata->id,
-                "shop_url" => $_GET['whshp']
-            );
-            $this->user_model->remove_rack_partial_paid_order_for_remorder($orders_data);
-
-            //update second order which is created by API
-            $track_double_order = array(
-                "orderid_paid" => $jsndata->id,
-                "order_id_cod" => $decode_get_actual_orders->order->id,
-                "order_number_cod" => $jsndata->name . '-SplitOrder',
-                "shop_url" => $_GET['whshp'],
-                "status" => 'success',
-            );
-            $this->user_model->track_double_orders_update($track_double_order);
-            $this->user_model->update_double_order_with_old($decode_get_actual_orders->order->id, $jsndata->id, $_GET['whshp']);
-
-
-            $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     echo "<pre>";
+        //     print_r($order_data);
+        //     echo "<pre>";
+        // } else {
+            $resposne_array = array("name" => "actual order_data discount" . json_encode($order_data));
             $this->user_model->check_test_response($resposne_array);
 
+            $get_actual_orders = $this->common->create_actual_order($get_resulsts->access_token, $_GET['whshp'], $order_data);
 
-            /* $send_invoice_email = 'mutation {
+
+
+            $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
+
+            $decode_get_actual_orders = json_decode($get_actual_orders);
+
+            $resposne_arrayjjk = array("name" => "get_actual_orders" . $get_actual_orders);
+            $this->user_model->check_test_response($resposne_arrayjjk);
+            if (isset($decode_get_actual_orders->order->id)) {
+
+                //reomve partial order if remaining COD order is create
+                $orders_data = array(
+                    "order_id" => $jsndata->id,
+                    "shop_url" => $_GET['whshp']
+                );
+                $this->user_model->remove_rack_partial_paid_order_for_remorder($orders_data);
+
+                //update second order which is created by API
+                $track_double_order = array(
+                    "orderid_paid" => $jsndata->id,
+                    "order_id_cod" => $decode_get_actual_orders->order->id,
+                    "order_number_cod" => $jsndata->name . '-SplitOrder',
+                    "shop_url" => $_GET['whshp'],
+                    "status" => 'success',
+                );
+                $this->user_model->track_double_orders_update($track_double_order);
+                $this->user_model->update_double_order_with_old($decode_get_actual_orders->order->id, $jsndata->id, $_GET['whshp']);
+
+
+                $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
+                $this->user_model->check_test_response($resposne_array);
+
+
+                /* $send_invoice_email = 'mutation {
             orderInvoiceSend(
               id: "gid://shopify/Order/' . $decode_get_actual_orders->order->id . '"
               email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
@@ -591,10 +595,11 @@ class AppwhookController extends BaseController
 
                 $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);*/
 
-            // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
-            // $this->user_model->check_test_response($resposne_array);
-            $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
-        }
+                // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
+                // $this->user_model->check_test_response($resposne_array);
+                $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+            }
+        //}
         //}
         echo "200 ok";
         exit();
@@ -928,6 +933,15 @@ class AppwhookController extends BaseController
     {
 
         //try {
+
+        // if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106') {
+        //     $log_filename = WRITEPATH . 'ordcrtlogs/easy-mobel-plus/log_07-Feb-2024_latest_new.log';
+        //     $logContents = file_get_contents($log_filename);
+        //     //$jsndata = $logContents;
+        //     // $jsndata2 = json_encode($logContents);
+        //     $jsndata = json_decode($logContents);
+
+        // } else {
         $webstsrti = 1;
 
         $webhook_content = NULL;
@@ -943,14 +957,15 @@ class AppwhookController extends BaseController
 
         $shop_name = explode(".", $_GET['whshp']);
         $cgc_store_name = $shop_name[0];
-        $log_filename = WRITEPATH . 'ordcrtlogs/'.$cgc_store_name;
+        $log_filename = WRITEPATH . 'ordcrtlogs/' . $cgc_store_name;
         // $log_msg = $resp;
         if (!file_exists($log_filename)) {
 
             mkdir($log_filename, 0777, true);
         }
-        $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
-        file_put_contents($log_file_data, print_r($jsndata, true)); 
+        $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
+        file_put_contents($log_file_data, $webhook_content);
+        //}
 
         //code for track partial paid order into database for tracking some time remeining payemnt order not create.
         $targetCode = 'Remaining_Amount';
@@ -1223,34 +1238,49 @@ class AppwhookController extends BaseController
                                 }
                             }
                             if ($matchingCode !== null) {
+
+                                if ($_GET['whshp'] == 'easy-mobel-plus.myshopify.com') {
+                                    $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
+                                    $this->create_double_cod_orders2($jsndata, $get_resulsts);
+                                } else {
+
+                                    //code for remove disconr coupon code after order
+                                    $get_coupon_code = array(
+                                        "coupon_code_name" => $matchingCode,
+                                        "shop_url" => $_GET['whshp'],
+                                    );
+
+                                    $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
+                                    // if (!empty($getcopndata)) {
+                                    $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getcopndata[0]->price_rule_id . '.json', array(), 'DELETE', $get_resulsts->access_token, $_GET['whshp']);
+
+                                    $remove_coupon_code = array(
+                                        "price_rule_id" => $getcopndata[0]->price_rule_id,
+                                        "shop_url" => $_GET['whshp'],
+                                    );
+                                    $this->user_model->remove_coupon_code($remove_coupon_code);
+
+                                    $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
+                                    $this->create_double_cod_orders2($jsndata, $get_resulsts);
+                                }
+                                // } else {
+                                //     echo "200 ok";
+                                //     exit();
+                                // }
+
                                 //code for remove disconr coupon code after order
-                                $get_coupon_code = array(
-                                    "coupon_code_name" => $matchingCode,
-                                    "shop_url" => $_GET['whshp'],
-                                );
-
-                                $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
-
-                                $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getcopndata[0]->price_rule_id . '.json', array(), 'DELETE', $get_resulsts->access_token, $_GET['whshp']);
-
-                                $remove_coupon_code = array(
-                                    "price_rule_id" => $getcopndata[0]->price_rule_id,
-                                    "shop_url" => $_GET['whshp'],
-                                );
-                                $this->user_model->remove_coupon_code($remove_coupon_code);
-                                //code for remove disconr coupon code after order
-
-                                $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
-                                $this->create_double_cod_orders2($jsndata, $get_resulsts);
+                                echo "200 ok";
                             } else if (isset($part_type) && $part_type == 'partial') {
                                 $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
                                 $this->create_double_cod_orders($jsndata, $get_resulsts, $part_type);
+                                echo "200 ok";
                             } else {
 
                                 // $resposne_array_lst = array("name" => "update_plan_orders2=" . $_GET['whshp']);
                                 // $this->user_model->check_test_response($resposne_array_lst);
 
                                 $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+                                echo "200 ok";
                             }
                         } else {
                             $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
@@ -2440,6 +2470,17 @@ class AppwhookController extends BaseController
 
             fclose($webhookpd);
 
+            $shop_name = explode(".", $_GET['pxupprshp']);
+            $cgc_store_name = $shop_name[0];
+            $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
+            // $log_msg = $resp;
+            if (!file_exists($log_filename)) {
+
+                mkdir($log_filename, 0777, true);
+            }
+            $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
+            file_put_contents($log_file_data, $update_product_content);
+
             $get_productsup = json_decode($update_product_content);
             if (!empty($get_productsup)) {
                 $array_get_perc = array(
@@ -2476,15 +2517,17 @@ class AppwhookController extends BaseController
                     }
                 }
             }
+            echo "200 ok";
+            exit();
         } catch (Exception $e) {
             // If any exception occurs within the try block, it will be caught here
             // Log the error for later investigation
             $shop_name = explode(".", $_GET['pxupprshp']);
             $cgc_store_name = $shop_name[0];
-            $log_filename = WRITEPATH . 'prodct_update/'.$cgc_store_name;
+            $log_filename = WRITEPATH . 'prodct_update/' . $cgc_store_name;
             // $log_msg = $resp;
             if (!file_exists($log_filename)) {
-    
+
                 mkdir($log_filename, 0777, true);
             }
             $logFilePath = $log_filename . '/log_' . date('d-M-Y') . '.log';
