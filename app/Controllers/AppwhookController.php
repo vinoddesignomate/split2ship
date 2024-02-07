@@ -937,14 +937,13 @@ class AppwhookController extends BaseController
         while (!feof($webhook)) {
             $webhook_content .= fread($webhook, 4096);
         }
-
         fclose($webhook);
 
         $jsndata = json_decode($webhook_content);
 
         $shop_name = explode(".", $_GET['whshp']);
         $cgc_store_name = $shop_name[0];
-        $log_filename = WRITEPATH . $cgc_store_name."/ordercrtwbh";
+        $log_filename = WRITEPATH . 'ordcrtlogs/'.$cgc_store_name;
         // $log_msg = $resp;
         if (!file_exists($log_filename)) {
 
@@ -952,7 +951,6 @@ class AppwhookController extends BaseController
         }
         $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
         file_put_contents($log_file_data, print_r($jsndata, true)); 
-
 
         //code for track partial paid order into database for tracking some time remeining payemnt order not create.
         $targetCode = 'Remaining_Amount';
@@ -2481,7 +2479,17 @@ class AppwhookController extends BaseController
         } catch (Exception $e) {
             // If any exception occurs within the try block, it will be caught here
             // Log the error for later investigation
-            error_log("Error in update_productswebhk(): " . $e->getMessage());
+            $shop_name = explode(".", $_GET['pxupprshp']);
+            $cgc_store_name = $shop_name[0];
+            $log_filename = WRITEPATH . 'prodct_update/'.$cgc_store_name;
+            // $log_msg = $resp;
+            if (!file_exists($log_filename)) {
+    
+                mkdir($log_filename, 0777, true);
+            }
+            $logFilePath = $log_filename . '/log_' . date('d-M-Y') . '.log';
+            error_log("Error in update_productswebhk(): " . $e->getMessage() . PHP_EOL, 3, $logFilePath);
+            //error_log("Error in update_productswebhk(): " . $e->getMessage());
         }
     }
 
