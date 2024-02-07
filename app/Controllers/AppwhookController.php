@@ -2472,8 +2472,6 @@ class AppwhookController extends BaseController
             // If any exception occurs within the try block, it will be caught here
             // Log the error for later investigation
             error_log("Error in update_productswebhk(): " . $e->getMessage());
-
-
         }
     }
 
