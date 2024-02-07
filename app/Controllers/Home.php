@@ -84,9 +84,20 @@ class Home extends BaseController
                 }
 
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'easy-mobel-plus.myshopify.com') {
+                if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
 
+                    //$jsndata = json_decode($webhook_content);
+
+                //     $log_filename = WRITEPATH . "whlogslgs";
+                //    // $log_msg = $resp;
+                //    if (!file_exists($log_filename)) {
+           
+                //        mkdir($log_filename, 0777, true);
+                //    }
+                //    $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+                //   // file_put_contents($log_file_data, print_r($jsndata, true)); 
+                //    file_put_contents($log_file_data, 'hellos'); 
 
                     // $getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
@@ -230,20 +241,21 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                    /*$getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5645777305904.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                //     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5669485478192.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                    $getprietuleidrec = json_decode($getprietuleid['body'], true);
-
-
-                    // $getprietuleid = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-
-                    //  $getprietuleidrecfull = json_decode($getprietuleid['body'], true);
-                    //  $fulfilid = $getprietuleidrecfull['fulfillment_orders'][0]['id'];
+                //     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
 
-                    echo "getprietuleidrec<pre>";
-                    print_r($getprietuleidrec);
-                    echo "</pre>";
+                //     $fulfilorer = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+                //      $getfill = json_decode($fulfilorer['body'], true);
+                //      echo "getprietuleidrec<pre>";
+                //      print_r($getfill);
+                //      echo "</pre>";
+                //      $fulfilid = $getfill['fulfillment_orders'][0]['id'];
+
+
+                //    die();
 
 
 
@@ -260,7 +272,7 @@ class Home extends BaseController
                     // echo "</pre>";
 
                     //$getprietuleid = $this->common->create_fulfilmentorders($get_details->access_token, $_GET['shop'], $fulfilarray);
-
+                    /*
                     // echo "fulfiledorder<pre>";
                     // print_r($getprietuleid);
                     // echo "</pre>";

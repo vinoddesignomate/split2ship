@@ -72,7 +72,7 @@ class AppwhookController extends BaseController
         $userModel->remove_update_cart_whook($shop_header); //remove update cart whook evenet from db
         $userModel->remove_bulk_update($shop_header); //remove bulk product cron
         $userModel->remove_all_coupon_on_uninstall($shop_header); //remove coupon from db created by api
-        
+
         // $resposne_array = array("name" => "uninstall webhook with code" . $shop_header);
         // $userModel->check_test_response($resposne_array);
         echo "200 ok";
@@ -927,7 +927,7 @@ class AppwhookController extends BaseController
     function auto_ordersync()
     {
 
-
+        //try {
         $webstsrti = 1;
 
         $webhook_content = NULL;
@@ -941,6 +941,7 @@ class AppwhookController extends BaseController
         fclose($webhook);
 
         $jsndata = json_decode($webhook_content);
+
 
 
         //code for track partial paid order into database for tracking some time remeining payemnt order not create.
@@ -1256,6 +1257,16 @@ class AppwhookController extends BaseController
         }
         echo "200 ok";
         exit();
+        // } catch (Exception $e) {
+        //     // If any exception occurs within the try block, it will be caught here
+        //     // Log the error for later investigation
+        //     error_log("Error in auto_ordersync(): " . $e->getMessage());
+
+        //     //echo "200 ok";
+        //     //exit();
+        //     // You may want to return a specific error code or message to indicate failure
+        //     //return false;
+        // }
         //return json_encode($return_array);
     }
     public function create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti)
@@ -2410,62 +2421,60 @@ class AppwhookController extends BaseController
     public function update_productswebhk()
     {
 
+        try {
+            $update_product_content = NULL;
 
-        $update_product_content = NULL;
+            // Get webhook content from the POST
+            $webhookpd = fopen('php://input', 'rb');
+            while (!feof($webhookpd)) {
+                $update_product_content .= fread($webhookpd, 4096);
+            }
 
-        // Get webhook content from the POST
-        $webhookpd = fopen('php://input', 'rb');
-        while (!feof($webhookpd)) {
-            $update_product_content .= fread($webhookpd, 4096);
-        }
+            fclose($webhookpd);
 
-        fclose($webhookpd);
-
-        $get_productsup = json_decode($update_product_content);
-        if (!empty($get_productsup)) {
-            $array_get_perc = array(
-                "product_id" => $get_productsup->id,
-                "shop_url" => $_GET['pxupprshp']
-            );
-            // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
-            // $this->user_model->check_test_response($updateprorespo);
-
-            $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
-            // echo "<pre>";
-            // print_r($get_partpecentage);
-            // echo "</pre>";
-
-            if (!empty($get_partpecentage)) {
-                $product_array = array(
+            $get_productsup = json_decode($update_product_content);
+            if (!empty($get_productsup)) {
+                $array_get_perc = array(
                     "product_id" => $get_productsup->id,
-                    "product_title" => $get_productsup->title,
-                    "shop_url" => $_GET['pxupprshp'],
-                    "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                    "shop_url" => $_GET['pxupprshp']
                 );
-                $this->user_model->add_partial_products($product_array);
+                // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
+                // $this->user_model->check_test_response($updateprorespo);
 
-                foreach ($get_productsup->variants as $produc_varaien) {
+                $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
+                // echo "<pre>";
+                // print_r($get_partpecentage);
+                // echo "</pre>";
+
+                if (!empty($get_partpecentage)) {
                     $product_array = array(
                         "product_id" => $get_productsup->id,
-                        "varient_id" => $produc_varaien->id,
-                        "title" => $produc_varaien->title,
-                        "price" => $produc_varaien->price,
+                        "product_title" => $get_productsup->title,
                         "shop_url" => $_GET['pxupprshp'],
                         "partial_percentage" => $get_partpecentage[0]->partial_percentage
                     );
-                    $this->user_model->add_partial_products_varient($product_array);
+                    $this->user_model->add_partial_products($product_array);
+
+                    foreach ($get_productsup->variants as $produc_varaien) {
+                        $product_array = array(
+                            "product_id" => $get_productsup->id,
+                            "varient_id" => $produc_varaien->id,
+                            "title" => $produc_varaien->title,
+                            "price" => $produc_varaien->price,
+                            "shop_url" => $_GET['pxupprshp'],
+                            "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                        );
+                        $this->user_model->add_partial_products_varient($product_array);
+                    }
                 }
             }
+        } catch (Exception $e) {
+            // If any exception occurs within the try block, it will be caught here
+            // Log the error for later investigation
+            error_log("Error in update_productswebhk(): " . $e->getMessage());
+
+
         }
-
-        // $log_filename = "log";
-        // // $log_msg = $resp;
-        // if (!file_exists($log_filename)) {
-
-        //     mkdir($log_filename, 0777, true);
-        // }
-        // $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
-        // file_put_contents($log_file_data, print_r($get_productsup, true));
     }
 
     function markpaidorderemail()
