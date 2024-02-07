@@ -943,6 +943,15 @@ class AppwhookController extends BaseController
         $jsndata = json_decode($webhook_content);
 
 
+        $log_filename = WRITEPATH . "ordercrtwbh";
+        // $log_msg = $resp;
+        if (!file_exists($log_filename)) {
+
+            mkdir($log_filename, 0777, true);
+        }
+        $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+        file_put_contents($log_file_data, print_r($jsndata, true)); 
+
 
         //code for track partial paid order into database for tracking some time remeining payemnt order not create.
         $targetCode = 'Remaining_Amount';
