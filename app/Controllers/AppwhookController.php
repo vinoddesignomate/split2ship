@@ -943,7 +943,7 @@ class AppwhookController extends BaseController
         $jsndata = json_decode($webhook_content);
 
 
-        $log_filename = WRITEPATH . "ordercrtwbh";
+        $log_filename = WRITEPATH . $_GET['whshp']."/ordercrtwbh";
         // $log_msg = $resp;
         if (!file_exists($log_filename)) {
 
