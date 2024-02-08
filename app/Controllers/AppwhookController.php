@@ -555,6 +555,16 @@ class AppwhookController extends BaseController
         $this->user_model->check_test_response($resposne_arrayjjk);
         if (isset($decode_get_actual_orders->order->id)) {
 
+
+            //track partial remaing odder into database that can prevent duplicate splote orders
+            $tracksplitdaat = array(
+                "order_id" => $decode_get_actual_orders->order->id,
+                "order_number" => $jsndata->name . '-SplitOrder',
+                "shop_url" => $_GET['whshp']
+            );
+            $this->user_model->track_split_partial_orders($tracksplitdaat);
+
+
             //reomve partial order if remaining COD order is create
             $orders_data = array(
                 "order_id" => $jsndata->id,

@@ -1195,4 +1195,26 @@ class UserModel extends Model
                                      WHERE movement < NOW() - INTERVAL 5 MINUTE");
         return $getorderq->getResult();
     }
+    function track_split_partial_orders($steparray)
+    {
+
+        $qbuilder_insert = $this->db->table('1cg_splite_partial_order_get');
+        $qbuilder_insert->where('shop_url', $steparray['shop_url']);
+        $qbuilder_insert->where('order_number', $steparray['order_number']);
+        $qgetordpro = $qbuilder_insert->get();
+        $qbuilder_insert->countAllResults();
+        if (!empty($qgetordpro->getResult())) {
+            $this->db->table('1cg_splite_partial_order_get')->where('shop_url', $steparray['shop_url'])->where('order_number', $steparray['order_number'])->update($steparray);
+        } else {
+            $this->db->table('1cg_splite_partial_order_get')->insert($steparray);
+        }
+    }
+    public function get_alreadytrack($seldata)
+    {
+        $getslq = "SELECT *
+                    FROM 1cg_splite_partial_order_get
+                    WHERE shop_url=? AND order_number=?";
+        $getdaayareq = $this->db->query($getslq,array($seldata['shop_url'],$seldata['order_number']));
+        return $getdaayareq->getResult();
+    }
 }
