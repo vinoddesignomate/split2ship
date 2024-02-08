@@ -2683,6 +2683,9 @@ class AppwhookController extends BaseController
                 // $this->user_model->check_test_response($updateprorespo);
                 $this->user_model->track_cart_itme_data($add_to_cart_line_item);
             }
+        }else{
+            echo "200 ok";
+            exit; 
         }
     }
     function product_create_whok()
@@ -2735,6 +2738,8 @@ class AppwhookController extends BaseController
                 );
                 $this->user_model->add_partial_products_varient($product_array);
             }
+        }else{
+            echo "200 ok";
         }
     }
 }
