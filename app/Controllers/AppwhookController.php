@@ -550,9 +550,9 @@ class AppwhookController extends BaseController
         $this->user_model->update_plan_orders_plus(1, $_GET['whshp']); //plus 1 order
 
         $decode_get_actual_orders = json_decode($get_actual_orders);
-
         $resposne_arrayjjk = array("name" => "get_actual_orders" . $get_actual_orders);
         $this->user_model->check_test_response($resposne_arrayjjk);
+
         if (isset($decode_get_actual_orders->order->id)) {
 
 
@@ -586,33 +586,18 @@ class AppwhookController extends BaseController
 
             $resposne_array = array("name" => "actual order resposne" . $get_actual_orders);
             $this->user_model->check_test_response($resposne_array);
-
-
-            /* $send_invoice_email = 'mutation {
-            orderInvoiceSend(
-              id: "gid://shopify/Order/' . $decode_get_actual_orders->order->id . '"
-              email: {from: "' . $get_resulsts->email . '", to: "' . $jsndata->email . '"}
-            ) {
-              order {
-                id
-              }
-              userErrors {
-                field
-                message
-              }
-            }
-          }';
-
-                $invoice_email_snd = $this->graphql_api_run(array("query" => $send_invoice_email), $_GET['whshp'], $get_resulsts->access_token);*/
-
             // $resposne_array = array("name" => "update_plan_orders1=" . $_GET['whshp']);
             // $this->user_model->check_test_response($resposne_array);
             $this->user_model->update_plan_orders(1, $_GET['whshp']); //update sync update order count for price plan
+            echo "200 ok";
+            exit();
+        } else {
+            echo "503 ok";
+            exit();
         }
         //}
         //}
-        echo "200 ok";
-        exit();
+
     }
     function create_double_cod_orders($jsndata, $get_resulsts, $part_type)
     {
@@ -1261,12 +1246,7 @@ class AppwhookController extends BaseController
                                     echo "200 ok";
                                 }
 
-                                // $allowedShopNames = ['easy-mobel-plus.myshopify.com', "addoindia.myshopify.com"];
-                                // if (in_array($_GET['whshp'], $allowedShopNames)) {
 
-                                //     $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
-                                //     $this->create_double_cod_orders2($jsndata, $get_resulsts);
-                                // } else {
 
                                 //code for remove disconr coupon code after order
                                 $get_coupon_code = array(
@@ -2479,81 +2459,85 @@ class AppwhookController extends BaseController
     }
     public function update_productswebhk()
     {
+        if ($_GET['pxupprshp'] == 'desinomatetest.myshopify.com') {
+            echo "200 ok";
+            exit();
+        } else {
+            try {
+                $update_product_content = NULL;
 
-        try {
-            $update_product_content = NULL;
+                // Get webhook content from the POST
+                $webhookpd = fopen('php://input', 'rb');
+                while (!feof($webhookpd)) {
+                    $update_product_content .= fread($webhookpd, 4096);
+                }
 
-            // Get webhook content from the POST
-            $webhookpd = fopen('php://input', 'rb');
-            while (!feof($webhookpd)) {
-                $update_product_content .= fread($webhookpd, 4096);
-            }
+                fclose($webhookpd);
 
-            fclose($webhookpd);
+                $shop_name = explode(".", $_GET['pxupprshp']);
+                $cgc_store_name = $shop_name[0];
+                $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
+                // $log_msg = $resp;
+                if (!file_exists($log_filename)) {
 
-            $shop_name = explode(".", $_GET['pxupprshp']);
-            $cgc_store_name = $shop_name[0];
-            $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
-            // $log_msg = $resp;
-            if (!file_exists($log_filename)) {
+                    mkdir($log_filename, 0777, true);
+                }
+                $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
+                file_put_contents($log_file_data, $update_product_content);
 
-                mkdir($log_filename, 0777, true);
-            }
-            $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
-            file_put_contents($log_file_data, $update_product_content);
-
-            $get_productsup = json_decode($update_product_content);
-            if (!empty($get_productsup)) {
-                $array_get_perc = array(
-                    "product_id" => $get_productsup->id,
-                    "shop_url" => $_GET['pxupprshp']
-                );
-                // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
-                // $this->user_model->check_test_response($updateprorespo);
-
-                $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
-                // echo "<pre>";
-                // print_r($get_partpecentage);
-                // echo "</pre>";
-
-                if (!empty($get_partpecentage)) {
-                    $product_array = array(
+                $get_productsup = json_decode($update_product_content);
+                if (!empty($get_productsup)) {
+                    $array_get_perc = array(
                         "product_id" => $get_productsup->id,
-                        "product_title" => $get_productsup->title,
-                        "shop_url" => $_GET['pxupprshp'],
-                        "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                        "shop_url" => $_GET['pxupprshp']
                     );
-                    $this->user_model->add_partial_products($product_array);
+                    // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
+                    // $this->user_model->check_test_response($updateprorespo);
 
-                    foreach ($get_productsup->variants as $produc_varaien) {
+                    $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
+                    // echo "<pre>";
+                    // print_r($get_partpecentage);
+                    // echo "</pre>";
+
+                    if (!empty($get_partpecentage)) {
                         $product_array = array(
                             "product_id" => $get_productsup->id,
-                            "varient_id" => $produc_varaien->id,
-                            "title" => $produc_varaien->title,
-                            "price" => $produc_varaien->price,
+                            "product_title" => $get_productsup->title,
                             "shop_url" => $_GET['pxupprshp'],
                             "partial_percentage" => $get_partpecentage[0]->partial_percentage
                         );
-                        $this->user_model->add_partial_products_varient($product_array);
+                        $this->user_model->add_partial_products($product_array);
+
+                        foreach ($get_productsup->variants as $produc_varaien) {
+                            $product_array = array(
+                                "product_id" => $get_productsup->id,
+                                "varient_id" => $produc_varaien->id,
+                                "title" => $produc_varaien->title,
+                                "price" => $produc_varaien->price,
+                                "shop_url" => $_GET['pxupprshp'],
+                                "partial_percentage" => $get_partpecentage[0]->partial_percentage
+                            );
+                            $this->user_model->add_partial_products_varient($product_array);
+                        }
                     }
                 }
-            }
-            echo "200 ok";
-            exit();
-        } catch (Exception $e) {
-            // If any exception occurs within the try block, it will be caught here
-            // Log the error for later investigation
-            $shop_name = explode(".", $_GET['pxupprshp']);
-            $cgc_store_name = $shop_name[0];
-            $log_filename = WRITEPATH . 'prodct_update/' . $cgc_store_name;
-            // $log_msg = $resp;
-            if (!file_exists($log_filename)) {
+                echo "200 ok";
+                exit();
+            } catch (Exception $e) {
+                // If any exception occurs within the try block, it will be caught here
+                // Log the error for later investigation
+                $shop_name = explode(".", $_GET['pxupprshp']);
+                $cgc_store_name = $shop_name[0];
+                $log_filename = WRITEPATH . 'prodct_update/' . $cgc_store_name;
+                // $log_msg = $resp;
+                if (!file_exists($log_filename)) {
 
-                mkdir($log_filename, 0777, true);
+                    mkdir($log_filename, 0777, true);
+                }
+                $logFilePath = $log_filename . '/log_' . date('d-M-Y') . '.log';
+                error_log("Error in update_productswebhk(): " . $e->getMessage() . PHP_EOL, 3, $logFilePath);
+                //error_log("Error in update_productswebhk(): " . $e->getMessage());
             }
-            $logFilePath = $log_filename . '/log_' . date('d-M-Y') . '.log';
-            error_log("Error in update_productswebhk(): " . $e->getMessage() . PHP_EOL, 3, $logFilePath);
-            //error_log("Error in update_productswebhk(): " . $e->getMessage());
         }
     }
 
