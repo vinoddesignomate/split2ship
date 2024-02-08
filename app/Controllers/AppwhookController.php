@@ -2482,16 +2482,16 @@ class AppwhookController extends BaseController
 
             fclose($webhookpd);
 
-            // $shop_name = explode(".", $_GET['pxupprshp']);
-            // $cgc_store_name = $shop_name[0];
-            // $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
-            // // $log_msg = $resp;
-            // if (!file_exists($log_filename)) {
+            $shop_name = explode(".", $_GET['pxupprshp']);
+            $cgc_store_name = $shop_name[0];
+            $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
+            // $log_msg = $resp;
+            if (!file_exists($log_filename)) {
 
-            //     mkdir($log_filename, 0777, true);
-            // }
-            // $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
-            // file_put_contents($log_file_data, $update_product_content);
+                mkdir($log_filename, 0777, true);
+            }
+            $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
+            file_put_contents($log_file_data, $update_product_content);
 
             $get_productsup = json_decode($update_product_content);
             if (!empty($get_productsup)) {
