@@ -1249,21 +1249,33 @@ class AppwhookController extends BaseController
                             }
                             if ($matchingCode !== null) {
 
-                                $allowedShopNames = ['easy-mobel-plus.myshopify.com', "addoindia.myshopify.com"];
-                                if (in_array($_GET['whshp'], $allowedShopNames)) {
-                                    // if ($_GET['whshp'] == 'easy-mobel-plus.myshopify.com' || $_GET['whshp'] == 'addoindia.myshopify.com') {
-                                    $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
+                                $get_splitorder = array(
+                                    "order_number" => $jsndata->name . '-SplitOrder',
+                                    "shop_url" => $_GET['whshp'],
+                                );
+
+                                $checkexit = $this->user_model->get_alreadytrack($get_splitorder);
+                                if (empty($checkexit)) {
                                     $this->create_double_cod_orders2($jsndata, $get_resulsts);
                                 } else {
+                                    echo "200 ok";
+                                }
 
-                                    //code for remove disconr coupon code after order
-                                    $get_coupon_code = array(
-                                        "coupon_code_name" => $matchingCode,
-                                        "shop_url" => $_GET['whshp'],
-                                    );
+                                // $allowedShopNames = ['easy-mobel-plus.myshopify.com', "addoindia.myshopify.com"];
+                                // if (in_array($_GET['whshp'], $allowedShopNames)) {
 
-                                    $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
-                                    // if (!empty($getcopndata)) {
+                                //     $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
+                                //     $this->create_double_cod_orders2($jsndata, $get_resulsts);
+                                // } else {
+
+                                //code for remove disconr coupon code after order
+                                $get_coupon_code = array(
+                                    "coupon_code_name" => $matchingCode,
+                                    "shop_url" => $_GET['whshp'],
+                                );
+
+                                $getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
+                                if (!empty($getcopndata)) {
                                     $this->common->rest_api('/admin/api/2023-10/price_rules/' . $getcopndata[0]->price_rule_id . '.json', array(), 'DELETE', $get_resulsts->access_token, $_GET['whshp']);
 
                                     $remove_coupon_code = array(
@@ -1273,14 +1285,11 @@ class AppwhookController extends BaseController
                                     $this->user_model->remove_coupon_code($remove_coupon_code);
 
                                     $resposne_array_lst = array("name" => "run discount order partial " . $_GET['whshp']);
-                                    $this->create_double_cod_orders2($jsndata, $get_resulsts);
+                                } else {
+                                    echo "200 ok";
                                 }
-                                // } else {
-                                //     echo "200 ok";
-                                //     exit();
-                                // }
-
                                 //code for remove disconr coupon code after order
+
                                 echo "200 ok";
                             } else if (isset($part_type) && $part_type == 'partial') {
                                 $resposne_array_lst = array("name" => "run double order with partial " . $_GET['whshp']);
@@ -1295,9 +1304,9 @@ class AppwhookController extends BaseController
                                 echo "200 ok";
                             }
                         } else {
-                            $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
-                            $this->user_model->check_test_response($resposne_array_lst);
-                            $this->create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti);
+                            // $resposne_array_lst = array("name" => "start with create_simplepartial_orders func" . $_GET['whshp']);
+                            // $this->user_model->check_test_response($resposne_array_lst);
+                            // $this->create_simplepartial_orders($jsndata, $get_resulsts, $webstsrti);
                             echo "200 ok";
                         }
                         //}
