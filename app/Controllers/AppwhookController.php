@@ -2459,86 +2459,88 @@ class AppwhookController extends BaseController
     }
     public function update_productswebhk()
     {
-        if ($_GET['pxupprshp'] == 'desinomatetest.myshopify.com') {
-            echo "200 ok";
-            exit();
-        } else {
-            try {
-                $update_product_content = NULL;
+        echo "200 ok";
+        exit();
+        // if ($_GET['pxupprshp'] == 'desinomatetest.myshopify.com') {
+        //     echo "200 ok";
+        //     exit();
+        // } else {
+        //     try {
+        //         $update_product_content = NULL;
 
-                // Get webhook content from the POST
-                $webhookpd = fopen('php://input', 'rb');
-                while (!feof($webhookpd)) {
-                    $update_product_content .= fread($webhookpd, 4096);
-                }
+        //         // Get webhook content from the POST
+        //         $webhookpd = fopen('php://input', 'rb');
+        //         while (!feof($webhookpd)) {
+        //             $update_product_content .= fread($webhookpd, 4096);
+        //         }
 
-                fclose($webhookpd);
+        //         fclose($webhookpd);
 
-                $shop_name = explode(".", $_GET['pxupprshp']);
-                $cgc_store_name = $shop_name[0];
-                $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
-                // $log_msg = $resp;
-                if (!file_exists($log_filename)) {
+        //         $shop_name = explode(".", $_GET['pxupprshp']);
+        //         $cgc_store_name = $shop_name[0];
+        //         $log_filename = WRITEPATH . 'product_up_logs/' . $cgc_store_name;
+        //         // $log_msg = $resp;
+        //         if (!file_exists($log_filename)) {
 
-                    mkdir($log_filename, 0777, true);
-                }
-                $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
-                file_put_contents($log_file_data, $update_product_content);
+        //             mkdir($log_filename, 0777, true);
+        //         }
+        //         $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
+        //         file_put_contents($log_file_data, $update_product_content);
 
-                $get_productsup = json_decode($update_product_content);
-                if (!empty($get_productsup)) {
-                    $array_get_perc = array(
-                        "product_id" => $get_productsup->id,
-                        "shop_url" => $_GET['pxupprshp']
-                    );
-                    // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
-                    // $this->user_model->check_test_response($updateprorespo);
+        //         $get_productsup = json_decode($update_product_content);
+        //         if (!empty($get_productsup)) {
+        //             $array_get_perc = array(
+        //                 "product_id" => $get_productsup->id,
+        //                 "shop_url" => $_GET['pxupprshp']
+        //             );
+        //             // $updateprorespo = array("name" => "update product webhook for=" . $_GET['pxupprshp']);
+        //             // $this->user_model->check_test_response($updateprorespo);
 
-                    $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
-                    // echo "<pre>";
-                    // print_r($get_partpecentage);
-                    // echo "</pre>";
+        //             $get_partpecentage = $this->user_model->get_partial_percentage($array_get_perc);
+        //             // echo "<pre>";
+        //             // print_r($get_partpecentage);
+        //             // echo "</pre>";
 
-                    if (!empty($get_partpecentage)) {
-                        $product_array = array(
-                            "product_id" => $get_productsup->id,
-                            "product_title" => $get_productsup->title,
-                            "shop_url" => $_GET['pxupprshp'],
-                            "partial_percentage" => $get_partpecentage[0]->partial_percentage
-                        );
-                        $this->user_model->add_partial_products($product_array);
+        //             if (!empty($get_partpecentage)) {
+        //                 $product_array = array(
+        //                     "product_id" => $get_productsup->id,
+        //                     "product_title" => $get_productsup->title,
+        //                     "shop_url" => $_GET['pxupprshp'],
+        //                     "partial_percentage" => $get_partpecentage[0]->partial_percentage
+        //                 );
+        //                 $this->user_model->add_partial_products($product_array);
 
-                        foreach ($get_productsup->variants as $produc_varaien) {
-                            $product_array = array(
-                                "product_id" => $get_productsup->id,
-                                "varient_id" => $produc_varaien->id,
-                                "title" => $produc_varaien->title,
-                                "price" => $produc_varaien->price,
-                                "shop_url" => $_GET['pxupprshp'],
-                                "partial_percentage" => $get_partpecentage[0]->partial_percentage
-                            );
-                            $this->user_model->add_partial_products_varient($product_array);
-                        }
-                    }
-                }
-                echo "200 ok";
-                exit();
-            } catch (Exception $e) {
-                // If any exception occurs within the try block, it will be caught here
-                // Log the error for later investigation
-                $shop_name = explode(".", $_GET['pxupprshp']);
-                $cgc_store_name = $shop_name[0];
-                $log_filename = WRITEPATH . 'prodct_update/' . $cgc_store_name;
-                // $log_msg = $resp;
-                if (!file_exists($log_filename)) {
+        //                 foreach ($get_productsup->variants as $produc_varaien) {
+        //                     $product_array = array(
+        //                         "product_id" => $get_productsup->id,
+        //                         "varient_id" => $produc_varaien->id,
+        //                         "title" => $produc_varaien->title,
+        //                         "price" => $produc_varaien->price,
+        //                         "shop_url" => $_GET['pxupprshp'],
+        //                         "partial_percentage" => $get_partpecentage[0]->partial_percentage
+        //                     );
+        //                     $this->user_model->add_partial_products_varient($product_array);
+        //                 }
+        //             }
+        //         }
+        //         echo "200 ok";
+        //         exit();
+        //     } catch (Exception $e) {
+        //         // If any exception occurs within the try block, it will be caught here
+        //         // Log the error for later investigation
+        //         $shop_name = explode(".", $_GET['pxupprshp']);
+        //         $cgc_store_name = $shop_name[0];
+        //         $log_filename = WRITEPATH . 'prodct_update/' . $cgc_store_name;
+        //         // $log_msg = $resp;
+        //         if (!file_exists($log_filename)) {
 
-                    mkdir($log_filename, 0777, true);
-                }
-                $logFilePath = $log_filename . '/log_' . date('d-M-Y') . '.log';
-                error_log("Error in update_productswebhk(): " . $e->getMessage() . PHP_EOL, 3, $logFilePath);
-                //error_log("Error in update_productswebhk(): " . $e->getMessage());
-            }
-        }
+        //             mkdir($log_filename, 0777, true);
+        //         }
+        //         $logFilePath = $log_filename . '/log_' . date('d-M-Y') . '.log';
+        //         error_log("Error in update_productswebhk(): " . $e->getMessage() . PHP_EOL, 3, $logFilePath);
+
+        //     }
+        // }
     }
 
     function markpaidorderemail()

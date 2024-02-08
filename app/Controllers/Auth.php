@@ -202,7 +202,7 @@ class Auth extends BaseController
 
 
 			//Product Update webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			// $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/paxnow_update_products?pxupprshp=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			//order paid webhook
