@@ -89,15 +89,15 @@ class Home extends BaseController
 
                     //$jsndata = json_decode($webhook_content);
 
-                //     $log_filename = WRITEPATH . "whlogslgs";
-                //    // $log_msg = $resp;
-                //    if (!file_exists($log_filename)) {
-           
-                //        mkdir($log_filename, 0777, true);
-                //    }
-                //    $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
-                //   // file_put_contents($log_file_data, print_r($jsndata, true)); 
-                //    file_put_contents($log_file_data, 'hellos'); 
+                    //     $log_filename = WRITEPATH . "whlogslgs";
+                    //    // $log_msg = $resp;
+                    //    if (!file_exists($log_filename)) {
+
+                    //        mkdir($log_filename, 0777, true);
+                    //    }
+                    //    $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+                    //   // file_put_contents($log_file_data, print_r($jsndata, true)); 
+                    //    file_put_contents($log_file_data, 'hellos'); 
 
                     // $getthems = $this->common->rest_api('/admin/api/2023-10/themes.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
@@ -241,21 +241,21 @@ class Home extends BaseController
                     //$getcopndata = $this->user_model->get_partial_coupon_cde($get_coupon_code);
 
 
-                //     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5669485478192.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+                    //     $getprietuleid = $this->common->rest_api('/admin/api/2023-07/orders/5669485478192.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
 
-                //     $getprietuleidrec = json_decode($getprietuleid['body'], true);
-
-
-                //     $fulfilorer = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-
-                //      $getfill = json_decode($fulfilorer['body'], true);
-                //      echo "getprietuleidrec<pre>";
-                //      print_r($getfill);
-                //      echo "</pre>";
-                //      $fulfilid = $getfill['fulfillment_orders'][0]['id'];
+                    //     $getprietuleidrec = json_decode($getprietuleid['body'], true);
 
 
-                //    die();
+                    //     $fulfilorer = $this->common->rest_api('/admin/api/2023-01/orders/' . $getprietuleidrec['order']['id'] . '/fulfillment_orders.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+                    //      $getfill = json_decode($fulfilorer['body'], true);
+                    //      echo "getprietuleidrec<pre>";
+                    //      print_r($getfill);
+                    //      echo "</pre>";
+                    //      $fulfilid = $getfill['fulfillment_orders'][0]['id'];
+
+
+                    //    die();
 
 
 
@@ -1252,8 +1252,10 @@ class Home extends BaseController
                 //$product_list = json_decode($products['body'], true);
                 if (isset($grapql_products_list_prodct['data']['collection'])) {
                     $product_list = $grapql_products_list_prodct['data']['collection']['products'];
-                } else {
+                } else if (isset($grapql_products_list_prodct['data']['products'])) {
                     $product_list = $grapql_products_list_prodct['data']['products'];
+                } else {
+                    $product_list = array();
                 }
             } else {
                 $product_list = array();
@@ -1838,7 +1840,7 @@ class Home extends BaseController
                 } else {
                     $countproducts = $collectconnt['count'];
                 }
-                echo "countproducts=".$countproducts;
+                echo "countproducts=" . $countproducts;
                 if ($countproducts <= 100) {
                     $colcturl = "/admin/api/2023-07/products.json";
                     $products = $this->common->rest_api($colcturl, array("collection_id" => $this->request->getPost('colltion_change_partial_id'), "limit" => 100, "status" => "active"), 'GET', $get_details->access_token, $_REQUEST['shop']);
@@ -1890,7 +1892,9 @@ class Home extends BaseController
                                         "collection_id" => $this->request->getPost('colltion_change_partial_id'),
                                         "total_pro" => $total_pro
                                     );
-                                    echo"payxnowrest_product_add<pre>"; print_r($payxnowrest_product_add);  echo"</pre>";
+                                    echo "payxnowrest_product_add<pre>";
+                                    print_r($payxnowrest_product_add);
+                                    echo "</pre>";
                                     //below function is used for add products into partial list & update partial products of store according their plan
                                     $this->user_model->add_partial_products_collections($payxnowrest_product_add);
                                     foreach ($value['variants'] as $produc_varaien) {
@@ -1904,7 +1908,9 @@ class Home extends BaseController
                                             "shop_url" => $_REQUEST['shop'],
                                             "collection_id" =>  $this->request->getPost('colltion_change_partial_id')
                                         );
-                                        echo"product_array<pre>"; print_r($product_array); echo"</pre>";
+                                        echo "product_array<pre>";
+                                        print_r($product_array);
+                                        echo "</pre>";
                                         $this->user_model->add_partial_products_varient($product_array);
                                     }
                                 }
