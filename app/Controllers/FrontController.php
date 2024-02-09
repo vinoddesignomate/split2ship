@@ -2027,7 +2027,7 @@ class FrontController extends BaseController
     }
     public function frontend_reset_coupon()
     {
-
+        
         $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
         $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $this->request->getPost('priceruleid') . '.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
         $remove_coupon_code = array(

@@ -200,6 +200,7 @@ $store_name = $shop_name[0];
         display: flex;
         text-decoration: none;
         color: #fff;
+        margin-bottom: 0.5px;
         padding: 10px 10px;
         font-size: 14px;
         text-align: center;
@@ -418,13 +419,13 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol>
-                            <li>Click on online store <?php if ($get_details_store->store_theme_id != "") { ?><a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/themes/<?php echo $get_details_store->store_theme_id; ?>/editor">Click here</a><?php } ?><div class="centerCGImg03"><img src="/public/images//stp1.webp" /></div>
+                            <li>Click on online store. <?php if ($get_details_store->store_theme_id != "") { ?><a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/themes/<?php echo $get_details_store->store_theme_id; ?>/editor">Click here</a><?php } ?><div class="centerCGImg03"><img src="/public/images//stp1.webp" /></div>
                             </li>
-                            <li>Click on customize button from right side <div class="centerCGImg03"><img src="/public/images/stp2.webp" /></div>
+                            <li>Click on customize button from right side. <div class="centerCGImg03"><img src="/public/images/stp2.webp" /></div>
                             </li>
-                            <li>Click on third button from the left App Embed <div class="centerCGImg03"><img src="/public/images/step3.webp" /></div>
+                            <li>Click on third button from the left App Embed. <div class="centerCGImg03"><img src="/public/images/step3.webp" /></div>
                             </li>
-                            <li>Click on Split2Ship app and enable it <div class="centerCGImg03"><img src="/public/images/stp4.webp" /></div>
+                            <li>Click on Split2Ship app and enable it. <div class="centerCGImg03"><img src="/public/images/stp4.webp" /></div>
                             </li>
                         </ol>
                     </div>
@@ -446,12 +447,12 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="5">
-                            <li>Click on collection <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Click here</a>
+                            <li>Click on collection. <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list">Click here</a>
                                 <div class="centerCGImg03"><img src="/public/images/stp2_1.webp" /></div>
                             </li>
-                            <li>Click on pencil icon and define how much advance you want to take upfront<div class="centerCGImg03"><img src="/public/images/step2_2.webp" /></div>
+                            <li>Click on pencil icon and define how much advance you want to take upfront.<div class="centerCGImg03"><img src="/public/images/step2_2.webp" /></div>
                             </li>
-                            <li>You can define it by percentage or by fixed amount<div class="centerCGImg03"><img src="/public/images/step2_3.webp" /></div>
+                            <li>You can define it by percentage or by fixed amount.<div class="centerCGImg03"><img src="/public/images/step2_3.webp" /></div>
                             </li>
                         </ol>
                     </div>
@@ -474,12 +475,12 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="8">
-                            <li>Enable the button on cart page and product page <a onclick='popupclick(event);' class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Click here</a>
+                            <li>Enable the button on cart page and product page. <a onclick='popupclick(event);' class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Click here</a>
                                 <div class="centerCGImg03"><img src="/public/images/step3_1.webp" /></div>
                             </li>
-                            <li>Make sure you pick the right color for the background of the button and text color on the button <div class="centerCGImg03"><img src="/public/images/step3_2.webp" /></div>
+                            <li>Make sure you pick the right color for the background of the button and text color on the button. <div class="centerCGImg03"><img src="/public/images/step3_2.webp" /></div>
                             </li>
-                            <li>We recommend against taking Partial COD charges instead advertise that you will waive of COD charges if they go for Partial COD</li>
+                            <li>We recommend against taking Partial COD charges instead advertise that you will waive of COD charges if they go for Partial COD.</li>
                         </ol>
                     </div>
 
@@ -502,12 +503,12 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol type="1" start="11">
-                            <li>Go to the "Tutorial" page of the app <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials">Click here</a>
+                            <li>Go to the "Tutorial" page of the app. <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials">Click here</a>
                                 <div class="centerCGImg03"><img src="/public/images/step4_1.webp" /></div>
                             </li>
-                            <li>Scroll down to step number 5 and copy the entire code <div class="centerCGImg03"><img src="/public/images/step4_2.webp" /></div>
+                            <li>Scroll down to step number 5 and copy the entire code. <div class="centerCGImg03"><img src="/public/images/step4_2.webp" /></div>
                             </li>
-                            <li>Navigate to the settings of your store, scroll down, and click on the "Notifications" tab <div class="centerCGImg03"><img src="/public/images/step4_3.webp" /></div>
+                            <li>Navigate to the settings of your store, scroll down, and click on the "Notifications" tab. <div class="centerCGImg03"><img src="/public/images/step4_3.webp" /></div>
                             </li>
                             <li>Select the "customer notification" option. <div class="centerCGImg03"><img src="/public/images/step4_4.webp" /></div>
                             </li>
@@ -539,16 +540,16 @@ $store_name = $shop_name[0];
                         <iframe width="560" height="280" src="https://www.youtube.com/embed/hVcshCYCuo8?si=Werr5daW_xM2W04F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="wdSetcg">
-                        <ol type="1" start="11">
-                            <li>Install the "Checkout Ninja Rules App" <a class="anchorCGclick" onclick='popupclick(event);' href="https://apps.shopify.com/checkout-ninja?show_store_picker=1">Click here</a>
-                                <div class="centerCGImg03"><img src="/public/images/step5_1.webp" /></div>
+                        <ol type="1" start="19">
+                            <li>Install the "Checkout Ninja Rules App". <a class="anchorCGclick" onclick='popupclick(event);' href="https://apps.shopify.com/checkout-ninja?show_store_picker=1">Click here</a>
+                                <div class="centerCGImg03"><img src="/public/images/step5_1.webp?var=1" /></div>
                             </li>
-                            <li>Go to the app and click on the "Payment Method" section
+                            <li>Go to the app and click on the "Payment Method" section.
                                 <div class="centerCGImg03"><img src="/public/images/step5_2.webp" /></div>
                             </li>
-                            <li>Click on the "Add new rule" <div class="centerCGImg03"><img src="/public/images/step5_4.webp" /></div>
+                            <li>Click on the "Add new rule". <div class="centerCGImg03"><img src="/public/images/step5_4.webp" /></div>
                             </li>
-                            <li>Add the title (the title can be anything) <div class="centerCGImg03"><img src="/public/images/step5_3.webp" /></div>
+                            <li>Add the title (the title can be anything). <div class="centerCGImg03"><img src="/public/images/step5_3.webp" /></div>
                             </li>
                             <li>In the match type section, select "Any condition must match". <div class="centerCGImg03"><img src="/public/images/step5_5.webp" /></div>
                             </li>
