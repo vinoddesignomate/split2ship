@@ -1113,7 +1113,7 @@ class UserModel extends Model
         } else {
             $this->db->table('cg_config_steps')->insert($steparray);
         }
-        if (isset($steparray['step4'])) {
+        if (isset($steparray['step5'])) {
             $updaqu = "UPDATE ppa_store_token SET config_steps=1 WHERE shop_url=?";
             $this->db->query($updaqu, array($steparray['shop_url']));
         }

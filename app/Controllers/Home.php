@@ -976,6 +976,8 @@ class Home extends BaseController
                 $data['step_active'] = 3;
             } else if (isset($getsteps->step3) && $getsteps->step3 != "" && $getsteps->step4 == 0) {
                 $data['step_active'] = 4;
+            } else if (isset($getsteps->step4) && $getsteps->step4 != "" && $getsteps->step5 == 0) {
+                $data['step_active'] = 5;
             }
             // echo "<pre>";
             // print_r($getsteps);
@@ -990,9 +992,9 @@ class Home extends BaseController
             "shop_url" => $this->request->getPost('shop'),
             $this->request->getPost('stepkey') => $this->request->getPost('stepvalue')
         );
-        echo "<pre>";
-        print_r($insert_array);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($insert_array);
+        // echo "</pre>";
         $this->user_model->track_config_steps($insert_array);
     }
     public function check_subscribe()

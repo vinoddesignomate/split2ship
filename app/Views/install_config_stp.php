@@ -405,6 +405,7 @@ $store_name = $shop_name[0];
                     <li id="adprdtcg" class="tbcls_cg">Add products </li>
                     <li id="confitbcg" class="tbcls_cg">Configure the App </li>
                     <li id="emptplcg" class="tbcls_cg">Email Templates </li>
+                    <li id="emp_codfl" class="tbcls_cg">Enable Full COD </li>
                 </ul>
             </div>
             <div class="mainDivCGRelative">
@@ -417,7 +418,7 @@ $store_name = $shop_name[0];
                     </div>
                     <div class="wdSetcg">
                         <ol>
-                            <li>Click on online store <?php if($get_details_store->store_theme_id !=""){ ?><a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/themes/<?php echo $get_details_store->store_theme_id; ?>/editor">Click here</a><?php } ?><div class="centerCGImg03"><img src="/public/images//stp1.webp" /></div>
+                            <li>Click on online store <?php if ($get_details_store->store_theme_id != "") { ?><a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/themes/<?php echo $get_details_store->store_theme_id; ?>/editor">Click here</a><?php } ?><div class="centerCGImg03"><img src="/public/images//stp1.webp" /></div>
                             </li>
                             <li>Click on customize button from right side <div class="centerCGImg03"><img src="/public/images/stp2.webp" /></div>
                             </li>
@@ -532,6 +533,64 @@ $store_name = $shop_name[0];
                 </div>
                 <!---End Screen 4---->
 
+                <!---Start Screen 5---->
+                <div id="codconfigCGtemplates" class="screenTopCgSlide">
+                    <div class="videoInsideCg">
+                        <iframe width="560" height="280" src="https://www.youtube.com/embed/hVcshCYCuo8?si=Werr5daW_xM2W04F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="wdSetcg">
+                        <ol type="1" start="11">
+                            <li>Install the "Checkout Ninja Rules App" <a class="anchorCGclick" onclick='popupclick(event);' href="https://apps.shopify.com/checkout-ninja?show_store_picker=1">Click here</a>
+                                <div class="centerCGImg03"><img src="/public/images/step5_1.webp" /></div>
+                            </li>
+                            <li>Go to the app and click on the "Payment Method" section
+                                <div class="centerCGImg03"><img src="/public/images/step5_2.webp" /></div>
+                            </li>
+                            <li>Click on the "Add new rule" <div class="centerCGImg03"><img src="/public/images/step5_4.webp" /></div>
+                            </li>
+                            <li>Add the title (the title can be anything) <div class="centerCGImg03"><img src="/public/images/step5_3.webp" /></div>
+                            </li>
+                            <li>In the match type section, select "Any condition must match". <div class="centerCGImg03"><img src="/public/images/step5_5.webp" /></div>
+                            </li>
+                            <li>Click on the "Add new condition".
+                            </li>
+                            <li>Now, In the condition field, select "Product tags".
+                            </li>
+                            <li>In the Operator field, select "Contains".
+                            </li>
+                            <li>In the Value field, write "partial_cod_handle". <div class="centerCGImg03"><img src="/public/images/step5_5.webp" /></div>
+                            </li>
+                            <li>Now scroll down and click on the "Add new action".
+                            </li>
+                            <li>In the Action field, select "Hide payment method".
+                            </li>
+                            <li>In the Payment method field, write "Cash on Delivery (COD)". <div class="centerCGImg03"><img src="/public/images/step5_8.webp" /></div>
+                            </li>
+                            <li>Now, scroll up and active the status from the right section.
+                            </li>
+                            <li>And click on the "save" button. <div class="centerCGImg03"><img src="/public/images/step5_9.webp" /></div>
+                            </li>
+                            <li>Now, go to the configuration tab of the Split2ship app. <a class="anchorCGclick" onclick='popupclick(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration">Click here</a>
+                                <div class="centerCGImg03"><img src="/public/images/step5_10.webp" /></div>
+                            </li>
+                            <li>In the "COD Payment Gateway" section, enable "Hide COD" and click on the submit button. <div class="centerCGImg03"><img src="/public/images/step5_11.webp" /></div>
+                            </li>
+                            <li>With these steps, we have successfully enabled the "Full COD" payment method.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="inlineButtonsCg">
+                        <ul>
+                            <li><a href="javascript:void(0)" onclick="openTawkChat()" id="">Having Trouble? Call Us or Chat with Us</a></li>
+                            <li><a href="javascript:void(0)" id="nextCgScreen5">Done</a></li>
+                            <li><a href="javascript:void(0)" id="prevstp4">Previous Step</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!---End Screen 5---->
+
 
             </div>
         </div>
@@ -587,6 +646,16 @@ $store_name = $shop_name[0];
         $("#emailCGtemplates").addClass("activeArecG");
         $("#emptplcg").addClass("activetabcg");
         $('body').addClass('popupCgTransparancy');
+    } else if (stepactive == 5) {
+        $("#showPopUpCG").fadeIn();
+        $("#enableCGapp").addClass("hideCGthis");
+        $("#addCGproducts").addClass("hideCGthis");
+        $("#configureCGapp").addClass("hideCGthis");
+        $("#emailCGtemplates").addClass("hideCGthis");
+        $("#codconfigCGtemplates").addClass("addCGproductsCls");
+        $("#codconfigCGtemplates").addClass("activeArecG");
+        $("#emp_codfl").addClass("activetabcg");
+        $('body').addClass('popupCgTransparancy');
     }
 
     /*$("#popupCGclick").click(function() {
@@ -627,6 +696,17 @@ $store_name = $shop_name[0];
         $("#configureCGapp").addClass("activeArecG");
         $("#confitbcg").addClass("activetabcg");
     });
+
+    $("#prevstp4").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
+        $(".screenTopCgSlide").removeClass("activeArecG");
+        $(".screenTopCgSlide").removeClass("addCGproductsCls");
+        $("#emailCGtemplates").removeClass("hideCGthis");
+        $("#emailCGtemplates").addClass("addCGproductsCls");
+        $("#emailCGtemplates").addClass("activeArecG");
+        $("#emptplcg").addClass("activetabcg");
+    });
+
     $("#nextCgScreen1").click(function() {
         event.preventDefault();
         $(".tbcls_cg").removeClass("activetabcg");
@@ -670,12 +750,22 @@ $store_name = $shop_name[0];
         }, 200); // Adjust the duration as needed
         track_steps_ajax('step3', 1);
     });
+
     $("#nextCgScreen4").click(function() {
+        $(".tbcls_cg").removeClass("activetabcg");
+        $("#emailCGtemplates").addClass("hideCGthis");
+        $("#codconfigCGtemplates").addClass("addCGproductsCls");
+        $("#codconfigCGtemplates").addClass("activeArecG");
+        $("#emp_codfl").addClass("activetabcg");
+        track_steps_ajax('step4', 1);
+    });
+
+    $("#nextCgScreen5").click(function() {
         $(".tbcls_cg").removeClass("activetabcg");
         $('body').removeClass('popupCgTransparancy');
 
         $("#showPopUpCG").fadeOut();
-        track_steps_ajax('step4', 1);
+        track_steps_ajax('step5', 1);
     });
 
     function popupclick(event) {
