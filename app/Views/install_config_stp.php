@@ -16,7 +16,7 @@ $store_name = $shop_name[0];
     }
 
     .mainBoxCoupon {
-        width: 750px;
+        width: 900px;
         max-width: 94%;
         margin: 0px auto;
         background: #fff;
@@ -191,7 +191,7 @@ $store_name = $shop_name[0];
 
     .inlineButtonsCgTabs ul li {
         min-width: 146px;
-        max-width: 25%;
+        max-width: 20%;
         width: -webkit-fill-available;
         background: #6a6a6a;
         min-height: 56px;
