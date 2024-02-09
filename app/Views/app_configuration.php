@@ -280,7 +280,7 @@ $store_name = $shop_name[0];
         <div class="payxnowandrestondelivery-zip-flex-row">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-single-page payxnowandrestondelivery-col-40">
                         <div class="payxnowandrestondelivery-head-wrapper">
-                                <h2 class="">COD payment gatway</h2>
+                                <h2 class="">COD payment gateway</h2>
                         </div>
                         <form method="post">
                                 <div class="payxnowandrestondelivery-row3 payxnowandrestondelivery-form-wrap">
