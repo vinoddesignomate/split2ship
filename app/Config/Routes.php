@@ -62,6 +62,7 @@ $routes->match(['get', 'post'],'/collection-wise-partial-products', 'Home::colle
 $routes->match(['get', 'post'],'/enablezipprocess', 'Home::zipcode_enabledis');
 $routes->match(['get', 'post'],'/disbale_handling_charge', 'Home::disbale_handling_charge');
 $routes->match(['get', 'post'],'/track_config_steps', 'Home::track_config_steps');
+$routes->match(['get', 'post'],'/add_partial_list', 'Home::add_partial_projx');
 
 
 //exchange & return routes

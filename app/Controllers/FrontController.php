@@ -35,7 +35,7 @@ class FrontController extends BaseController
 
 
         $getcustpro = $this->user_model->get_customize_store_list($shopname);
-        if ($get_details->force_update == 1) {
+        if (isset($get_details->force_update) && $get_details->force_update == 1) {
             if (!empty($plan_details)) {
                 if ($plan_details[0]->plan_status == 'active' && $plan_details[0]->updated_sync_orders_count > 0) {
                     if ($this->request->getPost('pid')) {

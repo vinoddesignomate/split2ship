@@ -1,4 +1,8 @@
-<form method="POST" action="">
+<?php 
+ $shop_name = explode(".", $_GET['shop']);
+ $shope_namecg = $shop_name[0];
+?>
+<form method="POST" action="" id="add_part_prodct">
 
     <div class="payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page">
@@ -17,7 +21,7 @@
                         </select>
                         <div class="search-wrapper">
                             <form class="custom-search" action="" id="prudtsearch" method="post">
-                                <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : '');?>">
+                                <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
                                 <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -114,7 +118,7 @@
                     }
                     ?>
                     <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
-                        
+
                         <?php if ($checkcol == 'yes') { ?>
                             <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Partial payment setup</button>
                             <!-- <a href="#" class="button">+ &nbsp; Partial payment setup</a> -->
@@ -141,6 +145,8 @@
 
 <script>
     var ship_provder = '';
+    var shop_namecg = '<?php echo $_GET['shop']; ?>';
+    var shope_namecg = '<?php echo $shope_namecg; ?>';
     $(function() {
 
         //$(".checkAll").click(function() {
@@ -161,16 +167,45 @@
 
         });
 
-        $("#prudtsearch").submit(function(event) {            
+        $("#prudtsearch").submit(function(event) {
             var sel_val = $("#get_coll").val();
-            console.log(sel_val);
-            if(sel_val == ""){
+            //console.log(sel_val);
+            if (sel_val == "") {
                 alert("Please select any collection");
-                event.preventDefault(); 
-            }else{
+                event.preventDefault();
+            } else {
 
             }
         });
+        if (shop_namecg == "desinomatetest.myshopify.com") {
+            // Add submit event handler to the form
+            $("#add_part_prodct").submit(function(event) {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Get form data
+                var formData = $(this).serialize();
+
+                // AJAX request
+                $.ajax({
+                    type: "POST",
+                    url: "add_partial_list",
+                    data: 'assign_save=yes&shop=' + shop_namecg+'&'+formData, // Form data
+                    success: function(response) {
+                       if(response == "success"){
+                        top.window.location = 'https://admin.shopify.com/store/'+shope_namecg+'/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
+                       }else{
+                        top.window.location = 'https://admin.shopify.com/store/'+shope_namecg+'/apps/pay-x-now-rest-on-delivery/price-plan';
+                       }
+                        //console.log("Success:", response);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        }
 
     });
 </script>
