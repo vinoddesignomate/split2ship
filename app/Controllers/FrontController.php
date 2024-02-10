@@ -511,7 +511,119 @@ class FrontController extends BaseController
     {
 
 
+        // Retrieve raw POST data from the request body
         $body_data = file_get_contents('php://input');
+        // Decode the JSON data into an associative array
+        $body_data_decode = json_decode($body_data, TRUE);
+
+        // Extract and sanitize the shop name from the decoded data
+        $shopname = str_replace(["https://", "http://"], "", $body_data_decode['shopname']);
+
+        // Initialize variables for special discounts
+        $splite_order_discount = isset($body_data_decode['spl_cg_total_disc'][0]['split_total_disc']) ? $body_data_decode['spl_cg_total_disc'][0]['split_total_disc'] : 0;
+
+
+        // Fetch details from the database based on the shop name
+        $get_details = $this->user_model->get_tokens($shopname);
+
+        // Check if force update is required based on database details
+        if ($get_details->force_update == 1 && $get_details->zip_code_enable_disabled == 0) {
+            $line_item_arra = array();
+            $chekpartial = 0;
+            $remaining_price = 0;
+            $coupon_discountline = 0;
+            $illp = 0;
+            $reqship = true;
+            $ilosku = 1;
+            $coditem = "";
+            $spite_grandtotal = 0;
+            // Process each item in the cart
+            foreach ($body_data_decode['cart_item'] as $item_cart) {
+                // Process each item in the cart
+
+                // Increment total line price
+                $spite_grandtotal += $item_cart['line_price'];
+
+                // Increment total discount
+                $coupon_discountline += $item_cart['line_level_total_discount'];
+
+                // Increment remaining price for partial payments
+                $remaining_price += isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available' ? $item_cart['rem_p'] : 0;
+
+                // Construct line item properties
+                $line_item = [
+                    "quantity" => $item_cart['qty'],
+                    "gift_card" => true,
+                    "sku" => $item_cart['psku'] ?? "PART" . ++$ilosku . time(),
+                    "grams" => $item_cart['grams'],
+                    "requires_shipping" => $reqship
+                ];
+
+                // Add variant options to line item properties
+                foreach ($item_cart['cg_variant_options'] as $split_varient_options) {
+                    if ($split_varient_options['name'] != "Title") {
+                        $line_item['properties'][] = ["name" => $split_varient_options['name'], "value" => $split_varient_options['value']];
+                    }
+                }
+
+                // Add additional properties to line item
+                foreach ($item_cart['allproperties'] ?? [] as $keypropty => $proval) {
+                    if ($keypropty != "PARTIAL_PAYMENT" && substr($keypropty, 0, 1) !== "_") {
+                        $line_item['properties'][] = ["name" => $keypropty, "value" => $proval];
+                    }
+                }
+
+                // Handle partial payments
+                if (isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available') {
+                    // Calculate final price for partial payment
+                    $final_price = $item_cart['price'] / $item_cart['qty'];
+
+                    // Initialize $size_order_name before using it
+                    $size_order_name = '';
+
+                    // Construct line item for partial payment
+                    $line_item["title"] = $item_cart['title'] . ($size_order_name ? " - " . implode("/", array_column($item_cart['cg_variant_options'], 'value')) : "");
+                    $line_item["properties"][] = ["name" => "Note", "value" => "Initial Partial Payment"];
+                    $line_item["properties"][] = ["name" => "variant_code", "value" => $item_cart['id']];
+                    $line_item["properties"][] = ["name" => "partial_pay", "value" => isset($dicountcodepay) ? number_format($dicountcodepay, 2, '.', '') : $item_cart['price']];
+                    $line_item["properties"][] = ["name" => "remaining_amount", "value" => str_replace("-", "", $item_cart['rem_p'])];
+
+                    // Add line item to the array
+                    $line_item_arra[] = $line_item;
+                } else {
+                    // Calculate discount for full payment
+                    $coupencodeprice = ($item_cart['original_line_price'] - $item_cart['line_price']) / $item_cart['qty'];
+
+                    // Construct line item for full payment
+                    $line_item["variant_id"] = $item_cart['id'];
+                    $line_item["properties"][] = ["name" => "Note", "value" => "Full Payment"];
+                    $line_item["properties"][] = ["name" => "full_pay", "value" => $item_cart['price']];
+
+                    // Add applied discount for full payment
+                    $line_item["applied_discount"] = [
+                        "description" => $body_data_decode['getcpncode'] ?: 'Automatic',
+                        "title" => $body_data_decode['getcpncode'] ?: 'Automatic',
+                        "value_type" => "fixed_amount",
+                        "value" => $coupencodeprice,
+                        "amount" => $coupencodeprice
+                    ];
+
+                    // Add line item to the array
+                    $line_item_arra[] = $line_item;
+                }
+            }
+            // Apply special discount if applicable
+            if (in_array($shopname, ['desinomatetest.myshopify.com', "tajbridalindia.myshopify.com"]) && $coupon_discountline == 0) {
+                $coupon_discountline = $splite_order_discount;
+            }
+            // Call appropriate function for discount order creation
+            $this->{$shopname == 'ceo-diamondlady.myshopify.com' ? 'create_coupon_discount_order_old' : 'create_coupon_discount_order'}($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+        } else {
+            // Zip code is disabled or force update not found
+            echo $get_details->zip_code_enable_disabled ? "zip_enabled" : "not_found";
+        }
+
+        /* $body_data = file_get_contents('php://input');
         $body_data_decode = json_decode($body_data, TRUE);
 
         $shopname = str_replace("https://", "", $body_data_decode['shopname']);
@@ -731,7 +843,7 @@ class FrontController extends BaseController
             } else {
                 echo "not_found";
             }
-        }
+        }*/
     }
 
     public function create_draft_order_zip()
@@ -2027,7 +2139,7 @@ class FrontController extends BaseController
     }
     public function frontend_reset_coupon()
     {
-        
+
         $get_details = $this->user_model->get_tokens($this->request->getPost('shopname'));
         $del_pricerule = $this->common->rest_api('/admin/api/2023-10/price_rules/' . $this->request->getPost('priceruleid') . '.json', array(), 'DELETE', $get_details->access_token, $this->request->getPost('shopname'));
         $remove_coupon_code = array(
