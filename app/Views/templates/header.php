@@ -90,7 +90,7 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
 
     <!-- Header section -->
     <header>
-        <div class="relativeLoader">
+        <div class="relativeLoaderCG56">
             <div class="loaderCgApp4"></div>
         </div>
         <div class="payxnowandrestondelivery-container">
