@@ -46,7 +46,7 @@
         //console.log('currentURL');
         //console.log(config.shopifyAppBridge.getState().location.currentURL);
     </script>
-    
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
@@ -60,6 +60,7 @@
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
+
         function openTawkChat() {
             Tawk_API.toggle();
         }
@@ -89,6 +90,9 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
 
     <!-- Header section -->
     <header>
+        <div class="relativeLoader">
+            <div class="loaderCgApp4"></div>
+        </div>
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-header-wrapper">
                 <div class="payxnowandrestondelivery-logo-col">

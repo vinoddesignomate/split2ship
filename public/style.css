@@ -1458,6 +1458,48 @@ p.payxnowandrestondelivery-alert {
   li {
   border-color: #cae8f5;
 }
+
+/** loader css start**/
+.relativeLoaderCG56 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
+.relativeLoaderCG56 .loaderCgApp4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: 5px solid #fff;
+  border-radius: 50%;
+  border-top: 5px solid #fec40f;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+/** loader css end**/
 /** new pricing css end **/
 @media screen and (max-width: 991px) {
   .configvideotg iframe {
