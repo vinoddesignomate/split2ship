@@ -2372,5 +2372,10 @@ class AppwhookController extends BaseController
             echo "200 ok";
         }
     }
+    public function update_pro_test()
+    {
+        echo "200 ok";
+        exit();
+    }
 }
 //echo "200 ok";

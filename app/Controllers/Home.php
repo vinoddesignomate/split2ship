@@ -86,7 +86,7 @@ class Home extends BaseController
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 if ($_SERVER['HTTP_X_FORWARDED_FOR'] == '103.80.119.106' && $_GET['shop'] == 'desinomatetest.myshopify.com') {
 
-
+                    //echo phpinfo();
                     //$jsndata = json_decode($webhook_content);
 
                     //     $log_filename = WRITEPATH . "whlogslgs";

@@ -2344,7 +2344,7 @@ class AppwhookController extends BaseController
         // file_put_contents($log_file_data, print_r($get_addtocartdata, true)); 
 
 
-        if ($_GET['cpwshop'] == 'onlyneon1.myshopify.com' && $get_addtocartdata->product_type == 'PPLR_HIDDEN_PRODUCT') {
+        if (isset($_GET['cpwshop']) && $_GET['cpwshop'] == 'onlyneon1.myshopify.com' && $get_addtocartdata->product_type == 'PPLR_HIDDEN_PRODUCT') {
             $payxnowrest_product_add = array(
                 "product_id" => $get_addtocartdata->id,
                 "product_title" => $get_addtocartdata->title,
@@ -2371,6 +2371,11 @@ class AppwhookController extends BaseController
         } else {
             echo "200 ok";
         }
+    }
+    public function update_pro_test()
+    {
+        echo "200 ok";
+        exit();
     }
 }
 //echo "200 ok";

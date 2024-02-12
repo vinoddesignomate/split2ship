@@ -98,7 +98,8 @@ $routes->match(['get', 'post'],'/frontend-handler-pre-coupon', 'FrontController:
 $routes->match(['get', 'post'],'/frontend-reset-coupon', 'FrontController::frontend_reset_coupon'); 
 $routes->match(['get', 'post'],'/frontend-getcuststorelist', 'FrontController::frontend_getcuststorelist'); 
 $routes->match(['get', 'post'],'/frontend-get-handlingch', 'FrontController::get_handlincrg'); 
-$routes->match(['get', 'post'],'/remove-web-hok', 'FrontController::removewebhookold'); 
+$routes->match(['get', 'post'],'/remove-web-hok', 'FrontController::removewebhookold');  
+$routes->match(['get', 'post'],'/update-pro-test', 'AppwhookController::update_pro_test'); 
 
 //webhook urls
 $routes->match(['get', 'post'],'/order-sync', 'Home::order_sync');

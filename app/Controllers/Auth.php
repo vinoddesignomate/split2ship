@@ -206,7 +206,7 @@ class Auth extends BaseController
 
 
 			//order paid webhook
-			$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/paidordernotify?shpname=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
+			//$this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "orders/paid", "address" => 'https://app.payxnowandrestondelivery.com/paidordernotify?shpname=' . $_GET['shop'], "format" => "json")), 'POST', $response['access_token'], $_GET['shop']);
 
 
 			// app uninstalled webhook 
