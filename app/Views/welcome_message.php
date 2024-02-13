@@ -290,116 +290,126 @@ $store_namecnf = $shop_name[0];
         <!-- main-head ends -->
 
         <!-- main area -->
-        <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
-                <form method="POST">
-                    <div class="payxnowandrestondelivery-inner-wrapper">
-                        <div class="payxnowandrestondelivery-side-bar-col">
-                            <h2>Pick Collection</h2>
-                            <div class="payxnowandrestondelivery-custom-select mobile-center">
-                                <select style="display:block;" class="colidchk" required id="get_coll_home" name="get_coll">
-                                    <option value="0">Select Collection...</option>
-                                    <?php foreach ($get_store_collections as $get_collections) { ?>
+        <?php
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+            <div class="payxnowandrestondelivery-head-wrapper">
+              
+                <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">All Products</p>
+                <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific collections</p>
+                <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific products</p>
+            </div>
+        <?php } else { ?>
+            <div class="payxnowandrestondelivery-container">
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
+                    <form method="POST">
+                        <div class="payxnowandrestondelivery-inner-wrapper">
+                            <div class="payxnowandrestondelivery-side-bar-col">
+                                <h2>Pick Collection</h2>
+                                <div class="payxnowandrestondelivery-custom-select mobile-center">
+                                    <select style="display:block;" class="colidchk" required id="get_coll_home" name="get_coll">
+                                        <option value="0">Select Collection...</option>
+                                        <?php foreach ($get_store_collections as $get_collections) { ?>
 
-                                        <option <?php if (isset($_GET['collectionparms']) && $_GET['collectionparms'] == $get_collections->collection_id) { ?> selected <?php } ?> value="<?php echo esc($get_collections->collection_id); ?>"><?php echo esc($get_collections->collections_name); ?></option>
+                                            <option <?php if (isset($_GET['collectionparms']) && $_GET['collectionparms'] == $get_collections->collection_id) { ?> selected <?php } ?> value="<?php echo esc($get_collections->collection_id); ?>"><?php echo esc($get_collections->collections_name); ?></option>
 
-                                    <?php } ?>
+                                        <?php } ?>
 
-                                </select>
-                                <div class="search-wrapper">
-                                    <form class="custom-search" action="" method="post">
-                                        <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
-                                        <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
-                                    </form>
+                                    </select>
+                                    <div class="search-wrapper">
+                                        <form class="custom-search" action="" method="post">
+                                            <input type="text" placeholder="Search.." class="srchtctval" name="search_text" value="<?php echo (isset($searctxt) ? $searctxt : ''); ?>">
+                                            <button type="submit" name="search_query"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="payxnowandrestondelivery-main-data-col">
-                            <div class="payxnowandrestondelivery-head-wrapper">
-                                <h2>Product name</h2>
+                            <div class="payxnowandrestondelivery-main-data-col">
+                                <div class="payxnowandrestondelivery-head-wrapper">
+                                    <h2>Product name</h2>
+                                    <?php if ($checkcol == 'yes') { ?>
+                                        <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
+                                    <?php } ?>
+                                </div>
                                 <?php if ($checkcol == 'yes') { ?>
-                                    <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
-                                <?php } ?>
-                            </div>
-                            <?php if ($checkcol == 'yes') { ?>
-                                <div class="payxnowandrestondelivery-table-outer-wrapper">
-                                    <table>
-                                        <tr>
-                                            <th class="payxnowandrestondelivery-flex-row"><input id="checkAll" type="checkbox">&nbsp; All</th>
-                                            <th>Product ID</th>
-                                            <th>Product Name</th>
-                                            <th>Partially Added Status</th>
-                                        </tr>
-                                        <tbody id="product-list">
-                                            <?php
+                                    <div class="payxnowandrestondelivery-table-outer-wrapper">
+                                        <table>
+                                            <tr>
+                                                <th class="payxnowandrestondelivery-flex-row"><input id="checkAll" type="checkbox">&nbsp; All</th>
+                                                <th>Product ID</th>
+                                                <th>Product Name</th>
+                                                <th>Partially Added Status</th>
+                                            </tr>
+                                            <tbody id="product-list">
+                                                <?php
 
-                                            if (!empty($products)) {
-                                                foreach ($products as $edge) {
-                                                    foreach ($edge as $value) {
-                                                        if (isset($value['node'])) {
-                                                            $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
-                                                            if (!in_array($prodctid, $get_part_list)) {
-                                                                $partiall_added = "Not Added";
-                                                                $partiall_added2 = "not_added";
-                                                                $cls = "payxnowandrestondelivery-text-red";
-                                                            } else {
-                                                                $partiall_added = "Added";
-                                                                $partiall_added2 = "added";
-                                                                $cls = "payxnowandrestondelivery-text-green";
+                                                if (!empty($products)) {
+                                                    foreach ($products as $edge) {
+                                                        foreach ($edge as $value) {
+                                                            if (isset($value['node'])) {
+                                                                $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
+                                                                if (!in_array($prodctid, $get_part_list)) {
+                                                                    $partiall_added = "Not Added";
+                                                                    $partiall_added2 = "not_added";
+                                                                    $cls = "payxnowandrestondelivery-text-red";
+                                                                } else {
+                                                                    $partiall_added = "Added";
+                                                                    $partiall_added2 = "added";
+                                                                    $cls = "payxnowandrestondelivery-text-green";
+                                                                }
+                                                ?>
+                                                                <tr>
+                                                                    <td><input class="payxnowandrestondelivery-chkSelect" dattatrr="<?php echo esc($partiall_added2); ?>" type="checkbox" type="checkbox" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
+                                                                    <td> <?php echo esc($prodctid); ?></td>
+                                                                    <td> <?php echo esc($value['node']['title']); ?></td>
+                                                                    <td class="<?php echo $cls; ?>"><?php echo esc($partiall_added); ?></td>
+
+                                                                </tr>
+                                                <?php
+
                                                             }
-                                            ?>
-                                                            <tr>
-                                                                <td><input class="payxnowandrestondelivery-chkSelect" dattatrr="<?php echo esc($partiall_added2); ?>" type="checkbox" type="checkbox" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
-                                                                <td> <?php echo esc($prodctid); ?></td>
-                                                                <td> <?php echo esc($value['node']['title']); ?></td>
-                                                                <td class="<?php echo $cls; ?>"><?php echo esc($partiall_added); ?></td>
-
-                                                            </tr>
-                                            <?php
-
                                                         }
                                                     }
                                                 }
-                                            }
 
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
+
+                                    <?php
+
+                                    if (!empty($products)) {
+
+                                        //if (isset($page_info)) {
+                                        if (isset($pagenewxt)) {
+                                    ?>
+
+                                            <div class="payxnowandrestondelivery-listButtonNext">
+
+                                                <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
+
+                                                <button type="button" class="payxnowandrestondelivery-pag_btn" data-info="<?php echo esc($pagenewxt); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
+
+                                            </div>
 
                                 <?php
-
-                                if (!empty($products)) {
-
-                                    //if (isset($page_info)) {
-                                    if (isset($pagenewxt)) {
-                                ?>
-
-                                        <div class="payxnowandrestondelivery-listButtonNext">
-
-                                            <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
-
-                                            <button type="button" class="payxnowandrestondelivery-pag_btn" data-info="<?php echo esc($pagenewxt); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
-
-                                        </div>
-
-                            <?php
+                                        }
                                     }
                                 }
-                            }
-                            ?>
-                            <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
-                                <!-- <h2>Product name</h2> -->
-                                <?php if ($checkcol == 'yes') { ?>
-                                    <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
-                                <?php } ?>
+                                ?>
+                                <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
+                                    <!-- <h2>Product name</h2> -->
+                                    <?php if ($checkcol == 'yes') { ?>
+                                        <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg">+ &nbsp; Add Partial Payment</button>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
+        <?php } ?>
         <!-- main area ends-->
     </section>
     <!-- **********************************************
