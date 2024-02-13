@@ -175,6 +175,7 @@ class FrontController extends BaseController
         $get_details = $this->user_model->get_tokens($shopname);
 
         $checking_remaing = substr($remaining_price, 1); // Removes the negative sign from the first element
+
         if ($checking_remaing > 0) {
             if ($spite_grandtotal > 0) {
                 if ($spite_grandtotal == $checking_remaing) {
@@ -437,7 +438,7 @@ class FrontController extends BaseController
                 // Process each item in the cart
 
                 // Increment total line price
-                $spite_grandtotal += $item_cart['line_price'];
+                $spite_grandtotal = $spite_grandtotal + $item_cart['line_price'];
 
                 // Increment total discount
                 $coupon_discountline += $item_cart['line_level_total_discount'];
@@ -512,7 +513,15 @@ class FrontController extends BaseController
                 $coupon_discountline = $splite_order_discount;
             }
             // Call appropriate function for discount order creation
-            $this->{$shopname == 'ceo-diamondlady.myshopify.com' ? 'create_coupon_discount_order_old' : 'create_coupon_discount_order'}($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+
+            // $this->{$shopname == 'ceo-diamondlady.myshopify.com' ? 'create_coupon_discount_order_old' : 'create_coupon_discount_order'}($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+
+            //below function for autodiscount coupon
+            if ($shopname == 'ceo-diamondlady.myshopify.com') {
+                $this->create_coupon_discount_order_old($body_data_decode, $remaining_price, $spite_grandtotal);
+            } else {
+                $this->create_coupon_discount_order($body_data_decode, $remaining_price, $coupon_discountline, $spite_grandtotal);
+            }
         } else {
             // Zip code is disabled or force update not found
             echo $get_details->zip_code_enable_disabled ? "zip_enabled" : "not_found";
