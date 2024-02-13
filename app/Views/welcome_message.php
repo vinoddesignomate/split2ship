@@ -292,11 +292,15 @@ $store_namecnf = $shop_name[0];
         <!-- main area -->
         <?php
         if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
-            <div class="payxnowandrestondelivery-head-wrapper">
-              
-                <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">All Products</p>
-                <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific collections</p>
-                <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific products</p>
+            <div class="payxnowandrestondelivery-container">
+                <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
+                    <div class="payxnowandrestondelivery-head-wrapper">
+
+                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">All Products</p>
+                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific collections</p>
+                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific products</p>
+                    </div>
+                </div>
             </div>
         <?php } else { ?>
             <div class="payxnowandrestondelivery-container">
