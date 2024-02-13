@@ -296,9 +296,9 @@ $store_namecnf = $shop_name[0];
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
                     <div class="payxnowandrestondelivery-head-wrapper">
 
-                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">All Products</p>
-                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific collections</p>
-                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;">Specific products</p>
+                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
+                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
+                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
                     </div>
                 </div>
             </div>
@@ -781,6 +781,25 @@ $store_namecnf = $shop_name[0];
                     });
                 });
             });
+
+            //code for track user choic for add products
+            var cg_radioButtons = document.querySelectorAll('input[name="user_pro_chocie"]');
+            cg_radioButtons.forEach(function(cg_radioButton) {
+                cg_radioButton.addEventListener('change', function(event) {
+                    var cg_choic_val = this.value;
+                    var shopname = '<?php echo esc($_GET['shop']); ?>';
+                    $.ajax({
+                        type: "POST",
+                        url: "track_u_choic",
+                        data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val,
+                        success: function(response) {
+
+                        }
+
+                    });
+                });
+            });
+            
             var ship_provder = '<?php echo $ship_provider; ?>';
             // Function to show the popup
             function showPopup(planename) {
