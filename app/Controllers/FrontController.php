@@ -444,7 +444,7 @@ class FrontController extends BaseController
                 $coupon_discountline += $item_cart['line_level_total_discount'];
 
                 // Increment remaining price for partial payments
-                $remaining_price += isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available' ? $item_cart['rem_p'] : 0;
+                //$remaining_price += isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available' ? $item_cart['rem_p'] : 0;
 
                 // Construct line item properties
                 $line_item = [
@@ -486,6 +486,7 @@ class FrontController extends BaseController
 
                     // Add line item to the array
                     $line_item_arra[] = $line_item;
+                    $remaining_price = $remaining_price + $item_cart['rem_p'];
                 } else {
                     // Calculate discount for full payment
                     $coupencodeprice = ($item_cart['original_line_price'] - $item_cart['line_price']) / $item_cart['qty'];
