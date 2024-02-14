@@ -296,9 +296,9 @@ $store_namecnf = $shop_name[0];
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
                     <div class="payxnowandrestondelivery-head-wrapper">
 
-                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
-                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
-                        <p><input type="checkbox" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
+                        <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
+                        <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
+                        <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
                     </div>
                 </div>
             </div>

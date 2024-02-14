@@ -3614,4 +3614,7 @@ class Home extends BaseController
             ));
         }
     }
+    public function track_u_choic(){
+        print_r($this->request->getPost());
+    }
 }
