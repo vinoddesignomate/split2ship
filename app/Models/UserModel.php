@@ -1214,7 +1214,23 @@ class UserModel extends Model
         $getslq = "SELECT *
                     FROM 1cg_splite_partial_order_get
                     WHERE shop_url=? AND order_number=?";
-        $getdaayareq = $this->db->query($getslq,array($seldata['shop_url'],$seldata['order_number']));
+        $getdaayareq = $this->db->query($getslq, array($seldata['shop_url'], $seldata['order_number']));
         return $getdaayareq->getResult();
+    }
+    public function add_user_choice($insertdata)
+    {
+
+        $qbuilder = $this->db->table('2cg_track_user_choice');
+        $qbuilder->where('shop_url', $insertdata['shop_url']);
+        $qbuilder->where('choice_val', $insertdata['choice_val']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('2cg_track_user_choice')->where('shop_url', $insertdata['shop_url'])->where('choice_val', $insertdata['choice_val'])->update($insertdata);
+            return $this->db->affectedRows();
+        } else {
+            $insertdata['create_date'] = date('Y-m-d');
+            return  $qbuilder->insert($insertdata);
+        }
     }
 }
