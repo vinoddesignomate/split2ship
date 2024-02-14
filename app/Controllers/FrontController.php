@@ -192,6 +192,13 @@ class FrontController extends BaseController
                         $getchkprice = substr($remaining_price, 1); // Removes the negative sign from the first element
                     }
                     if ($getchkprice > 0) {
+                        // Get the current timestamp
+                        $currentTimestamp = time();
+                        // Add 60 seconds (1 minute) to the current timestamp
+                        $updatedTimestamp = $currentTimestamp + 900;
+                        // Format the updated timestamp to ISO 8601 format
+                        $updatedDateTime = date('c', $updatedTimestamp);
+
                         $creatruledata = [
                             "price_rule" => [
                                 "title" => $coupon_name,
@@ -202,7 +209,8 @@ class FrontController extends BaseController
                                 "customer_selection" => "all",
                                 "usage_limit" => 1,
                                 "allocation_method" => "across",
-                                "starts_at" => date("Y-m-d H:i:s"),
+                                "starts_at" => date('c'),
+                                "ends_at" => $updatedDateTime,
                             ]
                         ];
                         //print_r($creatruledata);
@@ -302,6 +310,16 @@ class FrontController extends BaseController
                     }
 
                     if ($getchkprice > 0) {
+
+                        //if ($shopname == 'desinomatetest.myshopify.com') {
+
+                        // Get the current timestamp
+                        $currentTimestamp = time();
+                        // Add 60 seconds (1 minute) to the current timestamp
+                        $updatedTimestamp = $currentTimestamp + 900;
+                        // Format the updated timestamp to ISO 8601 format
+                        $updatedDateTime = date('c', $updatedTimestamp);
+
                         $creatruledata = [
                             "price_rule" => [
                                 "title" => $coupon_name,
@@ -312,9 +330,26 @@ class FrontController extends BaseController
                                 "customer_selection" => "all",
                                 "allocation_method" => "across",
                                 "usage_limit" => 1,
-                                "starts_at" => date("Y-m-d H:i:s"),
+                                "starts_at" => date('c'),
+                                "ends_at" => $updatedDateTime,
                             ]
                         ];
+                        // } else {
+                        //     $creatruledata = [
+                        //         "price_rule" => [
+                        //             "title" => $coupon_name,
+                        //             "target_type" => "line_item",
+                        //             "value_type" => 'fixed_amount',
+                        //             "value" => "-" . $getchkprice,
+                        //             "target_selection" => "all",
+                        //             "customer_selection" => "all",
+                        //             "allocation_method" => "across",
+                        //             "usage_limit" => 1,
+                        //             "starts_at" => date('c'),
+                        //         ]
+                        //     ];
+                        // }
+
 
                         $getprietuleid = $this->common->rest_api('/admin/api/2023-10/price_rules.json', $creatruledata, 'POST', $get_details->access_token, $shopname);
 
@@ -444,7 +479,7 @@ class FrontController extends BaseController
                 $coupon_discountline += $item_cart['line_level_total_discount'];
 
                 // Increment remaining price for partial payments
-                //$remaining_price += isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available' ? $item_cart['rem_p'] : 0;
+                $remaining_price += isset($item_cart['paytype']) && $item_cart['paytype'] == 'Available' ? $item_cart['rem_p'] : 0;
 
                 // Construct line item properties
                 $line_item = [
@@ -486,7 +521,6 @@ class FrontController extends BaseController
 
                     // Add line item to the array
                     $line_item_arra[] = $line_item;
-                    $remaining_price = $remaining_price + $item_cart['rem_p'];
                 } else {
                     // Calculate discount for full payment
                     $coupencodeprice = ($item_cart['original_line_price'] - $item_cart['line_price']) / $item_cart['qty'];
