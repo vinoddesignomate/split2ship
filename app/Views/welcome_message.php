@@ -790,7 +790,7 @@ $store_namecnf = $shop_name[0];
                     var shopname = '<?php echo esc($_GET['shop']); ?>';
                     $.ajax({
                         type: "POST",
-                        url: "track_u_choic",
+                        url: "track-u-choice",
                         data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val,
                         success: function(response) {
 
