@@ -786,6 +786,7 @@ $store_namecnf = $shop_name[0];
             var cg_radioButtons = document.querySelectorAll('input[name="user_pro_chocie"]');
             cg_radioButtons.forEach(function(cg_radioButton) {
                 cg_radioButton.addEventListener('change', function(event) {
+                    $(".relativeLoaderCG56").style.display = 'block';
                     var cg_choic_val = this.value;
                     var shopname = '<?php echo esc($_GET['shop']); ?>';
                     $.ajax({
@@ -793,7 +794,7 @@ $store_namecnf = $shop_name[0];
                         url: "track-u-choice",
                         data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val,
                         success: function(response) {
-
+                            $(".relativeLoaderCG56").style.display = 'none';
                         }
 
                     });
