@@ -23,6 +23,17 @@
         background-color: #3b3b3b;
     }
 
+    .anchorCGclick {
+        border: 1px solid #303A26;
+        color: #000;
+        padding: 2px 7px;
+        font-size: 13px;
+        background: #E1FA03;
+        font-weight: 500;
+        margin: 0px 0 0 0;
+        display: inline-block;
+    }
+
     @media only screen and (max-width: 767px) {
         .payxnowandrestondelivery-zip-flex-row {
             display: block;
@@ -800,10 +811,10 @@ $store_namecnf = $shop_name[0];
                             $(".relativeLoaderCG56").hide();
                             if (cg_choic_val == 'spec_coll') {
                                 $("#choc_msg").html('Successfully Saved');
-                                $("#choc_msg_btn").html('<a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">select collection</a>');
+                                $("#choc_msg_btn").html('<a onclick="abc(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">select collection</a>');
                             } else if (cg_choic_val == 'spec_prodct') {
                                 $("#choc_msg").html('Successfully Saved');
-                                $("#choc_msg_btn").html('<a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">select products</a>');
+                                $("#choc_msg_btn").html('<a onclick="abc(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">select products</a>');
                             } else {
                                 $("#choc_msg").html('Successfully Saved');
                             }
