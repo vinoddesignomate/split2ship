@@ -819,7 +819,7 @@ $store_namecnf = $shop_name[0];
             });
             $("#choic_update").submit(function(e) {
                 $(".relativeLoaderCG56").show();
-                $("#input_fields").hide();
+                //$("#input_fields").hide();
                 e.preventDefault();
              
                 var formData = $(this).serialize();
