@@ -1222,11 +1222,11 @@ class UserModel extends Model
 
         $qbuilder = $this->db->table('2cg_track_user_choice');
         $qbuilder->where('shop_url', $insertdata['shop_url']);
-        $qbuilder->where('choice_val', $insertdata['choice_val']);
+        //$qbuilder->where('choice_val', $insertdata['choice_val']);
         $q = $qbuilder->get();
         $qbuilder->countAllResults();
         if (!empty($q->getResult())) {
-            $this->db->table('2cg_track_user_choice')->where('shop_url', $insertdata['shop_url'])->where('choice_val', $insertdata['choice_val'])->update($insertdata);
+            $this->db->table('2cg_track_user_choice')->where('shop_url', $insertdata['shop_url'])->update($insertdata);
             return $this->db->affectedRows();
         } else {
             $insertdata['create_date'] = date('Y-m-d');
