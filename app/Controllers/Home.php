@@ -941,7 +941,7 @@ class Home extends BaseController
 
                 $data['plan_details'] = $this->user_model->get_store_plan($_GET['shop']);
                 $data['get_details_store'] = $this->user_model->get_tokens($_GET['shop']);
-                $data['get_user_choic'] = $this->user_model->get_user_choic($_GET['shop']);
+                $data['get_user_choic'] = $this->user_model->get_user_choic($_GET['shop']); 
 
                 $this->user_model->update_data($_GET['shop'], array(
                     "show_config_popup" => 1
