@@ -3615,16 +3615,16 @@ class Home extends BaseController
         }
     }
     public function track_u_choic(){
-        //print_r($this->request->getPost());
         $track_user_choice = array(
             "shop_url" => $this->request->getPost('shop'),
-            "choice_val" => $this->request->getPost('cg_choic_val')
+            "choice_val" => $this->request->getPost('cg_choic_val'),
+            "partial_type" => '',
+            "partial_value" => '',
         );
-        if($this->request->getPost('change_type') && $this->request->getPost('cg_choic_val') =='all'){
+        if($this->request->getPost('change_type') && $this->request->getPost('cg_choic_val') =='all_pro'){
             $track_user_choice['partial_type'] = $this->request->getPost('change_type');
             $track_user_choice['partial_value'] = $this->request->getPost('choic_part_val');
         }
-        print_r($track_user_choice);
         $this->user_model->add_user_choice($track_user_choice);
         echo "done";
     }
