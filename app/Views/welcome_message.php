@@ -24,14 +24,15 @@
     }
 
     .anchorCGclick {
-        border: 1px solid #303A26;
-        color: #000;
-        padding: 2px 7px;
+        border: 1px solid #4a4de6;
+        color: #fff;
+        padding: 4px 7px;
         font-size: 13px;
-        background: #E1FA03;
+        background: #4a4de6;
         font-weight: 500;
         margin: 0px 0 0 0;
         display: inline-block;
+        border-radius: 5px;
     }
 
     @media only screen and (max-width: 767px) {
@@ -311,6 +312,25 @@ $store_namecnf = $shop_name[0];
                             <span id="choc_msg_btn"></span>
                         </div>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
+                        <div id="input_fields" style="display: none;">
+                            <form id="choic_update">
+                                <div class="flex-row">
+                                    <label for="">Partial Type</label>
+                                    <select name="change_type" id="change_type_<?php echo esc($list_collections->collection_id); ?>">
+                                        <option alue="precentage">Percentage</option>
+                                        <option value="fixed">Fixed</option>
+                                    </select>
+                                </div>
+                                <div class="flex-row">
+                                    <label for="">Partial Value</label>
+                                    <input type="text" required name="choic_part_val">
+                                </div> 
+                                <div class="btn-row">
+                                    <button type="submit" name="choic_all_val" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+
+                                </div>
+                            </form>
+                        </div>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
                     </div>
@@ -801,7 +821,13 @@ $store_namecnf = $shop_name[0];
             cg_radioButtons.forEach(function(cg_radioButton) {
                 cg_radioButton.addEventListener('change', function(event) {
                     $(".relativeLoaderCG56").show();
+
                     var cg_choic_val = this.value;
+                    if (cg_choic_val == "all_pro") {
+                        $("#input_fields").show();
+                    } else {
+                        $("#input_fields").hide();
+                    }
                     var shopname = '<?php echo esc($_GET['shop']); ?>';
                     $.ajax({
                         type: "POST",
@@ -811,10 +837,10 @@ $store_namecnf = $shop_name[0];
                             $(".relativeLoaderCG56").hide();
                             if (cg_choic_val == 'spec_coll') {
                                 $("#choc_msg").html('Successfully Saved');
-                                $("#choc_msg_btn").html('<a onclick="abc(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">select collection</a>');
+                                $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>');
                             } else if (cg_choic_val == 'spec_prodct') {
                                 $("#choc_msg").html('Successfully Saved');
-                                $("#choc_msg_btn").html('<a onclick="abc(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">select products</a>');
+                                $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>');
                             } else {
                                 $("#choc_msg").html('Successfully Saved');
                             }
@@ -872,5 +898,11 @@ $store_namecnf = $shop_name[0];
                 var body = document.body;
                 // Remove the class from the body element
                 body.classList.remove("package_popup_visible");
+            }
+
+            function choice_click(event) {
+                event.preventDefault();
+                var href = event.currentTarget.getAttribute('href')
+                window.open(href, '_blank');
             }
         </script>
