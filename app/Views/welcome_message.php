@@ -314,6 +314,7 @@ $store_namecnf = $shop_name[0];
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
                         <div id="input_fields" style="display: none;">
                             <form id="choic_update">
+                                <input type="hidden" name="cg_choic_val" id="cg_choic_val">
                                 <div class="flex-row">
                                     <label for="">Partial Type</label>
                                     <select name="change_type" id="change_type">
@@ -820,14 +821,13 @@ $store_namecnf = $shop_name[0];
                 $(".relativeLoaderCG56").show();
                 $("#input_fields").hide();
                 e.preventDefault();
-                var cg_choic_val = $('input[name="user_pro_choice"]:checked').val();
-                console.log(cg_choic_val);
+             
                 var formData = $(this).serialize();
                 var shopname = '<?php echo esc($_GET['shop']); ?>';
                 $.ajax({
                     type: "POST",
                     url: "track-u-choice",
-                    data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val + '&' + formData,
+                    data: 'shop=' + shopname + '&' + formData,
                     success: function(response) {
                         $(".relativeLoaderCG56").hide();
                         if (cg_choic_val == 'spec_coll') {
@@ -853,9 +853,11 @@ $store_namecnf = $shop_name[0];
                     var cg_choic_val = this.value;
                     if (cg_choic_val == "all_pro") {
                         $("#input_fields").show();
+                        $("#cg_choic_val").val(cg_choic_val);
                     } else {
                         $(".relativeLoaderCG56").show();
                         $("#input_fields").hide();
+                        $("#cg_choic_val").val('');
 
                         var shopname = '<?php echo esc($_GET['shop']); ?>';
                         $.ajax({
