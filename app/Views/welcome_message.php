@@ -316,7 +316,7 @@ $store_namecnf = $shop_name[0];
                             <form id="choic_update">
                                 <div class="flex-row">
                                     <label for="">Partial Type</label>
-                                    <select name="change_type" id="change_type_<?php echo esc($list_collections->collection_id); ?>">
+                                    <select name="change_type" id="change_type">
                                         <option alue="precentage">Percentage</option>
                                         <option value="fixed">Fixed</option>
                                     </select>
