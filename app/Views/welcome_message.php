@@ -295,7 +295,10 @@ $store_namecnf = $shop_name[0];
             <div class="payxnowandrestondelivery-container">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
                     <div class="payxnowandrestondelivery-head-wrapper">
-                        <span id="choc_msg"></span>
+                        <div id="mainclsmsg">
+                            <span id="choc_msg"></span>
+                            <span id="choc_msg_btn"></span>
+                        </div>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
@@ -795,7 +798,16 @@ $store_namecnf = $shop_name[0];
                         data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val,
                         success: function(response) {
                             $(".relativeLoaderCG56").hide();
-                            $("#choc_msg").html('Choice save successfully');
+                            if (cg_choic_val == 'spec_coll') {
+                                $("#choc_msg").html('Successfully Saved');
+                                $("#choc_msg_btn").html('<a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">select collection</a>');
+                            } else if (cg_choic_val == 'spec_prodct') {
+                                $("#choc_msg").html('Successfully Saved');
+                                $("#choc_msg_btn").html('<a onclick="abc(event);" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">select products</a>');
+                            } else {
+                                $("#choc_msg").html('Successfully Saved');
+                            }
+
                             $("#choc_msg").css('color', 'green');
                             $("#choc_msg").css('font-weight', 'bold');
                         }
