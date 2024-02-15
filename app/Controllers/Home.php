@@ -3615,6 +3615,7 @@ class Home extends BaseController
         }
     }
     public function track_u_choic(){
+        print_r($this->request->getPost());
         $track_user_choice = array(
             "shop_url" => $this->request->getPost('shop'),
             "choice_val" => $this->request->getPost('cg_choic_val')

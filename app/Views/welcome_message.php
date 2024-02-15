@@ -324,7 +324,7 @@ $store_namecnf = $shop_name[0];
                                 <div class="flex-row">
                                     <label for="">Partial Value</label>
                                     <input type="text" required name="choic_part_val">
-                                </div> 
+                                </div>
                                 <div class="btn-row">
                                     <button type="submit" name="choic_all_val" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
 
@@ -815,41 +815,69 @@ $store_namecnf = $shop_name[0];
                     });
                 });
             });
+            $("#choic_update").submit(function(e) {
+                $(".relativeLoaderCG56").show();
+                $("#input_fields").hide();
+                e.preventDefault();
+                var cg_choic_val = $('input[name="user_pro_choice"]:checked').val();;
+                var formData = $(this).serialize();
+                var shopname = '<?php echo esc($_GET['shop']); ?>';
+                $.ajax({
+                    type: "POST",
+                    url: "track-u-choice",
+                    data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val+'&'+formData,
+                    success: function(response) {
+                        $(".relativeLoaderCG56").hide();
+                        if (cg_choic_val == 'spec_coll') {
+                            $("#choc_msg").html('Successfully Saved');
+                            $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>');
+                        } else if (cg_choic_val == 'spec_prodct') {
+                            $("#choc_msg").html('Successfully Saved');
+                            $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>');
+                        } else {
+                            $("#choc_msg").html('Successfully Saved');
+                        }
 
+                        $("#choc_msg").css('color', 'green');
+                        $("#choc_msg").css('font-weight', 'bold');
+                    }
+
+                });
+            });
             //code for track user choic for add products
             var cg_radioButtons = document.querySelectorAll('input[name="user_pro_chocie"]');
             cg_radioButtons.forEach(function(cg_radioButton) {
                 cg_radioButton.addEventListener('change', function(event) {
-                    $(".relativeLoaderCG56").show();
-
                     var cg_choic_val = this.value;
                     if (cg_choic_val == "all_pro") {
                         $("#input_fields").show();
                     } else {
+                        $(".relativeLoaderCG56").show();
                         $("#input_fields").hide();
-                    }
-                    var shopname = '<?php echo esc($_GET['shop']); ?>';
-                    $.ajax({
-                        type: "POST",
-                        url: "track-u-choice",
-                        data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val,
-                        success: function(response) {
-                            $(".relativeLoaderCG56").hide();
-                            if (cg_choic_val == 'spec_coll') {
-                                $("#choc_msg").html('Successfully Saved');
-                                $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>');
-                            } else if (cg_choic_val == 'spec_prodct') {
-                                $("#choc_msg").html('Successfully Saved');
-                                $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>');
-                            } else {
-                                $("#choc_msg").html('Successfully Saved');
+
+                        var shopname = '<?php echo esc($_GET['shop']); ?>';
+                        $.ajax({
+                            type: "POST",
+                            url: "track-u-choice",
+                            data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val,
+                            success: function(response) {
+                                $(".relativeLoaderCG56").hide();
+                                if (cg_choic_val == 'spec_coll') {
+                                    $("#choc_msg").html('Successfully Saved');
+                                    $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>');
+                                } else if (cg_choic_val == 'spec_prodct') {
+                                    $("#choc_msg").html('Successfully Saved');
+                                    $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>');
+                                } else {
+                                    $("#choc_msg").html('Successfully Saved');
+                                }
+
+                                $("#choc_msg").css('color', 'green');
+                                $("#choc_msg").css('font-weight', 'bold');
                             }
 
-                            $("#choc_msg").css('color', 'green');
-                            $("#choc_msg").css('font-weight', 'bold');
-                        }
-
-                    });
+                        });
+                    }
                 });
             });
 
