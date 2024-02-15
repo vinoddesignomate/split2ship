@@ -3619,6 +3619,7 @@ class Home extends BaseController
             "shop_url" => $this->request->getPost('shop'),
             "choice_val" => $this->request->getPost('cg_choic_val')
         );
+        print_r($track_user_choice);
         $this->user_model->add_user_choice($track_user_choice);
         echo "done";
     }
