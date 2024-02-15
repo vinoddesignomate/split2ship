@@ -318,7 +318,7 @@ $store_namecnf = $shop_name[0];
                                 <div class="flex-row">
                                     <label for="">Partial Type</label>
                                     <select name="change_type" id="change_type">
-                                        <option alue="precentage">Percentage</option>
+                                        <option value="precentage">Percentage</option>
                                         <option value="fixed">Fixed</option>
                                     </select>
                                 </div>
