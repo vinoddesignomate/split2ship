@@ -303,30 +303,30 @@ $store_namecnf = $shop_name[0];
 
         <!-- main area -->
         <?php
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') { 
-            echo"<pre>"; print_r($get_user_choic); echo "</pre>";
-            ?>
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            ///echo"<pre>"; print_r($get_user_choic); echo "</pre>";
+        ?>
             <div class="payxnowandrestondelivery-container">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
                     <div class="payxnowandrestondelivery-head-wrapper">
                         <div id="mainclsmsg">
                             <span id="choc_msg"></span>
-                            
+
                         </div>
-                        <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
-                        <div id="input_fields" style="display: none;">
+                        <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
+                        <div id="input_fields" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') { ?> style="display: block;" <?php } else { ?> style="display: none;" <?php } ?>>
                             <form id="choic_update">
-                                <input type="hidden" name="cg_choic_val" id="cg_choic_val">
+                                <input type="hidden" name="cg_choic_val" id="cg_choic_val" value="<?php echo isset($get_user_choic[0]->choice_val) ? $get_user_choic[0]->choice_val : ''; ?>">
                                 <div class="flex-row">
                                     <label for="">Partial Type</label>
                                     <select name="change_type" id="change_type">
-                                        <option value="precentage">Percentage</option>
-                                        <option value="fixed">Fixed</option>
+                                        <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
+                                        <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
                                     </select>
                                 </div>
                                 <div class="flex-row">
                                     <label for="">Partial Value</label>
-                                    <input type="text" required name="choic_part_val">
+                                    <input type="text" required value="<?php echo isset($get_user_choic[0]->partial_value) ? $get_user_choic[0]->partial_value : ''; ?>" name="choic_part_val">
                                 </div>
                                 <div class="btn-row">
                                     <button type="submit" name="choic_all_val" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
@@ -334,9 +334,16 @@ $store_namecnf = $shop_name[0];
                                 </div>
                             </form>
                         </div>
-                        <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
-                        <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
-                        <span id="choc_msg_btn"></span>
+                        <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
+                        <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
+                        <span id="choc_msg_btn">
+                            <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
+                                <a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>
+                            <?php } else if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?>
+                                <a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>
+                            <?php } ?>
+
+                        </span>
                     </div>
                 </div>
             </div>
@@ -824,7 +831,7 @@ $store_namecnf = $shop_name[0];
                 $(".relativeLoaderCG56").show();
                 //$("#input_fields").hide();
                 e.preventDefault();
-             
+
                 var formData = $(this).serialize();
                 var shopname = '<?php echo esc($_GET['shop']); ?>';
                 $.ajax({
