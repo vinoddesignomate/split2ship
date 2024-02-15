@@ -303,13 +303,15 @@ $store_namecnf = $shop_name[0];
 
         <!-- main area -->
         <?php
-        if ($_GET['shop'] == 'desinomatetest.myshopify.com') { ?>
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') { 
+            echo"<pre>"; print_r($get_user_choic); echo "</pre>";
+            ?>
             <div class="payxnowandrestondelivery-container">
                 <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar">
                     <div class="payxnowandrestondelivery-head-wrapper">
                         <div id="mainclsmsg">
                             <span id="choc_msg"></span>
-                            <span id="choc_msg_btn"></span>
+                            
                         </div>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
                         <div id="input_fields" style="display: none;">
@@ -334,6 +336,7 @@ $store_namecnf = $shop_name[0];
                         </div>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
                         <p><input type="radio" name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
+                        <span id="choc_msg_btn"></span>
                     </div>
                 </div>
             </div>

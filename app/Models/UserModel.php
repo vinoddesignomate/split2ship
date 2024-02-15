@@ -1233,4 +1233,10 @@ class UserModel extends Model
             return  $qbuilder->insert($insertdata);
         }
     }
+    public function get_user_choic($shop_url){
+        $qbuilder = $this->db->table('2cg_track_user_choice');
+        $qbuilder->where('shop_url', $shop_url);
+        $getchres = $qbuilder->get();
+        return $getchres->getResult();
+    }
 }
