@@ -791,6 +791,7 @@ $store_namecnf = $shop_name[0];
                         </div>
                     </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script>
             var radioButtons = document.querySelectorAll('input[name="zip_en_dis"]');
             radioButtons.forEach(function(radioButton) {
@@ -825,7 +826,7 @@ $store_namecnf = $shop_name[0];
                 $.ajax({
                     type: "POST",
                     url: "track-u-choice",
-                    data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val+'&'+formData,
+                    data: 'shop=' + shopname + '&cg_choic_val=' + cg_choic_val + '&' + formData,
                     success: function(response) {
                         $(".relativeLoaderCG56").hide();
                         if (cg_choic_val == 'spec_coll') {
