@@ -324,9 +324,9 @@ $store_namecnf = $shop_name[0];
                                         <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
                                     </select>
                                 </div>
-                                <div class="flex-row">
+                                <div class="flex-row"> 
                                     <label for="">Partial Value</label>
-                                    <input type="text" required value="<?php echo isset($get_user_choic[0]->partial_value) ? $get_user_choic[0]->partial_value : ''; ?>" name="choic_part_val">
+                                    <input type="text" style="width: 30%;" value="<?php echo isset($get_user_choic[0]->partial_value) ? $get_user_choic[0]->partial_value : ''; ?>" name="choic_part_val">
                                 </div>
                                 <div class="btn-row">
                                     <button type="submit" name="choic_all_val" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
