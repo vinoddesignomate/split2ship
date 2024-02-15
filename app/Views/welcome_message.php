@@ -820,7 +820,8 @@ $store_namecnf = $shop_name[0];
                 $(".relativeLoaderCG56").show();
                 $("#input_fields").hide();
                 e.preventDefault();
-                var cg_choic_val = $('input[name="user_pro_choice"]:checked').val();;
+                var cg_choic_val = $('input[name="user_pro_choice"]:checked').val();
+                console.log(cg_choic_val);
                 var formData = $(this).serialize();
                 var shopname = '<?php echo esc($_GET['shop']); ?>';
                 $.ajax({
