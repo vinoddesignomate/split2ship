@@ -1912,7 +1912,7 @@ class Home extends BaseController
             );
             $chkalrearun = $this->user_model->get_already_run_cron($check_already_run);
 
-            if ($chkalrearun == "newstart") {
+           // if ($chkalrearun == "newstart") {
                 $update_price = array(
                     "partial_percentage" => $this->request->getPost('colltion_change_partial'),
                     "partial_type" => $this->request->getPost('partiatype'),
@@ -1925,9 +1925,9 @@ class Home extends BaseController
                 );
                 $this->user_model->update_collection_partial_percentage($update_price, $this->request->getPost('proid'));
                 echo $this->request->getPost('colltion_change_partial_id');
-            } else {
-                echo "already_runing";
-            }
+            // } else {
+            //     echo "already_runing";
+            // }
             // echo "<script>top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/public/index.php/partial-products-list'</script>";
             //echo view('templates/apbrdgnew');
         }
