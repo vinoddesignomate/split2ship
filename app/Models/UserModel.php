@@ -1239,4 +1239,7 @@ class UserModel extends Model
         $getchres = $qbuilder->get();
         return $getchres->getResult();
     }
+    public function getcollectionproduct($datafilter){
+        //$getsql = "SELECT * FROM "
+    }
 }
