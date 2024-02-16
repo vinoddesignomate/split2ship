@@ -144,36 +144,38 @@ class FrontController extends BaseController
                             }
                         }
                     } else {
-                        return 'not_found';
+
+                        if ($shopname == 'desinomatetest.myshopify.com') {
+
+                            $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
+                            if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
+                                $cg_split_plan = "basic";
+                            } else {
+                                $cg_split_plan = "other";
+                            }
+                            $get_user_choic = $this->user_model->get_user_choic($shopname);
+                            if (!empty($get_user_choic)) {
+                                if ($get_user_choic[0]->choice_val == 'all_pro') {
+                                    $this->all_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan);
+                                } else if ($get_user_choic[0]->choice_val == 'spec_coll') {
+
+                                    $this->all_collection_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan, $this->request->getPost('vid'));
+                                } else {
+                                    return 'not_found';
+                                }
+                            } else {
+                                return 'not_found';
+                            }
+                        } else {
+                            return 'not_found';
+                        }
+                        //return 'not_found';
                     }
                 } else {
                     return 'not_found';
                 }
             } else {
-                if ($shopname == 'desinomatetest.myshopify.com') {
-
-                    $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-                    if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
-                        $cg_split_plan = "basic";
-                    } else {
-                        $cg_split_plan = "other";
-                    }
-                    $get_user_choic = $this->user_model->get_user_choic($shopname);
-                    if (!empty($get_user_choi)) {
-                        if ($get_user_choic[0]->choice_val == 'all_pro') {
-                            $this->all_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan);
-                        } else if ($get_user_choic[0]->choice_val == 'spec_coll') {
-
-                            $this->all_collection_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan, $this->request->getPost('vid'));
-                        } else {
-                            return 'not_found';
-                        }
-                    } else {
-                        return 'not_found';
-                    }
-                } else {
-                    return 'not_found';
-                }
+                return 'not_found';
             }
         } else {
             return 'not_found';
@@ -181,6 +183,7 @@ class FrontController extends BaseController
     }
     function all_collection_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan, $collectids)
     {
+        
         $getdaat = array(
             "shop_url" => $shopname,
             "col_ids" => $collectids,
