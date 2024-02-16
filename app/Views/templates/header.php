@@ -13,6 +13,7 @@
 
     <script src="https://unpkg.com/@shopify/app-bridge@3"></script>
     <!-- <script src="https://unpkg.com/@shopify/app-bridge@3"></script> -->
+
     <script>
         var AppBridge = window['app-bridge'];
         var actions = window['app-bridge'].actions;
@@ -25,26 +26,20 @@
             forceRedirect: false
         };
         const app = createApp(config);
-        /* app.route({
-             path: '/apps/splitexchange',
-             render: () => {
-                 // Render your custom template or section here
-                 // Get a reference to the container where you want to render your HTML
-                 const container = document.querySelector('#MainContent');
-                 // Create an HTML element, e.g., a div, and set its innerHTML to your HTML content
-                 const customHTML = `
-                         <div>
-                             <h1>Your Custom HTML Content</h1>
-                             <p>This is your custom content.</p>
-                         </div>
-                         `;
 
-                 container.innerHTML = customHTML;
-             },
-         });*/
-        // const redirect = Redirect.create(app);
-        //console.log('currentURL');
-        //console.log(config.shopifyAppBridge.getState().location.currentURL);
+        // Function to navigate to another page
+        function navigateToPage(pageUrl) {
+            const Redirect = actions.Redirect;
+            const redirect = Redirect.create(app);
+            redirect.dispatch(Redirect.Action.REMOTE, {
+                url: pageUrl
+            });
+        }
+        // // Example event listener for a button click
+        // document.getElementById('myButton').addEventListener('click', function() {
+        //     // Replace 'pageUrl' with the actual URL of the page you want to navigate to
+        //     navigateToPage('https://www.example.com/another-page');
+        // });
     </script>
 
     <!--Start of Tawk.to Script-->
@@ -96,24 +91,32 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
         <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-header-wrapper">
                 <div class="payxnowandrestondelivery-logo-col">
-                    <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/"><img src="/public/images/site-logo.svg" alt="site-logo"></a>
+                    <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/");' href="javascript:void();"><img src="/public/images/site-logo.svg" alt="site-logo"></a>
                 </div>
                 <nav class="payxnowandrestondelivery-header-nav-links">
                     <ul>
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
-                                Products</a></li>
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'collection-wise-partial-products') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
+
+                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list");' class="<?php echo ($page_name == 'products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();">
+                                <img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon">
+                                <img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
+                                Products
+                            </a>
+                        </li>
+
+
+                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products");' class="<?php echo ($page_name == 'collection-wise-partial-products') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
                                 Bulk Enable Partial Payment</a></li>
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'partial-products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">
+                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list");' class="<?php echo ($page_name == 'partial-products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">
                                 Partial Products List</a></li>
-                        <!-- <li><a onclick='abc(event);' class="<?php echo ($page_name == 'show-orders') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/show-orders"><img src="/public/images/orders.svg" class="payxnowandrestondelivery-hide-hover" alt="orders-icon"><img src="/public/images/order-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="orders-icon">
-                                Orders</a></li> -->
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'price-plan') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan"><img src="/public/images/pricing.svg" class="payxnowandrestondelivery-hide-hover" alt="pricing-icon"><img src="/public/images/pricing-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="pricing-icon">
+
+                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan");' class="<?php echo ($page_name == 'price-plan') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/pricing.svg" class="payxnowandrestondelivery-hide-hover" alt="pricing-icon"><img src="/public/images/pricing-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="pricing-icon">
                                 Pricing</a></li>
 
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-tutorials') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon"> Tutorials</a></li>
+                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-tutorials");' class="<?php echo ($page_name == 'app-tutorials') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon"> Tutorials</a></li>
 
-                        <li><a onclick='abc(event);' class="<?php echo ($page_name == 'app-configuration') ? 'payxnowandrestondelivery-active' : '' ?> " href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration"><img src="/public/images/configuration.svg" alt="configuration-icon" class="payxnowandrestondelivery-hide-hover"><img src="/public/images/configuration-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="configuration-icon">Configuration</a></li>
+                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/app-configuration");' class="<?php echo ($page_name == 'app-configuration') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/configuration.svg" alt="configuration-icon" class="payxnowandrestondelivery-hide-hover"><img src="/public/images/configuration-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="configuration-icon">Configuration</a></li>
+
+
                     </ul>
                 </nav>
                 <a href="javascript:void(0);" class="payxnowandrestondelivery-icon" onclick="myFunction()">
