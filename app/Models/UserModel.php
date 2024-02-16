@@ -1246,8 +1246,8 @@ class UserModel extends Model
         $collt_array = array_map('intval', $collt_array);
         // Convert array values into a comma-separated string for the query
         $placeholders = implode(',', array_fill(0, count($collt_array), '?'));
-        echo $getqur = "SELECT * FROM collections_percentage WHERE shop_url= ? AND collection_id IN ($placeholders) LIMIT 0,1";
-        $getchres = $this->db->query($getqur,array($datafilter['shop_url']));
+         $getqur = "SELECT * FROM collections_percentage WHERE shop_url= ? AND collection_id IN ($placeholders) LIMIT 0,1";
+        $getchres = $this->db->query($getqur,array($datafilter['shop_url'],$collt_array));
         return $getchres->getResult();
     }
 }
