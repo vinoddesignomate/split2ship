@@ -189,7 +189,7 @@ class FrontController extends BaseController
             "col_ids" => $collectids,
         );
         $getresylt = $this->user_model->getcollectionproduct($getdaat);
-        print_r($getresylt);
+        //print_r($getresylt);
     }
     function all_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan)
     {
