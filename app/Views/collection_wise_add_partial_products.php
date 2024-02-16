@@ -4,7 +4,7 @@ $link_array = explode('/', $link);
 $page = end($link_array);
 $shop_name = explode(".", $_GET['shop']);
 $store_name = $shop_name[0];
-$disbaled = 0;
+$disbaled = 1;
 ?>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">

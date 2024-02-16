@@ -1233,21 +1233,21 @@ class UserModel extends Model
             return  $qbuilder->insert($insertdata);
         }
     }
-    public function get_user_choic($shop_url){
+    public function get_user_choic($shop_url)
+    {
         $qbuilder = $this->db->table('2cg_track_user_choice');
         $qbuilder->where('shop_url', $shop_url);
         $getchres = $qbuilder->get();
         return $getchres->getResult();
     }
-    public function getcollectionproduct($datafilter){
+    public function getcollectionproduct($datafilter)
+    {
         // Split the string into an array
-        $collt_array = explode(',', $datafilter['col_ids']);
-        // Convert array values into integers (optional)
-        $collt_array = array_map('intval', $collt_array);
-        // Convert array values into a comma-separated string for the query
-        $placeholders = implode(',', array_fill(0, count($collt_array), '?'));
-         echo $getqur = "SELECT * FROM collections_percentage WHERE shop_url= ? AND collection_id IN ($collt_array) LIMIT 0,1";
-       // $getchres = $this->db->query($getqur,array($datafilter['shop_url'],$collt_array));
-       // return $getchres->getResult();
+        $collectionIdsString = $datafilter['col_ids'];
+        $collectionIdsArray = explode(',', $collectionIdsString);
+
+        $getqur = "SELECT * FROM collections_percentage WHERE shop_url = ? AND collection_id IN (".$datafilter['col_ids'].") LIMIT 0,1";
+        $getchres = $this->db->query($getqur, array($datafilter['shop_url']));
+        return $getchres->getResult();
     }
 }
