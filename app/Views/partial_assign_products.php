@@ -1,7 +1,21 @@
-<?php 
- $shop_name = explode(".", $_GET['shop']);
- $shope_namecg = $shop_name[0];
+<?php
+$shop_name = explode(".", $_GET['shop']);
+$shope_namecg = $shop_name[0];
 ?>
+<style>
+    .cg_prolst {
+        position: relative;
+    }
+
+    .cg_prolst .payCGbtn4List {
+        position: absolute;
+        right: 0;
+        top: 10px;
+        font-size: 14px;
+        letter-spacing: .5px;
+        font-weight: normal;
+    }
+</style>
 <form method="POST" action="" id="add_part_prodct">
 
     <div class="payxnowandrestondelivery-container">
@@ -190,13 +204,13 @@
                 $.ajax({
                     type: "POST",
                     url: "add_partial_list",
-                    data: 'assign_save=yes&shop=' + shop_namecg+'&'+formData, // Form data
+                    data: 'assign_save=yes&shop=' + shop_namecg + '&' + formData, // Form data
                     success: function(response) {
-                       if(response == "success"){
-                        top.window.location = 'https://admin.shopify.com/store/'+shope_namecg+'/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
-                       }else{
-                        top.window.location = 'https://admin.shopify.com/store/'+shope_namecg+'/apps/pay-x-now-rest-on-delivery/price-plan';
-                       }
+                        if (response == "success") {
+                            top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
+                        } else {
+                            top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/price-plan';
+                        }
                         //console.log("Success:", response);
                     },
                     error: function(xhr, status, error) {

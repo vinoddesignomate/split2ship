@@ -369,7 +369,7 @@ $store_namecnf = $shop_name[0];
                         <div class="insiteFlexWrap34">
                             <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
                         </div>
-                        <div class="insiteFlexWrap34 Updated"><span id="choc_msg_btn_collct">
+                        <div class="insiteFlexWrap34 Updated"><span class="choicbtncls" id="choc_msg_btn_collct">
                                 <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
                                     <a onclick="navigateToPage('https://admin.shopify.com/store/desinomatetest/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
                                 <?php } ?>
@@ -380,7 +380,7 @@ $store_namecnf = $shop_name[0];
                         <div class="insiteFlexWrap34">
                             <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
                         </div>
-                        <div class="insiteFlexWrap34 Updated"><span id="choc_msg_btnprodct">
+                        <div class="insiteFlexWrap34 Updated"><span class="choicbtncls" id="choc_msg_btnprodct">
                                 <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?>
                                     <a onclick="navigateToPage('https://admin.shopify.com/store/desinomatetest/apps/pay-x-now-rest-on-delivery/products-list');" class="anchorCGclick" href="javascript:void(0);">Select products</a>
                                 <?php } ?>
@@ -884,7 +884,7 @@ $store_namecnf = $shop_name[0];
                 $(".relativeLoaderCG56").show();
                 //$("#input_fields").hide();
                 e.preventDefault();
-
+                $(".choicbtncls").html('');
                 var formData = $(this).serialize();
                 var shopname = '<?php echo esc($_GET['shop']); ?>';
                 $.ajax({
@@ -913,6 +913,7 @@ $store_namecnf = $shop_name[0];
             var cg_radioButtons = document.querySelectorAll('input[name="user_pro_chocie"]');
             cg_radioButtons.forEach(function(cg_radioButton) {
                 cg_radioButton.addEventListener('change', function(event) {
+                    $(".choicbtncls").html('');
                     var cg_choic_val = this.value;
                     if (cg_choic_val == "all_pro") {
                         $("#input_fields").show();
