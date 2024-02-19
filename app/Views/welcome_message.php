@@ -330,24 +330,26 @@ $store_namecnf = $shop_name[0];
                     </div>
                     <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="all_pro">All Products</p>
                     <div id="input_fields" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') { ?> style="display: block;" <?php } else { ?> style="display: none;" <?php } ?>>
-                        <form id="choic_update">
-                            <input type="hidden" name="cg_choic_val" id="cg_choic_val" value="<?php echo isset($get_user_choic[0]->choice_val) ? $get_user_choic[0]->choice_val : ''; ?>">
-                            <div class="flex-row">
-                                <label for="">Partial Type</label>
-                                <select name="change_type" id="change_type">
-                                    <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
-                                    <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
-                                </select>
-                            </div>
-                            <div class="flex-row">
-                                <label for="">Partial Value</label>
-                                <input type="text" style="width: 30%;" value="<?php echo isset($get_user_choic[0]->partial_value) ? $get_user_choic[0]->partial_value : ''; ?>" name="choic_part_val">
-                            </div>
-                            <div class="btn-row">
-                                <button type="submit" name="choic_all_val" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
+                        <div class="buttonSpaceCg">
+                            <form id="choic_update">
+                                <input type="hidden" name="cg_choic_val" id="cg_choic_val" value="<?php echo isset($get_user_choic[0]->choice_val) ? $get_user_choic[0]->choice_val : ''; ?>">
+                                <div class="flex-row">
+                                    <label for="">Partial Type</label>
+                                    <select name="change_type" id="change_type">
+                                        <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'precentage') { ?> selected <?php } ?> value="precentage">Percentage</option>
+                                        <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
+                                    </select>
+                                </div>
+                                <div class="flex-row">
+                                    <label for="">Partial Value</label>
+                                    <input type="text" style="width: 30%;" value="<?php echo isset($get_user_choic[0]->partial_value) ? $get_user_choic[0]->partial_value : ''; ?>" name="choic_part_val">
+                                </div>
+                                <div class="btn-row">
+                                    <button type="submit" name="choic_all_val" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" value="submit">Submit</button>
 
-                            </div>
-                        </form>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
                     <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
@@ -675,7 +677,7 @@ $store_namecnf = $shop_name[0];
                                             <h3 class="payxnowandrestondelivery-text-violet">Free</h3>
                                         </li>
                                         <li>
-                                            <p>200 products partial add</p>
+                                            <p>Unlimited products partial add</p>
                                         </li>
                                         <li>
                                             <p>20 orders sync</p>
@@ -683,9 +685,9 @@ $store_namecnf = $shop_name[0];
                                         <li>
                                             <p>Integration with all shipping</p>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <p>Offer partial payment on upto 200 products</p>
-                                        </li>
+                                        </li> -->
                                         <br><br><br>
 
                                     </ul>
@@ -710,7 +712,7 @@ $store_namecnf = $shop_name[0];
                                             <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">17.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
                                         </li>
                                         <li>
-                                            <p>2000 products partial add</p>
+                                            <p>Unlimited products partial add</p>
                                         </li>
                                         <li>
                                             <p>200 order sync</p>
@@ -721,9 +723,9 @@ $store_namecnf = $shop_name[0];
                                         <li>
                                             <p>Integration with all shipping</p>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <p>Offer partial payment on upto 2000 products</p>
-                                        </li>
+                                        </li> -->
 
                                     </ul>
                                     <div class="payxnowandrestondelivery-pricing-btn">
@@ -749,7 +751,7 @@ $store_namecnf = $shop_name[0];
                                             <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">30.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
                                         </li>
                                         <li>
-                                            <p>5000 products partial add</p>
+                                            <p>Unlimited products partial add</p>
                                         </li>
                                         <li>
                                             <p>Unlimited orders sync</p>
@@ -760,9 +762,9 @@ $store_namecnf = $shop_name[0];
                                         <li>
                                             <p>Integration with all shipping</p>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <p>Offer partial payment on upto 5000 products</p>
-                                        </li>
+                                        </li> -->
 
                                     </ul>
                                     <div class="payxnowandrestondelivery-pricing-btn">
@@ -786,7 +788,7 @@ $store_namecnf = $shop_name[0];
                                             <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">60.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
                                         </li>
                                         <li>
-                                            <p>10000 products partial add</p>
+                                            <p>Unlimited products partial add</p>
                                         </li>
                                         <li>
                                             <p>Unlimited orders sync</p>
@@ -797,9 +799,9 @@ $store_namecnf = $shop_name[0];
                                         <li>
                                             <p>Integration with all shipping</p>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <p>Offer partial payment on upto 10000 products</p>
-                                        </li>
+                                        </li> -->
 
                                     </ul>
                                     <div class="payxnowandrestondelivery-pricing-btn">

@@ -1460,7 +1460,7 @@ p.payxnowandrestondelivery-alert {
 }
 
 /** loader css start**/
-.relativeLoaderCG56 { 
+.relativeLoaderCG56 {
   position: absolute;
   left: 0;
   top: 0;
@@ -1482,6 +1482,13 @@ p.payxnowandrestondelivery-alert {
   -webkit-animation: spin 1s linear infinite; /* Safari */
   animation: spin 1s linear infinite;
 }
+.buttonSpaceCg button[type="submit"] {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.buttonSpaceCg input[type="text"] {
+  max-width: 310px !important;
+}
 /* Safari */
 @-webkit-keyframes spin {
   0% {
@@ -1498,7 +1505,7 @@ p.payxnowandrestondelivery-alert {
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 /** loader css end**/
 /** new pricing css end **/
 @media screen and (max-width: 991px) {
