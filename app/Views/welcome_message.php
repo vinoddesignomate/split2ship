@@ -353,9 +353,9 @@ $store_namecnf = $shop_name[0];
                         <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
                         <span id="choc_msg_btn">
                             <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
-                                <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
+                                <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
                             <?php } else if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?>
-                                <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list');" class="anchorCGclick" href="javascript:void(0);">Select products</a>
+                                <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list');" class="anchorCGclick" href="javascript:void(0);">Select products</a>
                             <?php } ?>
 
                         </span>
