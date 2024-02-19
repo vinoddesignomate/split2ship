@@ -96,7 +96,7 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
                 <nav class="payxnowandrestondelivery-header-nav-links">
                     <ul>
 
-                        <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list");' class="<?php echo ($page_name == 'products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();">
+                       <!-- <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list");' class="<?php echo ($page_name == 'products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();">
                                 <img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon">
                                 <img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
                                 Products
@@ -107,7 +107,7 @@ if ($page_name == "index.php" || $page_name == "mainpage") {
                         <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products");' class="<?php echo ($page_name == 'collection-wise-partial-products') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/product.svg" class="payxnowandrestondelivery-hide-hover" alt="product-icon"><img src="/public/images/product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="product-icon">
                                 Bulk Enable Partial Payment</a></li>
                         <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list");' class="<?php echo ($page_name == 'partial-products-list') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/partial-prod.svg" class="payxnowandrestondelivery-hide-hover" alt="partial-prod-icon"><img src="/public/images/partial-product-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="partial-prod-icon">
-                                Partial Products List</a></li>
+                                Partial Products List</a></li>-->
 
                         <li><a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/price-plan");' class="<?php echo ($page_name == 'price-plan') ? 'payxnowandrestondelivery-active' : '' ?> " href="javascript:void();"><img src="/public/images/pricing.svg" class="payxnowandrestondelivery-hide-hover" alt="pricing-icon"><img src="/public/images/pricing-yellow.svg" class="payxnowandrestondelivery-on-hover" alt="pricing-icon">
                                 Pricing</a></li>

@@ -119,7 +119,7 @@ $store_name = $shop_name[0];
                         <h3 class="payxnowandrestondelivery-text-violet">Free</h3>
                     </li>
                     <li>
-                        <p>200 products partial add</p>
+                        <p>Unlimited products partial add</p>
                     </li>
                     <li>
                         <p>20 orders sync</p>
@@ -127,9 +127,9 @@ $store_name = $shop_name[0];
                     <li>
                         <p>Integration with all shipping</p>
                     </li>
-                    <li>
+                    <!-- <li>
                         <p>Offer partial payment on upto 200 products</p>
-                    </li>
+                    </li> -->
                     <br><br><br>
 
                 </ul>
@@ -160,7 +160,7 @@ $store_name = $shop_name[0];
                         <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">17.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
                     </li>
                     <li>
-                        <p>2000 products partial add</p>
+                        <p>Unlimited products partial add</p>
                     </li>
                     <li>
                         <p>200 order sync</p>
@@ -171,9 +171,9 @@ $store_name = $shop_name[0];
                     <li>
                         <p>Integration with all shipping</p>
                     </li>
-                    <li>
+                    <!-- <li>
                         <p>Offer partial payment on upto 2000 products</p>
-                    </li>
+                    </li> -->
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
@@ -207,7 +207,7 @@ $store_name = $shop_name[0];
                         <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">30.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
                     </li>
                     <li>
-                        <p>5000 products partial add</p>
+                        <p>Unlimited products partial add</p>
                     </li>
                     <li>
                         <p>Unlimited orders sync</p>
@@ -218,9 +218,9 @@ $store_name = $shop_name[0];
                     <li>
                         <p>Integration with all shipping</p>
                     </li>
-                    <li>
+                    <!-- <li>
                         <p>Offer partial payment on upto 5000 products</p>
-                    </li>
+                    </li> -->
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
@@ -252,7 +252,7 @@ $store_name = $shop_name[0];
                         <h3><span class="payxnowandrestondelivery-text-small payxnowandrestondelivery-font-bold">$</span> <span class="payxnowandrestondelivery-text-violet">60.95</span> <span class="payxnowandrestondelivery-text-small">/ month</span></h3>
                     </li>
                     <li>
-                        <p>10000 products partial add</p>
+                        <p>Unlimited products partial add</p>
                     </li>
                     <li>
                         <p>Unlimited orders sync</p>
@@ -263,9 +263,9 @@ $store_name = $shop_name[0];
                     <li>
                         <p>Integration with all shipping</p>
                     </li>
-                    <li>
+                    <!-- <li>
                         <p>Offer partial payment on upto 10000 products</p>
-                    </li>
+                    </li> -->
 
                 </ul>
                 <div class="payxnowandrestondelivery-pricing-btn">
