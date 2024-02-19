@@ -5,7 +5,7 @@
 <form method="POST" action="" id="add_part_prodct">
 
     <div class="payxnowandrestondelivery-container">
-        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page">
+        <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page cg_prolst">
             <div class="payxnowandrestondelivery-inner-wrapper">
                 <div class="payxnowandrestondelivery-side-bar-col">
                     <h2>Pick Collection</h2>

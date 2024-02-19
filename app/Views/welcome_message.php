@@ -170,6 +170,11 @@
         display: inline-block
     }
 
+    .flexWrapCg input[type="radio"] {
+        width: 12.6px !important;
+        height: 13px !important;
+    }
+
     @media screen and (max-width:767px) {
         #popup_config .popup-content {
             padding: 25px;
