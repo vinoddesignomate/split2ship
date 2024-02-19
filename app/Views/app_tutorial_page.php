@@ -244,7 +244,7 @@ $store_name = $shop_name[0];
 <script src="/public/jscolor.js"></script>
 <div class="payxnowandrestondelivery-whiteAreaDiv payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-                <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
+                <h5> <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery");' href="javascript:void(0);">Back</h5></a>
         </div>
         <!-- <div class="payxnowandrestondelivery-main-area text-center payxnowandrestondelivery-maintext">
                 <p>Please make sure you go to configuration settings page first to check out to follow how to install the app instructions or you can drop us a whatsapp message - <a href="tel:9354200590" class="text-orange">9354200590</a> else send us an email to <a href="mailto: saurabh@cgcolors.com" class="text-orange">saurabh@cgcolors.com</a>. Our Shopify expert will install and configure the app on your store. This process does not take more than 30 minutes</p>

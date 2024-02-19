@@ -10,7 +10,7 @@ $store_name = $shop_name[0];
 <div class="payxnowandrestondelivery-container">
 
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-        <h5> <a onclick='abc(event);' href="https://admin.shopify.com/store/<?php echo esc($store_name); ?>/apps/pay-x-now-rest-on-delivery/">Back</h5></a>
+        <h5> <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery");' href="javascript:void(0);">Back</h5></a>
     </div>
 
 
