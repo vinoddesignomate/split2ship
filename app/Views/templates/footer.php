@@ -49,49 +49,6 @@ $fstore_name = $shop_name[0];
         }
 
     }
-    if (ship_provder == 'ship_roc') {
-        $("#ship_roc").show();
-        $("#delhivery").hide();
-        $("#pickr").hide();
-        $("#ship_email").prop('required', true);
-        $("#ship_pwd").prop('required', true);
-        $("#ship_chnl_id").prop('required', true);
-        $("#ship_token").prop('required', false);
-        $("#ship_from").prop('required', false);
-        $("#ship_token_delh").prop('required', false);
-        $("#pick_up_location").prop('required', false);
-        $("#pickrr_company").prop('required', false);
-        $("#pickrr_phone").prop('required', false);
-        $("#pickrr_pincode").prop('required', false);
-    } else if (ship_provder == 'delhivery') {
-        $("#ship_roc").hide();
-        $("#delhivery").show();
-        $("#pickr").hide();
-        $("#ship_email").prop('required', false);
-        $("#ship_pwd").prop('required', false);
-        $("#ship_chnl_id").prop('required', false);
-        $("#ship_token").prop('required', false);
-        $("#ship_from").prop('required', false);
-        $("#ship_token_delh").prop('required', true);
-        $("#pick_up_location").prop('required', true);
-        $("#pickrr_company").prop('required', false);
-        $("#pickrr_phone").prop('required', false);
-        $("#pickrr_pincode").prop('required', false);
-    } else if (ship_provder == 'pickr') {
-        $("#ship_roc").hide();
-        $("#delhivery").hide();
-        $("#pickr").show();
-        $("#ship_email").prop('required', false);
-        $("#ship_pwd").prop('required', false);
-        $("#ship_chnl_id").prop('required', false);
-        $("#ship_token_delh").prop('required', false);
-        $("#ship_token").prop('required', true);
-        $("#ship_from").prop('required', true);
-        $("#pick_up_location").prop('required', false);
-        $("#pickrr_company").prop('required', true);
-        $("#pickrr_phone").prop('required', true);
-        $("#pickrr_pincode").prop('required', true);
-    }
 
     $('#delivery_partner').on('change', function(e) {
         var delivery_partner = $("#delivery_partner").val();

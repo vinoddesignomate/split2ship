@@ -832,7 +832,7 @@ $store_namecnf = $shop_name[0];
                 });
             });
 
-            var ship_provder = '<?php echo $ship_provider; ?>';
+           // var ship_provder = '<?php echo $ship_provider; ?>';
             // Function to show the popup
             function showPopup(planename) {
                 var popup = document.getElementById("popup");
