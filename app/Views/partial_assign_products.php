@@ -20,6 +20,7 @@ $shope_namecg = $shop_name[0];
 
     <div class="payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page cg_prolst">
+        <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list");' href="javascript:void(0);" class="payxnowandrestondelivery-button payCGbtn4List">Partial Product List</a>
             <div class="payxnowandrestondelivery-inner-wrapper">
                 <div class="payxnowandrestondelivery-side-bar-col">
                     <h2>Pick Collection</h2>

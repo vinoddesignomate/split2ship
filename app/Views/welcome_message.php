@@ -164,6 +164,7 @@
     .flexWrapCg {
         display: flex;
         align-items: center;
+        gap: 15px;
     }
 
     .flexWrapCg .insiteFlexWrap34 {
