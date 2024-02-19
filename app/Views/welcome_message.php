@@ -289,16 +289,31 @@ $store_namecnf = $shop_name[0];
                 body.classList.add("package_popup_visible");
             </script>
         <?php } ?>
+        <?php
+        if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+            ///echo"<pre>"; print_r($get_user_choic); echo "</pre>";
+        ?>
+            <!-- main-head -->
+            <div class="payxnowandrestondelivery-container">
+                <div class="payxnowandrestondelivery-main-head">
+                    <div class="payxnowandrestondelivery-main-heading">
+                        <h1>Where would you like to apply partial payment?</h1>
+                    </div>
 
-        <!-- main-head -->
-        <div class="payxnowandrestondelivery-container">
-            <div class="payxnowandrestondelivery-main-head">
-                <div class="payxnowandrestondelivery-main-heading">
-                    <h1>Add Product</h1>
                 </div>
-
             </div>
-        </div>
+        <?php } else { ?>
+
+
+            <div class="payxnowandrestondelivery-container">
+                <div class="payxnowandrestondelivery-main-head">
+                    <div class="payxnowandrestondelivery-main-heading">
+                        <h1>Add Product</h1>
+                    </div>
+
+                </div>
+            </div>
+        <?php } ?>
         <!-- main-head ends -->
 
         <!-- main area -->
@@ -324,7 +339,7 @@ $store_namecnf = $shop_name[0];
                                         <option <?php if (isset($get_user_choic[0]->partial_type) && $get_user_choic[0]->partial_type == 'fixed') { ?> selected <?php } ?> value="fixed">Fixed</option>
                                     </select>
                                 </div>
-                                <div class="flex-row"> 
+                                <div class="flex-row">
                                     <label for="">Partial Value</label>
                                     <input type="text" style="width: 30%;" value="<?php echo isset($get_user_choic[0]->partial_value) ? $get_user_choic[0]->partial_value : ''; ?>" name="choic_part_val">
                                 </div>
@@ -338,9 +353,9 @@ $store_namecnf = $shop_name[0];
                         <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
                         <span id="choc_msg_btn">
                             <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
-                                <a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>
+                                <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
                             <?php } else if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?>
-                                <a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>
+                                <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list');" class="anchorCGclick" href="javascript:void(0);">Select products</a>
                             <?php } ?>
 
                         </span>
@@ -878,10 +893,10 @@ $store_namecnf = $shop_name[0];
                                 $(".relativeLoaderCG56").hide();
                                 if (cg_choic_val == 'spec_coll') {
                                     $("#choc_msg").html('Successfully Saved');
-                                    $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products">Select collection</a>');
+                                    $("#choc_msg_btn").html('<a onclick="navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products");" class="anchorCGclick" href="javascript:void(0);">Select collection</a>');
                                 } else if (cg_choic_val == 'spec_prodct') {
                                     $("#choc_msg").html('Successfully Saved');
-                                    $("#choc_msg_btn").html('<a onclick="choice_click(event);" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>');
+                                    $("#choc_msg_btn").html('<a onclick="navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list");" class="anchorCGclick" href="https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list">Select products</a>');
                                 } else {
                                     $("#choc_msg").html('Successfully Saved');
                                 }
