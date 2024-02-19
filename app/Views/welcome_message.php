@@ -161,6 +161,15 @@
         background: #10277cde
     }
 
+    .flexWrapCg {
+        display: flex;
+        align-items: center;
+    }
+
+    .flexWrapCg .insiteFlexWrap34 {
+        display: inline-block
+    }
+
     @media screen and (max-width:767px) {
         #popup_config .popup-content {
             padding: 25px;
