@@ -940,7 +940,7 @@ class Home extends BaseController
                     "show_config_popup" => 1
                 ));
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
-                $this->install_config_stpes();
+                //$this->install_config_stpes();
                 // }
                 echo view('templates/header');
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
