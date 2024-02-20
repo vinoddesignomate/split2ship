@@ -175,6 +175,7 @@ class FrontController extends BaseController
                             return 'not_found';
                         }
                         */
+                                return 'not_found';
                             }
                         } else if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
                             $this->all_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan);
