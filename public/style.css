@@ -1434,7 +1434,8 @@ p.payxnowandrestondelivery-alert {
   .payxnowandrestondelivery-pricing-col.transFormCg56colors
   .payxnowandrestondelivery-pricing-btn
   a.payxnowandrestondelivery-button {
-  background: #f6ee2673;
+  background: #b7b7b773;
+  border-color: #959595;
   color: #000000bf;
   cursor: auto;
   font-style: italic;
@@ -1457,6 +1458,20 @@ p.payxnowandrestondelivery-alert {
   ul.payxnowandrestondelivery-pricing-inner-wrapper
   li {
   border-color: #cae8f5;
+}
+
+.payxnowandrestondelivery-body-wrapper input[type="radio"] {
+  width: 12.6px !important;
+  height: 13px !important;
+}
+.imgInsNewFixcg {
+  max-width: 354px;
+}
+@media screen and (max-width: 479px) {
+  .flexWrapCg,
+  .flexWrapCg .insiteFlexWrap34 {
+    display: block !important;
+  }
 }
 
 /** loader css start**/
