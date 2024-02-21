@@ -48,7 +48,7 @@ $disbaled = 1;
 
                             <?php
                             if ($disbaled == 1) {
-                                if ($cg_split_plan_sts == 'show') {
+                                //if ($cg_split_plan_sts == 'show') {
                                     if (!empty($get_store_collections)) { ?>
                                         <div class="table-outer-wrapper">
                                             <table>
@@ -116,7 +116,7 @@ $disbaled = 1;
                                         </div>
 
                             <?php }
-                                }
+                                //}
                             }
                             ?>
                         </div>
