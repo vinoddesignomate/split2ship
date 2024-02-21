@@ -372,7 +372,7 @@ $store_namecnf = $shop_name[0];
                         </div>
                         <div class="insiteFlexWrap34 Updated"><span class="choicbtncls" id="choc_msg_btn_collct">
                                 <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
-                                    <a onclick="navigateToPage('https://admin.shopify.com/store/desinomatetest/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
+                                    <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
                                 <?php } ?>
                             </span>
                         </div>
@@ -383,7 +383,7 @@ $store_namecnf = $shop_name[0];
                         </div>
                         <div class="insiteFlexWrap34 Updated"><span class="choicbtncls" id="choc_msg_btnprodct">
                                 <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?>
-                                    <a onclick="navigateToPage('https://admin.shopify.com/store/desinomatetest/apps/pay-x-now-rest-on-delivery/products-list');" class="anchorCGclick" href="javascript:void(0);">Select products</a>
+                                    <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/products-list');" class="anchorCGclick" href="javascript:void(0);">Select products</a>
                                 <?php } ?>
                             </span>
                         </div>
