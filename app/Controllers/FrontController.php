@@ -711,7 +711,7 @@ class FrontController extends BaseController
                 }
             }
             // Apply special discount if applicable
-            if (in_array($shopname, ['desinomatetest.myshopify.com', "tajbridalindia.myshopify.com"]) && $coupon_discountline == 0) {
+            if (in_array($shopname, ['desinomatetest.myshopify.com', "tajbridalindia.myshopify.com","b7e5fd.myshopify.com"]) && $coupon_discountline == 0) {
                 $coupon_discountline = $splite_order_discount;
             }
             // Call appropriate function for discount order creation
