@@ -1434,8 +1434,9 @@ p.payxnowandrestondelivery-alert {
   .payxnowandrestondelivery-pricing-col.transFormCg56colors
   .payxnowandrestondelivery-pricing-btn
   a.payxnowandrestondelivery-button {
-  background: #f6ee26;
-  border-color: #c5be19;
+  background: #f6ee2673;
+  color: #000000bf;
+  cursor: auto;
   font-style: italic;
   color: #000;
   text-transform: uppercase;
