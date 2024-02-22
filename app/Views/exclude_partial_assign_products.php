@@ -173,12 +173,11 @@ $shope_namecg = $shop_name[0];
 
                 navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products');
 
-                // top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/products-list';
+            
             } else {
 
                 navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products?collectionparms=' + sel_val);
 
-                //top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/products-list?collectionparms=' + sel_val;
             }
 
         });
