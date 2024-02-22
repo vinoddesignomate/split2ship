@@ -3526,7 +3526,7 @@ class Home extends BaseController
         //print_r($this->request->getPost('search_text'));
         //echo $search_list;
         $data['search_list'] = $search_list;
-        $limit = 3;
+        $limit = 10;
         $initial_page = ($data['part_page'] - 1) * $limit;
         $data['start_from'] = ($data['part_page'] - 1) * $limit + 1;
         $get_totals = $this->user_model->get_exclude_partial_product_list($_GET['shop'], $search_list);
