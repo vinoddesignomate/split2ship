@@ -27,7 +27,7 @@ $shope_namecg = $shop_name[0];
                 <div class="payxnowandrestondelivery-side-bar-col">
                     <h2>Pick Collection</h2>
                     <div class="payxnowandrestondelivery-custom-select">
-                        <select style="display:block;" class="colidchk" required id="get_coll" name="get_coll">
+                        <select style="display:block;" class="colidchk" required id="get_coll_exclude" name="get_coll">
                             <option value="0">Select Collection...</option>
                             <?php foreach ($get_store_collections as $get_collections) { ?>
 
@@ -166,6 +166,23 @@ $shope_namecg = $shop_name[0];
     var shope_namecg = '<?php echo $shope_namecg; ?>';
     $(function() {
 
+        $('#get_coll_exclude').on('change', function(e) {
+            var sel_val = $("#get_coll_exclude").val();
+            // var v_name = $("#vendor_name option:selected").text();
+            if (sel_val == '') {
+
+                navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products');
+
+                // top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/products-list';
+            } else {
+
+                navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products?collectionparms=' + sel_val);
+
+                //top.window.location = 'https://admin.shopify.com/store/<?php echo esc($fstore_name); ?>/apps/pay-x-now-rest-on-delivery/products-list?collectionparms=' + sel_val;
+            }
+
+        });
+
         //$(".checkAll").click(function() {
         $("body").on("click", ".payxnowandrestondelivery-checkAll", function() {
 
@@ -185,7 +202,7 @@ $shope_namecg = $shop_name[0];
         });
 
         $("#prudtsearch").submit(function(event) {
-            var sel_val = $("#get_coll").val();
+            var sel_val = $("#get_coll_exclude").val();
             //console.log(sel_val);
             if (sel_val == "") {
                 alert("Please select any collection");
@@ -212,7 +229,7 @@ $shope_namecg = $shop_name[0];
                     if (response == "success") {
                         top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
                     } else {
-                        top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/price-plan';
+                        top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery';
                     }
                     //console.log("Success:", response);
                 },
