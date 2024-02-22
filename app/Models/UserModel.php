@@ -1250,4 +1250,20 @@ class UserModel extends Model
         $getchres = $this->db->query($getqur, array($datafilter['shop_url']));
         return $getchres->getResult();
     }
+    public function exclude_partial_products($product_varient_array)
+    {
+        $qbuilder = $this->db->table('cgsplit_exclude_partial_products');
+        $qbuilder->where('shop_url', $product_varient_array['shop_url']);
+        $qbuilder->where('product_id', $product_varient_array['product_id']);
+        $qbuilder->where('varient_id', $product_varient_array['varient_id']);
+        $q = $qbuilder->get();
+        $qbuilder->countAllResults();
+        if (!empty($q->getResult())) {
+            $this->db->table('cgsplit_exclude_partial_products')->where('shop_url', $product_varient_array['shop_url'])->where('product_id', $product_varient_array['product_id'])->where('varient_id', $product_varient_array['varient_id'])->update($product_varient_array);
+            return $this->db->affectedRows();
+        } else {
+
+            return  $qbuilder->insert($product_varient_array);
+        }
+    }
 }

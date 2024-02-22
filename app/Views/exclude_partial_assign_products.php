@@ -194,35 +194,35 @@ $shope_namecg = $shop_name[0];
 
             }
         });
-        //if (shop_namecg == "desinomatetest.myshopify.com") {
-            // Add submit event handler to the form
-            $("#add_part_prodct").submit(function(event) {
-                // Prevent default form submission
-                event.preventDefault();
 
-                // Get form data
-                var formData = $(this).serialize();
+        // Add submit event handler to the form
+        $("#add_part_prodct").submit(function(event) {
+            // Prevent default form submission
+            event.preventDefault();
 
-                // AJAX request
-                $.ajax({
-                    type: "POST",
-                    url: "add_partial_list",
-                    data: 'assign_save=yes&shop=' + shop_namecg + '&' + formData, // Form data
-                    success: function(response) {
-                        if (response == "success") {
-                            top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
-                        } else {
-                            top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/price-plan';
-                        }
-                        //console.log("Success:", response);
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle error response
-                        console.error("Error:", error);
+            // Get form data
+            var formData = $(this).serialize();
+
+            // AJAX request
+            $.ajax({
+                type: "POST",
+                url: "exclude_partial_list",
+                data: 'un_assign_save=yes&shop=' + shop_namecg + '&' + formData, // Form data
+                success: function(response) {
+                    if (response == "success") {
+                        top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
+                    } else {
+                        top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/price-plan';
                     }
-                });
+                    //console.log("Success:", response);
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    console.error("Error:", error);
+                }
             });
-        //}
+        });
+
 
     });
 </script>

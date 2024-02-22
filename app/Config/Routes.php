@@ -64,6 +64,8 @@ $routes->match(['get', 'post'],'/disbale_handling_charge', 'Home::disbale_handli
 $routes->match(['get', 'post'],'/track_config_steps', 'Home::track_config_steps');
 $routes->match(['get', 'post'],'/add_partial_list', 'Home::add_partial_projx');
 $routes->match(['get', 'post'],'/track-u-choice', 'Home::track_u_choic');
+$routes->match(['get', 'post'],'/exclude_partial_list', 'Home::exclude_partial_projx');
+$routes->match(['get', 'post'],'/exclude_products', 'Home::exclude_products_partial');
 
 
 //exchange & return routes
