@@ -66,36 +66,25 @@ $shope_namecg = $shop_name[0];
                                     <th class="payxnowandrestondelivery-flex-row"><input class="payxnowandrestondelivery-checkAll" type="checkbox">&nbsp; All</th>
                                     <th>Product ID</th>
                                     <th>Product Name</th>
-                                    <th>Partially Added Status</th>
                                 </tr>
                                 <tbody id="product-list">
 
                                     <?php
-                                    //echo"<pre>"; print_r($get_part_list); echo"</pre>";
+                                  
                                     if (!empty($products)) {
                                         foreach ($products as $edge) {
-                                            //print_r($edge);
+                                         
                                             foreach ($edge as $value) {
-                                                //foreach ($node as $key => $value) {
+                                               
                                                 if (isset($value['node'])) {
                                                     $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
-                                                    if (!in_array($prodctid, $get_part_list)) {
-                                                        $partiall_added = "Not Added";
-                                                        $partiall_added2 = "not_added";
-                                                        $cls = "payxnowandrestondelivery-text-red";
-                                                    } else {
-                                                        $partiall_added = "Added";
-                                                        $partiall_added2 = "added";
-                                                        $cls = "payxnowandrestondelivery-text-green";
-                                                    }
-
-                                                    //  $image = count($value['images']) > 0 ? $value['images'][0]['src'] : "";
+                                                 
                                     ?>
                                                     <tr>
                                                         <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" dattatrr="<?php echo esc($partiall_added2); ?>" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
                                                         <td> <?php echo esc($prodctid); ?></td>
                                                         <td> <?php echo esc($value['node']['title']); ?></td>
-                                                        <td class="<?php echo $cls; ?>"><span><?php echo esc($partiall_added); ?></span></td>
+                                                        
 
                                                     </tr>
                                     <?php
