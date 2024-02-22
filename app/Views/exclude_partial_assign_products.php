@@ -83,7 +83,7 @@ $shope_namecg = $shop_name[0];
                                     <th class="payxnowandrestondelivery-flex-row"><input class="payxnowandrestondelivery-checkAll" type="checkbox">&nbsp; All</th>
                                     <th>Product ID</th>
                                     <th>Product Name</th>
-                                    <!-- <th>Partially Added Status</th> -->
+                                    <th>Partially Added Status</th>
                                 </tr>
                                 <tbody id="product-list">
 
