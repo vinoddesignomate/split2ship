@@ -1310,4 +1310,13 @@ class UserModel extends Model
         }
         return $return_array;
     }
+    public function get_exclude_partial_products($product_varient_array)
+    {
+        $qbuilder = $this->db->table('cgsplit_exclude_partial_products');
+        $qbuilder->where('shop_url', $product_varient_array['shop_url']);
+        $qbuilder->where('product_id', $product_varient_array['product_id']);
+        $qbuilder->where('varient_id', $product_varient_array['varient_id']);
+        $q = $qbuilder->get();
+        return $q->getResult();        
+    }
 }
