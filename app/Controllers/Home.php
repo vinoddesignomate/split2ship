@@ -3482,7 +3482,7 @@ class Home extends BaseController
                     foreach ($product_details['product']['variants'] as $produc_varaien) {
                         $product_array = array(
                             "product_id" => $produc_varaien['product_id'],
-                            "title" => $produc_varaien['title'],
+                            "title" => $product_details['product']['title'],
                             "varient_id" => $produc_varaien['id'],
                             "shop_url" => $shopnme
                         );
