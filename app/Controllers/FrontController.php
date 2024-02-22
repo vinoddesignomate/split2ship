@@ -49,6 +49,19 @@ class FrontController extends BaseController
                                 "varient_id" => $this->request->getPost('vid')
                             );
                         }
+
+                        if ($shopname == 'desinomatetest.myshopify.com') {
+                            $get_exclude_products = array(
+                                "product_id" => $this->request->getPost('pid'),
+                                "varient_id" => $this->request->getPost('vid'),
+                                "shop_url" => $shopname
+                            );
+                            $getexlud = $this->user_model->get_exclude_partial_products($get_exclude_products);
+                            echo "<pre>";
+                            print_r($getexlud);
+                            echo "</pre>";
+                        }
+
                         $get_user_choic = $this->user_model->get_user_choic($shopname);
                         if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
                             $cg_split_plan = "basic";
@@ -77,11 +90,7 @@ class FrontController extends BaseController
 
                                     $getvarients = $this->common->rest_api('/admin/api/2023-10/variants/' . $this->request->getPost('vid') . '.json', array(), 'GET', $get_details->access_token, $shopname);
                                     $getvarientsres = json_decode($getvarients['body'], true);
-                                    // if ($shopname == 'e6de84.myshopify.com') {
-                                    //     echo "<pre>";
-                                    //     print_r($getvarientsres);
-                                    //     echo "</pre>";
-                                    // }
+
 
 
                                     if (array_key_exists('errors', $getvarientsres)) {
@@ -150,31 +159,6 @@ class FrontController extends BaseController
                                 }
                             } else {
 
-                                /*if ($shopname == 'desinomatetest.myshopify.com') {
-
-                            $gtbtncolor = $this->user_model->get_checkout_button_color($shopname);
-                            if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
-                                $cg_split_plan = "basic";
-                            } else {
-                                $cg_split_plan = "other";
-                            }
-                            $get_user_choic = $this->user_model->get_user_choic($shopname);
-                            if (!empty($get_user_choic)) {
-                                if ($get_user_choic[0]->choice_val == 'all_pro') {
-                                    $this->all_productsget($get_user_choic, $shopname, $getcustpro, $cg_split_plan);
-                                } else if ($get_user_choic[0]->choice_val == 'spec_coll') {
-
-                                    $this->all_collection_productsget($shopname, $getcustpro, $cg_split_plan, $this->request->getPost('collids'));
-                                } else {
-                                    return 'not_found';
-                                }
-                            } else {
-                                return 'not_found';
-                            }
-                        } else {
-                            return 'not_found';
-                        }
-                        */
                                 return 'not_found';
                             }
                         } else if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
