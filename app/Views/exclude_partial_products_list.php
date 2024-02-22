@@ -133,15 +133,18 @@ $store_name = $shop_name[0];
                     $store_namep = $shop_name[0];
                     if ($total_pages > 1) {
                         echo "<ul class='payxnowandrestondelivery-pagination'>";
-                        if ($part_page > 1) {
-                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/exclude_products_list?part_page=" . ($part_page - 1) . "' class='payxnowandrestondelivery-button'>Previous</a></li>";
-                        } else {
+                        if ($part_page > 1) { ?>
+
+                        <li><a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/exclude_products_list?part_page=<?php echo ($part_page - 1);?>')" href='javascript:void(0);' class='payxnowandrestondelivery-button'>Previous</a></li>
+
+
+                         <?php } else {
                             echo "<li><a onclick='abc(event)' href='javascript:void(0);' class='cg_cpliteship_disabled-link payxnowandrestondelivery-button'>Previous</a></li>";
                         }
                         
-                        if ($total_pages > $part_page) {
-                            echo "<li><a onclick='abc(event)' href='https://admin.shopify.com/store/" . esc($store_namep) . "/apps/pay-x-now-rest-on-delivery/exclude_products_list?part_page=" . ($part_page + 1) . "' class='payxnowandrestondelivery-button'>Next</a></li>";
-                        }
+                        if ($total_pages > $part_page) { ?> 
+                            <li><a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/exclude_products_list?part_page=<?php echo ($part_page + 1);?>')" href='javascript:void(0);' class='payxnowandrestondelivery-button'>Next</a></li>
+                        <?php }
                         echo "</ul>";
                     }
                     ?>
