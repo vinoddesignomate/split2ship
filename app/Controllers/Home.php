@@ -3316,7 +3316,7 @@ class Home extends BaseController
                 $data['checkcol'] = 'no';
             }
 
-            $data['get_part_list'] = $this->user_model->get_partial_productget($_GET['shop']);
+            
 
 
 
@@ -3337,7 +3337,7 @@ class Home extends BaseController
             if (isset($_GET['vid'])) {
                 $data['chart_details'] = $this->user_model->get_store_chart($_GET['shop'], $_GET['vid']);
             }
-            $get_part_list = $this->user_model->get_exclude_partial_productget($_GET['shop']);
+            $data['get_part_list'] = $this->user_model->get_exclude_partial_productget($_GET['shop']);
             echo view('templates/header');
             echo view('exclude_partial_assign_products', $data);
             echo view('templates/footer');
