@@ -1246,7 +1246,7 @@ class UserModel extends Model
         $collectionIdsString = $datafilter['col_ids'];
         $collectionIdsArray = explode(',', $collectionIdsString);
 
-        $getqur = "SELECT * FROM collections_percentage WHERE shop_url = ? AND collection_id IN (".$datafilter['col_ids'].") LIMIT 0,1";
+        $getqur = "SELECT * FROM collections_percentage WHERE shop_url = ? AND collection_id IN (" . $datafilter['col_ids'] . ") LIMIT 0,1";
         $getchres = $this->db->query($getqur, array($datafilter['shop_url']));
         return $getchres->getResult();
     }
@@ -1265,5 +1265,36 @@ class UserModel extends Model
 
             return  $qbuilder->insert($product_varient_array);
         }
+    }
+    public function get_exclude_partial_product_list($shopurl, $searctext = "")
+    {
+
+        $qbuilds = $this->db->table('cgsplit_exclude_partial_products');
+        $qbuilds->select('*');
+        $qbuilds->where(["shop_url" => $shopurl]);
+        if ($searctext != "") {
+            $qbuilds->like("title", $searctext, 'both'); // Using the LIKE operator
+        }
+        $getquery = $qbuilds->get();
+        return $getquery->getResult();
+    }
+    public function get_exclude_partial_product_list_pagina($shopurl, $start, $limit, $searctext = "")
+    {
+
+        $qbuilds = $this->db->table('cgsplit_exclude_partial_products');
+        $qbuilds->select('*');
+        $qbuilds->where(["shop_url" => $shopurl]);
+        if ($searctext != "") {
+            $qbuilds->like("title", $searctext, 'both'); // Using the LIKE operator
+        }
+        $qbuilds->orderBy('movement', 'desc');
+        $qbuilds->limit($limit, $start);
+        $getquery = $qbuilds->get();
+        return $getquery->getResult();
+    }
+    public function remove_exclude_partial_product($id, $shopurl)
+    {
+        $del_query2 = "DELETE FROM cgsplit_exclude_partial_products WHERE id=? AND shop_url=?";
+        $this->db->query($del_query2, array($id, $shopurl));
     }
 }

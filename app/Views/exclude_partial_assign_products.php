@@ -226,9 +226,11 @@ $shope_namecg = $shop_name[0];
                 data: 'un_assign_save=yes&shop=' + shop_namecg + '&' + formData, // Form data
                 success: function(response) {
                     if (response == "success") {
-                        top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
+
+                        navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products_list');
+                        //top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery/partial-latest-products-list';
                     } else {
-                        top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery';
+                        //top.window.location = 'https://admin.shopify.com/store/' + shope_namecg + '/apps/pay-x-now-rest-on-delivery';
                     }
                     //console.log("Success:", response);
                 },

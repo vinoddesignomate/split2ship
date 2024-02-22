@@ -3239,7 +3239,7 @@ class Home extends BaseController
         $collections = json_decode($collections['body'], true);
 
         if (array_key_exists('errors', $collections)) {
-           
+
             echo "<script>top.window.location='https://app.payxnowandrestondelivery.com/public/install?shop=" . $_GET['shop'] . "'</script>";
         } else {
             $coll_array = array();
@@ -3367,9 +3367,67 @@ class Home extends BaseController
                     }
                 }
                 echo "success";
-            }else{
+            } else {
                 echo "invalid";
             }
+        }
+    }
+    public function exclude_products_list()
+    {
+
+        $data = array();
+        if (!isset($_GET['part_page'])) {
+            $page_number = 1;
+        } else {
+            $page_number = $_GET['part_page'];
+        }
+
+        // if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
+        //     $this->install_config_stpes();
+        // }
+        if (!empty($this->request->getPost('assign_remove_pro'))) {
+            foreach ($this->request->getPost('assign_remove_pro') as $prokey => $product_id) {
+                $this->user_model->update_plan_products_remove_part($_GET['shop']);
+                $this->user_model->remove_partial_product($product_id, $_GET['shop']);
+                echo "<script>alert('Product remove successfully'); top.window.location='https://admin.shopify.com/store/" . $this->shope_name . "/apps/pay-x-now-rest-on-delivery/partial-products-list'</script>";
+            }
+        }
+
+        $data['part_page'] = isset($_REQUEST['part_page']) && is_numeric($_REQUEST['part_page']) ? $_REQUEST['part_page'] : 1;
+
+        if ($this->request->getPost('search_text')) {
+            $search_list = $this->request->getPost('search_text');
+        } else {
+            $search_list = "";
+        }
+        //print_r($this->request->getPost('search_text'));
+        //echo $search_list;
+        $data['search_list'] = $search_list;
+        $limit = 10;
+        $initial_page = ($data['part_page'] - 1) * $limit;
+        $data['start_from'] = ($data['part_page'] - 1) * $limit + 1;
+        $get_totals = $this->user_model->get_exclude_partial_product_list($_GET['shop'], $search_list);
+        $get_totals_num = count($get_totals);
+        $data['total_pages'] = ceil($get_totals_num / $limit); //calculate total pages
+        // $total_pages = ceil ($get_totals / $limit);  
+        //echo "total_pages".$data['total_pages'];
+        $data['get_list'] = $this->user_model->get_exclude_partial_product_list_pagina($_GET['shop'], $initial_page, $limit, $search_list);
+
+        $get_details = $this->user_model->get_tokens($_GET['shop']);
+
+        $data['shopname'] = $_GET['shop'];
+
+
+        echo view('templates/header');
+        echo view('exclude_partial_products_list', $data);
+        echo view('templates/footer');
+    }
+    public function exclude_product_remove()
+    {
+
+        if (isset($_GET['id']) && $_GET['id'] != "") {
+            $this->user_model->remove_exclude_partial_product($_GET['id'], $_REQUEST['shop']);
+            echo "done";
         }
     }
 }

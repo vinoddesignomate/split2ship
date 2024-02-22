@@ -66,7 +66,8 @@ $routes->match(['get', 'post'],'/add_partial_list', 'Home::add_partial_projx');
 $routes->match(['get', 'post'],'/track-u-choice', 'Home::track_u_choic');
 $routes->match(['get', 'post'],'/exclude_partial_list', 'Home::exclude_partial_projx');
 $routes->match(['get', 'post'],'/exclude_products', 'Home::exclude_products_partial');
-
+$routes->match(['get', 'post'],'/exclude_products_list', 'Home::exclude_products_list');
+$routes->match(['get', 'post'],'/exclude-products-remove', 'Home::exclude_product_remove');
 
 //exchange & return routes
 $routes->match(['get', 'post'],'/exchangereturn-split', 'FrontController::exchange_return_split');
