@@ -17,6 +17,23 @@ $shope_namecg = $shop_name[0];
         padding: 10px 20px;
         right: 10px
     }
+
+    button.payxnowandrestondelivery-pag_btn_exclude {
+        font-weight: 400;
+        font-size: 12px;
+        border: 1px solid #a8a8b0;
+        border-radius: 4px;
+        background-color: #fff;
+        padding: 12px 24px;
+        margin: 0px 12px;
+        color: #333333;
+    }
+
+    button.payxnowandrestondelivery-pag_btn_exclude:hover {
+        background: var(--btn_bg);
+        color: #fff;
+        border-color: var(--btn_bg);
+    }
 </style>
 <form method="POST" action="" id="add_part_prodct">
 
@@ -66,25 +83,36 @@ $shope_namecg = $shop_name[0];
                                     <th class="payxnowandrestondelivery-flex-row"><input class="payxnowandrestondelivery-checkAll" type="checkbox">&nbsp; All</th>
                                     <th>Product ID</th>
                                     <th>Product Name</th>
+                                    <!-- <th>Partially Added Status</th> -->
                                 </tr>
                                 <tbody id="product-list">
 
                                     <?php
-                                  
+                                    //echo"<pre>"; print_r($get_part_list); echo"</pre>";
                                     if (!empty($products)) {
                                         foreach ($products as $edge) {
-                                         
+                                            //print_r($edge);
                                             foreach ($edge as $value) {
-                                               
+                                                //foreach ($node as $key => $value) {
                                                 if (isset($value['node'])) {
                                                     $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
-                                                 
+                                                    if (!in_array($prodctid, $get_part_list)) {
+                                                        $partiall_added = "Not Added";
+                                                        $partiall_added2 = "not_added";
+                                                        $cls = "payxnowandrestondelivery-text-red";
+                                                    } else {
+                                                        $partiall_added = "Added";
+                                                        $partiall_added2 = "added";
+                                                        $cls = "payxnowandrestondelivery-text-green";
+                                                    }
+
+                                                    //  $image = count($value['images']) > 0 ? $value['images'][0]['src'] : "";
                                     ?>
                                                     <tr>
                                                         <td><input class="payxnowandrestondelivery-chkSelect" type="checkbox" dattatrr="<?php echo esc($partiall_added2); ?>" name="assign_pro[]" value="<?php echo esc($prodctid); ?>"></td>
                                                         <td> <?php echo esc($prodctid); ?></td>
                                                         <td> <?php echo esc($value['node']['title']); ?></td>
-                                                        
+                                                        <td class="<?php echo $cls; ?>"><span><?php echo esc($partiall_added); ?></span></td>
 
                                                     </tr>
                                     <?php
@@ -112,9 +140,9 @@ $shope_namecg = $shop_name[0];
 
                                 <div class="payxnowandrestondelivery-listButtonNext">
 
-                                    <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
+                                    <button type="button" data-info="" class="payxnowandrestondelivery-pag_btn_exclude" data-rel="previous" data-store="<?php echo $_GET['shop']; ?>">Previous</button>
 
-                                    <button type="button" class="payxnowandrestondelivery-pag_btn" data-info="<?php echo esc($pagenewxt); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
+                                    <button type="button" class="payxnowandrestondelivery-pag_btn_exclude" data-info="<?php echo esc($pagenewxt); ?>" data-rel="next" data-store="<?php echo esc($_GET['shop']); ?>">Next</button>
 
                                 </div>
 
@@ -155,6 +183,52 @@ $shope_namecg = $shop_name[0];
     var shope_namecg = '<?php echo $shope_namecg; ?>';
     $(function() {
 
+        $('.payxnowandrestondelivery-pag_btn_exclude').on('click', function(e) {
+            $('.payxnowandrestondelivery-pag_btn_exclude').removeClass('active');
+            var data_info = $(this).attr('data-info');
+            var data_rel = $(this).attr('data-rel');
+            var data_store = $(this).attr('data-store');
+            var vendor_name = $("#vendor_name").val();
+            var sel_val = $(".colidchk").val();
+            var srchtctval = $(".srchtctval").val();
+            if (data_info != "") {
+                $('[data-rel=' + data_rel + ']').addClass('active');
+            }
+            if (data_info != '') {
+                $.ajax({
+                    type: "GET",
+                    url: "exclude-product-pagination",
+                    data: {
+                        page_info: data_info,
+                        rel: data_rel,
+                        shop: data_store,
+                        url: data_store,
+                        coll_id: sel_val,
+                        vend_id: vendor_name,
+                        search_text: srchtctval
+
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response['prev'] != '') {
+                            $('button[data-rel="previous"]').attr('data-info', response['prev']);
+                        } else {
+                            $('button[data-rel="previous"]').attr('data-info', "");
+                        }
+                        if (response['next'] != '') {
+                            $('button[data-rel="next"]').attr('data-info', response['next']);
+                        } else {
+                            $('button[data-rel="next"]').attr('data-info', "");
+                        }
+                        if (response['html'] != '') {
+                            $('#product-list').html(response['html']);
+                        }
+                    }
+
+                });
+            }
+        });
+
         $('#get_coll_exclude').on('change', function(e) {
             var sel_val = $("#get_coll_exclude").val();
             // var v_name = $("#vendor_name option:selected").text();
@@ -162,7 +236,7 @@ $shope_namecg = $shop_name[0];
 
                 navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products');
 
-            
+
             } else {
 
                 navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products?collectionparms=' + sel_val);

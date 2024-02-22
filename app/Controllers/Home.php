@@ -3337,10 +3337,133 @@ class Home extends BaseController
             if (isset($_GET['vid'])) {
                 $data['chart_details'] = $this->user_model->get_store_chart($_GET['shop'], $_GET['vid']);
             }
+            $get_part_list = $this->user_model->get_exclude_partial_productget($_GET['shop']);
             echo view('templates/header');
             echo view('exclude_partial_assign_products', $data);
             echo view('templates/footer');
         }
+    }
+    public function exclude_product_pagination()
+    {
+
+
+        //$this->check_subscribe();
+        $get_details = $this->user_model->get_tokens($_GET['url']);
+        $get_part_list = $this->user_model->get_exclude_partial_productget($_GET['shop']);
+
+        $shop_url = $_GET['url'];
+        $rel = $_GET['rel'];
+        $page_info = $_GET['page_info'];
+        //get products 
+        $page_array = array(
+            'limit' => 10,
+            'page_info' => $page_info,
+            'rel' => $rel
+        );
+
+        if ($rel == "next") {
+
+            if ($this->request->getPost('search_text')) {
+                $params_array = array(
+                    "collection_id" => $_GET['coll_id'],
+                    "limit" => 10,
+                    "nextpage_getpage" => $page_info,
+                    "search_parms" => $this->request->getPost('search_text')
+                );
+                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+            } else {
+                $params_array = array(
+                    "collection_id" => $_GET['coll_id'],
+                    "limit" => 10,
+                    "nextpage_getpage" => $page_info
+                );
+                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+            }
+        } else if ($rel == "previous") {
+            if ($this->request->getPost('search_text')) {
+                $params_array = array(
+                    "collection_id" => $_GET['coll_id'],
+                    "limit" => 10,
+                    "prev_getpage" => $page_info,
+                    "search_parms" => $this->request->getPost('search_text')
+                );
+                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+            } else {
+
+                $params_array = array(
+                    "collection_id" => $_GET['coll_id'],
+                    "limit" => 10,
+                    "prev_getpage" => $page_info,
+                );
+                $grapql_products_list = $this->common->getproductsgrapqlapi($params_array, $_GET['shop'], $get_details->access_token);
+                $grapql_products_list_prodct = json_decode($grapql_products_list['body'], true);
+            }
+        }
+
+        if (isset($grapql_products_list_prodct['data']['collection'])) {
+            $product_list = $grapql_products_list_prodct['data']['collection']['products'];
+        } else {
+            $product_list = $grapql_products_list_prodct['data']['products'];
+        }
+
+        $prev_link = '';
+        $next_link = '';
+
+        $html = '';
+        // $products = json_decode($products['data'], true);
+        foreach ($product_list as $edge) {
+            //foreach ($product as $key => $value) {
+            // if (!in_array($value['id'], $get_part_list)) {
+            foreach ($edge as $value) {
+                if (isset($value['node'])) {
+                    $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
+                    if (!in_array($prodctid, $get_part_list)) {
+                        $partiall_added = "Not Added";
+                        $partiall_added2 = "not_added";
+                        $cls = "payxnowandrestondelivery-text-red";
+                    } else {
+                        $partiall_added = "Added";
+                        $partiall_added2 = "added";
+                        $cls = "payxnowandrestondelivery-text-green";
+                    }
+
+                    // $image = count($value['images']) > 0 ? $value['images'][0]['src'] : "";
+
+                    $html .= '<tr>';
+                    $html .= '<td><input class="chkSelect" dattatrr="' . esc($partiall_added2) . '" type="checkbox" name="assign_pro[]" value="' . esc($prodctid) . '"></td>';
+                    $html .= '<td>' . $prodctid . '</td>';
+                    $html .= '<td>' . $value['node']['title'] . '</td>';
+                    $html .= '<td class="' . $cls . '"><span>' . $partiall_added . '</span></td>';
+                }
+            }
+            // }
+            //}
+        }
+        if (!empty($product_list)) {
+
+            if (isset($grapql_products_list_prodct['data']['collection'])) {
+                if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasNextPage'] == 1) {
+                    $next_link = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['endCursor'];
+                }
+
+                if (isset($grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasPreviousPage']) && $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['hasPreviousPage'] == 1) {
+                    $prev_link = $grapql_products_list_prodct['data']['collection']['products']['pageInfo']['startCursor'];
+                }
+            } else {
+                if (isset($grapql_products_list_prodct['data']['products']['pageInfo']['hasNextPage']) && $grapql_products_list_prodct['data']['products']['pageInfo']['hasNextPage'] == 1) {
+                    $next_link = $grapql_products_list_prodct['data']['products']['pageInfo']['endCursor'];
+                }
+
+                if (isset($grapql_products_list_prodct['data']['products']['pageInfo']['hasPreviousPage']) && $grapql_products_list_prodct['data']['products']['pageInfo']['hasPreviousPage'] == 1) {
+                    $prev_link = $grapql_products_list_prodct['data']['products']['pageInfo']['startCursor'];
+                }
+            }
+        }
+        echo json_encode(array('prev' => $prev_link, 'next' => $next_link, 'html' => $html));
+        //echo json_encode(array('prev' => $page_info, 'next' => $page_info, 'html' => $html));
     }
     public function exclude_partial_projx()
     {

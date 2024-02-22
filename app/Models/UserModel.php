@@ -1297,4 +1297,17 @@ class UserModel extends Model
         $del_query2 = "DELETE FROM cgsplit_exclude_partial_products WHERE id=? AND shop_url=?";
         $this->db->query($del_query2, array($id, $shopurl));
     }
+    public function get_exclude_partial_productget($shopurl)
+    {
+
+        $qbuilds = $this->db->table('cgsplit_exclude_partial_products');
+        $qbuilds->select('product_id');
+        $qbuilds->where(["shop_url" => $shopurl]);
+        $getquery = $qbuilds->get();
+        $return_array = array();
+        foreach ($getquery->getResult() as $getlist) {
+            $return_array[] = $getlist->product_id;
+        }
+        return $return_array;
+    }
 }

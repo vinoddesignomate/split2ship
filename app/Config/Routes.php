@@ -68,6 +68,7 @@ $routes->match(['get', 'post'],'/exclude_partial_list', 'Home::exclude_partial_p
 $routes->match(['get', 'post'],'/exclude_products', 'Home::exclude_products_partial');
 $routes->match(['get', 'post'],'/exclude_products_list', 'Home::exclude_products_list');
 $routes->match(['get', 'post'],'/exclude-products-remove', 'Home::exclude_product_remove');
+$routes->match(['get', 'post'],'/exclude-product-pagination', 'Home::exclude_product_pagination');
 
 //exchange & return routes
 $routes->match(['get', 'post'],'/exchangereturn-split', 'FrontController::exchange_return_split');
