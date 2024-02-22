@@ -192,7 +192,7 @@ $store_name = $shop_name[0];
                 data: 'shop=' + shopname,
                 success: function(response) {
                     //alert('Product remove successfully');
-                    navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/exclude_products_list');
+                    navigateToPage('https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/exclude_products_list?pro=tru');
                     //location.reload();
                 }
 
