@@ -50,18 +50,18 @@ class FrontController extends BaseController
                             );
                         }
 
-                        // if ($shopname == 'desinomatetest.myshopify.com') {
-                        $get_exclude_products = array(
-                            "product_id" => $this->request->getPost('pid'),
-                            "varient_id" => $this->request->getPost('vid'),
-                            "shop_url" => $shopname
-                        );
-                        $getexlud = $this->user_model->get_exclude_partial_products($get_exclude_products);
+                       
+                        // $get_exclude_products = array(
+                        //     "product_id" => $this->request->getPost('pid'),
+                        //     "varient_id" => $this->request->getPost('vid'),
+                        //     "shop_url" => $shopname
+                        // );
+                        // $getexlud = $this->user_model->get_exclude_partial_products($get_exclude_products);
 
-                        if (!empty($getexlud)) {
+                        // if (!empty($getexlud)) {
 
-                            return 'not_found';
-                        } else {
+                        //     return 'not_found';
+                        // } else {
 
                             $get_user_choic = $this->user_model->get_user_choic($shopname);
                             if (isset($plan_details[0]->plan_name) && $plan_details[0]->plan_name == "basic") {
@@ -169,7 +169,7 @@ class FrontController extends BaseController
                             } else {
                                 return 'not_found';
                             }
-                        }
+                        //}  //uncomment while live exclude feature
                     } else {
                         return 'not_found';
                     }
