@@ -703,6 +703,7 @@ class Home extends BaseController
                 //if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                 //$this->install_config_stpes();
                 // }
+                $data['get_customize_store_list'] = $this->user_model->get_customize_store_list_new();
                 echo view('templates/header');
                 if ($_GET['shop'] == 'desinomatetest.myshopify.com') {
                     echo view('welcome_message', $data);

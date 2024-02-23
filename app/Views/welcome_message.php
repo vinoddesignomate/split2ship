@@ -366,17 +366,19 @@ $store_namecnf = $shop_name[0];
                             </form>
                         </div>
                     </div>
-                    <div class="flexWrapCg">
-                        <div class="insiteFlexWrap34">
-                            <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
+                    <?php if (!in_array($_GET['shop'], $get_customize_store_list)) { ?>
+                        <div class="flexWrapCg">
+                            <div class="insiteFlexWrap34">
+                                <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_coll">Specific collections</p>
+                            </div>
+                            <div class="insiteFlexWrap34 Updated"><span class="choicbtncls" id="choc_msg_btn_collct">
+                                    <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
+                                        <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
+                                    <?php } ?>
+                                </span>
+                            </div>
                         </div>
-                        <div class="insiteFlexWrap34 Updated"><span class="choicbtncls" id="choc_msg_btn_collct">
-                                <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_coll') { ?>
-                                    <a onclick="navigateToPage('https://admin.shopify.com/store/<?php echo esc($store_namecnf); ?>/apps/pay-x-now-rest-on-delivery/collection-wise-partial-products');" class="anchorCGclick" href="javascript:void(0);">Select collection</a>
-                                <?php } ?>
-                            </span>
-                        </div>
-                    </div>
+                    <?php } ?>
                     <div class="flexWrapCg">
                         <div class="insiteFlexWrap34">
                             <p><input type="radio" <?php if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'spec_prodct') { ?> checked <?php } ?> name="user_pro_chocie" style="float: left;width: 1%;" value="spec_prodct">Specific products</p>
@@ -514,7 +516,7 @@ $store_namecnf = $shop_name[0];
             </div>
         <?php }*/ ?>
         <!-- main area ends-->
-    </section>    
+    </section>
 
     <section class="payxnowandrestondelivery-sec-space">
         <div class="payxnowandrestondelivery-container">
@@ -832,7 +834,7 @@ $store_namecnf = $shop_name[0];
                 });
             });
 
-        
+
             // Function to show the popup
             function showPopup(planename) {
                 var popup = document.getElementById("popup");
