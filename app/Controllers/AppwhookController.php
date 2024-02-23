@@ -2277,20 +2277,29 @@ class AppwhookController extends BaseController
 
             foreach ($get_addtocartdata->line_items as $cart_item) {
 
-                $condtion_array = array(
-                    "product_id" => $cart_item->product_id,
-                    "varient_id" => $cart_item->variant_id
-                );
 
-                $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
-                if (!empty($get_resulrs)) {
+
+                $get_user_choic = $this->user_model->get_user_choic($_GET['cshop']);
+                if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
                     $partialtype = "partial";
-                    $partial_percentage = $get_resulrs[0]->partial_percentage;
-                    $partial_type = $get_resulrs[0]->partial_type;
+                    $partial_percentage = $get_user_choic[0]->partial_value;
+                    $partial_type = $get_user_choic[0]->partial_type;
                 } else {
-                    $partialtype = "fullpay";
-                    $partial_percentage = '';
-                    $partial_type = '';
+                    $condtion_array = array(
+                        "product_id" => $cart_item->product_id,
+                        "varient_id" => $cart_item->variant_id
+                    );
+
+                    $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
+                    if (!empty($get_resulrs)) {
+                        $partialtype = "partial";
+                        $partial_percentage = $get_resulrs[0]->partial_percentage;
+                        $partial_type = $get_resulrs[0]->partial_type;
+                    } else {
+                        $partialtype = "fullpay";
+                        $partial_percentage = '';
+                        $partial_type = '';
+                    }
                 }
 
                 if (isset($cart_item->properties)) {
@@ -2309,8 +2318,8 @@ class AppwhookController extends BaseController
                     "partial_type" => $partial_type,
                 );
 
-                // $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
-                // $this->user_model->check_test_response($updateprorespo);
+                $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
+                $this->user_model->check_test_response($updateprorespo);
                 $this->user_model->track_cart_itme_data($add_to_cart_line_item);
             }
         } else {
