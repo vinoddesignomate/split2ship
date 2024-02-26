@@ -39,7 +39,7 @@ $shope_namecg = $shop_name[0];
 
     <div class="payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page cg_prolst">
-            <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/partial-products-list");' href="javascript:void(0);" class="payxnowandrestondelivery-button payCGbtn4List">Partial Product List</a>
+            <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_partial_list");' href="javascript:void(0);" class="payxnowandrestondelivery-button payCGbtn4List">Exclude Product List</a>
             <div class="payxnowandrestondelivery-inner-wrapper">
                 <div class="payxnowandrestondelivery-side-bar-col">
                     <h2>Pick Collection</h2>
@@ -71,7 +71,7 @@ $shope_namecg = $shop_name[0];
                     <div class="payxnowandrestondelivery-head-wrapper">
                         <h2>Product name</h2>
                         <?php if ($checkcol == 'yes') { ?>
-                            <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Partial payment setup</button>
+                            <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Exclude</button>
                             <!-- <a href="#" class="button">+ &nbsp; Partial payment setup</a> -->
                         <?php } ?>
                     </div>
@@ -83,7 +83,7 @@ $shope_namecg = $shop_name[0];
                                     <th class="payxnowandrestondelivery-flex-row"><input class="payxnowandrestondelivery-checkAll" type="checkbox">&nbsp; All</th>
                                     <th>Product ID</th>
                                     <th>Product Name</th>
-                                    <th>Partially Added Status</th>
+                                    <th>Status</th>
                                 </tr>
                                 <tbody id="product-list">
 
@@ -97,11 +97,11 @@ $shope_namecg = $shop_name[0];
                                                 if (isset($value['node'])) {
                                                     $prodctid = str_replace("gid://shopify/Product/", "", $value['node']['id']);
                                                     if (!in_array($prodctid, $get_part_list)) {
-                                                        $partiall_added = "Not Added";
+                                                        $partiall_added = "Not Excluded";
                                                         $partiall_added2 = "not_added";
                                                         $cls = "payxnowandrestondelivery-text-red";
                                                     } else {
-                                                        $partiall_added = "Added";
+                                                        $partiall_added = "Excluded";
                                                         $partiall_added2 = "added";
                                                         $cls = "payxnowandrestondelivery-text-green";
                                                     }
@@ -154,7 +154,7 @@ $shope_namecg = $shop_name[0];
                     <div class="payxnowandrestondelivery-head-wrapper payxnowandrestondelivery-justify-end">
 
                         <?php if ($checkcol == 'yes') { ?>
-                            <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Partial payment setup</button>
+                            <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="assign_save" value="save" id="load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta">+ &nbsp; Exclude</button>
                             <!-- <a href="#" class="button">+ &nbsp; Partial payment setup</a> -->
                         <?php } ?>
                     </div>
