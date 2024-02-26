@@ -34,16 +34,25 @@ $shope_namecg = $shop_name[0];
         color: #fff;
         border-color: var(--btn_bg);
     }
+
+    .buttonSpaceCgNewPage .search-wrapper {
+        margin-top: 10px;
+    }
+
+    .buttonSpaceCgNewPage select,
+    .buttonSpaceCgNewPage .search-wrapper {
+        max-width: 310px !important;
+    }
 </style>
 <form method="POST" action="" id="add_part_prodct">
 
     <div class="payxnowandrestondelivery-container">
         <div class="payxnowandrestondelivery-main-area payxnowandrestondelivery-no-sidebar payxnowandrestondelivery-detail-page cg_prolst">
-            <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_partial_list");' href="javascript:void(0);" class="payxnowandrestondelivery-button payCGbtn4List">Exclude Product List</a>
+            <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($shope_namecg); ?>/apps/pay-x-now-rest-on-delivery/exclude_products_list");' href="javascript:void(0);" class="payxnowandrestondelivery-button payCGbtn4List">Exclude Product List</a>
             <div class="payxnowandrestondelivery-inner-wrapper">
                 <div class="payxnowandrestondelivery-side-bar-col">
                     <h2>Pick Collection</h2>
-                    <div class="payxnowandrestondelivery-custom-select">
+                    <div class="payxnowandrestondelivery-custom-select buttonSpaceCgNewPage">
                         <select style="display:block;" class="colidchk" required id="get_coll_exclude" name="get_coll">
                             <option value="0">Select Collection...</option>
                             <?php foreach ($get_store_collections as $get_collections) { ?>

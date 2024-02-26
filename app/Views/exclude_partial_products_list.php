@@ -90,7 +90,7 @@ $store_name = $shop_name[0];
                 if (!empty($get_list)) { ?>
                     <form method="POST" onsubmit="return remove_prodct()" id="removform">
                         <button type="submit" class="payxnowandrestondelivery-button payxnowandrestondelivery-main-cta" name="remove_partial_pro" value="remove" id="remove_load_page" class="payxnowandrestondelivery-btn-with-bg payxnowandrestondelivery-main-cta"><i class="fa fa-trash" aria-hidden="true"></i>
-                            Remove partial payment</button>
+                            Delete</button>
 
                         <div class="payxnowandrestondelivery-table-outer-wrapper">
                             <table>
