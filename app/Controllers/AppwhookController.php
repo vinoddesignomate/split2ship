@@ -2290,8 +2290,20 @@ class AppwhookController extends BaseController
                         "varient_id" => $cart_item->variant_id
                     );
 
+                    $get_exclude_products = array(
+                        "product_id" => $cart_item->product_id,
+                        "varient_id" => $cart_item->variant_id,
+                        "shop_url" => $_GET['cshop']
+                    );
+                    $getexlud = $this->user_model->get_exclude_partial_products($get_exclude_products);
+
                     $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
-                    if (!empty($get_resulrs)) {
+
+                    if (!empty($getexlud)) {
+                        $partialtype = "fullpay";
+                        $partial_percentage = '';
+                        $partial_type = '';
+                    } elseif (!empty($get_resulrs)) {
                         $partialtype = "partial";
                         $partial_percentage = $get_resulrs[0]->partial_percentage;
                         $partial_type = $get_resulrs[0]->partial_type;
