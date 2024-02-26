@@ -56,7 +56,7 @@ $store_name = $shop_name[0];
 </style>
 <div class="payxnowandrestondelivery-container">
     <div class="payxnowandrestondelivery-main-heading payxnowandrestondelivery-back-heading">
-        <h5> <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/products-list");' href="javascript:void(0);">Back</a></h5>
+        <h5> <a onclick='navigateToPage("https://admin.shopify.com/store/<?php echo htmlspecialchars($store_name); ?>/apps/pay-x-now-rest-on-delivery/exclude_products");' href="javascript:void(0);">Back</a></h5>
 
     </div>
 </div>
