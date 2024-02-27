@@ -1,3 +1,20 @@
+<?php
+
+$link = $_SERVER['PHP_SELF'];
+
+$link_array = explode('/', $link);
+
+$page_name = end($link_array);
+
+
+$shop_name = explode(".", $_GET['shop']);
+$store_name = $shop_name[0];
+if ($page_name == "index.php" || $page_name == "mainpage") {
+    $clsname = "payxhomecls";
+} else {
+    $clsname = $page_name;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +26,13 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/style.css">
+    <?php if ($_GET['shop'] == "desinomatetest.myshopify.com") { ?>
+        <link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@12.19.0/build/esm/styles.css">
+    <?php } ?>
 
 
     <script src="https://unpkg.com/@shopify/app-bridge@3"></script>
+
     <!-- <script src="https://unpkg.com/@shopify/app-bridge@3"></script> -->
 
     <script>
@@ -63,23 +84,7 @@
     <!--End of Tawk.to Script-->
 
 </head>
-<?php
 
-$link = $_SERVER['PHP_SELF'];
-
-$link_array = explode('/', $link);
-
-$page_name = end($link_array);
-
-
-$shop_name = explode(".", $_GET['shop']);
-$store_name = $shop_name[0];
-if ($page_name == "index.php" || $page_name == "mainpage") {
-    $clsname = "payxhomecls";
-} else {
-    $clsname = $page_name;
-}
-?>
 
 <body class="<?php echo $clsname; ?> ">
 
