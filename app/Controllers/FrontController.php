@@ -50,7 +50,7 @@ class FrontController extends BaseController
                             );
                         }
 
-                       
+
                         $get_exclude_products = array(
                             "product_id" => $this->request->getPost('pid'),
                             "varient_id" => $this->request->getPost('vid'),
@@ -2282,37 +2282,7 @@ class FrontController extends BaseController
         $this->user_model->check_cron_ruinning_stst($updateprorespo);
         echo "done";
     }
-    public function removewebhookold()
-    {
-        $get_details = $this->user_model->get_tokens($_GET['shop']);
-        if (!isset($_GET['rem_del'])) {
 
-            $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
-
-            $getdggyh = json_decode($getwebhok['body'], true);
-
-            echo "getdggyh<pre>";
-            print_r($getdggyh);
-            echo "</pre>";
-        }
-        if (isset($_GET['create_web'])) {
-
-            $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/update-pro-test?newshopid=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
-        }
-        if (isset($_GET['rem_del'])) {
-            // $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
-            foreach ($_GET['rem_del'] as $key => $valueid) {
-                echo "valueid=" . $valueid;
-                $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/' . $valueid . '.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
-
-                $defggetdggyh = json_decode($delweb['body'], true);
-
-                echo "defggetdggyh<pre>";
-                print_r($defggetdggyh);
-                echo "</pre>";
-            }
-        }
-    }
     public function create_double_order_cron()
     {
         /*
@@ -3171,5 +3141,36 @@ class FrontController extends BaseController
 
             }
         }*/
+    }
+    public function removewebhookold()
+    {
+        $get_details = $this->user_model->get_tokens($_GET['shop']);
+        if (!isset($_GET['rem_del'])) {
+
+            $getwebhok = $this->common->rest_api('/admin/api/2023-10/webhooks.json', array(), 'GET', $get_details->access_token, $_GET['shop']);
+
+            $getdggyh = json_decode($getwebhok['body'], true);
+
+            echo "getdggyh<pre>";
+            print_r($getdggyh);
+            echo "</pre>";
+        }
+        if (isset($_GET['create_web'])) {
+
+            $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
+        }
+        if (isset($_GET['rem_del'])) {
+            // $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
+            foreach ($_GET['rem_del'] as $key => $valueid) {
+                echo "valueid=" . $valueid;
+                $delweb = $this->common->rest_api('/admin/api/2023-10/webhooks/' . $valueid . '.json', array(), 'DELETE', $get_details->access_token, $_GET['shop']);
+
+                $defggetdggyh = json_decode($delweb['body'], true);
+
+                echo "defggetdggyh<pre>";
+                print_r($defggetdggyh);
+                echo "</pre>";
+            }
+        }
     }
 }
