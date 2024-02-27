@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopify Polaris Sample App</title>
     <!-- Include Shopify Polaris CSS -->
-    <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/5.0.0/polaris.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@12.19.0/build/esm/styles.css">
 </head>
 <body>
     <div class="Polaris-Page">
