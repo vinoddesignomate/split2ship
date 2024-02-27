@@ -69,6 +69,7 @@ $routes->match(['get', 'post'],'/exclude_products', 'Home::exclude_products_part
 $routes->match(['get', 'post'],'/exclude_products_list', 'Home::exclude_products_list');
 $routes->match(['get', 'post'],'/exclude-products-remove', 'Home::exclude_product_remove');
 $routes->match(['get', 'post'],'/exclude-product-pagination', 'Home::exclude_product_pagination');
+$routes->match(['get', 'post'],'/polarispage', 'Home::polarispage');
 
 //exchange & return routes
 $routes->match(['get', 'post'],'/exchangereturn-split', 'FrontController::exchange_return_split');

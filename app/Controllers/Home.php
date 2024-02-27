@@ -3317,7 +3317,7 @@ class Home extends BaseController
                 $data['checkcol'] = 'no';
             }
 
-            
+
 
 
 
@@ -3553,5 +3553,10 @@ class Home extends BaseController
             $this->user_model->remove_exclude_partial_product($_GET['id'], $_REQUEST['shop']);
             echo "done";
         }
+    }
+    public function polarispage()
+    {
+        $data = array();
+        echo view('polarispage', $data);
     }
 }
