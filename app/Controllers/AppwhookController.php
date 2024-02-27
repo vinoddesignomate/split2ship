@@ -2276,12 +2276,10 @@ class AppwhookController extends BaseController
 
                     $this->user_model->remove_cart_item($remove_cart_item);
                 }
-
+                
+                $get_user_choic = $this->user_model->get_user_choic($_GET['cshop']);
                 foreach ($get_addtocartdata->line_items as $cart_item) {
-
-
-
-                    $get_user_choic = $this->user_model->get_user_choic($_GET['cshop']);
+                    
                     if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
                         $partialtype = "partial";
                         $partial_percentage = $get_user_choic[0]->partial_value;
