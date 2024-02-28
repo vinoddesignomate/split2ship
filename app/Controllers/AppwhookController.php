@@ -2258,6 +2258,17 @@ class AppwhookController extends BaseController
 
         $get_addtocartdata = json_decode($getaddtocartdata);
         $get_customize_store_list = $this->user_model->get_customize_store_list_new();
+
+        if ($_GET['cshop'] == '3d95e0.myshopify.com') {
+            $log_filename = WRITEPATH . "updatecartdata";
+            
+            if (!file_exists($log_filename)) {
+
+                mkdir($log_filename, 0777, true);
+            }
+            $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+            file_put_contents($log_file_data, print_r($get_addtocartdata, true));
+        }
         // $shopenablearray = array(
         //     "onlyneon1.myshopify.com",
         //     "3d-printing-store-india.myshopify.com",
@@ -2276,14 +2287,16 @@ class AppwhookController extends BaseController
 
                     $this->user_model->remove_cart_item($remove_cart_item);
                 }
-                
+
                 $get_user_choic = $this->user_model->get_user_choic($_GET['cshop']);
                 foreach ($get_addtocartdata->line_items as $cart_item) {
-                    
+
                     if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
                         $partialtype = "partial";
                         $partial_percentage = $get_user_choic[0]->partial_value;
                         $partial_type = $get_user_choic[0]->partial_type;
+
+                        
                     } else {
                         $condtion_array = array(
                             "product_id" => $cart_item->product_id,
