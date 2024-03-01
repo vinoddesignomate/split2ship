@@ -2255,7 +2255,7 @@ class AppwhookController extends BaseController
         }
 
         fclose($webhookpd);
-
+        
         $get_addtocartdata = json_decode($getaddtocartdata);
         $get_customize_store_list = $this->user_model->get_customize_store_list_new();
 
