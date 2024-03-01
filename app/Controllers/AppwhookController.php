@@ -2266,7 +2266,7 @@ class AppwhookController extends BaseController
 
                 mkdir($log_filename, 0777, true);
             }
-            $log_file_data = $log_filename . '/log_' . date('d-M-Y') . '.log';
+            $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
             file_put_contents($log_file_data, print_r($get_addtocartdata, true));
         }
         // $shopenablearray = array(
