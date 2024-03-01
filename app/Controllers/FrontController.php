@@ -3157,7 +3157,7 @@ class FrontController extends BaseController
         }
         if (isset($_GET['create_web'])) {
 
-            $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "products/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
+            $this->common->rest_api('/admin/api/2022-07/webhooks.json', array("webhook" => array("topic" => "carts/update", "address" => 'https://app.payxnowandrestondelivery.com/updatecartdata?cshop=' . $_GET['shop'], "format" => "json")), 'POST', $get_details->access_token, $_GET['shop']);
         }
         if (isset($_GET['rem_del'])) {
             // $remove_webhklist = array("1453089849623", "1453089882391", "1453089915159", "1453089947927", "1453089980695");
