@@ -2246,19 +2246,6 @@ class AppwhookController extends BaseController
     function update_cart_webhook_data()
     {
 
-        $getaddtocartdata = NULL;
-
-        // Get webhook content from the POST
-        $webhookpd = fopen('php://input', 'rb');
-        while (!feof($webhookpd)) {
-            $getaddtocartdata .= fread($webhookpd, 4096);
-        }
-
-        fclose($webhookpd);
-
-        $get_addtocartdata = json_decode($getaddtocartdata);
-
-
         if ($_GET['cshop'] == '3d95e0.myshopify.com') {
             // $log_filename = WRITEPATH . "updatecartdata";
 
@@ -2271,6 +2258,17 @@ class AppwhookController extends BaseController
             echo "200 ok";
             exit;
         } else {
+            $getaddtocartdata = NULL;
+
+            // Get webhook content from the POST
+            $webhookpd = fopen('php://input', 'rb');
+            while (!feof($webhookpd)) {
+                $getaddtocartdata .= fread($webhookpd, 4096);
+            }
+
+            fclose($webhookpd);
+
+            $get_addtocartdata = json_decode($getaddtocartdata);
             $get_customize_store_list = $this->user_model->get_customize_store_list_new();
             // $shopenablearray = array(
             //     "onlyneon1.myshopify.com",
