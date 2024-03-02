@@ -2255,105 +2255,107 @@ class AppwhookController extends BaseController
         }
 
         fclose($webhookpd);
-        
+
         $get_addtocartdata = json_decode($getaddtocartdata);
-        $get_customize_store_list = $this->user_model->get_customize_store_list_new();
+
 
         if ($_GET['cshop'] == '3d95e0.myshopify.com') {
-            $log_filename = WRITEPATH . "updatecartdata";
-            
-            if (!file_exists($log_filename)) {
+            // $log_filename = WRITEPATH . "updatecartdata";
 
-                mkdir($log_filename, 0777, true);
-            }
-            $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
-            file_put_contents($log_file_data, print_r($get_addtocartdata, true));
-        }
-        // $shopenablearray = array(
-        //     "onlyneon1.myshopify.com",
-        //     "3d-printing-store-india.myshopify.com",
-        //     "desinomatetest.myshopify.com",
-        //     "c18560.myshopify.com",
-        // );
-        if (in_array($_GET['cshop'], $get_customize_store_list)) {
-            // $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
-            // $this->user_model->check_test_response($updateprorespo);
-            if (!empty($get_addtocartdata)) {
-                if (isset($get_addtocartdata->id)) {
-                    $remove_cart_item = array(
-                        "cart_id" => $get_addtocartdata->id,
-                        "shop_url" => $_GET['cshop']
-                    );
+            // if (!file_exists($log_filename)) {
 
-                    $this->user_model->remove_cart_item($remove_cart_item);
-                }
-
-                $get_user_choic = $this->user_model->get_user_choic($_GET['cshop']);
-                foreach ($get_addtocartdata->line_items as $cart_item) {
-
-                    if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
-                        $partialtype = "partial";
-                        $partial_percentage = $get_user_choic[0]->partial_value;
-                        $partial_type = $get_user_choic[0]->partial_type;
-
-                        
-                    } else {
-                        $condtion_array = array(
-                            "product_id" => $cart_item->product_id,
-                            "varient_id" => $cart_item->variant_id
-                        );
-
-                        $get_exclude_products = array(
-                            "product_id" => $cart_item->product_id,
-                            "varient_id" => $cart_item->variant_id,
+            //     mkdir($log_filename, 0777, true);
+            // }
+            // $log_file_data = $log_filename . '/log_' . date('d-M-Y H:i:s') . '.log';
+            // file_put_contents($log_file_data, print_r($get_addtocartdata, true));
+            echo "200 ok";
+            exit;
+        } else {
+            $get_customize_store_list = $this->user_model->get_customize_store_list_new();
+            // $shopenablearray = array(
+            //     "onlyneon1.myshopify.com",
+            //     "3d-printing-store-india.myshopify.com",
+            //     "desinomatetest.myshopify.com",
+            //     "c18560.myshopify.com",
+            // );
+            if (in_array($_GET['cshop'], $get_customize_store_list)) {
+                // $updateprorespo = array("name" => "update cart webhook dynamic=" . $getaddtocartdata);
+                // $this->user_model->check_test_response($updateprorespo);
+                if (!empty($get_addtocartdata)) {
+                    if (isset($get_addtocartdata->id)) {
+                        $remove_cart_item = array(
+                            "cart_id" => $get_addtocartdata->id,
                             "shop_url" => $_GET['cshop']
                         );
-                        $getexlud = $this->user_model->get_exclude_partial_products($get_exclude_products);
 
-                        $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
+                        $this->user_model->remove_cart_item($remove_cart_item);
+                    }
 
-                        if (!empty($getexlud)) {
-                            $partialtype = "fullpay";
-                            $partial_percentage = '';
-                            $partial_type = '';
-                        } elseif (!empty($get_resulrs)) {
+                    $get_user_choic = $this->user_model->get_user_choic($_GET['cshop']);
+                    foreach ($get_addtocartdata->line_items as $cart_item) {
+
+                        if (isset($get_user_choic[0]->choice_val) && $get_user_choic[0]->choice_val == 'all_pro') {
                             $partialtype = "partial";
-                            $partial_percentage = $get_resulrs[0]->partial_percentage;
-                            $partial_type = $get_resulrs[0]->partial_type;
+                            $partial_percentage = $get_user_choic[0]->partial_value;
+                            $partial_type = $get_user_choic[0]->partial_type;
                         } else {
-                            $partialtype = "fullpay";
-                            $partial_percentage = '';
-                            $partial_type = '';
+                            $condtion_array = array(
+                                "product_id" => $cart_item->product_id,
+                                "varient_id" => $cart_item->variant_id
+                            );
+
+                            $get_exclude_products = array(
+                                "product_id" => $cart_item->product_id,
+                                "varient_id" => $cart_item->variant_id,
+                                "shop_url" => $_GET['cshop']
+                            );
+                            $getexlud = $this->user_model->get_exclude_partial_products($get_exclude_products);
+
+                            $get_resulrs = $this->user_model->get_store_product($_GET['cshop'], $condtion_array);
+
+                            if (!empty($getexlud)) {
+                                $partialtype = "fullpay";
+                                $partial_percentage = '';
+                                $partial_type = '';
+                            } elseif (!empty($get_resulrs)) {
+                                $partialtype = "partial";
+                                $partial_percentage = $get_resulrs[0]->partial_percentage;
+                                $partial_type = $get_resulrs[0]->partial_type;
+                            } else {
+                                $partialtype = "fullpay";
+                                $partial_percentage = '';
+                                $partial_type = '';
+                            }
                         }
-                    }
 
-                    if (isset($cart_item->properties)) {
-                        $cart_proer = json_encode($cart_item->properties);
-                    } else {
-                        $cart_proer = "";
-                    }
-                    $add_to_cart_line_item = array(
-                        "cart_id" => $get_addtocartdata->id,
-                        "product_id" => $cart_item->product_id,
-                        "variant_id" => $cart_item->variant_id,
-                        "shop_url" => $_GET['cshop'],
-                        "product_type" => $partialtype,
-                        "product_properties" => $cart_proer,
-                        "partial_percentage" => $partial_percentage,
-                        "partial_type" => $partial_type,
-                    );
+                        if (isset($cart_item->properties)) {
+                            $cart_proer = json_encode($cart_item->properties);
+                        } else {
+                            $cart_proer = "";
+                        }
+                        $add_to_cart_line_item = array(
+                            "cart_id" => $get_addtocartdata->id,
+                            "product_id" => $cart_item->product_id,
+                            "variant_id" => $cart_item->variant_id,
+                            "shop_url" => $_GET['cshop'],
+                            "product_type" => $partialtype,
+                            "product_properties" => $cart_proer,
+                            "partial_percentage" => $partial_percentage,
+                            "partial_type" => $partial_type,
+                        );
 
-                    $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
-                    $this->user_model->check_test_response($updateprorespo);
-                    $this->user_model->track_cart_itme_data($add_to_cart_line_item);
+                        $updateprorespo = array("name" => "update items=" . json_encode($add_to_cart_line_item));
+                        $this->user_model->check_test_response($updateprorespo);
+                        $this->user_model->track_cart_itme_data($add_to_cart_line_item);
+                    }
+                } else {
+                    echo "200 ok";
+                    exit;
                 }
             } else {
                 echo "200 ok";
                 exit;
             }
-        } else {
-            echo "200 ok";
-            exit;
         }
     }
     function product_create_whok()
