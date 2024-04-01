@@ -3231,7 +3231,7 @@ class Home extends BaseController
     public function exclude_products_partial()
     {
 
-        $this->check_subscribe();
+        //$this->check_subscribe();
         $data = array();
         $get_details = $this->user_model->get_tokens($_GET['shop']);
         $data['searctxt'] = "";
