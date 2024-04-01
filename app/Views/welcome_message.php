@@ -235,13 +235,13 @@ $store_namecnf = $shop_name[0];
     **************************************************** -->
     <section class="payxnowandrestondelivery-sec-space">
 
-        <!--<div class="payxnowandrestondelivery-container">
+        <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
                 <div class="alert-wrapper payxnowandrestondelivery-main-heading" style="border: 1px solid #de350a;">
-                    <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">There is some maintenance going on, so if you're facing any issues please contact us on :- 9354200590</p>
+                    <p class="payxnowandrestondelivery-alert" style="color: #de350a; font-size:20px">We provide support Monday to Friday 3pm to 12am IST. If you need any help outside these hours, please leave us a message on Chat and we'll reply back to you once we are back.</p>
                 </div>
             </div>
-        </div>-->
+        </div>
 
         <!-- <div class="payxnowandrestondelivery-container">
             <div class="payxnowandrestondelivery-main-head">
